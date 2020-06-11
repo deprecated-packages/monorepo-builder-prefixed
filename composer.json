@@ -1,0 +1,15 @@
+{
+    "name": "symplify/monorepo-builder-prefixed",
+    "bin": [
+        "monorepo-builder",
+        "monorepo-builder.phar"
+    ],
+    "description": "Prefixed version of Monorepo Builder compiled in PHAR",
+    "license": "MIT",
+    "require": {
+        "php": "^7.2"
+    },
+    "replace": {
+        "symplify/monorepo-builder": "self.version"
+    }
+}
