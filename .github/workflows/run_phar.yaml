@@ -22,7 +22,7 @@ jobs:
                     php-version: ${{ matrix.php }}
                     coverage: none
 
-            -   run: php monorepo-builder --debug
-            -   run: php monorepo-builder.phar --debug
-            -   run: ./monorepo-builder --debug
-            -   run: ./monorepo-builder.phar --debug
+            -   run: php monorepo-builder
+            -   run: php monorepo-builder.phar
+            -   run: ./monorepo-builder
+            -   run: ./monorepo-builder.phar
