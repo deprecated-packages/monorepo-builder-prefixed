@@ -4,6 +4,9 @@
     "require": {
         "php": ">=7.2"
     },
+    "bin": [
+        "bin/monorepo-builder"
+    ],
     "replace": {
         "symplify/monorepo-builder": "self.version"
     }
