@@ -3,16 +3,16 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Console\Command;
 
-use _PhpScoperab37dd4d9c3e\Symfony\Component\Console\Command\Command;
-use _PhpScoperab37dd4d9c3e\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperab37dd4d9c3e\Symfony\Component\Console\Output\OutputInterface;
-use _PhpScoperab37dd4d9c3e\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoper38889e21c753\Symfony\Component\Console\Command\Command;
+use _PhpScoper38889e21c753\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoper38889e21c753\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoper38889e21c753\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\MonorepoBuilder\Console\Reporter\ConflictingPackageVersionsReporter;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\VersionValidator;
 use Symplify\PackageBuilder\Console\Command\CommandNaming;
 use Symplify\PackageBuilder\Console\ShellCode;
-final class ValidateCommand extends \_PhpScoperab37dd4d9c3e\Symfony\Component\Console\Command\Command
+final class ValidateCommand extends \_PhpScoper38889e21c753\Symfony\Component\Console\Command\Command
 {
     /**
      * @var SymfonyStyle
@@ -30,7 +30,7 @@ final class ValidateCommand extends \_PhpScoperab37dd4d9c3e\Symfony\Component\Co
      * @var ConflictingPackageVersionsReporter
      */
     private $conflictingPackageVersionsReporter;
-    public function __construct(\_PhpScoperab37dd4d9c3e\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \Symplify\MonorepoBuilder\VersionValidator $versionValidator, \Symplify\MonorepoBuilder\Console\Reporter\ConflictingPackageVersionsReporter $conflictingPackageVersionsReporter)
+    public function __construct(\_PhpScoper38889e21c753\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \Symplify\MonorepoBuilder\VersionValidator $versionValidator, \Symplify\MonorepoBuilder\Console\Reporter\ConflictingPackageVersionsReporter $conflictingPackageVersionsReporter)
     {
         parent::__construct();
         $this->symfonyStyle = $symfonyStyle;
@@ -43,7 +43,7 @@ final class ValidateCommand extends \_PhpScoperab37dd4d9c3e\Symfony\Component\Co
         $this->setName(\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
         $this->setDescription('Validates synchronized versions in "composer.json" in all found packages.');
     }
-    protected function execute(\_PhpScoperab37dd4d9c3e\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperab37dd4d9c3e\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoper38889e21c753\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper38889e21c753\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $conflictingPackageVersions = $this->versionValidator->findConflictingPackageVersionsInFileInfos($this->composerJsonProvider->getRootAndPackageFileInfos());
         if ($conflictingPackageVersions === []) {
