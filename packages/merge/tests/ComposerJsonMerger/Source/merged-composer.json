@@ -1,0 +1,10 @@
+{
+    "require": {
+        "php": "^7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "_PhpScopercde9d0a21b8c\\Some\\": "some"
+        }
+    }
+}

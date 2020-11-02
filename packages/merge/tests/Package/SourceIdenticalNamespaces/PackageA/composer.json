@@ -1,0 +1,39 @@
+{
+    "autoload": {
+        "psr-4": {
+            "_PhpScopercde9d0a21b8c\\App\\Collection\\": [
+                "src\/collection"
+            ],
+            "_PhpScopercde9d0a21b8c\\App\\Core\\": "src\/core",
+            "_PhpScopercde9d0a21b8c\\App\\FixedArray\\": [
+                "src\/array",
+                "src\/list"
+            ],
+            "_PhpScopercde9d0a21b8c\\App\\Shared\\": "src\/shared",
+            "_PhpScopercde9d0a21b8c\\App\\YetAnother\\": [
+                "src"
+            ],
+            "_PhpScopercde9d0a21b8c\\Monolog\\": "src\/Monolog\/",
+            "_PhpScopercde9d0a21b8c\\Vendor\\Namespace\\": [
+                "src\/Vendor\/Namespace\/",
+                "lib\/Vendor\/Namespace\/"
+            ],
+            "_PhpScopercde9d0a21b8c\\UniqueGlobalClass\\": "\/UniqueGlobalClass\/",
+            "_PhpScopercde9d0a21b8c\\\\": "src\/\/"
+        },
+        "classmap": [
+            "src\/",
+            "lib\/",
+            "Something.php",
+            "src\/"
+        ],
+        "files": [
+            "src\/MyLibrary\/functions.php"
+        ],
+        "exclude-from-classmap": [
+            "\/Tests\/",
+            "\/test\/",
+            "\/tests\/"
+        ]
+    }
+}
