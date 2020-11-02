@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace _PhpScoper4a664f294d9c;
+namespace _PhpScoper8ca5a314f31a;
 
-use _PhpScoper4a664f294d9c\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use _PhpScoper8ca5a314f31a\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-return static function (\_PhpScoper4a664f294d9c\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
+return static function (\_PhpScoper8ca5a314f31a\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $containerConfigurator->import(__DIR__ . '/services.php');
     $containerConfigurator->import(__DIR__ . '/../packages/**/config/config.php');
     $parameters = $containerConfigurator->parameters();
