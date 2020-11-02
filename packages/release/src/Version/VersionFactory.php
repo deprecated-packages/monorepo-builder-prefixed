@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\Version;
 
-use _PhpScoper8ca5a314f31a\PharIo\Version\Version;
+use _PhpScopere71e603d103e\PharIo\Version\Version;
 use Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard;
 use Symplify\MonorepoBuilder\Release\ValueObject\SemVersion;
 use Symplify\MonorepoBuilder\Split\Git\GitManager;
@@ -22,25 +22,25 @@ final class VersionFactory
         $this->releaseGuard = $releaseGuard;
         $this->gitManager = $gitManager;
     }
-    public function createValidVersion(string $versionArgument, ?string $stage) : \_PhpScoper8ca5a314f31a\PharIo\Version\Version
+    public function createValidVersion(string $versionArgument, ?string $stage) : \_PhpScopere71e603d103e\PharIo\Version\Version
     {
         if (\in_array($versionArgument, \Symplify\MonorepoBuilder\Release\ValueObject\SemVersion::ALL, \true)) {
             return $this->resolveNextVersionByVersionKind($versionArgument);
         }
         // this object performs validation of version
-        $version = new \_PhpScoper8ca5a314f31a\PharIo\Version\Version($versionArgument);
+        $version = new \_PhpScopere71e603d103e\PharIo\Version\Version($versionArgument);
         $this->releaseGuard->guardVersion($version, $stage);
         return $version;
     }
-    private function resolveNextVersionByVersionKind(string $versionKind) : \_PhpScoper8ca5a314f31a\PharIo\Version\Version
+    private function resolveNextVersionByVersionKind(string $versionKind) : \_PhpScopere71e603d103e\PharIo\Version\Version
     {
         // get current version
         $mostRecentVersion = $this->gitManager->getMostRecentTag(\getcwd());
         if ($mostRecentVersion === null) {
             // the very first tag
-            return new \_PhpScoper8ca5a314f31a\PharIo\Version\Version('v0.1.0');
+            return new \_PhpScopere71e603d103e\PharIo\Version\Version('v0.1.0');
         }
-        $mostRecentVersion = new \_PhpScoper8ca5a314f31a\PharIo\Version\Version($mostRecentVersion);
+        $mostRecentVersion = new \_PhpScopere71e603d103e\PharIo\Version\Version($mostRecentVersion);
         $value = $mostRecentVersion->getMajor()->getValue();
         $currentMinorVersion = $mostRecentVersion->getMinor()->getValue();
         $currentPatchVersion = $mostRecentVersion->getPatch()->getValue();
@@ -56,6 +56,6 @@ final class VersionFactory
         if ($versionKind === \Symplify\MonorepoBuilder\Release\ValueObject\SemVersion::PATCH) {
             ++$currentPatchVersion;
         }
-        return new \_PhpScoper8ca5a314f31a\PharIo\Version\Version(\sprintf('v%d.%d.%d', $value, $currentMinorVersion, $currentPatchVersion));
+        return new \_PhpScopere71e603d103e\PharIo\Version\Version(\sprintf('v%d.%d.%d', $value, $currentMinorVersion, $currentPatchVersion));
     }
 }

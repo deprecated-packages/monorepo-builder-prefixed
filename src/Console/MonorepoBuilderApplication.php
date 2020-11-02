@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Console;
 
-use _PhpScoper8ca5a314f31a\Jean85\PrettyVersions;
-use _PhpScoper8ca5a314f31a\Symfony\Component\Console\Command\Command;
-use _PhpScoper8ca5a314f31a\Symfony\Component\Console\Input\InputDefinition;
-use _PhpScoper8ca5a314f31a\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoper8ca5a314f31a\Symfony\Component\Console\Input\InputOption;
-use _PhpScoper8ca5a314f31a\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScopere71e603d103e\Jean85\PrettyVersions;
+use _PhpScopere71e603d103e\Symfony\Component\Console\Command\Command;
+use _PhpScopere71e603d103e\Symfony\Component\Console\Input\InputDefinition;
+use _PhpScopere71e603d103e\Symfony\Component\Console\Input\InputInterface;
+use _PhpScopere71e603d103e\Symfony\Component\Console\Input\InputOption;
+use _PhpScopere71e603d103e\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\Console\Command\BumpInterdependencyCommand;
 use Symplify\MonorepoBuilder\Console\Command\ValidateCommand;
 use Symplify\MonorepoBuilder\Merge\Command\MergeCommand;
@@ -30,21 +30,21 @@ final class MonorepoBuilderApplication extends \Symplify\SymplifyKernel\Console\
     {
         $this->addCommands($commands);
         $this->sourcesPresenceValidator = $sourcesPresenceValidator;
-        $version = \_PhpScoper8ca5a314f31a\Jean85\PrettyVersions::getVersion('symplify/monorepo-builder');
+        $version = \_PhpScopere71e603d103e\Jean85\PrettyVersions::getVersion('symplify/monorepo-builder');
         parent::__construct('Monorepo Builder', $version->getPrettyVersion());
     }
-    protected function getDefaultInputDefinition() : \_PhpScoper8ca5a314f31a\Symfony\Component\Console\Input\InputDefinition
+    protected function getDefaultInputDefinition() : \_PhpScopere71e603d103e\Symfony\Component\Console\Input\InputDefinition
     {
         $inputDefinition = parent::getDefaultInputDefinition();
-        $inputDefinition->addOption(new \_PhpScoper8ca5a314f31a\Symfony\Component\Console\Input\InputOption(\Symplify\MonorepoBuilder\ValueObject\Option::CONFIG, 'c', \_PhpScoper8ca5a314f31a\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Path to config file', \Symplify\MonorepoBuilder\ValueObject\File::CONFIG));
+        $inputDefinition->addOption(new \_PhpScopere71e603d103e\Symfony\Component\Console\Input\InputOption(\Symplify\MonorepoBuilder\ValueObject\Option::CONFIG, 'c', \_PhpScopere71e603d103e\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Path to config file', \Symplify\MonorepoBuilder\ValueObject\File::CONFIG));
         return $inputDefinition;
     }
-    protected function doRunCommand(\_PhpScoper8ca5a314f31a\Symfony\Component\Console\Command\Command $command, \_PhpScoper8ca5a314f31a\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper8ca5a314f31a\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function doRunCommand(\_PhpScopere71e603d103e\Symfony\Component\Console\Command\Command $command, \_PhpScopere71e603d103e\Symfony\Component\Console\Input\InputInterface $input, \_PhpScopere71e603d103e\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $this->validateSources($command);
         return $this->doRunCommandAndShowHelpOnArgumentError($command, $input, $output);
     }
-    private function validateSources(\_PhpScoper8ca5a314f31a\Symfony\Component\Console\Command\Command $command) : void
+    private function validateSources(\_PhpScopere71e603d103e\Symfony\Component\Console\Command\Command $command) : void
     {
         $commandClass = \get_class($command);
         if (\in_array($commandClass, [\Symplify\MonorepoBuilder\Console\Command\ValidateCommand::class, \Symplify\MonorepoBuilder\Merge\Command\MergeCommand::class], \true)) {
