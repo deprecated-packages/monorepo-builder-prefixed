@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder;
 
-use _PhpScoper8c1a18e00fc1\Nette\Utils\Strings;
+use _PhpScoper395d8a649392\Nette\Utils\Strings;
 use Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\SmartFileSystem\SmartFileInfo;
@@ -27,7 +27,7 @@ final class DependencyUpdater
             $json = $this->jsonFileManager->loadFromFileInfo($packageComposerFileInfo);
             $json = $this->processSectionWithPackages($json, $packageNames, $version, \Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE);
             $json = $this->processSectionWithPackages($json, $packageNames, $version, \Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV);
-            $this->jsonFileManager->saveJsonWithFileInfo($json, $packageComposerFileInfo);
+            $this->jsonFileManager->printJsonToFileInfo($json, $packageComposerFileInfo);
         }
     }
     /**
@@ -39,7 +39,7 @@ final class DependencyUpdater
             $json = $this->jsonFileManager->loadFromFileInfo($packageComposerFileInfo);
             $json = $this->processSection($json, $vendor, $version, \Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE);
             $json = $this->processSection($json, $vendor, $version, \Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV);
-            $this->jsonFileManager->saveJsonWithFileInfo($json, $packageComposerFileInfo);
+            $this->jsonFileManager->printJsonToFileInfo($json, $packageComposerFileInfo);
         }
     }
     /**
@@ -80,7 +80,7 @@ final class DependencyUpdater
     }
     private function shouldSkip(string $vendor, string $targetVersion, string $packageName, string $packageVersion) : bool
     {
-        if (!\_PhpScoper8c1a18e00fc1\Nette\Utils\Strings::startsWith($packageName, $vendor)) {
+        if (!\_PhpScoper395d8a649392\Nette\Utils\Strings::startsWith($packageName, $vendor)) {
             return \true;
         }
         return $packageVersion === $targetVersion;

@@ -4,7 +4,7 @@
     },
     "autoload": {
         "psr-4": {
-            "_PhpScoper8c1a18e00fc1\\Some\\": "some"
+            "_PhpScoper395d8a649392\\Some\\": "some"
         }
     }
 }

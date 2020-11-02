@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Testing;
 
-use _PhpScoper8c1a18e00fc1\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoper395d8a649392\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\ConsoleColorDiff\Console\Output\ConsoleDiffer;
 use Symplify\MonorepoBuilder\Package\PackageNamesProvider;
@@ -36,7 +36,7 @@ final class ComposerJsonRepositoriesUpdater
      * @var ConsoleDiffer
      */
     private $consoleDiffer;
-    public function __construct(\Symplify\MonorepoBuilder\Package\PackageNamesProvider $packageNamesProvider, \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \_PhpScoper8c1a18e00fc1\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerJsonSymlinker $composerJsonSymlinker, \Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver $usedPackagesResolver, \Symplify\ConsoleColorDiff\Console\Output\ConsoleDiffer $consoleDiffer)
+    public function __construct(\Symplify\MonorepoBuilder\Package\PackageNamesProvider $packageNamesProvider, \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \_PhpScoper395d8a649392\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerJsonSymlinker $composerJsonSymlinker, \Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver $usedPackagesResolver, \Symplify\ConsoleColorDiff\Console\Output\ConsoleDiffer $consoleDiffer)
     {
         $this->packageNamesProvider = $packageNamesProvider;
         $this->jsonFileManager = $jsonFileManager;
@@ -58,7 +58,7 @@ final class ComposerJsonRepositoriesUpdater
         $packageNames = $this->packageNamesProvider->provide();
         $oldComposerJsonContents = $packageFileInfo->getContents();
         $packageComposerJson = $this->composerJsonSymlinker->decoratePackageComposerJsonWithPackageSymlinks($packageComposerJson, $packageNames, $mainComposerJsonFileInfo);
-        $newComposerJsonContents = $this->jsonFileManager->saveJsonWithFileInfo($packageComposerJson, $packageFileInfo);
+        $newComposerJsonContents = $this->jsonFileManager->printJsonToFileInfo($packageComposerJson, $packageFileInfo);
         $message = \sprintf('File "%s" was updated', $packageFileInfo->getRelativeFilePathFromCwd());
         $this->symfonyStyle->title($message);
         $this->consoleDiffer->diff($oldComposerJsonContents, $newComposerJsonContents);

@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Split\Configuration;
 
-use _PhpScoper8c1a18e00fc1\Nette\Utils\Strings;
+use _PhpScoper395d8a649392\Nette\Utils\Strings;
 use Symplify\MonorepoBuilder\Split\Exception\InvalidGitRepositoryException;
 use Symplify\MonorepoBuilder\Split\Exception\InvalidRepositoryFormatException;
 use Symplify\SmartFileSystem\FileSystemGuard;
@@ -31,7 +31,7 @@ final class RepositoryGuard
         if ($possibleRepository === '.git') {
             return;
         }
-        if (\_PhpScoper8c1a18e00fc1\Nette\Utils\Strings::match($possibleRepository, self::GIT_REPOSITORY_REGEX)) {
+        if (\_PhpScoper395d8a649392\Nette\Utils\Strings::match($possibleRepository, self::GIT_REPOSITORY_REGEX)) {
             return;
         }
         throw new \Symplify\MonorepoBuilder\Split\Exception\InvalidRepositoryFormatException(\sprintf('"%s" is not format for repository', $possibleRepository));
