@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace _PhpScoper48b8cd584b57;
+namespace _PhpScopercdfd316eda69;
 
-use _PhpScoper48b8cd584b57\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-return ['prefix' => null, 'finders' => [], 'files-whitelist' => [
+// see https://github.com/humbug/php-scoper
+return ['files-whitelist' => [
     // do not prefix "trigger_deprecatoin" from symfony - https://github.com/symfony/symfony/commit/0032b2a2893d3be592d4312b7b098fb9d71aca03
     // these paths are relative to this file location, so it should be in the root directory
     'vendor/symfony/deprecation-contracts/function.php',
@@ -13,7 +13,7 @@ return ['prefix' => null, 'finders' => [], 'files-whitelist' => [
 ], 'whitelist' => [
     // needed for autoload, that is not prefixed, since it's in bin/* file
     'Symplify\\*',
-    // for config.php
-    \_PhpScoper48b8cd584b57\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator::class,
+    // for config.php  Symfony PHP Configs
+    '_PhpScopercdfd316eda69\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator',
     'Composer\\*',
 ]];
