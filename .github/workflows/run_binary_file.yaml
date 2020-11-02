@@ -8,7 +8,7 @@ on:
             - master
 
 jobs:
-    run_phar:
+    run_binary_file:
         runs-on: ubuntu-latest
 
         strategy:
@@ -22,4 +22,4 @@ jobs:
                 with:
                     php-version: ${{ matrix.php }}
 
-            -   run: bin/monorepo-builder
+            -   run: bin/monorepo-builder --ansi
