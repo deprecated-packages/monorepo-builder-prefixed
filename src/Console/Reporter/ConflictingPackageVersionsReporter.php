@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Console\Reporter;
 
-use _PhpScopera1884c938522\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoper8c1a18e00fc1\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\SmartFileSystem\SmartFileInfo;
 final class ConflictingPackageVersionsReporter
 {
@@ -11,7 +11,7 @@ final class ConflictingPackageVersionsReporter
      * @var SymfonyStyle
      */
     private $symfonyStyle;
-    public function __construct(\_PhpScopera1884c938522\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
+    public function __construct(\_PhpScoper8c1a18e00fc1\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
     {
         $this->symfonyStyle = $symfonyStyle;
     }
