@@ -22,4 +22,4 @@ jobs:
                 with:
                     php-version: ${{ matrix.php }}
 
-            -   run: vendor/bin/monorepo-builder
+            -   run: bin/monorepo-builder
