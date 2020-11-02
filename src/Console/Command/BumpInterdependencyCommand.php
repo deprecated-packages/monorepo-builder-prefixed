@@ -3,16 +3,16 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Console\Command;
 
-use _PhpScoperebc1087502f3\Symfony\Component\Console\Command\Command;
-use _PhpScoperebc1087502f3\Symfony\Component\Console\Input\InputArgument;
-use _PhpScoperebc1087502f3\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperebc1087502f3\Symfony\Component\Console\Output\OutputInterface;
-use _PhpScoperebc1087502f3\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoper1ca65afc92f7\Symfony\Component\Console\Command\Command;
+use _PhpScoper1ca65afc92f7\Symfony\Component\Console\Input\InputArgument;
+use _PhpScoper1ca65afc92f7\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoper1ca65afc92f7\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoper1ca65afc92f7\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\MonorepoBuilder\DependencyUpdater;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\PackageBuilder\Console\Command\CommandNaming;
 use Symplify\PackageBuilder\Console\ShellCode;
-final class BumpInterdependencyCommand extends \_PhpScoperebc1087502f3\Symfony\Component\Console\Command\Command
+final class BumpInterdependencyCommand extends \_PhpScoper1ca65afc92f7\Symfony\Component\Console\Command\Command
 {
     /**
      * @var string
@@ -30,7 +30,7 @@ final class BumpInterdependencyCommand extends \_PhpScoperebc1087502f3\Symfony\C
      * @var ComposerJsonProvider
      */
     private $composerJsonProvider;
-    public function __construct(\_PhpScoperebc1087502f3\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\DependencyUpdater $dependencyUpdater, \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider)
+    public function __construct(\_PhpScoper1ca65afc92f7\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\DependencyUpdater $dependencyUpdater, \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider)
     {
         parent::__construct();
         $this->symfonyStyle = $symfonyStyle;
@@ -40,10 +40,10 @@ final class BumpInterdependencyCommand extends \_PhpScoperebc1087502f3\Symfony\C
     protected function configure() : void
     {
         $this->setName(\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
-        $this->setDescription('Bump dependency of monorepo packages on each other');
-        $this->addArgument(self::VERSION_ARGUMENT, \_PhpScoperebc1087502f3\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'New version of inter-dependencies, e.g. "^4.4.2"');
+        $this->setDescription('Bump dependency of split packages on each other');
+        $this->addArgument(self::VERSION_ARGUMENT, \_PhpScoper1ca65afc92f7\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'New version of inter-dependencies, e.g. "^4.4.2"');
     }
-    protected function execute(\_PhpScoperebc1087502f3\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperebc1087502f3\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoper1ca65afc92f7\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper1ca65afc92f7\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         /** @var string $version */
         $version = $input->getArgument(self::VERSION_ARGUMENT);
