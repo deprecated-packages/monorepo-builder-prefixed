@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Split\ValueObject;
 
-use _PhpScoperf0acd9a8c4f5\Symfony\Component\Process\Process;
+use _PhpScoperc4f03b8b365d\Symfony\Component\Process\Process;
 final class SplitProcessInfo
 {
     /**
@@ -18,13 +18,13 @@ final class SplitProcessInfo
      * @var Process
      */
     private $process;
-    public function __construct(\_PhpScoperf0acd9a8c4f5\Symfony\Component\Process\Process $process, string $localDirectory, string $remoteRepository)
+    public function __construct(\_PhpScoperc4f03b8b365d\Symfony\Component\Process\Process $process, string $localDirectory, string $remoteRepository)
     {
         $this->process = $process;
         $this->localDirectory = $localDirectory;
         $this->remoteRepository = $remoteRepository;
     }
-    public function getProcess() : \_PhpScoperf0acd9a8c4f5\Symfony\Component\Process\Process
+    public function getProcess() : \_PhpScoperc4f03b8b365d\Symfony\Component\Process\Process
     {
         return $this->process;
     }
