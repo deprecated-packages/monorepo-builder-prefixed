@@ -1,9 +1,9 @@
 #!/usr/bin/env php
 <?php 
 declare (strict_types=1);
-namespace _PhpScopere71e603d103e;
+namespace _PhpScoper8889bf9b056f;
 
-use _PhpScopere71e603d103e\Symfony\Component\Console\Input\ArgvInput;
+use _PhpScoper8889bf9b056f\Symfony\Component\Console\Input\ArgvInput;
 use Symplify\MonorepoBuilder\Console\MonorepoBuilderApplication;
 use Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel;
 use Symplify\SetConfigResolver\ConfigResolver;
@@ -28,7 +28,7 @@ foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
 }
 $configFileInfos = [];
 $configResolver = new \Symplify\SetConfigResolver\ConfigResolver();
-$inputConfigFileInfo = $configResolver->resolveFromInputWithFallback(new \_PhpScopere71e603d103e\Symfony\Component\Console\Input\ArgvInput(), [\Symplify\MonorepoBuilder\ValueObject\File::CONFIG]);
+$inputConfigFileInfo = $configResolver->resolveFromInputWithFallback(new \_PhpScoper8889bf9b056f\Symfony\Component\Console\Input\ArgvInput(), [\Symplify\MonorepoBuilder\ValueObject\File::CONFIG]);
 if ($inputConfigFileInfo !== null) {
     $configFileInfos[] = $inputConfigFileInfo;
 }

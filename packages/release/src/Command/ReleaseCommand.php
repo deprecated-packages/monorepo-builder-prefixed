@@ -3,13 +3,13 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\Command;
 
-use _PhpScopere71e603d103e\PharIo\Version\Version;
-use _PhpScopere71e603d103e\Symfony\Component\Console\Command\Command;
-use _PhpScopere71e603d103e\Symfony\Component\Console\Input\InputArgument;
-use _PhpScopere71e603d103e\Symfony\Component\Console\Input\InputInterface;
-use _PhpScopere71e603d103e\Symfony\Component\Console\Input\InputOption;
-use _PhpScopere71e603d103e\Symfony\Component\Console\Output\OutputInterface;
-use _PhpScopere71e603d103e\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoper8889bf9b056f\PharIo\Version\Version;
+use _PhpScoper8889bf9b056f\Symfony\Component\Console\Command\Command;
+use _PhpScoper8889bf9b056f\Symfony\Component\Console\Input\InputArgument;
+use _PhpScoper8889bf9b056f\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoper8889bf9b056f\Symfony\Component\Console\Input\InputOption;
+use _PhpScoper8889bf9b056f\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoper8889bf9b056f\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface;
 use Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard;
@@ -20,7 +20,7 @@ use Symplify\MonorepoBuilder\ValueObject\File;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Console\Command\CommandNaming;
 use Symplify\PackageBuilder\Console\ShellCode;
-final class ReleaseCommand extends \_PhpScopere71e603d103e\Symfony\Component\Console\Command\Command
+final class ReleaseCommand extends \_PhpScoper8889bf9b056f\Symfony\Component\Console\Command\Command
 {
     /**
      * @var SymfonyStyle
@@ -38,7 +38,7 @@ final class ReleaseCommand extends \_PhpScopere71e603d103e\Symfony\Component\Con
      * @var VersionFactory
      */
     private $versionFactory;
-    public function __construct(\_PhpScopere71e603d103e\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Release\ReleaseWorkerProvider $releaseWorkerProvider, \Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard $releaseGuard, \Symplify\MonorepoBuilder\Release\Version\VersionFactory $versionFactory)
+    public function __construct(\_PhpScoper8889bf9b056f\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Release\ReleaseWorkerProvider $releaseWorkerProvider, \Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard $releaseGuard, \Symplify\MonorepoBuilder\Release\Version\VersionFactory $versionFactory)
     {
         parent::__construct();
         $this->symfonyStyle = $symfonyStyle;
@@ -51,11 +51,11 @@ final class ReleaseCommand extends \_PhpScopere71e603d103e\Symfony\Component\Con
         $this->setName(\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
         $this->setDescription('Perform release process with set Release Workers.');
         $description = \sprintf('Release version, in format "<major>.<minor>.<patch>" or "v<major>.<minor>.<patch> or one of keywords: "%s"', \implode('", "', \Symplify\MonorepoBuilder\Release\ValueObject\SemVersion::ALL));
-        $this->addArgument(\Symplify\MonorepoBuilder\ValueObject\Option::VERSION, \_PhpScopere71e603d103e\Symfony\Component\Console\Input\InputArgument::REQUIRED, $description);
-        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::DRY_RUN, null, \_PhpScopere71e603d103e\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Do not perform operations, just their preview');
-        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::STAGE, null, \_PhpScopere71e603d103e\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Name of stage to perform');
+        $this->addArgument(\Symplify\MonorepoBuilder\ValueObject\Option::VERSION, \_PhpScoper8889bf9b056f\Symfony\Component\Console\Input\InputArgument::REQUIRED, $description);
+        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::DRY_RUN, null, \_PhpScoper8889bf9b056f\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Do not perform operations, just their preview');
+        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::STAGE, null, \_PhpScoper8889bf9b056f\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Name of stage to perform');
     }
-    protected function execute(\_PhpScopere71e603d103e\Symfony\Component\Console\Input\InputInterface $input, \_PhpScopere71e603d103e\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoper8889bf9b056f\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper8889bf9b056f\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         // validation phase
         $stage = $this->resolveStage($input);
@@ -100,7 +100,7 @@ final class ReleaseCommand extends \_PhpScopere71e603d103e\Symfony\Component\Con
         }
         $this->symfonyStyle->newLine();
     }
-    private function resolveStage(\_PhpScopere71e603d103e\Symfony\Component\Console\Input\InputInterface $input) : ?string
+    private function resolveStage(\_PhpScoper8889bf9b056f\Symfony\Component\Console\Input\InputInterface $input) : ?string
     {
         $stage = $input->getOption(\Symplify\MonorepoBuilder\ValueObject\Option::STAGE);
         // string or null
@@ -112,7 +112,7 @@ final class ReleaseCommand extends \_PhpScopere71e603d103e\Symfony\Component\Con
         $this->releaseGuard->guardStage($stage);
         return $stage;
     }
-    private function resolveVersion(\_PhpScopere71e603d103e\Symfony\Component\Console\Input\InputInterface $input, ?string $stage) : \_PhpScopere71e603d103e\PharIo\Version\Version
+    private function resolveVersion(\_PhpScoper8889bf9b056f\Symfony\Component\Console\Input\InputInterface $input, ?string $stage) : \_PhpScoper8889bf9b056f\PharIo\Version\Version
     {
         /** @var string $versionArgument */
         $versionArgument = $input->getArgument(\Symplify\MonorepoBuilder\ValueObject\Option::VERSION);
