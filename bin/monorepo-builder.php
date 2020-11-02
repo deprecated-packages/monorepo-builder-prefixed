@@ -2,9 +2,9 @@
 
 // decoupled in own "*.php" file, so ECS, Rector and PHPStan works out of the box here
 declare (strict_types=1);
-namespace _PhpScoper46f65bbe5022;
+namespace _PhpScoperf0acd9a8c4f5;
 
-use _PhpScoper46f65bbe5022\Symfony\Component\Console\Input\ArgvInput;
+use _PhpScoperf0acd9a8c4f5\Symfony\Component\Console\Input\ArgvInput;
 use Symplify\MonorepoBuilder\Console\MonorepoBuilderApplication;
 use Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel;
 use Symplify\MonorepoBuilder\ValueObject\File;
@@ -18,8 +18,6 @@ $possibleAutoloadPaths = [
     __DIR__ . '/../../../autoload.php',
     // monorepo
     __DIR__ . '/../../../vendor/autoload.php',
-    // For monorepo on different branch test in Travis - To be removed
-    __DIR__ . '/../../../../../autoload.php',
 ];
 foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
     if (\file_exists($possibleAutoloadPath)) {
@@ -29,7 +27,7 @@ foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
 }
 $configFileInfos = [];
 $configResolver = new \Symplify\SetConfigResolver\ConfigResolver();
-$inputConfigFileInfo = $configResolver->resolveFromInputWithFallback(new \_PhpScoper46f65bbe5022\Symfony\Component\Console\Input\ArgvInput(), [\Symplify\MonorepoBuilder\ValueObject\File::CONFIG]);
+$inputConfigFileInfo = $configResolver->resolveFromInputWithFallback(new \_PhpScoperf0acd9a8c4f5\Symfony\Component\Console\Input\ArgvInput(), [\Symplify\MonorepoBuilder\ValueObject\File::CONFIG]);
 if ($inputConfigFileInfo !== null) {
     $configFileInfos[] = $inputConfigFileInfo;
 }

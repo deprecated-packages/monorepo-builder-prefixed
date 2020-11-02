@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Split;
 
-use _PhpScoper46f65bbe5022\Symfony\Component\Console\Style\SymfonyStyle;
-use _PhpScoper46f65bbe5022\Symfony\Component\Process\Process;
+use _PhpScoperf0acd9a8c4f5\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoperf0acd9a8c4f5\Symfony\Component\Process\Process;
 use Symplify\MonorepoBuilder\Split\Exception\PackageToRepositorySplitException;
 use Symplify\MonorepoBuilder\Split\Git\GitManager;
 use Symplify\MonorepoBuilder\Split\Process\ProcessFactory;
@@ -38,7 +38,7 @@ final class PackageToRepositorySplitter
      * @var GitManager
      */
     private $gitManager;
-    public function __construct(\_PhpScoper46f65bbe5022\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard, \Symplify\MonorepoBuilder\Split\Process\ProcessFactory $processFactory, \Symplify\MonorepoBuilder\Split\Git\GitManager $gitManager)
+    public function __construct(\_PhpScoperf0acd9a8c4f5\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard, \Symplify\MonorepoBuilder\Split\Process\ProcessFactory $processFactory, \Symplify\MonorepoBuilder\Split\Git\GitManager $gitManager)
     {
         $this->symfonyStyle = $symfonyStyle;
         $this->fileSystemGuard = $fileSystemGuard;
