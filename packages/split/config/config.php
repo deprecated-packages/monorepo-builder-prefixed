@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace _PhpScoper690f6ea278e4;
+namespace _PhpScoper4a664f294d9c;
 
-use _PhpScoper690f6ea278e4\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use _PhpScoper4a664f294d9c\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\MonorepoBuilder\Split\ValueObject\ConvertFormat;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Strings\StringFormatConverter;
 use Symplify\SmartFileSystem\FileSystemGuard;
-return static function (\_PhpScoper690f6ea278e4\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
+return static function (\_PhpScoper4a664f294d9c\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $parameters = $containerConfigurator->parameters();
     $parameters->set(\Symplify\MonorepoBuilder\ValueObject\Option::DIRECTORIES_TO_REPOSITORIES, []);
     $parameters->set(\Symplify\MonorepoBuilder\ValueObject\Option::DIRECTORIES_TO_REPOSITORIES_CONVERT_FORMAT, \Symplify\MonorepoBuilder\Split\ValueObject\ConvertFormat::EQUAL);
