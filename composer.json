@@ -61,6 +61,13 @@
         },
         {
             "type": "path",
+            "url": "../../packages/package-scoper",
+            "options": {
+                "symlink": false
+            }
+        },
+        {
+            "type": "path",
             "url": "../../packages/monorepo-builder",
             "options": {
                 "symlink": false
