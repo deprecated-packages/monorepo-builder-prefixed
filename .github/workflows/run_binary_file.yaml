@@ -1,5 +1,5 @@
 # inspired by https://github.com/Symplify/Symplify/blob/master/.github/workflows/code_checks.yaml
-name: Run PHAR
+name: Run Binary File
 
 on:
     pull_request: null
@@ -17,12 +17,9 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v2
-            -   uses: shivammathur/setup-php@v1
+
+            -   uses: shivammathur/setup-php@v2
                 with:
                     php-version: ${{ matrix.php }}
-                    coverage: none
 
-            -   run: php monorepo-builder
-            -   run: php monorepo-builder.phar
-            -   run: ./monorepo-builder
-            -   run: ./monorepo-builder.phar
+            -   run: vendor/bin/monorepo-builder
