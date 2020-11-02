@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace _PhpScoper1ca65afc92f7;
+namespace _PhpScoper339d822a09a0;
 
-use _PhpScoper1ca65afc92f7\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use _PhpScoper339d822a09a0\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 return ['prefix' => null, 'finders' => [], 'files-whitelist' => [
     // do not prefix "trigger_deprecatoin" from symfony - https://github.com/symfony/symfony/commit/0032b2a2893d3be592d4312b7b098fb9d71aca03
     // these paths are relative to this file location, so it should be in the root directory
@@ -14,6 +14,6 @@ return ['prefix' => null, 'finders' => [], 'files-whitelist' => [
     // needed for autoload, that is not prefixed, since it's in bin/* file
     'Symplify\\*',
     // for config.php
-    \_PhpScoper1ca65afc92f7\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator::class,
+    \_PhpScoper339d822a09a0\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator::class,
     'Composer\\*',
 ]];
