@@ -1,9 +1,9 @@
 #!/usr/bin/env php
 <?php 
 declare (strict_types=1);
-namespace _PhpScoper05142ca19111;
+namespace _PhpScoperab37dd4d9c3e;
 
-use _PhpScoper05142ca19111\Symfony\Component\Console\Input\ArgvInput;
+use _PhpScoperab37dd4d9c3e\Symfony\Component\Console\Input\ArgvInput;
 use Symplify\MonorepoBuilder\Console\MonorepoBuilderApplication;
 use Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel;
 use Symplify\SetConfigResolver\ConfigResolver;
@@ -11,13 +11,13 @@ use Symplify\PackageBuilder\Console\Input\InputDetector;
 use Symplify\MonorepoBuilder\ValueObject\File;
 # 1. autoload
 $possibleAutoloadPaths = [
-    // after split package
+    // after monorepo package
     __DIR__ . '/../vendor/autoload.php',
     // dependency
     __DIR__ . '/../../../autoload.php',
     // monorepo
     __DIR__ . '/../../../vendor/autoload.php',
-    // For split on different branch test in Travis - To be removed
+    // For monorepo on different branch test in Travis - To be removed
     __DIR__ . '/../../../../../autoload.php',
 ];
 foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
@@ -28,7 +28,7 @@ foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
 }
 $configFileInfos = [];
 $configResolver = new \Symplify\SetConfigResolver\ConfigResolver();
-$inputConfigFileInfo = $configResolver->resolveFromInputWithFallback(new \_PhpScoper05142ca19111\Symfony\Component\Console\Input\ArgvInput(), [\Symplify\MonorepoBuilder\ValueObject\File::CONFIG]);
+$inputConfigFileInfo = $configResolver->resolveFromInputWithFallback(new \_PhpScoperab37dd4d9c3e\Symfony\Component\Console\Input\ArgvInput(), [\Symplify\MonorepoBuilder\ValueObject\File::CONFIG]);
 if ($inputConfigFileInfo !== null) {
     $configFileInfos[] = $inputConfigFileInfo;
 }

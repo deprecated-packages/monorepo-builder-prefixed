@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Split;
 
-use _PhpScoper05142ca19111\Symfony\Component\Console\Style\SymfonyStyle;
-use _PhpScoper05142ca19111\Symfony\Component\Process\Process;
+use _PhpScoperab37dd4d9c3e\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoperab37dd4d9c3e\Symfony\Component\Process\Process;
 use Symplify\MonorepoBuilder\Split\Exception\PackageToRepositorySplitException;
 use Symplify\MonorepoBuilder\Split\Git\GitManager;
 use Symplify\MonorepoBuilder\Split\Process\ProcessFactory;
@@ -38,7 +38,7 @@ final class PackageToRepositorySplitter
      * @var GitManager
      */
     private $gitManager;
-    public function __construct(\_PhpScoper05142ca19111\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard, \Symplify\MonorepoBuilder\Split\Process\ProcessFactory $processFactory, \Symplify\MonorepoBuilder\Split\Git\GitManager $gitManager)
+    public function __construct(\_PhpScoperab37dd4d9c3e\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard, \Symplify\MonorepoBuilder\Split\Process\ProcessFactory $processFactory, \Symplify\MonorepoBuilder\Split\Git\GitManager $gitManager)
     {
         $this->symfonyStyle = $symfonyStyle;
         $this->fileSystemGuard = $fileSystemGuard;
@@ -55,7 +55,7 @@ final class PackageToRepositorySplitter
         if ($tag === null) {
             // If user let the tool to automatically select the last tag, check if there are valid
             if ($this->gitManager->doTagsHaveCommitterDate()) {
-                $message = \sprintf('Some of the tags on this repository do not have committer date. This may lead to unwanted tag selection during split. You may want to use the "%s" parameter.', \Symplify\MonorepoBuilder\ValueObject\Option::TAG);
+                $message = \sprintf('Some of the tags on this repository do not have committer date. This may lead to unwanted tag selection during monorepo. You may want to use the "%s" parameter.', \Symplify\MonorepoBuilder\ValueObject\Option::TAG);
                 $this->symfonyStyle->warning($message);
             }
             $tag = $this->gitManager->getMostRecentTag($rootDirectory);
