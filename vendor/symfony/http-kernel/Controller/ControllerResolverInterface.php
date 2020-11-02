@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopercdfd316eda69\Symfony\Component\HttpKernel\Controller;
+namespace _PhpScoperabb8c88e9df1\Symfony\Component\HttpKernel\Controller;
 
-use _PhpScopercdfd316eda69\Symfony\Component\HttpFoundation\Request;
+use _PhpScoperabb8c88e9df1\Symfony\Component\HttpFoundation\Request;
 /**
  * A ControllerResolverInterface implementation knows how to determine the
  * controller to execute based on a Request object.
@@ -35,5 +35,5 @@ interface ControllerResolverInterface
      *
      * @throws \LogicException If a controller was found based on the request but it is not callable
      */
-    public function getController(\_PhpScopercdfd316eda69\Symfony\Component\HttpFoundation\Request $request);
+    public function getController(\_PhpScoperabb8c88e9df1\Symfony\Component\HttpFoundation\Request $request);
 }

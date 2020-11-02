@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopercdfd316eda69\Symfony\Component\Console\Helper;
+namespace _PhpScoperabb8c88e9df1\Symfony\Component\Console\Helper;
 
 /**
  * Marks a row as being a separator.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class TableSeparator extends \_PhpScopercdfd316eda69\Symfony\Component\Console\Helper\TableCell
+class TableSeparator extends \_PhpScoperabb8c88e9df1\Symfony\Component\Console\Helper\TableCell
 {
     public function __construct(array $options = [])
     {

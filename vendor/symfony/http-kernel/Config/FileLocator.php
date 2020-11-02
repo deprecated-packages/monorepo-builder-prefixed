@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopercdfd316eda69\Symfony\Component\HttpKernel\Config;
+namespace _PhpScoperabb8c88e9df1\Symfony\Component\HttpKernel\Config;
 
-use _PhpScopercdfd316eda69\Symfony\Component\Config\FileLocator as BaseFileLocator;
-use _PhpScopercdfd316eda69\Symfony\Component\HttpKernel\KernelInterface;
+use _PhpScoperabb8c88e9df1\Symfony\Component\Config\FileLocator as BaseFileLocator;
+use _PhpScoperabb8c88e9df1\Symfony\Component\HttpKernel\KernelInterface;
 /**
  * FileLocator uses the KernelInterface to locate resources in bundles.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class FileLocator extends \_PhpScopercdfd316eda69\Symfony\Component\Config\FileLocator
+class FileLocator extends \_PhpScoperabb8c88e9df1\Symfony\Component\Config\FileLocator
 {
     private $kernel;
-    public function __construct(\_PhpScopercdfd316eda69\Symfony\Component\HttpKernel\KernelInterface $kernel)
+    public function __construct(\_PhpScoperabb8c88e9df1\Symfony\Component\HttpKernel\KernelInterface $kernel)
     {
         $this->kernel = $kernel;
         parent::__construct();
