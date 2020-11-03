@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperdd9048e10aae\Symfony\Component\Console\Output;
+namespace _PhpScoper37887d2f9246\Symfony\Component\Console\Output;
 
 /**
  * ConsoleOutputInterface is the interface implemented by ConsoleOutput class.
@@ -16,7 +16,7 @@ namespace _PhpScoperdd9048e10aae\Symfony\Component\Console\Output;
  *
  * @author Dariusz Górecki <darek.krk@gmail.com>
  */
-interface ConsoleOutputInterface extends \_PhpScoperdd9048e10aae\Symfony\Component\Console\Output\OutputInterface
+interface ConsoleOutputInterface extends \_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface
 {
     /**
      * Gets the OutputInterface for errors.
@@ -24,6 +24,6 @@ interface ConsoleOutputInterface extends \_PhpScoperdd9048e10aae\Symfony\Compone
      * @return OutputInterface
      */
     public function getErrorOutput();
-    public function setErrorOutput(\_PhpScoperdd9048e10aae\Symfony\Component\Console\Output\OutputInterface $error);
-    public function section() : \_PhpScoperdd9048e10aae\Symfony\Component\Console\Output\ConsoleSectionOutput;
+    public function setErrorOutput(\_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface $error);
+    public function section() : \_PhpScoper37887d2f9246\Symfony\Component\Console\Output\ConsoleSectionOutput;
 }

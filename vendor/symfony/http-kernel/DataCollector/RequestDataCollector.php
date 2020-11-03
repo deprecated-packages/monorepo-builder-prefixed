@@ -8,22 +8,22 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperdd9048e10aae\Symfony\Component\HttpKernel\DataCollector;
+namespace _PhpScoper37887d2f9246\Symfony\Component\HttpKernel\DataCollector;
 
-use _PhpScoperdd9048e10aae\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use _PhpScoperdd9048e10aae\Symfony\Component\HttpFoundation\Cookie;
-use _PhpScoperdd9048e10aae\Symfony\Component\HttpFoundation\ParameterBag;
-use _PhpScoperdd9048e10aae\Symfony\Component\HttpFoundation\Request;
-use _PhpScoperdd9048e10aae\Symfony\Component\HttpFoundation\Response;
-use _PhpScoperdd9048e10aae\Symfony\Component\HttpKernel\Event\ControllerEvent;
-use _PhpScoperdd9048e10aae\Symfony\Component\HttpKernel\Event\ResponseEvent;
-use _PhpScoperdd9048e10aae\Symfony\Component\HttpKernel\KernelEvents;
+use _PhpScoper37887d2f9246\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use _PhpScoper37887d2f9246\Symfony\Component\HttpFoundation\Cookie;
+use _PhpScoper37887d2f9246\Symfony\Component\HttpFoundation\ParameterBag;
+use _PhpScoper37887d2f9246\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper37887d2f9246\Symfony\Component\HttpFoundation\Response;
+use _PhpScoper37887d2f9246\Symfony\Component\HttpKernel\Event\ControllerEvent;
+use _PhpScoper37887d2f9246\Symfony\Component\HttpKernel\Event\ResponseEvent;
+use _PhpScoper37887d2f9246\Symfony\Component\HttpKernel\KernelEvents;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
  * @final
  */
-class RequestDataCollector extends \_PhpScoperdd9048e10aae\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \_PhpScoperdd9048e10aae\Symfony\Component\EventDispatcher\EventSubscriberInterface, \_PhpScoperdd9048e10aae\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface
+class RequestDataCollector extends \_PhpScoper37887d2f9246\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \_PhpScoper37887d2f9246\Symfony\Component\EventDispatcher\EventSubscriberInterface, \_PhpScoper37887d2f9246\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface
 {
     protected $controllers;
     public function __construct()
@@ -33,7 +33,7 @@ class RequestDataCollector extends \_PhpScoperdd9048e10aae\Symfony\Component\Htt
     /**
      * {@inheritdoc}
      */
-    public function collect(\_PhpScoperdd9048e10aae\Symfony\Component\HttpFoundation\Request $request, \_PhpScoperdd9048e10aae\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
+    public function collect(\_PhpScoper37887d2f9246\Symfony\Component\HttpFoundation\Request $request, \_PhpScoper37887d2f9246\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
     {
         // attributes are serialized and as they can be anything, they need to be converted to strings.
         $attributes = [];
@@ -76,7 +76,7 @@ class RequestDataCollector extends \_PhpScoperdd9048e10aae\Symfony\Component\Htt
                 $dotenvVars[$name] = $_ENV[$name];
             }
         }
-        $this->data = ['method' => $request->getMethod(), 'format' => $request->getRequestFormat(), 'content' => $content, 'content_type' => $response->headers->get('Content-Type', 'text/html'), 'status_text' => isset(\_PhpScoperdd9048e10aae\Symfony\Component\HttpFoundation\Response::$statusTexts[$statusCode]) ? \_PhpScoperdd9048e10aae\Symfony\Component\HttpFoundation\Response::$statusTexts[$statusCode] : '', 'status_code' => $statusCode, 'request_query' => $request->query->all(), 'request_request' => $request->request->all(), 'request_files' => $request->files->all(), 'request_headers' => $request->headers->all(), 'request_server' => $request->server->all(), 'request_cookies' => $request->cookies->all(), 'request_attributes' => $attributes, 'route' => $route, 'response_headers' => $response->headers->all(), 'response_cookies' => $responseCookies, 'session_metadata' => $sessionMetadata, 'session_attributes' => $sessionAttributes, 'flashes' => $flashes, 'path_info' => $request->getPathInfo(), 'controller' => 'n/a', 'locale' => $request->getLocale(), 'dotenv_vars' => $dotenvVars];
+        $this->data = ['method' => $request->getMethod(), 'format' => $request->getRequestFormat(), 'content' => $content, 'content_type' => $response->headers->get('Content-Type', 'text/html'), 'status_text' => isset(\_PhpScoper37887d2f9246\Symfony\Component\HttpFoundation\Response::$statusTexts[$statusCode]) ? \_PhpScoper37887d2f9246\Symfony\Component\HttpFoundation\Response::$statusTexts[$statusCode] : '', 'status_code' => $statusCode, 'request_query' => $request->query->all(), 'request_request' => $request->request->all(), 'request_files' => $request->files->all(), 'request_headers' => $request->headers->all(), 'request_server' => $request->server->all(), 'request_cookies' => $request->cookies->all(), 'request_attributes' => $attributes, 'route' => $route, 'response_headers' => $response->headers->all(), 'response_cookies' => $responseCookies, 'session_metadata' => $sessionMetadata, 'session_attributes' => $sessionAttributes, 'flashes' => $flashes, 'path_info' => $request->getPathInfo(), 'controller' => 'n/a', 'locale' => $request->getLocale(), 'dotenv_vars' => $dotenvVars];
         if (isset($this->data['request_headers']['php-auth-pw'])) {
             $this->data['request_headers']['php-auth-pw'] = '******';
         }
@@ -105,7 +105,7 @@ class RequestDataCollector extends \_PhpScoperdd9048e10aae\Symfony\Component\Htt
             $response->headers->clearCookie('sf_redirect');
         }
         if ($response->isRedirect()) {
-            $response->headers->setCookie(new \_PhpScoperdd9048e10aae\Symfony\Component\HttpFoundation\Cookie('sf_redirect', \json_encode(['token' => $response->headers->get('x-debug-token'), 'route' => $request->attributes->get('_route', 'n/a'), 'method' => $request->getMethod(), 'controller' => $this->parseController($request->attributes->get('_controller')), 'status_code' => $statusCode, 'status_text' => \_PhpScoperdd9048e10aae\Symfony\Component\HttpFoundation\Response::$statusTexts[(int) $statusCode]]), 0, '/', null, $request->isSecure(), \true, \false, 'lax'));
+            $response->headers->setCookie(new \_PhpScoper37887d2f9246\Symfony\Component\HttpFoundation\Cookie('sf_redirect', \json_encode(['token' => $response->headers->get('x-debug-token'), 'route' => $request->attributes->get('_route', 'n/a'), 'method' => $request->getMethod(), 'controller' => $this->parseController($request->attributes->get('_controller')), 'status_code' => $statusCode, 'status_text' => \_PhpScoper37887d2f9246\Symfony\Component\HttpFoundation\Response::$statusTexts[(int) $statusCode]]), 0, '/', null, $request->isSecure(), \true, \false, 'lax'));
         }
         $this->data['identifier'] = $this->data['route'] ?: (\is_array($this->data['controller']) ? $this->data['controller']['class'] . '::' . $this->data['controller']['method'] . '()' : $this->data['controller']);
         if ($response->headers->has('x-previous-debug-token')) {
@@ -131,39 +131,39 @@ class RequestDataCollector extends \_PhpScoperdd9048e10aae\Symfony\Component\Htt
     }
     public function getRequestRequest()
     {
-        return new \_PhpScoperdd9048e10aae\Symfony\Component\HttpFoundation\ParameterBag($this->data['request_request']->getValue());
+        return new \_PhpScoper37887d2f9246\Symfony\Component\HttpFoundation\ParameterBag($this->data['request_request']->getValue());
     }
     public function getRequestQuery()
     {
-        return new \_PhpScoperdd9048e10aae\Symfony\Component\HttpFoundation\ParameterBag($this->data['request_query']->getValue());
+        return new \_PhpScoper37887d2f9246\Symfony\Component\HttpFoundation\ParameterBag($this->data['request_query']->getValue());
     }
     public function getRequestFiles()
     {
-        return new \_PhpScoperdd9048e10aae\Symfony\Component\HttpFoundation\ParameterBag($this->data['request_files']->getValue());
+        return new \_PhpScoper37887d2f9246\Symfony\Component\HttpFoundation\ParameterBag($this->data['request_files']->getValue());
     }
     public function getRequestHeaders()
     {
-        return new \_PhpScoperdd9048e10aae\Symfony\Component\HttpFoundation\ParameterBag($this->data['request_headers']->getValue());
+        return new \_PhpScoper37887d2f9246\Symfony\Component\HttpFoundation\ParameterBag($this->data['request_headers']->getValue());
     }
     public function getRequestServer($raw = \false)
     {
-        return new \_PhpScoperdd9048e10aae\Symfony\Component\HttpFoundation\ParameterBag($this->data['request_server']->getValue($raw));
+        return new \_PhpScoper37887d2f9246\Symfony\Component\HttpFoundation\ParameterBag($this->data['request_server']->getValue($raw));
     }
     public function getRequestCookies($raw = \false)
     {
-        return new \_PhpScoperdd9048e10aae\Symfony\Component\HttpFoundation\ParameterBag($this->data['request_cookies']->getValue($raw));
+        return new \_PhpScoper37887d2f9246\Symfony\Component\HttpFoundation\ParameterBag($this->data['request_cookies']->getValue($raw));
     }
     public function getRequestAttributes()
     {
-        return new \_PhpScoperdd9048e10aae\Symfony\Component\HttpFoundation\ParameterBag($this->data['request_attributes']->getValue());
+        return new \_PhpScoper37887d2f9246\Symfony\Component\HttpFoundation\ParameterBag($this->data['request_attributes']->getValue());
     }
     public function getResponseHeaders()
     {
-        return new \_PhpScoperdd9048e10aae\Symfony\Component\HttpFoundation\ParameterBag($this->data['response_headers']->getValue());
+        return new \_PhpScoper37887d2f9246\Symfony\Component\HttpFoundation\ParameterBag($this->data['response_headers']->getValue());
     }
     public function getResponseCookies()
     {
-        return new \_PhpScoperdd9048e10aae\Symfony\Component\HttpFoundation\ParameterBag($this->data['response_cookies']->getValue());
+        return new \_PhpScoper37887d2f9246\Symfony\Component\HttpFoundation\ParameterBag($this->data['response_cookies']->getValue());
     }
     public function getSessionMetadata()
     {
@@ -212,7 +212,7 @@ class RequestDataCollector extends \_PhpScoperdd9048e10aae\Symfony\Component\Htt
     }
     public function getDotenvVars()
     {
-        return new \_PhpScoperdd9048e10aae\Symfony\Component\HttpFoundation\ParameterBag($this->data['dotenv_vars']->getValue());
+        return new \_PhpScoper37887d2f9246\Symfony\Component\HttpFoundation\ParameterBag($this->data['dotenv_vars']->getValue());
     }
     /**
      * Gets the route name.
@@ -264,11 +264,11 @@ class RequestDataCollector extends \_PhpScoperdd9048e10aae\Symfony\Component\Htt
     {
         return isset($this->data['forward_token']) ? $this->data['forward_token'] : null;
     }
-    public function onKernelController(\_PhpScoperdd9048e10aae\Symfony\Component\HttpKernel\Event\ControllerEvent $event)
+    public function onKernelController(\_PhpScoper37887d2f9246\Symfony\Component\HttpKernel\Event\ControllerEvent $event)
     {
         $this->controllers[$event->getRequest()] = $event->getController();
     }
-    public function onKernelResponse(\_PhpScoperdd9048e10aae\Symfony\Component\HttpKernel\Event\ResponseEvent $event)
+    public function onKernelResponse(\_PhpScoper37887d2f9246\Symfony\Component\HttpKernel\Event\ResponseEvent $event)
     {
         if (!$event->isMasterRequest()) {
             return;
@@ -279,7 +279,7 @@ class RequestDataCollector extends \_PhpScoperdd9048e10aae\Symfony\Component\Htt
     }
     public static function getSubscribedEvents()
     {
-        return [\_PhpScoperdd9048e10aae\Symfony\Component\HttpKernel\KernelEvents::CONTROLLER => 'onKernelController', \_PhpScoperdd9048e10aae\Symfony\Component\HttpKernel\KernelEvents::RESPONSE => 'onKernelResponse'];
+        return [\_PhpScoper37887d2f9246\Symfony\Component\HttpKernel\KernelEvents::CONTROLLER => 'onKernelController', \_PhpScoper37887d2f9246\Symfony\Component\HttpKernel\KernelEvents::RESPONSE => 'onKernelResponse'];
     }
     /**
      * {@inheritdoc}

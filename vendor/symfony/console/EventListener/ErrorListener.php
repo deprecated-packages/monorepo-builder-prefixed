@@ -8,26 +8,26 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperdd9048e10aae\Symfony\Component\Console\EventListener;
+namespace _PhpScoper37887d2f9246\Symfony\Component\Console\EventListener;
 
-use _PhpScoperdd9048e10aae\Psr\Log\LoggerInterface;
-use _PhpScoperdd9048e10aae\Symfony\Component\Console\ConsoleEvents;
-use _PhpScoperdd9048e10aae\Symfony\Component\Console\Event\ConsoleErrorEvent;
-use _PhpScoperdd9048e10aae\Symfony\Component\Console\Event\ConsoleEvent;
-use _PhpScoperdd9048e10aae\Symfony\Component\Console\Event\ConsoleTerminateEvent;
-use _PhpScoperdd9048e10aae\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use _PhpScoper37887d2f9246\Psr\Log\LoggerInterface;
+use _PhpScoper37887d2f9246\Symfony\Component\Console\ConsoleEvents;
+use _PhpScoper37887d2f9246\Symfony\Component\Console\Event\ConsoleErrorEvent;
+use _PhpScoper37887d2f9246\Symfony\Component\Console\Event\ConsoleEvent;
+use _PhpScoper37887d2f9246\Symfony\Component\Console\Event\ConsoleTerminateEvent;
+use _PhpScoper37887d2f9246\Symfony\Component\EventDispatcher\EventSubscriberInterface;
 /**
  * @author James Halsall <james.t.halsall@googlemail.com>
  * @author Robin Chalas <robin.chalas@gmail.com>
  */
-class ErrorListener implements \_PhpScoperdd9048e10aae\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class ErrorListener implements \_PhpScoper37887d2f9246\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     private $logger;
-    public function __construct(\_PhpScoperdd9048e10aae\Psr\Log\LoggerInterface $logger = null)
+    public function __construct(\_PhpScoper37887d2f9246\Psr\Log\LoggerInterface $logger = null)
     {
         $this->logger = $logger;
     }
-    public function onConsoleError(\_PhpScoperdd9048e10aae\Symfony\Component\Console\Event\ConsoleErrorEvent $event)
+    public function onConsoleError(\_PhpScoper37887d2f9246\Symfony\Component\Console\Event\ConsoleErrorEvent $event)
     {
         if (null === $this->logger) {
             return;
@@ -39,7 +39,7 @@ class ErrorListener implements \_PhpScoperdd9048e10aae\Symfony\Component\EventDi
         }
         $this->logger->error('Error thrown while running command "{command}". Message: "{message}"', ['exception' => $error, 'command' => $inputString, 'message' => $error->getMessage()]);
     }
-    public function onConsoleTerminate(\_PhpScoperdd9048e10aae\Symfony\Component\Console\Event\ConsoleTerminateEvent $event)
+    public function onConsoleTerminate(\_PhpScoper37887d2f9246\Symfony\Component\Console\Event\ConsoleTerminateEvent $event)
     {
         if (null === $this->logger) {
             return;
@@ -56,9 +56,9 @@ class ErrorListener implements \_PhpScoperdd9048e10aae\Symfony\Component\EventDi
     }
     public static function getSubscribedEvents()
     {
-        return [\_PhpScoperdd9048e10aae\Symfony\Component\Console\ConsoleEvents::ERROR => ['onConsoleError', -128], \_PhpScoperdd9048e10aae\Symfony\Component\Console\ConsoleEvents::TERMINATE => ['onConsoleTerminate', -128]];
+        return [\_PhpScoper37887d2f9246\Symfony\Component\Console\ConsoleEvents::ERROR => ['onConsoleError', -128], \_PhpScoper37887d2f9246\Symfony\Component\Console\ConsoleEvents::TERMINATE => ['onConsoleTerminate', -128]];
     }
-    private static function getInputString(\_PhpScoperdd9048e10aae\Symfony\Component\Console\Event\ConsoleEvent $event) : ?string
+    private static function getInputString(\_PhpScoper37887d2f9246\Symfony\Component\Console\Event\ConsoleEvent $event) : ?string
     {
         $commandName = $event->getCommand() ? $event->getCommand()->getName() : null;
         $input = $event->getInput();

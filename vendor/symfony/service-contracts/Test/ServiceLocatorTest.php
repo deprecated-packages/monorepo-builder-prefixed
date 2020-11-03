@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperdd9048e10aae\Symfony\Contracts\Service\Test;
+namespace _PhpScoper37887d2f9246\Symfony\Contracts\Service\Test;
 
-use _PhpScoperdd9048e10aae\PHPUnit\Framework\TestCase;
-use _PhpScoperdd9048e10aae\Psr\Container\ContainerInterface;
-use _PhpScoperdd9048e10aae\Symfony\Contracts\Service\ServiceLocatorTrait;
-abstract class ServiceLocatorTest extends \_PhpScoperdd9048e10aae\PHPUnit\Framework\TestCase
+use _PhpScoper37887d2f9246\PHPUnit\Framework\TestCase;
+use _PhpScoper37887d2f9246\Psr\Container\ContainerInterface;
+use _PhpScoper37887d2f9246\Symfony\Contracts\Service\ServiceLocatorTrait;
+abstract class ServiceLocatorTest extends \_PhpScoper37887d2f9246\PHPUnit\Framework\TestCase
 {
     protected function getServiceLocator(array $factories)
     {
-        return new class($factories) implements \_PhpScoperdd9048e10aae\Psr\Container\ContainerInterface
+        return new class($factories) implements \_PhpScoper37887d2f9246\Psr\Container\ContainerInterface
         {
             use ServiceLocatorTrait;
         };
@@ -59,7 +59,7 @@ abstract class ServiceLocatorTest extends \_PhpScoperdd9048e10aae\PHPUnit\Framew
     public function testThrowsOnUndefinedInternalService()
     {
         if (!$this->getExpectedException()) {
-            $this->expectException('_PhpScoperdd9048e10aae\\Psr\\Container\\NotFoundExceptionInterface');
+            $this->expectException('_PhpScoper37887d2f9246\\Psr\\Container\\NotFoundExceptionInterface');
             $this->expectExceptionMessage('The service "foo" has a dependency on a non-existent service "bar". This locator only knows about the "foo" service.');
         }
         $locator = $this->getServiceLocator(['foo' => function () use(&$locator) {
@@ -69,7 +69,7 @@ abstract class ServiceLocatorTest extends \_PhpScoperdd9048e10aae\PHPUnit\Framew
     }
     public function testThrowsOnCircularReference()
     {
-        $this->expectException('_PhpScoperdd9048e10aae\\Psr\\Container\\ContainerExceptionInterface');
+        $this->expectException('_PhpScoper37887d2f9246\\Psr\\Container\\ContainerExceptionInterface');
         $this->expectExceptionMessage('Circular reference detected for service "bar", path: "bar -> baz -> bar".');
         $locator = $this->getServiceLocator(['foo' => function () use(&$locator) {
             return $locator->get('bar');

@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperdd9048e10aae\Symfony\Component\Config;
+namespace _PhpScoper37887d2f9246\Symfony\Component\Config;
 
-use _PhpScoperdd9048e10aae\Symfony\Component\Config\Resource\ResourceInterface;
-use _PhpScoperdd9048e10aae\Symfony\Component\Filesystem\Exception\IOException;
-use _PhpScoperdd9048e10aae\Symfony\Component\Filesystem\Filesystem;
+use _PhpScoper37887d2f9246\Symfony\Component\Config\Resource\ResourceInterface;
+use _PhpScoper37887d2f9246\Symfony\Component\Filesystem\Exception\IOException;
+use _PhpScoper37887d2f9246\Symfony\Component\Filesystem\Filesystem;
 /**
  * ResourceCheckerConfigCache uses instances of ResourceCheckerInterface
  * to check whether cached data is still fresh.
  *
  * @author Matthias Pigulla <mp@webfactory.de>
  */
-class ResourceCheckerConfigCache implements \_PhpScoperdd9048e10aae\Symfony\Component\Config\ConfigCacheInterface
+class ResourceCheckerConfigCache implements \_PhpScoper37887d2f9246\Symfony\Component\Config\ConfigCacheInterface
 {
     /**
      * @var string
@@ -107,18 +107,18 @@ class ResourceCheckerConfigCache implements \_PhpScoperdd9048e10aae\Symfony\Comp
     {
         $mode = 0666;
         $umask = \umask();
-        $filesystem = new \_PhpScoperdd9048e10aae\Symfony\Component\Filesystem\Filesystem();
+        $filesystem = new \_PhpScoper37887d2f9246\Symfony\Component\Filesystem\Filesystem();
         $filesystem->dumpFile($this->file, $content);
         try {
             $filesystem->chmod($this->file, $mode, $umask);
-        } catch (\_PhpScoperdd9048e10aae\Symfony\Component\Filesystem\Exception\IOException $e) {
+        } catch (\_PhpScoper37887d2f9246\Symfony\Component\Filesystem\Exception\IOException $e) {
             // discard chmod failure (some filesystem may not support it)
         }
         if (null !== $metadata) {
             $filesystem->dumpFile($this->getMetaFile(), \serialize($metadata));
             try {
                 $filesystem->chmod($this->getMetaFile(), $mode, $umask);
-            } catch (\_PhpScoperdd9048e10aae\Symfony\Component\Filesystem\Exception\IOException $e) {
+            } catch (\_PhpScoper37887d2f9246\Symfony\Component\Filesystem\Exception\IOException $e) {
                 // discard chmod failure (some filesystem may not support it)
             }
         }
