@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Split\FileSystem;
 
-use _PhpScoper8068fe8d25a3\Nette\Utils\Strings;
+use _PhpScopera763b4be90d0\Nette\Utils\Strings;
 use Symplify\MonorepoBuilder\Split\ValueObject\ConvertFormat;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
@@ -46,7 +46,7 @@ final class DirectoryToRepositoryProvider
         $resolvedDirectoriesToRepository = [];
         $directoriesToRepositories = $this->parameterProvider->provideArrayParameter(\Symplify\MonorepoBuilder\ValueObject\Option::DIRECTORIES_TO_REPOSITORIES);
         foreach ($directoriesToRepositories as $directory => $repository) {
-            if (!\_PhpScoper8068fe8d25a3\Nette\Utils\Strings::contains($directory, '*')) {
+            if (!\_PhpScopera763b4be90d0\Nette\Utils\Strings::contains($directory, '*')) {
                 $this->ensureDirectoryExists($directory);
                 $resolvedDirectoriesToRepository[$directory] = $repository;
                 continue;
@@ -72,9 +72,9 @@ final class DirectoryToRepositoryProvider
         $foundDirectories = (array) \glob($directory);
         foreach ($foundDirectories as $foundDirectory) {
             /** @var string $foundDirectory */
-            $exclusiveName = (string) \_PhpScoper8068fe8d25a3\Nette\Utils\Strings::after((string) $foundDirectory, $patternWithoutAsterisk);
+            $exclusiveName = (string) \_PhpScopera763b4be90d0\Nette\Utils\Strings::after((string) $foundDirectory, $patternWithoutAsterisk);
             $exclusiveName = $this->convertRepositoryToDesiredFormat($exclusiveName);
-            $targetRepository = \_PhpScoper8068fe8d25a3\Nette\Utils\Strings::replace($repository, self::ASTERISK_REGEX, $exclusiveName);
+            $targetRepository = \_PhpScopera763b4be90d0\Nette\Utils\Strings::replace($repository, self::ASTERISK_REGEX, $exclusiveName);
             $resolvedDirectoriesToRepository[$foundDirectory] = $targetRepository;
         }
         return $resolvedDirectoriesToRepository;

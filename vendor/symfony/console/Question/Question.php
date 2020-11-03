@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper8068fe8d25a3\Symfony\Component\Console\Question;
+namespace _PhpScopera763b4be90d0\Symfony\Component\Console\Question;
 
-use _PhpScoper8068fe8d25a3\Symfony\Component\Console\Exception\InvalidArgumentException;
-use _PhpScoper8068fe8d25a3\Symfony\Component\Console\Exception\LogicException;
+use _PhpScopera763b4be90d0\Symfony\Component\Console\Exception\InvalidArgumentException;
+use _PhpScopera763b4be90d0\Symfony\Component\Console\Exception\LogicException;
 /**
  * Represents a Question.
  *
@@ -76,7 +76,7 @@ class Question
     public function setHidden($hidden)
     {
         if ($this->autocompleterCallback) {
-            throw new \_PhpScoper8068fe8d25a3\Symfony\Component\Console\Exception\LogicException('A hidden question cannot use the autocompleter.');
+            throw new \_PhpScopera763b4be90d0\Symfony\Component\Console\Exception\LogicException('A hidden question cannot use the autocompleter.');
         }
         $this->hidden = (bool) $hidden;
         return $this;
@@ -153,7 +153,7 @@ class Question
     public function setAutocompleterCallback(callable $callback = null) : self
     {
         if ($this->hidden && null !== $callback) {
-            throw new \_PhpScoper8068fe8d25a3\Symfony\Component\Console\Exception\LogicException('A hidden question cannot use the autocompleter.');
+            throw new \_PhpScopera763b4be90d0\Symfony\Component\Console\Exception\LogicException('A hidden question cannot use the autocompleter.');
         }
         $this->autocompleterCallback = $callback;
         return $this;
@@ -191,7 +191,7 @@ class Question
         if (null !== $attempts) {
             $attempts = (int) $attempts;
             if ($attempts < 1) {
-                throw new \_PhpScoper8068fe8d25a3\Symfony\Component\Console\Exception\InvalidArgumentException('Maximum number of attempts must be a positive value.');
+                throw new \_PhpScopera763b4be90d0\Symfony\Component\Console\Exception\InvalidArgumentException('Maximum number of attempts must be a positive value.');
             }
         }
         $this->attempts = $attempts;

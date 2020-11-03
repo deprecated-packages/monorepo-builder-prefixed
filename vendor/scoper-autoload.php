@@ -6,56 +6,56 @@ $loader = require_once __DIR__.'/autoload.php';
 
 // Aliases for the whitelisted classes. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#class-whitelisting
-if (!class_exists('ComposerAutoloaderInit4f6ec0a05a19931b6a7df945ef2926e8', false) && !interface_exists('ComposerAutoloaderInit4f6ec0a05a19931b6a7df945ef2926e8', false) && !trait_exists('ComposerAutoloaderInit4f6ec0a05a19931b6a7df945ef2926e8', false)) {
-    spl_autoload_call('_PhpScoper8068fe8d25a3\ComposerAutoloaderInit4f6ec0a05a19931b6a7df945ef2926e8');
+if (!class_exists('ComposerAutoloaderInit3f66f7279471de414852a8d91769098a', false) && !interface_exists('ComposerAutoloaderInit3f66f7279471de414852a8d91769098a', false) && !trait_exists('ComposerAutoloaderInit3f66f7279471de414852a8d91769098a', false)) {
+    spl_autoload_call('_PhpScopera763b4be90d0\ComposerAutoloaderInit3f66f7279471de414852a8d91769098a');
 }
 if (!class_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !interface_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !trait_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false)) {
-    spl_autoload_call('_PhpScoper8068fe8d25a3\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator');
+    spl_autoload_call('_PhpScopera763b4be90d0\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator');
 }
 if (!class_exists('Normalizer', false) && !interface_exists('Normalizer', false) && !trait_exists('Normalizer', false)) {
-    spl_autoload_call('_PhpScoper8068fe8d25a3\Normalizer');
+    spl_autoload_call('_PhpScopera763b4be90d0\Normalizer');
 }
 if (!class_exists('JsonException', false) && !interface_exists('JsonException', false) && !trait_exists('JsonException', false)) {
-    spl_autoload_call('_PhpScoper8068fe8d25a3\JsonException');
+    spl_autoload_call('_PhpScopera763b4be90d0\JsonException');
 }
 if (!class_exists('Attribute', false) && !interface_exists('Attribute', false) && !trait_exists('Attribute', false)) {
-    spl_autoload_call('_PhpScoper8068fe8d25a3\Attribute');
+    spl_autoload_call('_PhpScopera763b4be90d0\Attribute');
 }
 if (!class_exists('Stringable', false) && !interface_exists('Stringable', false) && !trait_exists('Stringable', false)) {
-    spl_autoload_call('_PhpScoper8068fe8d25a3\Stringable');
+    spl_autoload_call('_PhpScopera763b4be90d0\Stringable');
 }
 if (!class_exists('UnhandledMatchError', false) && !interface_exists('UnhandledMatchError', false) && !trait_exists('UnhandledMatchError', false)) {
-    spl_autoload_call('_PhpScoper8068fe8d25a3\UnhandledMatchError');
+    spl_autoload_call('_PhpScopera763b4be90d0\UnhandledMatchError');
 }
 if (!class_exists('ValueError', false) && !interface_exists('ValueError', false) && !trait_exists('ValueError', false)) {
-    spl_autoload_call('_PhpScoper8068fe8d25a3\ValueError');
+    spl_autoload_call('_PhpScopera763b4be90d0\ValueError');
 }
 
 // Functions whitelisting. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#functions-whitelisting
-if (!function_exists('composerRequire4f6ec0a05a19931b6a7df945ef2926e8')) {
-    function composerRequire4f6ec0a05a19931b6a7df945ef2926e8() {
-        return \_PhpScoper8068fe8d25a3\composerRequire4f6ec0a05a19931b6a7df945ef2926e8(...func_get_args());
+if (!function_exists('composerRequire3f66f7279471de414852a8d91769098a')) {
+    function composerRequire3f66f7279471de414852a8d91769098a() {
+        return \_PhpScopera763b4be90d0\composerRequire3f66f7279471de414852a8d91769098a(...func_get_args());
     }
 }
 if (!function_exists('setproctitle')) {
     function setproctitle() {
-        return \_PhpScoper8068fe8d25a3\setproctitle(...func_get_args());
+        return \_PhpScopera763b4be90d0\setproctitle(...func_get_args());
     }
 }
 if (!function_exists('includeIfExists')) {
     function includeIfExists() {
-        return \_PhpScoper8068fe8d25a3\includeIfExists(...func_get_args());
+        return \_PhpScopera763b4be90d0\includeIfExists(...func_get_args());
     }
 }
 if (!function_exists('dump')) {
     function dump() {
-        return \_PhpScoper8068fe8d25a3\dump(...func_get_args());
+        return \_PhpScopera763b4be90d0\dump(...func_get_args());
     }
 }
 if (!function_exists('dd')) {
     function dd() {
-        return \_PhpScoper8068fe8d25a3\dd(...func_get_args());
+        return \_PhpScopera763b4be90d0\dd(...func_get_args());
     }
 }
 
