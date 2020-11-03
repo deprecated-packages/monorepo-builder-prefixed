@@ -8,22 +8,22 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb154859e1be7\Symfony\Component\Config\Definition;
+namespace _PhpScoper57793da194f3\Symfony\Component\Config\Definition;
 
-use _PhpScoperb154859e1be7\Symfony\Component\Config\Definition\Exception\Exception;
-use _PhpScoperb154859e1be7\Symfony\Component\Config\Definition\Exception\ForbiddenOverwriteException;
-use _PhpScoperb154859e1be7\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
-use _PhpScoperb154859e1be7\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
-use _PhpScoperb154859e1be7\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
+use _PhpScoper57793da194f3\Symfony\Component\Config\Definition\Exception\Exception;
+use _PhpScoper57793da194f3\Symfony\Component\Config\Definition\Exception\ForbiddenOverwriteException;
+use _PhpScoper57793da194f3\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use _PhpScoper57793da194f3\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
+use _PhpScoper57793da194f3\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
 /**
  * The base node class.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-abstract class BaseNode implements \_PhpScoperb154859e1be7\Symfony\Component\Config\Definition\NodeInterface
+abstract class BaseNode implements \_PhpScoper57793da194f3\Symfony\Component\Config\Definition\NodeInterface
 {
     const DEFAULT_PATH_SEPARATOR = '.';
-    private static $placeholderUniquePrefixes = [];
+    private static $placeholderUniquePrefix;
     private static $placeholders = [];
     protected $name;
     protected $parent;
@@ -31,7 +31,7 @@ abstract class BaseNode implements \_PhpScoperb154859e1be7\Symfony\Component\Con
     protected $finalValidationClosures = [];
     protected $allowOverwrite = \true;
     protected $required = \false;
-    protected $deprecation = [];
+    protected $deprecationMessage = null;
     protected $equivalentValues = [];
     protected $attributes = [];
     protected $pathSeparator;
@@ -39,10 +39,10 @@ abstract class BaseNode implements \_PhpScoperb154859e1be7\Symfony\Component\Con
     /**
      * @throws \InvalidArgumentException if the name contains a period
      */
-    public function __construct(?string $name, \_PhpScoperb154859e1be7\Symfony\Component\Config\Definition\NodeInterface $parent = null, string $pathSeparator = self::DEFAULT_PATH_SEPARATOR)
+    public function __construct(?string $name, \_PhpScoper57793da194f3\Symfony\Component\Config\Definition\NodeInterface $parent = null, string $pathSeparator = self::DEFAULT_PATH_SEPARATOR)
     {
         if (\false !== \strpos($name = (string) $name, $pathSeparator)) {
-            throw new \InvalidArgumentException('The name must not contain ".' . $pathSeparator . '".');
+            throw new \InvalidArgumentException('The name must not contain "' . $pathSeparator . '".');
         }
         $this->name = $name;
         $this->parent = $parent;
@@ -64,7 +64,7 @@ abstract class BaseNode implements \_PhpScoperb154859e1be7\Symfony\Component\Con
         self::$placeholders[$placeholder] = $values;
     }
     /**
-     * Adds a common prefix for dynamic placeholder values.
+     * Sets a common prefix for dynamic placeholder values.
      *
      * Matching configuration values will be skipped from being processed and are returned as is, thus preserving the
      * placeholder. An exact match provided by {@see setPlaceholder()} might take precedence.
@@ -73,7 +73,7 @@ abstract class BaseNode implements \_PhpScoperb154859e1be7\Symfony\Component\Con
      */
     public static function setPlaceholderUniquePrefix(string $prefix) : void
     {
-        self::$placeholderUniquePrefixes[] = $prefix;
+        self::$placeholderUniquePrefix = $prefix;
     }
     /**
      * Resets all current placeholders available.
@@ -82,24 +82,31 @@ abstract class BaseNode implements \_PhpScoperb154859e1be7\Symfony\Component\Con
      */
     public static function resetPlaceholders() : void
     {
-        self::$placeholderUniquePrefixes = [];
+        self::$placeholderUniquePrefix = null;
         self::$placeholders = [];
     }
-    public function setAttribute(string $key, $value)
+    /**
+     * @param string $key
+     */
+    public function setAttribute($key, $value)
     {
         $this->attributes[$key] = $value;
     }
     /**
+     * @param string $key
+     *
      * @return mixed
      */
-    public function getAttribute(string $key, $default = null)
+    public function getAttribute($key, $default = null)
     {
         return isset($this->attributes[$key]) ? $this->attributes[$key] : $default;
     }
     /**
+     * @param string $key
+     *
      * @return bool
      */
-    public function hasAttribute(string $key)
+    public function hasAttribute($key)
     {
         return isset($this->attributes[$key]);
     }
@@ -114,14 +121,19 @@ abstract class BaseNode implements \_PhpScoperb154859e1be7\Symfony\Component\Con
     {
         $this->attributes = $attributes;
     }
-    public function removeAttribute(string $key)
+    /**
+     * @param string $key
+     */
+    public function removeAttribute($key)
     {
         unset($this->attributes[$key]);
     }
     /**
      * Sets an info message.
+     *
+     * @param string $info
      */
-    public function setInfo(string $info)
+    public function setInfo($info)
     {
         $this->setAttribute('info', $info);
     }
@@ -167,45 +179,30 @@ abstract class BaseNode implements \_PhpScoperb154859e1be7\Symfony\Component\Con
      *
      * @param bool $boolean Required node
      */
-    public function setRequired(bool $boolean)
+    public function setRequired($boolean)
     {
-        $this->required = $boolean;
+        $this->required = (bool) $boolean;
     }
     /**
      * Sets this node as deprecated.
      *
-     * @param string $package The name of the composer package that is triggering the deprecation
-     * @param string $version The version of the package that introduced the deprecation
-     * @param string $message the deprecation message to use
-     *
      * You can use %node% and %path% placeholders in your message to display,
-     * respectively, the node name and its complete path
+     * respectively, the node name and its complete path.
+     *
+     * @param string|null $message Deprecated message
      */
-    public function setDeprecated(?string $package)
+    public function setDeprecated($message)
     {
-        $args = \func_get_args();
-        if (\func_num_args() < 2) {
-            trigger_deprecation('symfony/config', '5.1', 'The signature of method "%s()" requires 3 arguments: "string $package, string $version, string $message", not defining them is deprecated.', __METHOD__);
-            if (!isset($args[0])) {
-                trigger_deprecation('symfony/config', '5.1', 'Passing a null message to un-deprecate a node is deprecated.');
-                $this->deprecation = [];
-                return;
-            }
-            $message = (string) $args[0];
-            $package = $version = '';
-        } else {
-            $package = (string) $args[0];
-            $version = (string) $args[1];
-            $message = (string) ($args[2] ?? 'The child node "%node%" at path "%path%" is deprecated.');
-        }
-        $this->deprecation = ['package' => $package, 'version' => $version, 'message' => $message];
+        $this->deprecationMessage = $message;
     }
     /**
      * Sets if this node can be overridden.
+     *
+     * @param bool $allow
      */
-    public function setAllowOverwrite(bool $allow)
+    public function setAllowOverwrite($allow)
     {
-        $this->allowOverwrite = $allow;
+        $this->allowOverwrite = (bool) $allow;
     }
     /**
      * Sets the closures used for normalization.
@@ -239,7 +236,7 @@ abstract class BaseNode implements \_PhpScoperb154859e1be7\Symfony\Component\Con
      */
     public function isDeprecated()
     {
-        return (bool) $this->deprecation;
+        return null !== $this->deprecationMessage;
     }
     /**
      * Returns the deprecated message.
@@ -248,21 +245,10 @@ abstract class BaseNode implements \_PhpScoperb154859e1be7\Symfony\Component\Con
      * @param string $path the path of the node
      *
      * @return string
-     *
-     * @deprecated since Symfony 5.1, use "getDeprecation()" instead.
      */
-    public function getDeprecationMessage(string $node, string $path)
+    public function getDeprecationMessage($node, $path)
     {
-        trigger_deprecation('symfony/config', '5.1', 'The "%s()" method is deprecated, use "getDeprecation()" instead.', __METHOD__);
-        return $this->getDeprecation($node, $path)['message'];
-    }
-    /**
-     * @param string $node The configuration node name
-     * @param string $path The path of the node
-     */
-    public function getDeprecation(string $node, string $path) : array
-    {
-        return ['package' => $this->deprecation['package'] ?? '', 'version' => $this->deprecation['version'] ?? '', 'message' => \strtr($this->deprecation['message'] ?? '', ['%node%' => $node, '%path%' => $path])];
+        return \strtr($this->deprecationMessage, ['%node%' => $node, '%path%' => $path]);
     }
     /**
      * {@inheritdoc}
@@ -287,7 +273,7 @@ abstract class BaseNode implements \_PhpScoperb154859e1be7\Symfony\Component\Con
     public final function merge($leftSide, $rightSide)
     {
         if (!$this->allowOverwrite) {
-            throw new \_PhpScoperb154859e1be7\Symfony\Component\Config\Definition\Exception\ForbiddenOverwriteException(\sprintf('Configuration path "%s" cannot be overwritten. You have to define all options for this path, and any of its sub-paths in one configuration section.', $this->getPath()));
+            throw new \_PhpScoper57793da194f3\Symfony\Component\Config\Definition\Exception\ForbiddenOverwriteException(\sprintf('Configuration path "%s" cannot be overwritten. You have to define all options for this path, and any of its sub-paths in one configuration section.', $this->getPath()));
         }
         if ($leftSide !== ($leftPlaceholders = self::resolvePlaceholderValue($leftSide))) {
             foreach ($leftPlaceholders as $leftPlaceholder) {
@@ -391,13 +377,13 @@ abstract class BaseNode implements \_PhpScoperb154859e1be7\Symfony\Component\Con
         foreach ($this->finalValidationClosures as $closure) {
             try {
                 $value = $closure($value);
-            } catch (\_PhpScoperb154859e1be7\Symfony\Component\Config\Definition\Exception\Exception $e) {
-                if ($e instanceof \_PhpScoperb154859e1be7\Symfony\Component\Config\Definition\Exception\UnsetKeyException && null !== $this->handlingPlaceholder) {
+            } catch (\_PhpScoper57793da194f3\Symfony\Component\Config\Definition\Exception\Exception $e) {
+                if ($e instanceof \_PhpScoper57793da194f3\Symfony\Component\Config\Definition\Exception\UnsetKeyException && null !== $this->handlingPlaceholder) {
                     continue;
                 }
                 throw $e;
             } catch (\Exception $e) {
-                throw new \_PhpScoperb154859e1be7\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException(\sprintf('Invalid configuration for path "%s": ', $this->getPath()) . $e->getMessage(), $e->getCode(), $e);
+                throw new \_PhpScoper57793da194f3\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException(\sprintf('Invalid configuration for path "%s": %s', $this->getPath(), $e->getMessage()), $e->getCode(), $e);
             }
         }
         return $value;
@@ -462,10 +448,8 @@ abstract class BaseNode implements \_PhpScoperb154859e1be7\Symfony\Component\Con
             if (isset(self::$placeholders[$value])) {
                 return self::$placeholders[$value];
             }
-            foreach (self::$placeholderUniquePrefixes as $placeholderUniquePrefix) {
-                if (0 === \strpos($value, $placeholderUniquePrefix)) {
-                    return [];
-                }
+            if (self::$placeholderUniquePrefix && 0 === \strpos($value, self::$placeholderUniquePrefix)) {
+                return [];
             }
         }
         return $value;
@@ -473,7 +457,7 @@ abstract class BaseNode implements \_PhpScoperb154859e1be7\Symfony\Component\Con
     private function doValidateType($value) : void
     {
         if (null !== $this->handlingPlaceholder && !$this->allowPlaceholders()) {
-            $e = new \_PhpScoperb154859e1be7\Symfony\Component\Config\Definition\Exception\InvalidTypeException(\sprintf('A dynamic value is not compatible with a "%s" node type at path "%s".', static::class, $this->getPath()));
+            $e = new \_PhpScoper57793da194f3\Symfony\Component\Config\Definition\Exception\InvalidTypeException(\sprintf('A dynamic value is not compatible with a "%s" node type at path "%s".', \get_class($this), $this->getPath()));
             $e->setPath($this->getPath());
             throw $e;
         }
@@ -484,7 +468,7 @@ abstract class BaseNode implements \_PhpScoperb154859e1be7\Symfony\Component\Con
         $knownTypes = \array_keys(self::$placeholders[$this->handlingPlaceholder]);
         $validTypes = $this->getValidPlaceholderTypes();
         if ($validTypes && \array_diff($knownTypes, $validTypes)) {
-            $e = new \_PhpScoperb154859e1be7\Symfony\Component\Config\Definition\Exception\InvalidTypeException(\sprintf('Invalid type for path "%s". Expected %s, but got %s.', $this->getPath(), 1 === \count($validTypes) ? '"' . \reset($validTypes) . '"' : 'one of "' . \implode('", "', $validTypes) . '"', 1 === \count($knownTypes) ? '"' . \reset($knownTypes) . '"' : 'one of "' . \implode('", "', $knownTypes) . '"'));
+            $e = new \_PhpScoper57793da194f3\Symfony\Component\Config\Definition\Exception\InvalidTypeException(\sprintf('Invalid type for path "%s". Expected %s, but got %s.', $this->getPath(), 1 === \count($validTypes) ? '"' . \reset($validTypes) . '"' : 'one of "' . \implode('", "', $validTypes) . '"', 1 === \count($knownTypes) ? '"' . \reset($knownTypes) . '"' : 'one of "' . \implode('", "', $knownTypes) . '"'));
             if ($hint = $this->getInfo()) {
                 $e->addHint($hint);
             }

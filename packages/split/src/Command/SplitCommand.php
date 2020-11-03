@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Split\Command;
 
-use _PhpScoperb154859e1be7\Symfony\Component\Console\Command\Command;
-use _PhpScoperb154859e1be7\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperb154859e1be7\Symfony\Component\Console\Input\InputOption;
-use _PhpScoperb154859e1be7\Symfony\Component\Console\Output\OutputInterface;
-use _PhpScoperb154859e1be7\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoper57793da194f3\Symfony\Component\Console\Command\Command;
+use _PhpScoper57793da194f3\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoper57793da194f3\Symfony\Component\Console\Input\InputOption;
+use _PhpScoper57793da194f3\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoper57793da194f3\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\MonorepoBuilder\Split\Configuration\RepositoryGuard;
 use Symplify\MonorepoBuilder\Split\FileSystem\DirectoryToRepositoryProvider;
 use Symplify\MonorepoBuilder\Split\PackageToRepositorySplitter;
@@ -15,7 +15,7 @@ use Symplify\MonorepoBuilder\ValueObject\File;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Console\ShellCode;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
-final class SplitCommand extends \_PhpScoperb154859e1be7\Symfony\Component\Console\Command\Command
+final class SplitCommand extends \_PhpScoper57793da194f3\Symfony\Component\Console\Command\Command
 {
     /**
      * @var string
@@ -37,7 +37,7 @@ final class SplitCommand extends \_PhpScoperb154859e1be7\Symfony\Component\Conso
      * @var SymfonyStyle
      */
     private $symfonyStyle;
-    public function __construct(\Symplify\MonorepoBuilder\Split\Configuration\RepositoryGuard $repositoryGuard, \Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \Symplify\MonorepoBuilder\Split\PackageToRepositorySplitter $packageToRepositorySplitter, \Symplify\MonorepoBuilder\Split\FileSystem\DirectoryToRepositoryProvider $directoryToRepositoryProvider, \_PhpScoperb154859e1be7\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
+    public function __construct(\Symplify\MonorepoBuilder\Split\Configuration\RepositoryGuard $repositoryGuard, \Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \Symplify\MonorepoBuilder\Split\PackageToRepositorySplitter $packageToRepositorySplitter, \Symplify\MonorepoBuilder\Split\FileSystem\DirectoryToRepositoryProvider $directoryToRepositoryProvider, \_PhpScoper57793da194f3\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
     {
         parent::__construct();
         $this->repositoryGuard = $repositoryGuard;
@@ -50,11 +50,11 @@ final class SplitCommand extends \_PhpScoperb154859e1be7\Symfony\Component\Conso
     {
         $description = \sprintf('Splits monorepo packages to standalone repositories as defined in "%s" section of "%s" config.', '$parameters->set(Option::DIRECTORIES_REPOSITORY, [...])', \Symplify\MonorepoBuilder\ValueObject\File::CONFIG);
         $this->setDescription($description);
-        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::BRANCH, null, \_PhpScoperb154859e1be7\Symfony\Component\Console\Input\InputOption::VALUE_OPTIONAL, 'Branch to run split on, defaults to current branch');
-        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::MAX_PROCESSES, null, \_PhpScoperb154859e1be7\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Maximum number of processes to run in parallel');
-        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::TAG, 't', \_PhpScoperb154859e1be7\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Specify the Git tag use for split. Use the most recent one by default');
+        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::BRANCH, null, \_PhpScoper57793da194f3\Symfony\Component\Console\Input\InputOption::VALUE_OPTIONAL, 'Branch to run split on, defaults to current branch');
+        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::MAX_PROCESSES, null, \_PhpScoper57793da194f3\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Maximum number of processes to run in parallel');
+        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::TAG, 't', \_PhpScoper57793da194f3\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Specify the Git tag use for split. Use the most recent one by default');
     }
-    protected function execute(\_PhpScoperb154859e1be7\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperb154859e1be7\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoper57793da194f3\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper57793da194f3\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $this->repositoryGuard->ensureIsRepositoryDirectory($this->rootDirectory);
         $maxProcesses = $input->getOption(\Symplify\MonorepoBuilder\ValueObject\Option::MAX_PROCESSES) ? (int) $input->getOption(\Symplify\MonorepoBuilder\ValueObject\Option::MAX_PROCESSES) : null;

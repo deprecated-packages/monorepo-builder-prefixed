@@ -8,30 +8,30 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb154859e1be7\PharIo\Version;
+namespace _PhpScoper57793da194f3\PharIo\Version;
 
-use _PhpScoperb154859e1be7\PHPUnit\Framework\TestCase;
+use _PhpScoper57793da194f3\PHPUnit\Framework\TestCase;
 /**
  * @covers \PharIo\Version\AnyVersionConstraint
  */
-class AnyVersionConstraintTest extends \_PhpScoperb154859e1be7\PHPUnit\Framework\TestCase
+class AnyVersionConstraintTest extends \_PhpScoper57793da194f3\PHPUnit\Framework\TestCase
 {
     public function versionProvider()
     {
-        return [[new \_PhpScoperb154859e1be7\PharIo\Version\Version('1.0.2')], [new \_PhpScoperb154859e1be7\PharIo\Version\Version('4.8')], [new \_PhpScoperb154859e1be7\PharIo\Version\Version('0.1.1-dev')]];
+        return [[new \_PhpScoper57793da194f3\PharIo\Version\Version('1.0.2')], [new \_PhpScoper57793da194f3\PharIo\Version\Version('4.8')], [new \_PhpScoper57793da194f3\PharIo\Version\Version('0.1.1-dev')]];
     }
     /**
      * @dataProvider versionProvider
      *
      * @param Version $version
      */
-    public function testReturnsTrue(\_PhpScoperb154859e1be7\PharIo\Version\Version $version)
+    public function testReturnsTrue(\_PhpScoper57793da194f3\PharIo\Version\Version $version)
     {
-        $constraint = new \_PhpScoperb154859e1be7\PharIo\Version\AnyVersionConstraint();
+        $constraint = new \_PhpScoper57793da194f3\PharIo\Version\AnyVersionConstraint();
         $this->assertTrue($constraint->complies($version));
     }
     public function testAsString()
     {
-        $this->assertSame('*', (new \_PhpScoperb154859e1be7\PharIo\Version\AnyVersionConstraint())->asString());
+        $this->assertSame('*', (new \_PhpScoper57793da194f3\PharIo\Version\AnyVersionConstraint())->asString());
     }
 }

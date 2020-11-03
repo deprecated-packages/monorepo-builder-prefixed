@@ -5,22 +5,21 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace _PhpScoperb154859e1be7\Nette\Utils;
+namespace _PhpScoper57793da194f3\Nette\Utils;
 
-use _PhpScoperb154859e1be7\Nette;
+use _PhpScoper57793da194f3\Nette;
 /**
  * Provides objects to work as array.
  */
 class ArrayHash extends \stdClass implements \ArrayAccess, \Countable, \IteratorAggregate
 {
     /**
-     * Transforms array to ArrayHash.
      * @return static
      */
-    public static function from(array $array, bool $recursive = \true)
+    public static function from(array $arr, bool $recursive = \true)
     {
         $obj = new static();
-        foreach ($array as $key => $value) {
+        foreach ($arr as $key => $value) {
             if ($recursive && \is_array($value)) {
                 $obj->{$key} = static::from($value, \true);
             } else {
@@ -45,20 +44,17 @@ class ArrayHash extends \stdClass implements \ArrayAccess, \Countable, \Iterator
     }
     /**
      * Replaces or appends a item.
-     * @param  string|int  $key
-     * @param  mixed  $value
      */
     public function offsetSet($key, $value) : void
     {
         if (!\is_scalar($key)) {
             // prevents null
-            throw new \_PhpScoperb154859e1be7\Nette\InvalidArgumentException(\sprintf('Key must be either a string or an integer, %s given.', \gettype($key)));
+            throw new \_PhpScoper57793da194f3\Nette\InvalidArgumentException(\sprintf('Key must be either a string or an integer, %s given.', \gettype($key)));
         }
         $this->{$key} = $value;
     }
     /**
      * Returns a item.
-     * @param  string|int  $key
      * @return mixed
      */
     public function offsetGet($key)
@@ -67,7 +63,6 @@ class ArrayHash extends \stdClass implements \ArrayAccess, \Countable, \Iterator
     }
     /**
      * Determines whether a item exists.
-     * @param  string|int  $key
      */
     public function offsetExists($key) : bool
     {
@@ -75,7 +70,6 @@ class ArrayHash extends \stdClass implements \ArrayAccess, \Countable, \Iterator
     }
     /**
      * Removes the element from this list.
-     * @param  string|int  $key
      */
     public function offsetUnset($key) : void
     {

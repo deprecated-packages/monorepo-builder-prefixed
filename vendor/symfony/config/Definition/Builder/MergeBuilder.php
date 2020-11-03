@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb154859e1be7\Symfony\Component\Config\Definition\Builder;
+namespace _PhpScoper57793da194f3\Symfony\Component\Config\Definition\Builder;
 
 /**
  * This class builds merge conditions.
@@ -20,16 +20,18 @@ class MergeBuilder
     protected $node;
     public $allowFalse = \false;
     public $allowOverwrite = \true;
-    public function __construct(\_PhpScoperb154859e1be7\Symfony\Component\Config\Definition\Builder\NodeDefinition $node)
+    public function __construct(\_PhpScoper57793da194f3\Symfony\Component\Config\Definition\Builder\NodeDefinition $node)
     {
         $this->node = $node;
     }
     /**
      * Sets whether the node can be unset.
      *
+     * @param bool $allow
+     *
      * @return $this
      */
-    public function allowUnset(bool $allow = \true)
+    public function allowUnset($allow = \true)
     {
         $this->allowFalse = $allow;
         return $this;
@@ -37,9 +39,11 @@ class MergeBuilder
     /**
      * Sets whether the node can be overwritten.
      *
+     * @param bool $deny Whether the overwriting is forbidden or not
+     *
      * @return $this
      */
-    public function denyOverwrite(bool $deny = \true)
+    public function denyOverwrite($deny = \true)
     {
         $this->allowOverwrite = !$deny;
         return $this;

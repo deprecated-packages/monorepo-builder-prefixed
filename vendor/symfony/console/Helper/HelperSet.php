@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb154859e1be7\Symfony\Component\Console\Helper;
+namespace _PhpScoper57793da194f3\Symfony\Component\Console\Helper;
 
-use _PhpScoperb154859e1be7\Symfony\Component\Console\Command\Command;
-use _PhpScoperb154859e1be7\Symfony\Component\Console\Exception\InvalidArgumentException;
+use _PhpScoper57793da194f3\Symfony\Component\Console\Command\Command;
+use _PhpScoper57793da194f3\Symfony\Component\Console\Exception\InvalidArgumentException;
 /**
  * HelperSet represents a set of helpers to be used with a command.
  *
@@ -33,7 +33,12 @@ class HelperSet implements \IteratorAggregate
             $this->set($helper, \is_int($alias) ? null : $alias);
         }
     }
-    public function set(\_PhpScoperb154859e1be7\Symfony\Component\Console\Helper\HelperInterface $helper, string $alias = null)
+    /**
+     * Sets a helper.
+     *
+     * @param string $alias An alias
+     */
+    public function set(\_PhpScoper57793da194f3\Symfony\Component\Console\Helper\HelperInterface $helper, $alias = null)
     {
         $this->helpers[$helper->getName()] = $helper;
         if (null !== $alias) {
@@ -44,27 +49,31 @@ class HelperSet implements \IteratorAggregate
     /**
      * Returns true if the helper if defined.
      *
+     * @param string $name The helper name
+     *
      * @return bool true if the helper is defined, false otherwise
      */
-    public function has(string $name)
+    public function has($name)
     {
         return isset($this->helpers[$name]);
     }
     /**
      * Gets a helper value.
      *
+     * @param string $name The helper name
+     *
      * @return HelperInterface The helper instance
      *
      * @throws InvalidArgumentException if the helper is not defined
      */
-    public function get(string $name)
+    public function get($name)
     {
         if (!$this->has($name)) {
-            throw new \_PhpScoperb154859e1be7\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('The helper "%s" is not defined.', $name));
+            throw new \_PhpScoper57793da194f3\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('The helper "%s" is not defined.', $name));
         }
         return $this->helpers[$name];
     }
-    public function setCommand(\_PhpScoperb154859e1be7\Symfony\Component\Console\Command\Command $command = null)
+    public function setCommand(\_PhpScoper57793da194f3\Symfony\Component\Console\Command\Command $command = null)
     {
         $this->command = $command;
     }

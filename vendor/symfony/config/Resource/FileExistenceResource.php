@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb154859e1be7\Symfony\Component\Config\Resource;
+namespace _PhpScoper57793da194f3\Symfony\Component\Config\Resource;
 
 /**
  * FileExistenceResource represents a resource stored on the filesystem.
@@ -18,9 +18,9 @@ namespace _PhpScoperb154859e1be7\Symfony\Component\Config\Resource;
  *
  * @author Charles-Henri Bruyand <charleshenri.bruyand@gmail.com>
  *
- * @final
+ * @final since Symfony 4.3
  */
-class FileExistenceResource implements \_PhpScoperb154859e1be7\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class FileExistenceResource implements \_PhpScoper57793da194f3\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
 {
     private $resource;
     private $exists;
@@ -35,21 +35,21 @@ class FileExistenceResource implements \_PhpScoperb154859e1be7\Symfony\Component
     /**
      * {@inheritdoc}
      */
-    public function __toString() : string
+    public function __toString()
     {
         return $this->resource;
     }
     /**
      * @return string The file path to the resource
      */
-    public function getResource() : string
+    public function getResource()
     {
         return $this->resource;
     }
     /**
      * {@inheritdoc}
      */
-    public function isFresh(int $timestamp) : bool
+    public function isFresh($timestamp)
     {
         return \file_exists($this->resource) === $this->exists;
     }

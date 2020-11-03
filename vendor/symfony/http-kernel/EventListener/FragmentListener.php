@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb154859e1be7\Symfony\Component\HttpKernel\EventListener;
+namespace _PhpScoper57793da194f3\Symfony\Component\HttpKernel\EventListener;
 
-use _PhpScoperb154859e1be7\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use _PhpScoperb154859e1be7\Symfony\Component\HttpFoundation\Request;
-use _PhpScoperb154859e1be7\Symfony\Component\HttpKernel\Event\RequestEvent;
-use _PhpScoperb154859e1be7\Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use _PhpScoperb154859e1be7\Symfony\Component\HttpKernel\KernelEvents;
-use _PhpScoperb154859e1be7\Symfony\Component\HttpKernel\UriSigner;
+use _PhpScoper57793da194f3\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use _PhpScoper57793da194f3\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper57793da194f3\Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use _PhpScoper57793da194f3\Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use _PhpScoper57793da194f3\Symfony\Component\HttpKernel\KernelEvents;
+use _PhpScoper57793da194f3\Symfony\Component\HttpKernel\UriSigner;
 /**
  * Handles content fragments represented by special URIs.
  *
@@ -27,16 +27,16 @@ use _PhpScoperb154859e1be7\Symfony\Component\HttpKernel\UriSigner;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  *
- * @final
+ * @final since Symfony 4.3
  */
-class FragmentListener implements \_PhpScoperb154859e1be7\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class FragmentListener implements \_PhpScoper57793da194f3\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     private $signer;
     private $fragmentPath;
     /**
      * @param string $fragmentPath The path that triggers this listener
      */
-    public function __construct(\_PhpScoperb154859e1be7\Symfony\Component\HttpKernel\UriSigner $signer, string $fragmentPath = '/_fragment')
+    public function __construct(\_PhpScoper57793da194f3\Symfony\Component\HttpKernel\UriSigner $signer, string $fragmentPath = '/_fragment')
     {
         $this->signer = $signer;
         $this->fragmentPath = $fragmentPath;
@@ -46,7 +46,7 @@ class FragmentListener implements \_PhpScoperb154859e1be7\Symfony\Component\Even
      *
      * @throws AccessDeniedHttpException if the request does not come from a trusted IP
      */
-    public function onKernelRequest(\_PhpScoperb154859e1be7\Symfony\Component\HttpKernel\Event\RequestEvent $event)
+    public function onKernelRequest(\_PhpScoper57793da194f3\Symfony\Component\HttpKernel\Event\GetResponseEvent $event)
     {
         $request = $event->getRequest();
         if ($this->fragmentPath !== \rawurldecode($request->getPathInfo())) {
@@ -65,20 +65,21 @@ class FragmentListener implements \_PhpScoperb154859e1be7\Symfony\Component\Even
         $request->attributes->set('_route_params', \array_replace($request->attributes->get('_route_params', []), $attributes));
         $request->query->remove('_path');
     }
-    protected function validateRequest(\_PhpScoperb154859e1be7\Symfony\Component\HttpFoundation\Request $request)
+    protected function validateRequest(\_PhpScoper57793da194f3\Symfony\Component\HttpFoundation\Request $request)
     {
         // is the Request safe?
         if (!$request->isMethodSafe()) {
-            throw new \_PhpScoperb154859e1be7\Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException();
+            throw new \_PhpScoper57793da194f3\Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException();
         }
         // is the Request signed?
-        if ($this->signer->checkRequest($request)) {
+        // we cannot use $request->getUri() here as we want to work with the original URI (no query string reordering)
+        if ($this->signer->check($request->getSchemeAndHttpHost() . $request->getBaseUrl() . $request->getPathInfo() . (null !== ($qs = $request->server->get('QUERY_STRING')) ? '?' . $qs : ''))) {
             return;
         }
-        throw new \_PhpScoperb154859e1be7\Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException();
+        throw new \_PhpScoper57793da194f3\Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException();
     }
-    public static function getSubscribedEvents() : array
+    public static function getSubscribedEvents()
     {
-        return [\_PhpScoperb154859e1be7\Symfony\Component\HttpKernel\KernelEvents::REQUEST => [['onKernelRequest', 48]]];
+        return [\_PhpScoper57793da194f3\Symfony\Component\HttpKernel\KernelEvents::REQUEST => [['onKernelRequest', 48]]];
     }
 }
