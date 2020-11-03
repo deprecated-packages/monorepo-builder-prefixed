@@ -1,5 +1,5 @@
 #!/usr/bin/env php
 <?php 
-namespace _PhpScoper1832ada183f6;
+namespace _PhpScoper3a1deaf87850;
 
 require_once __DIR__ . '/monorepo-builder.php';
