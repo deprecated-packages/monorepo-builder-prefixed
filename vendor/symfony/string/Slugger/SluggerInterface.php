@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper8a421ef9d4c6\Symfony\Component\String\Slugger;
+namespace _PhpScoperf701e46e48a5\Symfony\Component\String\Slugger;
 
-use _PhpScoper8a421ef9d4c6\Symfony\Component\String\AbstractUnicodeString;
+use _PhpScoperf701e46e48a5\Symfony\Component\String\AbstractUnicodeString;
 /**
  * Creates a URL-friendly slug from a given string.
  *
@@ -21,5 +21,5 @@ interface SluggerInterface
     /**
      * Creates a slug for the given string and locale, using appropriate transliteration when needed.
      */
-    public function slug(string $string, string $separator = '-', string $locale = null) : \_PhpScoper8a421ef9d4c6\Symfony\Component\String\AbstractUnicodeString;
+    public function slug(string $string, string $separator = '-', string $locale = null) : \_PhpScoperf701e46e48a5\Symfony\Component\String\AbstractUnicodeString;
 }

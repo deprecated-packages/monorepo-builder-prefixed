@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper8a421ef9d4c6\PharIo\Version;
+namespace _PhpScoperf701e46e48a5\PharIo\Version;
 
-class OrVersionConstraintGroup extends \_PhpScoper8a421ef9d4c6\PharIo\Version\AbstractVersionConstraint
+class OrVersionConstraintGroup extends \_PhpScoperf701e46e48a5\PharIo\Version\AbstractVersionConstraint
 {
     /**
      * @var VersionConstraint[]
@@ -30,7 +30,7 @@ class OrVersionConstraintGroup extends \_PhpScoper8a421ef9d4c6\PharIo\Version\Ab
      *
      * @return bool
      */
-    public function complies(\_PhpScoper8a421ef9d4c6\PharIo\Version\Version $version)
+    public function complies(\_PhpScoperf701e46e48a5\PharIo\Version\Version $version)
     {
         foreach ($this->constraints as $constraint) {
             if ($constraint->complies($version)) {

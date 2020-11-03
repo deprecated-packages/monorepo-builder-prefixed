@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper8a421ef9d4c6\Symfony\Component\HttpKernel\DependencyInjection;
+namespace _PhpScoperf701e46e48a5\Symfony\Component\HttpKernel\DependencyInjection;
 
-use _PhpScoper8a421ef9d4c6\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use _PhpScoper8a421ef9d4c6\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use _PhpScoper8a421ef9d4c6\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScoper8a421ef9d4c6\Symfony\Component\DependencyInjection\ContainerInterface;
-use _PhpScoper8a421ef9d4c6\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use _PhpScoper8a421ef9d4c6\Symfony\Component\DependencyInjection\Reference;
+use _PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use _PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use _PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\ContainerInterface;
+use _PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use _PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Reference;
 /**
  * @author Alexander M. Turek <me@derrabus.de>
  */
-class ResettableServicePass implements \_PhpScoper8a421ef9d4c6\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class ResettableServicePass implements \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     private $tagName;
     public function __construct(string $tagName = 'kernel.reset')
@@ -29,17 +29,17 @@ class ResettableServicePass implements \_PhpScoper8a421ef9d4c6\Symfony\Component
     /**
      * {@inheritdoc}
      */
-    public function process(\_PhpScoper8a421ef9d4c6\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         if (!$container->has('services_resetter')) {
             return;
         }
         $services = $methods = [];
         foreach ($container->findTaggedServiceIds($this->tagName, \true) as $id => $tags) {
-            $services[$id] = new \_PhpScoper8a421ef9d4c6\Symfony\Component\DependencyInjection\Reference($id, \_PhpScoper8a421ef9d4c6\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE);
+            $services[$id] = new \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Reference($id, \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE);
             foreach ($tags as $attributes) {
                 if (!isset($attributes['method'])) {
-                    throw new \_PhpScoper8a421ef9d4c6\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Tag "%s" requires the "method" attribute to be set.', $this->tagName));
+                    throw new \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Tag "%s" requires the "method" attribute to be set.', $this->tagName));
                 }
                 if (!isset($methods[$id])) {
                     $methods[$id] = [];
@@ -52,6 +52,6 @@ class ResettableServicePass implements \_PhpScoper8a421ef9d4c6\Symfony\Component
             $container->removeDefinition('services_resetter');
             return;
         }
-        $container->findDefinition('services_resetter')->setArgument(0, new \_PhpScoper8a421ef9d4c6\Symfony\Component\DependencyInjection\Argument\IteratorArgument($services))->setArgument(1, $methods);
+        $container->findDefinition('services_resetter')->setArgument(0, new \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Argument\IteratorArgument($services))->setArgument(1, $methods);
     }
 }

@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\PackageBuilder\Contract\HttpKernel;
 
-use _PhpScoper8a421ef9d4c6\Symfony\Component\HttpKernel\KernelInterface;
-interface ExtraConfigAwareKernelInterface extends \_PhpScoper8a421ef9d4c6\Symfony\Component\HttpKernel\KernelInterface
+use _PhpScoperf701e46e48a5\Symfony\Component\HttpKernel\KernelInterface;
+interface ExtraConfigAwareKernelInterface extends \_PhpScoperf701e46e48a5\Symfony\Component\HttpKernel\KernelInterface
 {
     /**
      * @param string[] $configs
