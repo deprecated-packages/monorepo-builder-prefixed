@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper503cab241f82\Symfony\Component\Config\Resource;
+namespace _PhpScoper43a95e2f69bc\Symfony\Component\Config\Resource;
 
 /**
  * FileResource represents a resource stored on the filesystem.
@@ -17,9 +17,9 @@ namespace _PhpScoper503cab241f82\Symfony\Component\Config\Resource;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  *
- * @final since Symfony 4.3
+ * @final
  */
-class FileResource implements \_PhpScoper503cab241f82\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class FileResource implements \_PhpScoper43a95e2f69bc\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
 {
     /**
      * @var string|false
@@ -40,21 +40,21 @@ class FileResource implements \_PhpScoper503cab241f82\Symfony\Component\Config\R
     /**
      * {@inheritdoc}
      */
-    public function __toString()
+    public function __toString() : string
     {
         return $this->resource;
     }
     /**
      * @return string The canonicalized, absolute path to the resource
      */
-    public function getResource()
+    public function getResource() : string
     {
         return $this->resource;
     }
     /**
      * {@inheritdoc}
      */
-    public function isFresh($timestamp)
+    public function isFresh(int $timestamp) : bool
     {
         return \false !== ($filemtime = @\filemtime($this->resource)) && $filemtime <= $timestamp;
     }

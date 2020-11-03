@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper503cab241f82\Symfony\Component\DependencyInjection\Loader;
+namespace _PhpScoper43a95e2f69bc\Symfony\Component\DependencyInjection\Loader;
 
-use _PhpScoper503cab241f82\Symfony\Component\Config\Loader\Loader;
-use _PhpScoper503cab241f82\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoper43a95e2f69bc\Symfony\Component\Config\Loader\Loader;
+use _PhpScoper43a95e2f69bc\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * ClosureLoader loads service definitions from a PHP closure.
  *
@@ -19,24 +19,24 @@ use _PhpScoper503cab241f82\Symfony\Component\DependencyInjection\ContainerBuilde
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ClosureLoader extends \_PhpScoper503cab241f82\Symfony\Component\Config\Loader\Loader
+class ClosureLoader extends \_PhpScoper43a95e2f69bc\Symfony\Component\Config\Loader\Loader
 {
     private $container;
-    public function __construct(\_PhpScoper503cab241f82\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function __construct(\_PhpScoper43a95e2f69bc\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $this->container = $container;
     }
     /**
      * {@inheritdoc}
      */
-    public function load($resource, $type = null)
+    public function load($resource, string $type = null)
     {
         $resource($this->container);
     }
     /**
      * {@inheritdoc}
      */
-    public function supports($resource, $type = null)
+    public function supports($resource, string $type = null)
     {
         return $resource instanceof \Closure;
     }

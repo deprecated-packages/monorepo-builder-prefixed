@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper503cab241f82\Symfony\Component\Config;
+namespace _PhpScoper43a95e2f69bc\Symfony\Component\Config;
 
-use _PhpScoper503cab241f82\Symfony\Component\Config\Resource\ResourceInterface;
+use _PhpScoper43a95e2f69bc\Symfony\Component\Config\Resource\ResourceInterface;
 /**
  * Interface for ConfigCache.
  *
@@ -41,5 +41,5 @@ interface ConfigCacheInterface
      *
      * @throws \RuntimeException When the cache file cannot be written
      */
-    public function write($content, array $metadata = null);
+    public function write(string $content, array $metadata = null);
 }

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper503cab241f82\Symfony\Component\Config\Definition\Builder;
+namespace _PhpScoper43a95e2f69bc\Symfony\Component\Config\Definition\Builder;
 
 /**
  * This class builds normalization conditions.
@@ -20,19 +20,19 @@ class NormalizationBuilder
     protected $node;
     public $before = [];
     public $remappings = [];
-    public function __construct(\_PhpScoper503cab241f82\Symfony\Component\Config\Definition\Builder\NodeDefinition $node)
+    public function __construct(\_PhpScoper43a95e2f69bc\Symfony\Component\Config\Definition\Builder\NodeDefinition $node)
     {
         $this->node = $node;
     }
     /**
      * Registers a key to remap to its plural form.
      *
-     * @param string $key    The key to remap
-     * @param string $plural The plural of the key in case of irregular plural
+     * @param string      $key    The key to remap
+     * @param string|null $plural The plural of the key in case of irregular plural
      *
      * @return $this
      */
-    public function remap($key, $plural = null)
+    public function remap(string $key, string $plural = null)
     {
         $this->remappings[] = [$key, null === $plural ? $key . 's' : $plural];
         return $this;
@@ -48,6 +48,6 @@ class NormalizationBuilder
             $this->before[] = $closure;
             return $this;
         }
-        return $this->before[] = new \_PhpScoper503cab241f82\Symfony\Component\Config\Definition\Builder\ExprBuilder($this->node);
+        return $this->before[] = new \_PhpScoper43a95e2f69bc\Symfony\Component\Config\Definition\Builder\ExprBuilder($this->node);
     }
 }

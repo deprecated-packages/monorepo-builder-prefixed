@@ -16,20 +16,15 @@
         }
     ],
     "require": {
-        "php": "^7.1.3"
+        "php": ">=7.2.5"
     },
     "autoload": {
         "psr-4": {
-            "_PhpScoper503cab241f82\\Symfony\\Component\\Finder\\": ""
+            "_PhpScoper43a95e2f69bc\\Symfony\\Component\\Finder\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"
         ]
     },
-    "minimum-stability": "dev",
-    "extra": {
-        "branch-alias": {
-            "dev-master": "4.4-dev"
-        }
-    }
+    "minimum-stability": "dev"
 }

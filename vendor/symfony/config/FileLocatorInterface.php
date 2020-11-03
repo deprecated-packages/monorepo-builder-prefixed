@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper503cab241f82\Symfony\Component\Config;
+namespace _PhpScoper43a95e2f69bc\Symfony\Component\Config;
 
-use _PhpScoper503cab241f82\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
+use _PhpScoper43a95e2f69bc\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  */
@@ -28,5 +28,5 @@ interface FileLocatorInterface
      * @throws \InvalidArgumentException        If $name is empty
      * @throws FileLocatorFileNotFoundException If a file is not found
      */
-    public function locate($name, $currentPath = null, $first = \true);
+    public function locate(string $name, string $currentPath = null, bool $first = \true);
 }
