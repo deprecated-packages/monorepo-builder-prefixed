@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopera763b4be90d0\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
+namespace _PhpScoper2555ca7105f5\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
 
 trait FileTrait
 {
