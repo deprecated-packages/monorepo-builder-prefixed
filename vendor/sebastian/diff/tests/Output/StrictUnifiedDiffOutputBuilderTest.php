@@ -9,18 +9,18 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf8eaec7affbd\SebastianBergmann\Diff\Output;
+namespace _PhpScoperba481e4bff85\SebastianBergmann\Diff\Output;
 
-use _PhpScoperf8eaec7affbd\PHPUnit\Framework\TestCase;
-use _PhpScoperf8eaec7affbd\SebastianBergmann\Diff\ConfigurationException;
-use _PhpScoperf8eaec7affbd\SebastianBergmann\Diff\Differ;
-use _PhpScoperf8eaec7affbd\SebastianBergmann\Diff\Utils\UnifiedDiffAssertTrait;
+use _PhpScoperba481e4bff85\PHPUnit\Framework\TestCase;
+use _PhpScoperba481e4bff85\SebastianBergmann\Diff\ConfigurationException;
+use _PhpScoperba481e4bff85\SebastianBergmann\Diff\Differ;
+use _PhpScoperba481e4bff85\SebastianBergmann\Diff\Utils\UnifiedDiffAssertTrait;
 /**
  * @covers SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilder
  *
  * @uses SebastianBergmann\Diff\Differ
  */
-final class StrictUnifiedDiffOutputBuilderTest extends \_PhpScoperf8eaec7affbd\PHPUnit\Framework\TestCase
+final class StrictUnifiedDiffOutputBuilderTest extends \_PhpScoperba481e4bff85\PHPUnit\Framework\TestCase
 {
     use UnifiedDiffAssertTrait;
     /**
@@ -63,14 +63,14 @@ final class StrictUnifiedDiffOutputBuilderTest extends \_PhpScoperf8eaec7affbd\P
      */
     public function provideOutputBuildingCases() : array
     {
-        return \_PhpScoperf8eaec7affbd\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilderDataProvider::provideOutputBuildingCases();
+        return \_PhpScoperba481e4bff85\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilderDataProvider::provideOutputBuildingCases();
     }
     /**
      * {@inheritdoc}
      */
     public function provideSample() : array
     {
-        return \_PhpScoperf8eaec7affbd\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilderDataProvider::provideSample();
+        return \_PhpScoperba481e4bff85\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilderDataProvider::provideSample();
     }
     /**
      * @param string $expected
@@ -87,7 +87,7 @@ final class StrictUnifiedDiffOutputBuilderTest extends \_PhpScoperf8eaec7affbd\P
     }
     public function provideBasicDiffGeneration() : array
     {
-        return \_PhpScoperf8eaec7affbd\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilderDataProvider::provideBasicDiffGeneration();
+        return \_PhpScoperba481e4bff85\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilderDataProvider::provideBasicDiffGeneration();
     }
     /**
      * @param string $expected
@@ -192,7 +192,7 @@ final class StrictUnifiedDiffOutputBuilderTest extends \_PhpScoperf8eaec7affbd\P
     }
     public function testEmptyDiff() : void
     {
-        $builder = new \_PhpScoperf8eaec7affbd\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilder(['fromFile' => 'input.txt', 'toFile' => 'output.txt']);
+        $builder = new \_PhpScoperba481e4bff85\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilder(['fromFile' => 'input.txt', 'toFile' => 'output.txt']);
         $this->assertSame('', $builder->getDiff([]));
     }
     /**
@@ -203,9 +203,9 @@ final class StrictUnifiedDiffOutputBuilderTest extends \_PhpScoperf8eaec7affbd\P
      */
     public function testInvalidConfiguration(array $options, string $message) : void
     {
-        $this->expectException(\_PhpScoperf8eaec7affbd\SebastianBergmann\Diff\ConfigurationException::class);
+        $this->expectException(\_PhpScoperba481e4bff85\SebastianBergmann\Diff\ConfigurationException::class);
         $this->expectExceptionMessageRegExp(\sprintf('#^%s$#', \preg_quote($message, '#')));
-        new \_PhpScoperf8eaec7affbd\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilder($options);
+        new \_PhpScoperba481e4bff85\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilder($options);
     }
     public function provideInvalidConfiguration() : array
     {
@@ -310,8 +310,8 @@ final class StrictUnifiedDiffOutputBuilderTest extends \_PhpScoperf8eaec7affbd\P
      *
      * @return Differ
      */
-    private function getDiffer(array $options = []) : \_PhpScoperf8eaec7affbd\SebastianBergmann\Diff\Differ
+    private function getDiffer(array $options = []) : \_PhpScoperba481e4bff85\SebastianBergmann\Diff\Differ
     {
-        return new \_PhpScoperf8eaec7affbd\SebastianBergmann\Diff\Differ(new \_PhpScoperf8eaec7affbd\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilder($options));
+        return new \_PhpScoperba481e4bff85\SebastianBergmann\Diff\Differ(new \_PhpScoperba481e4bff85\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilder($options));
     }
 }
