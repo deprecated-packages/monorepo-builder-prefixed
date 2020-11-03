@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc00d4390f333\Symfony\Component\DependencyInjection\Compiler;
+namespace _PhpScoper931cda798d50\Symfony\Component\DependencyInjection\Compiler;
 
 /**
  * Represents an edge in your service graph.
@@ -25,7 +25,7 @@ class ServiceReferenceGraphEdge
     private $lazy;
     private $weak;
     private $byConstructor;
-    public function __construct(\_PhpScoperc00d4390f333\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphNode $sourceNode, \_PhpScoperc00d4390f333\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphNode $destNode, $value = null, bool $lazy = \false, bool $weak = \false, bool $byConstructor = \false)
+    public function __construct(\_PhpScoper931cda798d50\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphNode $sourceNode, \_PhpScoper931cda798d50\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphNode $destNode, $value = null, bool $lazy = \false, bool $weak = \false, bool $byConstructor = \false)
     {
         $this->sourceNode = $sourceNode;
         $this->destNode = $destNode;
