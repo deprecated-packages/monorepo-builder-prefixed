@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere7b233920bf2\Symfony\Component\HttpFoundation\Session\Storage\Handler;
+namespace _PhpScoperee8f03533f8b\Symfony\Component\HttpFoundation\Session\Storage\Handler;
 
-use _PhpScopere7b233920bf2\Predis\Response\ErrorInterface;
-use _PhpScopere7b233920bf2\Symfony\Component\Cache\Traits\RedisClusterProxy;
-use _PhpScopere7b233920bf2\Symfony\Component\Cache\Traits\RedisProxy;
+use _PhpScoperee8f03533f8b\Predis\Response\ErrorInterface;
+use _PhpScoperee8f03533f8b\Symfony\Component\Cache\Traits\RedisClusterProxy;
+use _PhpScoperee8f03533f8b\Symfony\Component\Cache\Traits\RedisProxy;
 /**
  * Redis based session storage handler based on the Redis class
  * provided by the PHP redis extension.
  *
  * @author Dalibor Karlović <dalibor@flexolabs.io>
  */
-class RedisSessionHandler extends \_PhpScopere7b233920bf2\Symfony\Component\HttpFoundation\Session\Storage\Handler\AbstractSessionHandler
+class RedisSessionHandler extends \_PhpScoperee8f03533f8b\Symfony\Component\HttpFoundation\Session\Storage\Handler\AbstractSessionHandler
 {
     private $redis;
     /**
@@ -41,35 +41,35 @@ class RedisSessionHandler extends \_PhpScopere7b233920bf2\Symfony\Component\Http
      */
     public function __construct($redis, array $options = [])
     {
-        if (!$redis instanceof \Redis && !$redis instanceof \RedisArray && !$redis instanceof \RedisCluster && !$redis instanceof \_PhpScopere7b233920bf2\Predis\ClientInterface && !$redis instanceof \_PhpScopere7b233920bf2\Symfony\Component\Cache\Traits\RedisProxy && !$redis instanceof \_PhpScopere7b233920bf2\Symfony\Component\Cache\Traits\RedisClusterProxy) {
-            throw new \InvalidArgumentException(\sprintf('"%s()" expects parameter 1 to be Redis, RedisArray, RedisCluster or Predis\\ClientInterface, "%s" given.', __METHOD__, \get_debug_type($redis)));
+        if (!$redis instanceof \Redis && !$redis instanceof \RedisArray && !$redis instanceof \RedisCluster && !$redis instanceof \_PhpScoperee8f03533f8b\Predis\ClientInterface && !$redis instanceof \_PhpScoperee8f03533f8b\Symfony\Component\Cache\Traits\RedisProxy && !$redis instanceof \_PhpScoperee8f03533f8b\Symfony\Component\Cache\Traits\RedisClusterProxy) {
+            throw new \InvalidArgumentException(\sprintf('%s() expects parameter 1 to be Redis, RedisArray, RedisCluster or Predis\\ClientInterface, %s given', __METHOD__, \is_object($redis) ? \get_class($redis) : \gettype($redis)));
         }
         if ($diff = \array_diff(\array_keys($options), ['prefix', 'ttl'])) {
-            throw new \InvalidArgumentException(\sprintf('The following options are not supported "%s".', \implode(', ', $diff)));
+            throw new \InvalidArgumentException(\sprintf('The following options are not supported "%s"', \implode(', ', $diff)));
         }
         $this->redis = $redis;
         $this->prefix = $options['prefix'] ?? 'sf_s';
-        $this->ttl = $options['ttl'] ?? null;
+        $this->ttl = $options['ttl'] ?? (int) \ini_get('session.gc_maxlifetime');
     }
     /**
      * {@inheritdoc}
      */
-    protected function doRead(string $sessionId) : string
+    protected function doRead($sessionId) : string
     {
         return $this->redis->get($this->prefix . $sessionId) ?: '';
     }
     /**
      * {@inheritdoc}
      */
-    protected function doWrite(string $sessionId, string $data) : bool
+    protected function doWrite($sessionId, $data) : bool
     {
-        $result = $this->redis->setEx($this->prefix . $sessionId, (int) ($this->ttl ?? \ini_get('session.gc_maxlifetime')), $data);
-        return $result && !$result instanceof \_PhpScopere7b233920bf2\Predis\Response\ErrorInterface;
+        $result = $this->redis->setEx($this->prefix . $sessionId, $this->ttl, $data);
+        return $result && !$result instanceof \_PhpScoperee8f03533f8b\Predis\Response\ErrorInterface;
     }
     /**
      * {@inheritdoc}
      */
-    protected function doDestroy(string $sessionId) : bool
+    protected function doDestroy($sessionId) : bool
     {
         $this->redis->del($this->prefix . $sessionId);
         return \true;
@@ -93,6 +93,6 @@ class RedisSessionHandler extends \_PhpScopere7b233920bf2\Symfony\Component\Http
      */
     public function updateTimestamp($sessionId, $data)
     {
-        return (bool) $this->redis->expire($this->prefix . $sessionId, (int) ($this->ttl ?? \ini_get('session.gc_maxlifetime')));
+        return (bool) $this->redis->expire($this->prefix . $sessionId, $this->ttl);
     }
 }

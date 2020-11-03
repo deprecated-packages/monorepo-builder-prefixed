@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Symplify\ComposerJsonManipulator;
 
-use _PhpScopere7b233920bf2\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use _PhpScopere7b233920bf2\Symfony\Component\HttpKernel\Bundle\Bundle;
+use _PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use _PhpScoperee8f03533f8b\Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symplify\ComposerJsonManipulator\DependencyInjection\Extension\ComposerJsonManipulatorExtension;
-final class ComposerJsonManipulatorBundle extends \_PhpScopere7b233920bf2\Symfony\Component\HttpKernel\Bundle\Bundle
+final class ComposerJsonManipulatorBundle extends \_PhpScoperee8f03533f8b\Symfony\Component\HttpKernel\Bundle\Bundle
 {
-    protected function createContainerExtension() : ?\_PhpScopere7b233920bf2\Symfony\Component\DependencyInjection\Extension\ExtensionInterface
+    protected function createContainerExtension() : ?\_PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Extension\ExtensionInterface
     {
         return new \Symplify\ComposerJsonManipulator\DependencyInjection\Extension\ComposerJsonManipulatorExtension();
     }

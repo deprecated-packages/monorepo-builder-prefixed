@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere7b233920bf2\Symfony\Component\Process;
+namespace _PhpScoperee8f03533f8b\Symfony\Component\Process;
 
 /**
  * An executable finder specifically designed for the PHP executable.
@@ -21,14 +21,16 @@ class PhpExecutableFinder
     private $executableFinder;
     public function __construct()
     {
-        $this->executableFinder = new \_PhpScopere7b233920bf2\Symfony\Component\Process\ExecutableFinder();
+        $this->executableFinder = new \_PhpScoperee8f03533f8b\Symfony\Component\Process\ExecutableFinder();
     }
     /**
      * Finds The PHP executable.
      *
+     * @param bool $includeArgs Whether or not include command arguments
+     *
      * @return string|false The PHP executable path or false if it cannot be found
      */
-    public function find(bool $includeArgs = \true)
+    public function find($includeArgs = \true)
     {
         if ($php = \getenv('PHP_BINARY')) {
             if (!\is_executable($php)) {

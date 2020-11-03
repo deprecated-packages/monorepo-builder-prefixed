@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace _PhpScopere7b233920bf2\Nette\Localization;
+namespace _PhpScoperee8f03533f8b\Nette\Localization;
 
 /**
  * Translator adapter.
@@ -14,8 +14,6 @@ interface ITranslator
 {
     /**
      * Translates the given string.
-     * @param  mixed  $message
-     * @param  mixed  ...$parameters
      */
     function translate($message, ...$parameters) : string;
 }

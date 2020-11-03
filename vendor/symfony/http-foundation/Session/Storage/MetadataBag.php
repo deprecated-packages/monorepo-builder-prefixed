@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere7b233920bf2\Symfony\Component\HttpFoundation\Session\Storage;
+namespace _PhpScoperee8f03533f8b\Symfony\Component\HttpFoundation\Session\Storage;
 
-use _PhpScopere7b233920bf2\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
+use _PhpScoperee8f03533f8b\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
 /**
  * Metadata container.
  *
@@ -18,7 +18,7 @@ use _PhpScopere7b233920bf2\Symfony\Component\HttpFoundation\Session\SessionBagIn
  *
  * @author Drak <drak@zikula.org>
  */
-class MetadataBag implements \_PhpScopere7b233920bf2\Symfony\Component\HttpFoundation\Session\SessionBagInterface
+class MetadataBag implements \_PhpScoperee8f03533f8b\Symfony\Component\HttpFoundation\Session\SessionBagInterface
 {
     const CREATED = 'c';
     const UPDATED = 'u';
@@ -87,7 +87,7 @@ class MetadataBag implements \_PhpScopere7b233920bf2\Symfony\Component\HttpFound
      *                      to expire with browser session. Time is in seconds, and is
      *                      not a Unix timestamp.
      */
-    public function stampNew(int $lifetime = null)
+    public function stampNew($lifetime = null)
     {
         $this->stampCreated($lifetime);
     }
@@ -132,8 +132,10 @@ class MetadataBag implements \_PhpScopere7b233920bf2\Symfony\Component\HttpFound
     }
     /**
      * Sets name.
+     *
+     * @param string $name
      */
-    public function setName(string $name)
+    public function setName($name)
     {
         $this->name = $name;
     }

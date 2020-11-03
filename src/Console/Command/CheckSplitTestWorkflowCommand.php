@@ -3,18 +3,18 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Console\Command;
 
-use _PhpScopere7b233920bf2\Nette\Utils\Strings;
-use _PhpScopere7b233920bf2\Symfony\Component\Console\Command\Command;
-use _PhpScopere7b233920bf2\Symfony\Component\Console\Input\InputArgument;
-use _PhpScopere7b233920bf2\Symfony\Component\Console\Input\InputInterface;
-use _PhpScopere7b233920bf2\Symfony\Component\Console\Output\OutputInterface;
-use _PhpScopere7b233920bf2\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoperee8f03533f8b\Nette\Utils\Strings;
+use _PhpScoperee8f03533f8b\Symfony\Component\Console\Command\Command;
+use _PhpScoperee8f03533f8b\Symfony\Component\Console\Input\InputArgument;
+use _PhpScoperee8f03533f8b\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoperee8f03533f8b\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoperee8f03533f8b\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\MonorepoBuilder\Package\PackageProvider;
 use Symplify\MonorepoBuilder\ValueObject\Package;
 use Symplify\PackageBuilder\Console\ShellCode;
 use Symplify\SmartFileSystem\FileSystemGuard;
 use Symplify\SmartFileSystem\SmartFileInfo;
-final class CheckSplitTestWorkflowCommand extends \_PhpScopere7b233920bf2\Symfony\Component\Console\Command\Command
+final class CheckSplitTestWorkflowCommand extends \_PhpScoperee8f03533f8b\Symfony\Component\Console\Command\Command
 {
     /**
      * @var string
@@ -32,7 +32,7 @@ final class CheckSplitTestWorkflowCommand extends \_PhpScopere7b233920bf2\Symfon
      * @var FileSystemGuard
      */
     private $fileSystemGuard;
-    public function __construct(\_PhpScopere7b233920bf2\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Package\PackageProvider $packageProvider, \Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard)
+    public function __construct(\_PhpScoperee8f03533f8b\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Package\PackageProvider $packageProvider, \Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard)
     {
         parent::__construct();
         $this->symfonyStyle = $symfonyStyle;
@@ -41,10 +41,10 @@ final class CheckSplitTestWorkflowCommand extends \_PhpScopere7b233920bf2\Symfon
     }
     protected function configure() : void
     {
-        $this->addArgument(self::ARGUMENT_SOURCE, \_PhpScopere7b233920bf2\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'Path to Github Action workflow file with split tests');
+        $this->addArgument(self::ARGUMENT_SOURCE, \_PhpScoperee8f03533f8b\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'Path to Github Action workflow file with split tests');
         $this->setDescription('Checkes split workflow for all the packages with tests');
     }
-    protected function execute(\_PhpScopere7b233920bf2\Symfony\Component\Console\Input\InputInterface $input, \_PhpScopere7b233920bf2\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoperee8f03533f8b\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperee8f03533f8b\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $packages = $this->packageProvider->provideWithTests();
         $message = \sprintf('Checking %d packages with tests', \count($packages));
@@ -64,7 +64,7 @@ final class CheckSplitTestWorkflowCommand extends \_PhpScopere7b233920bf2\Symfon
         $this->symfonyStyle->newLine(2);
         return \Symplify\PackageBuilder\Console\ShellCode::ERROR;
     }
-    private function resolveWorkflowFileInfo(\_PhpScopere7b233920bf2\Symfony\Component\Console\Input\InputInterface $input) : \Symplify\SmartFileSystem\SmartFileInfo
+    private function resolveWorkflowFileInfo(\_PhpScoperee8f03533f8b\Symfony\Component\Console\Input\InputInterface $input) : \Symplify\SmartFileSystem\SmartFileInfo
     {
         $workflowFilePath = (string) $input->getArgument(self::ARGUMENT_SOURCE);
         $workflowFilePath = \getcwd() . \DIRECTORY_SEPARATOR . $workflowFilePath;
@@ -80,7 +80,7 @@ final class CheckSplitTestWorkflowCommand extends \_PhpScopere7b233920bf2\Symfon
         $missingPackages = [];
         foreach ($packages as $package) {
             $packageNameItemPattern = '#\\-\\s+' . \preg_quote($package->getShortDirectory(), '#') . '\\b#';
-            if (\_PhpScopere7b233920bf2\Nette\Utils\Strings::match($workflowFileInfo->getContents(), $packageNameItemPattern)) {
+            if (\_PhpScoperee8f03533f8b\Nette\Utils\Strings::match($workflowFileInfo->getContents(), $packageNameItemPattern)) {
                 $message = \sprintf('Package "%s" was found in "%s"', $package->getShortDirectory(), $workflowFileInfo->getRelativeFilePathFromCwd());
                 $this->symfonyStyle->note($message);
                 continue;

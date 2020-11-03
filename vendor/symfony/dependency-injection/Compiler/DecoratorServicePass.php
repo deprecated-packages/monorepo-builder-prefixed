@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere7b233920bf2\Symfony\Component\DependencyInjection\Compiler;
+namespace _PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Compiler;
 
-use _PhpScopere7b233920bf2\Symfony\Component\DependencyInjection\Alias;
-use _PhpScopere7b233920bf2\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScopere7b233920bf2\Symfony\Component\DependencyInjection\ContainerInterface;
-use _PhpScopere7b233920bf2\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use _PhpScopere7b233920bf2\Symfony\Component\DependencyInjection\Reference;
+use _PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Alias;
+use _PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\ContainerInterface;
+use _PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use _PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Reference;
 /**
  * Overwrites a service but keeps the overridden one.
  *
@@ -22,14 +22,9 @@ use _PhpScopere7b233920bf2\Symfony\Component\DependencyInjection\Reference;
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Diego Saint Esteben <diego@saintesteben.me>
  */
-class DecoratorServicePass extends \_PhpScopere7b233920bf2\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+class DecoratorServicePass implements \_PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
-    private $innerId = '.inner';
-    public function __construct(?string $innerId = '.inner')
-    {
-        $this->innerId = $innerId;
-    }
-    public function process(\_PhpScopere7b233920bf2\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\_PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $definitions = new \SplPriorityQueue();
         $order = \PHP_INT_MAX;
@@ -43,13 +38,11 @@ class DecoratorServicePass extends \_PhpScopere7b233920bf2\Symfony\Component\Dep
         foreach ($definitions as list($id, $definition)) {
             $decoratedService = $definition->getDecoratedService();
             list($inner, $renamedId) = $decoratedService;
-            $invalidBehavior = $decoratedService[3] ?? \_PhpScopere7b233920bf2\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE;
+            $invalidBehavior = $decoratedService[3] ?? \_PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE;
             $definition->setDecoratedService(null);
             if (!$renamedId) {
                 $renamedId = $id . '.inner';
             }
-            $this->currentId = $renamedId;
-            $this->processValue($definition);
             $definition->innerServiceId = $renamedId;
             $definition->decorationOnInvalid = $invalidBehavior;
             // we create a new alias/service for the service we are replacing
@@ -58,7 +51,7 @@ class DecoratorServicePass extends \_PhpScopere7b233920bf2\Symfony\Component\Dep
                 $alias = $container->getAlias($inner);
                 $public = $alias->isPublic();
                 $private = $alias->isPrivate();
-                $container->setAlias($renamedId, new \_PhpScopere7b233920bf2\Symfony\Component\DependencyInjection\Alias((string) $alias, \false));
+                $container->setAlias($renamedId, new \_PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Alias((string) $alias, \false));
             } elseif ($container->hasDefinition($inner)) {
                 $decoratedDefinition = $container->getDefinition($inner);
                 $public = $decoratedDefinition->isPublic();
@@ -66,36 +59,22 @@ class DecoratorServicePass extends \_PhpScopere7b233920bf2\Symfony\Component\Dep
                 $decoratedDefinition->setPublic(\false);
                 $container->setDefinition($renamedId, $decoratedDefinition);
                 $decoratingDefinitions[$inner] = $decoratedDefinition;
-            } elseif (\_PhpScopere7b233920bf2\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE === $invalidBehavior) {
+            } elseif (\_PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE === $invalidBehavior) {
                 $container->removeDefinition($id);
                 continue;
-            } elseif (\_PhpScopere7b233920bf2\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE === $invalidBehavior) {
+            } elseif (\_PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE === $invalidBehavior) {
                 $public = $definition->isPublic();
                 $private = $definition->isPrivate();
             } else {
-                throw new \_PhpScopere7b233920bf2\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException($inner, $id);
+                throw new \_PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException($inner, $id);
             }
             if (isset($decoratingDefinitions[$inner])) {
                 $decoratingDefinition = $decoratingDefinitions[$inner];
-                $decoratingTags = $decoratingDefinition->getTags();
-                $resetTags = [];
-                if (isset($decoratingTags['container.service_locator'])) {
-                    // container.service_locator has special logic and it must not be transferred out to decorators
-                    $resetTags = ['container.service_locator' => $decoratingTags['container.service_locator']];
-                    unset($decoratingTags['container.service_locator']);
-                }
-                $definition->setTags(\array_merge($decoratingTags, $definition->getTags()));
-                $decoratingDefinition->setTags($resetTags);
+                $definition->setTags(\array_merge($decoratingDefinition->getTags(), $definition->getTags()));
+                $decoratingDefinition->setTags([]);
                 $decoratingDefinitions[$inner] = $definition;
             }
             $container->setAlias($inner, $id)->setPublic($public)->setPrivate($private);
         }
-    }
-    protected function processValue($value, bool $isRoot = \false)
-    {
-        if ($value instanceof \_PhpScopere7b233920bf2\Symfony\Component\DependencyInjection\Reference && $this->innerId === (string) $value) {
-            return new \_PhpScopere7b233920bf2\Symfony\Component\DependencyInjection\Reference($this->currentId, $value->getInvalidBehavior());
-        }
-        return parent::processValue($value, $isRoot);
     }
 }

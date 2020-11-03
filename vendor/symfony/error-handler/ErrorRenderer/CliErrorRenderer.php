@@ -8,25 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere7b233920bf2\Symfony\Component\ErrorHandler\ErrorRenderer;
+namespace _PhpScoperee8f03533f8b\Symfony\Component\ErrorHandler\ErrorRenderer;
 
-use _PhpScopere7b233920bf2\Symfony\Component\ErrorHandler\Exception\FlattenException;
-use _PhpScopere7b233920bf2\Symfony\Component\VarDumper\Cloner\VarCloner;
-use _PhpScopere7b233920bf2\Symfony\Component\VarDumper\Dumper\CliDumper;
-// Help opcache.preload discover always-needed symbols
-\class_exists(\_PhpScopere7b233920bf2\Symfony\Component\VarDumper\Dumper\CliDumper::class);
+use _PhpScoperee8f03533f8b\Symfony\Component\ErrorHandler\Exception\FlattenException;
+use _PhpScoperee8f03533f8b\Symfony\Component\VarDumper\Cloner\VarCloner;
+use _PhpScoperee8f03533f8b\Symfony\Component\VarDumper\Dumper\CliDumper;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class CliErrorRenderer implements \_PhpScopere7b233920bf2\Symfony\Component\ErrorHandler\ErrorRenderer\ErrorRendererInterface
+class CliErrorRenderer implements \_PhpScoperee8f03533f8b\Symfony\Component\ErrorHandler\ErrorRenderer\ErrorRendererInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function render(\Throwable $exception) : \_PhpScopere7b233920bf2\Symfony\Component\ErrorHandler\Exception\FlattenException
+    public function render(\Throwable $exception) : \_PhpScoperee8f03533f8b\Symfony\Component\ErrorHandler\Exception\FlattenException
     {
-        $cloner = new \_PhpScopere7b233920bf2\Symfony\Component\VarDumper\Cloner\VarCloner();
-        $dumper = new class extends \_PhpScopere7b233920bf2\Symfony\Component\VarDumper\Dumper\CliDumper
+        $cloner = new \_PhpScoperee8f03533f8b\Symfony\Component\VarDumper\Cloner\VarCloner();
+        $dumper = new class extends \_PhpScoperee8f03533f8b\Symfony\Component\VarDumper\Dumper\CliDumper
         {
             protected function supportsColors() : bool
             {
@@ -39,6 +37,6 @@ class CliErrorRenderer implements \_PhpScopere7b233920bf2\Symfony\Component\Erro
                 }
             }
         };
-        return \_PhpScopere7b233920bf2\Symfony\Component\ErrorHandler\Exception\FlattenException::createFromThrowable($exception)->setAsString($dumper->dump($cloner->cloneVar($exception), \true));
+        return \_PhpScoperee8f03533f8b\Symfony\Component\ErrorHandler\Exception\FlattenException::createFromThrowable($exception)->setAsString($dumper->dump($cloner->cloneVar($exception), \true));
     }
 }

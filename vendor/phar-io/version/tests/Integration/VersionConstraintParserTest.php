@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere7b233920bf2\PharIo\Version;
+namespace _PhpScoperee8f03533f8b\PharIo\Version;
 
-use _PhpScopere7b233920bf2\PHPUnit\Framework\TestCase;
+use _PhpScoperee8f03533f8b\PHPUnit\Framework\TestCase;
 /**
  * @covers \PharIo\Version\VersionConstraintParser
  */
-class VersionConstraintParserTest extends \_PhpScopere7b233920bf2\PHPUnit\Framework\TestCase
+class VersionConstraintParserTest extends \_PhpScoperee8f03533f8b\PHPUnit\Framework\TestCase
 {
     /**
      * @dataProvider versionStringProvider
@@ -22,9 +22,9 @@ class VersionConstraintParserTest extends \_PhpScopere7b233920bf2\PHPUnit\Framew
      * @param string $versionString
      * @param VersionConstraint $expectedConstraint
      */
-    public function testReturnsExpectedConstraint($versionString, \_PhpScopere7b233920bf2\PharIo\Version\VersionConstraint $expectedConstraint)
+    public function testReturnsExpectedConstraint($versionString, \_PhpScoperee8f03533f8b\PharIo\Version\VersionConstraint $expectedConstraint)
     {
-        $parser = new \_PhpScopere7b233920bf2\PharIo\Version\VersionConstraintParser();
+        $parser = new \_PhpScoperee8f03533f8b\PharIo\Version\VersionConstraintParser();
         $this->assertEquals($expectedConstraint, $parser->parse($versionString));
     }
     /**
@@ -34,8 +34,8 @@ class VersionConstraintParserTest extends \_PhpScopere7b233920bf2\PHPUnit\Framew
      */
     public function testThrowsExceptionIfVersionStringIsNotSupported($versionString)
     {
-        $parser = new \_PhpScopere7b233920bf2\PharIo\Version\VersionConstraintParser();
-        $this->expectException(\_PhpScopere7b233920bf2\PharIo\Version\UnsupportedVersionConstraintException::class);
+        $parser = new \_PhpScoperee8f03533f8b\PharIo\Version\VersionConstraintParser();
+        $this->expectException(\_PhpScoperee8f03533f8b\PharIo\Version\UnsupportedVersionConstraintException::class);
         $parser->parse($versionString);
     }
     /**
@@ -43,7 +43,7 @@ class VersionConstraintParserTest extends \_PhpScopere7b233920bf2\PHPUnit\Framew
      */
     public function versionStringProvider()
     {
-        return [['1.0.2', new \_PhpScopere7b233920bf2\PharIo\Version\ExactVersionConstraint('1.0.2')], ['~4.6', new \_PhpScopere7b233920bf2\PharIo\Version\AndVersionConstraintGroup('~4.6', [new \_PhpScopere7b233920bf2\PharIo\Version\GreaterThanOrEqualToVersionConstraint('~4.6', new \_PhpScopere7b233920bf2\PharIo\Version\Version('4.6')), new \_PhpScopere7b233920bf2\PharIo\Version\SpecificMajorVersionConstraint('~4.6', 4)])], ['~4.6.2', new \_PhpScopere7b233920bf2\PharIo\Version\AndVersionConstraintGroup('~4.6.2', [new \_PhpScopere7b233920bf2\PharIo\Version\GreaterThanOrEqualToVersionConstraint('~4.6.2', new \_PhpScopere7b233920bf2\PharIo\Version\Version('4.6.2')), new \_PhpScopere7b233920bf2\PharIo\Version\SpecificMajorAndMinorVersionConstraint('~4.6.2', 4, 6)])], ['^2.6.1', new \_PhpScopere7b233920bf2\PharIo\Version\AndVersionConstraintGroup('^2.6.1', [new \_PhpScopere7b233920bf2\PharIo\Version\GreaterThanOrEqualToVersionConstraint('^2.6.1', new \_PhpScopere7b233920bf2\PharIo\Version\Version('2.6.1')), new \_PhpScopere7b233920bf2\PharIo\Version\SpecificMajorVersionConstraint('^2.6.1', 2)])], ['5.1.*', new \_PhpScopere7b233920bf2\PharIo\Version\SpecificMajorAndMinorVersionConstraint('5.1.*', 5, 1)], ['5.*', new \_PhpScopere7b233920bf2\PharIo\Version\SpecificMajorVersionConstraint('5.*', 5)], ['*', new \_PhpScopere7b233920bf2\PharIo\Version\AnyVersionConstraint()], ['1.0.2 || 1.0.5', new \_PhpScopere7b233920bf2\PharIo\Version\OrVersionConstraintGroup('1.0.2 || 1.0.5', [new \_PhpScopere7b233920bf2\PharIo\Version\ExactVersionConstraint('1.0.2'), new \_PhpScopere7b233920bf2\PharIo\Version\ExactVersionConstraint('1.0.5')])], ['^5.6 || ^7.0', new \_PhpScopere7b233920bf2\PharIo\Version\OrVersionConstraintGroup('^5.6 || ^7.0', [new \_PhpScopere7b233920bf2\PharIo\Version\AndVersionConstraintGroup('^5.6', [new \_PhpScopere7b233920bf2\PharIo\Version\GreaterThanOrEqualToVersionConstraint('^5.6', new \_PhpScopere7b233920bf2\PharIo\Version\Version('5.6')), new \_PhpScopere7b233920bf2\PharIo\Version\SpecificMajorVersionConstraint('^5.6', 5)]), new \_PhpScopere7b233920bf2\PharIo\Version\AndVersionConstraintGroup('^7.0', [new \_PhpScopere7b233920bf2\PharIo\Version\GreaterThanOrEqualToVersionConstraint('^7.0', new \_PhpScopere7b233920bf2\PharIo\Version\Version('7.0')), new \_PhpScopere7b233920bf2\PharIo\Version\SpecificMajorVersionConstraint('^7.0', 7)])])], ['7.0.28-1', new \_PhpScopere7b233920bf2\PharIo\Version\ExactVersionConstraint('7.0.28-1')], ['^3.0.0-alpha1', new \_PhpScopere7b233920bf2\PharIo\Version\AndVersionConstraintGroup('^3.0.0-alpha1', [new \_PhpScopere7b233920bf2\PharIo\Version\GreaterThanOrEqualToVersionConstraint('^3.0.0-alpha1', new \_PhpScopere7b233920bf2\PharIo\Version\Version('3.0.0-alpha1')), new \_PhpScopere7b233920bf2\PharIo\Version\SpecificMajorVersionConstraint('^3.0.0-alpha1', 3)])], ['^3.0.0-alpha.1', new \_PhpScopere7b233920bf2\PharIo\Version\AndVersionConstraintGroup('^3.0.0-alpha.1', [new \_PhpScopere7b233920bf2\PharIo\Version\GreaterThanOrEqualToVersionConstraint('^3.0.0-alpha.1', new \_PhpScopere7b233920bf2\PharIo\Version\Version('3.0.0-alpha.1')), new \_PhpScopere7b233920bf2\PharIo\Version\SpecificMajorVersionConstraint('^3.0.0-alpha.1', 3)])]];
+        return [['1.0.2', new \_PhpScoperee8f03533f8b\PharIo\Version\ExactVersionConstraint('1.0.2')], ['~4.6', new \_PhpScoperee8f03533f8b\PharIo\Version\AndVersionConstraintGroup('~4.6', [new \_PhpScoperee8f03533f8b\PharIo\Version\GreaterThanOrEqualToVersionConstraint('~4.6', new \_PhpScoperee8f03533f8b\PharIo\Version\Version('4.6')), new \_PhpScoperee8f03533f8b\PharIo\Version\SpecificMajorVersionConstraint('~4.6', 4)])], ['~4.6.2', new \_PhpScoperee8f03533f8b\PharIo\Version\AndVersionConstraintGroup('~4.6.2', [new \_PhpScoperee8f03533f8b\PharIo\Version\GreaterThanOrEqualToVersionConstraint('~4.6.2', new \_PhpScoperee8f03533f8b\PharIo\Version\Version('4.6.2')), new \_PhpScoperee8f03533f8b\PharIo\Version\SpecificMajorAndMinorVersionConstraint('~4.6.2', 4, 6)])], ['^2.6.1', new \_PhpScoperee8f03533f8b\PharIo\Version\AndVersionConstraintGroup('^2.6.1', [new \_PhpScoperee8f03533f8b\PharIo\Version\GreaterThanOrEqualToVersionConstraint('^2.6.1', new \_PhpScoperee8f03533f8b\PharIo\Version\Version('2.6.1')), new \_PhpScoperee8f03533f8b\PharIo\Version\SpecificMajorVersionConstraint('^2.6.1', 2)])], ['5.1.*', new \_PhpScoperee8f03533f8b\PharIo\Version\SpecificMajorAndMinorVersionConstraint('5.1.*', 5, 1)], ['5.*', new \_PhpScoperee8f03533f8b\PharIo\Version\SpecificMajorVersionConstraint('5.*', 5)], ['*', new \_PhpScoperee8f03533f8b\PharIo\Version\AnyVersionConstraint()], ['1.0.2 || 1.0.5', new \_PhpScoperee8f03533f8b\PharIo\Version\OrVersionConstraintGroup('1.0.2 || 1.0.5', [new \_PhpScoperee8f03533f8b\PharIo\Version\ExactVersionConstraint('1.0.2'), new \_PhpScoperee8f03533f8b\PharIo\Version\ExactVersionConstraint('1.0.5')])], ['^5.6 || ^7.0', new \_PhpScoperee8f03533f8b\PharIo\Version\OrVersionConstraintGroup('^5.6 || ^7.0', [new \_PhpScoperee8f03533f8b\PharIo\Version\AndVersionConstraintGroup('^5.6', [new \_PhpScoperee8f03533f8b\PharIo\Version\GreaterThanOrEqualToVersionConstraint('^5.6', new \_PhpScoperee8f03533f8b\PharIo\Version\Version('5.6')), new \_PhpScoperee8f03533f8b\PharIo\Version\SpecificMajorVersionConstraint('^5.6', 5)]), new \_PhpScoperee8f03533f8b\PharIo\Version\AndVersionConstraintGroup('^7.0', [new \_PhpScoperee8f03533f8b\PharIo\Version\GreaterThanOrEqualToVersionConstraint('^7.0', new \_PhpScoperee8f03533f8b\PharIo\Version\Version('7.0')), new \_PhpScoperee8f03533f8b\PharIo\Version\SpecificMajorVersionConstraint('^7.0', 7)])])], ['7.0.28-1', new \_PhpScoperee8f03533f8b\PharIo\Version\ExactVersionConstraint('7.0.28-1')], ['^3.0.0-alpha1', new \_PhpScoperee8f03533f8b\PharIo\Version\AndVersionConstraintGroup('^3.0.0-alpha1', [new \_PhpScoperee8f03533f8b\PharIo\Version\GreaterThanOrEqualToVersionConstraint('^3.0.0-alpha1', new \_PhpScoperee8f03533f8b\PharIo\Version\Version('3.0.0-alpha1')), new \_PhpScoperee8f03533f8b\PharIo\Version\SpecificMajorVersionConstraint('^3.0.0-alpha1', 3)])], ['^3.0.0-alpha.1', new \_PhpScoperee8f03533f8b\PharIo\Version\AndVersionConstraintGroup('^3.0.0-alpha.1', [new \_PhpScoperee8f03533f8b\PharIo\Version\GreaterThanOrEqualToVersionConstraint('^3.0.0-alpha.1', new \_PhpScoperee8f03533f8b\PharIo\Version\Version('3.0.0-alpha.1')), new \_PhpScoperee8f03533f8b\PharIo\Version\SpecificMajorVersionConstraint('^3.0.0-alpha.1', 3)])]];
     }
     public function unsupportedVersionStringProvider()
     {

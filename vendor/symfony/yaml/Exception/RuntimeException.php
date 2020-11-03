@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere7b233920bf2\Symfony\Component\Yaml\Exception;
+namespace _PhpScoperee8f03533f8b\Symfony\Component\Yaml\Exception;
 
 /**
  * Exception class thrown when an error occurs during parsing.
  *
  * @author Romain Neutron <imprec@gmail.com>
  */
-class RuntimeException extends \RuntimeException implements \_PhpScopere7b233920bf2\Symfony\Component\Yaml\Exception\ExceptionInterface
+class RuntimeException extends \RuntimeException implements \_PhpScoperee8f03533f8b\Symfony\Component\Yaml\Exception\ExceptionInterface
 {
 }

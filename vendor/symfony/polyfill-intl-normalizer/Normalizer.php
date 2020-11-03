@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere7b233920bf2\Symfony\Polyfill\Intl\Normalizer;
+namespace _PhpScoperee8f03533f8b\Symfony\Polyfill\Intl\Normalizer;
 
 /**
  * Normalizer is a PHP fallback implementation of the Normalizer class provided by the intl extension.
@@ -22,14 +22,15 @@ namespace _PhpScopere7b233920bf2\Symfony\Polyfill\Intl\Normalizer;
  */
 class Normalizer
 {
-    const FORM_D = \Normalizer::FORM_D;
-    const FORM_KD = \Normalizer::FORM_KD;
-    const FORM_C = \Normalizer::FORM_C;
-    const FORM_KC = \Normalizer::FORM_KC;
-    const NFD = \Normalizer::NFD;
-    const NFKD = \Normalizer::NFKD;
-    const NFC = \Normalizer::NFC;
-    const NFKC = \Normalizer::NFKC;
+    const NONE = 1;
+    const FORM_D = 2;
+    const FORM_KD = 3;
+    const FORM_C = 4;
+    const FORM_KC = 5;
+    const NFD = 2;
+    const NFKD = 3;
+    const NFC = 4;
+    const NFKC = 5;
     private static $C;
     private static $D;
     private static $KD;
@@ -38,17 +39,18 @@ class Normalizer
     private static $ASCII = " eiasntrolud][cmp'\ng|hv.fb,:=-q10C2*yx)(L9AS/P\"EjMIk3>5T<D4}B{8FwR67UGN;JzV#HOW_&!K?XQ%Y\\\tZ+~^\$@`\0\1\2\3\4\5\6\7\10\v\f\r\16\17\20\21\22\23\24\25\26\27\30\31\32\33\34\35\36\37";
     public static function isNormalized($s, $form = self::NFC)
     {
-        if (!\in_array($form, array(self::NFD, self::NFKD, self::NFC, self::NFKC))) {
+        if ($form <= self::NONE || self::NFKC < $form) {
             return \false;
         }
         $s = (string) $s;
         if (!isset($s[\strspn($s, self::$ASCII)])) {
             return \true;
         }
-        if (self::NFC == $form && \preg_match('//u', $s) && !\preg_match('/[^\\x00-\\x{2FF}]/u', $s)) {
+        if (self::NFC === $form && \preg_match('//u', $s) && !\preg_match('/[^\\x00-\\x{2FF}]/u', $s)) {
             return \true;
         }
-        return self::normalize($s, $form) === $s;
+        return \false;
+        // Pretend false as quick checks implementented in PHP won't be so quick
     }
     public static function normalize($s, $form = self::NFC)
     {
@@ -57,6 +59,8 @@ class Normalizer
             return \false;
         }
         switch ($form) {
+            case self::NONE:
+                return $s;
             case self::NFC:
                 $C = \true;
                 $K = \false;
@@ -74,9 +78,6 @@ class Normalizer
                 $K = \true;
                 break;
             default:
-                if (\defined('Normalizer::NONE') && \Normalizer::NONE == $form) {
-                    return $s;
-                }
                 return \false;
         }
         if ('' === $s) {

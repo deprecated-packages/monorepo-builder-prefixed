@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere7b233920bf2\Symfony\Component\HttpFoundation;
+namespace _PhpScoperee8f03533f8b\Symfony\Component\HttpFoundation;
 
 /**
  * ServerBag is a container for HTTP headers from the $_SERVER variable.
@@ -17,7 +17,7 @@ namespace _PhpScopere7b233920bf2\Symfony\Component\HttpFoundation;
  * @author Bulat Shakirzyanov <mallluhuct@gmail.com>
  * @author Robert Kiss <kepten@gmail.com>
  */
-class ServerBag extends \_PhpScopere7b233920bf2\Symfony\Component\HttpFoundation\ParameterBag
+class ServerBag extends \_PhpScoperee8f03533f8b\Symfony\Component\HttpFoundation\ParameterBag
 {
     /**
      * Gets the HTTP headers.
@@ -41,13 +41,13 @@ class ServerBag extends \_PhpScopere7b233920bf2\Symfony\Component\HttpFoundation
             /*
              * php-cgi under Apache does not pass HTTP Basic user/pass to PHP by default
              * For this workaround to work, add these lines to your .htaccess file:
-             * RewriteCond %{HTTP:Authorization} .+
-             * RewriteRule ^ - [E=HTTP_AUTHORIZATION:%0]
+             * RewriteCond %{HTTP:Authorization} ^(.+)$
+             * RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
              *
              * A sample .htaccess file:
              * RewriteEngine On
-             * RewriteCond %{HTTP:Authorization} .+
-             * RewriteRule ^ - [E=HTTP_AUTHORIZATION:%0]
+             * RewriteCond %{HTTP:Authorization} ^(.+)$
+             * RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
              * RewriteCond %{REQUEST_FILENAME} !-f
              * RewriteRule ^(.*)$ app.php [QSA,L]
              */

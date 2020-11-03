@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere7b233920bf2\Symfony\Component\HttpKernel\HttpCache;
+namespace _PhpScoperee8f03533f8b\Symfony\Component\HttpKernel\HttpCache;
 
-use _PhpScopere7b233920bf2\Symfony\Component\HttpFoundation\Request;
-use _PhpScopere7b233920bf2\Symfony\Component\HttpFoundation\Response;
+use _PhpScoperee8f03533f8b\Symfony\Component\HttpFoundation\Request;
+use _PhpScoperee8f03533f8b\Symfony\Component\HttpFoundation\Response;
 /**
  * Ssi implements the SSI capabilities to Request and Response instances.
  *
  * @author Sebastian Krebs <krebs.seb@gmail.com>
  */
-class Ssi extends \_PhpScopere7b233920bf2\Symfony\Component\HttpKernel\HttpCache\AbstractSurrogate
+class Ssi extends \_PhpScoperee8f03533f8b\Symfony\Component\HttpKernel\HttpCache\AbstractSurrogate
 {
     /**
      * {@inheritdoc}
@@ -29,7 +29,7 @@ class Ssi extends \_PhpScopere7b233920bf2\Symfony\Component\HttpKernel\HttpCache
     /**
      * {@inheritdoc}
      */
-    public function addSurrogateControl(\_PhpScopere7b233920bf2\Symfony\Component\HttpFoundation\Response $response)
+    public function addSurrogateControl(\_PhpScoperee8f03533f8b\Symfony\Component\HttpFoundation\Response $response)
     {
         if (\false !== \strpos($response->getContent(), '<!--#include')) {
             $response->headers->set('Surrogate-Control', 'content="SSI/1.0"');
@@ -38,14 +38,14 @@ class Ssi extends \_PhpScopere7b233920bf2\Symfony\Component\HttpKernel\HttpCache
     /**
      * {@inheritdoc}
      */
-    public function renderIncludeTag(string $uri, string $alt = null, bool $ignoreErrors = \true, string $comment = '')
+    public function renderIncludeTag($uri, $alt = null, $ignoreErrors = \true, $comment = '')
     {
         return \sprintf('<!--#include virtual="%s" -->', $uri);
     }
     /**
      * {@inheritdoc}
      */
-    public function process(\_PhpScopere7b233920bf2\Symfony\Component\HttpFoundation\Request $request, \_PhpScopere7b233920bf2\Symfony\Component\HttpFoundation\Response $response)
+    public function process(\_PhpScoperee8f03533f8b\Symfony\Component\HttpFoundation\Request $request, \_PhpScoperee8f03533f8b\Symfony\Component\HttpFoundation\Response $response)
     {
         $type = $response->headers->get('Content-Type');
         if (empty($type)) {

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere7b233920bf2\Symfony\Component\Config;
+namespace _PhpScoperee8f03533f8b\Symfony\Component\Config;
 
 /**
  * Interface for a ConfigCache factory. This factory creates
@@ -27,5 +27,5 @@ interface ConfigCacheFactoryInterface
      *
      * @return ConfigCacheInterface The cache instance
      */
-    public function cache(string $file, callable $callable);
+    public function cache($file, $callable);
 }
