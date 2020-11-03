@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper15dc67236b17\Symfony\Component\HttpKernel;
+namespace _PhpScoper6b2f62f5c7a4\Symfony\Component\HttpKernel;
 
-use _PhpScoper15dc67236b17\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper6b2f62f5c7a4\Symfony\Component\HttpFoundation\Request;
 /**
  * Signs URIs.
  *
@@ -69,7 +69,7 @@ class UriSigner
         unset($params[$this->parameter]);
         return \hash_equals($this->computeHash($this->buildUrl($url, $params)), $hash);
     }
-    public function checkRequest(\_PhpScoper15dc67236b17\Symfony\Component\HttpFoundation\Request $request) : bool
+    public function checkRequest(\_PhpScoper6b2f62f5c7a4\Symfony\Component\HttpFoundation\Request $request) : bool
     {
         $qs = ($qs = $request->server->get('QUERY_STRING')) ? '?' . $qs : '';
         // we cannot use $request->getUri() here as we want to work with the original URI (no query string reordering)
