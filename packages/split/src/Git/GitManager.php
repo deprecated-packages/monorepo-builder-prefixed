@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Split\Git;
 
-use _PhpScoperdfdcb3d4cca0\Nette\Utils\Strings;
+use _PhpScoper3e1a86bff77f\Nette\Utils\Strings;
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
@@ -40,7 +40,7 @@ final class GitManager
     {
         $command = ['git', 'branch', '-a'];
         $result = $this->processRunner->run($command);
-        return \_PhpScoperdfdcb3d4cca0\Nette\Utils\Strings::contains($result, \sprintf('remotes/origin/%s', $branch));
+        return \_PhpScoper3e1a86bff77f\Nette\Utils\Strings::contains($result, \sprintf('remotes/origin/%s', $branch));
     }
     public function getCurrentBranch() : string
     {
@@ -60,7 +60,7 @@ final class GitManager
     public function doTagsHaveCommitterDate() : bool
     {
         $result = $this->processRunner->run(self::COMMITER_DATE_COMMAND);
-        return (bool) \_PhpScoperdfdcb3d4cca0\Nette\Utils\Strings::match($result, self::COMMITER_DATE_START_REGEX);
+        return (bool) \_PhpScoper3e1a86bff77f\Nette\Utils\Strings::match($result, self::COMMITER_DATE_START_REGEX);
     }
     /**
      * Returns null, when there are no local tags yet
@@ -98,7 +98,7 @@ final class GitManager
             return $remoteRepository;
         }
         [, $partAfterAt] = \explode('@', $remoteRepository, 2);
-        $partAfterAt = \_PhpScoperdfdcb3d4cca0\Nette\Utils\Strings::replace($partAfterAt, self::SEMICOLON_REGEX, '/');
+        $partAfterAt = \_PhpScoper3e1a86bff77f\Nette\Utils\Strings::replace($partAfterAt, self::SEMICOLON_REGEX, '/');
         return \sprintf('https://%s@%s', $this->githubToken, $partAfterAt);
     }
     /**

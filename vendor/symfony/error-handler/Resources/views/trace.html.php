@@ -1,5 +1,5 @@
 <div class="trace-line-header break-long-words <?php 
-namespace _PhpScoperdfdcb3d4cca0;
+namespace _PhpScoper3e1a86bff77f;
 
 echo $trace['file'] ? 'sf-toggle' : '';
 ?>" data-toggle-selector="#trace-html-<?php 
@@ -35,9 +35,13 @@ if ('compact' !== $style && $trace['function']) {
     }
     ?><span class="trace-method"><?php 
     echo $trace['function'];
-    ?></span><span class="trace-arguments">(<?php 
-    echo $this->formatArgs($trace['args']);
-    ?>)</span>
+    ?></span><?php 
+    if (isset($trace['args'])) {
+        ?><span class="trace-arguments">(<?php 
+        echo $this->formatArgs($trace['args']);
+        ?>)</span><?php 
+    }
+    ?>
     <?php 
 }
 ?>

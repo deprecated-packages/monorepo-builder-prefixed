@@ -1,13 +1,21 @@
 <?php
 
-namespace _PhpScoperdfdcb3d4cca0\Jean85;
+namespace _PhpScoper3e1a86bff77f\Jean85;
 
-use _PhpScoperdfdcb3d4cca0\PackageVersions\Versions;
+use _PhpScoper3e1a86bff77f\PackageVersions\Versions;
 class PrettyVersions
 {
     const SHORT_COMMIT_LENGTH = 7;
-    public static function getVersion(string $packageName) : \_PhpScoperdfdcb3d4cca0\Jean85\Version
+    public static function getVersion(string $packageName) : \_PhpScoper3e1a86bff77f\Jean85\Version
     {
-        return new \_PhpScoperdfdcb3d4cca0\Jean85\Version($packageName, \_PhpScoperdfdcb3d4cca0\PackageVersions\Versions::getVersion($packageName));
+        return new \_PhpScoper3e1a86bff77f\Jean85\Version($packageName, \_PhpScoper3e1a86bff77f\PackageVersions\Versions::getVersion($packageName));
+    }
+    public static function getRootPackageName() : string
+    {
+        return \_PhpScoper3e1a86bff77f\PackageVersions\Versions::ROOT_PACKAGE_NAME;
+    }
+    public static function getRootPackageVersion() : \_PhpScoper3e1a86bff77f\Jean85\Version
+    {
+        return self::getVersion(\_PhpScoper3e1a86bff77f\PackageVersions\Versions::ROOT_PACKAGE_NAME);
     }
 }

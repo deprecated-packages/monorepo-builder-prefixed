@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperdfdcb3d4cca0\Symfony\Component\Config\Loader;
+namespace _PhpScoper3e1a86bff77f\Symfony\Component\Config\Loader;
 
 /**
  * LoaderResolverInterface selects a loader for a given resource.
@@ -25,5 +25,5 @@ interface LoaderResolverInterface
      *
      * @return LoaderInterface|false The loader or false if none is able to load the resource
      */
-    public function resolve($resource, $type = null);
+    public function resolve($resource, string $type = null);
 }

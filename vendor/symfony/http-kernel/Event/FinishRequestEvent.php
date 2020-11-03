@@ -8,15 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperdfdcb3d4cca0\Symfony\Component\HttpKernel\Event;
+namespace _PhpScoper3e1a86bff77f\Symfony\Component\HttpKernel\Event;
 
 /**
  * Triggered whenever a request is fully processed.
  *
  * @author Benjamin Eberlei <kontakt@beberlei.de>
- *
- * @final since Symfony 4.4
  */
-class FinishRequestEvent extends \_PhpScoperdfdcb3d4cca0\Symfony\Component\HttpKernel\Event\KernelEvent
+final class FinishRequestEvent extends \_PhpScoper3e1a86bff77f\Symfony\Component\HttpKernel\Event\KernelEvent
 {
 }
