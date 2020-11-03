@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperd4e30d8318e8\Symfony\Component\HttpKernel\DependencyInjection;
+namespace _PhpScoper0d74dc701629\Symfony\Component\HttpKernel\DependencyInjection;
 
-use _PhpScoperd4e30d8318e8\Symfony\Contracts\Service\ResetInterface;
+use _PhpScoper0d74dc701629\Symfony\Contracts\Service\ResetInterface;
 /**
  * Resets provided services.
  *
@@ -19,7 +19,7 @@ use _PhpScoperd4e30d8318e8\Symfony\Contracts\Service\ResetInterface;
  *
  * @internal
  */
-class ServicesResetter implements \_PhpScoperd4e30d8318e8\Symfony\Contracts\Service\ResetInterface
+class ServicesResetter implements \_PhpScoper0d74dc701629\Symfony\Contracts\Service\ResetInterface
 {
     private $resettableServices;
     private $resetMethods;
@@ -31,7 +31,9 @@ class ServicesResetter implements \_PhpScoperd4e30d8318e8\Symfony\Contracts\Serv
     public function reset()
     {
         foreach ($this->resettableServices as $id => $service) {
-            $service->{$this->resetMethods[$id]}();
+            foreach ((array) $this->resetMethods[$id] as $resetMethod) {
+                $service->{$resetMethod}();
+            }
         }
     }
 }

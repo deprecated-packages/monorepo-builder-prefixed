@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperd4e30d8318e8\Symfony\Component\HttpKernel\HttpCache;
+namespace _PhpScoper0d74dc701629\Symfony\Component\HttpKernel\HttpCache;
 
-use _PhpScoperd4e30d8318e8\Symfony\Component\HttpFoundation\Request;
-use _PhpScoperd4e30d8318e8\Symfony\Component\HttpFoundation\Response;
+use _PhpScoper0d74dc701629\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper0d74dc701629\Symfony\Component\HttpFoundation\Response;
 /**
  * Esi implements the ESI capabilities to Request and Response instances.
  *
@@ -23,7 +23,7 @@ use _PhpScoperd4e30d8318e8\Symfony\Component\HttpFoundation\Response;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class Esi extends \_PhpScoperd4e30d8318e8\Symfony\Component\HttpKernel\HttpCache\AbstractSurrogate
+class Esi extends \_PhpScoper0d74dc701629\Symfony\Component\HttpKernel\HttpCache\AbstractSurrogate
 {
     public function getName()
     {
@@ -32,7 +32,7 @@ class Esi extends \_PhpScoperd4e30d8318e8\Symfony\Component\HttpKernel\HttpCache
     /**
      * {@inheritdoc}
      */
-    public function addSurrogateControl(\_PhpScoperd4e30d8318e8\Symfony\Component\HttpFoundation\Response $response)
+    public function addSurrogateControl(\_PhpScoper0d74dc701629\Symfony\Component\HttpFoundation\Response $response)
     {
         if (\false !== \strpos($response->getContent(), '<esi:include')) {
             $response->headers->set('Surrogate-Control', 'content="ESI/1.0"');
@@ -41,7 +41,7 @@ class Esi extends \_PhpScoperd4e30d8318e8\Symfony\Component\HttpKernel\HttpCache
     /**
      * {@inheritdoc}
      */
-    public function renderIncludeTag($uri, $alt = null, $ignoreErrors = \true, $comment = '')
+    public function renderIncludeTag(string $uri, string $alt = null, bool $ignoreErrors = \true, string $comment = '')
     {
         $html = \sprintf('<esi:include src="%s"%s%s />', $uri, $ignoreErrors ? ' onerror="continue"' : '', $alt ? \sprintf(' alt="%s"', $alt) : '');
         if (!empty($comment)) {
@@ -52,7 +52,7 @@ class Esi extends \_PhpScoperd4e30d8318e8\Symfony\Component\HttpKernel\HttpCache
     /**
      * {@inheritdoc}
      */
-    public function process(\_PhpScoperd4e30d8318e8\Symfony\Component\HttpFoundation\Request $request, \_PhpScoperd4e30d8318e8\Symfony\Component\HttpFoundation\Response $response)
+    public function process(\_PhpScoper0d74dc701629\Symfony\Component\HttpFoundation\Request $request, \_PhpScoper0d74dc701629\Symfony\Component\HttpFoundation\Response $response)
     {
         $type = $response->headers->get('Content-Type');
         if (empty($type)) {

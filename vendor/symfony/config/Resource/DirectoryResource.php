@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperd4e30d8318e8\Symfony\Component\Config\Resource;
+namespace _PhpScoper0d74dc701629\Symfony\Component\Config\Resource;
 
 /**
  * DirectoryResource represents a resources stored in a subdirectory tree.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  *
- * @final since Symfony 4.3
+ * @final
  */
-class DirectoryResource implements \_PhpScoperd4e30d8318e8\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class DirectoryResource implements \_PhpScoper0d74dc701629\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
 {
     private $resource;
     private $pattern;
@@ -38,30 +38,28 @@ class DirectoryResource implements \_PhpScoperd4e30d8318e8\Symfony\Component\Con
     /**
      * {@inheritdoc}
      */
-    public function __toString()
+    public function __toString() : string
     {
         return \md5(\serialize([$this->resource, $this->pattern]));
     }
     /**
      * @return string The file path to the resource
      */
-    public function getResource()
+    public function getResource() : string
     {
         return $this->resource;
     }
     /**
      * Returns the pattern to restrict monitored files.
-     *
-     * @return string|null
      */
-    public function getPattern()
+    public function getPattern() : ?string
     {
         return $this->pattern;
     }
     /**
      * {@inheritdoc}
      */
-    public function isFresh($timestamp)
+    public function isFresh(int $timestamp) : bool
     {
         if (!\is_dir($this->resource)) {
             return \false;
