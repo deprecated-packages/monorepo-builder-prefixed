@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere4e8aecb81b9\Symfony\Component\Config\Definition;
+namespace _PhpScoper30e4ccea42bd\Symfony\Component\Config\Definition;
 
-use _PhpScopere4e8aecb81b9\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
+use _PhpScoper30e4ccea42bd\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
 /**
  * This node represents a scalar value in the config tree.
  *
@@ -23,7 +23,7 @@ use _PhpScopere4e8aecb81b9\Symfony\Component\Config\Definition\Exception\Invalid
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ScalarNode extends \_PhpScopere4e8aecb81b9\Symfony\Component\Config\Definition\VariableNode
+class ScalarNode extends \_PhpScoper30e4ccea42bd\Symfony\Component\Config\Definition\VariableNode
 {
     /**
      * {@inheritdoc}
@@ -31,7 +31,7 @@ class ScalarNode extends \_PhpScopere4e8aecb81b9\Symfony\Component\Config\Defini
     protected function validateType($value)
     {
         if (!\is_scalar($value) && null !== $value) {
-            $ex = new \_PhpScopere4e8aecb81b9\Symfony\Component\Config\Definition\Exception\InvalidTypeException(\sprintf('Invalid type for path "%s". Expected "scalar", but got "%s".', $this->getPath(), \get_debug_type($value)));
+            $ex = new \_PhpScoper30e4ccea42bd\Symfony\Component\Config\Definition\Exception\InvalidTypeException(\sprintf('Invalid type for path "%s". Expected "scalar", but got "%s".', $this->getPath(), \get_debug_type($value)));
             if ($hint = $this->getInfo()) {
                 $ex->addHint($hint);
             }
