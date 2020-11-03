@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf1163522a13e\Symfony\Component\HttpKernel\Fragment;
+namespace _PhpScoper2a80719fd449\Symfony\Component\HttpKernel\Fragment;
 
-use _PhpScoperf1163522a13e\Symfony\Component\HttpFoundation\RequestStack;
-use _PhpScoperf1163522a13e\Symfony\Component\HttpFoundation\Response;
-use _PhpScoperf1163522a13e\Symfony\Component\HttpFoundation\StreamedResponse;
-use _PhpScoperf1163522a13e\Symfony\Component\HttpKernel\Controller\ControllerReference;
+use _PhpScoper2a80719fd449\Symfony\Component\HttpFoundation\RequestStack;
+use _PhpScoper2a80719fd449\Symfony\Component\HttpFoundation\Response;
+use _PhpScoper2a80719fd449\Symfony\Component\HttpFoundation\StreamedResponse;
+use _PhpScoper2a80719fd449\Symfony\Component\HttpKernel\Controller\ControllerReference;
 /**
  * Renders a URI that represents a resource fragment.
  *
@@ -33,7 +33,7 @@ class FragmentHandler
      * @param FragmentRendererInterface[] $renderers An array of FragmentRendererInterface instances
      * @param bool                        $debug     Whether the debug mode is enabled or not
      */
-    public function __construct(\_PhpScoperf1163522a13e\Symfony\Component\HttpFoundation\RequestStack $requestStack, array $renderers = [], bool $debug = \false)
+    public function __construct(\_PhpScoper2a80719fd449\Symfony\Component\HttpFoundation\RequestStack $requestStack, array $renderers = [], bool $debug = \false)
     {
         $this->requestStack = $requestStack;
         foreach ($renderers as $renderer) {
@@ -44,7 +44,7 @@ class FragmentHandler
     /**
      * Adds a renderer.
      */
-    public function addRenderer(\_PhpScoperf1163522a13e\Symfony\Component\HttpKernel\Fragment\FragmentRendererInterface $renderer)
+    public function addRenderer(\_PhpScoper2a80719fd449\Symfony\Component\HttpKernel\Fragment\FragmentRendererInterface $renderer)
     {
         $this->renderers[$renderer->getName()] = $renderer;
     }
@@ -85,12 +85,12 @@ class FragmentHandler
      *
      * @throws \RuntimeException when the Response is not successful
      */
-    protected function deliver(\_PhpScoperf1163522a13e\Symfony\Component\HttpFoundation\Response $response)
+    protected function deliver(\_PhpScoper2a80719fd449\Symfony\Component\HttpFoundation\Response $response)
     {
         if (!$response->isSuccessful()) {
             throw new \RuntimeException(\sprintf('Error when rendering "%s" (Status code is %d).', $this->requestStack->getCurrentRequest()->getUri(), $response->getStatusCode()));
         }
-        if (!$response instanceof \_PhpScoperf1163522a13e\Symfony\Component\HttpFoundation\StreamedResponse) {
+        if (!$response instanceof \_PhpScoper2a80719fd449\Symfony\Component\HttpFoundation\StreamedResponse) {
             return $response->getContent();
         }
         $response->sendContent();

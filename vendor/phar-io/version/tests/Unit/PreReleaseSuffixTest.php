@@ -1,12 +1,12 @@
 <?php
 
-namespace _PhpScoperf1163522a13e\PharIo\Version;
+namespace _PhpScoper2a80719fd449\PharIo\Version;
 
-use _PhpScoperf1163522a13e\PHPUnit\Framework\TestCase;
+use _PhpScoper2a80719fd449\PHPUnit\Framework\TestCase;
 /**
  * @covers \PharIo\Version\PreReleaseSuffix
  */
-class PreReleaseSuffixTest extends \_PhpScoperf1163522a13e\PHPUnit\Framework\TestCase
+class PreReleaseSuffixTest extends \_PhpScoper2a80719fd449\PHPUnit\Framework\TestCase
 {
     /**
      * @dataProvider greaterThanProvider
@@ -17,8 +17,8 @@ class PreReleaseSuffixTest extends \_PhpScoperf1163522a13e\PHPUnit\Framework\Tes
      */
     public function testGreaterThanReturnsExpectedResult($leftSuffixValue, $rightSuffixValue, $expectedResult)
     {
-        $leftSuffix = new \_PhpScoperf1163522a13e\PharIo\Version\PreReleaseSuffix($leftSuffixValue);
-        $rightSuffix = new \_PhpScoperf1163522a13e\PharIo\Version\PreReleaseSuffix($rightSuffixValue);
+        $leftSuffix = new \_PhpScoper2a80719fd449\PharIo\Version\PreReleaseSuffix($leftSuffixValue);
+        $rightSuffix = new \_PhpScoper2a80719fd449\PharIo\Version\PreReleaseSuffix($rightSuffixValue);
         $this->assertSame($expectedResult, $leftSuffix->isGreaterThan($rightSuffix));
     }
     public function greaterThanProvider()
