@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper0dbf6264e8b4\Symfony\Component\DependencyInjection;
+namespace _PhpScoperb3e4472dbe9b\Symfony\Component\DependencyInjection;
 
-use _PhpScoper0dbf6264e8b4\Psr\Cache\CacheItemPoolInterface;
-use _PhpScoper0dbf6264e8b4\Symfony\Component\ExpressionLanguage\ExpressionLanguage as BaseExpressionLanguage;
-if (!\class_exists(\_PhpScoper0dbf6264e8b4\Symfony\Component\ExpressionLanguage\ExpressionLanguage::class)) {
+use _PhpScoperb3e4472dbe9b\Psr\Cache\CacheItemPoolInterface;
+use _PhpScoperb3e4472dbe9b\Symfony\Component\ExpressionLanguage\ExpressionLanguage as BaseExpressionLanguage;
+if (!\class_exists(\_PhpScoperb3e4472dbe9b\Symfony\Component\ExpressionLanguage\ExpressionLanguage::class)) {
     return;
 }
 /**
@@ -22,15 +22,15 @@ if (!\class_exists(\_PhpScoper0dbf6264e8b4\Symfony\Component\ExpressionLanguage\
  *
  * @see ExpressionLanguageProvider
  */
-class ExpressionLanguage extends \_PhpScoper0dbf6264e8b4\Symfony\Component\ExpressionLanguage\ExpressionLanguage
+class ExpressionLanguage extends \_PhpScoperb3e4472dbe9b\Symfony\Component\ExpressionLanguage\ExpressionLanguage
 {
     /**
      * {@inheritdoc}
      */
-    public function __construct(\_PhpScoper0dbf6264e8b4\Psr\Cache\CacheItemPoolInterface $cache = null, array $providers = [], callable $serviceCompiler = null)
+    public function __construct(\_PhpScoperb3e4472dbe9b\Psr\Cache\CacheItemPoolInterface $cache = null, array $providers = [], callable $serviceCompiler = null)
     {
         // prepend the default provider to let users override it easily
-        \array_unshift($providers, new \_PhpScoper0dbf6264e8b4\Symfony\Component\DependencyInjection\ExpressionLanguageProvider($serviceCompiler));
+        \array_unshift($providers, new \_PhpScoperb3e4472dbe9b\Symfony\Component\DependencyInjection\ExpressionLanguageProvider($serviceCompiler));
         parent::__construct($cache, $providers);
     }
 }

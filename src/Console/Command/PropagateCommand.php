@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Console\Command;
 
-use _PhpScoper0dbf6264e8b4\Symfony\Component\Console\Command\Command;
-use _PhpScoper0dbf6264e8b4\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoper0dbf6264e8b4\Symfony\Component\Console\Output\OutputInterface;
-use _PhpScoper0dbf6264e8b4\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoperb3e4472dbe9b\Symfony\Component\Console\Command\Command;
+use _PhpScoperb3e4472dbe9b\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoperb3e4472dbe9b\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoperb3e4472dbe9b\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\MonorepoBuilder\DependencyUpdater;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\ValueObject\File;
@@ -14,7 +14,7 @@ use Symplify\MonorepoBuilder\VersionValidator;
 use Symplify\PackageBuilder\Console\Command\CommandNaming;
 use Symplify\PackageBuilder\Console\ShellCode;
 use Symplify\SmartFileSystem\SmartFileInfo;
-final class PropagateCommand extends \_PhpScoper0dbf6264e8b4\Symfony\Component\Console\Command\Command
+final class PropagateCommand extends \_PhpScoperb3e4472dbe9b\Symfony\Component\Console\Command\Command
 {
     /**
      * @var SymfonyStyle
@@ -32,7 +32,7 @@ final class PropagateCommand extends \_PhpScoper0dbf6264e8b4\Symfony\Component\C
      * @var DependencyUpdater
      */
     private $dependencyUpdater;
-    public function __construct(\_PhpScoper0dbf6264e8b4\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\VersionValidator $versionValidator, \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \Symplify\MonorepoBuilder\DependencyUpdater $dependencyUpdater)
+    public function __construct(\_PhpScoperb3e4472dbe9b\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\VersionValidator $versionValidator, \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \Symplify\MonorepoBuilder\DependencyUpdater $dependencyUpdater)
     {
         parent::__construct();
         $this->symfonyStyle = $symfonyStyle;
@@ -45,7 +45,7 @@ final class PropagateCommand extends \_PhpScoper0dbf6264e8b4\Symfony\Component\C
         $this->setName(\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
         $this->setDescription('Propagate versions from root "composer.json" to all packages, the opposite of "merge" command');
     }
-    protected function execute(\_PhpScoper0dbf6264e8b4\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper0dbf6264e8b4\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoperb3e4472dbe9b\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperb3e4472dbe9b\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $conflictingPackageVersions = $this->versionValidator->findConflictingPackageVersionsInFileInfos($this->composerJsonProvider->getRootAndPackageFileInfos());
         foreach ($conflictingPackageVersions as $packageName => $filesToVersion) {
