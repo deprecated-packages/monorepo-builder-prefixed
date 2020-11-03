@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper9dd242015966\Symfony\Component\Console\Helper;
+namespace _PhpScoper1832ada183f6\Symfony\Component\Console\Helper;
 
-use _PhpScoper9dd242015966\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use _PhpScoper1832ada183f6\Symfony\Component\Console\Formatter\OutputFormatterInterface;
 /**
  * Helper is the base class for all helper classes.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Helper implements \_PhpScoper9dd242015966\Symfony\Component\Console\Helper\HelperInterface
+abstract class Helper implements \_PhpScoper1832ada183f6\Symfony\Component\Console\Helper\HelperInterface
 {
     protected $helperSet = null;
     /**
      * {@inheritdoc}
      */
-    public function setHelperSet(\_PhpScoper9dd242015966\Symfony\Component\Console\Helper\HelperSet $helperSet = null)
+    public function setHelperSet(\_PhpScoper1832ada183f6\Symfony\Component\Console\Helper\HelperSet $helperSet = null)
     {
         $this->helperSet = $helperSet;
     }
@@ -36,9 +36,11 @@ abstract class Helper implements \_PhpScoper9dd242015966\Symfony\Component\Conso
     /**
      * Returns the length of a string, using mb_strwidth if it is available.
      *
+     * @param string $string The string to check its length
+     *
      * @return int The length of the string
      */
-    public static function strlen(?string $string)
+    public static function strlen($string)
     {
         if (\false === ($encoding = \mb_detect_encoding($string, null, \true))) {
             return \strlen($string);
@@ -48,9 +50,13 @@ abstract class Helper implements \_PhpScoper9dd242015966\Symfony\Component\Conso
     /**
      * Returns the subset of a string, using mb_substr if it is available.
      *
+     * @param string   $string String to subset
+     * @param int      $from   Start offset
+     * @param int|null $length Length to read
+     *
      * @return string The string subset
      */
-    public static function substr(string $string, int $from, int $length = null)
+    public static function substr($string, $from, $length = null)
     {
         if (\false === ($encoding = \mb_detect_encoding($string, null, \true))) {
             return \substr($string, $from, $length);
@@ -71,7 +77,7 @@ abstract class Helper implements \_PhpScoper9dd242015966\Symfony\Component\Conso
             }
         }
     }
-    public static function formatMemory(int $memory)
+    public static function formatMemory($memory)
     {
         if ($memory >= 1024 * 1024 * 1024) {
             return \sprintf('%.1f GiB', $memory / 1024 / 1024 / 1024);
@@ -84,11 +90,11 @@ abstract class Helper implements \_PhpScoper9dd242015966\Symfony\Component\Conso
         }
         return \sprintf('%d B', $memory);
     }
-    public static function strlenWithoutDecoration(\_PhpScoper9dd242015966\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter, $string)
+    public static function strlenWithoutDecoration(\_PhpScoper1832ada183f6\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter, $string)
     {
         return self::strlen(self::removeDecoration($formatter, $string));
     }
-    public static function removeDecoration(\_PhpScoper9dd242015966\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter, $string)
+    public static function removeDecoration(\_PhpScoper1832ada183f6\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter, $string)
     {
         $isDecorated = $formatter->isDecorated();
         $formatter->setDecorated(\false);
