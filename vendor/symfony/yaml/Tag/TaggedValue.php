@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper138e2990dbdb\Symfony\Component\Yaml\Tag;
+namespace _PhpScoper1600de59048a\Symfony\Component\Yaml\Tag;
 
 /**
  * @author Nicolas Grekas <p@tchwork.com>

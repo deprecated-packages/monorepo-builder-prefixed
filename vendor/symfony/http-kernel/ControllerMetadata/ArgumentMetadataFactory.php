@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper138e2990dbdb\Symfony\Component\HttpKernel\ControllerMetadata;
+namespace _PhpScoper1600de59048a\Symfony\Component\HttpKernel\ControllerMetadata;
 
 /**
  * Builds {@see ArgumentMetadata} objects based on the given Controller.
  *
  * @author Iltar van der Berg <kjarli@gmail.com>
  */
-final class ArgumentMetadataFactory implements \_PhpScoper138e2990dbdb\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactoryInterface
+final class ArgumentMetadataFactory implements \_PhpScoper1600de59048a\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactoryInterface
 {
     /**
      * {@inheritdoc}
@@ -31,7 +31,7 @@ final class ArgumentMetadataFactory implements \_PhpScoper138e2990dbdb\Symfony\C
             $reflection = new \ReflectionFunction($controller);
         }
         foreach ($reflection->getParameters() as $param) {
-            $arguments[] = new \_PhpScoper138e2990dbdb\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata($param->getName(), $this->getType($param, $reflection), $param->isVariadic(), $param->isDefaultValueAvailable(), $param->isDefaultValueAvailable() ? $param->getDefaultValue() : null, $param->allowsNull());
+            $arguments[] = new \_PhpScoper1600de59048a\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata($param->getName(), $this->getType($param, $reflection), $param->isVariadic(), $param->isDefaultValueAvailable(), $param->isDefaultValueAvailable() ? $param->getDefaultValue() : null, $param->allowsNull());
         }
         return $arguments;
     }
