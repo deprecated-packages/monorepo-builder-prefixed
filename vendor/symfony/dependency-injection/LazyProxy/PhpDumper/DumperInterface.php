@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\LazyProxy\PhpDumper;
+namespace _PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\LazyProxy\PhpDumper;
 
-use _PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Definition;
+use _PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Definition;
 /**
  * Lazy proxy dumper capable of generating the instantiation logic PHP code for proxied services.
  *
@@ -23,17 +23,20 @@ interface DumperInterface
      *
      * @return bool
      */
-    public function isProxyCandidate(\_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Definition $definition);
+    public function isProxyCandidate(\_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Definition $definition);
     /**
      * Generates the code to be used to instantiate a proxy in the dumped factory code.
      *
+     * @param string $id          Service identifier
+     * @param string $factoryCode The code to execute to create the service
+     *
      * @return string
      */
-    public function getProxyFactoryCode(\_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Definition $definition, string $id, string $factoryCode);
+    public function getProxyFactoryCode(\_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Definition $definition, $id, $factoryCode);
     /**
      * Generates the code for the lazy proxy.
      *
      * @return string
      */
-    public function getProxyCode(\_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Definition $definition);
+    public function getProxyCode(\_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Definition $definition);
 }

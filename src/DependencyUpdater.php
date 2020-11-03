@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder;
 
-use _PhpScoperf701e46e48a5\Nette\Utils\Strings;
+use _PhpScoper4cbad741edc5\Nette\Utils\Strings;
 use Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\SmartFileSystem\SmartFileInfo;
@@ -80,7 +80,7 @@ final class DependencyUpdater
     }
     private function shouldSkip(string $vendor, string $targetVersion, string $packageName, string $packageVersion) : bool
     {
-        if (!\_PhpScoperf701e46e48a5\Nette\Utils\Strings::startsWith($packageName, $vendor)) {
+        if (!\_PhpScoper4cbad741edc5\Nette\Utils\Strings::startsWith($packageName, $vendor)) {
             return \true;
         }
         return $packageVersion === $targetVersion;

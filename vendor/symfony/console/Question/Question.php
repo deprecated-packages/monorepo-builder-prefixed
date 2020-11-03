@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf701e46e48a5\Symfony\Component\Console\Question;
+namespace _PhpScoper4cbad741edc5\Symfony\Component\Console\Question;
 
-use _PhpScoperf701e46e48a5\Symfony\Component\Console\Exception\InvalidArgumentException;
-use _PhpScoperf701e46e48a5\Symfony\Component\Console\Exception\LogicException;
+use _PhpScoper4cbad741edc5\Symfony\Component\Console\Exception\InvalidArgumentException;
+use _PhpScoper4cbad741edc5\Symfony\Component\Console\Exception\LogicException;
 /**
  * Represents a Question.
  *
@@ -76,7 +76,7 @@ class Question
     public function setHidden($hidden)
     {
         if ($this->autocompleterCallback) {
-            throw new \_PhpScoperf701e46e48a5\Symfony\Component\Console\Exception\LogicException('A hidden question cannot use the autocompleter.');
+            throw new \_PhpScoper4cbad741edc5\Symfony\Component\Console\Exception\LogicException('A hidden question cannot use the autocompleter.');
         }
         $this->hidden = (bool) $hidden;
         return $this;
@@ -115,11 +115,14 @@ class Question
     /**
      * Sets values for the autocompleter.
      *
+     * @param iterable|null $values
+     *
      * @return $this
      *
+     * @throws InvalidArgumentException
      * @throws LogicException
      */
-    public function setAutocompleterValues(?iterable $values)
+    public function setAutocompleterValues($values)
     {
         if (\is_array($values)) {
             $values = $this->isAssoc($values) ? \array_merge(\array_keys($values), \array_values($values)) : \array_values($values);
@@ -131,8 +134,10 @@ class Question
             $callback = static function () use($values, &$valueCache) {
                 return $valueCache ?? ($valueCache = \iterator_to_array($values, \false));
             };
-        } else {
+        } elseif (null === $values) {
             $callback = null;
+        } else {
+            throw new \_PhpScoper4cbad741edc5\Symfony\Component\Console\Exception\InvalidArgumentException('Autocompleter values can be either an array, "null" or a "Traversable" object.');
         }
         return $this->setAutocompleterCallback($callback);
     }
@@ -153,7 +158,7 @@ class Question
     public function setAutocompleterCallback(callable $callback = null) : self
     {
         if ($this->hidden && null !== $callback) {
-            throw new \_PhpScoperf701e46e48a5\Symfony\Component\Console\Exception\LogicException('A hidden question cannot use the autocompleter.');
+            throw new \_PhpScoper4cbad741edc5\Symfony\Component\Console\Exception\LogicException('A hidden question cannot use the autocompleter.');
         }
         $this->autocompleterCallback = $callback;
         return $this;
@@ -182,17 +187,16 @@ class Question
      *
      * Null means an unlimited number of attempts.
      *
+     * @param int|null $attempts
+     *
      * @return $this
      *
      * @throws InvalidArgumentException in case the number of attempts is invalid
      */
-    public function setMaxAttempts(?int $attempts)
+    public function setMaxAttempts($attempts)
     {
-        if (null !== $attempts) {
-            $attempts = (int) $attempts;
-            if ($attempts < 1) {
-                throw new \_PhpScoperf701e46e48a5\Symfony\Component\Console\Exception\InvalidArgumentException('Maximum number of attempts must be a positive value.');
-            }
+        if (null !== $attempts && $attempts < 1) {
+            throw new \_PhpScoper4cbad741edc5\Symfony\Component\Console\Exception\InvalidArgumentException('Maximum number of attempts must be a positive value.');
         }
         $this->attempts = $attempts;
         return $this;
@@ -231,7 +235,7 @@ class Question
     {
         return $this->normalizer;
     }
-    protected function isAssoc(array $array)
+    protected function isAssoc($array)
     {
         return (bool) \count(\array_filter(\array_keys($array), 'is_string'));
     }

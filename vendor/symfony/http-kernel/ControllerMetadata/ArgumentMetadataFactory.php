@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf701e46e48a5\Symfony\Component\HttpKernel\ControllerMetadata;
+namespace _PhpScoper4cbad741edc5\Symfony\Component\HttpKernel\ControllerMetadata;
 
 /**
  * Builds {@see ArgumentMetadata} objects based on the given Controller.
  *
  * @author Iltar van der Berg <kjarli@gmail.com>
  */
-final class ArgumentMetadataFactory implements \_PhpScoperf701e46e48a5\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactoryInterface
+final class ArgumentMetadataFactory implements \_PhpScoper4cbad741edc5\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactoryInterface
 {
     /**
      * {@inheritdoc}
@@ -31,7 +31,7 @@ final class ArgumentMetadataFactory implements \_PhpScoperf701e46e48a5\Symfony\C
             $reflection = new \ReflectionFunction($controller);
         }
         foreach ($reflection->getParameters() as $param) {
-            $arguments[] = new \_PhpScoperf701e46e48a5\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata($param->getName(), $this->getType($param, $reflection), $param->isVariadic(), $param->isDefaultValueAvailable(), $param->isDefaultValueAvailable() ? $param->getDefaultValue() : null, $param->allowsNull());
+            $arguments[] = new \_PhpScoper4cbad741edc5\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata($param->getName(), $this->getType($param, $reflection), $param->isVariadic(), $param->isDefaultValueAvailable(), $param->isDefaultValueAvailable() ? $param->getDefaultValue() : null, $param->allowsNull());
         }
         return $arguments;
     }
@@ -43,7 +43,7 @@ final class ArgumentMetadataFactory implements \_PhpScoperf701e46e48a5\Symfony\C
         if (!($type = $parameter->getType())) {
             return null;
         }
-        $name = $type instanceof \ReflectionNamedType ? $type->getName() : (string) $type;
+        $name = $type->getName();
         if ($function instanceof \ReflectionMethod) {
             $lcName = \strtolower($name);
             switch ($lcName) {

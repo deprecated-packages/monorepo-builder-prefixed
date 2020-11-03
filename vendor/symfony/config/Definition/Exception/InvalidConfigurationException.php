@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf701e46e48a5\Symfony\Component\Config\Definition\Exception;
+namespace _PhpScoper4cbad741edc5\Symfony\Component\Config\Definition\Exception;
 
 /**
  * A very general exception which can be thrown whenever non of the more specific
@@ -16,7 +16,7 @@ namespace _PhpScoperf701e46e48a5\Symfony\Component\Config\Definition\Exception;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class InvalidConfigurationException extends \_PhpScoperf701e46e48a5\Symfony\Component\Config\Definition\Exception\Exception
+class InvalidConfigurationException extends \_PhpScoper4cbad741edc5\Symfony\Component\Config\Definition\Exception\Exception
 {
     private $path;
     private $containsHints = \false;
@@ -30,8 +30,10 @@ class InvalidConfigurationException extends \_PhpScoperf701e46e48a5\Symfony\Comp
     }
     /**
      * Adds extra information that is suffixed to the original exception message.
+     *
+     * @param string $hint
      */
-    public function addHint(string $hint)
+    public function addHint($hint)
     {
         if (!$this->containsHints) {
             $this->message .= "\nHint: " . $hint;

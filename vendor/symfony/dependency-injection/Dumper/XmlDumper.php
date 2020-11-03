@@ -8,27 +8,26 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Dumper;
+namespace _PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Dumper;
 
-use _PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Alias;
-use _PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use _PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use _PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use _PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use _PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use _PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\ContainerInterface;
-use _PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Definition;
-use _PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use _PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Parameter;
-use _PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Reference;
-use _PhpScoperf701e46e48a5\Symfony\Component\ExpressionLanguage\Expression;
+use _PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Alias;
+use _PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use _PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use _PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use _PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use _PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\ContainerInterface;
+use _PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Definition;
+use _PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use _PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Parameter;
+use _PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Reference;
+use _PhpScoper4cbad741edc5\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * XmlDumper dumps a service container as an XML string.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Martin Hasoň <martin.hason@gmail.com>
  */
-class XmlDumper extends \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Dumper\Dumper
+class XmlDumper extends \_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Dumper\Dumper
 {
     /**
      * @var \DOMDocument
@@ -80,7 +79,7 @@ class XmlDumper extends \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInje
             $parent->appendChild($call);
         }
     }
-    private function addService(\_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Definition $definition, ?string $id, \DOMElement $parent)
+    private function addService(\_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Definition $definition, ?string $id, \DOMElement $parent)
     {
         $service = $this->document->createElement('service');
         if (null !== $id) {
@@ -107,9 +106,9 @@ class XmlDumper extends \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInje
         if (null !== ($decoratedService = $definition->getDecoratedService())) {
             list($decorated, $renamedId, $priority) = $decoratedService;
             $service->setAttribute('decorates', $decorated);
-            $decorationOnInvalid = $decoratedService[3] ?? \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE;
-            if (\in_array($decorationOnInvalid, [\_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE, \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE], \true)) {
-                $invalidBehavior = \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE === $decorationOnInvalid ? 'null' : 'ignore';
+            $decorationOnInvalid = $decoratedService[3] ?? \_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE;
+            if (\in_array($decorationOnInvalid, [\_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE, \_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE], \true)) {
+                $invalidBehavior = \_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE === $decorationOnInvalid ? 'null' : 'ignore';
                 $service->setAttribute('decoration-on-invalid', $invalidBehavior);
             }
             if (null !== $renamedId) {
@@ -122,11 +121,7 @@ class XmlDumper extends \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInje
         foreach ($definition->getTags() as $name => $tags) {
             foreach ($tags as $attributes) {
                 $tag = $this->document->createElement('tag');
-                if (!\array_key_exists('name', $attributes)) {
-                    $tag->setAttribute('name', $name);
-                } else {
-                    $tag->appendChild($this->document->createTextNode($name));
-                }
+                $tag->setAttribute('name', $name);
                 foreach ($attributes as $key => $value) {
                     $tag->setAttribute($key, $value);
                 }
@@ -147,12 +142,12 @@ class XmlDumper extends \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInje
         $this->addMethodCalls($definition->getMethodCalls(), $service);
         if ($callable = $definition->getFactory()) {
             $factory = $this->document->createElement('factory');
-            if (\is_array($callable) && $callable[0] instanceof \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Definition) {
+            if (\is_array($callable) && $callable[0] instanceof \_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Definition) {
                 $this->addService($callable[0], null, $factory);
                 $factory->setAttribute('method', $callable[1]);
             } elseif (\is_array($callable)) {
                 if (null !== $callable[0]) {
-                    $factory->setAttribute($callable[0] instanceof \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Reference ? 'service' : 'class', $callable[0]);
+                    $factory->setAttribute($callable[0] instanceof \_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Reference ? 'service' : 'class', $callable[0]);
                 }
                 $factory->setAttribute('method', $callable[1]);
             } else {
@@ -161,11 +156,8 @@ class XmlDumper extends \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInje
             $service->appendChild($factory);
         }
         if ($definition->isDeprecated()) {
-            $deprecation = $definition->getDeprecation('%service_id%');
             $deprecated = $this->document->createElement('deprecated');
-            $deprecated->appendChild($this->document->createTextNode($definition->getDeprecation('%service_id%')['message']));
-            $deprecated->setAttribute('package', $deprecation['package']);
-            $deprecated->setAttribute('version', $deprecation['version']);
+            $deprecated->appendChild($this->document->createTextNode($definition->getDeprecationMessage('%service_id%')));
             $service->appendChild($deprecated);
         }
         if ($definition->isAutowired()) {
@@ -179,11 +171,11 @@ class XmlDumper extends \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInje
         }
         if ($callable = $definition->getConfigurator()) {
             $configurator = $this->document->createElement('configurator');
-            if (\is_array($callable) && $callable[0] instanceof \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Definition) {
+            if (\is_array($callable) && $callable[0] instanceof \_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Definition) {
                 $this->addService($callable[0], null, $configurator);
                 $configurator->setAttribute('method', $callable[1]);
             } elseif (\is_array($callable)) {
-                $configurator->setAttribute($callable[0] instanceof \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Reference ? 'service' : 'class', $callable[0]);
+                $configurator->setAttribute($callable[0] instanceof \_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Reference ? 'service' : 'class', $callable[0]);
                 $configurator->setAttribute('method', $callable[1]);
             } else {
                 $configurator->setAttribute('function', $callable);
@@ -192,7 +184,7 @@ class XmlDumper extends \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInje
         }
         $parent->appendChild($service);
     }
-    private function addServiceAlias(string $alias, \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Alias $id, \DOMElement $parent)
+    private function addServiceAlias(string $alias, \_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Alias $id, \DOMElement $parent)
     {
         $service = $this->document->createElement('service');
         $service->setAttribute('id', $alias);
@@ -201,11 +193,8 @@ class XmlDumper extends \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInje
             $service->setAttribute('public', $id->isPublic() ? 'true' : 'false');
         }
         if ($id->isDeprecated()) {
-            $deprecation = $id->getDeprecation('%alias_id%');
             $deprecated = $this->document->createElement('deprecated');
-            $deprecated->appendChild($this->document->createTextNode($deprecation['message']));
-            $deprecated->setAttribute('package', $deprecation['package']);
-            $deprecated->setAttribute('version', $deprecation['version']);
+            $deprecated->appendChild($this->document->createTextNode($id->getDeprecationMessage('%alias_id%')));
             $service->appendChild($deprecated);
         }
         $parent->appendChild($service);
@@ -237,14 +226,14 @@ class XmlDumper extends \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInje
             if ($withKeys) {
                 $element->setAttribute($keyAttribute, $key);
             }
-            if ($value instanceof \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument) {
+            if ($value instanceof \_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument) {
                 $value = $value->getValues()[0];
             }
             if (\is_array($tag = $value)) {
                 $element->setAttribute('type', 'collection');
                 $this->convertParameters($value, $type, $element, 'key');
-            } elseif ($value instanceof \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument || $value instanceof \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument && ($tag = $value->getTaggedIteratorArgument())) {
-                $element->setAttribute('type', $value instanceof \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument ? 'tagged_iterator' : 'tagged_locator');
+            } elseif ($value instanceof \_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument || $value instanceof \_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument && ($tag = $value->getTaggedIteratorArgument())) {
+                $element->setAttribute('type', $value instanceof \_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument ? 'tagged_iterator' : 'tagged_locator');
                 $element->setAttribute('tag', $tag->getTag());
                 if (null !== $tag->getIndexAttribute()) {
                     $element->setAttribute('index-by', $tag->getIndexAttribute());
@@ -255,27 +244,27 @@ class XmlDumper extends \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInje
                         $element->setAttribute('default-priority-method', $tag->getDefaultPriorityMethod());
                     }
                 }
-            } elseif ($value instanceof \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Argument\IteratorArgument) {
+            } elseif ($value instanceof \_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Argument\IteratorArgument) {
                 $element->setAttribute('type', 'iterator');
                 $this->convertParameters($value->getValues(), $type, $element, 'key');
-            } elseif ($value instanceof \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument) {
+            } elseif ($value instanceof \_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument) {
                 $element->setAttribute('type', 'service_locator');
                 $this->convertParameters($value->getValues(), $type, $element, 'key');
-            } elseif ($value instanceof \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Reference) {
+            } elseif ($value instanceof \_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Reference) {
                 $element->setAttribute('type', 'service');
                 $element->setAttribute('id', (string) $value);
                 $behavior = $value->getInvalidBehavior();
-                if (\_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE == $behavior) {
+                if (\_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE == $behavior) {
                     $element->setAttribute('on-invalid', 'null');
-                } elseif (\_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE == $behavior) {
+                } elseif (\_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE == $behavior) {
                     $element->setAttribute('on-invalid', 'ignore');
-                } elseif (\_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE == $behavior) {
+                } elseif (\_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE == $behavior) {
                     $element->setAttribute('on-invalid', 'ignore_uninitialized');
                 }
-            } elseif ($value instanceof \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Definition) {
+            } elseif ($value instanceof \_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Definition) {
                 $element->setAttribute('type', 'service');
                 $this->addService($value, null, $element);
-            } elseif ($value instanceof \_PhpScoperf701e46e48a5\Symfony\Component\ExpressionLanguage\Expression) {
+            } elseif ($value instanceof \_PhpScoper4cbad741edc5\Symfony\Component\ExpressionLanguage\Expression) {
                 $element->setAttribute('type', 'expression');
                 $text = $this->document->createTextNode(self::phpToXml((string) $value));
                 $element->appendChild($text);
@@ -283,15 +272,8 @@ class XmlDumper extends \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInje
                 $element->setAttribute('type', 'binary');
                 $text = $this->document->createTextNode(self::phpToXml(\base64_encode($value)));
                 $element->appendChild($text);
-            } elseif ($value instanceof \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Argument\AbstractArgument) {
-                $element->setAttribute('type', 'abstract');
-                $text = $this->document->createTextNode(self::phpToXml($value->getText()));
-                $element->appendChild($text);
             } else {
                 if (\in_array($value, ['null', 'true', 'false'], \true)) {
-                    $element->setAttribute('type', 'string');
-                }
-                if (\is_string($value) && (\is_numeric($value) || \preg_match('/^0b[01]*$/', $value) || \preg_match('/^0x[0-9a-f]++$/i', $value))) {
                     $element->setAttribute('type', 'string');
                 }
                 $text = $this->document->createTextNode(self::phpToXml($value));
@@ -333,10 +315,10 @@ class XmlDumper extends \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInje
                 return 'true';
             case \false === $value:
                 return 'false';
-            case $value instanceof \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Parameter:
+            case $value instanceof \_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Parameter:
                 return '%' . $value . '%';
             case \is_object($value) || \is_resource($value):
-                throw new \_PhpScoperf701e46e48a5\Symfony\Component\DependencyInjection\Exception\RuntimeException('Unable to dump a service container if a parameter is an object or a resource.');
+                throw new \_PhpScoper4cbad741edc5\Symfony\Component\DependencyInjection\Exception\RuntimeException('Unable to dump a service container if a parameter is an object or a resource.');
             default:
                 return (string) $value;
         }

@@ -8,56 +8,58 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf701e46e48a5\Symfony\Component\Console\Style;
+namespace _PhpScoper4cbad741edc5\Symfony\Component\Console\Style;
 
-use _PhpScoperf701e46e48a5\Symfony\Component\Console\Formatter\OutputFormatterInterface;
-use _PhpScoperf701e46e48a5\Symfony\Component\Console\Helper\ProgressBar;
-use _PhpScoperf701e46e48a5\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use _PhpScoperf701e46e48a5\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoper4cbad741edc5\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use _PhpScoper4cbad741edc5\Symfony\Component\Console\Helper\ProgressBar;
+use _PhpScoper4cbad741edc5\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use _PhpScoper4cbad741edc5\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Decorates output to add console style guide helpers.
  *
  * @author Kevin Bond <kevinbond@gmail.com>
  */
-abstract class OutputStyle implements \_PhpScoperf701e46e48a5\Symfony\Component\Console\Output\OutputInterface, \_PhpScoperf701e46e48a5\Symfony\Component\Console\Style\StyleInterface
+abstract class OutputStyle implements \_PhpScoper4cbad741edc5\Symfony\Component\Console\Output\OutputInterface, \_PhpScoper4cbad741edc5\Symfony\Component\Console\Style\StyleInterface
 {
     private $output;
-    public function __construct(\_PhpScoperf701e46e48a5\Symfony\Component\Console\Output\OutputInterface $output)
+    public function __construct(\_PhpScoper4cbad741edc5\Symfony\Component\Console\Output\OutputInterface $output)
     {
         $this->output = $output;
     }
     /**
      * {@inheritdoc}
      */
-    public function newLine(int $count = 1)
+    public function newLine($count = 1)
     {
         $this->output->write(\str_repeat(\PHP_EOL, $count));
     }
     /**
+     * @param int $max
+     *
      * @return ProgressBar
      */
-    public function createProgressBar(int $max = 0)
+    public function createProgressBar($max = 0)
     {
-        return new \_PhpScoperf701e46e48a5\Symfony\Component\Console\Helper\ProgressBar($this->output, $max);
+        return new \_PhpScoper4cbad741edc5\Symfony\Component\Console\Helper\ProgressBar($this->output, $max);
     }
     /**
      * {@inheritdoc}
      */
-    public function write($messages, bool $newline = \false, int $type = self::OUTPUT_NORMAL)
+    public function write($messages, $newline = \false, $type = self::OUTPUT_NORMAL)
     {
         $this->output->write($messages, $newline, $type);
     }
     /**
      * {@inheritdoc}
      */
-    public function writeln($messages, int $type = self::OUTPUT_NORMAL)
+    public function writeln($messages, $type = self::OUTPUT_NORMAL)
     {
         $this->output->writeln($messages, $type);
     }
     /**
      * {@inheritdoc}
      */
-    public function setVerbosity(int $level)
+    public function setVerbosity($level)
     {
         $this->output->setVerbosity($level);
     }
@@ -71,7 +73,7 @@ abstract class OutputStyle implements \_PhpScoperf701e46e48a5\Symfony\Component\
     /**
      * {@inheritdoc}
      */
-    public function setDecorated(bool $decorated)
+    public function setDecorated($decorated)
     {
         $this->output->setDecorated($decorated);
     }
@@ -85,7 +87,7 @@ abstract class OutputStyle implements \_PhpScoperf701e46e48a5\Symfony\Component\
     /**
      * {@inheritdoc}
      */
-    public function setFormatter(\_PhpScoperf701e46e48a5\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter)
+    public function setFormatter(\_PhpScoper4cbad741edc5\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter)
     {
         $this->output->setFormatter($formatter);
     }
@@ -126,7 +128,7 @@ abstract class OutputStyle implements \_PhpScoperf701e46e48a5\Symfony\Component\
     }
     protected function getErrorOutput()
     {
-        if (!$this->output instanceof \_PhpScoperf701e46e48a5\Symfony\Component\Console\Output\ConsoleOutputInterface) {
+        if (!$this->output instanceof \_PhpScoper4cbad741edc5\Symfony\Component\Console\Output\ConsoleOutputInterface) {
             return $this->output;
         }
         return $this->output->getErrorOutput();

@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf701e46e48a5\Symfony\Component\Console\Exception;
+namespace _PhpScoper4cbad741edc5\Symfony\Component\Console\Exception;
 
 /**
  * @author Jérôme Tamarelle <jerome@tamarelle.net>
  */
-class LogicException extends \LogicException implements \_PhpScoperf701e46e48a5\Symfony\Component\Console\Exception\ExceptionInterface
+class LogicException extends \LogicException implements \_PhpScoper4cbad741edc5\Symfony\Component\Console\Exception\ExceptionInterface
 {
 }

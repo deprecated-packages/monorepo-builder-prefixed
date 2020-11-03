@@ -1,10 +1,10 @@
 <?php
 
-namespace _PhpScoperf701e46e48a5\Jean85;
+namespace _PhpScoper4cbad741edc5\Jean85;
 
 class Version
 {
-    const SHORT_COMMIT_LENGTH = \_PhpScoperf701e46e48a5\Jean85\PrettyVersions::SHORT_COMMIT_LENGTH;
+    const SHORT_COMMIT_LENGTH = 7;
     /** @var string */
     private $packageName;
     /** @var string */
@@ -13,6 +13,11 @@ class Version
     private $commitHash;
     /** @var bool */
     private $versionIsTagged;
+    /**
+     * Version constructor.
+     * @param string $packageName
+     * @param string $version
+     */
     public function __construct(string $packageName, string $version)
     {
         $this->packageName = $packageName;

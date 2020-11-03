@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace Symplify\PackageBuilder\Composer;
 
 use Composer\Autoload\ClassLoader;
-use _PhpScoperf701e46e48a5\Nette\Utils\Strings;
+use _PhpScoper4cbad741edc5\Nette\Utils\Strings;
 use ReflectionClass;
 /**
  * @see \Symplify\PackageBuilder\Tests\Composer\VendorDirProviderTest
@@ -15,7 +15,7 @@ final class VendorDirProvider
     {
         $rootFolder = \getenv('SystemDrive', \true) . \DIRECTORY_SEPARATOR;
         $path = __DIR__;
-        while (!\_PhpScoperf701e46e48a5\Nette\Utils\Strings::endsWith($path, 'vendor') && $path !== $rootFolder) {
+        while (!\_PhpScoper4cbad741edc5\Nette\Utils\Strings::endsWith($path, 'vendor') && $path !== $rootFolder) {
             $path = \dirname($path);
         }
         if ($path !== $rootFolder) {

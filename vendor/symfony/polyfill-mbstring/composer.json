@@ -22,11 +22,11 @@
         }
     ],
     "require": {
-        "php": ">=7.1"
+        "php": ">=5.3.3"
     },
     "autoload": {
         "psr-4": {
-            "_PhpScoperf701e46e48a5\\Symfony\\Polyfill\\Mbstring\\": ""
+            "_PhpScoper4cbad741edc5\\Symfony\\Polyfill\\Mbstring\\": ""
         },
         "files": [
             "bootstrap.php"
@@ -38,11 +38,7 @@
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
-            "dev-main": "1.20-dev"
-        },
-        "thanks": {
-            "name": "symfony\/polyfill",
-            "url": "https:\/\/github.com\/symfony\/polyfill"
+            "dev-master": "1.1-dev"
         }
     }
 }

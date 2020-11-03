@@ -8,24 +8,24 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf701e46e48a5\Symfony\Component\HttpKernel\EventListener;
+namespace _PhpScoper4cbad741edc5\Symfony\Component\HttpKernel\EventListener;
 
-use _PhpScoperf701e46e48a5\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use _PhpScoperf701e46e48a5\Symfony\Component\HttpFoundation\RequestMatcherInterface;
-use _PhpScoperf701e46e48a5\Symfony\Component\HttpFoundation\RequestStack;
-use _PhpScoperf701e46e48a5\Symfony\Component\HttpKernel\Event\ExceptionEvent;
-use _PhpScoperf701e46e48a5\Symfony\Component\HttpKernel\Event\ResponseEvent;
-use _PhpScoperf701e46e48a5\Symfony\Component\HttpKernel\Event\TerminateEvent;
-use _PhpScoperf701e46e48a5\Symfony\Component\HttpKernel\KernelEvents;
-use _PhpScoperf701e46e48a5\Symfony\Component\HttpKernel\Profiler\Profiler;
+use _PhpScoper4cbad741edc5\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use _PhpScoper4cbad741edc5\Symfony\Component\HttpFoundation\RequestMatcherInterface;
+use _PhpScoper4cbad741edc5\Symfony\Component\HttpFoundation\RequestStack;
+use _PhpScoper4cbad741edc5\Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+use _PhpScoper4cbad741edc5\Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
+use _PhpScoper4cbad741edc5\Symfony\Component\HttpKernel\Event\PostResponseEvent;
+use _PhpScoper4cbad741edc5\Symfony\Component\HttpKernel\KernelEvents;
+use _PhpScoper4cbad741edc5\Symfony\Component\HttpKernel\Profiler\Profiler;
 /**
  * ProfilerListener collects data for the current request by listening to the kernel events.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  *
- * @final
+ * @final since Symfony 4.3
  */
-class ProfilerListener implements \_PhpScoperf701e46e48a5\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class ProfilerListener implements \_PhpScoper4cbad741edc5\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     protected $profiler;
     protected $matcher;
@@ -39,7 +39,7 @@ class ProfilerListener implements \_PhpScoperf701e46e48a5\Symfony\Component\Even
      * @param bool $onlyException      True if the profiler only collects data when an exception occurs, false otherwise
      * @param bool $onlyMasterRequests True if the profiler only collects data when the request is a master request, false otherwise
      */
-    public function __construct(\_PhpScoperf701e46e48a5\Symfony\Component\HttpKernel\Profiler\Profiler $profiler, \_PhpScoperf701e46e48a5\Symfony\Component\HttpFoundation\RequestStack $requestStack, \_PhpScoperf701e46e48a5\Symfony\Component\HttpFoundation\RequestMatcherInterface $matcher = null, bool $onlyException = \false, bool $onlyMasterRequests = \false)
+    public function __construct(\_PhpScoper4cbad741edc5\Symfony\Component\HttpKernel\Profiler\Profiler $profiler, \_PhpScoper4cbad741edc5\Symfony\Component\HttpFoundation\RequestStack $requestStack, \_PhpScoper4cbad741edc5\Symfony\Component\HttpFoundation\RequestMatcherInterface $matcher = null, bool $onlyException = \false, bool $onlyMasterRequests = \false)
     {
         $this->profiler = $profiler;
         $this->matcher = $matcher;
@@ -52,7 +52,7 @@ class ProfilerListener implements \_PhpScoperf701e46e48a5\Symfony\Component\Even
     /**
      * Handles the onKernelException event.
      */
-    public function onKernelException(\_PhpScoperf701e46e48a5\Symfony\Component\HttpKernel\Event\ExceptionEvent $event)
+    public function onKernelException(\_PhpScoper4cbad741edc5\Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent $event)
     {
         if ($this->onlyMasterRequests && !$event->isMasterRequest()) {
             return;
@@ -62,7 +62,7 @@ class ProfilerListener implements \_PhpScoperf701e46e48a5\Symfony\Component\Even
     /**
      * Handles the onKernelResponse event.
      */
-    public function onKernelResponse(\_PhpScoperf701e46e48a5\Symfony\Component\HttpKernel\Event\ResponseEvent $event)
+    public function onKernelResponse(\_PhpScoper4cbad741edc5\Symfony\Component\HttpKernel\Event\FilterResponseEvent $event)
     {
         $master = $event->isMasterRequest();
         if ($this->onlyMasterRequests && !$master) {
@@ -83,7 +83,7 @@ class ProfilerListener implements \_PhpScoperf701e46e48a5\Symfony\Component\Even
         $this->profiles[$request] = $profile;
         $this->parents[$request] = $this->requestStack->getParentRequest();
     }
-    public function onKernelTerminate(\_PhpScoperf701e46e48a5\Symfony\Component\HttpKernel\Event\TerminateEvent $event)
+    public function onKernelTerminate(\_PhpScoper4cbad741edc5\Symfony\Component\HttpKernel\Event\PostResponseEvent $event)
     {
         // attach children to parents
         foreach ($this->profiles as $request) {
@@ -100,8 +100,8 @@ class ProfilerListener implements \_PhpScoperf701e46e48a5\Symfony\Component\Even
         $this->profiles = new \SplObjectStorage();
         $this->parents = new \SplObjectStorage();
     }
-    public static function getSubscribedEvents() : array
+    public static function getSubscribedEvents()
     {
-        return [\_PhpScoperf701e46e48a5\Symfony\Component\HttpKernel\KernelEvents::RESPONSE => ['onKernelResponse', -100], \_PhpScoperf701e46e48a5\Symfony\Component\HttpKernel\KernelEvents::EXCEPTION => ['onKernelException', 0], \_PhpScoperf701e46e48a5\Symfony\Component\HttpKernel\KernelEvents::TERMINATE => ['onKernelTerminate', -1024]];
+        return [\_PhpScoper4cbad741edc5\Symfony\Component\HttpKernel\KernelEvents::RESPONSE => ['onKernelResponse', -100], \_PhpScoper4cbad741edc5\Symfony\Component\HttpKernel\KernelEvents::EXCEPTION => ['onKernelException', 0], \_PhpScoper4cbad741edc5\Symfony\Component\HttpKernel\KernelEvents::TERMINATE => ['onKernelTerminate', -1024]];
     }
 }

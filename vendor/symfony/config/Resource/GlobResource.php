@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf701e46e48a5\Symfony\Component\Config\Resource;
+namespace _PhpScoper4cbad741edc5\Symfony\Component\Config\Resource;
 
-use _PhpScoperf701e46e48a5\Symfony\Component\Finder\Finder;
-use _PhpScoperf701e46e48a5\Symfony\Component\Finder\Glob;
+use _PhpScoper4cbad741edc5\Symfony\Component\Finder\Finder;
+use _PhpScoper4cbad741edc5\Symfony\Component\Finder\Glob;
 /**
  * GlobResource represents a set of resources stored on the filesystem.
  *
@@ -19,9 +19,9 @@ use _PhpScoperf701e46e48a5\Symfony\Component\Finder\Glob;
  *
  * @author Nicolas Grekas <p@tchwork.com>
  *
- * @final
+ * @final since Symfony 4.3
  */
-class GlobResource implements \IteratorAggregate, \_PhpScoperf701e46e48a5\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class GlobResource implements \IteratorAggregate, \_PhpScoper4cbad741edc5\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
 {
     private $prefix;
     private $pattern;
@@ -29,7 +29,6 @@ class GlobResource implements \IteratorAggregate, \_PhpScoperf701e46e48a5\Symfon
     private $hash;
     private $forExclusion;
     private $excludedPrefixes;
-    private $globBrace;
     /**
      * @param string $prefix    A directory prefix
      * @param string $pattern   A glob pattern
@@ -45,26 +44,25 @@ class GlobResource implements \IteratorAggregate, \_PhpScoperf701e46e48a5\Symfon
         $this->recursive = $recursive;
         $this->forExclusion = $forExclusion;
         $this->excludedPrefixes = $excludedPrefixes;
-        $this->globBrace = \defined('GLOB_BRACE') ? \GLOB_BRACE : 0;
         if (\false === $this->prefix) {
             throw new \InvalidArgumentException(\sprintf('The path "%s" does not exist.', $prefix));
         }
     }
-    public function getPrefix() : string
+    public function getPrefix()
     {
         return $this->prefix;
     }
     /**
      * {@inheritdoc}
      */
-    public function __toString() : string
+    public function __toString()
     {
         return 'glob.' . $this->prefix . (int) $this->recursive . $this->pattern . (int) $this->forExclusion . \implode("\0", $this->excludedPrefixes);
     }
     /**
      * {@inheritdoc}
      */
-    public function isFresh(int $timestamp) : bool
+    public function isFresh($timestamp)
     {
         $hash = $this->computeHash();
         if (null === $this->hash) {
@@ -82,24 +80,17 @@ class GlobResource implements \IteratorAggregate, \_PhpScoperf701e46e48a5\Symfon
         }
         return ['prefix', 'pattern', 'recursive', 'hash', 'forExclusion', 'excludedPrefixes'];
     }
-    public function getIterator() : \Traversable
+    /**
+     * @return \Traversable
+     */
+    public function getIterator()
     {
         if (!\file_exists($this->prefix) || !$this->recursive && '' === $this->pattern) {
             return;
         }
         $prefix = \str_replace('\\', '/', $this->prefix);
-        $paths = null;
-        if (0 !== \strpos($this->prefix, 'phar://') && \false === \strpos($this->pattern, '/**/')) {
-            if ($this->globBrace || \false === \strpos($this->pattern, '{')) {
-                $paths = \glob($this->prefix . $this->pattern, \GLOB_NOSORT | $this->globBrace);
-            } elseif (\false === \strpos($this->pattern, '\\') || !\preg_match('/\\\\[,{}]/', $this->pattern)) {
-                foreach ($this->expandGlob($this->pattern) as $p) {
-                    $paths[] = \glob($this->prefix . $p, \GLOB_NOSORT);
-                }
-                $paths = \array_merge(...$paths);
-            }
-        }
-        if (null !== $paths) {
+        if (0 !== \strpos($this->prefix, 'phar://') && \false === \strpos($this->pattern, '/**/') && (\defined('GLOB_BRACE') || \false === \strpos($this->pattern, '{'))) {
+            $paths = \glob($this->prefix . $this->pattern, \GLOB_NOSORT | (\defined('GLOB_BRACE') ? \GLOB_BRACE : 0));
             \sort($paths);
             foreach ($paths as $path) {
                 if ($this->excludedPrefixes) {
@@ -135,11 +126,11 @@ class GlobResource implements \IteratorAggregate, \_PhpScoperf701e46e48a5\Symfon
             }
             return;
         }
-        if (!\class_exists(\_PhpScoperf701e46e48a5\Symfony\Component\Finder\Finder::class)) {
+        if (!\class_exists(\_PhpScoper4cbad741edc5\Symfony\Component\Finder\Finder::class)) {
             throw new \LogicException(\sprintf('Extended glob pattern "%s" cannot be used as the Finder component is not installed.', $this->pattern));
         }
-        $finder = new \_PhpScoperf701e46e48a5\Symfony\Component\Finder\Finder();
-        $regex = \_PhpScoperf701e46e48a5\Symfony\Component\Finder\Glob::toRegex($this->pattern);
+        $finder = new \_PhpScoper4cbad741edc5\Symfony\Component\Finder\Finder();
+        $regex = \_PhpScoper4cbad741edc5\Symfony\Component\Finder\Glob::toRegex($this->pattern);
         if ($this->recursive) {
             $regex = \substr_replace($regex, '(/|$)', -2, 1);
         }
@@ -166,29 +157,5 @@ class GlobResource implements \IteratorAggregate, \_PhpScoperf701e46e48a5\Symfon
             \hash_update($hash, $path . "\n");
         }
         return \hash_final($hash);
-    }
-    private function expandGlob(string $pattern) : array
-    {
-        $segments = \preg_split('/\\{([^{}]*+)\\}/', $pattern, -1, \PREG_SPLIT_DELIM_CAPTURE);
-        $paths = [$segments[0]];
-        $patterns = [];
-        for ($i = 1; $i < \count($segments); $i += 2) {
-            $patterns = [];
-            foreach (\explode(',', $segments[$i]) as $s) {
-                foreach ($paths as $p) {
-                    $patterns[] = $p . $s . $segments[1 + $i];
-                }
-            }
-            $paths = $patterns;
-        }
-        $j = 0;
-        foreach ($patterns as $i => $p) {
-            if (\false !== \strpos($p, '{')) {
-                $p = $this->expandGlob($p);
-                \array_splice($paths, $i + $j, 1, $p);
-                $j += \count($p) - 1;
-            }
-        }
-        return $paths;
     }
 }
