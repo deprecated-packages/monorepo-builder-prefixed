@@ -1,6 +1,6 @@
 # Not only Composer tools to build a Monorepo
 
-[![Downloads total](https://img.shields.io/packagist/dt/symplify/monorepo-builder-prefixed.svg?style=flat-square)](https://packagist.org/packages/symplify/monorepo-builder-prefixed/stats)
+[![Downloads total](https://img.shields.io/packagist/dt/symplify/monorepo-builder.svg?style=flat-square)](https://packagist.org/packages/symplify/monorepo-builder/stats)
 
 Do you maintain [a monorepo](https://tomasvotruba.com/blog/2019/10/28/all-you-always-wanted-to-know-about-monorepo-but-were-afraid-to-ask/) with more packages?
 
