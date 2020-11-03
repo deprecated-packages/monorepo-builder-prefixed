@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper87c95ce1b4e5\Symfony\Component\DependencyInjection\Compiler;
+namespace _PhpScoperf1163522a13e\Symfony\Component\DependencyInjection\Compiler;
 
-use _PhpScoper87c95ce1b4e5\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use _PhpScoper87c95ce1b4e5\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScoper87c95ce1b4e5\Symfony\Component\DependencyInjection\ContainerInterface;
-use _PhpScoper87c95ce1b4e5\Symfony\Component\DependencyInjection\Definition;
-use _PhpScoper87c95ce1b4e5\Symfony\Component\DependencyInjection\Reference;
+use _PhpScoperf1163522a13e\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use _PhpScoperf1163522a13e\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoperf1163522a13e\Symfony\Component\DependencyInjection\ContainerInterface;
+use _PhpScoperf1163522a13e\Symfony\Component\DependencyInjection\Definition;
+use _PhpScoperf1163522a13e\Symfony\Component\DependencyInjection\Reference;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class RegisterReverseContainerPass implements \_PhpScoper87c95ce1b4e5\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class RegisterReverseContainerPass implements \_PhpScoperf1163522a13e\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     private $beforeRemoving;
     private $serviceId;
@@ -29,27 +29,27 @@ class RegisterReverseContainerPass implements \_PhpScoper87c95ce1b4e5\Symfony\Co
         $this->serviceId = $serviceId;
         $this->tagName = $tagName;
     }
-    public function process(\_PhpScoper87c95ce1b4e5\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\_PhpScoperf1163522a13e\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         if (!$container->hasDefinition($this->serviceId)) {
             return;
         }
-        $refType = $this->beforeRemoving ? \_PhpScoper87c95ce1b4e5\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE : \_PhpScoper87c95ce1b4e5\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE;
+        $refType = $this->beforeRemoving ? \_PhpScoperf1163522a13e\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE : \_PhpScoperf1163522a13e\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE;
         $services = [];
         foreach ($container->findTaggedServiceIds($this->tagName) as $id => $tags) {
-            $services[$id] = new \_PhpScoper87c95ce1b4e5\Symfony\Component\DependencyInjection\Reference($id, $refType);
+            $services[$id] = new \_PhpScoperf1163522a13e\Symfony\Component\DependencyInjection\Reference($id, $refType);
         }
         if ($this->beforeRemoving) {
             // prevent inlining of the reverse container
-            $services[$this->serviceId] = new \_PhpScoper87c95ce1b4e5\Symfony\Component\DependencyInjection\Reference($this->serviceId, $refType);
+            $services[$this->serviceId] = new \_PhpScoperf1163522a13e\Symfony\Component\DependencyInjection\Reference($this->serviceId, $refType);
         }
         $locator = $container->getDefinition($this->serviceId)->getArgument(1);
-        if ($locator instanceof \_PhpScoper87c95ce1b4e5\Symfony\Component\DependencyInjection\Reference) {
+        if ($locator instanceof \_PhpScoperf1163522a13e\Symfony\Component\DependencyInjection\Reference) {
             $locator = $container->getDefinition((string) $locator);
         }
-        if ($locator instanceof \_PhpScoper87c95ce1b4e5\Symfony\Component\DependencyInjection\Definition) {
+        if ($locator instanceof \_PhpScoperf1163522a13e\Symfony\Component\DependencyInjection\Definition) {
             foreach ($services as $id => $ref) {
-                $services[$id] = new \_PhpScoper87c95ce1b4e5\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument($ref);
+                $services[$id] = new \_PhpScoperf1163522a13e\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument($ref);
             }
             $locator->replaceArgument(0, $services);
         } else {
