@@ -27,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "_PhpScoperab3ccffcffcd\\Symfony\\Polyfill\\Intl\\Grapheme\\": ""
+            "_PhpScoper8068fe8d25a3\\Symfony\\Polyfill\\Intl\\Grapheme\\": ""
         },
         "files": [
             "bootstrap.php"

@@ -1,6 +1,6 @@
 <?php
 
-namespace _PhpScoperab3ccffcffcd;
+namespace _PhpScoper8068fe8d25a3;
 
 if ('cli-server' !== \PHP_SAPI) {
     // safe guard against unwanted execution

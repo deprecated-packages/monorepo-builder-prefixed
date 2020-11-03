@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperab3ccffcffcd\Symfony\Component\HttpKernel\Event;
+namespace _PhpScoper8068fe8d25a3\Symfony\Component\HttpKernel\Event;
 
-use _PhpScoperab3ccffcffcd\Symfony\Component\HttpFoundation\Request;
-use _PhpScoperab3ccffcffcd\Symfony\Component\HttpKernel\HttpKernelInterface;
+use _PhpScoper8068fe8d25a3\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper8068fe8d25a3\Symfony\Component\HttpKernel\HttpKernelInterface;
 /**
  * Allows to create a response for a thrown exception.
  *
@@ -25,14 +25,14 @@ use _PhpScoperab3ccffcffcd\Symfony\Component\HttpKernel\HttpKernelInterface;
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
-final class ExceptionEvent extends \_PhpScoperab3ccffcffcd\Symfony\Component\HttpKernel\Event\RequestEvent
+final class ExceptionEvent extends \_PhpScoper8068fe8d25a3\Symfony\Component\HttpKernel\Event\RequestEvent
 {
     private $throwable;
     /**
      * @var bool
      */
     private $allowCustomResponseCode = \false;
-    public function __construct(\_PhpScoperab3ccffcffcd\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \_PhpScoperab3ccffcffcd\Symfony\Component\HttpFoundation\Request $request, int $requestType, \Throwable $e)
+    public function __construct(\_PhpScoper8068fe8d25a3\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \_PhpScoper8068fe8d25a3\Symfony\Component\HttpFoundation\Request $request, int $requestType, \Throwable $e)
     {
         parent::__construct($kernel, $request, $requestType);
         $this->setThrowable($e);
