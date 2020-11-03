@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperddf2171d3d2c\Symfony\Component\DependencyInjection\Loader;
+namespace _PhpScoper15dc67236b17\Symfony\Component\DependencyInjection\Loader;
 
 /**
  * GlobFileLoader loads files from a glob pattern.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class GlobFileLoader extends \_PhpScoperddf2171d3d2c\Symfony\Component\DependencyInjection\Loader\FileLoader
+class GlobFileLoader extends \_PhpScoper15dc67236b17\Symfony\Component\DependencyInjection\Loader\FileLoader
 {
     /**
      * {@inheritdoc}
      */
-    public function load($resource, $type = null)
+    public function load($resource, string $type = null)
     {
         foreach ($this->glob($resource, \false, $globResource) as $path => $info) {
             $this->import($path);
@@ -30,7 +30,7 @@ class GlobFileLoader extends \_PhpScoperddf2171d3d2c\Symfony\Component\Dependenc
     /**
      * {@inheritdoc}
      */
-    public function supports($resource, $type = null)
+    public function supports($resource, string $type = null)
     {
         return 'glob' === $type;
     }

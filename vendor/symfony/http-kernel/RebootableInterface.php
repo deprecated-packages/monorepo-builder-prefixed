@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperddf2171d3d2c\Symfony\Component\HttpKernel;
+namespace _PhpScoper15dc67236b17\Symfony\Component\HttpKernel;
 
 /**
  * Allows the Kernel to be rebooted using a temporary cache directory.
@@ -25,5 +25,5 @@ interface RebootableInterface
      *
      * @param string|null $warmupDir pass null to reboot in the regular cache directory
      */
-    public function reboot($warmupDir);
+    public function reboot(?string $warmupDir);
 }

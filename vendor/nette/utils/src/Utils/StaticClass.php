@@ -5,26 +5,25 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace _PhpScoperddf2171d3d2c\Nette;
+namespace _PhpScoper15dc67236b17\Nette;
 
 /**
  * Static class.
  */
 trait StaticClass
 {
-    /**
-     * @throws \Error
-     */
+    /** @throws \Error */
     public final function __construct()
     {
         throw new \Error('Class ' . \get_class($this) . ' is static and cannot be instantiated.');
     }
     /**
      * Call to undefined static method.
+     * @return void
      * @throws MemberAccessException
      */
     public static function __callStatic(string $name, array $args)
     {
-        \_PhpScoperddf2171d3d2c\Nette\Utils\ObjectHelpers::strictStaticCall(static::class, $name);
+        \_PhpScoper15dc67236b17\Nette\Utils\ObjectHelpers::strictStaticCall(static::class, $name);
     }
 }

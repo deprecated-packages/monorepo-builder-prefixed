@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperddf2171d3d2c\Symfony\Component\Console\Output;
+namespace _PhpScoper15dc67236b17\Symfony\Component\Console\Output;
 
-use _PhpScoperddf2171d3d2c\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use _PhpScoper15dc67236b17\Symfony\Component\Console\Formatter\OutputFormatterInterface;
 /**
  * OutputInterface is the interface implemented by all Output classes.
  *
@@ -33,20 +33,18 @@ interface OutputInterface
      * @param bool            $newline  Whether to add a newline
      * @param int             $options  A bitmask of options (one of the OUTPUT or VERBOSITY constants), 0 is considered the same as self::OUTPUT_NORMAL | self::VERBOSITY_NORMAL
      */
-    public function write($messages, $newline = \false, $options = 0);
+    public function write($messages, bool $newline = \false, int $options = 0);
     /**
      * Writes a message to the output and adds a newline at the end.
      *
      * @param string|iterable $messages The message as an iterable of strings or a single string
      * @param int             $options  A bitmask of options (one of the OUTPUT or VERBOSITY constants), 0 is considered the same as self::OUTPUT_NORMAL | self::VERBOSITY_NORMAL
      */
-    public function writeln($messages, $options = 0);
+    public function writeln($messages, int $options = 0);
     /**
      * Sets the verbosity of the output.
-     *
-     * @param int $level The level of verbosity (one of the VERBOSITY constants)
      */
-    public function setVerbosity($level);
+    public function setVerbosity(int $level);
     /**
      * Gets the current verbosity of the output.
      *
@@ -79,17 +77,15 @@ interface OutputInterface
     public function isDebug();
     /**
      * Sets the decorated flag.
-     *
-     * @param bool $decorated Whether to decorate the messages
      */
-    public function setDecorated($decorated);
+    public function setDecorated(bool $decorated);
     /**
      * Gets the decorated flag.
      *
      * @return bool true if the output will decorate messages, false otherwise
      */
     public function isDecorated();
-    public function setFormatter(\_PhpScoperddf2171d3d2c\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter);
+    public function setFormatter(\_PhpScoper15dc67236b17\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter);
     /**
      * Returns current output formatter instance.
      *

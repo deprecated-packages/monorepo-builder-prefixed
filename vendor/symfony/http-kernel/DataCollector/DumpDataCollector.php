@@ -8,25 +8,25 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperddf2171d3d2c\Symfony\Component\HttpKernel\DataCollector;
+namespace _PhpScoper15dc67236b17\Symfony\Component\HttpKernel\DataCollector;
 
-use _PhpScoperddf2171d3d2c\Symfony\Component\HttpFoundation\Request;
-use _PhpScoperddf2171d3d2c\Symfony\Component\HttpFoundation\RequestStack;
-use _PhpScoperddf2171d3d2c\Symfony\Component\HttpFoundation\Response;
-use _PhpScoperddf2171d3d2c\Symfony\Component\Stopwatch\Stopwatch;
-use _PhpScoperddf2171d3d2c\Symfony\Component\VarDumper\Cloner\Data;
-use _PhpScoperddf2171d3d2c\Symfony\Component\VarDumper\Cloner\VarCloner;
-use _PhpScoperddf2171d3d2c\Symfony\Component\VarDumper\Dumper\CliDumper;
-use _PhpScoperddf2171d3d2c\Symfony\Component\VarDumper\Dumper\ContextProvider\SourceContextProvider;
-use _PhpScoperddf2171d3d2c\Symfony\Component\VarDumper\Dumper\DataDumperInterface;
-use _PhpScoperddf2171d3d2c\Symfony\Component\VarDumper\Dumper\HtmlDumper;
-use _PhpScoperddf2171d3d2c\Symfony\Component\VarDumper\Server\Connection;
+use _PhpScoper15dc67236b17\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper15dc67236b17\Symfony\Component\HttpFoundation\RequestStack;
+use _PhpScoper15dc67236b17\Symfony\Component\HttpFoundation\Response;
+use _PhpScoper15dc67236b17\Symfony\Component\Stopwatch\Stopwatch;
+use _PhpScoper15dc67236b17\Symfony\Component\VarDumper\Cloner\Data;
+use _PhpScoper15dc67236b17\Symfony\Component\VarDumper\Cloner\VarCloner;
+use _PhpScoper15dc67236b17\Symfony\Component\VarDumper\Dumper\CliDumper;
+use _PhpScoper15dc67236b17\Symfony\Component\VarDumper\Dumper\ContextProvider\SourceContextProvider;
+use _PhpScoper15dc67236b17\Symfony\Component\VarDumper\Dumper\DataDumperInterface;
+use _PhpScoper15dc67236b17\Symfony\Component\VarDumper\Dumper\HtmlDumper;
+use _PhpScoper15dc67236b17\Symfony\Component\VarDumper\Server\Connection;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  *
- * @final since Symfony 4.3
+ * @final
  */
-class DumpDataCollector extends \_PhpScoperddf2171d3d2c\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \_PhpScoperddf2171d3d2c\Symfony\Component\VarDumper\Dumper\DataDumperInterface
+class DumpDataCollector extends \_PhpScoper15dc67236b17\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \_PhpScoper15dc67236b17\Symfony\Component\VarDumper\Dumper\DataDumperInterface
 {
     private $stopwatch;
     private $fileLinkFormat;
@@ -42,7 +42,7 @@ class DumpDataCollector extends \_PhpScoperddf2171d3d2c\Symfony\Component\HttpKe
     /**
      * @param DataDumperInterface|Connection|null $dumper
      */
-    public function __construct(\_PhpScoperddf2171d3d2c\Symfony\Component\Stopwatch\Stopwatch $stopwatch = null, $fileLinkFormat = null, string $charset = null, \_PhpScoperddf2171d3d2c\Symfony\Component\HttpFoundation\RequestStack $requestStack = null, $dumper = null)
+    public function __construct(\_PhpScoper15dc67236b17\Symfony\Component\Stopwatch\Stopwatch $stopwatch = null, $fileLinkFormat = null, string $charset = null, \_PhpScoper15dc67236b17\Symfony\Component\HttpFoundation\RequestStack $requestStack = null, $dumper = null)
     {
         $this->stopwatch = $stopwatch;
         $this->fileLinkFormat = $fileLinkFormat ?: \ini_get('xdebug.file_link_format') ?: \get_cfg_var('xdebug.file_link_format');
@@ -51,19 +51,19 @@ class DumpDataCollector extends \_PhpScoperddf2171d3d2c\Symfony\Component\HttpKe
         $this->dumper = $dumper;
         // All clones share these properties by reference:
         $this->rootRefs = [&$this->data, &$this->dataCount, &$this->isCollected, &$this->clonesCount];
-        $this->sourceContextProvider = $dumper instanceof \_PhpScoperddf2171d3d2c\Symfony\Component\VarDumper\Server\Connection && isset($dumper->getContextProviders()['source']) ? $dumper->getContextProviders()['source'] : new \_PhpScoperddf2171d3d2c\Symfony\Component\VarDumper\Dumper\ContextProvider\SourceContextProvider($this->charset);
+        $this->sourceContextProvider = $dumper instanceof \_PhpScoper15dc67236b17\Symfony\Component\VarDumper\Server\Connection && isset($dumper->getContextProviders()['source']) ? $dumper->getContextProviders()['source'] : new \_PhpScoper15dc67236b17\Symfony\Component\VarDumper\Dumper\ContextProvider\SourceContextProvider($this->charset);
     }
     public function __clone()
     {
         $this->clonesIndex = ++$this->clonesCount;
     }
-    public function dump(\_PhpScoperddf2171d3d2c\Symfony\Component\VarDumper\Cloner\Data $data)
+    public function dump(\_PhpScoper15dc67236b17\Symfony\Component\VarDumper\Cloner\Data $data)
     {
         if ($this->stopwatch) {
             $this->stopwatch->start('dump');
         }
         list('name' => $name, 'file' => $file, 'line' => $line, 'file_excerpt' => $fileExcerpt) = $this->sourceContextProvider->getContext();
-        if ($this->dumper instanceof \_PhpScoperddf2171d3d2c\Symfony\Component\VarDumper\Server\Connection) {
+        if ($this->dumper instanceof \_PhpScoper15dc67236b17\Symfony\Component\VarDumper\Server\Connection) {
             if (!$this->dumper->write($data)) {
                 $this->isCollected = \false;
             }
@@ -81,12 +81,7 @@ class DumpDataCollector extends \_PhpScoperddf2171d3d2c\Symfony\Component\HttpKe
             $this->stopwatch->stop('dump');
         }
     }
-    /**
-     * {@inheritdoc}
-     *
-     * @param \Throwable|null $exception
-     */
-    public function collect(\_PhpScoperddf2171d3d2c\Symfony\Component\HttpFoundation\Request $request, \_PhpScoperddf2171d3d2c\Symfony\Component\HttpFoundation\Response $response)
+    public function collect(\_PhpScoper15dc67236b17\Symfony\Component\HttpFoundation\Request $request, \_PhpScoper15dc67236b17\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
     {
         if (!$this->dataCount) {
             $this->data = [];
@@ -98,10 +93,10 @@ class DumpDataCollector extends \_PhpScoperddf2171d3d2c\Symfony\Component\HttpKe
         // In all other conditions that remove the web debug toolbar, dumps are written on the output.
         if (!$this->requestStack || !$response->headers->has('X-Debug-Token') || $response->isRedirection() || $response->headers->has('Content-Type') && \false === \strpos($response->headers->get('Content-Type'), 'html') || 'html' !== $request->getRequestFormat() || \false === \strripos($response->getContent(), '</body>')) {
             if ($response->headers->has('Content-Type') && \false !== \strpos($response->headers->get('Content-Type'), 'html')) {
-                $dumper = new \_PhpScoperddf2171d3d2c\Symfony\Component\VarDumper\Dumper\HtmlDumper('php://output', $this->charset);
+                $dumper = new \_PhpScoper15dc67236b17\Symfony\Component\VarDumper\Dumper\HtmlDumper('php://output', $this->charset);
                 $dumper->setDisplayOptions(['fileLinkFormat' => $this->fileLinkFormat]);
             } else {
-                $dumper = new \_PhpScoperddf2171d3d2c\Symfony\Component\VarDumper\Dumper\CliDumper('php://output', $this->charset);
+                $dumper = new \_PhpScoper15dc67236b17\Symfony\Component\VarDumper\Dumper\CliDumper('php://output', $this->charset);
                 if (\method_exists($dumper, 'setDisplayOptions')) {
                     $dumper->setDisplayOptions(['fileLinkFormat' => $this->fileLinkFormat]);
                 }
@@ -150,18 +145,18 @@ class DumpDataCollector extends \_PhpScoperddf2171d3d2c\Symfony\Component\HttpKe
         $this->dataCount = \count($this->data);
         self::__construct($this->stopwatch, $fileLinkFormat, $charset);
     }
-    public function getDumpsCount()
+    public function getDumpsCount() : int
     {
         return $this->dataCount;
     }
-    public function getDumps($format, $maxDepthLimit = -1, $maxItemsPerDepth = -1)
+    public function getDumps($format, $maxDepthLimit = -1, $maxItemsPerDepth = -1) : array
     {
         $data = \fopen('php://memory', 'r+b');
         if ('html' === $format) {
-            $dumper = new \_PhpScoperddf2171d3d2c\Symfony\Component\VarDumper\Dumper\HtmlDumper($data, $this->charset);
+            $dumper = new \_PhpScoper15dc67236b17\Symfony\Component\VarDumper\Dumper\HtmlDumper($data, $this->charset);
             $dumper->setDisplayOptions(['fileLinkFormat' => $this->fileLinkFormat]);
         } else {
-            throw new \InvalidArgumentException(\sprintf('Invalid dump format: %s', $format));
+            throw new \InvalidArgumentException(\sprintf('Invalid dump format: "%s".', $format));
         }
         $dumps = [];
         if (!$this->dataCount) {
@@ -176,7 +171,7 @@ class DumpDataCollector extends \_PhpScoperddf2171d3d2c\Symfony\Component\HttpKe
         }
         return $dumps;
     }
-    public function getName()
+    public function getName() : string
     {
         return 'dump';
     }
@@ -191,16 +186,11 @@ class DumpDataCollector extends \_PhpScoperddf2171d3d2c\Symfony\Component\HttpKe
             while (0 !== \stripos($h[$i], 'Content-Type:')) {
                 --$i;
             }
-            if (isset($_SERVER['VAR_DUMPER_FORMAT'])) {
-                $html = 'html' === $_SERVER['VAR_DUMPER_FORMAT'];
-            } else {
-                $html = !\in_array(\PHP_SAPI, ['cli', 'phpdbg'], \true) && \stripos($h[$i], 'html');
-            }
-            if ($html) {
-                $dumper = new \_PhpScoperddf2171d3d2c\Symfony\Component\VarDumper\Dumper\HtmlDumper('php://output', $this->charset);
+            if (!\in_array(\PHP_SAPI, ['cli', 'phpdbg'], \true) && \stripos($h[$i], 'html')) {
+                $dumper = new \_PhpScoper15dc67236b17\Symfony\Component\VarDumper\Dumper\HtmlDumper('php://output', $this->charset);
                 $dumper->setDisplayOptions(['fileLinkFormat' => $this->fileLinkFormat]);
             } else {
-                $dumper = new \_PhpScoperddf2171d3d2c\Symfony\Component\VarDumper\Dumper\CliDumper('php://output', $this->charset);
+                $dumper = new \_PhpScoper15dc67236b17\Symfony\Component\VarDumper\Dumper\CliDumper('php://output', $this->charset);
                 if (\method_exists($dumper, 'setDisplayOptions')) {
                     $dumper->setDisplayOptions(['fileLinkFormat' => $this->fileLinkFormat]);
                 }
@@ -213,11 +203,11 @@ class DumpDataCollector extends \_PhpScoperddf2171d3d2c\Symfony\Component\HttpKe
             $this->dataCount = 0;
         }
     }
-    private function doDump(\_PhpScoperddf2171d3d2c\Symfony\Component\VarDumper\Dumper\DataDumperInterface $dumper, $data, string $name, string $file, int $line)
+    private function doDump(\_PhpScoper15dc67236b17\Symfony\Component\VarDumper\Dumper\DataDumperInterface $dumper, $data, string $name, string $file, int $line)
     {
-        if ($dumper instanceof \_PhpScoperddf2171d3d2c\Symfony\Component\VarDumper\Dumper\CliDumper) {
+        if ($dumper instanceof \_PhpScoper15dc67236b17\Symfony\Component\VarDumper\Dumper\CliDumper) {
             $contextDumper = function ($name, $file, $line, $fmt) {
-                if ($this instanceof \_PhpScoperddf2171d3d2c\Symfony\Component\VarDumper\Dumper\HtmlDumper) {
+                if ($this instanceof \_PhpScoper15dc67236b17\Symfony\Component\VarDumper\Dumper\HtmlDumper) {
                     if ($file) {
                         $s = $this->style('meta', '%s');
                         $f = \strip_tags($this->style('', $file));
@@ -239,7 +229,7 @@ class DumpDataCollector extends \_PhpScoperddf2171d3d2c\Symfony\Component\HttpKe
             $contextDumper = $contextDumper->bindTo($dumper, $dumper);
             $contextDumper($name, $file, $line, $this->fileLinkFormat);
         } else {
-            $cloner = new \_PhpScoperddf2171d3d2c\Symfony\Component\VarDumper\Cloner\VarCloner();
+            $cloner = new \_PhpScoper15dc67236b17\Symfony\Component\VarDumper\Cloner\VarCloner();
             $dumper->dump($cloner->cloneVar($name . ' on line ' . $line . ':'));
         }
         $dumper->dump($data);
