@@ -8,17 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper57793da194f3\Symfony\Component\ErrorHandler\ErrorEnhancer;
+namespace _PhpScoper9dd242015966\Symfony\Component\ErrorHandler\ErrorEnhancer;
 
-use Composer\Autoload\ClassLoader as ComposerClassLoader;
-use _PhpScoper57793da194f3\Symfony\Component\ClassLoader\ClassLoader as SymfonyClassLoader;
-use _PhpScoper57793da194f3\Symfony\Component\ErrorHandler\DebugClassLoader;
-use _PhpScoper57793da194f3\Symfony\Component\ErrorHandler\Error\ClassNotFoundError;
-use _PhpScoper57793da194f3\Symfony\Component\ErrorHandler\Error\FatalError;
+use Composer\Autoload\ClassLoader;
+use _PhpScoper9dd242015966\Symfony\Component\ErrorHandler\DebugClassLoader;
+use _PhpScoper9dd242015966\Symfony\Component\ErrorHandler\Error\ClassNotFoundError;
+use _PhpScoper9dd242015966\Symfony\Component\ErrorHandler\Error\FatalError;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ClassNotFoundErrorEnhancer implements \_PhpScoper57793da194f3\Symfony\Component\ErrorHandler\ErrorEnhancer\ErrorEnhancerInterface
+class ClassNotFoundErrorEnhancer implements \_PhpScoper9dd242015966\Symfony\Component\ErrorHandler\ErrorEnhancer\ErrorEnhancerInterface
 {
     /**
      * {@inheritdoc}
@@ -26,45 +25,32 @@ class ClassNotFoundErrorEnhancer implements \_PhpScoper57793da194f3\Symfony\Comp
     public function enhance(\Throwable $error) : ?\Throwable
     {
         // Some specific versions of PHP produce a fatal error when extending a not found class.
-        $message = !$error instanceof \_PhpScoper57793da194f3\Symfony\Component\ErrorHandler\Error\FatalError ? $error->getMessage() : $error->getError()['message'];
-        $messageLen = \strlen($message);
-        $notFoundSuffix = '\' not found';
-        $notFoundSuffixLen = \strlen($notFoundSuffix);
-        if ($notFoundSuffixLen > $messageLen) {
+        $message = !$error instanceof \_PhpScoper9dd242015966\Symfony\Component\ErrorHandler\Error\FatalError ? $error->getMessage() : $error->getError()['message'];
+        if (!\preg_match('/^(Class|Interface|Trait) [\'"]([^\'"]+)[\'"] not found$/', $message, $matches)) {
             return null;
         }
-        if (0 !== \substr_compare($message, $notFoundSuffix, -$notFoundSuffixLen)) {
-            return null;
+        $typeName = \strtolower($matches[1]);
+        $fullyQualifiedClassName = $matches[2];
+        if (\false !== ($namespaceSeparatorIndex = \strrpos($fullyQualifiedClassName, '\\'))) {
+            $className = \substr($fullyQualifiedClassName, $namespaceSeparatorIndex + 1);
+            $namespacePrefix = \substr($fullyQualifiedClassName, 0, $namespaceSeparatorIndex);
+            $message = \sprintf('Attempted to load %s "%s" from namespace "%s".', $typeName, $className, $namespacePrefix);
+            $tail = ' for another namespace?';
+        } else {
+            $className = $fullyQualifiedClassName;
+            $message = \sprintf('Attempted to load %s "%s" from the global namespace.', $typeName, $className);
+            $tail = '?';
         }
-        foreach (['class', 'interface', 'trait'] as $typeName) {
-            $prefix = \ucfirst($typeName) . ' \'';
-            $prefixLen = \strlen($prefix);
-            if (0 !== \strpos($message, $prefix)) {
-                continue;
-            }
-            $fullyQualifiedClassName = \substr($message, $prefixLen, -$notFoundSuffixLen);
-            if (\false !== ($namespaceSeparatorIndex = \strrpos($fullyQualifiedClassName, '\\'))) {
-                $className = \substr($fullyQualifiedClassName, $namespaceSeparatorIndex + 1);
-                $namespacePrefix = \substr($fullyQualifiedClassName, 0, $namespaceSeparatorIndex);
-                $message = \sprintf('Attempted to load %s "%s" from namespace "%s".', $typeName, $className, $namespacePrefix);
-                $tail = ' for another namespace?';
+        if ($candidates = $this->getClassCandidates($className)) {
+            $tail = \array_pop($candidates) . '"?';
+            if ($candidates) {
+                $tail = ' for e.g. "' . \implode('", "', $candidates) . '" or "' . $tail;
             } else {
-                $className = $fullyQualifiedClassName;
-                $message = \sprintf('Attempted to load %s "%s" from the global namespace.', $typeName, $className);
-                $tail = '?';
+                $tail = ' for "' . $tail;
             }
-            if ($candidates = $this->getClassCandidates($className)) {
-                $tail = \array_pop($candidates) . '"?';
-                if ($candidates) {
-                    $tail = ' for e.g. "' . \implode('", "', $candidates) . '" or "' . $tail;
-                } else {
-                    $tail = ' for "' . $tail;
-                }
-            }
-            $message .= "\nDid you forget a \"use\" statement" . $tail;
-            return new \_PhpScoper57793da194f3\Symfony\Component\ErrorHandler\Error\ClassNotFoundError($message, $error);
         }
-        return null;
+        $message .= "\nDid you forget a \"use\" statement" . $tail;
+        return new \_PhpScoper9dd242015966\Symfony\Component\ErrorHandler\Error\ClassNotFoundError($message, $error);
     }
     /**
      * Tries to guess the full namespace for a given class name.
@@ -88,20 +74,18 @@ class ClassNotFoundErrorEnhancer implements \_PhpScoper57793da194f3\Symfony\Comp
                 continue;
             }
             // get class loaders wrapped by DebugClassLoader
-            if ($function[0] instanceof \_PhpScoper57793da194f3\Symfony\Component\ErrorHandler\DebugClassLoader) {
+            if ($function[0] instanceof \_PhpScoper9dd242015966\Symfony\Component\ErrorHandler\DebugClassLoader) {
                 $function = $function[0]->getClassLoader();
                 if (!\is_array($function)) {
                     continue;
                 }
             }
-            if ($function[0] instanceof \Composer\Autoload\ClassLoader || $function[0] instanceof \_PhpScoper57793da194f3\Symfony\Component\ClassLoader\ClassLoader) {
+            if ($function[0] instanceof \Composer\Autoload\ClassLoader) {
                 foreach ($function[0]->getPrefixes() as $prefix => $paths) {
                     foreach ($paths as $path) {
                         $classes = \array_merge($classes, $this->findClassInPath($path, $class, $prefix));
                     }
                 }
-            }
-            if ($function[0] instanceof \Composer\Autoload\ClassLoader) {
                 foreach ($function[0]->getPrefixesPsr4() as $prefix => $paths) {
                     foreach ($paths as $path) {
                         $classes = \array_merge($classes, $this->findClassInPath($path, $class, $prefix));
