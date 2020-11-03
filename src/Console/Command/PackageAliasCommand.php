@@ -3,16 +3,16 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Console\Command;
 
-use _PhpScoperf968abd60cb0\Symfony\Component\Console\Command\Command;
-use _PhpScoperf968abd60cb0\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperf968abd60cb0\Symfony\Component\Console\Output\OutputInterface;
-use _PhpScoperf968abd60cb0\Symfony\Component\Console\Style\SymfonyStyle;
-use _PhpScoperf968abd60cb0\Symfony\Component\Process\Process;
+use _PhpScoper5efd9ec7ae1e\Symfony\Component\Console\Command\Command;
+use _PhpScoper5efd9ec7ae1e\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoper5efd9ec7ae1e\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoper5efd9ec7ae1e\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoper5efd9ec7ae1e\Symfony\Component\Process\Process;
 use Symplify\MonorepoBuilder\DevMasterAliasUpdater;
 use Symplify\MonorepoBuilder\Finder\PackageComposerFinder;
 use Symplify\MonorepoBuilder\Utils\VersionUtils;
 use Symplify\PackageBuilder\Console\ShellCode;
-final class PackageAliasCommand extends \_PhpScoperf968abd60cb0\Symfony\Component\Console\Command\Command
+final class PackageAliasCommand extends \_PhpScoper5efd9ec7ae1e\Symfony\Component\Console\Command\Command
 {
     /**
      * @var SymfonyStyle
@@ -30,7 +30,7 @@ final class PackageAliasCommand extends \_PhpScoperf968abd60cb0\Symfony\Componen
      * @var VersionUtils
      */
     private $versionUtils;
-    public function __construct(\_PhpScoperf968abd60cb0\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Finder\PackageComposerFinder $packageComposerFinder, \Symplify\MonorepoBuilder\DevMasterAliasUpdater $devMasterAliasUpdater, \Symplify\MonorepoBuilder\Utils\VersionUtils $versionUtils)
+    public function __construct(\_PhpScoper5efd9ec7ae1e\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Finder\PackageComposerFinder $packageComposerFinder, \Symplify\MonorepoBuilder\DevMasterAliasUpdater $devMasterAliasUpdater, \Symplify\MonorepoBuilder\Utils\VersionUtils $versionUtils)
     {
         parent::__construct();
         $this->symfonyStyle = $symfonyStyle;
@@ -42,7 +42,7 @@ final class PackageAliasCommand extends \_PhpScoperf968abd60cb0\Symfony\Componen
     {
         $this->setDescription('Updates branch alias in "composer.json" all found packages');
     }
-    protected function execute(\_PhpScoperf968abd60cb0\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperf968abd60cb0\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoper5efd9ec7ae1e\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper5efd9ec7ae1e\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $composerPackageFiles = $this->packageComposerFinder->getPackageComposerFiles();
         if (\count($composerPackageFiles) === 0) {
@@ -57,7 +57,7 @@ final class PackageAliasCommand extends \_PhpScoperf968abd60cb0\Symfony\Componen
     }
     private function getExpectedAlias() : string
     {
-        $process = new \_PhpScoperf968abd60cb0\Symfony\Component\Process\Process(['git', 'describe', '--abbrev=0', '--tags']);
+        $process = new \_PhpScoper5efd9ec7ae1e\Symfony\Component\Process\Process(['git', 'describe', '--abbrev=0', '--tags']);
         $process->run();
         $output = $process->getOutput();
         return $this->versionUtils->getNextAliasFormat($output);
