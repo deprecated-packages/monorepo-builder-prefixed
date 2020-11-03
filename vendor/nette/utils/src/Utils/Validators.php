@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace _PhpScoper0d74dc701629\Nette\Utils;
+namespace _PhpScoperc4f6ca029880\Nette\Utils;
 
-use _PhpScoper0d74dc701629\Nette;
+use _PhpScoperc4f6ca029880\Nette;
 /**
  * Validation utilities.
  */
@@ -31,7 +31,7 @@ class Validators
         // pseudo-types
         'callable' => [__CLASS__, 'isCallable'],
         'iterable' => 'is_iterable',
-        'list' => [\_PhpScoper0d74dc701629\Nette\Utils\Arrays::class, 'isList'],
+        'list' => [\_PhpScoperc4f6ca029880\Nette\Utils\Arrays::class, 'isList'],
         'mixed' => [__CLASS__, 'isMixed'],
         'none' => [__CLASS__, 'isNone'],
         'number' => [__CLASS__, 'isNumber'],
@@ -60,7 +60,7 @@ class Validators
         'type' => [__CLASS__, 'isType'],
     ];
     /** @var array<string,callable> */
-    protected static $counters = ['string' => 'strlen', 'unicode' => [\_PhpScoper0d74dc701629\Nette\Utils\Strings::class, 'length'], 'array' => 'count', 'list' => 'count', 'alnum' => 'strlen', 'alpha' => 'strlen', 'digit' => 'strlen', 'lower' => 'strlen', 'space' => 'strlen', 'upper' => 'strlen', 'xdigit' => 'strlen'];
+    protected static $counters = ['string' => 'strlen', 'unicode' => [\_PhpScoperc4f6ca029880\Nette\Utils\Strings::class, 'length'], 'array' => 'count', 'list' => 'count', 'alnum' => 'strlen', 'alpha' => 'strlen', 'digit' => 'strlen', 'lower' => 'strlen', 'space' => 'strlen', 'upper' => 'strlen', 'xdigit' => 'strlen'];
     /**
      * Verifies that the value is of expected types separated by pipe.
      * @param  mixed  $value
@@ -77,7 +77,7 @@ class Validators
             } elseif (\is_object($value)) {
                 $type .= ' ' . \get_class($value);
             }
-            throw new \_PhpScoper0d74dc701629\Nette\Utils\AssertionException("The {$label} expects to be {$expected}, {$type} given.");
+            throw new \_PhpScoperc4f6ca029880\Nette\Utils\AssertionException("The {$label} expects to be {$expected}, {$type} given.");
         }
     }
     /**
@@ -89,7 +89,7 @@ class Validators
     public static function assertField(array $array, $key, string $expected = null, string $label = "item '%' in array") : void
     {
         if (!\array_key_exists($key, $array)) {
-            throw new \_PhpScoper0d74dc701629\Nette\Utils\AssertionException('Missing ' . \str_replace('%', $key, $label) . '.');
+            throw new \_PhpScoperc4f6ca029880\Nette\Utils\AssertionException('Missing ' . \str_replace('%', $key, $label) . '.');
         } elseif ($expected) {
             static::assert($array[$key], $expected, \str_replace('%', $key, $label));
         }
@@ -122,7 +122,7 @@ class Validators
                     continue;
                 }
             } elseif ($type === 'pattern') {
-                if (\_PhpScoper0d74dc701629\Nette\Utils\Strings::match($value, '|^' . ($item[1] ?? '') . '$|D')) {
+                if (\_PhpScoperc4f6ca029880\Nette\Utils\Strings::match($value, '|^' . ($item[1] ?? '') . '$|D')) {
                     return \true;
                 }
                 continue;
@@ -220,7 +220,7 @@ class Validators
      */
     public static function isList($value) : bool
     {
-        return \_PhpScoper0d74dc701629\Nette\Utils\Arrays::isList($value);
+        return \_PhpScoperc4f6ca029880\Nette\Utils\Arrays::isList($value);
     }
     /**
      * Checks if the value is in the given range [min, max], where the upper or lower limit can be omitted (null).

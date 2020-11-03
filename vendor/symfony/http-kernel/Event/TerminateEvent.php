@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper0d74dc701629\Symfony\Component\HttpKernel\Event;
+namespace _PhpScoperc4f6ca029880\Symfony\Component\HttpKernel\Event;
 
-use _PhpScoper0d74dc701629\Symfony\Component\HttpFoundation\Request;
-use _PhpScoper0d74dc701629\Symfony\Component\HttpFoundation\Response;
-use _PhpScoper0d74dc701629\Symfony\Component\HttpKernel\HttpKernelInterface;
+use _PhpScoperc4f6ca029880\Symfony\Component\HttpFoundation\Request;
+use _PhpScoperc4f6ca029880\Symfony\Component\HttpFoundation\Response;
+use _PhpScoperc4f6ca029880\Symfony\Component\HttpKernel\HttpKernelInterface;
 /**
  * Allows to execute logic after a response was sent.
  *
@@ -21,15 +21,15 @@ use _PhpScoper0d74dc701629\Symfony\Component\HttpKernel\HttpKernelInterface;
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
  */
-final class TerminateEvent extends \_PhpScoper0d74dc701629\Symfony\Component\HttpKernel\Event\KernelEvent
+final class TerminateEvent extends \_PhpScoperc4f6ca029880\Symfony\Component\HttpKernel\Event\KernelEvent
 {
     private $response;
-    public function __construct(\_PhpScoper0d74dc701629\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \_PhpScoper0d74dc701629\Symfony\Component\HttpFoundation\Request $request, \_PhpScoper0d74dc701629\Symfony\Component\HttpFoundation\Response $response)
+    public function __construct(\_PhpScoperc4f6ca029880\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \_PhpScoperc4f6ca029880\Symfony\Component\HttpFoundation\Request $request, \_PhpScoperc4f6ca029880\Symfony\Component\HttpFoundation\Response $response)
     {
-        parent::__construct($kernel, $request, \_PhpScoper0d74dc701629\Symfony\Component\HttpKernel\HttpKernelInterface::MASTER_REQUEST);
+        parent::__construct($kernel, $request, \_PhpScoperc4f6ca029880\Symfony\Component\HttpKernel\HttpKernelInterface::MASTER_REQUEST);
         $this->response = $response;
     }
-    public function getResponse() : \_PhpScoper0d74dc701629\Symfony\Component\HttpFoundation\Response
+    public function getResponse() : \_PhpScoperc4f6ca029880\Symfony\Component\HttpFoundation\Response
     {
         return $this->response;
     }

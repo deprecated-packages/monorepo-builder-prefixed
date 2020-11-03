@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper0d74dc701629\Symfony\Component\String;
+namespace _PhpScoperc4f6ca029880\Symfony\Component\String;
 
-function u(string $string = '') : \_PhpScoper0d74dc701629\Symfony\Component\String\UnicodeString
+function u(string $string = '') : \_PhpScoperc4f6ca029880\Symfony\Component\String\UnicodeString
 {
-    return new \_PhpScoper0d74dc701629\Symfony\Component\String\UnicodeString($string);
+    return new \_PhpScoperc4f6ca029880\Symfony\Component\String\UnicodeString($string);
 }
-function b(string $string = '') : \_PhpScoper0d74dc701629\Symfony\Component\String\ByteString
+function b(string $string = '') : \_PhpScoperc4f6ca029880\Symfony\Component\String\ByteString
 {
-    return new \_PhpScoper0d74dc701629\Symfony\Component\String\ByteString($string);
+    return new \_PhpScoperc4f6ca029880\Symfony\Component\String\ByteString($string);
 }
 /**
  * @return UnicodeString|ByteString
  */
-function s(string $string) : \_PhpScoper0d74dc701629\Symfony\Component\String\AbstractString
+function s(string $string) : \_PhpScoperc4f6ca029880\Symfony\Component\String\AbstractString
 {
-    return \preg_match('//u', $string) ? new \_PhpScoper0d74dc701629\Symfony\Component\String\UnicodeString($string) : new \_PhpScoper0d74dc701629\Symfony\Component\String\ByteString($string);
+    return \preg_match('//u', $string) ? new \_PhpScoperc4f6ca029880\Symfony\Component\String\UnicodeString($string) : new \_PhpScoperc4f6ca029880\Symfony\Component\String\ByteString($string);
 }

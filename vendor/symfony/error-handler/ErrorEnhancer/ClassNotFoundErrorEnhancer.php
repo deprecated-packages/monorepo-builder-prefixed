@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper0d74dc701629\Symfony\Component\ErrorHandler\ErrorEnhancer;
+namespace _PhpScoperc4f6ca029880\Symfony\Component\ErrorHandler\ErrorEnhancer;
 
 use Composer\Autoload\ClassLoader;
-use _PhpScoper0d74dc701629\Symfony\Component\ErrorHandler\DebugClassLoader;
-use _PhpScoper0d74dc701629\Symfony\Component\ErrorHandler\Error\ClassNotFoundError;
-use _PhpScoper0d74dc701629\Symfony\Component\ErrorHandler\Error\FatalError;
+use _PhpScoperc4f6ca029880\Symfony\Component\ErrorHandler\DebugClassLoader;
+use _PhpScoperc4f6ca029880\Symfony\Component\ErrorHandler\Error\ClassNotFoundError;
+use _PhpScoperc4f6ca029880\Symfony\Component\ErrorHandler\Error\FatalError;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ClassNotFoundErrorEnhancer implements \_PhpScoper0d74dc701629\Symfony\Component\ErrorHandler\ErrorEnhancer\ErrorEnhancerInterface
+class ClassNotFoundErrorEnhancer implements \_PhpScoperc4f6ca029880\Symfony\Component\ErrorHandler\ErrorEnhancer\ErrorEnhancerInterface
 {
     /**
      * {@inheritdoc}
@@ -25,7 +25,7 @@ class ClassNotFoundErrorEnhancer implements \_PhpScoper0d74dc701629\Symfony\Comp
     public function enhance(\Throwable $error) : ?\Throwable
     {
         // Some specific versions of PHP produce a fatal error when extending a not found class.
-        $message = !$error instanceof \_PhpScoper0d74dc701629\Symfony\Component\ErrorHandler\Error\FatalError ? $error->getMessage() : $error->getError()['message'];
+        $message = !$error instanceof \_PhpScoperc4f6ca029880\Symfony\Component\ErrorHandler\Error\FatalError ? $error->getMessage() : $error->getError()['message'];
         if (!\preg_match('/^(Class|Interface|Trait) [\'"]([^\'"]+)[\'"] not found$/', $message, $matches)) {
             return null;
         }
@@ -50,7 +50,7 @@ class ClassNotFoundErrorEnhancer implements \_PhpScoper0d74dc701629\Symfony\Comp
             }
         }
         $message .= "\nDid you forget a \"use\" statement" . $tail;
-        return new \_PhpScoper0d74dc701629\Symfony\Component\ErrorHandler\Error\ClassNotFoundError($message, $error);
+        return new \_PhpScoperc4f6ca029880\Symfony\Component\ErrorHandler\Error\ClassNotFoundError($message, $error);
     }
     /**
      * Tries to guess the full namespace for a given class name.
@@ -74,7 +74,7 @@ class ClassNotFoundErrorEnhancer implements \_PhpScoper0d74dc701629\Symfony\Comp
                 continue;
             }
             // get class loaders wrapped by DebugClassLoader
-            if ($function[0] instanceof \_PhpScoper0d74dc701629\Symfony\Component\ErrorHandler\DebugClassLoader) {
+            if ($function[0] instanceof \_PhpScoperc4f6ca029880\Symfony\Component\ErrorHandler\DebugClassLoader) {
                 $function = $function[0]->getClassLoader();
                 if (!\is_array($function)) {
                     continue;
