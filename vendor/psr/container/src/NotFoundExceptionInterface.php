@@ -3,11 +3,11 @@
 /**
  * @license http://www.opensource.org/licenses/mit-license.php MIT (see the LICENSE file)
  */
-namespace _PhpScoper95efb8ddea2f\Psr\Container;
+namespace _PhpScoperd6a443964d04\Psr\Container;
 
 /**
  * No entry was found in the container.
  */
-interface NotFoundExceptionInterface extends \_PhpScoper95efb8ddea2f\Psr\Container\ContainerExceptionInterface
+interface NotFoundExceptionInterface extends \_PhpScoperd6a443964d04\Psr\Container\ContainerExceptionInterface
 {
 }

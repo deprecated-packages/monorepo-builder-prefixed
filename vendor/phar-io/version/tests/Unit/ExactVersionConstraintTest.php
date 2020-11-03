@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper95efb8ddea2f\PharIo\Version;
+namespace _PhpScoperd6a443964d04\PharIo\Version;
 
-use _PhpScoper95efb8ddea2f\PHPUnit\Framework\TestCase;
+use _PhpScoperd6a443964d04\PHPUnit\Framework\TestCase;
 /**
  * @covers \PharIo\Version\ExactVersionConstraint
  */
-class ExactVersionConstraintTest extends \_PhpScoper95efb8ddea2f\PHPUnit\Framework\TestCase
+class ExactVersionConstraintTest extends \_PhpScoperd6a443964d04\PHPUnit\Framework\TestCase
 {
     public function compliantVersionProvider()
     {
-        return [['1.0.2', new \_PhpScoper95efb8ddea2f\PharIo\Version\Version('1.0.2')], ['4.8.9', new \_PhpScoper95efb8ddea2f\PharIo\Version\Version('4.8.9')], ['4.8', new \_PhpScoper95efb8ddea2f\PharIo\Version\Version('4.8')]];
+        return [['1.0.2', new \_PhpScoperd6a443964d04\PharIo\Version\Version('1.0.2')], ['4.8.9', new \_PhpScoperd6a443964d04\PharIo\Version\Version('4.8.9')], ['4.8', new \_PhpScoperd6a443964d04\PharIo\Version\Version('4.8')]];
     }
     public function nonCompliantVersionProvider()
     {
-        return [['1.0.2', new \_PhpScoper95efb8ddea2f\PharIo\Version\Version('1.0.3')], ['4.8.9', new \_PhpScoper95efb8ddea2f\PharIo\Version\Version('4.7.9')], ['4.8', new \_PhpScoper95efb8ddea2f\PharIo\Version\Version('4.8.5')]];
+        return [['1.0.2', new \_PhpScoperd6a443964d04\PharIo\Version\Version('1.0.3')], ['4.8.9', new \_PhpScoperd6a443964d04\PharIo\Version\Version('4.7.9')], ['4.8', new \_PhpScoperd6a443964d04\PharIo\Version\Version('4.8.5')]];
     }
     /**
      * @dataProvider compliantVersionProvider
@@ -30,9 +30,9 @@ class ExactVersionConstraintTest extends \_PhpScoper95efb8ddea2f\PHPUnit\Framewo
      * @param string $constraintValue
      * @param Version $version
      */
-    public function testReturnsTrueForCompliantVersion($constraintValue, \_PhpScoper95efb8ddea2f\PharIo\Version\Version $version)
+    public function testReturnsTrueForCompliantVersion($constraintValue, \_PhpScoperd6a443964d04\PharIo\Version\Version $version)
     {
-        $constraint = new \_PhpScoper95efb8ddea2f\PharIo\Version\ExactVersionConstraint($constraintValue);
+        $constraint = new \_PhpScoperd6a443964d04\PharIo\Version\ExactVersionConstraint($constraintValue);
         $this->assertTrue($constraint->complies($version));
     }
     /**
@@ -41,9 +41,9 @@ class ExactVersionConstraintTest extends \_PhpScoper95efb8ddea2f\PHPUnit\Framewo
      * @param string $constraintValue
      * @param Version $version
      */
-    public function testReturnsFalseForNonCompliantVersion($constraintValue, \_PhpScoper95efb8ddea2f\PharIo\Version\Version $version)
+    public function testReturnsFalseForNonCompliantVersion($constraintValue, \_PhpScoperd6a443964d04\PharIo\Version\Version $version)
     {
-        $constraint = new \_PhpScoper95efb8ddea2f\PharIo\Version\ExactVersionConstraint($constraintValue);
+        $constraint = new \_PhpScoperd6a443964d04\PharIo\Version\ExactVersionConstraint($constraintValue);
         $this->assertFalse($constraint->complies($version));
     }
 }
