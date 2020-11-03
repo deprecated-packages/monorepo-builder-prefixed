@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\SymplifyKernel\Strings;
 
-use _PhpScoper1d3d21549513\Nette\Utils\Strings;
+use _PhpScoperf8eaec7affbd\Nette\Utils\Strings;
 use Symplify\SymplifyKernel\Exception\HttpKernel\TooGenericKernelClassException;
 use Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
 final class KernelUniqueHasher
@@ -19,7 +19,7 @@ final class KernelUniqueHasher
     public function hashKernelClass(string $kernelClass) : string
     {
         $this->ensureIsNotGenericKernelClass($kernelClass);
-        $shortClassName = (string) \_PhpScoper1d3d21549513\Nette\Utils\Strings::after($kernelClass, '\\', -1);
+        $shortClassName = (string) \_PhpScoperf8eaec7affbd\Nette\Utils\Strings::after($kernelClass, '\\', -1);
         return $this->stringsConverter->camelCaseToGlue($shortClassName, '_');
     }
     private function ensureIsNotGenericKernelClass(string $kernelClass) : void

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper1d3d21549513\Symfony\Component\DependencyInjection\Dumper;
+namespace _PhpScoperf8eaec7affbd\Symfony\Component\DependencyInjection\Dumper;
 
 /**
  * @author Nicolas Grekas <p@tchwork.com>

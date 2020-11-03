@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper1d3d21549513\Symfony\Component\Process\Exception;
+namespace _PhpScoperf8eaec7affbd\Symfony\Component\Process\Exception;
 
-use _PhpScoper1d3d21549513\Symfony\Component\Process\Process;
+use _PhpScoperf8eaec7affbd\Symfony\Component\Process\Process;
 /**
  * Exception that is thrown when a process has been signaled.
  *
  * @author Sullivan Senechal <soullivaneuh@gmail.com>
  */
-final class ProcessSignaledException extends \_PhpScoper1d3d21549513\Symfony\Component\Process\Exception\RuntimeException
+final class ProcessSignaledException extends \_PhpScoperf8eaec7affbd\Symfony\Component\Process\Exception\RuntimeException
 {
     private $process;
-    public function __construct(\_PhpScoper1d3d21549513\Symfony\Component\Process\Process $process)
+    public function __construct(\_PhpScoperf8eaec7affbd\Symfony\Component\Process\Process $process)
     {
         $this->process = $process;
         parent::__construct(\sprintf('The process has been signaled with signal "%s".', $process->getTermSignal()));
     }
-    public function getProcess() : \_PhpScoper1d3d21549513\Symfony\Component\Process\Process
+    public function getProcess() : \_PhpScoperf8eaec7affbd\Symfony\Component\Process\Process
     {
         return $this->process;
     }
