@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper1600de59048a\Symfony\Component\HttpFoundation\File\Exception;
+namespace _PhpScopera42d72b2de70\Symfony\Component\HttpFoundation\File\Exception;
 
 /**
  * Thrown when an UPLOAD_ERR_CANT_WRITE error occurred with UploadedFile.
  *
  * @author Florent Mata <florentmata@gmail.com>
  */
-class CannotWriteFileException extends \_PhpScoper1600de59048a\Symfony\Component\HttpFoundation\File\Exception\FileException
+class CannotWriteFileException extends \_PhpScopera42d72b2de70\Symfony\Component\HttpFoundation\File\Exception\FileException
 {
 }

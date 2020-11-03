@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper1600de59048a\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace _PhpScopera42d72b2de70\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use _PhpScoper1600de59048a\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScopera42d72b2de70\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ParametersConfigurator extends \_PhpScoper1600de59048a\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
+class ParametersConfigurator extends \_PhpScopera42d72b2de70\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
 {
     const FACTORY = 'parameters';
     private $container;
-    public function __construct(\_PhpScoper1600de59048a\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function __construct(\_PhpScopera42d72b2de70\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $this->container = $container;
     }

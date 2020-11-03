@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper1600de59048a\Symfony\Component\EventDispatcher;
+namespace _PhpScopera42d72b2de70\Symfony\Component\EventDispatcher;
 
-use _PhpScoper1600de59048a\Psr\EventDispatcher\StoppableEventInterface;
-use _PhpScoper1600de59048a\Symfony\Component\EventDispatcher\Debug\WrappedListener;
+use _PhpScopera42d72b2de70\Psr\EventDispatcher\StoppableEventInterface;
+use _PhpScopera42d72b2de70\Symfony\Component\EventDispatcher\Debug\WrappedListener;
 /**
  * The EventDispatcherInterface is the central point of Symfony's event listener system.
  *
@@ -27,7 +27,7 @@ use _PhpScoper1600de59048a\Symfony\Component\EventDispatcher\Debug\WrappedListen
  * @author Jordan Alliot <jordan.alliot@gmail.com>
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class EventDispatcher implements \_PhpScoper1600de59048a\Symfony\Component\EventDispatcher\EventDispatcherInterface
+class EventDispatcher implements \_PhpScopera42d72b2de70\Symfony\Component\EventDispatcher\EventDispatcherInterface
 {
     private $listeners = [];
     private $sorted = [];
@@ -153,7 +153,7 @@ class EventDispatcher implements \_PhpScoper1600de59048a\Symfony\Component\Event
     /**
      * {@inheritdoc}
      */
-    public function addSubscriber(\_PhpScoper1600de59048a\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
+    public function addSubscriber(\_PhpScopera42d72b2de70\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
     {
         foreach ($subscriber->getSubscribedEvents() as $eventName => $params) {
             if (\is_string($params)) {
@@ -170,7 +170,7 @@ class EventDispatcher implements \_PhpScoper1600de59048a\Symfony\Component\Event
     /**
      * {@inheritdoc}
      */
-    public function removeSubscriber(\_PhpScoper1600de59048a\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
+    public function removeSubscriber(\_PhpScopera42d72b2de70\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
     {
         foreach ($subscriber->getSubscribedEvents() as $eventName => $params) {
             if (\is_array($params) && \is_array($params[0])) {
@@ -194,7 +194,7 @@ class EventDispatcher implements \_PhpScoper1600de59048a\Symfony\Component\Event
      */
     protected function callListeners(iterable $listeners, string $eventName, object $event)
     {
-        $stoppable = $event instanceof \_PhpScoper1600de59048a\Psr\EventDispatcher\StoppableEventInterface;
+        $stoppable = $event instanceof \_PhpScopera42d72b2de70\Psr\EventDispatcher\StoppableEventInterface;
         foreach ($listeners as $listener) {
             if ($stoppable && $event->isPropagationStopped()) {
                 break;
@@ -238,7 +238,7 @@ class EventDispatcher implements \_PhpScoper1600de59048a\Symfony\Component\Event
                         ($closure = \Closure::fromCallable($listener))(...$args);
                     };
                 } else {
-                    $closure = $listener instanceof \Closure || $listener instanceof \_PhpScoper1600de59048a\Symfony\Component\EventDispatcher\Debug\WrappedListener ? $listener : \Closure::fromCallable($listener);
+                    $closure = $listener instanceof \Closure || $listener instanceof \_PhpScopera42d72b2de70\Symfony\Component\EventDispatcher\Debug\WrappedListener ? $listener : \Closure::fromCallable($listener);
                 }
             }
         }
