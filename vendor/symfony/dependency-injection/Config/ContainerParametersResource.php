@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf2e2fcfe7ee6\Symfony\Component\DependencyInjection\Config;
+namespace _PhpScoperd3e9cfbe9d90\Symfony\Component\DependencyInjection\Config;
 
-use _PhpScoperf2e2fcfe7ee6\Symfony\Component\Config\Resource\ResourceInterface;
+use _PhpScoperd3e9cfbe9d90\Symfony\Component\Config\Resource\ResourceInterface;
 /**
  * Tracks container parameters.
  *
  * @author Maxime Steinhausser <maxime.steinhausser@gmail.com>
  *
- * @final since Symfony 4.3
+ * @final
  */
-class ContainerParametersResource implements \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Config\Resource\ResourceInterface
+class ContainerParametersResource implements \_PhpScoperd3e9cfbe9d90\Symfony\Component\Config\Resource\ResourceInterface
 {
     private $parameters;
     /**
@@ -31,14 +31,14 @@ class ContainerParametersResource implements \_PhpScoperf2e2fcfe7ee6\Symfony\Com
     /**
      * {@inheritdoc}
      */
-    public function __toString()
+    public function __toString() : string
     {
         return 'container_parameters_' . \md5(\serialize($this->parameters));
     }
     /**
      * @return array Tracked parameters
      */
-    public function getParameters()
+    public function getParameters() : array
     {
         return $this->parameters;
     }

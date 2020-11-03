@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf2e2fcfe7ee6\Symfony\Component\Config\Definition\Builder;
+namespace _PhpScoperd3e9cfbe9d90\Symfony\Component\Config\Definition\Builder;
 
-use _PhpScoperf2e2fcfe7ee6\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
+use _PhpScoperd3e9cfbe9d90\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
 /**
  * Abstract class that contains common code of integer and float node definitions.
  *
  * @author David Jeanmonod <david.jeanmonod@gmail.com>
  */
-abstract class NumericNodeDefinition extends \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition
+abstract class NumericNodeDefinition extends \_PhpScoperd3e9cfbe9d90\Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition
 {
     protected $min;
     protected $max;
@@ -32,7 +32,7 @@ abstract class NumericNodeDefinition extends \_PhpScoperf2e2fcfe7ee6\Symfony\Com
     public function max($max)
     {
         if (isset($this->min) && $this->min > $max) {
-            throw new \InvalidArgumentException(\sprintf('You cannot define a max(%s) as you already have a min(%s)', $max, $this->min));
+            throw new \InvalidArgumentException(\sprintf('You cannot define a max(%s) as you already have a min(%s).', $max, $this->min));
         }
         $this->max = $max;
         return $this;
@@ -49,7 +49,7 @@ abstract class NumericNodeDefinition extends \_PhpScoperf2e2fcfe7ee6\Symfony\Com
     public function min($min)
     {
         if (isset($this->max) && $this->max < $min) {
-            throw new \InvalidArgumentException(\sprintf('You cannot define a min(%s) as you already have a max(%s)', $min, $this->max));
+            throw new \InvalidArgumentException(\sprintf('You cannot define a min(%s) as you already have a max(%s).', $min, $this->max));
         }
         $this->min = $min;
         return $this;
@@ -61,6 +61,6 @@ abstract class NumericNodeDefinition extends \_PhpScoperf2e2fcfe7ee6\Symfony\Com
      */
     public function cannotBeEmpty()
     {
-        throw new \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException('->cannotBeEmpty() is not applicable to NumericNodeDefinition.');
+        throw new \_PhpScoperd3e9cfbe9d90\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException('->cannotBeEmpty() is not applicable to NumericNodeDefinition.');
     }
 }

@@ -1,8 +1,20 @@
 <?php
 
-namespace _PhpScoperf2e2fcfe7ee6;
+namespace _PhpScoperd3e9cfbe9d90;
 
-class Normalizer extends \_PhpScoperf2e2fcfe7ee6\Symfony\Polyfill\Intl\Normalizer\Normalizer
+class Normalizer extends \_PhpScoperd3e9cfbe9d90\Symfony\Polyfill\Intl\Normalizer\Normalizer
 {
+    /**
+     * @deprecated since ICU 56 and removed in PHP 8
+     */
+    const NONE = 1;
+    const FORM_D = 2;
+    const FORM_KD = 3;
+    const FORM_C = 4;
+    const FORM_KC = 5;
+    const NFD = 2;
+    const NFKD = 3;
+    const NFC = 4;
+    const NFKC = 5;
 }
-\class_alias('_PhpScoperf2e2fcfe7ee6\\Normalizer', 'Normalizer', \false);
+\class_alias('_PhpScoperd3e9cfbe9d90\\Normalizer', 'Normalizer', \false);

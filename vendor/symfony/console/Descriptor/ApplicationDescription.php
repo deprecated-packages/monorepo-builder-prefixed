@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Descriptor;
+namespace _PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Descriptor;
 
-use _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Application;
-use _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Command\Command;
-use _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Exception\CommandNotFoundException;
+use _PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Application;
+use _PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Command\Command;
+use _PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Exception\CommandNotFoundException;
 /**
  * @author Jean-François Simon <jeanfrancois.simon@sensiolabs.com>
  *
@@ -36,7 +36,7 @@ class ApplicationDescription
      * @var Command[]
      */
     private $aliases;
-    public function __construct(\_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Application $application, string $namespace = null, bool $showHidden = \false)
+    public function __construct(\_PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Application $application, string $namespace = null, bool $showHidden = \false)
     {
         $this->application = $application;
         $this->namespace = $namespace;
@@ -62,10 +62,10 @@ class ApplicationDescription
     /**
      * @throws CommandNotFoundException
      */
-    public function getCommand(string $name) : \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Command\Command
+    public function getCommand(string $name) : \_PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Command\Command
     {
         if (!isset($this->commands[$name]) && !isset($this->aliases[$name])) {
-            throw new \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Exception\CommandNotFoundException(\sprintf('Command %s does not exist.', $name));
+            throw new \_PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Exception\CommandNotFoundException(\sprintf('Command "%s" does not exist.', $name));
         }
         return isset($this->commands[$name]) ? $this->commands[$name] : $this->aliases[$name];
     }
@@ -95,21 +95,26 @@ class ApplicationDescription
     {
         $namespacedCommands = [];
         $globalCommands = [];
+        $sortedCommands = [];
         foreach ($commands as $name => $command) {
             $key = $this->application->extractNamespace($name, 1);
-            if (!$key) {
-                $globalCommands['_global'][$name] = $command;
+            if (\in_array($key, ['', self::GLOBAL_NAMESPACE], \true)) {
+                $globalCommands[$name] = $command;
             } else {
                 $namespacedCommands[$key][$name] = $command;
             }
         }
-        \ksort($namespacedCommands);
-        $namespacedCommands = \array_merge($globalCommands, $namespacedCommands);
-        foreach ($namespacedCommands as &$commandsSet) {
-            \ksort($commandsSet);
+        if ($globalCommands) {
+            \ksort($globalCommands);
+            $sortedCommands[self::GLOBAL_NAMESPACE] = $globalCommands;
         }
-        // unset reference to keep scope clear
-        unset($commandsSet);
-        return $namespacedCommands;
+        if ($namespacedCommands) {
+            \ksort($namespacedCommands);
+            foreach ($namespacedCommands as $key => $commandsSet) {
+                \ksort($commandsSet);
+                $sortedCommands[$key] = $commandsSet;
+            }
+        }
+        return $sortedCommands;
     }
 }

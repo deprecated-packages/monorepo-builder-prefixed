@@ -1,30 +1,35 @@
 <?php
 
-namespace _PhpScoperf2e2fcfe7ee6\Psr\Log\Test;
+namespace _PhpScoperd3e9cfbe9d90\Psr\Log\Test;
 
-use _PhpScoperf2e2fcfe7ee6\Psr\Log\LogLevel;
+use _PhpScoperd3e9cfbe9d90\Psr\Log\LoggerInterface;
+use _PhpScoperd3e9cfbe9d90\Psr\Log\LogLevel;
+use _PhpScoperd3e9cfbe9d90\PHPUnit\Framework\TestCase;
 /**
- * Provides a base test class for ensuring compliance with the LoggerInterface
+ * Provides a base test class for ensuring compliance with the LoggerInterface.
  *
- * Implementors can extend the class and implement abstract methods to run this as part of their test suite
+ * Implementors can extend the class and implement abstract methods to run this
+ * as part of their test suite.
  */
-abstract class LoggerInterfaceTest extends \_PhpScoperf2e2fcfe7ee6\PHPUnit_Framework_TestCase
+abstract class LoggerInterfaceTest extends \_PhpScoperd3e9cfbe9d90\PHPUnit\Framework\TestCase
 {
     /**
      * @return LoggerInterface
      */
-    abstract function getLogger();
+    public abstract function getLogger();
     /**
-     * This must return the log messages in order with a simple formatting: "<LOG LEVEL> <MESSAGE>"
+     * This must return the log messages in order.
      *
-     * Example ->error('Foo') would yield "error Foo"
+     * The simple formatting of the messages is: "<LOG LEVEL> <MESSAGE>".
+     *
+     * Example ->error('Foo') would yield "error Foo".
      *
      * @return string[]
      */
-    abstract function getLogs();
+    public abstract function getLogs();
     public function testImplements()
     {
-        $this->assertInstanceOf('_PhpScoperf2e2fcfe7ee6\\Psr\\Log\\LoggerInterface', $this->getLogger());
+        $this->assertInstanceOf('_PhpScoperd3e9cfbe9d90\\Psr\\Log\\LoggerInterface', $this->getLogger());
     }
     /**
      * @dataProvider provideLevelsAndMessages
@@ -39,10 +44,10 @@ abstract class LoggerInterfaceTest extends \_PhpScoperf2e2fcfe7ee6\PHPUnit_Frame
     }
     public function provideLevelsAndMessages()
     {
-        return array(\_PhpScoperf2e2fcfe7ee6\Psr\Log\LogLevel::EMERGENCY => array(\_PhpScoperf2e2fcfe7ee6\Psr\Log\LogLevel::EMERGENCY, 'message of level emergency with context: {user}'), \_PhpScoperf2e2fcfe7ee6\Psr\Log\LogLevel::ALERT => array(\_PhpScoperf2e2fcfe7ee6\Psr\Log\LogLevel::ALERT, 'message of level alert with context: {user}'), \_PhpScoperf2e2fcfe7ee6\Psr\Log\LogLevel::CRITICAL => array(\_PhpScoperf2e2fcfe7ee6\Psr\Log\LogLevel::CRITICAL, 'message of level critical with context: {user}'), \_PhpScoperf2e2fcfe7ee6\Psr\Log\LogLevel::ERROR => array(\_PhpScoperf2e2fcfe7ee6\Psr\Log\LogLevel::ERROR, 'message of level error with context: {user}'), \_PhpScoperf2e2fcfe7ee6\Psr\Log\LogLevel::WARNING => array(\_PhpScoperf2e2fcfe7ee6\Psr\Log\LogLevel::WARNING, 'message of level warning with context: {user}'), \_PhpScoperf2e2fcfe7ee6\Psr\Log\LogLevel::NOTICE => array(\_PhpScoperf2e2fcfe7ee6\Psr\Log\LogLevel::NOTICE, 'message of level notice with context: {user}'), \_PhpScoperf2e2fcfe7ee6\Psr\Log\LogLevel::INFO => array(\_PhpScoperf2e2fcfe7ee6\Psr\Log\LogLevel::INFO, 'message of level info with context: {user}'), \_PhpScoperf2e2fcfe7ee6\Psr\Log\LogLevel::DEBUG => array(\_PhpScoperf2e2fcfe7ee6\Psr\Log\LogLevel::DEBUG, 'message of level debug with context: {user}'));
+        return array(\_PhpScoperd3e9cfbe9d90\Psr\Log\LogLevel::EMERGENCY => array(\_PhpScoperd3e9cfbe9d90\Psr\Log\LogLevel::EMERGENCY, 'message of level emergency with context: {user}'), \_PhpScoperd3e9cfbe9d90\Psr\Log\LogLevel::ALERT => array(\_PhpScoperd3e9cfbe9d90\Psr\Log\LogLevel::ALERT, 'message of level alert with context: {user}'), \_PhpScoperd3e9cfbe9d90\Psr\Log\LogLevel::CRITICAL => array(\_PhpScoperd3e9cfbe9d90\Psr\Log\LogLevel::CRITICAL, 'message of level critical with context: {user}'), \_PhpScoperd3e9cfbe9d90\Psr\Log\LogLevel::ERROR => array(\_PhpScoperd3e9cfbe9d90\Psr\Log\LogLevel::ERROR, 'message of level error with context: {user}'), \_PhpScoperd3e9cfbe9d90\Psr\Log\LogLevel::WARNING => array(\_PhpScoperd3e9cfbe9d90\Psr\Log\LogLevel::WARNING, 'message of level warning with context: {user}'), \_PhpScoperd3e9cfbe9d90\Psr\Log\LogLevel::NOTICE => array(\_PhpScoperd3e9cfbe9d90\Psr\Log\LogLevel::NOTICE, 'message of level notice with context: {user}'), \_PhpScoperd3e9cfbe9d90\Psr\Log\LogLevel::INFO => array(\_PhpScoperd3e9cfbe9d90\Psr\Log\LogLevel::INFO, 'message of level info with context: {user}'), \_PhpScoperd3e9cfbe9d90\Psr\Log\LogLevel::DEBUG => array(\_PhpScoperd3e9cfbe9d90\Psr\Log\LogLevel::DEBUG, 'message of level debug with context: {user}'));
     }
     /**
-     * @expectedException Psr\Log\InvalidArgumentException
+     * @expectedException \Psr\Log\InvalidArgumentException
      */
     public function testThrowsOnInvalidLevel()
     {
@@ -58,21 +63,31 @@ abstract class LoggerInterfaceTest extends \_PhpScoperf2e2fcfe7ee6\PHPUnit_Frame
     }
     public function testObjectCastToString()
     {
-        $dummy = $this->getMock('_PhpScoperf2e2fcfe7ee6\\Psr\\Log\\Test\\DummyTest', array('__toString'));
+        if (\method_exists($this, 'createPartialMock')) {
+            $dummy = $this->createPartialMock('_PhpScoperd3e9cfbe9d90\\Psr\\Log\\Test\\DummyTest', array('__toString'));
+        } else {
+            $dummy = $this->getMock('_PhpScoperd3e9cfbe9d90\\Psr\\Log\\Test\\DummyTest', array('__toString'));
+        }
         $dummy->expects($this->once())->method('__toString')->will($this->returnValue('DUMMY'));
         $this->getLogger()->warning($dummy);
+        $expected = array('warning DUMMY');
+        $this->assertEquals($expected, $this->getLogs());
     }
     public function testContextCanContainAnything()
     {
-        $context = array('bool' => \true, 'null' => null, 'string' => 'Foo', 'int' => 0, 'float' => 0.5, 'nested' => array('with object' => new \_PhpScoperf2e2fcfe7ee6\Psr\Log\Test\DummyTest()), 'object' => new \DateTime(), 'resource' => \fopen('php://memory', 'r'));
+        $closed = \fopen('php://memory', 'r');
+        \fclose($closed);
+        $context = array('bool' => \true, 'null' => null, 'string' => 'Foo', 'int' => 0, 'float' => 0.5, 'nested' => array('with object' => new \_PhpScoperd3e9cfbe9d90\Psr\Log\Test\DummyTest()), 'object' => new \DateTime(), 'resource' => \fopen('php://memory', 'r'), 'closed' => $closed);
         $this->getLogger()->warning('Crazy context data', $context);
+        $expected = array('warning Crazy context data');
+        $this->assertEquals($expected, $this->getLogs());
     }
     public function testContextExceptionKeyCanBeExceptionOrOtherValues()
     {
-        $this->getLogger()->warning('Random message', array('exception' => 'oops'));
-        $this->getLogger()->critical('Uncaught Exception!', array('exception' => new \LogicException('Fail')));
+        $logger = $this->getLogger();
+        $logger->warning('Random message', array('exception' => 'oops'));
+        $logger->critical('Uncaught Exception!', array('exception' => new \LogicException('Fail')));
+        $expected = array('warning Random message', 'critical Uncaught Exception!');
+        $this->assertEquals($expected, $this->getLogs());
     }
-}
-class DummyTest
-{
 }

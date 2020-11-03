@@ -8,10 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf2e2fcfe7ee6\Symfony\Contracts\Service;
+namespace _PhpScoperd3e9cfbe9d90\Symfony\Contracts\Service;
 
-use _PhpScoperf2e2fcfe7ee6\Psr\Container\ContainerExceptionInterface;
-use _PhpScoperf2e2fcfe7ee6\Psr\Container\NotFoundExceptionInterface;
+use _PhpScoperd3e9cfbe9d90\Psr\Container\ContainerExceptionInterface;
+use _PhpScoperd3e9cfbe9d90\Psr\Container\NotFoundExceptionInterface;
+// Help opcache.preload discover always-needed symbols
+\class_exists(\_PhpScoperd3e9cfbe9d90\Psr\Container\ContainerExceptionInterface::class);
+\class_exists(\_PhpScoperd3e9cfbe9d90\Psr\Container\NotFoundExceptionInterface::class);
 /**
  * A trait to help implement ServiceProviderInterface.
  *
@@ -72,13 +75,13 @@ trait ServiceLocatorTrait
                     $this->providedTypes[$name] = '?';
                 } else {
                     $type = (new \ReflectionFunction($factory))->getReturnType();
-                    $this->providedTypes[$name] = $type ? ($type->allowsNull() ? '?' : '') . $type->getName() : '?';
+                    $this->providedTypes[$name] = $type ? ($type->allowsNull() ? '?' : '') . ($type instanceof \ReflectionNamedType ? $type->getName() : $type) : '?';
                 }
             }
         }
         return $this->providedTypes;
     }
-    private function createNotFoundException(string $id) : \_PhpScoperf2e2fcfe7ee6\Psr\Container\NotFoundExceptionInterface
+    private function createNotFoundException(string $id) : \_PhpScoperd3e9cfbe9d90\Psr\Container\NotFoundExceptionInterface
     {
         if (!($alternatives = \array_keys($this->factories))) {
             $message = 'is empty...';
@@ -95,13 +98,13 @@ trait ServiceLocatorTrait
         } else {
             $message = \sprintf('Service "%s" not found: the current service locator %s', $id, $message);
         }
-        return new class($message) extends \InvalidArgumentException implements \_PhpScoperf2e2fcfe7ee6\Psr\Container\NotFoundExceptionInterface
+        return new class($message) extends \InvalidArgumentException implements \_PhpScoperd3e9cfbe9d90\Psr\Container\NotFoundExceptionInterface
         {
         };
     }
-    private function createCircularReferenceException(string $id, array $path) : \_PhpScoperf2e2fcfe7ee6\Psr\Container\ContainerExceptionInterface
+    private function createCircularReferenceException(string $id, array $path) : \_PhpScoperd3e9cfbe9d90\Psr\Container\ContainerExceptionInterface
     {
-        return new class(\sprintf('Circular reference detected for service "%s", path: "%s".', $id, \implode(' -> ', $path))) extends \RuntimeException implements \_PhpScoperf2e2fcfe7ee6\Psr\Container\ContainerExceptionInterface
+        return new class(\sprintf('Circular reference detected for service "%s", path: "%s".', $id, \implode(' -> ', $path))) extends \RuntimeException implements \_PhpScoperd3e9cfbe9d90\Psr\Container\ContainerExceptionInterface
         {
         };
     }

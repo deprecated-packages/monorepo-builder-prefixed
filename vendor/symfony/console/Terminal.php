@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console;
+namespace _PhpScoperd3e9cfbe9d90\Symfony\Component\Console;
 
 class Terminal
 {
@@ -56,6 +56,10 @@ class Terminal
     {
         if (null !== self::$stty) {
             return self::$stty;
+        }
+        // skip check if exec function is disabled
+        if (!\function_exists('exec')) {
+            return \false;
         }
         \exec('stty 2>&1', $output, $exitcode);
         return self::$stty = 0 === $exitcode;

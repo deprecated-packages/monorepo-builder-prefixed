@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf2e2fcfe7ee6\Symfony\Component\HttpKernel\DataCollector;
+namespace _PhpScoperd3e9cfbe9d90\Symfony\Component\HttpKernel\DataCollector;
 
-use _PhpScoperf2e2fcfe7ee6\Symfony\Component\HttpFoundation\Request;
-use _PhpScoperf2e2fcfe7ee6\Symfony\Component\HttpFoundation\Response;
+use _PhpScoperd3e9cfbe9d90\Symfony\Component\HttpFoundation\Request;
+use _PhpScoperd3e9cfbe9d90\Symfony\Component\HttpFoundation\Response;
 /**
  * MemoryDataCollector.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  *
- * @final since Symfony 4.4
+ * @final
  */
-class MemoryDataCollector extends \_PhpScoperf2e2fcfe7ee6\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \_PhpScoperf2e2fcfe7ee6\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface
+class MemoryDataCollector extends \_PhpScoperd3e9cfbe9d90\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \_PhpScoperd3e9cfbe9d90\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface
 {
     public function __construct()
     {
@@ -27,10 +27,8 @@ class MemoryDataCollector extends \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Http
     }
     /**
      * {@inheritdoc}
-     *
-     * @param \Throwable|null $exception
      */
-    public function collect(\_PhpScoperf2e2fcfe7ee6\Symfony\Component\HttpFoundation\Request $request, \_PhpScoperf2e2fcfe7ee6\Symfony\Component\HttpFoundation\Response $response)
+    public function collect(\_PhpScoperd3e9cfbe9d90\Symfony\Component\HttpFoundation\Request $request, \_PhpScoperd3e9cfbe9d90\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
     {
         $this->updateMemoryUsage();
     }
@@ -80,7 +78,10 @@ class MemoryDataCollector extends \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Http
     {
         return 'memory';
     }
-    private function convertToBytes(string $memoryLimit) : int
+    /**
+     * @return int|float
+     */
+    private function convertToBytes(string $memoryLimit)
     {
         if ('-1' === $memoryLimit) {
             return -1;

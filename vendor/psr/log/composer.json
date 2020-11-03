@@ -6,6 +6,7 @@
         "psr-3",
         "log"
     ],
+    "homepage": "https:\/\/github.com\/php-fig\/log",
     "license": "MIT",
     "authors": [
         {
@@ -13,9 +14,17 @@
             "homepage": "http:\/\/www.php-fig.org\/"
         }
     ],
+    "require": {
+        "php": ">=5.3.0"
+    },
     "autoload": {
         "psr-4": {
-            "_PhpScoperf2e2fcfe7ee6\\Psr\\Log\\": "\/Psr\/Log\/"
+            "_PhpScoperd3e9cfbe9d90\\Psr\\Log\\": "Psr\/Log\/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.1.x-dev"
         }
     }
 }

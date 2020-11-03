@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Command;
+namespace _PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Command;
 
-use _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Helper\DescriptorHelper;
-use _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputArgument;
-use _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputDefinition;
-use _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputOption;
-use _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Helper\DescriptorHelper;
+use _PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Input\InputArgument;
+use _PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Input\InputDefinition;
+use _PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Input\InputOption;
+use _PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Output\OutputInterface;
 /**
  * ListCommand displays the list of all available commands for the application.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ListCommand extends \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Command\Command
+class ListCommand extends \_PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Command\Command
 {
     /**
      * {@inheritdoc}
@@ -57,14 +57,14 @@ EOF
     /**
      * {@inheritdoc}
      */
-    protected function execute(\_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Output\OutputInterface $output)
+    protected function execute(\_PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Output\OutputInterface $output)
     {
-        $helper = new \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Helper\DescriptorHelper();
+        $helper = new \_PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Helper\DescriptorHelper();
         $helper->describe($output, $this->getApplication(), ['format' => $input->getOption('format'), 'raw_text' => $input->getOption('raw'), 'namespace' => $input->getArgument('namespace')]);
         return 0;
     }
-    private function createDefinition() : \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputDefinition
+    private function createDefinition() : \_PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Input\InputDefinition
     {
-        return new \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputDefinition([new \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputArgument('namespace', \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'The namespace name'), new \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputOption('raw', null, \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'To output raw command list'), new \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputOption('format', null, \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'The output format (txt, xml, json, or md)', 'txt')]);
+        return new \_PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Input\InputDefinition([new \_PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Input\InputArgument('namespace', \_PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'The namespace name'), new \_PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Input\InputOption('raw', null, \_PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'To output raw command list'), new \_PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Input\InputOption('format', null, \_PhpScoperd3e9cfbe9d90\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'The output format (txt, xml, json, or md)', 'txt')]);
     }
 }
