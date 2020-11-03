@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb3e4472dbe9b\Symfony\Component\Console;
+namespace _PhpScoper472361b15529\Symfony\Component\Console;
 
-use _PhpScoperb3e4472dbe9b\Symfony\Component\Console\Command\Command;
-use _PhpScoperb3e4472dbe9b\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperb3e4472dbe9b\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoper472361b15529\Symfony\Component\Console\Command\Command;
+use _PhpScoper472361b15529\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoper472361b15529\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Grégoire Pineau <lyrixx@lyrixx.info>
  */
-class SingleCommandApplication extends \_PhpScoperb3e4472dbe9b\Symfony\Component\Console\Command\Command
+class SingleCommandApplication extends \_PhpScoper472361b15529\Symfony\Component\Console\Command\Command
 {
     private $version = 'UNKNOWN';
     private $running = \false;
@@ -25,13 +25,13 @@ class SingleCommandApplication extends \_PhpScoperb3e4472dbe9b\Symfony\Component
         $this->version = $version;
         return $this;
     }
-    public function run(\_PhpScoperb3e4472dbe9b\Symfony\Component\Console\Input\InputInterface $input = null, \_PhpScoperb3e4472dbe9b\Symfony\Component\Console\Output\OutputInterface $output = null) : int
+    public function run(\_PhpScoper472361b15529\Symfony\Component\Console\Input\InputInterface $input = null, \_PhpScoper472361b15529\Symfony\Component\Console\Output\OutputInterface $output = null) : int
     {
         if ($this->running) {
             return parent::run($input, $output);
         }
         // We use the command name as the application name
-        $application = new \_PhpScoperb3e4472dbe9b\Symfony\Component\Console\Application($this->getName() ?: 'UNKNOWN', $this->version);
+        $application = new \_PhpScoper472361b15529\Symfony\Component\Console\Application($this->getName() ?: 'UNKNOWN', $this->version);
         // Fix the usage of the command displayed with "--help"
         $this->setName($_SERVER['argv'][0]);
         $application->add($this);

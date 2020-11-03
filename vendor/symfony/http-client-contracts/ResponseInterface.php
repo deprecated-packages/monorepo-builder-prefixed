@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb3e4472dbe9b\Symfony\Contracts\HttpClient;
+namespace _PhpScoper472361b15529\Symfony\Contracts\HttpClient;
 
-use _PhpScoperb3e4472dbe9b\Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
-use _PhpScoperb3e4472dbe9b\Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
-use _PhpScoperb3e4472dbe9b\Symfony\Contracts\HttpClient\Exception\ExceptionInterface;
-use _PhpScoperb3e4472dbe9b\Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
-use _PhpScoperb3e4472dbe9b\Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
-use _PhpScoperb3e4472dbe9b\Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use _PhpScoper472361b15529\Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
+use _PhpScoper472361b15529\Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
+use _PhpScoper472361b15529\Symfony\Contracts\HttpClient\Exception\ExceptionInterface;
+use _PhpScoper472361b15529\Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
+use _PhpScoper472361b15529\Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
+use _PhpScoper472361b15529\Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 /**
  * A (lazily retrieved) HTTP response.
  *
