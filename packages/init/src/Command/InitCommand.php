@@ -3,21 +3,21 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Init\Command;
 
-use _PhpScoper323d4c178bee\Jean85\PrettyVersions;
-use _PhpScoper323d4c178bee\Nette\Utils\Json as NetteJson;
+use _PhpScoper437fa56c88e1\Jean85\PrettyVersions;
+use _PhpScoper437fa56c88e1\Nette\Utils\Json as NetteJson;
 use OutOfBoundsException;
-use _PhpScoper323d4c178bee\PharIo\Version\InvalidVersionException;
-use _PhpScoper323d4c178bee\PharIo\Version\Version;
-use _PhpScoper323d4c178bee\Symfony\Component\Console\Command\Command;
-use _PhpScoper323d4c178bee\Symfony\Component\Console\Input\InputArgument;
-use _PhpScoper323d4c178bee\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoper323d4c178bee\Symfony\Component\Console\Output\OutputInterface;
-use _PhpScoper323d4c178bee\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoper437fa56c88e1\PharIo\Version\InvalidVersionException;
+use _PhpScoper437fa56c88e1\PharIo\Version\Version;
+use _PhpScoper437fa56c88e1\Symfony\Component\Console\Command\Command;
+use _PhpScoper437fa56c88e1\Symfony\Component\Console\Input\InputArgument;
+use _PhpScoper437fa56c88e1\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoper437fa56c88e1\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoper437fa56c88e1\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\MonorepoBuilder\ValueObject\File;
 use Symplify\PackageBuilder\Console\ShellCode;
 use Symplify\SmartFileSystem\SmartFileSystem;
 use function dirname;
-final class InitCommand extends \_PhpScoper323d4c178bee\Symfony\Component\Console\Command\Command
+final class InitCommand extends \_PhpScoper437fa56c88e1\Symfony\Component\Console\Command\Command
 {
     /**
      * @var string
@@ -31,7 +31,7 @@ final class InitCommand extends \_PhpScoper323d4c178bee\Symfony\Component\Consol
      * @var SmartFileSystem
      */
     private $smartFileSystem;
-    public function __construct(\_PhpScoper323d4c178bee\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem)
+    public function __construct(\_PhpScoper437fa56c88e1\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem)
     {
         parent::__construct();
         $this->symfonyStyle = $symfonyStyle;
@@ -40,9 +40,9 @@ final class InitCommand extends \_PhpScoper323d4c178bee\Symfony\Component\Consol
     protected function configure() : void
     {
         $this->setDescription('Creates empty monorepo directory and composer.json structure.');
-        $this->addArgument(self::OUTPUT, \_PhpScoper323d4c178bee\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'Directory to generate monorepo into.', \getcwd());
+        $this->addArgument(self::OUTPUT, \_PhpScoper437fa56c88e1\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'Directory to generate monorepo into.', \getcwd());
     }
-    protected function execute(\_PhpScoper323d4c178bee\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper323d4c178bee\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoper437fa56c88e1\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper437fa56c88e1\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         /** @var string $output */
         $output = $input->getArgument(self::OUTPUT);
@@ -64,9 +64,9 @@ final class InitCommand extends \_PhpScoper323d4c178bee\Symfony\Component\Consol
     {
         $version = null;
         try {
-            $prettyVersion = \_PhpScoper323d4c178bee\Jean85\PrettyVersions::getVersion('symplify/monorepo-builder')->getPrettyVersion();
-            $version = new \_PhpScoper323d4c178bee\PharIo\Version\Version(\str_replace('x-dev', '0', $prettyVersion));
-        } catch (\OutOfBoundsException|\_PhpScoper323d4c178bee\PharIo\Version\InvalidVersionException $exceptoin) {
+            $prettyVersion = \_PhpScoper437fa56c88e1\Jean85\PrettyVersions::getVersion('symplify/monorepo-builder')->getPrettyVersion();
+            $version = new \_PhpScoper437fa56c88e1\PharIo\Version\Version(\str_replace('x-dev', '0', $prettyVersion));
+        } catch (\OutOfBoundsException|\_PhpScoper437fa56c88e1\PharIo\Version\InvalidVersionException $exceptoin) {
             // Version might not be explicitly set inside composer.json, looking for "vendor/composer/installed.json"
             $version = $this->extractMonorepoBuilderVersionFromComposer();
         }
@@ -78,15 +78,15 @@ final class InitCommand extends \_PhpScoper323d4c178bee\Symfony\Component\Consol
     /**
      * Returns current version of MonorepoBuilder extracting it from "vendor/composer/installed.json".
      */
-    private function extractMonorepoBuilderVersionFromComposer() : ?\_PhpScoper323d4c178bee\PharIo\Version\Version
+    private function extractMonorepoBuilderVersionFromComposer() : ?\_PhpScoper437fa56c88e1\PharIo\Version\Version
     {
         $installedJsonFilename = \sprintf('%s/composer/installed.json', \dirname(__DIR__, 6));
         if (\is_file($installedJsonFilename)) {
             $installedJsonFileContent = $this->smartFileSystem->readFile($installedJsonFilename);
-            $installedJson = \_PhpScoper323d4c178bee\Nette\Utils\Json::decode($installedJsonFileContent);
+            $installedJson = \_PhpScoper437fa56c88e1\Nette\Utils\Json::decode($installedJsonFileContent);
             foreach ($installedJson as $installedPackage) {
                 if ($installedPackage->name === 'symplify/monorepo-builder') {
-                    return new \_PhpScoper323d4c178bee\PharIo\Version\Version($installedPackage->version);
+                    return new \_PhpScoper437fa56c88e1\PharIo\Version\Version($installedPackage->version);
                 }
             }
         }
