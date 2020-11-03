@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Symplify\SmartFileSystem;
 
-use _PhpScoperc4f6ca029880\Nette\Utils\Strings;
-use _PhpScoperc4f6ca029880\Symfony\Component\Finder\SplFileInfo;
+use _PhpScoperdd9048e10aae\Nette\Utils\Strings;
+use _PhpScoperdd9048e10aae\Symfony\Component\Finder\SplFileInfo;
 use Symplify\SmartFileSystem\Exception\DirectoryNotFoundException;
 use Symplify\SmartFileSystem\Exception\FileNotFoundException;
 /**
  * @see \Symplify\SmartFileSystem\Tests\SmartFileInfo\SmartFileInfoTest
  */
-final class SmartFileInfo extends \_PhpScoperc4f6ca029880\Symfony\Component\Finder\SplFileInfo
+final class SmartFileInfo extends \_PhpScoperdd9048e10aae\Symfony\Component\Finder\SplFileInfo
 {
     /**
      * @var string
@@ -29,7 +29,7 @@ final class SmartFileInfo extends \_PhpScoperc4f6ca029880\Symfony\Component\Find
             throw new \Symplify\SmartFileSystem\Exception\FileNotFoundException(\sprintf('File path "%s" was not found while creating "%s" object.', $filePath, self::class));
         }
         // real path doesn't work in PHAR: https://www.php.net/manual/en/function.realpath.php
-        if (\_PhpScoperc4f6ca029880\Nette\Utils\Strings::startsWith($filePath, 'phar://')) {
+        if (\_PhpScoperdd9048e10aae\Nette\Utils\Strings::startsWith($filePath, 'phar://')) {
             $relativeFilePath = $filePath;
             $relativeDirectoryPath = \dirname($filePath);
         } else {
@@ -53,7 +53,7 @@ final class SmartFileInfo extends \_PhpScoperc4f6ca029880\Symfony\Component\Find
     }
     public function getRealPathWithoutSuffix() : string
     {
-        return \_PhpScoperc4f6ca029880\Nette\Utils\Strings::replace($this->getRealPath(), self::LAST_SUFFIX_REGEX, '');
+        return \_PhpScoperdd9048e10aae\Nette\Utils\Strings::replace($this->getRealPath(), self::LAST_SUFFIX_REGEX, '');
     }
     public function getRelativeFilePath() : string
     {
@@ -76,7 +76,7 @@ final class SmartFileInfo extends \_PhpScoperc4f6ca029880\Symfony\Component\Find
     }
     public function endsWith(string $string) : bool
     {
-        return \_PhpScoperc4f6ca029880\Nette\Utils\Strings::endsWith($this->getNormalizedRealPath(), $string);
+        return \_PhpScoperdd9048e10aae\Nette\Utils\Strings::endsWith($this->getNormalizedRealPath(), $string);
     }
     public function doesFnmatch(string $string) : bool
     {

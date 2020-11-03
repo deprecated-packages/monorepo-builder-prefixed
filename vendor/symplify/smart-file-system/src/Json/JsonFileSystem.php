@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\SmartFileSystem\Json;
 
-use _PhpScoperc4f6ca029880\Nette\Utils\Arrays;
-use _PhpScoperc4f6ca029880\Nette\Utils\Json;
+use _PhpScoperdd9048e10aae\Nette\Utils\Arrays;
+use _PhpScoperdd9048e10aae\Nette\Utils\Json;
 use Symplify\SmartFileSystem\FileSystemGuard;
 use Symplify\SmartFileSystem\SmartFileSystem;
 /**
@@ -29,17 +29,17 @@ final class JsonFileSystem
     {
         $this->fileSystemGuard->ensureFileExists($filePath, __METHOD__);
         $fileContent = $this->smartFileSystem->readFile($filePath);
-        return \_PhpScoperc4f6ca029880\Nette\Utils\Json::decode($fileContent, \_PhpScoperc4f6ca029880\Nette\Utils\Json::FORCE_ARRAY);
+        return \_PhpScoperdd9048e10aae\Nette\Utils\Json::decode($fileContent, \_PhpScoperdd9048e10aae\Nette\Utils\Json::FORCE_ARRAY);
     }
     public function writeJsonToFilePath(array $jsonArray, string $filePath) : void
     {
-        $jsonContent = \_PhpScoperc4f6ca029880\Nette\Utils\Json::encode($jsonArray, \_PhpScoperc4f6ca029880\Nette\Utils\Json::PRETTY) . \PHP_EOL;
+        $jsonContent = \_PhpScoperdd9048e10aae\Nette\Utils\Json::encode($jsonArray, \_PhpScoperdd9048e10aae\Nette\Utils\Json::PRETTY) . \PHP_EOL;
         $this->smartFileSystem->dumpFile($filePath, $jsonContent);
     }
     public function mergeArrayToJsonFile(string $filePath, array $newJsonArray) : void
     {
         $jsonArray = $this->loadFilePathToJson($filePath);
-        $newComposerJsonArray = \_PhpScoperc4f6ca029880\Nette\Utils\Arrays::mergeTree($jsonArray, $newJsonArray);
+        $newComposerJsonArray = \_PhpScoperdd9048e10aae\Nette\Utils\Arrays::mergeTree($jsonArray, $newJsonArray);
         $this->writeJsonToFilePath($newComposerJsonArray, $filePath);
     }
 }
