@@ -1,6 +1,6 @@
 <?php
 
-namespace _PhpScoper931cda798d50;
+namespace _PhpScoper8e7700b08cb9;
 
 /*
  * This file is part of the Symfony package.
@@ -10,36 +10,35 @@ namespace _PhpScoper931cda798d50;
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-use _PhpScoper931cda798d50\Symfony\Polyfill\Php73 as p;
-if (\PHP_VERSION_ID < 70300) {
-    if (!\function_exists('is_countable')) {
-        function is_countable($var)
-        {
-            return \is_array($var) || $var instanceof \Countable || $var instanceof \ResourceBundle || $var instanceof \_PhpScoper931cda798d50\SimpleXmlElement;
-        }
+use _PhpScoper8e7700b08cb9\Symfony\Polyfill\Php73 as p;
+if (\PHP_VERSION_ID >= 70300) {
+    return;
+}
+if (!\function_exists('is_countable')) {
+    function is_countable($value)
+    {
+        return \is_array($value) || $value instanceof \Countable || $value instanceof \ResourceBundle || $value instanceof \_PhpScoper8e7700b08cb9\SimpleXmlElement;
     }
-    if (!\function_exists('hrtime')) {
-        \_PhpScoper931cda798d50\Symfony\Polyfill\Php73\Php73::$startAt = (int) \microtime(\true);
-        function hrtime($asNum = \false)
-        {
-            return \_PhpScoper931cda798d50\Symfony\Polyfill\Php73\Php73::hrtime($asNum);
-        }
+}
+if (!\function_exists('hrtime')) {
+    require_once __DIR__ . '/Php73.php';
+    \_PhpScoper8e7700b08cb9\Symfony\Polyfill\Php73\Php73::$startAt = (int) \microtime(\true);
+    function hrtime($as_number = \false)
+    {
+        return \_PhpScoper8e7700b08cb9\Symfony\Polyfill\Php73\Php73::hrtime($as_number);
     }
-    if (!\function_exists('array_key_first')) {
-        function array_key_first(array $array)
-        {
-            foreach ($array as $key => $value) {
-                return $key;
-            }
-        }
-    }
-    if (!\function_exists('array_key_last')) {
-        function array_key_last(array $array)
-        {
-            $key = null;
-            foreach ($array as $key => $value) {
-            }
+}
+if (!\function_exists('array_key_first')) {
+    function array_key_first(array $array)
+    {
+        foreach ($array as $key => $value) {
             return $key;
         }
+    }
+}
+if (!\function_exists('array_key_last')) {
+    function array_key_last(array $array)
+    {
+        return \key(\array_slice($array, -1, 1, \true));
     }
 }

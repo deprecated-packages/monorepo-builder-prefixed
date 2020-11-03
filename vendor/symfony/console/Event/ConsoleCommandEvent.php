@@ -8,16 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper931cda798d50\Symfony\Component\Console\Event;
+namespace _PhpScoper8e7700b08cb9\Symfony\Component\Console\Event;
 
 /**
  * Allows to do things before the command is executed, like skipping the command or changing the input.
  *
  * @author Fabien Potencier <fabien@symfony.com>
- *
- * @final since Symfony 4.4
  */
-class ConsoleCommandEvent extends \_PhpScoper931cda798d50\Symfony\Component\Console\Event\ConsoleEvent
+final class ConsoleCommandEvent extends \_PhpScoper8e7700b08cb9\Symfony\Component\Console\Event\ConsoleEvent
 {
     /**
      * The return code for skipped commands, this will also be passed into the terminate event.
@@ -29,28 +27,19 @@ class ConsoleCommandEvent extends \_PhpScoper931cda798d50\Symfony\Component\Cons
     private $commandShouldRun = \true;
     /**
      * Disables the command, so it won't be run.
-     *
-     * @return bool
      */
-    public function disableCommand()
+    public function disableCommand() : bool
     {
         return $this->commandShouldRun = \false;
     }
-    /**
-     * Enables the command.
-     *
-     * @return bool
-     */
-    public function enableCommand()
+    public function enableCommand() : bool
     {
         return $this->commandShouldRun = \true;
     }
     /**
      * Returns true if the command is runnable, false otherwise.
-     *
-     * @return bool
      */
-    public function commandShouldRun()
+    public function commandShouldRun() : bool
     {
         return $this->commandShouldRun;
     }
