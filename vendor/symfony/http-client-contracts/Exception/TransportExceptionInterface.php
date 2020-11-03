@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper2555ca7105f5\Symfony\Contracts\HttpClient\Exception;
+namespace _PhpScoper138e2990dbdb\Symfony\Contracts\HttpClient\Exception;
 
 /**
  * When any error happens at the transport level.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-interface TransportExceptionInterface extends \_PhpScoper2555ca7105f5\Symfony\Contracts\HttpClient\Exception\ExceptionInterface
+interface TransportExceptionInterface extends \_PhpScoper138e2990dbdb\Symfony\Contracts\HttpClient\Exception\ExceptionInterface
 {
 }

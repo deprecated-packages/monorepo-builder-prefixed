@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper2555ca7105f5\Symfony\Component\Finder\Iterator;
+namespace _PhpScoper138e2990dbdb\Symfony\Component\Finder\Iterator;
 
 /**
  * CustomFilterIterator filters files by applying anonymous functions.
