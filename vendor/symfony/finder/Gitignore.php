@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper30e4ccea42bd\Symfony\Component\Finder;
+namespace _PhpScoper1d3d21549513\Symfony\Component\Finder;
 
 /**
  * Gitignore matches against text.

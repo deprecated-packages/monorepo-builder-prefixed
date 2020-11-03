@@ -1,5 +1,5 @@
 <div class="trace-line-header break-long-words <?php 
-namespace _PhpScoper30e4ccea42bd;
+namespace _PhpScoper1d3d21549513;
 
 echo $trace['file'] ? 'sf-toggle' : '';
 ?>" data-toggle-selector="#trace-html-<?php 

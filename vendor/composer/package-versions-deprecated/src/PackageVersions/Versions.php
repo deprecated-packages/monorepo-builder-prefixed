@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace _PhpScoper30e4ccea42bd\PackageVersions;
+namespace _PhpScoper1d3d21549513\PackageVersions;
 
 use Composer\InstalledVersions;
 use OutOfBoundsException;

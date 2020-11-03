@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace _PhpScoper30e4ccea42bd\Nette\Utils;
+namespace _PhpScoper1d3d21549513\Nette\Utils;
 
-use _PhpScoper30e4ccea42bd\Nette;
+use _PhpScoper1d3d21549513\Nette;
 /**
  * Provides objects to work as array.
  */
@@ -52,7 +52,7 @@ class ArrayHash extends \stdClass implements \ArrayAccess, \Countable, \Iterator
     {
         if (!\is_scalar($key)) {
             // prevents null
-            throw new \_PhpScoper30e4ccea42bd\Nette\InvalidArgumentException(\sprintf('Key must be either a string or an integer, %s given.', \gettype($key)));
+            throw new \_PhpScoper1d3d21549513\Nette\InvalidArgumentException(\sprintf('Key must be either a string or an integer, %s given.', \gettype($key)));
         }
         $this->{$key} = $value;
     }
