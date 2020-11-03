@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "_PhpScoper227dea868235\\Symfony\\Contracts\\HttpClient\\": ""
+            "_PhpScoperb154859e1be7\\Symfony\\Contracts\\HttpClient\\": ""
         }
     },
     "minimum-stability": "dev",

@@ -1,6 +1,6 @@
 <?php
 
-namespace _PhpScoper227dea868235;
+namespace _PhpScoperb154859e1be7;
 
 /*
  * This file is part of the Symfony package.
@@ -21,4 +21,4 @@ class JsonException extends \Exception
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-\class_alias('_PhpScoper227dea868235\\JsonException', 'JsonException', \false);
+\class_alias('_PhpScoperb154859e1be7\\JsonException', 'JsonException', \false);

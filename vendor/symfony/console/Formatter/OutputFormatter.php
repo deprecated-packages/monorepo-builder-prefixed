@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper227dea868235\Symfony\Component\Console\Formatter;
+namespace _PhpScoperb154859e1be7\Symfony\Component\Console\Formatter;
 
-use _PhpScoper227dea868235\Symfony\Component\Console\Exception\InvalidArgumentException;
+use _PhpScoperb154859e1be7\Symfony\Component\Console\Exception\InvalidArgumentException;
 /**
  * Formatter class for console output.
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
-class OutputFormatter implements \_PhpScoper227dea868235\Symfony\Component\Console\Formatter\WrappableOutputFormatterInterface
+class OutputFormatter implements \_PhpScoperb154859e1be7\Symfony\Component\Console\Formatter\WrappableOutputFormatterInterface
 {
     private $decorated;
     private $styles = [];
@@ -55,14 +55,14 @@ class OutputFormatter implements \_PhpScoper227dea868235\Symfony\Component\Conso
     public function __construct(bool $decorated = \false, array $styles = [])
     {
         $this->decorated = $decorated;
-        $this->setStyle('error', new \_PhpScoper227dea868235\Symfony\Component\Console\Formatter\OutputFormatterStyle('white', 'red'));
-        $this->setStyle('info', new \_PhpScoper227dea868235\Symfony\Component\Console\Formatter\OutputFormatterStyle('green'));
-        $this->setStyle('comment', new \_PhpScoper227dea868235\Symfony\Component\Console\Formatter\OutputFormatterStyle('yellow'));
-        $this->setStyle('question', new \_PhpScoper227dea868235\Symfony\Component\Console\Formatter\OutputFormatterStyle('black', 'cyan'));
+        $this->setStyle('error', new \_PhpScoperb154859e1be7\Symfony\Component\Console\Formatter\OutputFormatterStyle('white', 'red'));
+        $this->setStyle('info', new \_PhpScoperb154859e1be7\Symfony\Component\Console\Formatter\OutputFormatterStyle('green'));
+        $this->setStyle('comment', new \_PhpScoperb154859e1be7\Symfony\Component\Console\Formatter\OutputFormatterStyle('yellow'));
+        $this->setStyle('question', new \_PhpScoperb154859e1be7\Symfony\Component\Console\Formatter\OutputFormatterStyle('black', 'cyan'));
         foreach ($styles as $name => $style) {
             $this->setStyle($name, $style);
         }
-        $this->styleStack = new \_PhpScoper227dea868235\Symfony\Component\Console\Formatter\OutputFormatterStyleStack();
+        $this->styleStack = new \_PhpScoperb154859e1be7\Symfony\Component\Console\Formatter\OutputFormatterStyleStack();
     }
     /**
      * {@inheritdoc}
@@ -81,7 +81,7 @@ class OutputFormatter implements \_PhpScoper227dea868235\Symfony\Component\Conso
     /**
      * {@inheritdoc}
      */
-    public function setStyle(string $name, \_PhpScoper227dea868235\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style)
+    public function setStyle(string $name, \_PhpScoperb154859e1be7\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style)
     {
         $this->styles[\strtolower($name)] = $style;
     }
@@ -98,7 +98,7 @@ class OutputFormatter implements \_PhpScoper227dea868235\Symfony\Component\Conso
     public function getStyle(string $name)
     {
         if (!$this->hasStyle($name)) {
-            throw new \_PhpScoper227dea868235\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Undefined style: "%s".', $name));
+            throw new \_PhpScoperb154859e1be7\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Undefined style: "%s".', $name));
         }
         return $this->styles[\strtolower($name)];
     }
@@ -161,7 +161,7 @@ class OutputFormatter implements \_PhpScoper227dea868235\Symfony\Component\Conso
     /**
      * Tries to create new style instance from string.
      */
-    private function createStyleFromString(string $string) : ?\_PhpScoper227dea868235\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface
+    private function createStyleFromString(string $string) : ?\_PhpScoperb154859e1be7\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface
     {
         if (isset($this->styles[$string])) {
             return $this->styles[$string];
@@ -169,7 +169,7 @@ class OutputFormatter implements \_PhpScoper227dea868235\Symfony\Component\Conso
         if (!\preg_match_all('/([^=]+)=([^;]+)(;|$)/', $string, $matches, \PREG_SET_ORDER)) {
             return null;
         }
-        $style = new \_PhpScoper227dea868235\Symfony\Component\Console\Formatter\OutputFormatterStyle();
+        $style = new \_PhpScoperb154859e1be7\Symfony\Component\Console\Formatter\OutputFormatterStyle();
         foreach ($matches as $match) {
             \array_shift($match);
             $match[0] = \strtolower($match[0]);
