@@ -1,24 +1,27 @@
 <?php
 
-namespace _PhpScoper0f10ad97259b\Psr\Log;
+namespace _PhpScoperc00d4390f333\Psr\Log;
 
 /**
- * This Logger can be used to avoid conditional log calls
+ * This Logger can be used to avoid conditional log calls.
  *
  * Logging should always be optional, and if no logger is provided to your
  * library creating a NullLogger instance to have something to throw logs at
  * is a good way to avoid littering your code with `if ($this->logger) { }`
  * blocks.
  */
-class NullLogger extends \_PhpScoper0f10ad97259b\Psr\Log\AbstractLogger
+class NullLogger extends \_PhpScoperc00d4390f333\Psr\Log\AbstractLogger
 {
     /**
      * Logs with an arbitrary level.
      *
-     * @param mixed $level
+     * @param mixed  $level
      * @param string $message
-     * @param array $context
-     * @return null
+     * @param array  $context
+     *
+     * @return void
+     *
+     * @throws \Psr\Log\InvalidArgumentException
      */
     public function log($level, $message, array $context = array())
     {

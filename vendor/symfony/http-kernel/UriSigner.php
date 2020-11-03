@@ -8,8 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper0f10ad97259b\Symfony\Component\HttpKernel;
+namespace _PhpScoperc00d4390f333\Symfony\Component\HttpKernel;
 
+use _PhpScoperc00d4390f333\Symfony\Component\HttpFoundation\Request;
 /**
  * Signs URIs.
  *
@@ -34,11 +35,9 @@ class UriSigner
      * The given URI is signed by adding the query string parameter
      * which value depends on the URI and the secret.
      *
-     * @param string $uri A URI to sign
-     *
      * @return string The signed URI
      */
-    public function sign($uri)
+    public function sign(string $uri)
     {
         $url = \parse_url($uri);
         if (isset($url['query'])) {
@@ -53,11 +52,9 @@ class UriSigner
     /**
      * Checks that a URI contains the correct hash.
      *
-     * @param string $uri A signed URI
-     *
      * @return bool True if the URI is signed correctly, false otherwise
      */
-    public function check($uri)
+    public function check(string $uri)
     {
         $url = \parse_url($uri);
         if (isset($url['query'])) {
@@ -71,6 +68,12 @@ class UriSigner
         $hash = $params[$this->parameter];
         unset($params[$this->parameter]);
         return \hash_equals($this->computeHash($this->buildUrl($url, $params)), $hash);
+    }
+    public function checkRequest(\_PhpScoperc00d4390f333\Symfony\Component\HttpFoundation\Request $request) : bool
+    {
+        $qs = ($qs = $request->server->get('QUERY_STRING')) ? '?' . $qs : '';
+        // we cannot use $request->getUri() here as we want to work with the original URI (no query string reordering)
+        return $this->check($request->getSchemeAndHttpHost() . $request->getBaseUrl() . $request->getPathInfo() . $qs);
     }
     private function computeHash(string $uri) : string
     {
