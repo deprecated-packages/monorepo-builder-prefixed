@@ -32,7 +32,7 @@
     },
     "autoload": {
         "psr-4": {
-            "_PhpScopera42d72b2de70\\Symfony\\Component\\HttpFoundation\\": ""
+            "_PhpScoper4f477dcd4249\\Symfony\\Component\\HttpFoundation\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"

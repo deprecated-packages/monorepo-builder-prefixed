@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopera42d72b2de70\Symfony\Component\HttpKernel\DataCollector;
+namespace _PhpScoper4f477dcd4249\Symfony\Component\HttpKernel\DataCollector;
 
-use _PhpScopera42d72b2de70\Symfony\Component\HttpFoundation\Request;
-use _PhpScopera42d72b2de70\Symfony\Component\HttpFoundation\Response;
+use _PhpScoper4f477dcd4249\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper4f477dcd4249\Symfony\Component\HttpFoundation\Response;
 /**
  * AjaxDataCollector.
  *
@@ -19,9 +19,9 @@ use _PhpScopera42d72b2de70\Symfony\Component\HttpFoundation\Response;
  *
  * @final
  */
-class AjaxDataCollector extends \_PhpScopera42d72b2de70\Symfony\Component\HttpKernel\DataCollector\DataCollector
+class AjaxDataCollector extends \_PhpScoper4f477dcd4249\Symfony\Component\HttpKernel\DataCollector\DataCollector
 {
-    public function collect(\_PhpScopera42d72b2de70\Symfony\Component\HttpFoundation\Request $request, \_PhpScopera42d72b2de70\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
+    public function collect(\_PhpScoper4f477dcd4249\Symfony\Component\HttpFoundation\Request $request, \_PhpScoper4f477dcd4249\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
     {
         // all collecting is done client side
     }
