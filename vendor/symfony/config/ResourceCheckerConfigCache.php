@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere73d4c0b7ec8\Symfony\Component\Config;
+namespace _PhpScoperd0ff379dfdc7\Symfony\Component\Config;
 
-use _PhpScopere73d4c0b7ec8\Symfony\Component\Config\Resource\ResourceInterface;
-use _PhpScopere73d4c0b7ec8\Symfony\Component\Filesystem\Exception\IOException;
-use _PhpScopere73d4c0b7ec8\Symfony\Component\Filesystem\Filesystem;
+use _PhpScoperd0ff379dfdc7\Symfony\Component\Config\Resource\ResourceInterface;
+use _PhpScoperd0ff379dfdc7\Symfony\Component\Filesystem\Exception\IOException;
+use _PhpScoperd0ff379dfdc7\Symfony\Component\Filesystem\Filesystem;
 /**
  * ResourceCheckerConfigCache uses instances of ResourceCheckerInterface
  * to check whether cached data is still fresh.
  *
  * @author Matthias Pigulla <mp@webfactory.de>
  */
-class ResourceCheckerConfigCache implements \_PhpScopere73d4c0b7ec8\Symfony\Component\Config\ConfigCacheInterface
+class ResourceCheckerConfigCache implements \_PhpScoperd0ff379dfdc7\Symfony\Component\Config\ConfigCacheInterface
 {
     /**
      * @var string
@@ -103,22 +103,22 @@ class ResourceCheckerConfigCache implements \_PhpScopere73d4c0b7ec8\Symfony\Comp
      *
      * @throws \RuntimeException When cache file can't be written
      */
-    public function write($content, array $metadata = null)
+    public function write(string $content, array $metadata = null)
     {
         $mode = 0666;
         $umask = \umask();
-        $filesystem = new \_PhpScopere73d4c0b7ec8\Symfony\Component\Filesystem\Filesystem();
+        $filesystem = new \_PhpScoperd0ff379dfdc7\Symfony\Component\Filesystem\Filesystem();
         $filesystem->dumpFile($this->file, $content);
         try {
             $filesystem->chmod($this->file, $mode, $umask);
-        } catch (\_PhpScopere73d4c0b7ec8\Symfony\Component\Filesystem\Exception\IOException $e) {
+        } catch (\_PhpScoperd0ff379dfdc7\Symfony\Component\Filesystem\Exception\IOException $e) {
             // discard chmod failure (some filesystem may not support it)
         }
         if (null !== $metadata) {
             $filesystem->dumpFile($this->getMetaFile(), \serialize($metadata));
             try {
                 $filesystem->chmod($this->getMetaFile(), $mode, $umask);
-            } catch (\_PhpScopere73d4c0b7ec8\Symfony\Component\Filesystem\Exception\IOException $e) {
+            } catch (\_PhpScoperd0ff379dfdc7\Symfony\Component\Filesystem\Exception\IOException $e) {
                 // discard chmod failure (some filesystem may not support it)
             }
         }

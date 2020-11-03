@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\ParameterBag;
+namespace _PhpScoperd0ff379dfdc7\Symfony\Component\DependencyInjection\ParameterBag;
 
-use _PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\Exception\LogicException;
-use _PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use _PhpScoperd0ff379dfdc7\Symfony\Component\DependencyInjection\Exception\LogicException;
+use _PhpScoperd0ff379dfdc7\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 /**
  * ParameterBagInterface is the interface implemented by objects that manage service container parameters.
  *
@@ -42,36 +42,29 @@ interface ParameterBagInterface
     /**
      * Gets a service container parameter.
      *
-     * @param string $name The parameter name
-     *
      * @return mixed The parameter value
      *
      * @throws ParameterNotFoundException if the parameter is not defined
      */
-    public function get($name);
+    public function get(string $name);
     /**
      * Removes a parameter.
-     *
-     * @param string $name The parameter name
      */
-    public function remove($name);
+    public function remove(string $name);
     /**
      * Sets a service container parameter.
      *
-     * @param string $name  The parameter name
-     * @param mixed  $value The parameter value
+     * @param mixed $value The parameter value
      *
      * @throws LogicException if the parameter can not be set
      */
-    public function set($name, $value);
+    public function set(string $name, $value);
     /**
      * Returns true if a parameter name is defined.
      *
-     * @param string $name The parameter name
-     *
      * @return bool true if the parameter name is defined, false otherwise
      */
-    public function has($name);
+    public function has(string $name);
     /**
      * Replaces parameter placeholders (%name%) by their values for all parameters.
      */

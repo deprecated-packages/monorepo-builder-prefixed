@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere73d4c0b7ec8\PharIo\Version;
+namespace _PhpScoperd0ff379dfdc7\PharIo\Version;
 
 interface VersionConstraint
 {
@@ -17,7 +17,7 @@ interface VersionConstraint
      *
      * @return bool
      */
-    public function complies(\_PhpScopere73d4c0b7ec8\PharIo\Version\Version $version);
+    public function complies(\_PhpScoperd0ff379dfdc7\PharIo\Version\Version $version);
     /**
      * @return string
      */

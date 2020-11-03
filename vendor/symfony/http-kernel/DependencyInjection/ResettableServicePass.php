@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere73d4c0b7ec8\Symfony\Component\HttpKernel\DependencyInjection;
+namespace _PhpScoperd0ff379dfdc7\Symfony\Component\HttpKernel\DependencyInjection;
 
-use _PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use _PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use _PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\ContainerInterface;
-use _PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use _PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\Reference;
+use _PhpScoperd0ff379dfdc7\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use _PhpScoperd0ff379dfdc7\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use _PhpScoperd0ff379dfdc7\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoperd0ff379dfdc7\Symfony\Component\DependencyInjection\ContainerInterface;
+use _PhpScoperd0ff379dfdc7\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use _PhpScoperd0ff379dfdc7\Symfony\Component\DependencyInjection\Reference;
 /**
  * @author Alexander M. Turek <me@derrabus.de>
  */
-class ResettableServicePass implements \_PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class ResettableServicePass implements \_PhpScoperd0ff379dfdc7\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     private $tagName;
     public function __construct(string $tagName = 'kernel.reset')
@@ -29,25 +29,29 @@ class ResettableServicePass implements \_PhpScopere73d4c0b7ec8\Symfony\Component
     /**
      * {@inheritdoc}
      */
-    public function process(\_PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\_PhpScoperd0ff379dfdc7\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         if (!$container->has('services_resetter')) {
             return;
         }
         $services = $methods = [];
         foreach ($container->findTaggedServiceIds($this->tagName, \true) as $id => $tags) {
-            $services[$id] = new \_PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\Reference($id, \_PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE);
-            $attributes = $tags[0];
-            if (!isset($attributes['method'])) {
-                throw new \_PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Tag %s requires the "method" attribute to be set.', $this->tagName));
+            $services[$id] = new \_PhpScoperd0ff379dfdc7\Symfony\Component\DependencyInjection\Reference($id, \_PhpScoperd0ff379dfdc7\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE);
+            foreach ($tags as $attributes) {
+                if (!isset($attributes['method'])) {
+                    throw new \_PhpScoperd0ff379dfdc7\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Tag "%s" requires the "method" attribute to be set.', $this->tagName));
+                }
+                if (!isset($methods[$id])) {
+                    $methods[$id] = [];
+                }
+                $methods[$id][] = $attributes['method'];
             }
-            $methods[$id] = $attributes['method'];
         }
-        if (empty($services)) {
+        if (!$services) {
             $container->removeAlias('services_resetter');
             $container->removeDefinition('services_resetter');
             return;
         }
-        $container->findDefinition('services_resetter')->setArgument(0, new \_PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\Argument\IteratorArgument($services))->setArgument(1, $methods);
+        $container->findDefinition('services_resetter')->setArgument(0, new \_PhpScoperd0ff379dfdc7\Symfony\Component\DependencyInjection\Argument\IteratorArgument($services))->setArgument(1, $methods);
     }
 }

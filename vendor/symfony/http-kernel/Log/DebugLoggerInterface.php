@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere73d4c0b7ec8\Symfony\Component\HttpKernel\Log;
+namespace _PhpScoperd0ff379dfdc7\Symfony\Component\HttpKernel\Log;
 
-use _PhpScopere73d4c0b7ec8\Symfony\Component\HttpFoundation\Request;
+use _PhpScoperd0ff379dfdc7\Symfony\Component\HttpFoundation\Request;
 /**
  * DebugLoggerInterface.
  *
@@ -25,19 +25,15 @@ interface DebugLoggerInterface
      * timestamp, message, priority, and priorityName.
      * It can also have an optional context key containing an array.
      *
-     * @param Request|null $request The request to get logs for
-     *
      * @return array An array of logs
      */
-    public function getLogs();
+    public function getLogs(\_PhpScoperd0ff379dfdc7\Symfony\Component\HttpFoundation\Request $request = null);
     /**
      * Returns the number of errors.
      *
-     * @param Request|null $request The request to count logs for
-     *
      * @return int The number of errors
      */
-    public function countErrors();
+    public function countErrors(\_PhpScoperd0ff379dfdc7\Symfony\Component\HttpFoundation\Request $request = null);
     /**
      * Removes all log records.
      */

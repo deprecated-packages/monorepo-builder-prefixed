@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace _PhpScopere73d4c0b7ec8\Nette\Iterators;
+namespace _PhpScoperd0ff379dfdc7\Nette\Iterators;
 
-use _PhpScopere73d4c0b7ec8\Nette;
+use _PhpScoperd0ff379dfdc7\Nette;
 /**
  * Smarter caching iterator.
  *
@@ -33,12 +33,12 @@ class CachingIterator extends \CachingIterator implements \Countable
             do {
                 $iterator = $iterator->getIterator();
             } while ($iterator instanceof \IteratorAggregate);
+            \assert($iterator instanceof \Iterator);
+        } elseif ($iterator instanceof \Iterator) {
         } elseif ($iterator instanceof \Traversable) {
-            if (!$iterator instanceof \Iterator) {
-                $iterator = new \IteratorIterator($iterator);
-            }
+            $iterator = new \IteratorIterator($iterator);
         } else {
-            throw new \_PhpScopere73d4c0b7ec8\Nette\InvalidArgumentException(\sprintf('Invalid argument passed to %s; array or Traversable expected, %s given.', __CLASS__, \is_object($iterator) ? \get_class($iterator) : \gettype($iterator)));
+            throw new \_PhpScoperd0ff379dfdc7\Nette\InvalidArgumentException(\sprintf('Invalid argument passed to %s; array or Traversable expected, %s given.', __CLASS__, \is_object($iterator) ? \get_class($iterator) : \gettype($iterator)));
         }
         parent::__construct($iterator, 0);
     }
@@ -93,7 +93,7 @@ class CachingIterator extends \CachingIterator implements \Countable
         if ($inner instanceof \Countable) {
             return $inner->count();
         } else {
-            throw new \_PhpScopere73d4c0b7ec8\Nette\NotSupportedException('Iterator is not countable.');
+            throw new \_PhpScoperd0ff379dfdc7\Nette\NotSupportedException('Iterator is not countable.');
         }
     }
     /**

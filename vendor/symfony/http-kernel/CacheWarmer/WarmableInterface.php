@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere73d4c0b7ec8\Symfony\Component\HttpKernel\CacheWarmer;
+namespace _PhpScoperd0ff379dfdc7\Symfony\Component\HttpKernel\CacheWarmer;
 
 /**
  * Interface for classes that support warming their cache.
@@ -20,7 +20,7 @@ interface WarmableInterface
     /**
      * Warms up the cache.
      *
-     * @param string $cacheDir The cache directory
+     * @return string[] A list of classes or files to preload on PHP 7.4+
      */
-    public function warmUp($cacheDir);
+    public function warmUp(string $cacheDir);
 }

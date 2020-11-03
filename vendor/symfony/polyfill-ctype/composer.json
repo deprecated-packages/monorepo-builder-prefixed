@@ -21,20 +21,27 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3"
+        "php": ">=7.1"
     },
     "autoload": {
         "psr-4": {
-            "_PhpScopere73d4c0b7ec8\\Symfony\\Polyfill\\Ctype\\": ""
+            "_PhpScoperd0ff379dfdc7\\Symfony\\Polyfill\\Ctype\\": ""
         },
         "files": [
             "bootstrap.php"
         ]
     },
+    "suggest": {
+        "ext-ctype": "For best performance"
+    },
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
-            "dev-master": "1.8-dev"
+            "dev-main": "1.20-dev"
+        },
+        "thanks": {
+            "name": "symfony\/polyfill",
+            "url": "https:\/\/github.com\/symfony\/polyfill"
         }
     }
 }

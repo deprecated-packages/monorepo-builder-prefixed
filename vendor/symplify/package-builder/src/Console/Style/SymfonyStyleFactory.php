@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\PackageBuilder\Console\Style;
 
-use _PhpScopere73d4c0b7ec8\Symfony\Component\Console\Application;
-use _PhpScopere73d4c0b7ec8\Symfony\Component\Console\Input\ArgvInput;
-use _PhpScopere73d4c0b7ec8\Symfony\Component\Console\Output\ConsoleOutput;
-use _PhpScopere73d4c0b7ec8\Symfony\Component\Console\Output\OutputInterface;
-use _PhpScopere73d4c0b7ec8\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoperd0ff379dfdc7\Symfony\Component\Console\Application;
+use _PhpScoperd0ff379dfdc7\Symfony\Component\Console\Input\ArgvInput;
+use _PhpScoperd0ff379dfdc7\Symfony\Component\Console\Output\ConsoleOutput;
+use _PhpScoperd0ff379dfdc7\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoperd0ff379dfdc7\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\PackageBuilder\Reflection\PrivatesCaller;
 final class SymfonyStyleFactory
 {
@@ -19,20 +19,20 @@ final class SymfonyStyleFactory
     {
         $this->privatesCaller = new \Symplify\PackageBuilder\Reflection\PrivatesCaller();
     }
-    public function create() : \_PhpScopere73d4c0b7ec8\Symfony\Component\Console\Style\SymfonyStyle
+    public function create() : \_PhpScoperd0ff379dfdc7\Symfony\Component\Console\Style\SymfonyStyle
     {
         // to prevent missing argv indexes
         if (!isset($_SERVER['argv'])) {
             $_SERVER['argv'] = [];
         }
-        $argvInput = new \_PhpScopere73d4c0b7ec8\Symfony\Component\Console\Input\ArgvInput();
-        $consoleOutput = new \_PhpScopere73d4c0b7ec8\Symfony\Component\Console\Output\ConsoleOutput();
+        $argvInput = new \_PhpScoperd0ff379dfdc7\Symfony\Component\Console\Input\ArgvInput();
+        $consoleOutput = new \_PhpScoperd0ff379dfdc7\Symfony\Component\Console\Output\ConsoleOutput();
         // to configure all -v, -vv, -vvv options without memory-lock to Application run() arguments
-        $this->privatesCaller->callPrivateMethod(new \_PhpScopere73d4c0b7ec8\Symfony\Component\Console\Application(), 'configureIO', $argvInput, $consoleOutput);
+        $this->privatesCaller->callPrivateMethod(new \_PhpScoperd0ff379dfdc7\Symfony\Component\Console\Application(), 'configureIO', $argvInput, $consoleOutput);
         // --debug is called
         if ($argvInput->hasParameterOption('--debug')) {
-            $consoleOutput->setVerbosity(\_PhpScopere73d4c0b7ec8\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_DEBUG);
+            $consoleOutput->setVerbosity(\_PhpScoperd0ff379dfdc7\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_DEBUG);
         }
-        return new \_PhpScopere73d4c0b7ec8\Symfony\Component\Console\Style\SymfonyStyle($argvInput, $consoleOutput);
+        return new \_PhpScoperd0ff379dfdc7\Symfony\Component\Console\Style\SymfonyStyle($argvInput, $consoleOutput);
     }
 }

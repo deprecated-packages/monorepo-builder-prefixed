@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere73d4c0b7ec8\Symfony\Component\VarDumper\Cloner;
+namespace _PhpScoperd0ff379dfdc7\Symfony\Component\VarDumper\Cloner;
 
 /**
  * Represents the main properties of a PHP variable.
@@ -41,7 +41,7 @@ class Stub
     public function __sleep() : array
     {
         $properties = [];
-        if (!isset(self::$defaultProperties[$c = \get_class($this)])) {
+        if (!isset(self::$defaultProperties[$c = static::class])) {
             self::$defaultProperties[$c] = \get_class_vars($c);
             foreach ((new \ReflectionClass($c))->getStaticProperties() as $k => $v) {
                 unset(self::$defaultProperties[$c][$k]);

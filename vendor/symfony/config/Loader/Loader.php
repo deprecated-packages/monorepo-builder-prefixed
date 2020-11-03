@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere73d4c0b7ec8\Symfony\Component\Config\Loader;
+namespace _PhpScoperd0ff379dfdc7\Symfony\Component\Config\Loader;
 
-use _PhpScopere73d4c0b7ec8\Symfony\Component\Config\Exception\LoaderLoadException;
+use _PhpScoperd0ff379dfdc7\Symfony\Component\Config\Exception\LoaderLoadException;
 /**
  * Loader is the abstract class used by all built-in loaders.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Loader implements \_PhpScopere73d4c0b7ec8\Symfony\Component\Config\Loader\LoaderInterface
+abstract class Loader implements \_PhpScoperd0ff379dfdc7\Symfony\Component\Config\Loader\LoaderInterface
 {
     protected $resolver;
     /**
@@ -29,7 +29,7 @@ abstract class Loader implements \_PhpScopere73d4c0b7ec8\Symfony\Component\Confi
     /**
      * {@inheritdoc}
      */
-    public function setResolver(\_PhpScopere73d4c0b7ec8\Symfony\Component\Config\Loader\LoaderResolverInterface $resolver)
+    public function setResolver(\_PhpScoperd0ff379dfdc7\Symfony\Component\Config\Loader\LoaderResolverInterface $resolver)
     {
         $this->resolver = $resolver;
     }
@@ -41,7 +41,7 @@ abstract class Loader implements \_PhpScopere73d4c0b7ec8\Symfony\Component\Confi
      *
      * @return mixed
      */
-    public function import($resource, $type = null)
+    public function import($resource, string $type = null)
     {
         return $this->resolve($resource, $type)->load($resource, $type);
     }
@@ -55,14 +55,14 @@ abstract class Loader implements \_PhpScopere73d4c0b7ec8\Symfony\Component\Confi
      *
      * @throws LoaderLoadException If no loader is found
      */
-    public function resolve($resource, $type = null)
+    public function resolve($resource, string $type = null)
     {
         if ($this->supports($resource, $type)) {
             return $this;
         }
         $loader = null === $this->resolver ? \false : $this->resolver->resolve($resource, $type);
         if (\false === $loader) {
-            throw new \_PhpScopere73d4c0b7ec8\Symfony\Component\Config\Exception\LoaderLoadException($resource, null, null, null, $type);
+            throw new \_PhpScoperd0ff379dfdc7\Symfony\Component\Config\Exception\LoaderLoadException($resource, null, null, null, $type);
         }
         return $loader;
     }
