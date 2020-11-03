@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper4c089bfbbc1b\Symfony\Contracts\HttpClient\Exception;
+namespace _PhpScoper8a421ef9d4c6\Symfony\Contracts\HttpClient\Exception;
 
 /**
  * The base interface for all exceptions in the contract.

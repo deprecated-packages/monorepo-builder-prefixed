@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper4c089bfbbc1b\Symfony\Component\Console\Question;
+namespace _PhpScoper8a421ef9d4c6\Symfony\Component\Console\Question;
 
-use _PhpScoper4c089bfbbc1b\Symfony\Component\Console\Exception\InvalidArgumentException;
+use _PhpScoper8a421ef9d4c6\Symfony\Component\Console\Exception\InvalidArgumentException;
 /**
  * Represents a choice question.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ChoiceQuestion extends \_PhpScoper4c089bfbbc1b\Symfony\Component\Console\Question\Question
+class ChoiceQuestion extends \_PhpScoper8a421ef9d4c6\Symfony\Component\Console\Question\Question
 {
     private $choices;
     private $multiselect = \false;
@@ -110,7 +110,7 @@ class ChoiceQuestion extends \_PhpScoper4c089bfbbc1b\Symfony\Component\Console\Q
             if ($multiselect) {
                 // Check for a separated comma values
                 if (!\preg_match('/^[^,]+(?:,[^,]+)*$/', $selected, $matches)) {
-                    throw new \_PhpScoper4c089bfbbc1b\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf($errorMessage, $selected));
+                    throw new \_PhpScoper8a421ef9d4c6\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf($errorMessage, $selected));
                 }
                 $selectedChoices = \explode(',', $selected);
             } else {
@@ -130,7 +130,7 @@ class ChoiceQuestion extends \_PhpScoper4c089bfbbc1b\Symfony\Component\Console\Q
                     }
                 }
                 if (\count($results) > 1) {
-                    throw new \_PhpScoper4c089bfbbc1b\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('The provided answer is ambiguous. Value should be one of "%s".', \implode('" or "', $results)));
+                    throw new \_PhpScoper8a421ef9d4c6\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('The provided answer is ambiguous. Value should be one of "%s".', \implode('" or "', $results)));
                 }
                 $result = \array_search($value, $choices);
                 if (!$isAssoc) {
@@ -143,7 +143,7 @@ class ChoiceQuestion extends \_PhpScoper4c089bfbbc1b\Symfony\Component\Console\Q
                     $result = $value;
                 }
                 if (\false === $result) {
-                    throw new \_PhpScoper4c089bfbbc1b\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf($errorMessage, $value));
+                    throw new \_PhpScoper8a421ef9d4c6\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf($errorMessage, $value));
                 }
                 $multiselectChoices[] = (string) $result;
             }
