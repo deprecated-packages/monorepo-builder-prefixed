@@ -8,8 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper4cbad741edc5\Symfony\Component\HttpKernel\Event;
+namespace _PhpScoper9b905ab040d4\Symfony\Component\HttpKernel\Event;
 
+use _PhpScoper9b905ab040d4\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper9b905ab040d4\Symfony\Component\HttpFoundation\Response;
+use _PhpScoper9b905ab040d4\Symfony\Component\HttpKernel\HttpKernelInterface;
 /**
  * Allows to execute logic after a response was sent.
  *
@@ -17,9 +20,17 @@ namespace _PhpScoper4cbad741edc5\Symfony\Component\HttpKernel\Event;
  * will always return the value of `HttpKernelInterface::MASTER_REQUEST`.
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
- *
- * @final since Symfony 4.4
  */
-class TerminateEvent extends \_PhpScoper4cbad741edc5\Symfony\Component\HttpKernel\Event\PostResponseEvent
+final class TerminateEvent extends \_PhpScoper9b905ab040d4\Symfony\Component\HttpKernel\Event\KernelEvent
 {
+    private $response;
+    public function __construct(\_PhpScoper9b905ab040d4\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \_PhpScoper9b905ab040d4\Symfony\Component\HttpFoundation\Request $request, \_PhpScoper9b905ab040d4\Symfony\Component\HttpFoundation\Response $response)
+    {
+        parent::__construct($kernel, $request, \_PhpScoper9b905ab040d4\Symfony\Component\HttpKernel\HttpKernelInterface::MASTER_REQUEST);
+        $this->response = $response;
+    }
+    public function getResponse() : \_PhpScoper9b905ab040d4\Symfony\Component\HttpFoundation\Response
+    {
+        return $this->response;
+    }
 }

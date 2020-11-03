@@ -1,5 +1,5 @@
 <div class="exception-summary <?php 
-namespace _PhpScoper4cbad741edc5;
+namespace _PhpScoper9b905ab040d4;
 
 echo !$exceptionMessage ? 'exception-without-message' : '';
 ?>">
@@ -58,7 +58,7 @@ echo $this->include('assets/images/symfony-ghost.svg.php');
 $exceptionAsArray = $exception->toArray();
 $exceptionWithUserCode = [];
 $exceptionAsArrayCount = \count($exceptionAsArray);
-$last = \count($exceptionAsArray) - 1;
+$last = $exceptionAsArrayCount - 1;
 foreach ($exceptionAsArray as $i => $e) {
     foreach ($e['trace'] as $trace) {
         if ($trace['file'] && \false === \mb_strpos($trace['file'], '/vendor/') && \false === \mb_strpos($trace['file'], '/var/cache/') && $i < $last) {

@@ -1,6 +1,6 @@
 <table class="logs" data-filter-level="Emergency,Alert,Critical,Error,Warning,Notice,Info,Debug" data-filters>
 <?php 
-namespace _PhpScoper4cbad741edc5;
+namespace _PhpScoper9b905ab040d4;
 
 $channelIsDefined = isset($logs[0]['channel']);
 ?>
@@ -69,7 +69,7 @@ foreach ($logs as $log) {
     if ($log['context']) {
         ?>
                 <pre class="text-muted prewrap m-t-5"><?php 
-        echo \json_encode($log['context'], \JSON_PRETTY_PRINT | \JSON_UNESCAPED_UNICODE | \JSON_UNESCAPED_SLASHES);
+        echo $this->escape(\json_encode($log['context'], \JSON_PRETTY_PRINT | \JSON_UNESCAPED_UNICODE | \JSON_UNESCAPED_SLASHES));
         ?></pre>
                 <?php 
     }

@@ -8,8 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper4cbad741edc5\Symfony\Component\HttpKernel\Event;
+namespace _PhpScoper9b905ab040d4\Symfony\Component\HttpKernel\Event;
 
+use _PhpScoper9b905ab040d4\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper9b905ab040d4\Symfony\Component\HttpKernel\HttpKernelInterface;
 /**
  * Allows filtering of a controller callable.
  *
@@ -20,9 +22,21 @@ namespace _PhpScoper4cbad741edc5\Symfony\Component\HttpKernel\Event;
  * Controllers should be callables.
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
- *
- * @final since Symfony 4.4
  */
-class ControllerEvent extends \_PhpScoper4cbad741edc5\Symfony\Component\HttpKernel\Event\FilterControllerEvent
+final class ControllerEvent extends \_PhpScoper9b905ab040d4\Symfony\Component\HttpKernel\Event\KernelEvent
 {
+    private $controller;
+    public function __construct(\_PhpScoper9b905ab040d4\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, callable $controller, \_PhpScoper9b905ab040d4\Symfony\Component\HttpFoundation\Request $request, ?int $requestType)
+    {
+        parent::__construct($kernel, $request, $requestType);
+        $this->setController($controller);
+    }
+    public function getController() : callable
+    {
+        return $this->controller;
+    }
+    public function setController(callable $controller) : void
+    {
+        $this->controller = $controller;
+    }
 }
