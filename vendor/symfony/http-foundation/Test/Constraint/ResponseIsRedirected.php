@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperd6a443964d04\Symfony\Component\HttpFoundation\Test\Constraint;
+namespace _PhpScoper131024327b3f\Symfony\Component\HttpFoundation\Test\Constraint;
 
-use _PhpScoperd6a443964d04\PHPUnit\Framework\Constraint\Constraint;
-use _PhpScoperd6a443964d04\Symfony\Component\HttpFoundation\Response;
-final class ResponseIsRedirected extends \_PhpScoperd6a443964d04\PHPUnit\Framework\Constraint\Constraint
+use _PhpScoper131024327b3f\PHPUnit\Framework\Constraint\Constraint;
+use _PhpScoper131024327b3f\Symfony\Component\HttpFoundation\Response;
+final class ResponseIsRedirected extends \_PhpScoper131024327b3f\PHPUnit\Framework\Constraint\Constraint
 {
     /**
      * {@inheritdoc}

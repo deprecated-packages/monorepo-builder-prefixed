@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperd6a443964d04\Symfony\Component\HttpKernel\Exception;
+namespace _PhpScoper131024327b3f\Symfony\Component\HttpKernel\Exception;
 
 /**
  * @author Ben Ramsey <ben@benramsey.com>
  *
  * @see http://tools.ietf.org/html/rfc6585
  */
-class TooManyRequestsHttpException extends \_PhpScoperd6a443964d04\Symfony\Component\HttpKernel\Exception\HttpException
+class TooManyRequestsHttpException extends \_PhpScoper131024327b3f\Symfony\Component\HttpKernel\Exception\HttpException
 {
     /**
      * @param int|string $retryAfter The number of seconds or HTTP-date after which the request may be retried

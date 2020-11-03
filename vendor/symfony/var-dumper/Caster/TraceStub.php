@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperd6a443964d04\Symfony\Component\VarDumper\Caster;
+namespace _PhpScoper131024327b3f\Symfony\Component\VarDumper\Caster;
 
-use _PhpScoperd6a443964d04\Symfony\Component\VarDumper\Cloner\Stub;
+use _PhpScoper131024327b3f\Symfony\Component\VarDumper\Cloner\Stub;
 /**
  * Represents a backtrace as returned by debug_backtrace() or Exception->getTrace().
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class TraceStub extends \_PhpScoperd6a443964d04\Symfony\Component\VarDumper\Cloner\Stub
+class TraceStub extends \_PhpScoper131024327b3f\Symfony\Component\VarDumper\Cloner\Stub
 {
     public $keepArgs;
     public $sliceOffset;

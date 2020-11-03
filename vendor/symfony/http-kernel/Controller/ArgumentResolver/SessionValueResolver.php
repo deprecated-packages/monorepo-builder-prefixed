@@ -8,29 +8,29 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperd6a443964d04\Symfony\Component\HttpKernel\Controller\ArgumentResolver;
+namespace _PhpScoper131024327b3f\Symfony\Component\HttpKernel\Controller\ArgumentResolver;
 
-use _PhpScoperd6a443964d04\Symfony\Component\HttpFoundation\Request;
-use _PhpScoperd6a443964d04\Symfony\Component\HttpFoundation\Session\SessionInterface;
-use _PhpScoperd6a443964d04\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
-use _PhpScoperd6a443964d04\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
+use _PhpScoper131024327b3f\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper131024327b3f\Symfony\Component\HttpFoundation\Session\SessionInterface;
+use _PhpScoper131024327b3f\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
+use _PhpScoper131024327b3f\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 /**
  * Yields the Session.
  *
  * @author Iltar van der Berg <kjarli@gmail.com>
  */
-final class SessionValueResolver implements \_PhpScoperd6a443964d04\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface
+final class SessionValueResolver implements \_PhpScoper131024327b3f\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function supports(\_PhpScoperd6a443964d04\Symfony\Component\HttpFoundation\Request $request, \_PhpScoperd6a443964d04\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument) : bool
+    public function supports(\_PhpScoper131024327b3f\Symfony\Component\HttpFoundation\Request $request, \_PhpScoper131024327b3f\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument) : bool
     {
         if (!$request->hasSession()) {
             return \false;
         }
         $type = $argument->getType();
-        if (\_PhpScoperd6a443964d04\Symfony\Component\HttpFoundation\Session\SessionInterface::class !== $type && !\is_subclass_of($type, \_PhpScoperd6a443964d04\Symfony\Component\HttpFoundation\Session\SessionInterface::class)) {
+        if (\_PhpScoper131024327b3f\Symfony\Component\HttpFoundation\Session\SessionInterface::class !== $type && !\is_subclass_of($type, \_PhpScoper131024327b3f\Symfony\Component\HttpFoundation\Session\SessionInterface::class)) {
             return \false;
         }
         return $request->getSession() instanceof $type;
@@ -38,7 +38,7 @@ final class SessionValueResolver implements \_PhpScoperd6a443964d04\Symfony\Comp
     /**
      * {@inheritdoc}
      */
-    public function resolve(\_PhpScoperd6a443964d04\Symfony\Component\HttpFoundation\Request $request, \_PhpScoperd6a443964d04\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument) : iterable
+    public function resolve(\_PhpScoper131024327b3f\Symfony\Component\HttpFoundation\Request $request, \_PhpScoper131024327b3f\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument) : iterable
     {
         (yield $request->getSession());
     }

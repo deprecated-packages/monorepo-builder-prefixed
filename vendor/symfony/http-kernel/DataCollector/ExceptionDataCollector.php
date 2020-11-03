@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperd6a443964d04\Symfony\Component\HttpKernel\DataCollector;
+namespace _PhpScoper131024327b3f\Symfony\Component\HttpKernel\DataCollector;
 
-use _PhpScoperd6a443964d04\Symfony\Component\ErrorHandler\Exception\FlattenException;
-use _PhpScoperd6a443964d04\Symfony\Component\HttpFoundation\Request;
-use _PhpScoperd6a443964d04\Symfony\Component\HttpFoundation\Response;
+use _PhpScoper131024327b3f\Symfony\Component\ErrorHandler\Exception\FlattenException;
+use _PhpScoper131024327b3f\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper131024327b3f\Symfony\Component\HttpFoundation\Response;
 /**
  * ExceptionDataCollector.
  *
@@ -20,15 +20,15 @@ use _PhpScoperd6a443964d04\Symfony\Component\HttpFoundation\Response;
  *
  * @final
  */
-class ExceptionDataCollector extends \_PhpScoperd6a443964d04\Symfony\Component\HttpKernel\DataCollector\DataCollector
+class ExceptionDataCollector extends \_PhpScoper131024327b3f\Symfony\Component\HttpKernel\DataCollector\DataCollector
 {
     /**
      * {@inheritdoc}
      */
-    public function collect(\_PhpScoperd6a443964d04\Symfony\Component\HttpFoundation\Request $request, \_PhpScoperd6a443964d04\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
+    public function collect(\_PhpScoper131024327b3f\Symfony\Component\HttpFoundation\Request $request, \_PhpScoper131024327b3f\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
     {
         if (null !== $exception) {
-            $this->data = ['exception' => \_PhpScoperd6a443964d04\Symfony\Component\ErrorHandler\Exception\FlattenException::createFromThrowable($exception)];
+            $this->data = ['exception' => \_PhpScoper131024327b3f\Symfony\Component\ErrorHandler\Exception\FlattenException::createFromThrowable($exception)];
         }
     }
     /**

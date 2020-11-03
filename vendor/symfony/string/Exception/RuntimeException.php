@@ -8,8 +8,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperd6a443964d04\Symfony\Component\String\Exception;
+namespace _PhpScoper131024327b3f\Symfony\Component\String\Exception;
 
-class RuntimeException extends \RuntimeException implements \_PhpScoperd6a443964d04\Symfony\Component\String\Exception\ExceptionInterface
+class RuntimeException extends \RuntimeException implements \_PhpScoper131024327b3f\Symfony\Component\String\Exception\ExceptionInterface
 {
 }
