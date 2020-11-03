@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper2a80719fd449\Symfony\Component\HttpKernel\DependencyInjection;
+namespace _PhpScoper503cab241f82\Symfony\Component\HttpKernel\DependencyInjection;
 
-use _PhpScoper2a80719fd449\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use _PhpScoper2a80719fd449\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoper503cab241f82\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use _PhpScoper503cab241f82\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * Removes empty service-locators registered for ServiceValueResolver.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class RemoveEmptyControllerArgumentLocatorsPass implements \_PhpScoper2a80719fd449\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class RemoveEmptyControllerArgumentLocatorsPass implements \_PhpScoper503cab241f82\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     private $controllerLocator;
     public function __construct(string $controllerLocator = 'argument_resolver.controller_locator')
     {
         $this->controllerLocator = $controllerLocator;
     }
-    public function process(\_PhpScoper2a80719fd449\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\_PhpScoper503cab241f82\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $controllerLocator = $container->findDefinition($this->controllerLocator);
         $controllers = $controllerLocator->getArgument(0);
@@ -37,9 +37,6 @@ class RemoveEmptyControllerArgumentLocatorsPass implements \_PhpScoper2a80719fd4
                 // any methods listed for call-at-instantiation cannot be actions
                 $reason = \false;
                 list($id, $action) = \explode('::', $controller);
-                if ($container->hasAlias($id)) {
-                    continue;
-                }
                 $controllerDef = $container->getDefinition($id);
                 foreach ($controllerDef->getMethodCalls() as list($method)) {
                     if (0 === \strcasecmp($action, $method)) {
@@ -48,7 +45,7 @@ class RemoveEmptyControllerArgumentLocatorsPass implements \_PhpScoper2a80719fd4
                     }
                 }
                 if (!$reason) {
-                    // see Symfony\Component\HttpKernel\Controller\ContainerControllerResolver
+                    // Deprecated since Symfony 4.1. See Symfony\Component\HttpKernel\Controller\ContainerControllerResolver
                     $controllers[$id . ':' . $action] = $argumentRef;
                     if ('__invoke' === $action) {
                         $controllers[$id] = $argumentRef;

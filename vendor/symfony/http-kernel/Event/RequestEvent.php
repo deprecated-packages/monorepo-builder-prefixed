@@ -8,9 +8,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper2a80719fd449\Symfony\Component\HttpKernel\Event;
+namespace _PhpScoper503cab241f82\Symfony\Component\HttpKernel\Event;
 
-use _PhpScoper2a80719fd449\Symfony\Component\HttpFoundation\Response;
 /**
  * Allows to create a response for a request.
  *
@@ -20,33 +19,6 @@ use _PhpScoper2a80719fd449\Symfony\Component\HttpFoundation\Response;
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
-class RequestEvent extends \_PhpScoper2a80719fd449\Symfony\Component\HttpKernel\Event\KernelEvent
+class RequestEvent extends \_PhpScoper503cab241f82\Symfony\Component\HttpKernel\Event\GetResponseEvent
 {
-    private $response;
-    /**
-     * Returns the response object.
-     *
-     * @return Response|null
-     */
-    public function getResponse()
-    {
-        return $this->response;
-    }
-    /**
-     * Sets a response and stops event propagation.
-     */
-    public function setResponse(\_PhpScoper2a80719fd449\Symfony\Component\HttpFoundation\Response $response)
-    {
-        $this->response = $response;
-        $this->stopPropagation();
-    }
-    /**
-     * Returns whether a response was set.
-     *
-     * @return bool Whether a response was set
-     */
-    public function hasResponse()
-    {
-        return null !== $this->response;
-    }
 }

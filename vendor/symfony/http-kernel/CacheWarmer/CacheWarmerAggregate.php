@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper2a80719fd449\Symfony\Component\HttpKernel\CacheWarmer;
+namespace _PhpScoper503cab241f82\Symfony\Component\HttpKernel\CacheWarmer;
 
 /**
  * Aggregates several cache warmers into a single one.
@@ -17,7 +17,7 @@ namespace _PhpScoper2a80719fd449\Symfony\Component\HttpKernel\CacheWarmer;
  *
  * @final
  */
-class CacheWarmerAggregate implements \_PhpScoper2a80719fd449\Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerInterface
+class CacheWarmerAggregate implements \_PhpScoper503cab241f82\Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerInterface
 {
     private $warmers;
     private $debug;
@@ -41,9 +41,9 @@ class CacheWarmerAggregate implements \_PhpScoper2a80719fd449\Symfony\Component\
     /**
      * Warms up the cache.
      *
-     * @return string[] A list of classes or files to preload on PHP 7.4+
+     * @param string $cacheDir The cache directory
      */
-    public function warmUp(string $cacheDir)
+    public function warmUp($cacheDir)
     {
         if ($collectDeprecations = $this->debug && !\defined('PHPUNIT_COMPOSER_INSTALL')) {
             $collectedLogs = [];
@@ -67,7 +67,6 @@ class CacheWarmerAggregate implements \_PhpScoper2a80719fd449\Symfony\Component\
                 return null;
             });
         }
-        $preload = [];
         try {
             foreach ($this->warmers as $warmer) {
                 if (!$this->optionalsEnabled && $warmer->isOptional()) {
@@ -76,7 +75,7 @@ class CacheWarmerAggregate implements \_PhpScoper2a80719fd449\Symfony\Component\
                 if ($this->onlyOptionalsEnabled && !$warmer->isOptional()) {
                     continue;
                 }
-                $preload[] = \array_values((array) $warmer->warmUp($cacheDir));
+                $warmer->warmUp($cacheDir);
             }
         } finally {
             if ($collectDeprecations) {
@@ -88,7 +87,6 @@ class CacheWarmerAggregate implements \_PhpScoper2a80719fd449\Symfony\Component\
                 \file_put_contents($this->deprecationLogsFilepath, \serialize(\array_values($collectedLogs)));
             }
         }
-        return \array_values(\array_unique(\array_merge([], ...$preload)));
     }
     /**
      * Checks whether this warmer is optional or not.

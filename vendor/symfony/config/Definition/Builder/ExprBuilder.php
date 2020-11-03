@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper2a80719fd449\Symfony\Component\Config\Definition\Builder;
+namespace _PhpScoper503cab241f82\Symfony\Component\Config\Definition\Builder;
 
-use _PhpScoper2a80719fd449\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
+use _PhpScoper503cab241f82\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
 /**
  * This class builds an if expression.
  *
@@ -22,7 +22,7 @@ class ExprBuilder
     protected $node;
     public $ifPart;
     public $thenPart;
-    public function __construct(\_PhpScoper2a80719fd449\Symfony\Component\Config\Definition\Builder\NodeDefinition $node)
+    public function __construct(\_PhpScoper503cab241f82\Symfony\Component\Config\Definition\Builder\NodeDefinition $node)
     {
         $this->node = $node;
     }
@@ -172,11 +172,13 @@ class ExprBuilder
      *
      * if you want to add the value of the node in your message just use a %s placeholder.
      *
+     * @param string $message
+     *
      * @return $this
      *
      * @throws \InvalidArgumentException
      */
-    public function thenInvalid(string $message)
+    public function thenInvalid($message)
     {
         $this->thenPart = function ($v) use($message) {
             throw new \InvalidArgumentException(\sprintf($message, \json_encode($v)));
@@ -193,7 +195,7 @@ class ExprBuilder
     public function thenUnset()
     {
         $this->thenPart = function ($v) {
-            throw new \_PhpScoper2a80719fd449\Symfony\Component\Config\Definition\Exception\UnsetKeyException('Unsetting key.');
+            throw new \_PhpScoper503cab241f82\Symfony\Component\Config\Definition\Exception\UnsetKeyException('Unsetting key');
         };
         return $this;
     }

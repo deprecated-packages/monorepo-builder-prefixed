@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper2a80719fd449\Symfony\Component\HttpKernel\DependencyInjection;
+namespace _PhpScoper503cab241f82\Symfony\Component\HttpKernel\DependencyInjection;
 
-use _PhpScoper2a80719fd449\Psr\Container\ContainerInterface;
-use _PhpScoper2a80719fd449\Symfony\Component\HttpFoundation\RequestStack;
-use _PhpScoper2a80719fd449\Symfony\Component\HttpKernel\Fragment\FragmentHandler;
+use _PhpScoper503cab241f82\Psr\Container\ContainerInterface;
+use _PhpScoper503cab241f82\Symfony\Component\HttpFoundation\RequestStack;
+use _PhpScoper503cab241f82\Symfony\Component\HttpKernel\Fragment\FragmentHandler;
 /**
  * Lazily loads fragment renderers from the dependency injection container.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class LazyLoadingFragmentHandler extends \_PhpScoper2a80719fd449\Symfony\Component\HttpKernel\Fragment\FragmentHandler
+class LazyLoadingFragmentHandler extends \_PhpScoper503cab241f82\Symfony\Component\HttpKernel\Fragment\FragmentHandler
 {
     private $container;
     private $initialized = [];
-    public function __construct(\_PhpScoper2a80719fd449\Psr\Container\ContainerInterface $container, \_PhpScoper2a80719fd449\Symfony\Component\HttpFoundation\RequestStack $requestStack, bool $debug = \false)
+    public function __construct(\_PhpScoper503cab241f82\Psr\Container\ContainerInterface $container, \_PhpScoper503cab241f82\Symfony\Component\HttpFoundation\RequestStack $requestStack, bool $debug = \false)
     {
         $this->container = $container;
         parent::__construct($requestStack, [], $debug);
@@ -30,7 +30,7 @@ class LazyLoadingFragmentHandler extends \_PhpScoper2a80719fd449\Symfony\Compone
     /**
      * {@inheritdoc}
      */
-    public function render($uri, string $renderer = 'inline', array $options = [])
+    public function render($uri, $renderer = 'inline', array $options = [])
     {
         if (!isset($this->initialized[$renderer]) && $this->container->has($renderer)) {
             $this->addRenderer($this->container->get($renderer));

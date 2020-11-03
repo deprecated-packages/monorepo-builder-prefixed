@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper2a80719fd449\Symfony\Component\Process\Pipes;
+namespace _PhpScoper503cab241f82\Symfony\Component\Process\Pipes;
 
-use _PhpScoper2a80719fd449\Symfony\Component\Process\Exception\RuntimeException;
-use _PhpScoper2a80719fd449\Symfony\Component\Process\Process;
+use _PhpScoper503cab241f82\Symfony\Component\Process\Exception\RuntimeException;
+use _PhpScoper503cab241f82\Symfony\Component\Process\Process;
 /**
  * WindowsPipes implementation uses temporary files as handles.
  *
@@ -22,12 +22,12 @@ use _PhpScoper2a80719fd449\Symfony\Component\Process\Process;
  *
  * @internal
  */
-class WindowsPipes extends \_PhpScoper2a80719fd449\Symfony\Component\Process\Pipes\AbstractPipes
+class WindowsPipes extends \_PhpScoper503cab241f82\Symfony\Component\Process\Pipes\AbstractPipes
 {
     private $files = [];
     private $fileHandles = [];
     private $lockHandles = [];
-    private $readBytes = [\_PhpScoper2a80719fd449\Symfony\Component\Process\Process::STDOUT => 0, \_PhpScoper2a80719fd449\Symfony\Component\Process\Process::STDERR => 0];
+    private $readBytes = [\_PhpScoper503cab241f82\Symfony\Component\Process\Process::STDOUT => 0, \_PhpScoper503cab241f82\Symfony\Component\Process\Process::STDERR => 0];
     private $haveReadSupport;
     public function __construct($input, bool $haveReadSupport)
     {
@@ -37,7 +37,7 @@ class WindowsPipes extends \_PhpScoper2a80719fd449\Symfony\Component\Process\Pip
             // Workaround for this problem is to use temporary files instead of pipes on Windows platform.
             //
             // @see https://bugs.php.net/51800
-            $pipes = [\_PhpScoper2a80719fd449\Symfony\Component\Process\Process::STDOUT => \_PhpScoper2a80719fd449\Symfony\Component\Process\Process::OUT, \_PhpScoper2a80719fd449\Symfony\Component\Process\Process::STDERR => \_PhpScoper2a80719fd449\Symfony\Component\Process\Process::ERR];
+            $pipes = [\_PhpScoper503cab241f82\Symfony\Component\Process\Process::STDOUT => \_PhpScoper503cab241f82\Symfony\Component\Process\Process::OUT, \_PhpScoper503cab241f82\Symfony\Component\Process\Process::STDERR => \_PhpScoper503cab241f82\Symfony\Component\Process\Process::ERR];
             $tmpDir = \sys_get_temp_dir();
             $lastError = 'unknown reason';
             \set_error_handler(function ($type, $msg) use(&$lastError) {
@@ -47,11 +47,8 @@ class WindowsPipes extends \_PhpScoper2a80719fd449\Symfony\Component\Process\Pip
                 foreach ($pipes as $pipe => $name) {
                     $file = \sprintf('%s\\sf_proc_%02X.%s', $tmpDir, $i, $name);
                     if (!($h = \fopen($file . '.lock', 'w'))) {
-                        if (\file_exists($file . '.lock')) {
-                            continue 2;
-                        }
                         \restore_error_handler();
-                        throw new \_PhpScoper2a80719fd449\Symfony\Component\Process\Exception\RuntimeException('A temporary file could not be opened to write the process output: ' . $lastError);
+                        throw new \_PhpScoper503cab241f82\Symfony\Component\Process\Exception\RuntimeException(\sprintf('A temporary file could not be opened to write the process output: %s', $lastError));
                     }
                     if (!\flock($h, \LOCK_EX | \LOCK_NB)) {
                         continue 2;
@@ -111,9 +108,9 @@ class WindowsPipes extends \_PhpScoper2a80719fd449\Symfony\Component\Process\Pip
         $read = $r = $e = [];
         if ($blocking) {
             if ($w) {
-                @\stream_select($r, $w, $e, 0, \_PhpScoper2a80719fd449\Symfony\Component\Process\Process::TIMEOUT_PRECISION * 1000000.0);
+                @\stream_select($r, $w, $e, 0, \_PhpScoper503cab241f82\Symfony\Component\Process\Process::TIMEOUT_PRECISION * 1000000.0);
             } elseif ($this->fileHandles) {
-                \usleep(\_PhpScoper2a80719fd449\Symfony\Component\Process\Process::TIMEOUT_PRECISION * 1000000.0);
+                \usleep(\_PhpScoper503cab241f82\Symfony\Component\Process\Process::TIMEOUT_PRECISION * 1000000.0);
             }
         }
         foreach ($this->fileHandles as $type => $fileHandle) {
