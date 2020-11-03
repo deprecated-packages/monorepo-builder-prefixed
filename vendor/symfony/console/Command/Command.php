@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper3e1a86bff77f\Symfony\Component\Console\Command;
+namespace _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Command;
 
-use _PhpScoper3e1a86bff77f\Symfony\Component\Console\Application;
-use _PhpScoper3e1a86bff77f\Symfony\Component\Console\Exception\ExceptionInterface;
-use _PhpScoper3e1a86bff77f\Symfony\Component\Console\Exception\InvalidArgumentException;
-use _PhpScoper3e1a86bff77f\Symfony\Component\Console\Exception\LogicException;
-use _PhpScoper3e1a86bff77f\Symfony\Component\Console\Helper\HelperSet;
-use _PhpScoper3e1a86bff77f\Symfony\Component\Console\Input\InputArgument;
-use _PhpScoper3e1a86bff77f\Symfony\Component\Console\Input\InputDefinition;
-use _PhpScoper3e1a86bff77f\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoper3e1a86bff77f\Symfony\Component\Console\Input\InputOption;
-use _PhpScoper3e1a86bff77f\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Application;
+use _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Exception\ExceptionInterface;
+use _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Exception\InvalidArgumentException;
+use _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Exception\LogicException;
+use _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Helper\HelperSet;
+use _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputArgument;
+use _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputDefinition;
+use _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputOption;
+use _PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Base class for all commands.
  *
@@ -27,8 +27,6 @@ use _PhpScoper3e1a86bff77f\Symfony\Component\Console\Output\OutputInterface;
  */
 class Command
 {
-    public const SUCCESS = 0;
-    public const FAILURE = 1;
     /**
      * @var string|null The default command name
      */
@@ -53,7 +51,7 @@ class Command
      */
     public static function getDefaultName()
     {
-        $class = static::class;
+        $class = \get_called_class();
         $r = new \ReflectionProperty($class, 'defaultName');
         return $class === $r->class ? static::$defaultName : null;
     }
@@ -64,7 +62,7 @@ class Command
      */
     public function __construct(string $name = null)
     {
-        $this->definition = new \_PhpScoper3e1a86bff77f\Symfony\Component\Console\Input\InputDefinition();
+        $this->definition = new \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputDefinition();
         if (null !== $name || null !== ($name = static::getDefaultName())) {
             $this->setName($name);
         }
@@ -79,7 +77,7 @@ class Command
     {
         $this->ignoreValidationErrors = \true;
     }
-    public function setApplication(\_PhpScoper3e1a86bff77f\Symfony\Component\Console\Application $application = null)
+    public function setApplication(\_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Application $application = null)
     {
         $this->application = $application;
         if ($application) {
@@ -88,7 +86,7 @@ class Command
             $this->helperSet = null;
         }
     }
-    public function setHelperSet(\_PhpScoper3e1a86bff77f\Symfony\Component\Console\Helper\HelperSet $helperSet)
+    public function setHelperSet(\_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Helper\HelperSet $helperSet)
     {
         $this->helperSet = $helperSet;
     }
@@ -142,9 +140,9 @@ class Command
      *
      * @see setCode()
      */
-    protected function execute(\_PhpScoper3e1a86bff77f\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper3e1a86bff77f\Symfony\Component\Console\Output\OutputInterface $output)
+    protected function execute(\_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Output\OutputInterface $output)
     {
-        throw new \_PhpScoper3e1a86bff77f\Symfony\Component\Console\Exception\LogicException('You must override the execute() method in the concrete command class.');
+        throw new \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Exception\LogicException('You must override the execute() method in the concrete command class.');
     }
     /**
      * Interacts with the user.
@@ -153,7 +151,7 @@ class Command
      * This means that this is the only place where the command can
      * interactively ask for values of missing required arguments.
      */
-    protected function interact(\_PhpScoper3e1a86bff77f\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper3e1a86bff77f\Symfony\Component\Console\Output\OutputInterface $output)
+    protected function interact(\_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Output\OutputInterface $output)
     {
     }
     /**
@@ -166,7 +164,7 @@ class Command
      * @see InputInterface::bind()
      * @see InputInterface::validate()
      */
-    protected function initialize(\_PhpScoper3e1a86bff77f\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper3e1a86bff77f\Symfony\Component\Console\Output\OutputInterface $output)
+    protected function initialize(\_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Output\OutputInterface $output)
     {
     }
     /**
@@ -183,7 +181,7 @@ class Command
      * @see setCode()
      * @see execute()
      */
-    public function run(\_PhpScoper3e1a86bff77f\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper3e1a86bff77f\Symfony\Component\Console\Output\OutputInterface $output)
+    public function run(\_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Output\OutputInterface $output)
     {
         // force the creation of the synopsis before the merge with the app definition
         $this->getSynopsis(\true);
@@ -193,7 +191,7 @@ class Command
         // bind the input against the command specific arguments/options
         try {
             $input->bind($this->definition);
-        } catch (\_PhpScoper3e1a86bff77f\Symfony\Component\Console\Exception\ExceptionInterface $e) {
+        } catch (\_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Exception\ExceptionInterface $e) {
             if (!$this->ignoreValidationErrors) {
                 throw $e;
             }
@@ -203,14 +201,14 @@ class Command
             if (\function_exists('cli_set_process_title')) {
                 if (!@\cli_set_process_title($this->processTitle)) {
                     if ('Darwin' === \PHP_OS) {
-                        $output->writeln('<comment>Running "cli_set_process_title" as an unprivileged user is not supported on MacOS.</comment>', \_PhpScoper3e1a86bff77f\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERY_VERBOSE);
+                        $output->writeln('<comment>Running "cli_set_process_title" as an unprivileged user is not supported on MacOS.</comment>', \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERY_VERBOSE);
                     } else {
                         \cli_set_process_title($this->processTitle);
                     }
                 }
-            } elseif (\function_exists('_PhpScoper3e1a86bff77f\\setproctitle')) {
+            } elseif (\function_exists('_PhpScoperf2e2fcfe7ee6\\setproctitle')) {
                 setproctitle($this->processTitle);
-            } elseif (\_PhpScoper3e1a86bff77f\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERY_VERBOSE === $output->getVerbosity()) {
+            } elseif (\_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERY_VERBOSE === $output->getVerbosity()) {
                 $output->writeln('<comment>Install the proctitle PECL to be able to change the process title.</comment>');
             }
         }
@@ -229,7 +227,7 @@ class Command
         } else {
             $statusCode = $this->execute($input, $output);
             if (!\is_int($statusCode)) {
-                throw new \TypeError(\sprintf('Return value of "%s::execute()" must be of the type int, "%s" returned.', static::class, \get_debug_type($statusCode)));
+                @\trigger_error(\sprintf('Return value of "%s::execute()" should always be of the type int since Symfony 4.4, %s returned.', \get_class($this), \gettype($statusCode)), \E_USER_DEPRECATED);
             }
         }
         return \is_numeric($statusCode) ? (int) $statusCode : 0;
@@ -266,7 +264,7 @@ class Command
      *
      * @param bool $mergeArgs Whether to merge or not the Application definition arguments to Command definition arguments
      */
-    public function mergeApplicationDefinition(bool $mergeArgs = \true)
+    public function mergeApplicationDefinition($mergeArgs = \true)
     {
         if (null === $this->application || \true === $this->applicationDefinitionMerged && ($this->applicationDefinitionMergedWithArgs || !$mergeArgs)) {
             return;
@@ -289,7 +287,7 @@ class Command
      */
     public function setDefinition($definition)
     {
-        if ($definition instanceof \_PhpScoper3e1a86bff77f\Symfony\Component\Console\Input\InputDefinition) {
+        if ($definition instanceof \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputDefinition) {
             $this->definition = $definition;
         } else {
             $this->definition->setDefinition($definition);
@@ -305,7 +303,7 @@ class Command
     public function getDefinition()
     {
         if (null === $this->definition) {
-            throw new \_PhpScoper3e1a86bff77f\Symfony\Component\Console\Exception\LogicException(\sprintf('Command class "%s" is not correctly initialized. You probably forgot to call the parent constructor.', static::class));
+            throw new \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Exception\LogicException(\sprintf('Command class "%s" is not correctly initialized. You probably forgot to call the parent constructor.', \get_class($this)));
         }
         return $this->definition;
     }
@@ -326,32 +324,36 @@ class Command
     /**
      * Adds an argument.
      *
-     * @param int|null             $mode    The argument mode: InputArgument::REQUIRED or InputArgument::OPTIONAL
-     * @param string|string[]|null $default The default value (for InputArgument::OPTIONAL mode only)
+     * @param string               $name        The argument name
+     * @param int|null             $mode        The argument mode: InputArgument::REQUIRED or InputArgument::OPTIONAL
+     * @param string               $description A description text
+     * @param string|string[]|null $default     The default value (for InputArgument::OPTIONAL mode only)
      *
      * @throws InvalidArgumentException When argument mode is not valid
      *
      * @return $this
      */
-    public function addArgument(string $name, int $mode = null, string $description = '', $default = null)
+    public function addArgument($name, $mode = null, $description = '', $default = null)
     {
-        $this->definition->addArgument(new \_PhpScoper3e1a86bff77f\Symfony\Component\Console\Input\InputArgument($name, $mode, $description, $default));
+        $this->definition->addArgument(new \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputArgument($name, $mode, $description, $default));
         return $this;
     }
     /**
      * Adds an option.
      *
-     * @param string|array|null             $shortcut The shortcuts, can be null, a string of shortcuts delimited by | or an array of shortcuts
-     * @param int|null                      $mode     The option mode: One of the InputOption::VALUE_* constants
-     * @param string|string[]|int|bool|null $default  The default value (must be null for InputOption::VALUE_NONE)
+     * @param string                        $name        The option name
+     * @param string|array|null             $shortcut    The shortcuts, can be null, a string of shortcuts delimited by | or an array of shortcuts
+     * @param int|null                      $mode        The option mode: One of the InputOption::VALUE_* constants
+     * @param string                        $description A description text
+     * @param string|string[]|int|bool|null $default     The default value (must be null for InputOption::VALUE_NONE)
      *
      * @throws InvalidArgumentException If option mode is invalid or incompatible
      *
      * @return $this
      */
-    public function addOption(string $name, $shortcut = null, int $mode = null, string $description = '', $default = null)
+    public function addOption($name, $shortcut = null, $mode = null, $description = '', $default = null)
     {
-        $this->definition->addOption(new \_PhpScoper3e1a86bff77f\Symfony\Component\Console\Input\InputOption($name, $shortcut, $mode, $description, $default));
+        $this->definition->addOption(new \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Input\InputOption($name, $shortcut, $mode, $description, $default));
         return $this;
     }
     /**
@@ -362,11 +364,13 @@ class Command
      *
      *     $command->setName('foo:bar');
      *
+     * @param string $name The command name
+     *
      * @return $this
      *
      * @throws InvalidArgumentException When the name is invalid
      */
-    public function setName(string $name)
+    public function setName($name)
     {
         $this->validateName($name);
         $this->name = $name;
@@ -378,9 +382,13 @@ class Command
      * This feature should be used only when creating a long process command,
      * like a daemon.
      *
+     * PHP 5.5+ or the proctitle PECL library is required
+     *
+     * @param string $title The process title
+     *
      * @return $this
      */
-    public function setProcessTitle(string $title)
+    public function setProcessTitle($title)
     {
         $this->processTitle = $title;
         return $this;
@@ -396,15 +404,12 @@ class Command
     }
     /**
      * @param bool $hidden Whether or not the command should be hidden from the list of commands
-     *                     The default value will be true in Symfony 6.0
      *
      * @return Command The current instance
-     *
-     * @final since Symfony 5.1
      */
-    public function setHidden(bool $hidden)
+    public function setHidden($hidden)
     {
-        $this->hidden = $hidden;
+        $this->hidden = (bool) $hidden;
         return $this;
     }
     /**
@@ -417,9 +422,11 @@ class Command
     /**
      * Sets the description for the command.
      *
+     * @param string $description The description for the command
+     *
      * @return $this
      */
-    public function setDescription(string $description)
+    public function setDescription($description)
     {
         $this->description = $description;
         return $this;
@@ -436,9 +443,11 @@ class Command
     /**
      * Sets the help for the command.
      *
+     * @param string $help The help for the command
+     *
      * @return $this
      */
-    public function setHelp(string $help)
+    public function setHelp($help)
     {
         $this->help = $help;
         return $this;
@@ -475,8 +484,11 @@ class Command
      *
      * @throws InvalidArgumentException When an alias is invalid
      */
-    public function setAliases(iterable $aliases)
+    public function setAliases($aliases)
     {
+        if (!\is_array($aliases) && !$aliases instanceof \Traversable) {
+            throw new \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Exception\InvalidArgumentException('$aliases must be an array or an instance of \\Traversable');
+        }
         foreach ($aliases as $alias) {
             $this->validateName($alias);
         }
@@ -499,7 +511,7 @@ class Command
      *
      * @return string The synopsis
      */
-    public function getSynopsis(bool $short = \false)
+    public function getSynopsis($short = \false)
     {
         $key = $short ? 'short' : 'long';
         if (!isset($this->synopsis[$key])) {
@@ -508,11 +520,13 @@ class Command
         return $this->synopsis[$key];
     }
     /**
-     * Add a command usage example, it'll be prefixed with the command name.
+     * Add a command usage example.
+     *
+     * @param string $usage The usage, it'll be prefixed with the command name
      *
      * @return $this
      */
-    public function addUsage(string $usage)
+    public function addUsage($usage)
     {
         if (0 !== \strpos($usage, $this->name)) {
             $usage = \sprintf('%s %s', $this->name, $usage);
@@ -532,15 +546,17 @@ class Command
     /**
      * Gets a helper instance by name.
      *
+     * @param string $name The helper name
+     *
      * @return mixed The helper value
      *
      * @throws LogicException           if no HelperSet is defined
      * @throws InvalidArgumentException if the helper is not defined
      */
-    public function getHelper(string $name)
+    public function getHelper($name)
     {
         if (null === $this->helperSet) {
-            throw new \_PhpScoper3e1a86bff77f\Symfony\Component\Console\Exception\LogicException(\sprintf('Cannot retrieve helper "%s" because there is no HelperSet defined. Did you forget to add your command to the application or to set the application on the command using the setApplication() method? You can also set the HelperSet directly using the setHelperSet() method.', $name));
+            throw new \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Exception\LogicException(\sprintf('Cannot retrieve helper "%s" because there is no HelperSet defined. Did you forget to add your command to the application or to set the application on the command using the setApplication() method? You can also set the HelperSet directly using the setHelperSet() method.', $name));
         }
         return $this->helperSet->get($name);
     }
@@ -554,7 +570,7 @@ class Command
     private function validateName(string $name)
     {
         if (!\preg_match('/^[^\\:]++(\\:[^\\:]++)*$/', $name)) {
-            throw new \_PhpScoper3e1a86bff77f\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Command name "%s" is invalid.', $name));
+            throw new \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Command name "%s" is invalid.', $name));
         }
     }
 }

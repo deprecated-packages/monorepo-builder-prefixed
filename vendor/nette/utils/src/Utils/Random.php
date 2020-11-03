@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace _PhpScoper3e1a86bff77f\Nette\Utils;
+namespace _PhpScoperf2e2fcfe7ee6\Nette\Utils;
 
-use _PhpScoper3e1a86bff77f\Nette;
+use _PhpScoperf2e2fcfe7ee6\Nette;
 /**
  * Secure random string generator.
  */
@@ -15,8 +15,7 @@ final class Random
 {
     use Nette\StaticClass;
     /**
-     * Generates a random string of given length from characters specified in second argument.
-     * Supports intervals, such as `0-9` or `A-Z`.
+     * Generate random string.
      */
     public static function generate(int $length = 10, string $charlist = '0-9a-z') : string
     {
@@ -25,9 +24,9 @@ final class Random
         }, $charlist), 3);
         $chLen = \strlen($charlist);
         if ($length < 1) {
-            throw new \_PhpScoper3e1a86bff77f\Nette\InvalidArgumentException('Length must be greater than zero.');
+            throw new \_PhpScoperf2e2fcfe7ee6\Nette\InvalidArgumentException('Length must be greater than zero.');
         } elseif ($chLen < 2) {
-            throw new \_PhpScoper3e1a86bff77f\Nette\InvalidArgumentException('Character list must contain at least two chars.');
+            throw new \_PhpScoperf2e2fcfe7ee6\Nette\InvalidArgumentException('Character list must contain at least two chars.');
         }
         $res = '';
         for ($i = 0; $i < $length; $i++) {

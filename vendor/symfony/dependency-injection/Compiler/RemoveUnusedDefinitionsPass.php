@@ -8,23 +8,30 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper3e1a86bff77f\Symfony\Component\DependencyInjection\Compiler;
+namespace _PhpScoperf2e2fcfe7ee6\Symfony\Component\DependencyInjection\Compiler;
 
-use _PhpScoper3e1a86bff77f\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScoper3e1a86bff77f\Symfony\Component\DependencyInjection\Reference;
+use _PhpScoperf2e2fcfe7ee6\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoperf2e2fcfe7ee6\Symfony\Component\DependencyInjection\Reference;
 /**
  * Removes unused service definitions from the container.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class RemoveUnusedDefinitionsPass extends \_PhpScoper3e1a86bff77f\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+class RemoveUnusedDefinitionsPass extends \_PhpScoperf2e2fcfe7ee6\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass implements \_PhpScoperf2e2fcfe7ee6\Symfony\Component\DependencyInjection\Compiler\RepeatablePassInterface
 {
     private $connectedIds = [];
     /**
+     * {@inheritdoc}
+     */
+    public function setRepeatedPass(\_PhpScoperf2e2fcfe7ee6\Symfony\Component\DependencyInjection\Compiler\RepeatedPass $repeatedPass)
+    {
+        @\trigger_error(\sprintf('The "%s()" method is deprecated since Symfony 4.2.', __METHOD__), \E_USER_DEPRECATED);
+    }
+    /**
      * Processes the ContainerBuilder to remove unused definitions.
      */
-    public function process(\_PhpScoper3e1a86bff77f\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\_PhpScoperf2e2fcfe7ee6\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         try {
             $this->enableExpressionProcessing();
@@ -67,12 +74,12 @@ class RemoveUnusedDefinitionsPass extends \_PhpScoper3e1a86bff77f\Symfony\Compon
     /**
      * {@inheritdoc}
      */
-    protected function processValue($value, bool $isRoot = \false)
+    protected function processValue($value, $isRoot = \false)
     {
-        if (!$value instanceof \_PhpScoper3e1a86bff77f\Symfony\Component\DependencyInjection\Reference) {
+        if (!$value instanceof \_PhpScoperf2e2fcfe7ee6\Symfony\Component\DependencyInjection\Reference) {
             return parent::processValue($value, $isRoot);
         }
-        if (\_PhpScoper3e1a86bff77f\Symfony\Component\DependencyInjection\ContainerBuilder::IGNORE_ON_UNINITIALIZED_REFERENCE !== $value->getInvalidBehavior()) {
+        if (\_PhpScoperf2e2fcfe7ee6\Symfony\Component\DependencyInjection\ContainerBuilder::IGNORE_ON_UNINITIALIZED_REFERENCE !== $value->getInvalidBehavior()) {
             $this->connectedIds[] = (string) $value;
         }
         return $value;

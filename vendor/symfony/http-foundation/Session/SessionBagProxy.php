@@ -8,32 +8,27 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper3e1a86bff77f\Symfony\Component\HttpFoundation\Session;
+namespace _PhpScoperf2e2fcfe7ee6\Symfony\Component\HttpFoundation\Session;
 
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  *
  * @internal
  */
-final class SessionBagProxy implements \_PhpScoper3e1a86bff77f\Symfony\Component\HttpFoundation\Session\SessionBagInterface
+final class SessionBagProxy implements \_PhpScoperf2e2fcfe7ee6\Symfony\Component\HttpFoundation\Session\SessionBagInterface
 {
     private $bag;
     private $data;
     private $usageIndex;
-    private $usageReporter;
-    public function __construct(\_PhpScoper3e1a86bff77f\Symfony\Component\HttpFoundation\Session\SessionBagInterface $bag, array &$data, ?int &$usageIndex, ?callable $usageReporter)
+    public function __construct(\_PhpScoperf2e2fcfe7ee6\Symfony\Component\HttpFoundation\Session\SessionBagInterface $bag, array &$data, ?int &$usageIndex)
     {
         $this->bag = $bag;
         $this->data =& $data;
         $this->usageIndex =& $usageIndex;
-        $this->usageReporter = $usageReporter;
     }
-    public function getBag() : \_PhpScoper3e1a86bff77f\Symfony\Component\HttpFoundation\Session\SessionBagInterface
+    public function getBag() : \_PhpScoperf2e2fcfe7ee6\Symfony\Component\HttpFoundation\Session\SessionBagInterface
     {
         ++$this->usageIndex;
-        if ($this->usageReporter && 0 <= $this->usageIndex) {
-            ($this->usageReporter)();
-        }
         return $this->bag;
     }
     public function isEmpty() : bool
@@ -42,9 +37,6 @@ final class SessionBagProxy implements \_PhpScoper3e1a86bff77f\Symfony\Component
             return \true;
         }
         ++$this->usageIndex;
-        if ($this->usageReporter && 0 <= $this->usageIndex) {
-            ($this->usageReporter)();
-        }
         return empty($this->data[$this->bag->getStorageKey()]);
     }
     /**
@@ -60,9 +52,6 @@ final class SessionBagProxy implements \_PhpScoper3e1a86bff77f\Symfony\Component
     public function initialize(array &$array) : void
     {
         ++$this->usageIndex;
-        if ($this->usageReporter && 0 <= $this->usageIndex) {
-            ($this->usageReporter)();
-        }
         $this->data[$this->bag->getStorageKey()] =& $array;
         $this->bag->initialize($array);
     }

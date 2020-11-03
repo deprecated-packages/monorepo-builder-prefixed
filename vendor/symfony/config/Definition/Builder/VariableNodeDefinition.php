@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper3e1a86bff77f\Symfony\Component\Config\Definition\Builder;
+namespace _PhpScoperf2e2fcfe7ee6\Symfony\Component\Config\Definition\Builder;
 
-use _PhpScoper3e1a86bff77f\Symfony\Component\Config\Definition\VariableNode;
+use _PhpScoperf2e2fcfe7ee6\Symfony\Component\Config\Definition\VariableNode;
 /**
  * This class provides a fluent interface for defining a node.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class VariableNodeDefinition extends \_PhpScoper3e1a86bff77f\Symfony\Component\Config\Definition\Builder\NodeDefinition
+class VariableNodeDefinition extends \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Config\Definition\Builder\NodeDefinition
 {
     /**
      * Instantiate a Node.
@@ -25,7 +25,7 @@ class VariableNodeDefinition extends \_PhpScoper3e1a86bff77f\Symfony\Component\C
      */
     protected function instantiateNode()
     {
-        return new \_PhpScoper3e1a86bff77f\Symfony\Component\Config\Definition\VariableNode($this->name, $this->parent, $this->pathSeparator);
+        return new \_PhpScoperf2e2fcfe7ee6\Symfony\Component\Config\Definition\VariableNode($this->name, $this->parent, $this->pathSeparator);
     }
     /**
      * {@inheritdoc}
@@ -47,9 +47,7 @@ class VariableNodeDefinition extends \_PhpScoper3e1a86bff77f\Symfony\Component\C
         $node->addEquivalentValue(\true, $this->trueEquivalent);
         $node->addEquivalentValue(\false, $this->falseEquivalent);
         $node->setRequired($this->required);
-        if ($this->deprecation) {
-            $node->setDeprecated($this->deprecation['package'], $this->deprecation['version'], $this->deprecation['message']);
-        }
+        $node->setDeprecated($this->deprecationMessage);
         if (null !== $this->validation) {
             $node->setFinalValidationClosures($this->validation->rules);
         }

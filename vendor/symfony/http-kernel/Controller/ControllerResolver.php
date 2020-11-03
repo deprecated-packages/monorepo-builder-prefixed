@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper3e1a86bff77f\Symfony\Component\HttpKernel\Controller;
+namespace _PhpScoperf2e2fcfe7ee6\Symfony\Component\HttpKernel\Controller;
 
-use _PhpScoper3e1a86bff77f\Psr\Log\LoggerInterface;
-use _PhpScoper3e1a86bff77f\Symfony\Component\HttpFoundation\Request;
+use _PhpScoperf2e2fcfe7ee6\Psr\Log\LoggerInterface;
+use _PhpScoperf2e2fcfe7ee6\Symfony\Component\HttpFoundation\Request;
 /**
  * This implementation uses the '_controller' request attribute to determine
  * the controller to execute.
@@ -19,17 +19,17 @@ use _PhpScoper3e1a86bff77f\Symfony\Component\HttpFoundation\Request;
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Tobias Schultze <http://tobion.de>
  */
-class ControllerResolver implements \_PhpScoper3e1a86bff77f\Symfony\Component\HttpKernel\Controller\ControllerResolverInterface
+class ControllerResolver implements \_PhpScoperf2e2fcfe7ee6\Symfony\Component\HttpKernel\Controller\ControllerResolverInterface
 {
     private $logger;
-    public function __construct(\_PhpScoper3e1a86bff77f\Psr\Log\LoggerInterface $logger = null)
+    public function __construct(\_PhpScoperf2e2fcfe7ee6\Psr\Log\LoggerInterface $logger = null)
     {
         $this->logger = $logger;
     }
     /**
      * {@inheritdoc}
      */
-    public function getController(\_PhpScoper3e1a86bff77f\Symfony\Component\HttpFoundation\Request $request)
+    public function getController(\_PhpScoperf2e2fcfe7ee6\Symfony\Component\HttpFoundation\Request $request)
     {
         if (!($controller = $request->attributes->get('_controller'))) {
             if (null !== $this->logger) {
@@ -56,13 +56,13 @@ class ControllerResolver implements \_PhpScoper3e1a86bff77f\Symfony\Component\Ht
                 }
             }
             if (!\is_callable($controller)) {
-                throw new \InvalidArgumentException(\sprintf('The controller for URI "%s" is not callable: ', $request->getPathInfo()) . $this->getControllerError($controller));
+                throw new \InvalidArgumentException(\sprintf('The controller for URI "%s" is not callable. %s', $request->getPathInfo(), $this->getControllerError($controller)));
             }
             return $controller;
         }
         if (\is_object($controller)) {
             if (!\is_callable($controller)) {
-                throw new \InvalidArgumentException(\sprintf('The controller for URI "%s" is not callable: ', $request->getPathInfo()) . $this->getControllerError($controller));
+                throw new \InvalidArgumentException(\sprintf('The controller for URI "%s" is not callable. %s', $request->getPathInfo(), $this->getControllerError($controller)));
             }
             return $controller;
         }
@@ -72,21 +72,23 @@ class ControllerResolver implements \_PhpScoper3e1a86bff77f\Symfony\Component\Ht
         try {
             $callable = $this->createController($controller);
         } catch (\InvalidArgumentException $e) {
-            throw new \InvalidArgumentException(\sprintf('The controller for URI "%s" is not callable: ', $request->getPathInfo()) . $e->getMessage(), 0, $e);
+            throw new \InvalidArgumentException(\sprintf('The controller for URI "%s" is not callable. %s', $request->getPathInfo(), $e->getMessage()));
         }
         if (!\is_callable($callable)) {
-            throw new \InvalidArgumentException(\sprintf('The controller for URI "%s" is not callable: ', $request->getPathInfo()) . $this->getControllerError($callable));
+            throw new \InvalidArgumentException(\sprintf('The controller for URI "%s" is not callable. %s', $request->getPathInfo(), $this->getControllerError($callable)));
         }
         return $callable;
     }
     /**
      * Returns a callable for the given controller.
      *
+     * @param string $controller A Controller string
+     *
      * @return callable A PHP callable
      *
      * @throws \InvalidArgumentException When the controller cannot be created
      */
-    protected function createController(string $controller)
+    protected function createController($controller)
     {
         if (\false === \strpos($controller, '::')) {
             $controller = $this->instantiateController($controller);
@@ -116,9 +118,11 @@ class ControllerResolver implements \_PhpScoper3e1a86bff77f\Symfony\Component\Ht
     /**
      * Returns an instantiated controller.
      *
+     * @param string $class A class name
+     *
      * @return object
      */
-    protected function instantiateController(string $class)
+    protected function instantiateController($class)
     {
         return new $class();
     }
@@ -134,10 +138,10 @@ class ControllerResolver implements \_PhpScoper3e1a86bff77f\Symfony\Component\Ht
         if (\is_object($callable)) {
             $availableMethods = $this->getClassMethodsWithoutMagicMethods($callable);
             $alternativeMsg = $availableMethods ? \sprintf(' or use one of the available methods: "%s"', \implode('", "', $availableMethods)) : '';
-            return \sprintf('Controller class "%s" cannot be called without a method name. You need to implement "__invoke"%s.', \get_debug_type($callable), $alternativeMsg);
+            return \sprintf('Controller class "%s" cannot be called without a method name. You need to implement "__invoke"%s.', \get_class($callable), $alternativeMsg);
         }
         if (!\is_array($callable)) {
-            return \sprintf('Invalid type for controller given, expected string, array or object, got "%s".', \get_debug_type($callable));
+            return \sprintf('Invalid type for controller given, expected string, array or object, got "%s".', \gettype($callable));
         }
         if (!isset($callable[0]) || !isset($callable[1]) || 2 !== \count($callable)) {
             return 'Invalid array callable, expected [controller, method].';
@@ -146,7 +150,7 @@ class ControllerResolver implements \_PhpScoper3e1a86bff77f\Symfony\Component\Ht
         if (\is_string($controller) && !\class_exists($controller)) {
             return \sprintf('Class "%s" does not exist.', $controller);
         }
-        $className = \is_object($controller) ? \get_debug_type($controller) : $controller;
+        $className = \is_object($controller) ? \get_class($controller) : $controller;
         if (\method_exists($controller, $method)) {
             return \sprintf('Method "%s" on class "%s" should be public and non-abstract.', $method, $className);
         }

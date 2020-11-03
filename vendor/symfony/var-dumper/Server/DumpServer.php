@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper3e1a86bff77f\Symfony\Component\VarDumper\Server;
+namespace _PhpScoperf2e2fcfe7ee6\Symfony\Component\VarDumper\Server;
 
-use _PhpScoper3e1a86bff77f\Psr\Log\LoggerInterface;
-use _PhpScoper3e1a86bff77f\Symfony\Component\VarDumper\Cloner\Data;
-use _PhpScoper3e1a86bff77f\Symfony\Component\VarDumper\Cloner\Stub;
+use _PhpScoperf2e2fcfe7ee6\Psr\Log\LoggerInterface;
+use _PhpScoperf2e2fcfe7ee6\Symfony\Component\VarDumper\Cloner\Data;
+use _PhpScoperf2e2fcfe7ee6\Symfony\Component\VarDumper\Cloner\Stub;
 /**
  * A server collecting Data clones sent by a ServerDumper.
  *
@@ -25,7 +25,7 @@ class DumpServer
     private $host;
     private $socket;
     private $logger;
-    public function __construct(string $host, \_PhpScoper3e1a86bff77f\Psr\Log\LoggerInterface $logger = null)
+    public function __construct(string $host, \_PhpScoperf2e2fcfe7ee6\Psr\Log\LoggerInterface $logger = null)
     {
         if (\false === \strpos($host, '://')) {
             $host = 'tcp://' . $host;
@@ -36,7 +36,7 @@ class DumpServer
     public function start() : void
     {
         if (!($this->socket = \stream_socket_server($this->host, $errno, $errstr))) {
-            throw new \RuntimeException(\sprintf('Server start failed on "%s": ', $this->host) . $errstr . ' ' . $errno);
+            throw new \RuntimeException(\sprintf('Server start failed on "%s": %s %s.', $this->host, $errstr, $errno));
         }
     }
     public function listen(callable $callback) : void
@@ -45,10 +45,7 @@ class DumpServer
             $this->start();
         }
         foreach ($this->getMessages() as $clientId => $message) {
-            if ($this->logger) {
-                $this->logger->info('Received a payload from client {clientId}', ['clientId' => $clientId]);
-            }
-            $payload = @\unserialize(\base64_decode($message), ['allowed_classes' => [\_PhpScoper3e1a86bff77f\Symfony\Component\VarDumper\Cloner\Data::class, \_PhpScoper3e1a86bff77f\Symfony\Component\VarDumper\Cloner\Stub::class]]);
+            $payload = @\unserialize(\base64_decode($message), ['allowed_classes' => [\_PhpScoperf2e2fcfe7ee6\Symfony\Component\VarDumper\Cloner\Data::class, \_PhpScoperf2e2fcfe7ee6\Symfony\Component\VarDumper\Cloner\Stub::class]]);
             // Impossible to decode the message, give up.
             if (\false === $payload) {
                 if ($this->logger) {
@@ -56,7 +53,7 @@ class DumpServer
                 }
                 continue;
             }
-            if (!\is_array($payload) || \count($payload) < 2 || !$payload[0] instanceof \_PhpScoper3e1a86bff77f\Symfony\Component\VarDumper\Cloner\Data || !\is_array($payload[1])) {
+            if (!\is_array($payload) || \count($payload) < 2 || !$payload[0] instanceof \_PhpScoperf2e2fcfe7ee6\Symfony\Component\VarDumper\Cloner\Data || !\is_array($payload[1])) {
                 if ($this->logger) {
                     $this->logger->warning('Invalid payload from {clientId} client. Expected an array of two elements (Data $data, array $context)', ['clientId' => $clientId]);
                 }
