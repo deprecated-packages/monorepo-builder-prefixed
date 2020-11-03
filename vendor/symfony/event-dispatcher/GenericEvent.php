@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper6b2f62f5c7a4\Symfony\Component\EventDispatcher;
+namespace _PhpScoper95efb8ddea2f\Symfony\Component\EventDispatcher;
 
-use _PhpScoper6b2f62f5c7a4\Symfony\Contracts\EventDispatcher\Event;
+use _PhpScoper95efb8ddea2f\Symfony\Contracts\EventDispatcher\Event;
 /**
  * Event encapsulation class.
  *
@@ -18,7 +18,7 @@ use _PhpScoper6b2f62f5c7a4\Symfony\Contracts\EventDispatcher\Event;
  *
  * @author Drak <drak@zikula.org>
  */
-class GenericEvent extends \_PhpScoper6b2f62f5c7a4\Symfony\Contracts\EventDispatcher\Event implements \ArrayAccess, \IteratorAggregate
+class GenericEvent extends \_PhpScoper95efb8ddea2f\Symfony\Contracts\EventDispatcher\Event implements \ArrayAccess, \IteratorAggregate
 {
     protected $subject;
     protected $arguments;
