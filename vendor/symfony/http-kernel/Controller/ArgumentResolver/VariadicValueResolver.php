@@ -8,29 +8,29 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper437fa56c88e1\Symfony\Component\HttpKernel\Controller\ArgumentResolver;
+namespace _PhpScoperddf2171d3d2c\Symfony\Component\HttpKernel\Controller\ArgumentResolver;
 
-use _PhpScoper437fa56c88e1\Symfony\Component\HttpFoundation\Request;
-use _PhpScoper437fa56c88e1\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
-use _PhpScoper437fa56c88e1\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
+use _PhpScoperddf2171d3d2c\Symfony\Component\HttpFoundation\Request;
+use _PhpScoperddf2171d3d2c\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
+use _PhpScoperddf2171d3d2c\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 /**
  * Yields a variadic argument's values from the request attributes.
  *
  * @author Iltar van der Berg <kjarli@gmail.com>
  */
-final class VariadicValueResolver implements \_PhpScoper437fa56c88e1\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface
+final class VariadicValueResolver implements \_PhpScoperddf2171d3d2c\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function supports(\_PhpScoper437fa56c88e1\Symfony\Component\HttpFoundation\Request $request, \_PhpScoper437fa56c88e1\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument) : bool
+    public function supports(\_PhpScoperddf2171d3d2c\Symfony\Component\HttpFoundation\Request $request, \_PhpScoperddf2171d3d2c\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument) : bool
     {
         return $argument->isVariadic() && $request->attributes->has($argument->getName());
     }
     /**
      * {@inheritdoc}
      */
-    public function resolve(\_PhpScoper437fa56c88e1\Symfony\Component\HttpFoundation\Request $request, \_PhpScoper437fa56c88e1\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument) : iterable
+    public function resolve(\_PhpScoperddf2171d3d2c\Symfony\Component\HttpFoundation\Request $request, \_PhpScoperddf2171d3d2c\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument) : iterable
     {
         $values = $request->attributes->get($argument->getName());
         if (!\is_array($values)) {
