@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper621122bdc380\Symfony\Component\HttpKernel\Event;
+namespace _PhpScopere7b233920bf2\Symfony\Component\HttpKernel\Event;
 
-use _PhpScoper621122bdc380\Symfony\Component\HttpFoundation\Request;
-use _PhpScoper621122bdc380\Symfony\Component\HttpKernel\HttpKernelInterface;
+use _PhpScopere7b233920bf2\Symfony\Component\HttpFoundation\Request;
+use _PhpScopere7b233920bf2\Symfony\Component\HttpKernel\HttpKernelInterface;
 /**
  * Allows filtering of a controller callable.
  *
@@ -23,10 +23,10 @@ use _PhpScoper621122bdc380\Symfony\Component\HttpKernel\HttpKernelInterface;
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
-final class ControllerEvent extends \_PhpScoper621122bdc380\Symfony\Component\HttpKernel\Event\KernelEvent
+final class ControllerEvent extends \_PhpScopere7b233920bf2\Symfony\Component\HttpKernel\Event\KernelEvent
 {
     private $controller;
-    public function __construct(\_PhpScoper621122bdc380\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, callable $controller, \_PhpScoper621122bdc380\Symfony\Component\HttpFoundation\Request $request, ?int $requestType)
+    public function __construct(\_PhpScopere7b233920bf2\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, callable $controller, \_PhpScopere7b233920bf2\Symfony\Component\HttpFoundation\Request $request, ?int $requestType)
     {
         parent::__construct($kernel, $request, $requestType);
         $this->setController($controller);

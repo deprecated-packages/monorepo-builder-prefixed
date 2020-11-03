@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper621122bdc380\Symfony\Component\Console\Formatter;
+namespace _PhpScopere7b233920bf2\Symfony\Component\Console\Formatter;
 
 /**
  * @author Tien Xuan Vo <tien.xuan.vo@gmail.com>
  */
-final class NullOutputFormatter implements \_PhpScoper621122bdc380\Symfony\Component\Console\Formatter\OutputFormatterInterface
+final class NullOutputFormatter implements \_PhpScopere7b233920bf2\Symfony\Component\Console\Formatter\OutputFormatterInterface
 {
     private $style;
     /**
@@ -26,13 +26,13 @@ final class NullOutputFormatter implements \_PhpScoper621122bdc380\Symfony\Compo
     /**
      * {@inheritdoc}
      */
-    public function getStyle(string $name) : \_PhpScoper621122bdc380\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface
+    public function getStyle(string $name) : \_PhpScopere7b233920bf2\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface
     {
         if ($this->style) {
             return $this->style;
         }
         // to comply with the interface we must return a OutputFormatterStyleInterface
-        return $this->style = new \_PhpScoper621122bdc380\Symfony\Component\Console\Formatter\NullOutputFormatterStyle();
+        return $this->style = new \_PhpScopere7b233920bf2\Symfony\Component\Console\Formatter\NullOutputFormatterStyle();
     }
     /**
      * {@inheritdoc}
@@ -58,7 +58,7 @@ final class NullOutputFormatter implements \_PhpScoper621122bdc380\Symfony\Compo
     /**
      * {@inheritdoc}
      */
-    public function setStyle(string $name, \_PhpScoper621122bdc380\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style) : void
+    public function setStyle(string $name, \_PhpScopere7b233920bf2\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style) : void
     {
         // do nothing
     }

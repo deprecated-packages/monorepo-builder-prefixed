@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper621122bdc380\Symfony\Component\HttpFoundation;
+namespace _PhpScopere7b233920bf2\Symfony\Component\HttpFoundation;
 
 // Help opcache.preload discover always-needed symbols
-\class_exists(\_PhpScoper621122bdc380\Symfony\Component\HttpFoundation\AcceptHeaderItem::class);
+\class_exists(\_PhpScopere7b233920bf2\Symfony\Component\HttpFoundation\AcceptHeaderItem::class);
 /**
  * Represents an Accept-* header.
  *
@@ -47,11 +47,11 @@ class AcceptHeader
     public static function fromString(?string $headerValue)
     {
         $index = 0;
-        $parts = \_PhpScoper621122bdc380\Symfony\Component\HttpFoundation\HeaderUtils::split($headerValue ?? '', ',;=');
+        $parts = \_PhpScopere7b233920bf2\Symfony\Component\HttpFoundation\HeaderUtils::split($headerValue ?? '', ',;=');
         return new self(\array_map(function ($subParts) use(&$index) {
             $part = \array_shift($subParts);
-            $attributes = \_PhpScoper621122bdc380\Symfony\Component\HttpFoundation\HeaderUtils::combine($subParts);
-            $item = new \_PhpScoper621122bdc380\Symfony\Component\HttpFoundation\AcceptHeaderItem($part[0], $attributes);
+            $attributes = \_PhpScopere7b233920bf2\Symfony\Component\HttpFoundation\HeaderUtils::combine($subParts);
+            $item = new \_PhpScopere7b233920bf2\Symfony\Component\HttpFoundation\AcceptHeaderItem($part[0], $attributes);
             $item->setIndex($index++);
             return $item;
         }, $parts));
@@ -88,7 +88,7 @@ class AcceptHeader
      *
      * @return $this
      */
-    public function add(\_PhpScoper621122bdc380\Symfony\Component\HttpFoundation\AcceptHeaderItem $item)
+    public function add(\_PhpScopere7b233920bf2\Symfony\Component\HttpFoundation\AcceptHeaderItem $item)
     {
         $this->items[$item->getValue()] = $item;
         $this->sorted = \false;
@@ -111,7 +111,7 @@ class AcceptHeader
      */
     public function filter(string $pattern)
     {
-        return new self(\array_filter($this->items, function (\_PhpScoper621122bdc380\Symfony\Component\HttpFoundation\AcceptHeaderItem $item) use($pattern) {
+        return new self(\array_filter($this->items, function (\_PhpScopere7b233920bf2\Symfony\Component\HttpFoundation\AcceptHeaderItem $item) use($pattern) {
             return \preg_match($pattern, $item->getValue());
         }));
     }
@@ -131,7 +131,7 @@ class AcceptHeader
     private function sort() : void
     {
         if (!$this->sorted) {
-            \uasort($this->items, function (\_PhpScoper621122bdc380\Symfony\Component\HttpFoundation\AcceptHeaderItem $a, \_PhpScoper621122bdc380\Symfony\Component\HttpFoundation\AcceptHeaderItem $b) {
+            \uasort($this->items, function (\_PhpScopere7b233920bf2\Symfony\Component\HttpFoundation\AcceptHeaderItem $a, \_PhpScopere7b233920bf2\Symfony\Component\HttpFoundation\AcceptHeaderItem $b) {
                 $qA = $a->getQuality();
                 $qB = $b->getQuality();
                 if ($qA === $qB) {
