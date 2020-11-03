@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper6bfbe5ea8949\Symfony\Component\Console\Exception;
+namespace _PhpScopera2c403aec9a8\Symfony\Component\Console\Exception;
 
 /**
  * Represents failure to read input from stdin.
  *
  * @author Gabriel Ostrolucký <gabriel.ostrolucky@gmail.com>
  */
-class MissingInputException extends \_PhpScoper6bfbe5ea8949\Symfony\Component\Console\Exception\RuntimeException implements \_PhpScoper6bfbe5ea8949\Symfony\Component\Console\Exception\ExceptionInterface
+class MissingInputException extends \_PhpScopera2c403aec9a8\Symfony\Component\Console\Exception\RuntimeException implements \_PhpScopera2c403aec9a8\Symfony\Component\Console\Exception\ExceptionInterface
 {
 }
