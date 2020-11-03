@@ -1,6 +1,6 @@
 <?php
 
-namespace _PhpScoperf9ff1c3447b1\Psr\Log;
+namespace _PhpScoper462f168ef4cc\Psr\Log;
 
 /**
  * Basic Implementation of LoggerAwareInterface.
@@ -18,7 +18,7 @@ trait LoggerAwareTrait
      *
      * @param LoggerInterface $logger
      */
-    public function setLogger(\_PhpScoperf9ff1c3447b1\Psr\Log\LoggerInterface $logger)
+    public function setLogger(\_PhpScoper462f168ef4cc\Psr\Log\LoggerInterface $logger)
     {
         $this->logger = $logger;
     }

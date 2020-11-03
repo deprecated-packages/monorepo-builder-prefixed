@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf9ff1c3447b1\Symfony\Contracts\HttpClient;
+namespace _PhpScoper462f168ef4cc\Symfony\Contracts\HttpClient;
 
 /**
  * Yields response chunks, returned by HttpClientInterface::stream().
@@ -17,6 +17,6 @@ namespace _PhpScoperf9ff1c3447b1\Symfony\Contracts\HttpClient;
  */
 interface ResponseStreamInterface extends \Iterator
 {
-    public function key() : \_PhpScoperf9ff1c3447b1\Symfony\Contracts\HttpClient\ResponseInterface;
-    public function current() : \_PhpScoperf9ff1c3447b1\Symfony\Contracts\HttpClient\ChunkInterface;
+    public function key() : \_PhpScoper462f168ef4cc\Symfony\Contracts\HttpClient\ResponseInterface;
+    public function current() : \_PhpScoper462f168ef4cc\Symfony\Contracts\HttpClient\ChunkInterface;
 }

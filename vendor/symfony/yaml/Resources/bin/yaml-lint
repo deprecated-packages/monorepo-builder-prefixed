@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php 
-namespace _PhpScoperf9ff1c3447b1;
+namespace _PhpScoper462f168ef4cc;
 
 /*
  * This file is part of the Symfony package.
@@ -15,18 +15,18 @@ namespace _PhpScoperf9ff1c3447b1;
  *
  * @author Jan Schädlich <jan.schaedlich@sensiolabs.de>
  */
-use _PhpScoperf9ff1c3447b1\Symfony\Component\Console\Application;
-use _PhpScoperf9ff1c3447b1\Symfony\Component\Yaml\Command\LintCommand;
+use _PhpScoper462f168ef4cc\Symfony\Component\Console\Application;
+use _PhpScoper462f168ef4cc\Symfony\Component\Yaml\Command\LintCommand;
 function includeIfExists(string $file) : bool
 {
     return \file_exists($file) && (include $file);
 }
-if (!\_PhpScoperf9ff1c3447b1\includeIfExists(__DIR__ . '/../../../../autoload.php') && !\_PhpScoperf9ff1c3447b1\includeIfExists(__DIR__ . '/../../vendor/autoload.php') && !\_PhpScoperf9ff1c3447b1\includeIfExists(__DIR__ . '/../../../../../../vendor/autoload.php')) {
+if (!\_PhpScoper462f168ef4cc\includeIfExists(__DIR__ . '/../../../../autoload.php') && !\_PhpScoper462f168ef4cc\includeIfExists(__DIR__ . '/../../vendor/autoload.php') && !\_PhpScoper462f168ef4cc\includeIfExists(__DIR__ . '/../../../../../../vendor/autoload.php')) {
     \fwrite(\STDERR, 'Install dependencies using Composer.' . \PHP_EOL);
     exit(1);
 }
-if (!\class_exists(\_PhpScoperf9ff1c3447b1\Symfony\Component\Console\Application::class)) {
+if (!\class_exists(\_PhpScoper462f168ef4cc\Symfony\Component\Console\Application::class)) {
     \fwrite(\STDERR, 'You need the "symfony/console" component in order to run the Yaml linter.' . \PHP_EOL);
     exit(1);
 }
-(new \_PhpScoperf9ff1c3447b1\Symfony\Component\Console\Application())->add($command = new \_PhpScoperf9ff1c3447b1\Symfony\Component\Yaml\Command\LintCommand())->getApplication()->setDefaultCommand($command->getName(), \true)->run();
+(new \_PhpScoper462f168ef4cc\Symfony\Component\Console\Application())->add($command = new \_PhpScoper462f168ef4cc\Symfony\Component\Yaml\Command\LintCommand())->getApplication()->setDefaultCommand($command->getName(), \true)->run();
