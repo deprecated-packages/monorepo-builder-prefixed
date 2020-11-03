@@ -8,10 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper131024327b3f\Symfony\Component\Process;
+namespace _PhpScopere73d4c0b7ec8\Symfony\Component\Process;
 
-use _PhpScoper131024327b3f\Symfony\Component\Process\Exception\LogicException;
-use _PhpScoper131024327b3f\Symfony\Component\Process\Exception\RuntimeException;
+use _PhpScopere73d4c0b7ec8\Symfony\Component\Process\Exception\RuntimeException;
 /**
  * PhpProcess runs a PHP script in an independent process.
  *
@@ -21,7 +20,7 @@ use _PhpScoper131024327b3f\Symfony\Component\Process\Exception\RuntimeException;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class PhpProcess extends \_PhpScoper131024327b3f\Symfony\Component\Process\Process
+class PhpProcess extends \_PhpScopere73d4c0b7ec8\Symfony\Component\Process\Process
 {
     /**
      * @param string      $script  The PHP script to run (as a string)
@@ -33,7 +32,7 @@ class PhpProcess extends \_PhpScoper131024327b3f\Symfony\Component\Process\Proce
     public function __construct(string $script, string $cwd = null, array $env = null, int $timeout = 60, array $php = null)
     {
         if (null === $php) {
-            $executableFinder = new \_PhpScoper131024327b3f\Symfony\Component\Process\PhpExecutableFinder();
+            $executableFinder = new \_PhpScopere73d4c0b7ec8\Symfony\Component\Process\PhpExecutableFinder();
             $php = $executableFinder->find(\false);
             $php = \false === $php ? null : \array_merge([$php], $executableFinder->findArguments());
         }
@@ -47,11 +46,14 @@ class PhpProcess extends \_PhpScoper131024327b3f\Symfony\Component\Process\Proce
         parent::__construct($php, $cwd, $env, $script, $timeout);
     }
     /**
-     * {@inheritdoc}
+     * Sets the path to the PHP binary to use.
+     *
+     * @deprecated since Symfony 4.2, use the $php argument of the constructor instead.
      */
-    public static function fromShellCommandline(string $command, string $cwd = null, array $env = null, $input = null, ?float $timeout = 60)
+    public function setPhpBinary($php)
     {
-        throw new \_PhpScoper131024327b3f\Symfony\Component\Process\Exception\LogicException(\sprintf('The "%s()" method cannot be called when using "%s".', __METHOD__, self::class));
+        @\trigger_error(\sprintf('The "%s()" method is deprecated since Symfony 4.2, use the $php argument of the constructor instead.', __METHOD__), \E_USER_DEPRECATED);
+        $this->setCommandLine($php);
     }
     /**
      * {@inheritdoc}
@@ -59,7 +61,7 @@ class PhpProcess extends \_PhpScoper131024327b3f\Symfony\Component\Process\Proce
     public function start(callable $callback = null, array $env = [])
     {
         if (null === $this->getCommandLine()) {
-            throw new \_PhpScoper131024327b3f\Symfony\Component\Process\Exception\RuntimeException('Unable to find the PHP executable.');
+            throw new \_PhpScopere73d4c0b7ec8\Symfony\Component\Process\Exception\RuntimeException('Unable to find the PHP executable.');
         }
         parent::start($callback, $env);
     }

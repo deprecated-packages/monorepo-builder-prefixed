@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper131024327b3f\Symfony\Component\Console\Output;
+namespace _PhpScopere73d4c0b7ec8\Symfony\Component\Console\Output;
 
-use _PhpScoper131024327b3f\Symfony\Component\Console\Formatter\NullOutputFormatter;
-use _PhpScoper131024327b3f\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use _PhpScopere73d4c0b7ec8\Symfony\Component\Console\Formatter\OutputFormatter;
+use _PhpScopere73d4c0b7ec8\Symfony\Component\Console\Formatter\OutputFormatterInterface;
 /**
  * NullOutput suppresses all output.
  *
@@ -20,13 +20,12 @@ use _PhpScoper131024327b3f\Symfony\Component\Console\Formatter\OutputFormatterIn
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Tobias Schultze <http://tobion.de>
  */
-class NullOutput implements \_PhpScoper131024327b3f\Symfony\Component\Console\Output\OutputInterface
+class NullOutput implements \_PhpScopere73d4c0b7ec8\Symfony\Component\Console\Output\OutputInterface
 {
-    private $formatter;
     /**
      * {@inheritdoc}
      */
-    public function setFormatter(\_PhpScoper131024327b3f\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter)
+    public function setFormatter(\_PhpScopere73d4c0b7ec8\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter)
     {
         // do nothing
     }
@@ -35,16 +34,13 @@ class NullOutput implements \_PhpScoper131024327b3f\Symfony\Component\Console\Ou
      */
     public function getFormatter()
     {
-        if ($this->formatter) {
-            return $this->formatter;
-        }
         // to comply with the interface we must return a OutputFormatterInterface
-        return $this->formatter = new \_PhpScoper131024327b3f\Symfony\Component\Console\Formatter\NullOutputFormatter();
+        return new \_PhpScopere73d4c0b7ec8\Symfony\Component\Console\Formatter\OutputFormatter();
     }
     /**
      * {@inheritdoc}
      */
-    public function setDecorated(bool $decorated)
+    public function setDecorated($decorated)
     {
         // do nothing
     }
@@ -58,7 +54,7 @@ class NullOutput implements \_PhpScoper131024327b3f\Symfony\Component\Console\Ou
     /**
      * {@inheritdoc}
      */
-    public function setVerbosity(int $level)
+    public function setVerbosity($level)
     {
         // do nothing
     }
@@ -100,14 +96,14 @@ class NullOutput implements \_PhpScoper131024327b3f\Symfony\Component\Console\Ou
     /**
      * {@inheritdoc}
      */
-    public function writeln($messages, int $options = self::OUTPUT_NORMAL)
+    public function writeln($messages, $options = self::OUTPUT_NORMAL)
     {
         // do nothing
     }
     /**
      * {@inheritdoc}
      */
-    public function write($messages, bool $newline = \false, int $options = self::OUTPUT_NORMAL)
+    public function write($messages, $newline = \false, $options = self::OUTPUT_NORMAL)
     {
         // do nothing
     }

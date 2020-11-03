@@ -8,10 +8,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper131024327b3f\Symfony\Component\HttpKernel\Event;
+namespace _PhpScopere73d4c0b7ec8\Symfony\Component\HttpKernel\Event;
 
-use _PhpScoper131024327b3f\Symfony\Component\HttpFoundation\Request;
-use _PhpScoper131024327b3f\Symfony\Component\HttpKernel\HttpKernelInterface;
 /**
  * Allows filtering of controller arguments.
  *
@@ -23,31 +21,9 @@ use _PhpScoper131024327b3f\Symfony\Component\HttpKernel\HttpKernelInterface;
  * controller.
  *
  * @author Christophe Coevoet <stof@notk.org>
+ *
+ * @final since Symfony 4.4
  */
-final class ControllerArgumentsEvent extends \_PhpScoper131024327b3f\Symfony\Component\HttpKernel\Event\KernelEvent
+class ControllerArgumentsEvent extends \_PhpScopere73d4c0b7ec8\Symfony\Component\HttpKernel\Event\FilterControllerArgumentsEvent
 {
-    private $controller;
-    private $arguments;
-    public function __construct(\_PhpScoper131024327b3f\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, callable $controller, array $arguments, \_PhpScoper131024327b3f\Symfony\Component\HttpFoundation\Request $request, ?int $requestType)
-    {
-        parent::__construct($kernel, $request, $requestType);
-        $this->controller = $controller;
-        $this->arguments = $arguments;
-    }
-    public function getController() : callable
-    {
-        return $this->controller;
-    }
-    public function setController(callable $controller)
-    {
-        $this->controller = $controller;
-    }
-    public function getArguments() : array
-    {
-        return $this->arguments;
-    }
-    public function setArguments(array $arguments)
-    {
-        $this->arguments = $arguments;
-    }
 }

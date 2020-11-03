@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper131024327b3f\Symfony\Component\DependencyInjection;
+namespace _PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection;
 
-use _PhpScoper131024327b3f\Psr\Container\ContainerInterface as PsrContainerInterface;
-use _PhpScoper131024327b3f\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use _PhpScoper131024327b3f\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use _PhpScoper131024327b3f\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use _PhpScopere73d4c0b7ec8\Psr\Container\ContainerInterface as PsrContainerInterface;
+use _PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use _PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use _PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 /**
  * ContainerInterface is the interface implemented by service container classes.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-interface ContainerInterface extends \_PhpScoper131024327b3f\Psr\Container\ContainerInterface
+interface ContainerInterface extends \_PhpScopere73d4c0b7ec8\Psr\Container\ContainerInterface
 {
     const RUNTIME_EXCEPTION_ON_INVALID_REFERENCE = 0;
     const EXCEPTION_ON_INVALID_REFERENCE = 1;
@@ -29,8 +29,11 @@ interface ContainerInterface extends \_PhpScoper131024327b3f\Psr\Container\Conta
     const IGNORE_ON_UNINITIALIZED_REFERENCE = 4;
     /**
      * Sets a service.
+     *
+     * @param string      $id      The service identifier
+     * @param object|null $service The service instance
      */
-    public function set(string $id, ?object $service);
+    public function set($id, $service);
     /**
      * Gets a service.
      *
@@ -44,7 +47,7 @@ interface ContainerInterface extends \_PhpScoper131024327b3f\Psr\Container\Conta
      *
      * @see Reference
      */
-    public function get($id, int $invalidBehavior = self::EXCEPTION_ON_INVALID_REFERENCE);
+    public function get($id, $invalidBehavior = self::EXCEPTION_ON_INVALID_REFERENCE);
     /**
      * Returns true if the given service is defined.
      *
@@ -56,9 +59,11 @@ interface ContainerInterface extends \_PhpScoper131024327b3f\Psr\Container\Conta
     /**
      * Check for whether or not a service has been initialized.
      *
+     * @param string $id
+     *
      * @return bool true if the service has been initialized, false otherwise
      */
-    public function initialized(string $id);
+    public function initialized($id);
     /**
      * Gets a parameter.
      *
@@ -68,7 +73,7 @@ interface ContainerInterface extends \_PhpScoper131024327b3f\Psr\Container\Conta
      *
      * @throws InvalidArgumentException if the parameter is not defined
      */
-    public function getParameter(string $name);
+    public function getParameter($name);
     /**
      * Checks if a parameter exists.
      *
@@ -76,12 +81,12 @@ interface ContainerInterface extends \_PhpScoper131024327b3f\Psr\Container\Conta
      *
      * @return bool The presence of parameter in container
      */
-    public function hasParameter(string $name);
+    public function hasParameter($name);
     /**
      * Sets a parameter.
      *
      * @param string $name  The parameter name
      * @param mixed  $value The parameter value
      */
-    public function setParameter(string $name, $value);
+    public function setParameter($name, $value);
 }

@@ -8,30 +8,24 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper131024327b3f\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace _PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use _PhpScoper131024327b3f\Symfony\Component\DependencyInjection\Definition;
+use _PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\Definition;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class InlineServiceConfigurator extends \_PhpScoper131024327b3f\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
+class InlineServiceConfigurator extends \_PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
 {
-    const FACTORY = 'service';
+    const FACTORY = 'inline';
     use Traits\ArgumentTrait;
     use Traits\AutowireTrait;
     use Traits\BindTrait;
-    use Traits\CallTrait;
-    use Traits\ConfiguratorTrait;
     use Traits\FactoryTrait;
     use Traits\FileTrait;
     use Traits\LazyTrait;
     use Traits\ParentTrait;
-    use Traits\PropertyTrait;
     use Traits\TagTrait;
-    private $id = '[inline]';
-    private $allowParent = \true;
-    private $path = null;
-    public function __construct(\_PhpScoper131024327b3f\Symfony\Component\DependencyInjection\Definition $definition)
+    public function __construct(\_PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\Definition $definition)
     {
         $this->definition = $definition;
     }

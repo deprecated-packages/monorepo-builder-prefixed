@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper131024327b3f\Symfony\Component\Console\Input;
+namespace _PhpScopere73d4c0b7ec8\Symfony\Component\Console\Input;
 
-use _PhpScoper131024327b3f\Symfony\Component\Console\Exception\InvalidArgumentException;
-use _PhpScoper131024327b3f\Symfony\Component\Console\Exception\RuntimeException;
+use _PhpScopere73d4c0b7ec8\Symfony\Component\Console\Exception\InvalidArgumentException;
+use _PhpScopere73d4c0b7ec8\Symfony\Component\Console\Exception\RuntimeException;
 /**
  * Input is the base class for all concrete Input classes.
  *
@@ -23,17 +23,17 @@ use _PhpScoper131024327b3f\Symfony\Component\Console\Exception\RuntimeException;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Input implements \_PhpScoper131024327b3f\Symfony\Component\Console\Input\InputInterface, \_PhpScoper131024327b3f\Symfony\Component\Console\Input\StreamableInputInterface
+abstract class Input implements \_PhpScopere73d4c0b7ec8\Symfony\Component\Console\Input\InputInterface, \_PhpScopere73d4c0b7ec8\Symfony\Component\Console\Input\StreamableInputInterface
 {
     protected $definition;
     protected $stream;
     protected $options = [];
     protected $arguments = [];
     protected $interactive = \true;
-    public function __construct(\_PhpScoper131024327b3f\Symfony\Component\Console\Input\InputDefinition $definition = null)
+    public function __construct(\_PhpScopere73d4c0b7ec8\Symfony\Component\Console\Input\InputDefinition $definition = null)
     {
         if (null === $definition) {
-            $this->definition = new \_PhpScoper131024327b3f\Symfony\Component\Console\Input\InputDefinition();
+            $this->definition = new \_PhpScopere73d4c0b7ec8\Symfony\Component\Console\Input\InputDefinition();
         } else {
             $this->bind($definition);
             $this->validate();
@@ -42,7 +42,7 @@ abstract class Input implements \_PhpScoper131024327b3f\Symfony\Component\Consol
     /**
      * {@inheritdoc}
      */
-    public function bind(\_PhpScoper131024327b3f\Symfony\Component\Console\Input\InputDefinition $definition)
+    public function bind(\_PhpScopere73d4c0b7ec8\Symfony\Component\Console\Input\InputDefinition $definition)
     {
         $this->arguments = [];
         $this->options = [];
@@ -64,7 +64,7 @@ abstract class Input implements \_PhpScoper131024327b3f\Symfony\Component\Consol
             return !\array_key_exists($argument, $givenArguments) && $definition->getArgument($argument)->isRequired();
         });
         if (\count($missingArguments) > 0) {
-            throw new \_PhpScoper131024327b3f\Symfony\Component\Console\Exception\RuntimeException(\sprintf('Not enough arguments (missing: "%s").', \implode(', ', $missingArguments)));
+            throw new \_PhpScopere73d4c0b7ec8\Symfony\Component\Console\Exception\RuntimeException(\sprintf('Not enough arguments (missing: "%s").', \implode(', ', $missingArguments)));
         }
     }
     /**
@@ -77,9 +77,9 @@ abstract class Input implements \_PhpScoper131024327b3f\Symfony\Component\Consol
     /**
      * {@inheritdoc}
      */
-    public function setInteractive(bool $interactive)
+    public function setInteractive($interactive)
     {
-        $this->interactive = $interactive;
+        $this->interactive = (bool) $interactive;
     }
     /**
      * {@inheritdoc}
@@ -91,20 +91,20 @@ abstract class Input implements \_PhpScoper131024327b3f\Symfony\Component\Consol
     /**
      * {@inheritdoc}
      */
-    public function getArgument(string $name)
+    public function getArgument($name)
     {
         if (!$this->definition->hasArgument($name)) {
-            throw new \_PhpScoper131024327b3f\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('The "%s" argument does not exist.', $name));
+            throw new \_PhpScopere73d4c0b7ec8\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('The "%s" argument does not exist.', $name));
         }
         return isset($this->arguments[$name]) ? $this->arguments[$name] : $this->definition->getArgument($name)->getDefault();
     }
     /**
      * {@inheritdoc}
      */
-    public function setArgument(string $name, $value)
+    public function setArgument($name, $value)
     {
         if (!$this->definition->hasArgument($name)) {
-            throw new \_PhpScoper131024327b3f\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('The "%s" argument does not exist.', $name));
+            throw new \_PhpScopere73d4c0b7ec8\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('The "%s" argument does not exist.', $name));
         }
         $this->arguments[$name] = $value;
     }
@@ -125,36 +125,38 @@ abstract class Input implements \_PhpScoper131024327b3f\Symfony\Component\Consol
     /**
      * {@inheritdoc}
      */
-    public function getOption(string $name)
+    public function getOption($name)
     {
         if (!$this->definition->hasOption($name)) {
-            throw new \_PhpScoper131024327b3f\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('The "%s" option does not exist.', $name));
+            throw new \_PhpScopere73d4c0b7ec8\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('The "%s" option does not exist.', $name));
         }
         return \array_key_exists($name, $this->options) ? $this->options[$name] : $this->definition->getOption($name)->getDefault();
     }
     /**
      * {@inheritdoc}
      */
-    public function setOption(string $name, $value)
+    public function setOption($name, $value)
     {
         if (!$this->definition->hasOption($name)) {
-            throw new \_PhpScoper131024327b3f\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('The "%s" option does not exist.', $name));
+            throw new \_PhpScopere73d4c0b7ec8\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('The "%s" option does not exist.', $name));
         }
         $this->options[$name] = $value;
     }
     /**
      * {@inheritdoc}
      */
-    public function hasOption(string $name)
+    public function hasOption($name)
     {
         return $this->definition->hasOption($name);
     }
     /**
      * Escapes a token through escapeshellarg if it contains unsafe chars.
      *
+     * @param string $token
+     *
      * @return string
      */
-    public function escapeToken(string $token)
+    public function escapeToken($token)
     {
         return \preg_match('{^[\\w-]+$}', $token) ? $token : \escapeshellarg($token);
     }

@@ -8,50 +8,50 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper131024327b3f\Symfony\Component\HttpKernel\Log;
+namespace _PhpScopere73d4c0b7ec8\Symfony\Component\HttpKernel\Log;
 
-use _PhpScoper131024327b3f\Psr\Log\AbstractLogger;
-use _PhpScoper131024327b3f\Psr\Log\InvalidArgumentException;
-use _PhpScoper131024327b3f\Psr\Log\LogLevel;
+use _PhpScopere73d4c0b7ec8\Psr\Log\AbstractLogger;
+use _PhpScopere73d4c0b7ec8\Psr\Log\InvalidArgumentException;
+use _PhpScopere73d4c0b7ec8\Psr\Log\LogLevel;
 /**
  * Minimalist PSR-3 logger designed to write in stderr or any other stream.
  *
  * @author Kévin Dunglas <dunglas@gmail.com>
  */
-class Logger extends \_PhpScoper131024327b3f\Psr\Log\AbstractLogger
+class Logger extends \_PhpScopere73d4c0b7ec8\Psr\Log\AbstractLogger
 {
-    private static $levels = [\_PhpScoper131024327b3f\Psr\Log\LogLevel::DEBUG => 0, \_PhpScoper131024327b3f\Psr\Log\LogLevel::INFO => 1, \_PhpScoper131024327b3f\Psr\Log\LogLevel::NOTICE => 2, \_PhpScoper131024327b3f\Psr\Log\LogLevel::WARNING => 3, \_PhpScoper131024327b3f\Psr\Log\LogLevel::ERROR => 4, \_PhpScoper131024327b3f\Psr\Log\LogLevel::CRITICAL => 5, \_PhpScoper131024327b3f\Psr\Log\LogLevel::ALERT => 6, \_PhpScoper131024327b3f\Psr\Log\LogLevel::EMERGENCY => 7];
+    private static $levels = [\_PhpScopere73d4c0b7ec8\Psr\Log\LogLevel::DEBUG => 0, \_PhpScopere73d4c0b7ec8\Psr\Log\LogLevel::INFO => 1, \_PhpScopere73d4c0b7ec8\Psr\Log\LogLevel::NOTICE => 2, \_PhpScopere73d4c0b7ec8\Psr\Log\LogLevel::WARNING => 3, \_PhpScopere73d4c0b7ec8\Psr\Log\LogLevel::ERROR => 4, \_PhpScopere73d4c0b7ec8\Psr\Log\LogLevel::CRITICAL => 5, \_PhpScopere73d4c0b7ec8\Psr\Log\LogLevel::ALERT => 6, \_PhpScopere73d4c0b7ec8\Psr\Log\LogLevel::EMERGENCY => 7];
     private $minLevelIndex;
     private $formatter;
     private $handle;
-    public function __construct(string $minLevel = null, $output = null, callable $formatter = null)
+    public function __construct(string $minLevel = null, $output = 'php://stderr', callable $formatter = null)
     {
         if (null === $minLevel) {
-            $minLevel = null === $output || 'php://stdout' === $output || 'php://stderr' === $output ? \_PhpScoper131024327b3f\Psr\Log\LogLevel::ERROR : \_PhpScoper131024327b3f\Psr\Log\LogLevel::WARNING;
+            $minLevel = 'php://stdout' === $output || 'php://stderr' === $output ? \_PhpScopere73d4c0b7ec8\Psr\Log\LogLevel::CRITICAL : \_PhpScopere73d4c0b7ec8\Psr\Log\LogLevel::WARNING;
             if (isset($_ENV['SHELL_VERBOSITY']) || isset($_SERVER['SHELL_VERBOSITY'])) {
                 switch ((int) (isset($_ENV['SHELL_VERBOSITY']) ? $_ENV['SHELL_VERBOSITY'] : $_SERVER['SHELL_VERBOSITY'])) {
                     case -1:
-                        $minLevel = \_PhpScoper131024327b3f\Psr\Log\LogLevel::ERROR;
+                        $minLevel = \_PhpScopere73d4c0b7ec8\Psr\Log\LogLevel::ERROR;
                         break;
                     case 1:
-                        $minLevel = \_PhpScoper131024327b3f\Psr\Log\LogLevel::NOTICE;
+                        $minLevel = \_PhpScopere73d4c0b7ec8\Psr\Log\LogLevel::NOTICE;
                         break;
                     case 2:
-                        $minLevel = \_PhpScoper131024327b3f\Psr\Log\LogLevel::INFO;
+                        $minLevel = \_PhpScopere73d4c0b7ec8\Psr\Log\LogLevel::INFO;
                         break;
                     case 3:
-                        $minLevel = \_PhpScoper131024327b3f\Psr\Log\LogLevel::DEBUG;
+                        $minLevel = \_PhpScopere73d4c0b7ec8\Psr\Log\LogLevel::DEBUG;
                         break;
                 }
             }
         }
         if (!isset(self::$levels[$minLevel])) {
-            throw new \_PhpScoper131024327b3f\Psr\Log\InvalidArgumentException(\sprintf('The log level "%s" does not exist.', $minLevel));
+            throw new \_PhpScopere73d4c0b7ec8\Psr\Log\InvalidArgumentException(\sprintf('The log level "%s" does not exist.', $minLevel));
         }
         $this->minLevelIndex = self::$levels[$minLevel];
         $this->formatter = $formatter ?: [$this, 'format'];
-        if ($output && \false === ($this->handle = \is_resource($output) ? $output : @\fopen($output, 'a'))) {
-            throw new \_PhpScoper131024327b3f\Psr\Log\InvalidArgumentException(\sprintf('Unable to open "%s".', $output));
+        if (\false === ($this->handle = \is_resource($output) ? $output : @\fopen($output, 'a'))) {
+            throw new \_PhpScopere73d4c0b7ec8\Psr\Log\InvalidArgumentException(\sprintf('Unable to open "%s".', $output));
         }
     }
     /**
@@ -62,19 +62,15 @@ class Logger extends \_PhpScoper131024327b3f\Psr\Log\AbstractLogger
     public function log($level, $message, array $context = [])
     {
         if (!isset(self::$levels[$level])) {
-            throw new \_PhpScoper131024327b3f\Psr\Log\InvalidArgumentException(\sprintf('The log level "%s" does not exist.', $level));
+            throw new \_PhpScopere73d4c0b7ec8\Psr\Log\InvalidArgumentException(\sprintf('The log level "%s" does not exist.', $level));
         }
         if (self::$levels[$level] < $this->minLevelIndex) {
             return;
         }
         $formatter = $this->formatter;
-        if ($this->handle) {
-            @\fwrite($this->handle, $formatter($level, $message, $context));
-        } else {
-            \error_log($formatter($level, $message, $context, \false));
-        }
+        \fwrite($this->handle, $formatter($level, $message, $context));
     }
-    private function format(string $level, string $message, array $context, bool $prefixDate = \true) : string
+    private function format(string $level, string $message, array $context) : string
     {
         if (\false !== \strpos($message, '{')) {
             $replacements = [];
@@ -91,10 +87,6 @@ class Logger extends \_PhpScoper131024327b3f\Psr\Log\AbstractLogger
             }
             $message = \strtr($message, $replacements);
         }
-        $log = \sprintf('[%s] %s', $level, $message) . \PHP_EOL;
-        if ($prefixDate) {
-            $log = \date(\DateTime::RFC3339) . ' ' . $log;
-        }
-        return $log;
+        return \sprintf('%s [%s] %s', \date(\DateTime::RFC3339), $level, $message) . \PHP_EOL;
     }
 }

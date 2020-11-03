@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper131024327b3f\Symfony\Contracts\Service;
+namespace _PhpScopere73d4c0b7ec8\Symfony\Contracts\Service;
 
-use _PhpScoper131024327b3f\Psr\Container\ContainerInterface;
+use _PhpScopere73d4c0b7ec8\Psr\Container\ContainerInterface;
 /**
  * Implementation of ServiceSubscriberInterface that determines subscribed services from
  * private method return types. Service ids are available as "ClassName::methodName".
@@ -20,7 +20,7 @@ use _PhpScoper131024327b3f\Psr\Container\ContainerInterface;
 trait ServiceSubscriberTrait
 {
     /** @var ContainerInterface */
-    protected $container;
+    private $container;
     public static function getSubscribedServices() : array
     {
         static $services;
@@ -33,7 +33,7 @@ trait ServiceSubscriberTrait
                 continue;
             }
             if (self::class === $method->getDeclaringClass()->name && ($returnType = $method->getReturnType()) && !$returnType->isBuiltin()) {
-                $services[self::class . '::' . $method->name] = '?' . ($returnType instanceof \ReflectionNamedType ? $returnType->getName() : $type);
+                $services[self::class . '::' . $method->name] = '?' . $returnType->getName();
             }
         }
         return $services;
@@ -41,7 +41,7 @@ trait ServiceSubscriberTrait
     /**
      * @required
      */
-    public function setContainer(\_PhpScoper131024327b3f\Psr\Container\ContainerInterface $container)
+    public function setContainer(\_PhpScopere73d4c0b7ec8\Psr\Container\ContainerInterface $container)
     {
         $this->container = $container;
         if (\is_callable(['parent', __FUNCTION__])) {

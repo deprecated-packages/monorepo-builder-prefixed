@@ -9,13 +9,13 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper131024327b3f\SebastianBergmann\Diff;
+namespace _PhpScopere73d4c0b7ec8\SebastianBergmann\Diff;
 
-use _PhpScoper131024327b3f\PHPUnit\Framework\TestCase;
+use _PhpScopere73d4c0b7ec8\PHPUnit\Framework\TestCase;
 /**
  * @covers SebastianBergmann\Diff\Chunk
  */
-final class ChunkTest extends \_PhpScoper131024327b3f\PHPUnit\Framework\TestCase
+final class ChunkTest extends \_PhpScopere73d4c0b7ec8\PHPUnit\Framework\TestCase
 {
     /**
      * @var Chunk
@@ -23,7 +23,7 @@ final class ChunkTest extends \_PhpScoper131024327b3f\PHPUnit\Framework\TestCase
     private $chunk;
     protected function setUp() : void
     {
-        $this->chunk = new \_PhpScoper131024327b3f\SebastianBergmann\Diff\Chunk();
+        $this->chunk = new \_PhpScopere73d4c0b7ec8\SebastianBergmann\Diff\Chunk();
     }
     public function testHasInitiallyNoLines() : void
     {
@@ -31,7 +31,7 @@ final class ChunkTest extends \_PhpScoper131024327b3f\PHPUnit\Framework\TestCase
     }
     public function testCanBeCreatedWithoutArguments() : void
     {
-        $this->assertInstanceOf(\_PhpScoper131024327b3f\SebastianBergmann\Diff\Chunk::class, $this->chunk);
+        $this->assertInstanceOf(\_PhpScopere73d4c0b7ec8\SebastianBergmann\Diff\Chunk::class, $this->chunk);
     }
     public function testStartCanBeRetrieved() : void
     {
@@ -55,7 +55,7 @@ final class ChunkTest extends \_PhpScoper131024327b3f\PHPUnit\Framework\TestCase
     }
     public function testLinesCanBeSet() : void
     {
-        $lines = [new \_PhpScoper131024327b3f\SebastianBergmann\Diff\Line(\_PhpScoper131024327b3f\SebastianBergmann\Diff\Line::ADDED, 'added'), new \_PhpScoper131024327b3f\SebastianBergmann\Diff\Line(\_PhpScoper131024327b3f\SebastianBergmann\Diff\Line::REMOVED, 'removed')];
+        $lines = [new \_PhpScopere73d4c0b7ec8\SebastianBergmann\Diff\Line(\_PhpScopere73d4c0b7ec8\SebastianBergmann\Diff\Line::ADDED, 'added'), new \_PhpScopere73d4c0b7ec8\SebastianBergmann\Diff\Line(\_PhpScopere73d4c0b7ec8\SebastianBergmann\Diff\Line::REMOVED, 'removed')];
         $this->chunk->setLines($lines);
         $this->assertSame($lines, $this->chunk->getLines());
     }

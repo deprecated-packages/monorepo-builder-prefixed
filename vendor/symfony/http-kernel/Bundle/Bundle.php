@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper131024327b3f\Symfony\Component\HttpKernel\Bundle;
+namespace _PhpScopere73d4c0b7ec8\Symfony\Component\HttpKernel\Bundle;
 
-use _PhpScoper131024327b3f\Symfony\Component\Console\Application;
-use _PhpScoper131024327b3f\Symfony\Component\DependencyInjection\Container;
-use _PhpScoper131024327b3f\Symfony\Component\DependencyInjection\ContainerAwareTrait;
-use _PhpScoper131024327b3f\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScoper131024327b3f\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use _PhpScopere73d4c0b7ec8\Symfony\Component\Console\Application;
+use _PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\Container;
+use _PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use _PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 /**
  * An implementation of BundleInterface that adds a few conventions for DependencyInjection extensions.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Bundle implements \_PhpScoper131024327b3f\Symfony\Component\HttpKernel\Bundle\BundleInterface
+abstract class Bundle implements \_PhpScopere73d4c0b7ec8\Symfony\Component\HttpKernel\Bundle\BundleInterface
 {
     use ContainerAwareTrait;
     protected $name;
@@ -45,7 +45,7 @@ abstract class Bundle implements \_PhpScoper131024327b3f\Symfony\Component\HttpK
      * This method can be overridden to register compilation passes,
      * other extensions, ...
      */
-    public function build(\_PhpScoper131024327b3f\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function build(\_PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
     }
     /**
@@ -60,12 +60,12 @@ abstract class Bundle implements \_PhpScoper131024327b3f\Symfony\Component\HttpK
         if (null === $this->extension) {
             $extension = $this->createContainerExtension();
             if (null !== $extension) {
-                if (!$extension instanceof \_PhpScoper131024327b3f\Symfony\Component\DependencyInjection\Extension\ExtensionInterface) {
-                    throw new \LogicException(\sprintf('Extension "%s" must implement Symfony\\Component\\DependencyInjection\\Extension\\ExtensionInterface.', \get_debug_type($extension)));
+                if (!$extension instanceof \_PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\Extension\ExtensionInterface) {
+                    throw new \LogicException(\sprintf('Extension %s must implement Symfony\\Component\\DependencyInjection\\Extension\\ExtensionInterface.', \get_class($extension)));
                 }
                 // check naming convention
                 $basename = \preg_replace('/Bundle$/', '', $this->getName());
-                $expectedAlias = \_PhpScoper131024327b3f\Symfony\Component\DependencyInjection\Container::underscore($basename);
+                $expectedAlias = \_PhpScopere73d4c0b7ec8\Symfony\Component\DependencyInjection\Container::underscore($basename);
                 if ($expectedAlias != $extension->getAlias()) {
                     throw new \LogicException(\sprintf('Users will expect the alias of the default extension of a bundle to be the underscored version of the bundle name ("%s"). You can override "Bundle::getContainerExtension()" if you want to use "%s" or another alias.', $expectedAlias, $extension->getAlias()));
                 }
@@ -107,7 +107,7 @@ abstract class Bundle implements \_PhpScoper131024327b3f\Symfony\Component\HttpK
         }
         return $this->name;
     }
-    public function registerCommands(\_PhpScoper131024327b3f\Symfony\Component\Console\Application $application)
+    public function registerCommands(\_PhpScopere73d4c0b7ec8\Symfony\Component\Console\Application $application)
     {
     }
     /**
