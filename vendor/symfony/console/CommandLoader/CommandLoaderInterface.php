@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper9b905ab040d4\Symfony\Component\Console\CommandLoader;
+namespace _PhpScoper8204af15e2b3\Symfony\Component\Console\CommandLoader;
 
-use _PhpScoper9b905ab040d4\Symfony\Component\Console\Command\Command;
-use _PhpScoper9b905ab040d4\Symfony\Component\Console\Exception\CommandNotFoundException;
+use _PhpScoper8204af15e2b3\Symfony\Component\Console\Command\Command;
+use _PhpScoper8204af15e2b3\Symfony\Component\Console\Exception\CommandNotFoundException;
 /**
  * @author Robin Chalas <robin.chalas@gmail.com>
  */
@@ -20,17 +20,21 @@ interface CommandLoaderInterface
     /**
      * Loads a command.
      *
+     * @param string $name
+     *
      * @return Command
      *
      * @throws CommandNotFoundException
      */
-    public function get(string $name);
+    public function get($name);
     /**
      * Checks if a command exists.
      *
+     * @param string $name
+     *
      * @return bool
      */
-    public function has(string $name);
+    public function has($name);
     /**
      * @return string[] All registered command names
      */

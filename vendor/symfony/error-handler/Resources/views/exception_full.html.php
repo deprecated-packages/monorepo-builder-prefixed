@@ -1,5 +1,5 @@
 <!-- <?php 
-namespace _PhpScoper9b905ab040d4;
+namespace _PhpScoper8204af15e2b3;
 
 echo $_message = \sprintf('%s (%d %s)', $exceptionMessage, $statusCode, $statusText);
 ?> -->
@@ -25,14 +25,8 @@ echo $this->include('assets/css/exception_full.css');
 ?></style>
     </head>
     <body>
-        <script>
-            document.body.classList.add(
-                localStorage.getItem('symfony/profiler/theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'theme-dark' : 'theme-light')
-            );
-        </script>
-
         <?php 
-if (\class_exists('_PhpScoper9b905ab040d4\\Symfony\\Component\\HttpKernel\\Kernel')) {
+if (\class_exists('_PhpScoper8204af15e2b3\\Symfony\\Component\\HttpKernel\\Kernel')) {
     ?>
             <header>
                 <div class="container">
@@ -42,7 +36,7 @@ if (\class_exists('_PhpScoper9b905ab040d4\\Symfony\\Component\\HttpKernel\\Kerne
 
                     <div class="help-link">
                         <a href="https://symfony.com/doc/<?php 
-    echo \_PhpScoper9b905ab040d4\Symfony\Component\HttpKernel\Kernel::VERSION;
+    echo \_PhpScoper8204af15e2b3\Symfony\Component\HttpKernel\Kernel::VERSION;
     ?>/index.html">
                             <span class="icon"><?php 
     echo $this->include('assets/images/icon-book.svg');

@@ -1,6 +1,6 @@
 <?php
 
-namespace _PhpScoper9b905ab040d4\Psr\Log;
+namespace _PhpScoper8204af15e2b3\Psr\Log;
 
 /**
  * This is a simple Logger implementation that other Loggers can inherit from.
@@ -9,19 +9,18 @@ namespace _PhpScoper9b905ab040d4\Psr\Log;
  * reduce boilerplate code that a simple Logger that does the same thing with
  * messages regardless of the error level has to implement.
  */
-abstract class AbstractLogger implements \_PhpScoper9b905ab040d4\Psr\Log\LoggerInterface
+abstract class AbstractLogger implements \_PhpScoper8204af15e2b3\Psr\Log\LoggerInterface
 {
     /**
      * System is unusable.
      *
      * @param string $message
-     * @param array  $context
-     *
-     * @return void
+     * @param array $context
+     * @return null
      */
     public function emergency($message, array $context = array())
     {
-        $this->log(\_PhpScoper9b905ab040d4\Psr\Log\LogLevel::EMERGENCY, $message, $context);
+        $this->log(\_PhpScoper8204af15e2b3\Psr\Log\LogLevel::EMERGENCY, $message, $context);
     }
     /**
      * Action must be taken immediately.
@@ -30,13 +29,12 @@ abstract class AbstractLogger implements \_PhpScoper9b905ab040d4\Psr\Log\LoggerI
      * trigger the SMS alerts and wake you up.
      *
      * @param string $message
-     * @param array  $context
-     *
-     * @return void
+     * @param array $context
+     * @return null
      */
     public function alert($message, array $context = array())
     {
-        $this->log(\_PhpScoper9b905ab040d4\Psr\Log\LogLevel::ALERT, $message, $context);
+        $this->log(\_PhpScoper8204af15e2b3\Psr\Log\LogLevel::ALERT, $message, $context);
     }
     /**
      * Critical conditions.
@@ -44,26 +42,24 @@ abstract class AbstractLogger implements \_PhpScoper9b905ab040d4\Psr\Log\LoggerI
      * Example: Application component unavailable, unexpected exception.
      *
      * @param string $message
-     * @param array  $context
-     *
-     * @return void
+     * @param array $context
+     * @return null
      */
     public function critical($message, array $context = array())
     {
-        $this->log(\_PhpScoper9b905ab040d4\Psr\Log\LogLevel::CRITICAL, $message, $context);
+        $this->log(\_PhpScoper8204af15e2b3\Psr\Log\LogLevel::CRITICAL, $message, $context);
     }
     /**
      * Runtime errors that do not require immediate action but should typically
      * be logged and monitored.
      *
      * @param string $message
-     * @param array  $context
-     *
-     * @return void
+     * @param array $context
+     * @return null
      */
     public function error($message, array $context = array())
     {
-        $this->log(\_PhpScoper9b905ab040d4\Psr\Log\LogLevel::ERROR, $message, $context);
+        $this->log(\_PhpScoper8204af15e2b3\Psr\Log\LogLevel::ERROR, $message, $context);
     }
     /**
      * Exceptional occurrences that are not errors.
@@ -72,25 +68,23 @@ abstract class AbstractLogger implements \_PhpScoper9b905ab040d4\Psr\Log\LoggerI
      * that are not necessarily wrong.
      *
      * @param string $message
-     * @param array  $context
-     *
-     * @return void
+     * @param array $context
+     * @return null
      */
     public function warning($message, array $context = array())
     {
-        $this->log(\_PhpScoper9b905ab040d4\Psr\Log\LogLevel::WARNING, $message, $context);
+        $this->log(\_PhpScoper8204af15e2b3\Psr\Log\LogLevel::WARNING, $message, $context);
     }
     /**
      * Normal but significant events.
      *
      * @param string $message
-     * @param array  $context
-     *
-     * @return void
+     * @param array $context
+     * @return null
      */
     public function notice($message, array $context = array())
     {
-        $this->log(\_PhpScoper9b905ab040d4\Psr\Log\LogLevel::NOTICE, $message, $context);
+        $this->log(\_PhpScoper8204af15e2b3\Psr\Log\LogLevel::NOTICE, $message, $context);
     }
     /**
      * Interesting events.
@@ -98,24 +92,22 @@ abstract class AbstractLogger implements \_PhpScoper9b905ab040d4\Psr\Log\LoggerI
      * Example: User logs in, SQL logs.
      *
      * @param string $message
-     * @param array  $context
-     *
-     * @return void
+     * @param array $context
+     * @return null
      */
     public function info($message, array $context = array())
     {
-        $this->log(\_PhpScoper9b905ab040d4\Psr\Log\LogLevel::INFO, $message, $context);
+        $this->log(\_PhpScoper8204af15e2b3\Psr\Log\LogLevel::INFO, $message, $context);
     }
     /**
      * Detailed debug information.
      *
      * @param string $message
-     * @param array  $context
-     *
-     * @return void
+     * @param array $context
+     * @return null
      */
     public function debug($message, array $context = array())
     {
-        $this->log(\_PhpScoper9b905ab040d4\Psr\Log\LogLevel::DEBUG, $message, $context);
+        $this->log(\_PhpScoper8204af15e2b3\Psr\Log\LogLevel::DEBUG, $message, $context);
     }
 }

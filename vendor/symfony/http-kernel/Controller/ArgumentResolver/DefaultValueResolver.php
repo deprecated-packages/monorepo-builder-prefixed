@@ -8,29 +8,29 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper9b905ab040d4\Symfony\Component\HttpKernel\Controller\ArgumentResolver;
+namespace _PhpScoper8204af15e2b3\Symfony\Component\HttpKernel\Controller\ArgumentResolver;
 
-use _PhpScoper9b905ab040d4\Symfony\Component\HttpFoundation\Request;
-use _PhpScoper9b905ab040d4\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
-use _PhpScoper9b905ab040d4\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
+use _PhpScoper8204af15e2b3\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper8204af15e2b3\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
+use _PhpScoper8204af15e2b3\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 /**
  * Yields the default value defined in the action signature when no value has been given.
  *
  * @author Iltar van der Berg <kjarli@gmail.com>
  */
-final class DefaultValueResolver implements \_PhpScoper9b905ab040d4\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface
+final class DefaultValueResolver implements \_PhpScoper8204af15e2b3\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function supports(\_PhpScoper9b905ab040d4\Symfony\Component\HttpFoundation\Request $request, \_PhpScoper9b905ab040d4\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument) : bool
+    public function supports(\_PhpScoper8204af15e2b3\Symfony\Component\HttpFoundation\Request $request, \_PhpScoper8204af15e2b3\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument) : bool
     {
         return $argument->hasDefaultValue() || null !== $argument->getType() && $argument->isNullable() && !$argument->isVariadic();
     }
     /**
      * {@inheritdoc}
      */
-    public function resolve(\_PhpScoper9b905ab040d4\Symfony\Component\HttpFoundation\Request $request, \_PhpScoper9b905ab040d4\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument) : iterable
+    public function resolve(\_PhpScoper8204af15e2b3\Symfony\Component\HttpFoundation\Request $request, \_PhpScoper8204af15e2b3\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument) : iterable
     {
         (yield $argument->hasDefaultValue() ? $argument->getDefaultValue() : null);
     }

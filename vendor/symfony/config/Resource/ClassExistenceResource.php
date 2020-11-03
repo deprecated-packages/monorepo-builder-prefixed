@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper9b905ab040d4\Symfony\Component\Config\Resource;
+namespace _PhpScoper8204af15e2b3\Symfony\Component\Config\Resource;
 
 /**
  * ClassExistenceResource represents a class existence.
@@ -18,9 +18,9 @@ namespace _PhpScoper9b905ab040d4\Symfony\Component\Config\Resource;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  *
- * @final
+ * @final since Symfony 4.3
  */
-class ClassExistenceResource implements \_PhpScoper9b905ab040d4\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class ClassExistenceResource implements \_PhpScoper8204af15e2b3\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
 {
     private $resource;
     private $exists;
@@ -34,21 +34,19 @@ class ClassExistenceResource implements \_PhpScoper9b905ab040d4\Symfony\Componen
     public function __construct(string $resource, bool $exists = null)
     {
         $this->resource = $resource;
-        if (null !== $exists) {
-            $this->exists = [(bool) $exists, null];
-        }
+        $this->exists = $exists;
     }
     /**
      * {@inheritdoc}
      */
-    public function __toString() : string
+    public function __toString()
     {
         return $this->resource;
     }
     /**
      * @return string The file path to the resource
      */
-    public function getResource() : string
+    public function getResource()
     {
         return $this->resource;
     }
@@ -57,35 +55,28 @@ class ClassExistenceResource implements \_PhpScoper9b905ab040d4\Symfony\Componen
      *
      * @throws \ReflectionException when a parent class/interface/trait is not found
      */
-    public function isFresh(int $timestamp) : bool
+    public function isFresh($timestamp)
     {
         $loaded = \class_exists($this->resource, \false) || \interface_exists($this->resource, \false) || \trait_exists($this->resource, \false);
-        if (null !== ($exists =& self::$existsCache[$this->resource])) {
-            if ($loaded) {
-                $exists = [\true, null];
-            } elseif (0 >= $timestamp && !$exists[0] && null !== $exists[1]) {
-                throw new \ReflectionException($exists[1]);
-            }
-        } elseif ([\false, null] === ($exists = [$loaded, null])) {
+        if (null !== ($exists =& self::$existsCache[(int) (0 >= $timestamp)][$this->resource])) {
+            $exists = $exists || $loaded;
+        } elseif (!($exists = $loaded)) {
             if (!self::$autoloadLevel++) {
                 \spl_autoload_register(__CLASS__ . '::throwOnRequiredClass');
             }
             $autoloadedClass = self::$autoloadedClass;
-            self::$autoloadedClass = \ltrim($this->resource, '\\');
+            self::$autoloadedClass = $this->resource;
             try {
-                $exists[0] = \class_exists($this->resource) || \interface_exists($this->resource, \false) || \trait_exists($this->resource, \false);
+                $exists = \class_exists($this->resource) || \interface_exists($this->resource, \false) || \trait_exists($this->resource, \false);
             } catch (\Exception $e) {
-                $exists[1] = $e->getMessage();
                 try {
                     self::throwOnRequiredClass($this->resource, $e);
                 } catch (\ReflectionException $e) {
                     if (0 >= $timestamp) {
+                        unset(self::$existsCache[1][$this->resource]);
                         throw $e;
                     }
                 }
-            } catch (\Throwable $e) {
-                $exists[1] = $e->getMessage();
-                throw $e;
             } finally {
                 self::$autoloadedClass = $autoloadedClass;
                 if (!--self::$autoloadLevel) {
@@ -96,7 +87,7 @@ class ClassExistenceResource implements \_PhpScoper9b905ab040d4\Symfony\Componen
         if (null === $this->exists) {
             $this->exists = $exists;
         }
-        return $this->exists[0] xor !$exists[0];
+        return $this->exists xor !$exists;
     }
     /**
      * @internal
@@ -107,15 +98,6 @@ class ClassExistenceResource implements \_PhpScoper9b905ab040d4\Symfony\Componen
             $this->isFresh(0);
         }
         return ['resource', 'exists'];
-    }
-    /**
-     * @internal
-     */
-    public function __wakeup()
-    {
-        if (\is_bool($this->exists)) {
-            $this->exists = [$this->exists, null];
-        }
     }
     /**
      * Throws a reflection exception when the passed class does not exist but is required.
@@ -133,7 +115,7 @@ class ClassExistenceResource implements \_PhpScoper9b905ab040d4\Symfony\Componen
      *
      * @internal
      */
-    public static function throwOnRequiredClass(string $class, \Exception $previous = null)
+    public static function throwOnRequiredClass($class, \Exception $previous = null)
     {
         // If the passed class is the resource being checked, we shouldn't throw.
         if (null === $previous && self::$autoloadedClass === $class) {
@@ -148,29 +130,17 @@ class ClassExistenceResource implements \_PhpScoper9b905ab040d4\Symfony\Componen
         if ($previous instanceof \ReflectionException) {
             throw $previous;
         }
-        $message = \sprintf('Class "%s" not found.', $class);
-        if (self::$autoloadedClass !== $class) {
-            $message = \substr_replace($message, \sprintf(' while loading "%s"', self::$autoloadedClass), -1, 0);
-        }
-        if (null !== $previous) {
-            $message = $previous->getMessage();
-        }
-        $e = new \ReflectionException($message, 0, $previous);
+        $e = new \ReflectionException(\sprintf('Class "%s" not found while loading "%s".', $class, self::$autoloadedClass), 0, $previous);
         if (null !== $previous) {
             throw $e;
         }
-        $trace = \debug_backtrace();
+        $trace = $e->getTrace();
         $autoloadFrame = ['function' => 'spl_autoload_call', 'args' => [$class]];
-        if (\PHP_VERSION_ID >= 80000 && isset($trace[1])) {
-            $callerFrame = $trace[1];
-            $i = 2;
-        } elseif (\false !== ($i = \array_search($autoloadFrame, $trace, \true))) {
-            $callerFrame = $trace[++$i];
-        } else {
+        if (\false === ($i = \array_search($autoloadFrame, $trace, \true))) {
             throw $e;
         }
-        if (isset($callerFrame['function']) && !isset($callerFrame['class'])) {
-            switch ($callerFrame['function']) {
+        if (isset($trace[++$i]['function']) && !isset($trace[$i]['class'])) {
+            switch ($trace[$i]['function']) {
                 case 'get_class_methods':
                 case 'get_class_vars':
                 case 'get_parent_class':
@@ -187,13 +157,11 @@ class ClassExistenceResource implements \_PhpScoper9b905ab040d4\Symfony\Componen
                 case 'is_callable':
                     return;
             }
-            $props = ['file' => isset($callerFrame['file']) ? $callerFrame['file'] : null, 'line' => isset($callerFrame['line']) ? $callerFrame['line'] : null, 'trace' => \array_slice($trace, 1 + $i)];
+            $props = ['file' => $trace[$i]['file'], 'line' => $trace[$i]['line'], 'trace' => \array_slice($trace, 1 + $i)];
             foreach ($props as $p => $v) {
-                if (null !== $v) {
-                    $r = new \ReflectionProperty('Exception', $p);
-                    $r->setAccessible(\true);
-                    $r->setValue($e, $v);
-                }
+                $r = new \ReflectionProperty('Exception', $p);
+                $r->setAccessible(\true);
+                $r->setValue($e, $v);
             }
         }
         throw $e;

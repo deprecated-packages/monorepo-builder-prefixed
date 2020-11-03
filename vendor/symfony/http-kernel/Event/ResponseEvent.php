@@ -8,11 +8,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper9b905ab040d4\Symfony\Component\HttpKernel\Event;
+namespace _PhpScoper8204af15e2b3\Symfony\Component\HttpKernel\Event;
 
-use _PhpScoper9b905ab040d4\Symfony\Component\HttpFoundation\Request;
-use _PhpScoper9b905ab040d4\Symfony\Component\HttpFoundation\Response;
-use _PhpScoper9b905ab040d4\Symfony\Component\HttpKernel\HttpKernelInterface;
 /**
  * Allows to filter a Response object.
  *
@@ -21,21 +18,9 @@ use _PhpScoper9b905ab040d4\Symfony\Component\HttpKernel\HttpKernelInterface;
  * browser.
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
+ *
+ * @final since Symfony 4.4
  */
-final class ResponseEvent extends \_PhpScoper9b905ab040d4\Symfony\Component\HttpKernel\Event\KernelEvent
+class ResponseEvent extends \_PhpScoper8204af15e2b3\Symfony\Component\HttpKernel\Event\FilterResponseEvent
 {
-    private $response;
-    public function __construct(\_PhpScoper9b905ab040d4\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \_PhpScoper9b905ab040d4\Symfony\Component\HttpFoundation\Request $request, int $requestType, \_PhpScoper9b905ab040d4\Symfony\Component\HttpFoundation\Response $response)
-    {
-        parent::__construct($kernel, $request, $requestType);
-        $this->setResponse($response);
-    }
-    public function getResponse() : \_PhpScoper9b905ab040d4\Symfony\Component\HttpFoundation\Response
-    {
-        return $this->response;
-    }
-    public function setResponse(\_PhpScoper9b905ab040d4\Symfony\Component\HttpFoundation\Response $response) : void
-    {
-        $this->response = $response;
-    }
 }

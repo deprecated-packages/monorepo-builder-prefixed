@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper9b905ab040d4\Symfony\Component\HttpKernel\ControllerMetadata;
+namespace _PhpScoper8204af15e2b3\Symfony\Component\HttpKernel\ControllerMetadata;
 
 /**
  * Responsible for storing metadata of an argument.
@@ -91,7 +91,7 @@ class ArgumentMetadata
     public function getDefaultValue()
     {
         if (!$this->hasDefaultValue) {
-            throw new \LogicException(\sprintf('Argument $%s does not have a default value. Use "%s::hasDefaultValue()" to avoid this exception.', $this->name, __CLASS__));
+            throw new \LogicException(\sprintf('Argument $%s does not have a default value. Use %s::hasDefaultValue() to avoid this exception.', $this->name, __CLASS__));
         }
         return $this->defaultValue;
     }

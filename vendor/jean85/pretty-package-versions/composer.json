@@ -3,11 +3,11 @@
     "description": "A wrapper for ocramius\/package-versions to get pretty versions strings",
     "type": "library",
     "require": {
-        "php": "^7.0|^8.0",
-        "composer\/package-versions-deprecated": "^1.8.0"
+        "php": "^7.0",
+        "ocramius\/package-versions": "^1.2.0"
     },
     "require-dev": {
-        "phpunit\/phpunit": "^6.0|^8.5|^9.2"
+        "phpunit\/phpunit": "^6.0"
     },
     "license": "MIT",
     "authors": [
@@ -32,12 +32,12 @@
     },
     "autoload": {
         "psr-4": {
-            "_PhpScoper9b905ab040d4\\Jean85\\": "src\/"
+            "_PhpScoper8204af15e2b3\\Jean85\\": "src\/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "_PhpScoper9b905ab040d4\\Tests\\": "tests"
+            "_PhpScoper8204af15e2b3\\Tests\\": "tests"
         }
     }
 }
