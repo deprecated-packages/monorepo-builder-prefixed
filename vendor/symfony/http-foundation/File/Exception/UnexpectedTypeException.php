@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperba481e4bff85\Symfony\Component\HttpFoundation\File\Exception;
+namespace _PhpScoper62894f8143f4\Symfony\Component\HttpFoundation\File\Exception;
 
-class UnexpectedTypeException extends \_PhpScoperba481e4bff85\Symfony\Component\HttpFoundation\File\Exception\FileException
+class UnexpectedTypeException extends \_PhpScoper62894f8143f4\Symfony\Component\HttpFoundation\File\Exception\FileException
 {
     public function __construct($value, string $expectedType)
     {
-        parent::__construct(\sprintf('Expected argument of type %s, %s given', $expectedType, \get_debug_type($value)));
+        parent::__construct(\sprintf('Expected argument of type %s, %s given', $expectedType, \is_object($value) ? \get_class($value) : \gettype($value)));
     }
 }

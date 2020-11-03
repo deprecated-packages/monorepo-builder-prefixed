@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace _PhpScoperba481e4bff85\Nette\Utils;
+namespace _PhpScoper62894f8143f4\Nette\Utils;
 
-use _PhpScoperba481e4bff85\Nette;
+use _PhpScoper62894f8143f4\Nette;
 /**
  * DateTime.
  */
@@ -27,10 +27,9 @@ class DateTime extends \DateTime implements \JsonSerializable
     /** average year in seconds */
     public const YEAR = 31557600;
     /**
-     * Creates a DateTime object from a string, UNIX timestamp, or other DateTimeInterface object.
+     * DateTime object factory.
      * @param  string|int|\DateTimeInterface  $time
      * @return static
-     * @throws \Exception if the date and time are not valid.
      */
     public static function from($time)
     {
@@ -43,19 +42,18 @@ class DateTime extends \DateTime implements \JsonSerializable
             return (new static('@' . $time))->setTimezone(new \DateTimeZone(\date_default_timezone_get()));
         } else {
             // textual or null
-            return new static((string) $time);
+            return new static($time);
         }
     }
     /**
      * Creates DateTime object.
      * @return static
-     * @throws Nette\InvalidArgumentException if the date and time are not valid.
      */
     public static function fromParts(int $year, int $month, int $day, int $hour = 0, int $minute = 0, float $second = 0.0)
     {
         $s = \sprintf('%04d-%02d-%02d %02d:%02d:%02.5f', $year, $month, $day, $hour, $minute, $second);
         if (!\checkdate($month, $day, $year) || $hour < 0 || $hour > 23 || $minute < 0 || $minute > 59 || $second < 0 || $second >= 60) {
-            throw new \_PhpScoperba481e4bff85\Nette\InvalidArgumentException("Invalid date '{$s}'");
+            throw new \_PhpScoper62894f8143f4\Nette\InvalidArgumentException("Invalid date '{$s}'");
         }
         return new static($s);
     }
@@ -73,7 +71,7 @@ class DateTime extends \DateTime implements \JsonSerializable
         } elseif (\is_string($timezone)) {
             $timezone = new \DateTimeZone($timezone);
         } elseif (!$timezone instanceof \DateTimeZone) {
-            throw new \_PhpScoperba481e4bff85\Nette\InvalidArgumentException('Invalid timezone given');
+            throw new \_PhpScoper62894f8143f4\Nette\InvalidArgumentException('Invalid timezone given');
         }
         $date = parent::createFromFormat($format, $time, $timezone);
         return $date ? static::from($date) : \false;
@@ -85,15 +83,11 @@ class DateTime extends \DateTime implements \JsonSerializable
     {
         return $this->format('c');
     }
-    /**
-     * Returns the date and time in the format 'Y-m-d H:i:s'.
-     */
     public function __toString() : string
     {
         return $this->format('Y-m-d H:i:s');
     }
     /**
-     * Creates a copy with a modified time.
      * @return static
      */
     public function modifyClone(string $modify = '')

@@ -8,28 +8,28 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Loader;
+namespace _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Loader;
 
-use _PhpScoperba481e4bff85\Symfony\Component\Config\Util\XmlUtils;
-use _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use _PhpScoper62894f8143f4\Symfony\Component\Config\Util\XmlUtils;
+use _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 /**
  * IniFileLoader loads parameters from INI files.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class IniFileLoader extends \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Loader\FileLoader
+class IniFileLoader extends \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Loader\FileLoader
 {
     /**
      * {@inheritdoc}
      */
-    public function load($resource, string $type = null)
+    public function load($resource, $type = null)
     {
         $path = $this->locator->locate($resource);
         $this->container->fileExists($path);
         // first pass to catch parsing errors
         $result = \parse_ini_file($path, \true);
         if (\false === $result || [] === $result) {
-            throw new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The "%s" file is not valid.', $resource));
+            throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The "%s" file is not valid.', $resource));
         }
         // real raw parsing
         $result = \parse_ini_file($path, \true, \INI_SCANNER_RAW);
@@ -42,7 +42,7 @@ class IniFileLoader extends \_PhpScoperba481e4bff85\Symfony\Component\Dependency
     /**
      * {@inheritdoc}
      */
-    public function supports($resource, string $type = null)
+    public function supports($resource, $type = null)
     {
         if (!\is_string($resource)) {
             return \false;
@@ -77,7 +77,7 @@ class IniFileLoader extends \_PhpScoperba481e4bff85\Symfony\Component\Dependency
                 // quoted string
                 return \substr($value, 1, -1);
             default:
-                return \_PhpScoperba481e4bff85\Symfony\Component\Config\Util\XmlUtils::phpize($value);
+                return \_PhpScoper62894f8143f4\Symfony\Component\Config\Util\XmlUtils::phpize($value);
         }
     }
 }

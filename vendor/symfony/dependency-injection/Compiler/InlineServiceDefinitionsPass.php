@@ -8,36 +8,44 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Compiler;
+namespace _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Compiler;
 
-use _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
-use _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Definition;
-use _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Reference;
+use _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
+use _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Definition;
+use _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Reference;
 /**
  * Inline service definitions where this is possible.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class InlineServiceDefinitionsPass extends \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+class InlineServiceDefinitionsPass extends \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass implements \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Compiler\RepeatablePassInterface
 {
     private $analyzingPass;
+    private $repeatedPass;
     private $cloningIds = [];
     private $connectedIds = [];
     private $notInlinedIds = [];
     private $inlinedIds = [];
-    private $notInlinableIds = [];
     private $graph;
-    public function __construct(\_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Compiler\AnalyzeServiceReferencesPass $analyzingPass = null)
+    public function __construct(\_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Compiler\AnalyzeServiceReferencesPass $analyzingPass = null)
     {
         $this->analyzingPass = $analyzingPass;
     }
-    public function process(\_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    /**
+     * {@inheritdoc}
+     */
+    public function setRepeatedPass(\_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Compiler\RepeatedPass $repeatedPass)
+    {
+        @\trigger_error(\sprintf('The "%s()" method is deprecated since Symfony 4.2.', __METHOD__), \E_USER_DEPRECATED);
+        $this->repeatedPass = $repeatedPass;
+    }
+    public function process(\_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $this->container = $container;
         if ($this->analyzingPass) {
-            $analyzedContainer = new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\ContainerBuilder();
+            $analyzedContainer = new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\ContainerBuilder();
             $analyzedContainer->setAliases($container->getAliases());
             $analyzedContainer->setDefinitions($container->getDefinitions());
             foreach ($container->getExpressionLanguageProviders() as $provider) {
@@ -78,10 +86,10 @@ class InlineServiceDefinitionsPass extends \_PhpScoperba481e4bff85\Symfony\Compo
                     }
                 }
             } while ($this->inlinedIds && $this->analyzingPass);
+            if ($this->inlinedIds && $this->repeatedPass) {
+                $this->repeatedPass->setRepeat();
+            }
             foreach ($remainingInlinedIds as $id) {
-                if (isset($this->notInlinableIds[$id])) {
-                    continue;
-                }
                 $definition = $container->getDefinition($id);
                 if (!$definition->isShared() && !$definition->isPublic()) {
                     $container->removeDefinition($id);
@@ -90,33 +98,31 @@ class InlineServiceDefinitionsPass extends \_PhpScoperba481e4bff85\Symfony\Compo
         } finally {
             $this->container = null;
             $this->connectedIds = $this->notInlinedIds = $this->inlinedIds = [];
-            $this->notInlinableIds = [];
             $this->graph = null;
         }
     }
     /**
      * {@inheritdoc}
      */
-    protected function processValue($value, bool $isRoot = \false)
+    protected function processValue($value, $isRoot = \false)
     {
-        if ($value instanceof \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Argument\ArgumentInterface) {
+        if ($value instanceof \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Argument\ArgumentInterface) {
             // Reference found in ArgumentInterface::getValues() are not inlineable
             return $value;
         }
-        if ($value instanceof \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Definition && $this->cloningIds) {
+        if ($value instanceof \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Definition && $this->cloningIds) {
             if ($value->isShared()) {
                 return $value;
             }
             $value = clone $value;
         }
-        if (!$value instanceof \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Reference) {
+        if (!$value instanceof \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Reference) {
             return parent::processValue($value, $isRoot);
         } elseif (!$this->container->hasDefinition($id = (string) $value)) {
             return $value;
         }
         $definition = $this->container->getDefinition($id);
         if (!$this->isInlineableDefinition($id, $definition)) {
-            $this->notInlinableIds[$id] = \true;
             return $value;
         }
         $this->container->log($this, \sprintf('Inlined service "%s" to "%s".', $id, $this->currentId));
@@ -128,7 +134,7 @@ class InlineServiceDefinitionsPass extends \_PhpScoperba481e4bff85\Symfony\Compo
         if (isset($this->cloningIds[$id])) {
             $ids = \array_keys($this->cloningIds);
             $ids[] = $id;
-            throw new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException($id, \array_slice($ids, \array_search($id, $ids)));
+            throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException($id, \array_slice($ids, \array_search($id, $ids)));
         }
         $this->cloningIds[$id] = \true;
         try {
@@ -140,7 +146,7 @@ class InlineServiceDefinitionsPass extends \_PhpScoperba481e4bff85\Symfony\Compo
     /**
      * Checks if the definition is inlineable.
      */
-    private function isInlineableDefinition(string $id, \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Definition $definition) : bool
+    private function isInlineableDefinition(string $id, \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Definition $definition) : bool
     {
         if ($definition->hasErrors() || $definition->isDeprecated() || $definition->isLazy() || $definition->isSynthetic()) {
             return \false;
@@ -185,7 +191,7 @@ class InlineServiceDefinitionsPass extends \_PhpScoperba481e4bff85\Symfony\Compo
             $this->notInlinedIds[$id] = \true;
             return \false;
         }
-        if ($srcCount > 1 && \is_array($factory = $definition->getFactory()) && ($factory[0] instanceof \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Reference || $factory[0] instanceof \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Definition)) {
+        if ($srcCount > 1 && \is_array($factory = $definition->getFactory()) && ($factory[0] instanceof \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Reference || $factory[0] instanceof \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Definition)) {
             return \false;
         }
         return $this->container->getDefinition($srcId)->isShared();

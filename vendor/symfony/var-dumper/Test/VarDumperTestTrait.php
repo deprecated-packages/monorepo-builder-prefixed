@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperba481e4bff85\Symfony\Component\VarDumper\Test;
+namespace _PhpScoper62894f8143f4\Symfony\Component\VarDumper\Test;
 
-use _PhpScoperba481e4bff85\Symfony\Component\VarDumper\Cloner\VarCloner;
-use _PhpScoperba481e4bff85\Symfony\Component\VarDumper\Dumper\CliDumper;
+use _PhpScoper62894f8143f4\Symfony\Component\VarDumper\Cloner\VarCloner;
+use _PhpScoper62894f8143f4\Symfony\Component\VarDumper\Dumper\CliDumper;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
@@ -34,25 +34,28 @@ trait VarDumperTestTrait
         $this->varDumperConfig['casters'] = [];
         $this->varDumperConfig['flags'] = null;
     }
-    public function assertDumpEquals($expected, $data, int $filter = 0, string $message = '')
+    public function assertDumpEquals($expected, $data, $filter = 0, $message = '')
     {
         $this->assertSame($this->prepareExpectation($expected, $filter), $this->getDump($data, null, $filter), $message);
     }
-    public function assertDumpMatchesFormat($expected, $data, int $filter = 0, string $message = '')
+    public function assertDumpMatchesFormat($expected, $data, $filter = 0, $message = '')
     {
         $this->assertStringMatchesFormat($this->prepareExpectation($expected, $filter), $this->getDump($data, null, $filter), $message);
     }
-    protected function getDump($data, $key = null, int $filter = 0) : ?string
+    /**
+     * @return string|null
+     */
+    protected function getDump($data, $key = null, $filter = 0)
     {
         if (null === ($flags = $this->varDumperConfig['flags'])) {
-            $flags = \getenv('DUMP_LIGHT_ARRAY') ? \_PhpScoperba481e4bff85\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_LIGHT_ARRAY : 0;
-            $flags |= \getenv('DUMP_STRING_LENGTH') ? \_PhpScoperba481e4bff85\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_STRING_LENGTH : 0;
-            $flags |= \getenv('DUMP_COMMA_SEPARATOR') ? \_PhpScoperba481e4bff85\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_COMMA_SEPARATOR : 0;
+            $flags = \getenv('DUMP_LIGHT_ARRAY') ? \_PhpScoper62894f8143f4\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_LIGHT_ARRAY : 0;
+            $flags |= \getenv('DUMP_STRING_LENGTH') ? \_PhpScoper62894f8143f4\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_STRING_LENGTH : 0;
+            $flags |= \getenv('DUMP_COMMA_SEPARATOR') ? \_PhpScoper62894f8143f4\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_COMMA_SEPARATOR : 0;
         }
-        $cloner = new \_PhpScoperba481e4bff85\Symfony\Component\VarDumper\Cloner\VarCloner();
+        $cloner = new \_PhpScoper62894f8143f4\Symfony\Component\VarDumper\Cloner\VarCloner();
         $cloner->addCasters($this->varDumperConfig['casters']);
         $cloner->setMaxItems(-1);
-        $dumper = new \_PhpScoperba481e4bff85\Symfony\Component\VarDumper\Dumper\CliDumper(null, null, $flags);
+        $dumper = new \_PhpScoper62894f8143f4\Symfony\Component\VarDumper\Dumper\CliDumper(null, null, $flags);
         $dumper->setColors(\false);
         $data = $cloner->cloneVar($data, $filter)->withRefHandles(\false);
         if (null !== $key && null === ($data = $data->seek($key))) {

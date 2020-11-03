@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperba481e4bff85\Symfony\Component\EventDispatcher;
+namespace _PhpScoper62894f8143f4\Symfony\Component\EventDispatcher;
 
 /**
  * An EventSubscriber knows itself what events it is interested in.
@@ -38,9 +38,6 @@ interface EventSubscriberInterface
      *  * ['eventName' => 'methodName']
      *  * ['eventName' => ['methodName', $priority]]
      *  * ['eventName' => [['methodName1', $priority], ['methodName2']]]
-     *
-     * The code must not depend on runtime state as it will only be called at compile time.
-     * All logic depending on runtime state must be put into the individual methods handling the events.
      *
      * @return array The event names to listen to
      */

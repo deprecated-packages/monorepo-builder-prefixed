@@ -8,21 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection;
+namespace _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection;
 
-use _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 class Alias
 {
     private $id;
     private $public;
     private $private;
-    private $deprecation = [];
+    private $deprecated;
+    private $deprecationTemplate;
     private static $defaultDeprecationTemplate = 'The "%alias_id%" service alias is deprecated. You should stop using it, as it will be removed in the future.';
     public function __construct(string $id, bool $public = \true)
     {
         $this->id = $id;
         $this->public = $public;
         $this->private = 2 > \func_num_args();
+        $this->deprecated = \false;
     }
     /**
      * Checks if this DI Alias should be public or not.
@@ -36,11 +38,13 @@ class Alias
     /**
      * Sets if this Alias is public.
      *
+     * @param bool $boolean If this Alias should be public
+     *
      * @return $this
      */
-    public function setPublic(bool $boolean)
+    public function setPublic($boolean)
     {
-        $this->public = $boolean;
+        $this->public = (bool) $boolean;
         $this->private = \false;
         return $this;
     }
@@ -52,11 +56,13 @@ class Alias
      * but triggers a deprecation notice when accessed from the container,
      * so that the alias can be made really private in 4.0.
      *
+     * @param bool $boolean
+     *
      * @return $this
      */
-    public function setPrivate(bool $boolean)
+    public function setPrivate($boolean)
     {
-        $this->private = $boolean;
+        $this->private = (bool) $boolean;
         return $this;
     }
     /**
@@ -72,60 +78,34 @@ class Alias
      * Whether this alias is deprecated, that means it should not be referenced
      * anymore.
      *
-     * @param string $package The name of the composer package that is triggering the deprecation
-     * @param string $version The version of the package that introduced the deprecation
-     * @param string $message The deprecation message to use
+     * @param bool   $status   Whether this alias is deprecated, defaults to true
+     * @param string $template Optional template message to use if the alias is deprecated
      *
      * @return $this
      *
      * @throws InvalidArgumentException when the message template is invalid
      */
-    public function setDeprecated()
+    public function setDeprecated($status = \true, $template = null)
     {
-        $args = \func_get_args();
-        if (\func_num_args() < 3) {
-            trigger_deprecation('symfony/dependency-injection', '5.1', 'The signature of method "%s()" requires 3 arguments: "string $package, string $version, string $message", not defining them is deprecated.', __METHOD__);
-            $status = $args[0] ?? \true;
-            if (!$status) {
-                trigger_deprecation('symfony/dependency-injection', '5.1', 'Passing a null message to un-deprecate a node is deprecated.');
+        if (null !== $template) {
+            if (\preg_match('#[\\r\\n]|\\*/#', $template)) {
+                throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('Invalid characters found in deprecation template.');
             }
-            $message = (string) ($args[1] ?? null);
-            $package = $version = '';
-        } else {
-            $status = \true;
-            $package = (string) $args[0];
-            $version = (string) $args[1];
-            $message = (string) $args[2];
+            if (\false === \strpos($template, '%alias_id%')) {
+                throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('The deprecation template must contain the "%alias_id%" placeholder.');
+            }
+            $this->deprecationTemplate = $template;
         }
-        if ('' !== $message) {
-            if (\preg_match('#[\\r\\n]|\\*/#', $message)) {
-                throw new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('Invalid characters found in deprecation template.');
-            }
-            if (\false === \strpos($message, '%alias_id%')) {
-                throw new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('The deprecation template must contain the "%alias_id%" placeholder.');
-            }
-        }
-        $this->deprecation = $status ? ['package' => $package, 'version' => $version, 'message' => $message ?: self::$defaultDeprecationTemplate] : [];
+        $this->deprecated = (bool) $status;
         return $this;
     }
     public function isDeprecated() : bool
     {
-        return (bool) $this->deprecation;
+        return $this->deprecated;
     }
-    /**
-     * @deprecated since Symfony 5.1, use "getDeprecation()" instead.
-     */
     public function getDeprecationMessage(string $id) : string
     {
-        trigger_deprecation('symfony/dependency-injection', '5.1', 'The "%s()" method is deprecated, use "getDeprecation()" instead.', __METHOD__);
-        return $this->getDeprecation($id)['message'];
-    }
-    /**
-     * @param string $id Service id relying on this definition
-     */
-    public function getDeprecation(string $id) : array
-    {
-        return ['package' => $this->deprecation['package'], 'version' => $this->deprecation['version'], 'message' => \str_replace('%alias_id%', $id, $this->deprecation['message'])];
+        return \str_replace('%alias_id%', $id, $this->deprecationTemplate ?: self::$defaultDeprecationTemplate);
     }
     /**
      * Returns the Id of this alias.

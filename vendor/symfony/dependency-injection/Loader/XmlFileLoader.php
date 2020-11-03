@@ -8,37 +8,35 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Loader;
+namespace _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Loader;
 
-use _PhpScoperba481e4bff85\Symfony\Component\Config\Util\XmlUtils;
-use _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Alias;
-use _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Argument\BoundArgument;
-use _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\ChildDefinition;
-use _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\ContainerInterface;
-use _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Definition;
-use _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use _PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Reference;
-use _PhpScoperba481e4bff85\Symfony\Component\ExpressionLanguage\Expression;
+use _PhpScoper62894f8143f4\Symfony\Component\Config\Util\XmlUtils;
+use _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Alias;
+use _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Argument\BoundArgument;
+use _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\ChildDefinition;
+use _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\ContainerInterface;
+use _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Definition;
+use _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use _PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Reference;
+use _PhpScoper62894f8143f4\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * XmlFileLoader loads XML files service definitions.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class XmlFileLoader extends \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Loader\FileLoader
+class XmlFileLoader extends \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Loader\FileLoader
 {
     const NS = 'http://symfony.com/schema/dic/services';
-    protected $autoRegisterAliasesForSinglyImplementedInterfaces = \false;
     /**
      * {@inheritdoc}
      */
-    public function load($resource, string $type = null)
+    public function load($resource, $type = null)
     {
         $path = $this->locator->locate($resource);
         $xml = $this->parseFileToDOM($path);
@@ -63,7 +61,7 @@ class XmlFileLoader extends \_PhpScoperba481e4bff85\Symfony\Component\Dependency
     /**
      * {@inheritdoc}
      */
-    public function supports($resource, string $type = null)
+    public function supports($resource, $type = null)
     {
         if (!\is_string($resource)) {
             return \false;
@@ -89,14 +87,14 @@ class XmlFileLoader extends \_PhpScoperba481e4bff85\Symfony\Component\Dependency
         $defaultDirectory = \dirname($file);
         foreach ($imports as $import) {
             $this->setCurrentDir($defaultDirectory);
-            $this->import($import->getAttribute('resource'), \_PhpScoperba481e4bff85\Symfony\Component\Config\Util\XmlUtils::phpize($import->getAttribute('type')) ?: null, \_PhpScoperba481e4bff85\Symfony\Component\Config\Util\XmlUtils::phpize($import->getAttribute('ignore-errors')) ?: \false, $file);
+            $this->import($import->getAttribute('resource'), \_PhpScoper62894f8143f4\Symfony\Component\Config\Util\XmlUtils::phpize($import->getAttribute('type')) ?: null, \_PhpScoper62894f8143f4\Symfony\Component\Config\Util\XmlUtils::phpize($import->getAttribute('ignore-errors')) ?: \false, $file);
         }
     }
-    private function parseDefinitions(\DOMDocument $xml, string $file, \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Definition $defaults)
+    private function parseDefinitions(\DOMDocument $xml, string $file, array $defaults)
     {
         $xpath = new \DOMXPath($xml);
         $xpath->registerNamespace('container', self::NS);
-        if (\false === ($services = $xpath->query('//container:services/container:service|//container:services/container:prototype|//container:services/container:stack'))) {
+        if (\false === ($services = $xpath->query('//container:services/container:service|//container:services/container:prototype'))) {
             return;
         }
         $this->setCurrentDir(\dirname($file));
@@ -104,32 +102,16 @@ class XmlFileLoader extends \_PhpScoperba481e4bff85\Symfony\Component\Dependency
         $this->isLoadingInstanceof = \true;
         $instanceof = $xpath->query('//container:services/container:instanceof');
         foreach ($instanceof as $service) {
-            $this->setDefinition((string) $service->getAttribute('id'), $this->parseDefinition($service, $file, new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Definition()));
+            $this->setDefinition((string) $service->getAttribute('id'), $this->parseDefinition($service, $file, []));
         }
         $this->isLoadingInstanceof = \false;
         foreach ($services as $service) {
-            if ('stack' === $service->tagName) {
-                $service->setAttribute('parent', '-');
-                $definition = $this->parseDefinition($service, $file, $defaults)->setTags(\array_merge_recursive(['container.stack' => [[]]], $defaults->getTags()));
-                $this->setDefinition($id = (string) $service->getAttribute('id'), $definition);
-                $stack = [];
-                foreach ($this->getChildren($service, 'service') as $k => $frame) {
-                    $k = $frame->getAttribute('id') ?: $k;
-                    $frame->setAttribute('id', $id . '" at index "' . $k);
-                    if ($alias = $frame->getAttribute('alias')) {
-                        $this->validateAlias($frame, $file);
-                        $stack[$k] = new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Reference($alias);
-                    } else {
-                        $stack[$k] = $this->parseDefinition($frame, $file, $defaults)->setInstanceofConditionals($this->instanceof);
-                    }
-                }
-                $definition->setArguments($stack);
-            } elseif (null !== ($definition = $this->parseDefinition($service, $file, $defaults))) {
+            if (null !== ($definition = $this->parseDefinition($service, $file, $defaults))) {
                 if ('prototype' === $service->tagName) {
                     $excludes = \array_column($this->getChildren($service, 'exclude'), 'nodeValue');
                     if ($service->hasAttribute('exclude')) {
                         if (\count($excludes) > 0) {
-                            throw new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('You cannot use both the attribute "exclude" and <exclude> tags at the same time.');
+                            throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('You cannot use both the attribute "exclude" and <exclude> tags at the same time.');
                         }
                         $excludes = [$service->getAttribute('exclude')];
                     }
@@ -140,90 +122,120 @@ class XmlFileLoader extends \_PhpScoperba481e4bff85\Symfony\Component\Dependency
             }
         }
     }
-    private function getServiceDefaults(\DOMDocument $xml, string $file) : \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Definition
+    /**
+     * Get service defaults.
+     */
+    private function getServiceDefaults(\DOMDocument $xml, string $file) : array
     {
         $xpath = new \DOMXPath($xml);
         $xpath->registerNamespace('container', self::NS);
         if (null === ($defaultsNode = $xpath->query('//container:services/container:defaults')->item(0))) {
-            return new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Definition();
+            return [];
         }
-        $defaultsNode->setAttribute('id', '<defaults>');
-        return $this->parseDefinition($defaultsNode, $file, new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Definition());
+        $bindings = [];
+        foreach ($this->getArgumentsAsPhp($defaultsNode, 'bind', $file) as $argument => $value) {
+            $bindings[$argument] = new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Argument\BoundArgument($value, \true, \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Argument\BoundArgument::DEFAULTS_BINDING, $file);
+        }
+        $defaults = ['tags' => $this->getChildren($defaultsNode, 'tag'), 'bind' => $bindings];
+        foreach ($defaults['tags'] as $tag) {
+            if ('' === $tag->getAttribute('name')) {
+                throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The tag name for tag "<defaults>" in %s must be a non-empty string.', $file));
+            }
+        }
+        if ($defaultsNode->hasAttribute('autowire')) {
+            $defaults['autowire'] = \_PhpScoper62894f8143f4\Symfony\Component\Config\Util\XmlUtils::phpize($defaultsNode->getAttribute('autowire'));
+        }
+        if ($defaultsNode->hasAttribute('public')) {
+            $defaults['public'] = \_PhpScoper62894f8143f4\Symfony\Component\Config\Util\XmlUtils::phpize($defaultsNode->getAttribute('public'));
+        }
+        if ($defaultsNode->hasAttribute('autoconfigure')) {
+            $defaults['autoconfigure'] = \_PhpScoper62894f8143f4\Symfony\Component\Config\Util\XmlUtils::phpize($defaultsNode->getAttribute('autoconfigure'));
+        }
+        return $defaults;
     }
     /**
      * Parses an individual Definition.
      */
-    private function parseDefinition(\DOMElement $service, string $file, \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Definition $defaults) : ?\_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Definition
+    private function parseDefinition(\DOMElement $service, string $file, array $defaults) : ?\_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Definition
     {
         if ($alias = $service->getAttribute('alias')) {
             $this->validateAlias($service, $file);
-            $this->container->setAlias((string) $service->getAttribute('id'), $alias = new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Alias($alias));
+            $this->container->setAlias((string) $service->getAttribute('id'), $alias = new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Alias($alias));
             if ($publicAttr = $service->getAttribute('public')) {
-                $alias->setPublic(\_PhpScoperba481e4bff85\Symfony\Component\Config\Util\XmlUtils::phpize($publicAttr));
-            } elseif ($defaults->getChanges()['public'] ?? \false) {
-                $alias->setPublic($defaults->isPublic());
+                $alias->setPublic(\_PhpScoper62894f8143f4\Symfony\Component\Config\Util\XmlUtils::phpize($publicAttr));
+            } elseif (isset($defaults['public'])) {
+                $alias->setPublic($defaults['public']);
             }
             if ($deprecated = $this->getChildren($service, 'deprecated')) {
-                $message = $deprecated[0]->nodeValue ?: '';
-                $package = $deprecated[0]->getAttribute('package') ?: '';
-                $version = $deprecated[0]->getAttribute('version') ?: '';
-                if (!$deprecated[0]->hasAttribute('package')) {
-                    trigger_deprecation('symfony/dependency-injection', '5.1', 'Not setting the attribute "package" of the node "deprecated" in "%s" is deprecated.', $file);
-                }
-                if (!$deprecated[0]->hasAttribute('version')) {
-                    trigger_deprecation('symfony/dependency-injection', '5.1', 'Not setting the attribute "version" of the node "deprecated" in "%s" is deprecated.', $file);
-                }
-                $alias->setDeprecated($package, $version, $message);
+                $alias->setDeprecated(\true, $deprecated[0]->nodeValue ?: null);
             }
             return null;
         }
         if ($this->isLoadingInstanceof) {
-            $definition = new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\ChildDefinition('');
+            $definition = new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\ChildDefinition('');
         } elseif ($parent = $service->getAttribute('parent')) {
-            $definition = new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\ChildDefinition($parent);
+            if (!empty($this->instanceof)) {
+                throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The service "%s" cannot use the "parent" option in the same file where "instanceof" configuration is defined as using both is not supported. Move your child definitions to a separate file.', $service->getAttribute('id')));
+            }
+            foreach ($defaults as $k => $v) {
+                if ('tags' === $k) {
+                    // since tags are never inherited from parents, there is no confusion
+                    // thus we can safely add them as defaults to ChildDefinition
+                    continue;
+                }
+                if ('bind' === $k) {
+                    if ($defaults['bind']) {
+                        throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Bound values on service "%s" cannot be inherited from "defaults" when a "parent" is set. Move your child definitions to a separate file.', $service->getAttribute('id')));
+                    }
+                    continue;
+                }
+                if (!$service->hasAttribute($k)) {
+                    throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Attribute "%s" on service "%s" cannot be inherited from "defaults" when a "parent" is set. Move your child definitions to a separate file or define this attribute explicitly.', $k, $service->getAttribute('id')));
+                }
+            }
+            $definition = new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\ChildDefinition($parent);
         } else {
-            $definition = new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Definition();
+            $definition = new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Definition();
+            if (isset($defaults['public'])) {
+                $definition->setPublic($defaults['public']);
+            }
+            if (isset($defaults['autowire'])) {
+                $definition->setAutowired($defaults['autowire']);
+            }
+            if (isset($defaults['autoconfigure'])) {
+                $definition->setAutoconfigured($defaults['autoconfigure']);
+            }
+            $definition->setChanges([]);
         }
-        if ($defaults->getChanges()['public'] ?? \false) {
-            $definition->setPublic($defaults->isPublic());
-        }
-        $definition->setAutowired($defaults->isAutowired());
-        $definition->setAutoconfigured($defaults->isAutoconfigured());
-        $definition->setChanges([]);
         foreach (['class', 'public', 'shared', 'synthetic', 'abstract'] as $key) {
             if ($value = $service->getAttribute($key)) {
                 $method = 'set' . $key;
-                $definition->{$method}($value = \_PhpScoperba481e4bff85\Symfony\Component\Config\Util\XmlUtils::phpize($value));
+                $definition->{$method}($value = \_PhpScoper62894f8143f4\Symfony\Component\Config\Util\XmlUtils::phpize($value));
             }
         }
         if ($value = $service->getAttribute('lazy')) {
-            $definition->setLazy((bool) ($value = \_PhpScoperba481e4bff85\Symfony\Component\Config\Util\XmlUtils::phpize($value)));
+            $definition->setLazy((bool) ($value = \_PhpScoper62894f8143f4\Symfony\Component\Config\Util\XmlUtils::phpize($value)));
             if (\is_string($value)) {
                 $definition->addTag('proxy', ['interface' => $value]);
             }
         }
         if ($value = $service->getAttribute('autowire')) {
-            $definition->setAutowired(\_PhpScoperba481e4bff85\Symfony\Component\Config\Util\XmlUtils::phpize($value));
+            $definition->setAutowired(\_PhpScoper62894f8143f4\Symfony\Component\Config\Util\XmlUtils::phpize($value));
         }
         if ($value = $service->getAttribute('autoconfigure')) {
-            $definition->setAutoconfigured(\_PhpScoperba481e4bff85\Symfony\Component\Config\Util\XmlUtils::phpize($value));
+            if (!$definition instanceof \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\ChildDefinition) {
+                $definition->setAutoconfigured(\_PhpScoper62894f8143f4\Symfony\Component\Config\Util\XmlUtils::phpize($value));
+            } elseif ($value = \_PhpScoper62894f8143f4\Symfony\Component\Config\Util\XmlUtils::phpize($value)) {
+                throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The service "%s" cannot have a "parent" and also have "autoconfigure". Try setting autoconfigure="false" for the service.', $service->getAttribute('id')));
+            }
         }
         if ($files = $this->getChildren($service, 'file')) {
             $definition->setFile($files[0]->nodeValue);
         }
         if ($deprecated = $this->getChildren($service, 'deprecated')) {
-            $message = $deprecated[0]->nodeValue ?: '';
-            $package = $deprecated[0]->getAttribute('package') ?: '';
-            $version = $deprecated[0]->getAttribute('version') ?: '';
-            if ('' === $package) {
-                trigger_deprecation('symfony/dependency-injection', '5.1', 'Not setting the attribute "package" of the node "deprecated" in "%s" is deprecated.', $file);
-            }
-            if ('' === $version) {
-                trigger_deprecation('symfony/dependency-injection', '5.1', 'Not setting the attribute "version" of the node "deprecated" in "%s" is deprecated.', $file);
-            }
-            $definition->setDeprecated($package, $version, $message);
+            $definition->setDeprecated(\true, $deprecated[0]->nodeValue ?: null);
         }
-        $definition->setArguments($this->getArgumentsAsPhp($service, 'argument', $file, $definition instanceof \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\ChildDefinition));
+        $definition->setArguments($this->getArgumentsAsPhp($service, 'argument', $file, $definition instanceof \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\ChildDefinition));
         $definition->setProperties($this->getArgumentsAsPhp($service, 'property', $file));
         if ($factories = $this->getChildren($service, 'factory')) {
             $factory = $factories[0];
@@ -231,7 +243,7 @@ class XmlFileLoader extends \_PhpScoperba481e4bff85\Symfony\Component\Dependency
                 $definition->setFactory($function);
             } else {
                 if ($childService = $factory->getAttribute('service')) {
-                    $class = new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Reference($childService, \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE);
+                    $class = new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Reference($childService, \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE);
                 } else {
                     $class = $factory->hasAttribute('class') ? $factory->getAttribute('class') : null;
                 }
@@ -244,7 +256,7 @@ class XmlFileLoader extends \_PhpScoperba481e4bff85\Symfony\Component\Dependency
                 $definition->setConfigurator($function);
             } else {
                 if ($childService = $configurator->getAttribute('service')) {
-                    $class = new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Reference($childService, \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE);
+                    $class = new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Reference($childService, \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE);
                 } else {
                     $class = $configurator->getAttribute('class');
                 }
@@ -252,48 +264,51 @@ class XmlFileLoader extends \_PhpScoperba481e4bff85\Symfony\Component\Dependency
             }
         }
         foreach ($this->getChildren($service, 'call') as $call) {
-            $definition->addMethodCall($call->getAttribute('method'), $this->getArgumentsAsPhp($call, 'argument', $file), \_PhpScoperba481e4bff85\Symfony\Component\Config\Util\XmlUtils::phpize($call->getAttribute('returns-clone')));
+            $definition->addMethodCall($call->getAttribute('method'), $this->getArgumentsAsPhp($call, 'argument', $file), \_PhpScoper62894f8143f4\Symfony\Component\Config\Util\XmlUtils::phpize($call->getAttribute('returns-clone')));
         }
         $tags = $this->getChildren($service, 'tag');
+        if (!empty($defaults['tags'])) {
+            $tags = \array_merge($tags, $defaults['tags']);
+        }
         foreach ($tags as $tag) {
             $parameters = [];
-            $tagName = $tag->nodeValue;
             foreach ($tag->attributes as $name => $node) {
-                if ('name' === $name && '' === $tagName) {
+                if ('name' === $name) {
                     continue;
                 }
                 if (\false !== \strpos($name, '-') && \false === \strpos($name, '_') && !\array_key_exists($normalizedName = \str_replace('-', '_', $name), $parameters)) {
-                    $parameters[$normalizedName] = \_PhpScoperba481e4bff85\Symfony\Component\Config\Util\XmlUtils::phpize($node->nodeValue);
+                    $parameters[$normalizedName] = \_PhpScoper62894f8143f4\Symfony\Component\Config\Util\XmlUtils::phpize($node->nodeValue);
                 }
                 // keep not normalized key
-                $parameters[$name] = \_PhpScoperba481e4bff85\Symfony\Component\Config\Util\XmlUtils::phpize($node->nodeValue);
+                $parameters[$name] = \_PhpScoper62894f8143f4\Symfony\Component\Config\Util\XmlUtils::phpize($node->nodeValue);
             }
-            if ('' === $tagName && '' === ($tagName = $tag->getAttribute('name'))) {
-                throw new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The tag name for service "%s" in "%s" must be a non-empty string.', (string) $service->getAttribute('id'), $file));
+            if ('' === $tag->getAttribute('name')) {
+                throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The tag name for service "%s" in %s must be a non-empty string.', (string) $service->getAttribute('id'), $file));
             }
-            $definition->addTag($tagName, $parameters);
+            $definition->addTag($tag->getAttribute('name'), $parameters);
         }
-        $definition->setTags(\array_merge_recursive($definition->getTags(), $defaults->getTags()));
         $bindings = $this->getArgumentsAsPhp($service, 'bind', $file);
-        $bindingType = $this->isLoadingInstanceof ? \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Argument\BoundArgument::INSTANCEOF_BINDING : \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Argument\BoundArgument::SERVICE_BINDING;
+        $bindingType = $this->isLoadingInstanceof ? \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Argument\BoundArgument::INSTANCEOF_BINDING : \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Argument\BoundArgument::SERVICE_BINDING;
         foreach ($bindings as $argument => $value) {
-            $bindings[$argument] = new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Argument\BoundArgument($value, \true, $bindingType, $file);
+            $bindings[$argument] = new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Argument\BoundArgument($value, \true, $bindingType, $file);
         }
-        // deep clone, to avoid multiple process of the same instance in the passes
-        $bindings = \array_merge(\unserialize(\serialize($defaults->getBindings())), $bindings);
+        if (isset($defaults['bind'])) {
+            // deep clone, to avoid multiple process of the same instance in the passes
+            $bindings = \array_merge(\unserialize(\serialize($defaults['bind'])), $bindings);
+        }
         if ($bindings) {
             $definition->setBindings($bindings);
         }
         if ($decorates = $service->getAttribute('decorates')) {
             $decorationOnInvalid = $service->getAttribute('decoration-on-invalid') ?: 'exception';
             if ('exception' === $decorationOnInvalid) {
-                $invalidBehavior = \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE;
+                $invalidBehavior = \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE;
             } elseif ('ignore' === $decorationOnInvalid) {
-                $invalidBehavior = \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE;
+                $invalidBehavior = \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE;
             } elseif ('null' === $decorationOnInvalid) {
-                $invalidBehavior = \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE;
+                $invalidBehavior = \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE;
             } else {
-                throw new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid value "%s" for attribute "decoration-on-invalid" on service "%s". Did you mean "exception", "ignore" or "null" in "%s"?', $decorationOnInvalid, (string) $service->getAttribute('id'), $file));
+                throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid value "%s" for attribute "decoration-on-invalid" on service "%s". Did you mean "exception", "ignore" or "null" in "%s"?', $decorationOnInvalid, (string) $service->getAttribute('id'), $file));
             }
             $renameId = $service->hasAttribute('decoration-inner-name') ? $service->getAttribute('decoration-inner-name') : null;
             $priority = $service->hasAttribute('decoration-priority') ? $service->getAttribute('decoration-priority') : 0;
@@ -309,9 +324,9 @@ class XmlFileLoader extends \_PhpScoperba481e4bff85\Symfony\Component\Dependency
     private function parseFileToDOM(string $file) : \DOMDocument
     {
         try {
-            $dom = \_PhpScoperba481e4bff85\Symfony\Component\Config\Util\XmlUtils::loadFile($file, [$this, 'validateSchema']);
+            $dom = \_PhpScoper62894f8143f4\Symfony\Component\Config\Util\XmlUtils::loadFile($file, [$this, 'validateSchema']);
         } catch (\InvalidArgumentException $e) {
-            throw new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Unable to parse file "%s": ', $file) . $e->getMessage(), $e->getCode(), $e);
+            throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Unable to parse file "%s": %s', $file, $e->getMessage()), $e->getCode(), $e);
         }
         $this->validateExtensions($dom, $file);
         return $dom;
@@ -323,7 +338,7 @@ class XmlFileLoader extends \_PhpScoperba481e4bff85\Symfony\Component\Dependency
     {
         $definitions = [];
         $count = 0;
-        $suffix = '~' . \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\ContainerBuilder::hash($file);
+        $suffix = '~' . \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\ContainerBuilder::hash($file);
         $xpath = new \DOMXPath($xml);
         $xpath->registerNamespace('container', self::NS);
         // anonymous services as arguments/properties
@@ -345,13 +360,13 @@ class XmlFileLoader extends \_PhpScoperba481e4bff85\Symfony\Component\Dependency
         // anonymous services "in the wild"
         if (\false !== ($nodes = $xpath->query('//container:services/container:service[not(@id)]'))) {
             foreach ($nodes as $node) {
-                throw new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Top-level services must have "id" attribute, none found in "%s" at line %d.', $file, $node->getLineNo()));
+                throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Top-level services must have "id" attribute, none found in %s at line %d.', $file, $node->getLineNo()));
             }
         }
         // resolve definitions
         \uksort($definitions, 'strnatcmp');
         foreach (\array_reverse($definitions) as $id => list($domElement, $file)) {
-            if (null !== ($definition = $this->parseDefinition($domElement, $file, new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Definition()))) {
+            if (null !== ($definition = $this->parseDefinition($domElement, $file, []))) {
                 $this->setDefinition($id, $definition);
             }
         }
@@ -376,26 +391,26 @@ class XmlFileLoader extends \_PhpScoperba481e4bff85\Symfony\Component\Dependency
                 $key = $arg->getAttribute('key');
             }
             $onInvalid = $arg->getAttribute('on-invalid');
-            $invalidBehavior = \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE;
+            $invalidBehavior = \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE;
             if ('ignore' == $onInvalid) {
-                $invalidBehavior = \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE;
+                $invalidBehavior = \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE;
             } elseif ('ignore_uninitialized' == $onInvalid) {
-                $invalidBehavior = \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE;
+                $invalidBehavior = \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE;
             } elseif ('null' == $onInvalid) {
-                $invalidBehavior = \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE;
+                $invalidBehavior = \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE;
             }
             switch ($arg->getAttribute('type')) {
                 case 'service':
                     if ('' === $arg->getAttribute('id')) {
-                        throw new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "<%s>" with type="service" has no or empty "id" attribute in "%s".', $name, $file));
+                        throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "<%s>" with type="service" has no or empty "id" attribute in "%s".', $name, $file));
                     }
-                    $arguments[$key] = new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Reference($arg->getAttribute('id'), $invalidBehavior);
+                    $arguments[$key] = new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Reference($arg->getAttribute('id'), $invalidBehavior);
                     break;
                 case 'expression':
-                    if (!\class_exists(\_PhpScoperba481e4bff85\Symfony\Component\ExpressionLanguage\Expression::class)) {
+                    if (!\class_exists(\_PhpScoper62894f8143f4\Symfony\Component\ExpressionLanguage\Expression::class)) {
                         throw new \LogicException(\sprintf('The type="expression" attribute cannot be used without the ExpressionLanguage component. Try running "composer require symfony/expression-language".'));
                     }
-                    $arguments[$key] = new \_PhpScoperba481e4bff85\Symfony\Component\ExpressionLanguage\Expression($arg->nodeValue);
+                    $arguments[$key] = new \_PhpScoper62894f8143f4\Symfony\Component\ExpressionLanguage\Expression($arg->nodeValue);
                     break;
                 case 'collection':
                     $arguments[$key] = $this->getArgumentsAsPhp($arg, $name, $file);
@@ -403,17 +418,17 @@ class XmlFileLoader extends \_PhpScoperba481e4bff85\Symfony\Component\Dependency
                 case 'iterator':
                     $arg = $this->getArgumentsAsPhp($arg, $name, $file);
                     try {
-                        $arguments[$key] = new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Argument\IteratorArgument($arg);
-                    } catch (\_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException $e) {
-                        throw new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "<%s>" with type="iterator" only accepts collections of type="service" references in "%s".', $name, $file));
+                        $arguments[$key] = new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Argument\IteratorArgument($arg);
+                    } catch (\_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException $e) {
+                        throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "<%s>" with type="iterator" only accepts collections of type="service" references in "%s".', $name, $file));
                     }
                     break;
                 case 'service_locator':
                     $arg = $this->getArgumentsAsPhp($arg, $name, $file);
                     try {
-                        $arguments[$key] = new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument($arg);
-                    } catch (\_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException $e) {
-                        throw new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "<%s>" with type="service_locator" only accepts maps of type="service" references in "%s".', $name, $file));
+                        $arguments[$key] = new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument($arg);
+                    } catch (\_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException $e) {
+                        throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "<%s>" with type="service_locator" only accepts maps of type="service" references in "%s".', $name, $file));
                     }
                     break;
                 case 'tagged':
@@ -422,21 +437,18 @@ class XmlFileLoader extends \_PhpScoperba481e4bff85\Symfony\Component\Dependency
                     $type = $arg->getAttribute('type');
                     $forLocator = 'tagged_locator' === $type;
                     if (!$arg->getAttribute('tag')) {
-                        throw new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "<%s>" with type="%s" has no or empty "tag" attribute in "%s".', $name, $type, $file));
+                        throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "<%s>" with type="%s" has no or empty "tag" attribute in "%s".', $name, $type, $file));
                     }
-                    $arguments[$key] = new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument($arg->getAttribute('tag'), $arg->getAttribute('index-by') ?: null, $arg->getAttribute('default-index-method') ?: null, $forLocator, $arg->getAttribute('default-priority-method') ?: null);
+                    $arguments[$key] = new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument($arg->getAttribute('tag'), $arg->getAttribute('index-by') ?: null, $arg->getAttribute('default-index-method') ?: null, $forLocator, $arg->getAttribute('default-priority-method') ?: null);
                     if ($forLocator) {
-                        $arguments[$key] = new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument($arguments[$key]);
+                        $arguments[$key] = new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument($arguments[$key]);
                     }
                     break;
                 case 'binary':
                     if (\false === ($value = \base64_decode($arg->nodeValue))) {
-                        throw new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "<%s>" with type="binary" is not a valid base64 encoded string.', $name));
+                        throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "<%s>" with type="binary" is not a valid base64 encoded string.', $name));
                     }
                     $arguments[$key] = $value;
-                    break;
-                case 'abstract':
-                    $arguments[$key] = new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Argument\AbstractArgument($arg->nodeValue);
                     break;
                 case 'string':
                     $arguments[$key] = $arg->nodeValue;
@@ -445,7 +457,7 @@ class XmlFileLoader extends \_PhpScoperba481e4bff85\Symfony\Component\Dependency
                     $arguments[$key] = \constant(\trim($arg->nodeValue));
                     break;
                 default:
-                    $arguments[$key] = \_PhpScoperba481e4bff85\Symfony\Component\Config\Util\XmlUtils::phpize($arg->nodeValue);
+                    $arguments[$key] = \_PhpScoper62894f8143f4\Symfony\Component\Config\Util\XmlUtils::phpize($arg->nodeValue);
             }
         }
         return $arguments;
@@ -485,7 +497,7 @@ class XmlFileLoader extends \_PhpScoperba481e4bff85\Symfony\Component\Dependency
                     $ns = $extension->getNamespace();
                     $path = \str_replace([$ns, \str_replace('http://', 'https://', $ns)], \str_replace('\\', '/', $extension->getXsdValidationBasePath()) . '/', $items[$i + 1]);
                     if (!\is_file($path)) {
-                        throw new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Extension "%s" references a non-existent XSD file "%s".', \get_debug_type($extension), $path));
+                        throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Extension "%s" references a non-existent XSD file "%s"', \get_class($extension), $path));
                     }
                     $schemaLocations[$items[$i]] = $path;
                 }
@@ -522,13 +534,9 @@ class XmlFileLoader extends \_PhpScoperba481e4bff85\Symfony\Component\Dependency
 {$imports}
 </xsd:schema>
 EOF;
-        if (\LIBXML_VERSION < 20900) {
-            $disableEntities = \libxml_disable_entity_loader(\false);
-            $valid = @$dom->schemaValidateSource($source);
-            \libxml_disable_entity_loader($disableEntities);
-        } else {
-            $valid = @$dom->schemaValidateSource($source);
-        }
+        $disableEntities = \libxml_disable_entity_loader(\false);
+        $valid = @$dom->schemaValidateSource($source);
+        \libxml_disable_entity_loader($disableEntities);
         foreach ($tmpfiles as $tmpfile) {
             @\unlink($tmpfile);
         }
@@ -538,7 +546,7 @@ EOF;
     {
         foreach ($alias->attributes as $name => $node) {
             if (!\in_array($name, ['alias', 'id', 'public'])) {
-                throw new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid attribute "%s" defined for alias "%s" in "%s".', $name, $alias->getAttribute('id'), $file));
+                throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid attribute "%s" defined for alias "%s" in "%s".', $name, $alias->getAttribute('id'), $file));
             }
         }
         foreach ($alias->childNodes as $child) {
@@ -546,7 +554,7 @@ EOF;
                 continue;
             }
             if (!\in_array($child->localName, ['deprecated'], \true)) {
-                throw new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid child element "%s" defined for alias "%s" in "%s".', $child->localName, $alias->getAttribute('id'), $file));
+                throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid child element "%s" defined for alias "%s" in "%s".', $child->localName, $alias->getAttribute('id'), $file));
             }
         }
     }
@@ -563,10 +571,10 @@ EOF;
             }
             // can it be handled by an extension?
             if (!$this->container->hasExtension($node->namespaceURI)) {
-                $extensionNamespaces = \array_filter(\array_map(function (\_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Extension\ExtensionInterface $ext) {
+                $extensionNamespaces = \array_filter(\array_map(function (\_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Extension\ExtensionInterface $ext) {
                     return $ext->getNamespace();
                 }, $this->container->getExtensions()));
-                throw new \_PhpScoperba481e4bff85\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('There is no extension able to load the configuration for "%s" (in "%s"). Looked for namespace "%s", found "%s".', $node->tagName, $file, $node->namespaceURI, $extensionNamespaces ? \implode('", "', $extensionNamespaces) : 'none'));
+                throw new \_PhpScoper62894f8143f4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('There is no extension able to load the configuration for "%s" (in %s). Looked for namespace "%s", found %s', $node->tagName, $file, $node->namespaceURI, $extensionNamespaces ? \sprintf('"%s"', \implode('", "', $extensionNamespaces)) : 'none'));
             }
         }
     }
@@ -607,6 +615,6 @@ EOF;
      */
     public static function convertDomElementToArray(\DOMElement $element)
     {
-        return \_PhpScoperba481e4bff85\Symfony\Component\Config\Util\XmlUtils::convertDomElementToArray($element);
+        return \_PhpScoper62894f8143f4\Symfony\Component\Config\Util\XmlUtils::convertDomElementToArray($element);
     }
 }

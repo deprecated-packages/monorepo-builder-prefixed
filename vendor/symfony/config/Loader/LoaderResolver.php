@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperba481e4bff85\Symfony\Component\Config\Loader;
+namespace _PhpScoper62894f8143f4\Symfony\Component\Config\Loader;
 
 /**
  * LoaderResolver selects a loader for a given resource.
@@ -18,7 +18,7 @@ namespace _PhpScoperba481e4bff85\Symfony\Component\Config\Loader;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class LoaderResolver implements \_PhpScoperba481e4bff85\Symfony\Component\Config\Loader\LoaderResolverInterface
+class LoaderResolver implements \_PhpScoper62894f8143f4\Symfony\Component\Config\Loader\LoaderResolverInterface
 {
     /**
      * @var LoaderInterface[] An array of LoaderInterface objects
@@ -36,7 +36,7 @@ class LoaderResolver implements \_PhpScoperba481e4bff85\Symfony\Component\Config
     /**
      * {@inheritdoc}
      */
-    public function resolve($resource, string $type = null)
+    public function resolve($resource, $type = null)
     {
         foreach ($this->loaders as $loader) {
             if ($loader->supports($resource, $type)) {
@@ -45,7 +45,7 @@ class LoaderResolver implements \_PhpScoperba481e4bff85\Symfony\Component\Config
         }
         return \false;
     }
-    public function addLoader(\_PhpScoperba481e4bff85\Symfony\Component\Config\Loader\LoaderInterface $loader)
+    public function addLoader(\_PhpScoper62894f8143f4\Symfony\Component\Config\Loader\LoaderInterface $loader)
     {
         $this->loaders[] = $loader;
         $loader->setResolver($this);

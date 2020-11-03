@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperba481e4bff85\Symfony\Component\Config;
+namespace _PhpScoper62894f8143f4\Symfony\Component\Config;
 
-use _PhpScoperba481e4bff85\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
+use _PhpScoper62894f8143f4\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
 /**
  * FileLocator uses an array of pre-defined paths to find files.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class FileLocator implements \_PhpScoperba481e4bff85\Symfony\Component\Config\FileLocatorInterface
+class FileLocator implements \_PhpScoper62894f8143f4\Symfony\Component\Config\FileLocatorInterface
 {
     protected $paths;
     /**
@@ -29,14 +29,14 @@ class FileLocator implements \_PhpScoperba481e4bff85\Symfony\Component\Config\Fi
     /**
      * {@inheritdoc}
      */
-    public function locate(string $name, string $currentPath = null, bool $first = \true)
+    public function locate($name, $currentPath = null, $first = \true)
     {
-        if ('' === $name) {
+        if ('' == $name) {
             throw new \InvalidArgumentException('An empty file name is not valid to be located.');
         }
         if ($this->isAbsolutePath($name)) {
             if (!\file_exists($name)) {
-                throw new \_PhpScoperba481e4bff85\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException(\sprintf('The file "%s" does not exist.', $name), 0, null, [$name]);
+                throw new \_PhpScoper62894f8143f4\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException(\sprintf('The file "%s" does not exist.', $name), 0, null, [$name]);
             }
             return $name;
         }
@@ -57,7 +57,7 @@ class FileLocator implements \_PhpScoperba481e4bff85\Symfony\Component\Config\Fi
             }
         }
         if (!$filepaths) {
-            throw new \_PhpScoperba481e4bff85\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException(\sprintf('The file "%s" does not exist (in: "%s").', $name, \implode('", "', $paths)), 0, null, $notfound);
+            throw new \_PhpScoper62894f8143f4\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException(\sprintf('The file "%s" does not exist (in: %s).', $name, \implode(', ', $paths)), 0, null, $notfound);
         }
         return $filepaths;
     }
