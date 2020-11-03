@@ -1,6 +1,6 @@
 <table class="logs" data-filter-level="Emergency,Alert,Critical,Error,Warning,Notice,Info,Debug" data-filters>
 <?php 
-namespace _PhpScoper8e7700b08cb9;
+namespace _PhpScoper621122bdc380;
 
 $channelIsDefined = isset($logs[0]['channel']);
 ?>
