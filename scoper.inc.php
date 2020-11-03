@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace _PhpScoper472361b15529;
+namespace _PhpScoper9b7e9beaf949;
 
 // see https://github.com/humbug/php-scoper
 return ['files-whitelist' => [
@@ -14,6 +14,6 @@ return ['files-whitelist' => [
     // needed for autoload, that is not prefixed, since it's in bin/* file
     'Symplify\\*',
     // for config.php  Symfony PHP Configs
-    '_PhpScoper472361b15529\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator',
+    '_PhpScoper9b7e9beaf949\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator',
     'Composer\\*',
 ]];
