@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf48ea5df9e9b\Symfony\Component\HttpKernel\Log;
+namespace _PhpScoperab3ccffcffcd\Symfony\Component\HttpKernel\Log;
 
-use _PhpScoperf48ea5df9e9b\Symfony\Component\HttpFoundation\Request;
+use _PhpScoperab3ccffcffcd\Symfony\Component\HttpFoundation\Request;
 /**
  * DebugLoggerInterface.
  *
@@ -27,13 +27,13 @@ interface DebugLoggerInterface
      *
      * @return array An array of logs
      */
-    public function getLogs(\_PhpScoperf48ea5df9e9b\Symfony\Component\HttpFoundation\Request $request = null);
+    public function getLogs(\_PhpScoperab3ccffcffcd\Symfony\Component\HttpFoundation\Request $request = null);
     /**
      * Returns the number of errors.
      *
      * @return int The number of errors
      */
-    public function countErrors(\_PhpScoperf48ea5df9e9b\Symfony\Component\HttpFoundation\Request $request = null);
+    public function countErrors(\_PhpScoperab3ccffcffcd\Symfony\Component\HttpFoundation\Request $request = null);
     /**
      * Removes all log records.
      */

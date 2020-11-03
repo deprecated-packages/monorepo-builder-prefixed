@@ -1,6 +1,6 @@
 <?php
 
-namespace _PhpScoperf48ea5df9e9b;
+namespace _PhpScoperab3ccffcffcd;
 
 if (\PHP_VERSION_ID < 80000) {
     interface Stringable

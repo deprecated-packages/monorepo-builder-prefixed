@@ -8,26 +8,26 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf48ea5df9e9b\Symfony\Component\VarDumper\Dumper\ContextProvider;
+namespace _PhpScoperab3ccffcffcd\Symfony\Component\VarDumper\Dumper\ContextProvider;
 
-use _PhpScoperf48ea5df9e9b\Symfony\Component\HttpKernel\Debug\FileLinkFormatter;
-use _PhpScoperf48ea5df9e9b\Symfony\Component\VarDumper\Cloner\VarCloner;
-use _PhpScoperf48ea5df9e9b\Symfony\Component\VarDumper\Dumper\HtmlDumper;
-use _PhpScoperf48ea5df9e9b\Symfony\Component\VarDumper\VarDumper;
-use _PhpScoperf48ea5df9e9b\Twig\Template;
+use _PhpScoperab3ccffcffcd\Symfony\Component\HttpKernel\Debug\FileLinkFormatter;
+use _PhpScoperab3ccffcffcd\Symfony\Component\VarDumper\Cloner\VarCloner;
+use _PhpScoperab3ccffcffcd\Symfony\Component\VarDumper\Dumper\HtmlDumper;
+use _PhpScoperab3ccffcffcd\Symfony\Component\VarDumper\VarDumper;
+use _PhpScoperab3ccffcffcd\Twig\Template;
 /**
  * Tries to provide context from sources (class name, file, line, code excerpt, ...).
  *
  * @author Nicolas Grekas <p@tchwork.com>
  * @author Maxime Steinhausser <maxime.steinhausser@gmail.com>
  */
-final class SourceContextProvider implements \_PhpScoperf48ea5df9e9b\Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface
+final class SourceContextProvider implements \_PhpScoperab3ccffcffcd\Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface
 {
     private $limit;
     private $charset;
     private $projectDir;
     private $fileLinkFormatter;
-    public function __construct(string $charset = null, string $projectDir = null, \_PhpScoperf48ea5df9e9b\Symfony\Component\HttpKernel\Debug\FileLinkFormatter $fileLinkFormatter = null, int $limit = 9)
+    public function __construct(string $charset = null, string $projectDir = null, \_PhpScoperab3ccffcffcd\Symfony\Component\HttpKernel\Debug\FileLinkFormatter $fileLinkFormatter = null, int $limit = 9)
     {
         $this->charset = $charset;
         $this->projectDir = $projectDir;
@@ -42,7 +42,7 @@ final class SourceContextProvider implements \_PhpScoperf48ea5df9e9b\Symfony\Com
         $name = \false;
         $fileExcerpt = \false;
         for ($i = 2; $i < $this->limit; ++$i) {
-            if (isset($trace[$i]['class'], $trace[$i]['function']) && 'dump' === $trace[$i]['function'] && \_PhpScoperf48ea5df9e9b\Symfony\Component\VarDumper\VarDumper::class === $trace[$i]['class']) {
+            if (isset($trace[$i]['class'], $trace[$i]['function']) && 'dump' === $trace[$i]['function'] && \_PhpScoperab3ccffcffcd\Symfony\Component\VarDumper\VarDumper::class === $trace[$i]['class']) {
                 $file = $trace[$i]['file'] ?? $file;
                 $line = $trace[$i]['line'] ?? $line;
                 while (++$i < $this->limit) {
@@ -50,7 +50,7 @@ final class SourceContextProvider implements \_PhpScoperf48ea5df9e9b\Symfony\Com
                         $file = $trace[$i]['file'];
                         $line = $trace[$i]['line'];
                         break;
-                    } elseif (isset($trace[$i]['object']) && $trace[$i]['object'] instanceof \_PhpScoperf48ea5df9e9b\Twig\Template) {
+                    } elseif (isset($trace[$i]['object']) && $trace[$i]['object'] instanceof \_PhpScoperab3ccffcffcd\Twig\Template) {
                         $template = $trace[$i]['object'];
                         $name = $template->getTemplateName();
                         $src = \method_exists($template, 'getSourceContext') ? $template->getSourceContext()->getCode() : (\method_exists($template, 'getSource') ? $template->getSource() : \false);
@@ -93,12 +93,12 @@ final class SourceContextProvider implements \_PhpScoperf48ea5df9e9b\Symfony\Com
     private function htmlEncode(string $s) : string
     {
         $html = '';
-        $dumper = new \_PhpScoperf48ea5df9e9b\Symfony\Component\VarDumper\Dumper\HtmlDumper(function ($line) use(&$html) {
+        $dumper = new \_PhpScoperab3ccffcffcd\Symfony\Component\VarDumper\Dumper\HtmlDumper(function ($line) use(&$html) {
             $html .= $line;
         }, $this->charset);
         $dumper->setDumpHeader('');
         $dumper->setDumpBoundaries('', '');
-        $cloner = new \_PhpScoperf48ea5df9e9b\Symfony\Component\VarDumper\Cloner\VarCloner();
+        $cloner = new \_PhpScoperab3ccffcffcd\Symfony\Component\VarDumper\Cloner\VarCloner();
         $dumper->dump($cloner->cloneVar($s));
         return \substr(\strip_tags($html), 1, -1);
     }

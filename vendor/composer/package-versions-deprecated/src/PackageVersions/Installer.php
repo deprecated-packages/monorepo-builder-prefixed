@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace _PhpScoperf48ea5df9e9b\PackageVersions;
+namespace _PhpScoperab3ccffcffcd\PackageVersions;
 
 use Composer\Composer;
 use Composer\Config;
