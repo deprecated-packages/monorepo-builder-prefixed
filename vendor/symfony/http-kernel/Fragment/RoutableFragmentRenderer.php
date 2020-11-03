@@ -8,25 +8,27 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopera2c403aec9a8\Symfony\Component\HttpKernel\Fragment;
+namespace _PhpScoper0f10ad97259b\Symfony\Component\HttpKernel\Fragment;
 
-use _PhpScopera2c403aec9a8\Symfony\Component\HttpFoundation\Request;
-use _PhpScopera2c403aec9a8\Symfony\Component\HttpKernel\Controller\ControllerReference;
-use _PhpScopera2c403aec9a8\Symfony\Component\HttpKernel\EventListener\FragmentListener;
+use _PhpScoper0f10ad97259b\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper0f10ad97259b\Symfony\Component\HttpKernel\Controller\ControllerReference;
+use _PhpScoper0f10ad97259b\Symfony\Component\HttpKernel\EventListener\FragmentListener;
 /**
  * Adds the possibility to generate a fragment URI for a given Controller.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class RoutableFragmentRenderer implements \_PhpScopera2c403aec9a8\Symfony\Component\HttpKernel\Fragment\FragmentRendererInterface
+abstract class RoutableFragmentRenderer implements \_PhpScoper0f10ad97259b\Symfony\Component\HttpKernel\Fragment\FragmentRendererInterface
 {
     private $fragmentPath = '/_fragment';
     /**
      * Sets the fragment path that triggers the fragment listener.
      *
+     * @param string $path The path
+     *
      * @see FragmentListener
      */
-    public function setFragmentPath(string $path)
+    public function setFragmentPath($path)
     {
         $this->fragmentPath = $path;
     }
@@ -38,7 +40,7 @@ abstract class RoutableFragmentRenderer implements \_PhpScopera2c403aec9a8\Symfo
      *
      * @return string A fragment URI
      */
-    protected function generateFragmentUri(\_PhpScopera2c403aec9a8\Symfony\Component\HttpKernel\Controller\ControllerReference $reference, \_PhpScopera2c403aec9a8\Symfony\Component\HttpFoundation\Request $request, bool $absolute = \false, bool $strict = \true)
+    protected function generateFragmentUri(\_PhpScoper0f10ad97259b\Symfony\Component\HttpKernel\Controller\ControllerReference $reference, \_PhpScoper0f10ad97259b\Symfony\Component\HttpFoundation\Request $request, $absolute = \false, $strict = \true)
     {
         if ($strict) {
             $this->checkNonScalar($reference->attributes);

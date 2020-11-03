@@ -16,16 +16,21 @@
         }
     ],
     "require": {
-        "php": ">=7.2.5",
+        "php": "^7.1.3",
         "symfony\/polyfill-ctype": "~1.8"
     },
     "autoload": {
         "psr-4": {
-            "_PhpScopera2c403aec9a8\\Symfony\\Component\\Filesystem\\": ""
+            "_PhpScoper0f10ad97259b\\Symfony\\Component\\Filesystem\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"
         ]
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "4.4-dev"
+        }
+    }
 }
