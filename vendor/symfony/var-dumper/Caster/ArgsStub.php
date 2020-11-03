@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperee8f03533f8b\Symfony\Component\VarDumper\Caster;
+namespace _PhpScopereb9e28d9f307\Symfony\Component\VarDumper\Caster;
 
-use _PhpScoperee8f03533f8b\Symfony\Component\VarDumper\Cloner\Stub;
+use _PhpScopereb9e28d9f307\Symfony\Component\VarDumper\Cloner\Stub;
 /**
  * Represents a list of function arguments.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ArgsStub extends \_PhpScoperee8f03533f8b\Symfony\Component\VarDumper\Caster\EnumStub
+class ArgsStub extends \_PhpScopereb9e28d9f307\Symfony\Component\VarDumper\Caster\EnumStub
 {
     private static $parameters = [];
     public function __construct(array $args, string $function, ?string $class)
@@ -24,7 +24,7 @@ class ArgsStub extends \_PhpScoperee8f03533f8b\Symfony\Component\VarDumper\Caste
         list($variadic, $params) = self::getParameters($function, $class);
         $values = [];
         foreach ($args as $k => $v) {
-            $values[$k] = !\is_scalar($v) && !$v instanceof \_PhpScoperee8f03533f8b\Symfony\Component\VarDumper\Cloner\Stub ? new \_PhpScoperee8f03533f8b\Symfony\Component\VarDumper\Caster\CutStub($v) : $v;
+            $values[$k] = !\is_scalar($v) && !$v instanceof \_PhpScopereb9e28d9f307\Symfony\Component\VarDumper\Cloner\Stub ? new \_PhpScopereb9e28d9f307\Symfony\Component\VarDumper\Caster\CutStub($v) : $v;
         }
         if (null === $params) {
             parent::__construct($values, \false);
@@ -33,7 +33,7 @@ class ArgsStub extends \_PhpScoperee8f03533f8b\Symfony\Component\VarDumper\Caste
         if (\count($values) < \count($params)) {
             $params = \array_slice($params, 0, \count($values));
         } elseif (\count($values) > \count($params)) {
-            $values[] = new \_PhpScoperee8f03533f8b\Symfony\Component\VarDumper\Caster\EnumStub(\array_splice($values, \count($params)), \false);
+            $values[] = new \_PhpScopereb9e28d9f307\Symfony\Component\VarDumper\Caster\EnumStub(\array_splice($values, \count($params)), \false);
             $params[] = $variadic;
         }
         if (['...'] === $params) {

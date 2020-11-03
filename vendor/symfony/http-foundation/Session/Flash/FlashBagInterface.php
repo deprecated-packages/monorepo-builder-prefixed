@@ -8,30 +8,28 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperee8f03533f8b\Symfony\Component\HttpFoundation\Session\Flash;
+namespace _PhpScopereb9e28d9f307\Symfony\Component\HttpFoundation\Session\Flash;
 
-use _PhpScoperee8f03533f8b\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
+use _PhpScopereb9e28d9f307\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
 /**
  * FlashBagInterface.
  *
  * @author Drak <drak@zikula.org>
  */
-interface FlashBagInterface extends \_PhpScoperee8f03533f8b\Symfony\Component\HttpFoundation\Session\SessionBagInterface
+interface FlashBagInterface extends \_PhpScopereb9e28d9f307\Symfony\Component\HttpFoundation\Session\SessionBagInterface
 {
     /**
      * Adds a flash message for the given type.
      *
-     * @param string $type
-     * @param mixed  $message
+     * @param mixed $message
      */
-    public function add($type, $message);
+    public function add(string $type, $message);
     /**
      * Registers one or more messages for a given type.
      *
-     * @param string       $type
      * @param string|array $messages
      */
-    public function set($type, $messages);
+    public function set(string $type, $messages);
     /**
      * Gets flash messages for a given type.
      *
@@ -40,7 +38,7 @@ interface FlashBagInterface extends \_PhpScoperee8f03533f8b\Symfony\Component\Ht
      *
      * @return array
      */
-    public function peek($type, array $default = []);
+    public function peek(string $type, array $default = []);
     /**
      * Gets all flash messages.
      *
@@ -50,12 +48,11 @@ interface FlashBagInterface extends \_PhpScoperee8f03533f8b\Symfony\Component\Ht
     /**
      * Gets and clears flash from the stack.
      *
-     * @param string $type
-     * @param array  $default Default value if $type does not exist
+     * @param array $default Default value if $type does not exist
      *
      * @return array
      */
-    public function get($type, array $default = []);
+    public function get(string $type, array $default = []);
     /**
      * Gets and clears flashes from the stack.
      *
@@ -69,11 +66,9 @@ interface FlashBagInterface extends \_PhpScoperee8f03533f8b\Symfony\Component\Ht
     /**
      * Has flash messages for a given type?
      *
-     * @param string $type
-     *
      * @return bool
      */
-    public function has($type);
+    public function has(string $type);
     /**
      * Returns a list of all defined types.
      *

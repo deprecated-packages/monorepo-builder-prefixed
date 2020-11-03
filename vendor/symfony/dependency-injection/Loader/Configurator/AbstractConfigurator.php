@@ -8,25 +8,30 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace _PhpScopereb9e28d9f307\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use _PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
-use _PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Definition;
-use _PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use _PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Parameter;
-use _PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Reference;
-use _PhpScoperee8f03533f8b\Symfony\Component\ExpressionLanguage\Expression;
+use _PhpScopereb9e28d9f307\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use _PhpScopereb9e28d9f307\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
+use _PhpScopereb9e28d9f307\Symfony\Component\DependencyInjection\Definition;
+use _PhpScopereb9e28d9f307\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use _PhpScopereb9e28d9f307\Symfony\Component\DependencyInjection\Parameter;
+use _PhpScopereb9e28d9f307\Symfony\Component\DependencyInjection\Reference;
+use _PhpScopereb9e28d9f307\Symfony\Component\ExpressionLanguage\Expression;
 abstract class AbstractConfigurator
 {
     const FACTORY = 'unknown';
+    /**
+     * @var callable(mixed $value, bool $allowService)|null
+     */
+    public static $valuePreProcessor;
     /** @internal */
     protected $definition;
-    public function __call($method, $args)
+    public function __call(string $method, array $args)
     {
         if (\method_exists($this, 'set' . $method)) {
             return $this->{'set' . $method}(...$args);
         }
-        throw new \BadMethodCallException(\sprintf('Call to undefined method %s::%s()', \get_class($this), $method));
+        throw new \BadMethodCallException(\sprintf('Call to undefined method "%s::%s()".', static::class, $method));
     }
     /**
      * Checks that a value is valid, optionally replacing Definition and Reference configurators by their configure value.
@@ -42,32 +47,36 @@ abstract class AbstractConfigurator
             foreach ($value as $k => $v) {
                 $value[$k] = static::processValue($v, $allowServices);
             }
-            return $value;
+            return self::$valuePreProcessor ? (self::$valuePreProcessor)($value, $allowServices) : $value;
         }
-        if ($value instanceof \_PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator) {
-            return new \_PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Reference($value->id, $value->invalidBehavior);
+        if (self::$valuePreProcessor) {
+            $value = (self::$valuePreProcessor)($value, $allowServices);
         }
-        if ($value instanceof \_PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Loader\Configurator\InlineServiceConfigurator) {
+        if ($value instanceof \_PhpScopereb9e28d9f307\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator) {
+            return new \_PhpScopereb9e28d9f307\Symfony\Component\DependencyInjection\Reference($value->id, $value->invalidBehavior);
+        }
+        if ($value instanceof \_PhpScopereb9e28d9f307\Symfony\Component\DependencyInjection\Loader\Configurator\InlineServiceConfigurator) {
             $def = $value->definition;
             $value->definition = null;
             return $def;
         }
         if ($value instanceof self) {
-            throw new \_PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('"%s()" can be used only at the root of service configuration files.', $value::FACTORY));
+            throw new \_PhpScopereb9e28d9f307\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('"%s()" can be used only at the root of service configuration files.', $value::FACTORY));
         }
         switch (\true) {
             case null === $value:
             case \is_scalar($value):
                 return $value;
-            case $value instanceof \_PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Argument\ArgumentInterface:
-            case $value instanceof \_PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Definition:
-            case $value instanceof \_PhpScoperee8f03533f8b\Symfony\Component\ExpressionLanguage\Expression:
-            case $value instanceof \_PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Parameter:
-            case $value instanceof \_PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Reference:
+            case $value instanceof \_PhpScopereb9e28d9f307\Symfony\Component\DependencyInjection\Argument\ArgumentInterface:
+            case $value instanceof \_PhpScopereb9e28d9f307\Symfony\Component\DependencyInjection\Definition:
+            case $value instanceof \_PhpScopereb9e28d9f307\Symfony\Component\ExpressionLanguage\Expression:
+            case $value instanceof \_PhpScopereb9e28d9f307\Symfony\Component\DependencyInjection\Parameter:
+            case $value instanceof \_PhpScopereb9e28d9f307\Symfony\Component\DependencyInjection\Argument\AbstractArgument:
+            case $value instanceof \_PhpScopereb9e28d9f307\Symfony\Component\DependencyInjection\Reference:
                 if ($allowServices) {
                     return $value;
                 }
         }
-        throw new \_PhpScoperee8f03533f8b\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Cannot use values of type "%s" in service configuration files.', \is_object($value) ? \get_class($value) : \gettype($value)));
+        throw new \_PhpScopereb9e28d9f307\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Cannot use values of type "%s" in service configuration files.', \get_debug_type($value)));
     }
 }

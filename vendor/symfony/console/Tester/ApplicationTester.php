@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperee8f03533f8b\Symfony\Component\Console\Tester;
+namespace _PhpScopereb9e28d9f307\Symfony\Component\Console\Tester;
 
-use _PhpScoperee8f03533f8b\Symfony\Component\Console\Application;
-use _PhpScoperee8f03533f8b\Symfony\Component\Console\Input\ArrayInput;
+use _PhpScopereb9e28d9f307\Symfony\Component\Console\Application;
+use _PhpScopereb9e28d9f307\Symfony\Component\Console\Input\ArrayInput;
 /**
  * Eases the testing of console applications.
  *
@@ -28,7 +28,7 @@ class ApplicationTester
     private $application;
     private $input;
     private $statusCode;
-    public function __construct(\_PhpScoperee8f03533f8b\Symfony\Component\Console\Application $application)
+    public function __construct(\_PhpScopereb9e28d9f307\Symfony\Component\Console\Application $application)
     {
         $this->application = $application;
     }
@@ -42,25 +42,18 @@ class ApplicationTester
      *  * verbosity:                 Sets the output verbosity flag
      *  * capture_stderr_separately: Make output of stdOut and stdErr separately available
      *
-     * @param array $input   An array of arguments and options
-     * @param array $options An array of options
-     *
      * @return int The command exit code
      */
-    public function run(array $input, $options = [])
+    public function run(array $input, array $options = [])
     {
-        $this->input = new \_PhpScoperee8f03533f8b\Symfony\Component\Console\Input\ArrayInput($input);
+        $this->input = new \_PhpScopereb9e28d9f307\Symfony\Component\Console\Input\ArrayInput($input);
         if (isset($options['interactive'])) {
             $this->input->setInteractive($options['interactive']);
         }
-        $shellInteractive = \getenv('SHELL_INTERACTIVE');
         if ($this->inputs) {
             $this->input->setStream(self::createStream($this->inputs));
-            \putenv('SHELL_INTERACTIVE=1');
         }
         $this->initOutput($options);
-        $this->statusCode = $this->application->run($this->input, $this->output);
-        \putenv($shellInteractive ? "SHELL_INTERACTIVE={$shellInteractive}" : 'SHELL_INTERACTIVE');
-        return $this->statusCode;
+        return $this->statusCode = $this->application->run($this->input, $this->output);
     }
 }

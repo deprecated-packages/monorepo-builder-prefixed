@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperee8f03533f8b\Symfony\Component\Console\Tester;
+namespace _PhpScopereb9e28d9f307\Symfony\Component\Console\Tester;
 
-use _PhpScoperee8f03533f8b\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperee8f03533f8b\Symfony\Component\Console\Output\ConsoleOutput;
-use _PhpScoperee8f03533f8b\Symfony\Component\Console\Output\OutputInterface;
-use _PhpScoperee8f03533f8b\Symfony\Component\Console\Output\StreamOutput;
+use _PhpScopereb9e28d9f307\Symfony\Component\Console\Input\InputInterface;
+use _PhpScopereb9e28d9f307\Symfony\Component\Console\Output\ConsoleOutput;
+use _PhpScopereb9e28d9f307\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScopereb9e28d9f307\Symfony\Component\Console\Output\StreamOutput;
 /**
  * @author Amrouche Hamza <hamza.simperfit@gmail.com>
  */
@@ -26,11 +26,9 @@ trait TesterTrait
     /**
      * Gets the display returned by the last execution of the command or application.
      *
-     * @param bool $normalize Whether to normalize end of lines to \n or not
-     *
      * @return string The display
      */
-    public function getDisplay($normalize = \false)
+    public function getDisplay(bool $normalize = \false)
     {
         if (null === $this->output) {
             throw new \RuntimeException('Output not initialized, did you execute the command before requesting the display?');
@@ -49,7 +47,7 @@ trait TesterTrait
      *
      * @return string
      */
-    public function getErrorOutput($normalize = \false)
+    public function getErrorOutput(bool $normalize = \false)
     {
         if (!$this->captureStreamsIndependently) {
             throw new \LogicException('The error output is not available when the tester is run without "capture_stderr_separately" option set.');
@@ -114,7 +112,7 @@ trait TesterTrait
     {
         $this->captureStreamsIndependently = \array_key_exists('capture_stderr_separately', $options) && $options['capture_stderr_separately'];
         if (!$this->captureStreamsIndependently) {
-            $this->output = new \_PhpScoperee8f03533f8b\Symfony\Component\Console\Output\StreamOutput(\fopen('php://memory', 'w', \false));
+            $this->output = new \_PhpScopereb9e28d9f307\Symfony\Component\Console\Output\StreamOutput(\fopen('php://memory', 'w', \false));
             if (isset($options['decorated'])) {
                 $this->output->setDecorated($options['decorated']);
             }
@@ -122,8 +120,8 @@ trait TesterTrait
                 $this->output->setVerbosity($options['verbosity']);
             }
         } else {
-            $this->output = new \_PhpScoperee8f03533f8b\Symfony\Component\Console\Output\ConsoleOutput(isset($options['verbosity']) ? $options['verbosity'] : \_PhpScoperee8f03533f8b\Symfony\Component\Console\Output\ConsoleOutput::VERBOSITY_NORMAL, isset($options['decorated']) ? $options['decorated'] : null);
-            $errorOutput = new \_PhpScoperee8f03533f8b\Symfony\Component\Console\Output\StreamOutput(\fopen('php://memory', 'w', \false));
+            $this->output = new \_PhpScopereb9e28d9f307\Symfony\Component\Console\Output\ConsoleOutput(isset($options['verbosity']) ? $options['verbosity'] : \_PhpScopereb9e28d9f307\Symfony\Component\Console\Output\ConsoleOutput::VERBOSITY_NORMAL, isset($options['decorated']) ? $options['decorated'] : null);
+            $errorOutput = new \_PhpScopereb9e28d9f307\Symfony\Component\Console\Output\StreamOutput(\fopen('php://memory', 'w', \false));
             $errorOutput->setFormatter($this->output->getFormatter());
             $errorOutput->setVerbosity($this->output->getVerbosity());
             $errorOutput->setDecorated($this->output->isDecorated());

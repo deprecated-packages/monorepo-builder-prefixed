@@ -8,30 +8,27 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperee8f03533f8b\Symfony\Component\HttpKernel\DataCollector;
+namespace _PhpScopereb9e28d9f307\Symfony\Component\HttpKernel\DataCollector;
 
-use _PhpScoperee8f03533f8b\Symfony\Component\ErrorHandler\Exception\FlattenException;
-use _PhpScoperee8f03533f8b\Symfony\Component\HttpFoundation\Request;
-use _PhpScoperee8f03533f8b\Symfony\Component\HttpFoundation\Response;
+use _PhpScopereb9e28d9f307\Symfony\Component\ErrorHandler\Exception\FlattenException;
+use _PhpScopereb9e28d9f307\Symfony\Component\HttpFoundation\Request;
+use _PhpScopereb9e28d9f307\Symfony\Component\HttpFoundation\Response;
 /**
  * ExceptionDataCollector.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  *
- * @final since Symfony 4.4
+ * @final
  */
-class ExceptionDataCollector extends \_PhpScoperee8f03533f8b\Symfony\Component\HttpKernel\DataCollector\DataCollector
+class ExceptionDataCollector extends \_PhpScopereb9e28d9f307\Symfony\Component\HttpKernel\DataCollector\DataCollector
 {
     /**
      * {@inheritdoc}
-     *
-     * @param \Throwable|null $exception
      */
-    public function collect(\_PhpScoperee8f03533f8b\Symfony\Component\HttpFoundation\Request $request, \_PhpScoperee8f03533f8b\Symfony\Component\HttpFoundation\Response $response)
+    public function collect(\_PhpScopereb9e28d9f307\Symfony\Component\HttpFoundation\Request $request, \_PhpScopereb9e28d9f307\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
     {
-        $exception = 2 < \func_num_args() ? \func_get_arg(2) : null;
         if (null !== $exception) {
-            $this->data = ['exception' => \_PhpScoperee8f03533f8b\Symfony\Component\ErrorHandler\Exception\FlattenException::createFromThrowable($exception)];
+            $this->data = ['exception' => \_PhpScopereb9e28d9f307\Symfony\Component\ErrorHandler\Exception\FlattenException::createFromThrowable($exception)];
         }
     }
     /**
