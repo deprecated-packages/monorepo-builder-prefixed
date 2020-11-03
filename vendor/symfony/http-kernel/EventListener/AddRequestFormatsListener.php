@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperd3e9cfbe9d90\Symfony\Component\HttpKernel\EventListener;
+namespace _PhpScopere4e8aecb81b9\Symfony\Component\HttpKernel\EventListener;
 
-use _PhpScoperd3e9cfbe9d90\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use _PhpScoperd3e9cfbe9d90\Symfony\Component\HttpKernel\Event\RequestEvent;
-use _PhpScoperd3e9cfbe9d90\Symfony\Component\HttpKernel\KernelEvents;
+use _PhpScopere4e8aecb81b9\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use _PhpScopere4e8aecb81b9\Symfony\Component\HttpKernel\Event\RequestEvent;
+use _PhpScopere4e8aecb81b9\Symfony\Component\HttpKernel\KernelEvents;
 /**
  * Adds configured formats to each request.
  *
@@ -20,7 +20,7 @@ use _PhpScoperd3e9cfbe9d90\Symfony\Component\HttpKernel\KernelEvents;
  *
  * @final
  */
-class AddRequestFormatsListener implements \_PhpScoperd3e9cfbe9d90\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class AddRequestFormatsListener implements \_PhpScopere4e8aecb81b9\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     protected $formats;
     public function __construct(array $formats)
@@ -30,7 +30,7 @@ class AddRequestFormatsListener implements \_PhpScoperd3e9cfbe9d90\Symfony\Compo
     /**
      * Adds request formats.
      */
-    public function onKernelRequest(\_PhpScoperd3e9cfbe9d90\Symfony\Component\HttpKernel\Event\RequestEvent $event)
+    public function onKernelRequest(\_PhpScopere4e8aecb81b9\Symfony\Component\HttpKernel\Event\RequestEvent $event)
     {
         $request = $event->getRequest();
         foreach ($this->formats as $format => $mimeTypes) {
@@ -42,6 +42,6 @@ class AddRequestFormatsListener implements \_PhpScoperd3e9cfbe9d90\Symfony\Compo
      */
     public static function getSubscribedEvents() : array
     {
-        return [\_PhpScoperd3e9cfbe9d90\Symfony\Component\HttpKernel\KernelEvents::REQUEST => ['onKernelRequest', 100]];
+        return [\_PhpScopere4e8aecb81b9\Symfony\Component\HttpKernel\KernelEvents::REQUEST => ['onKernelRequest', 100]];
     }
 }

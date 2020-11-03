@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperd3e9cfbe9d90\Symfony\Component\String\Slugger;
+namespace _PhpScopere4e8aecb81b9\Symfony\Component\String\Slugger;
 
-use _PhpScoperd3e9cfbe9d90\Symfony\Component\String\AbstractUnicodeString;
-use _PhpScoperd3e9cfbe9d90\Symfony\Component\String\UnicodeString;
-use _PhpScoperd3e9cfbe9d90\Symfony\Contracts\Translation\LocaleAwareInterface;
-if (!\interface_exists(\_PhpScoperd3e9cfbe9d90\Symfony\Contracts\Translation\LocaleAwareInterface::class)) {
+use _PhpScopere4e8aecb81b9\Symfony\Component\String\AbstractUnicodeString;
+use _PhpScopere4e8aecb81b9\Symfony\Component\String\UnicodeString;
+use _PhpScopere4e8aecb81b9\Symfony\Contracts\Translation\LocaleAwareInterface;
+if (!\interface_exists(\_PhpScopere4e8aecb81b9\Symfony\Contracts\Translation\LocaleAwareInterface::class)) {
     throw new \LogicException('You cannot use the "Symfony\\Component\\String\\Slugger\\AsciiSlugger" as the "symfony/translation-contracts" package is not installed. Try running "composer require symfony/translation-contracts".');
 }
 /**
  * @author Titouan Galopin <galopintitouan@gmail.com>
  */
-class AsciiSlugger implements \_PhpScoperd3e9cfbe9d90\Symfony\Component\String\Slugger\SluggerInterface, \_PhpScoperd3e9cfbe9d90\Symfony\Contracts\Translation\LocaleAwareInterface
+class AsciiSlugger implements \_PhpScopere4e8aecb81b9\Symfony\Component\String\Slugger\SluggerInterface, \_PhpScopere4e8aecb81b9\Symfony\Contracts\Translation\LocaleAwareInterface
 {
     private const LOCALE_TO_TRANSLITERATOR_ID = ['am' => 'Amharic-Latin', 'ar' => 'Arabic-Latin', 'az' => 'Azerbaijani-Latin', 'be' => 'Belarusian-Latin', 'bg' => 'Bulgarian-Latin', 'bn' => 'Bengali-Latin', 'de' => 'de-ASCII', 'el' => 'Greek-Latin', 'fa' => 'Persian-Latin', 'he' => 'Hebrew-Latin', 'hy' => 'Armenian-Latin', 'ka' => 'Georgian-Latin', 'kk' => 'Kazakh-Latin', 'ky' => 'Kirghiz-Latin', 'ko' => 'Korean-Latin', 'mk' => 'Macedonian-Latin', 'mn' => 'Mongolian-Latin', 'or' => 'Oriya-Latin', 'ps' => 'Pashto-Latin', 'ru' => 'Russian-Latin', 'sr' => 'Serbian-Latin', 'sr_Cyrl' => 'Serbian-Latin', 'th' => 'Thai-Latin', 'tk' => 'Turkmen-Latin', 'uk' => 'Ukrainian-Latin', 'uz' => 'Uzbek-Latin', 'zh' => 'Han-Latin'];
     private $defaultLocale;
@@ -52,7 +52,7 @@ class AsciiSlugger implements \_PhpScoperd3e9cfbe9d90\Symfony\Component\String\S
     /**
      * {@inheritdoc}
      */
-    public function slug(string $string, string $separator = '-', string $locale = null) : \_PhpScoperd3e9cfbe9d90\Symfony\Component\String\AbstractUnicodeString
+    public function slug(string $string, string $separator = '-', string $locale = null) : \_PhpScopere4e8aecb81b9\Symfony\Component\String\AbstractUnicodeString
     {
         $locale = $locale ?? $this->defaultLocale;
         $transliterator = [];
@@ -62,7 +62,7 @@ class AsciiSlugger implements \_PhpScoperd3e9cfbe9d90\Symfony\Component\String\S
         } elseif (\function_exists('transliterator_transliterate') && $locale) {
             $transliterator = (array) $this->createTransliterator($locale);
         }
-        $unicodeString = (new \_PhpScoperd3e9cfbe9d90\Symfony\Component\String\UnicodeString($string))->ascii($transliterator);
+        $unicodeString = (new \_PhpScopere4e8aecb81b9\Symfony\Component\String\UnicodeString($string))->ascii($transliterator);
         if (isset($this->symbolsMap[$locale])) {
             foreach ($this->symbolsMap[$locale] as $char => $replace) {
                 $unicodeString = $unicodeString->replace($char, ' ' . $replace . ' ');
