@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper9122d33f3e27\Symfony\Component\Finder;
+namespace _PhpScoper860bc98a0f96\Symfony\Component\Finder;
 
 /**
  * Glob matches globbing patterns against text.
@@ -37,9 +37,14 @@ class Glob
     /**
      * Returns a regexp which is the equivalent of the glob pattern.
      *
-     * @return string
+     * @param string $glob                The glob pattern
+     * @param bool   $strictLeadingDot
+     * @param bool   $strictWildcardSlash
+     * @param string $delimiter           Optional delimiter
+     *
+     * @return string regex The regexp
      */
-    public static function toRegex(string $glob, bool $strictLeadingDot = \true, bool $strictWildcardSlash = \true, string $delimiter = '#')
+    public static function toRegex($glob, $strictLeadingDot = \true, $strictWildcardSlash = \true, $delimiter = '#')
     {
         $firstByte = \true;
         $escaping = \false;

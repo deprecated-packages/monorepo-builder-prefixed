@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper9122d33f3e27\Symfony\Component\Finder\Iterator;
+namespace _PhpScoper860bc98a0f96\Symfony\Component\Finder\Iterator;
 
 /**
  * FilecontentFilterIterator filters files by their contents using patterns (regexps or strings).
@@ -16,7 +16,7 @@ namespace _PhpScoper9122d33f3e27\Symfony\Component\Finder\Iterator;
  * @author Fabien Potencier  <fabien@symfony.com>
  * @author Włodzimierz Gajda <gajdaw@gajdaw.pl>
  */
-class FilecontentFilterIterator extends \_PhpScoper9122d33f3e27\Symfony\Component\Finder\Iterator\MultiplePcreFilterIterator
+class FilecontentFilterIterator extends \_PhpScoper860bc98a0f96\Symfony\Component\Finder\Iterator\MultiplePcreFilterIterator
 {
     /**
      * Filters the iterator values.
@@ -45,7 +45,7 @@ class FilecontentFilterIterator extends \_PhpScoper9122d33f3e27\Symfony\Componen
      *
      * @return string regexp corresponding to a given string or regexp
      */
-    protected function toRegex(string $str)
+    protected function toRegex($str)
     {
         return $this->isRegex($str) ? $str : '/' . \preg_quote($str, '/') . '/';
     }

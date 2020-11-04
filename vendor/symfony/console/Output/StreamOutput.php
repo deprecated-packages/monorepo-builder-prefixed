@@ -8,10 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper9122d33f3e27\Symfony\Component\Console\Output;
+namespace _PhpScoper860bc98a0f96\Symfony\Component\Console\Output;
 
-use _PhpScoper9122d33f3e27\Symfony\Component\Console\Exception\InvalidArgumentException;
-use _PhpScoper9122d33f3e27\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use _PhpScoper860bc98a0f96\Symfony\Component\Console\Exception\InvalidArgumentException;
+use _PhpScoper860bc98a0f96\Symfony\Component\Console\Exception\RuntimeException;
+use _PhpScoper860bc98a0f96\Symfony\Component\Console\Formatter\OutputFormatterInterface;
 /**
  * StreamOutput writes the output to a given stream.
  *
@@ -25,7 +26,7 @@ use _PhpScoper9122d33f3e27\Symfony\Component\Console\Formatter\OutputFormatterIn
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class StreamOutput extends \_PhpScoper9122d33f3e27\Symfony\Component\Console\Output\Output
+class StreamOutput extends \_PhpScoper860bc98a0f96\Symfony\Component\Console\Output\Output
 {
     private $stream;
     /**
@@ -36,10 +37,10 @@ class StreamOutput extends \_PhpScoper9122d33f3e27\Symfony\Component\Console\Out
      *
      * @throws InvalidArgumentException When first argument is not a real stream
      */
-    public function __construct($stream, int $verbosity = self::VERBOSITY_NORMAL, bool $decorated = null, \_PhpScoper9122d33f3e27\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter = null)
+    public function __construct($stream, int $verbosity = self::VERBOSITY_NORMAL, bool $decorated = null, \_PhpScoper860bc98a0f96\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter = null)
     {
         if (!\is_resource($stream) || 'stream' !== \get_resource_type($stream)) {
-            throw new \_PhpScoper9122d33f3e27\Symfony\Component\Console\Exception\InvalidArgumentException('The StreamOutput class needs a stream as its first argument.');
+            throw new \_PhpScoper860bc98a0f96\Symfony\Component\Console\Exception\InvalidArgumentException('The StreamOutput class needs a stream as its first argument.');
         }
         $this->stream = $stream;
         if (null === $decorated) {
@@ -59,12 +60,15 @@ class StreamOutput extends \_PhpScoper9122d33f3e27\Symfony\Component\Console\Out
     /**
      * {@inheritdoc}
      */
-    protected function doWrite(string $message, bool $newline)
+    protected function doWrite($message, $newline)
     {
         if ($newline) {
             $message .= \PHP_EOL;
         }
-        @\fwrite($this->stream, $message);
+        if (\false === @\fwrite($this->stream, $message)) {
+            // should never happen
+            throw new \_PhpScoper860bc98a0f96\Symfony\Component\Console\Exception\RuntimeException('Unable to write output.');
+        }
         \fflush($this->stream);
     }
     /**
@@ -92,6 +96,14 @@ class StreamOutput extends \_PhpScoper9122d33f3e27\Symfony\Component\Console\Out
         if (\DIRECTORY_SEPARATOR === '\\') {
             return \function_exists('sapi_windows_vt100_support') && @\sapi_windows_vt100_support($this->stream) || \false !== \getenv('ANSICON') || 'ON' === \getenv('ConEmuANSI') || 'xterm' === \getenv('TERM');
         }
-        return \stream_isatty($this->stream);
+        if (\function_exists('stream_isatty')) {
+            return @\stream_isatty($this->stream);
+        }
+        if (\function_exists('posix_isatty')) {
+            return @\posix_isatty($this->stream);
+        }
+        $stat = @\fstat($this->stream);
+        // Check if formatted mode is S_IFCHR
+        return $stat ? 020000 === ($stat['mode'] & 0170000) : \false;
     }
 }

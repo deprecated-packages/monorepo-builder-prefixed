@@ -1,9 +1,9 @@
 <?php
 
-namespace _PhpScoper9122d33f3e27\Psr\Log;
+namespace _PhpScoper860bc98a0f96\Psr\Log;
 
 /**
- * Describes log levels.
+ * Describes log levels
  */
 class LogLevel
 {

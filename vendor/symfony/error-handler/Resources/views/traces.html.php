@@ -1,5 +1,5 @@
 <div class="trace trace-as-html" id="trace-box-<?php 
-namespace _PhpScoper9122d33f3e27;
+namespace _PhpScoper860bc98a0f96;
 
 echo $index;
 ?>">

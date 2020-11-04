@@ -8,15 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper9122d33f3e27\Symfony\Component\Console\Output;
+namespace _PhpScoper860bc98a0f96\Symfony\Component\Console\Output;
 
 /**
  * ConsoleOutputInterface is the interface implemented by ConsoleOutput class.
  * This adds information about stderr and section output stream.
  *
  * @author Dariusz Górecki <darek.krk@gmail.com>
+ *
+ * @method ConsoleSectionOutput section() Creates a new output section
  */
-interface ConsoleOutputInterface extends \_PhpScoper9122d33f3e27\Symfony\Component\Console\Output\OutputInterface
+interface ConsoleOutputInterface extends \_PhpScoper860bc98a0f96\Symfony\Component\Console\Output\OutputInterface
 {
     /**
      * Gets the OutputInterface for errors.
@@ -24,6 +26,5 @@ interface ConsoleOutputInterface extends \_PhpScoper9122d33f3e27\Symfony\Compone
      * @return OutputInterface
      */
     public function getErrorOutput();
-    public function setErrorOutput(\_PhpScoper9122d33f3e27\Symfony\Component\Console\Output\OutputInterface $error);
-    public function section() : \_PhpScoper9122d33f3e27\Symfony\Component\Console\Output\ConsoleSectionOutput;
+    public function setErrorOutput(\_PhpScoper860bc98a0f96\Symfony\Component\Console\Output\OutputInterface $error);
 }

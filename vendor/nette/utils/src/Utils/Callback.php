@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace _PhpScoper9122d33f3e27\Nette\Utils;
+namespace _PhpScoper860bc98a0f96\Nette\Utils;
 
-use _PhpScoper9122d33f3e27\Nette;
+use _PhpScoper860bc98a0f96\Nette;
 use function is_array, is_object, is_string;
 /**
  * PHP callable tools.
@@ -24,7 +24,7 @@ final class Callback
         try {
             return \Closure::fromCallable($method === null ? $callable : [$callable, $method]);
         } catch (\TypeError $e) {
-            throw new \_PhpScoper9122d33f3e27\Nette\InvalidArgumentException($e->getMessage());
+            throw new \_PhpScoper860bc98a0f96\Nette\InvalidArgumentException($e->getMessage());
         }
     }
     /**
@@ -57,7 +57,10 @@ final class Callback
     {
         $prev = \set_error_handler(function ($severity, $message, $file) use($onError, &$prev, $function) : ?bool {
             if ($file === __FILE__) {
-                $msg = \ini_get('html_errors') ? \_PhpScoper9122d33f3e27\Nette\Utils\Html::htmlToText($message) : $message;
+                $msg = $message;
+                if (\ini_get('html_errors')) {
+                    $msg = \html_entity_decode(\strip_tags($msg));
+                }
                 $msg = \preg_replace("#^{$function}\\(.*?\\): #", '', $msg);
                 if ($onError($msg, $severity) !== \false) {
                     return null;
@@ -72,23 +75,15 @@ final class Callback
         }
     }
     /**
-     * Checks that $callable is valid PHP callback. Otherwise throws exception. If the $syntax is set to true, only verifies
-     * that $callable has a valid structure to be used as a callback, but does not verify if the class or method actually exists.
-     * @param  mixed  $callable
      * @return callable
-     * @throws Nette\InvalidArgumentException
      */
     public static function check($callable, bool $syntax = \false)
     {
         if (!\is_callable($callable, $syntax)) {
-            throw new \_PhpScoper9122d33f3e27\Nette\InvalidArgumentException($syntax ? 'Given value is not a callable type.' : \sprintf("Callback '%s' is not callable.", self::toString($callable)));
+            throw new \_PhpScoper860bc98a0f96\Nette\InvalidArgumentException($syntax ? 'Given value is not a callable type.' : \sprintf("Callback '%s' is not callable.", self::toString($callable)));
         }
         return $callable;
     }
-    /**
-     * Converts PHP callback to textual form. Class or method may not exists.
-     * @param  mixed  $callable
-     */
     public static function toString($callable) : string
     {
         if ($callable instanceof \Closure) {
@@ -101,12 +96,6 @@ final class Callback
             return $textual;
         }
     }
-    /**
-     * Returns reflection for method or function used in PHP callback.
-     * @param  callable  $callable  type check is escalated to ReflectionException
-     * @return \ReflectionMethod|\ReflectionFunction
-     * @throws \ReflectionException  if callback is not valid
-     */
     public static function toReflection($callable) : \ReflectionFunctionAbstract
     {
         if ($callable instanceof \Closure) {
@@ -122,27 +111,25 @@ final class Callback
             return new \ReflectionFunction($callable);
         }
     }
-    /**
-     * Checks whether PHP callback is function or static method.
-     */
     public static function isStatic(callable $callable) : bool
     {
         return \is_array($callable) ? \is_string($callable[0]) : \is_string($callable);
     }
     /**
-     * Unwraps closure created by Closure::fromCallable().
+     * Unwraps closure created by Closure::fromCallable()
+     * @internal
      */
     public static function unwrap(\Closure $closure) : callable
     {
         $r = new \ReflectionFunction($closure);
-        if (\substr($r->name, -1) === '}') {
+        if (\substr($r->getName(), -1) === '}') {
             return $closure;
         } elseif ($obj = $r->getClosureThis()) {
-            return [$obj, $r->name];
+            return [$obj, $r->getName()];
         } elseif ($class = $r->getClosureScopeClass()) {
-            return [$class->name, $r->name];
+            return [$class->getName(), $r->getName()];
         } else {
-            return $r->name;
+            return $r->getName();
         }
     }
 }

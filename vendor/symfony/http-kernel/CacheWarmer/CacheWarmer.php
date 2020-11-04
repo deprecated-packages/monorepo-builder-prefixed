@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper9122d33f3e27\Symfony\Component\HttpKernel\CacheWarmer;
+namespace _PhpScoper860bc98a0f96\Symfony\Component\HttpKernel\CacheWarmer;
 
 /**
  * Abstract cache warmer that knows how to write a file to the cache.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class CacheWarmer implements \_PhpScoper9122d33f3e27\Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerInterface
+abstract class CacheWarmer implements \_PhpScoper860bc98a0f96\Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerInterface
 {
-    protected function writeCacheFile(string $file, $content)
+    protected function writeCacheFile($file, $content)
     {
         $tmpFile = @\tempnam(\dirname($file), \basename($file));
         if (\false !== @\file_put_contents($tmpFile, $content) && @\rename($tmpFile, $file)) {

@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper9122d33f3e27\Symfony\Component\Console\Question;
+namespace _PhpScoper860bc98a0f96\Symfony\Component\Console\Question;
 
-use _PhpScoper9122d33f3e27\Symfony\Component\Console\Exception\InvalidArgumentException;
+use _PhpScoper860bc98a0f96\Symfony\Component\Console\Exception\InvalidArgumentException;
 /**
  * Represents a choice question.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ChoiceQuestion extends \_PhpScoper9122d33f3e27\Symfony\Component\Console\Question\Question
+class ChoiceQuestion extends \_PhpScoper860bc98a0f96\Symfony\Component\Console\Question\Question
 {
     private $choices;
     private $multiselect = \false;
@@ -51,9 +51,11 @@ class ChoiceQuestion extends \_PhpScoper9122d33f3e27\Symfony\Component\Console\Q
      *
      * When multiselect is set to true, multiple choices can be answered.
      *
+     * @param bool $multiselect
+     *
      * @return $this
      */
-    public function setMultiselect(bool $multiselect)
+    public function setMultiselect($multiselect)
     {
         $this->multiselect = $multiselect;
         $this->setValidator($this->getDefaultValidator());
@@ -80,9 +82,11 @@ class ChoiceQuestion extends \_PhpScoper9122d33f3e27\Symfony\Component\Console\Q
     /**
      * Sets the prompt for choices.
      *
+     * @param string $prompt
+     *
      * @return $this
      */
-    public function setPrompt(string $prompt)
+    public function setPrompt($prompt)
     {
         $this->prompt = $prompt;
         return $this;
@@ -92,9 +96,11 @@ class ChoiceQuestion extends \_PhpScoper9122d33f3e27\Symfony\Component\Console\Q
      *
      * The error message has a string placeholder (%s) for the invalid value.
      *
+     * @param string $errorMessage
+     *
      * @return $this
      */
-    public function setErrorMessage(string $errorMessage)
+    public function setErrorMessage($errorMessage)
     {
         $this->errorMessage = $errorMessage;
         $this->setValidator($this->getDefaultValidator());
@@ -110,7 +116,7 @@ class ChoiceQuestion extends \_PhpScoper9122d33f3e27\Symfony\Component\Console\Q
             if ($multiselect) {
                 // Check for a separated comma values
                 if (!\preg_match('/^[^,]+(?:,[^,]+)*$/', $selected, $matches)) {
-                    throw new \_PhpScoper9122d33f3e27\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf($errorMessage, $selected));
+                    throw new \_PhpScoper860bc98a0f96\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf($errorMessage, $selected));
                 }
                 $selectedChoices = \explode(',', $selected);
             } else {
@@ -130,7 +136,7 @@ class ChoiceQuestion extends \_PhpScoper9122d33f3e27\Symfony\Component\Console\Q
                     }
                 }
                 if (\count($results) > 1) {
-                    throw new \_PhpScoper9122d33f3e27\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('The provided answer is ambiguous. Value should be one of "%s".', \implode('" or "', $results)));
+                    throw new \_PhpScoper860bc98a0f96\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('The provided answer is ambiguous. Value should be one of %s.', \implode(' or ', $results)));
                 }
                 $result = \array_search($value, $choices);
                 if (!$isAssoc) {
@@ -143,7 +149,7 @@ class ChoiceQuestion extends \_PhpScoper9122d33f3e27\Symfony\Component\Console\Q
                     $result = $value;
                 }
                 if (\false === $result) {
-                    throw new \_PhpScoper9122d33f3e27\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf($errorMessage, $value));
+                    throw new \_PhpScoper860bc98a0f96\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf($errorMessage, $value));
                 }
                 $multiselectChoices[] = (string) $result;
             }
