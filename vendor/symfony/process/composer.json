@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "_PhpScoper860bc98a0f96\\Symfony\\Component\\Process\\": ""
+            "_PhpScoper68683f91c63d\\Symfony\\Component\\Process\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"

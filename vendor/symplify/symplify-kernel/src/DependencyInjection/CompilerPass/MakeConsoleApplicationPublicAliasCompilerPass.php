@@ -3,27 +3,27 @@
 declare (strict_types=1);
 namespace Symplify\SymplifyKernel\DependencyInjection\CompilerPass;
 
-use _PhpScoper860bc98a0f96\Symfony\Component\Console\Application;
-use _PhpScoper860bc98a0f96\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use _PhpScoper860bc98a0f96\Symfony\Component\DependencyInjection\ContainerBuilder;
-final class MakeConsoleApplicationPublicAliasCompilerPass implements \_PhpScoper860bc98a0f96\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+use _PhpScoper68683f91c63d\Symfony\Component\Console\Application;
+use _PhpScoper68683f91c63d\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use _PhpScoper68683f91c63d\Symfony\Component\DependencyInjection\ContainerBuilder;
+final class MakeConsoleApplicationPublicAliasCompilerPass implements \_PhpScoper68683f91c63d\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
-    public function process(\_PhpScoper860bc98a0f96\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
+    public function process(\_PhpScoper68683f91c63d\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
     {
         $consoleApplicationClass = $this->resolveConsoleApplicationClass($containerBuilder);
         if ($consoleApplicationClass === null) {
             return;
         }
         // add console application alias
-        if ($consoleApplicationClass === \_PhpScoper860bc98a0f96\Symfony\Component\Console\Application::class) {
+        if ($consoleApplicationClass === \_PhpScoper68683f91c63d\Symfony\Component\Console\Application::class) {
             return;
         }
-        $containerBuilder->setAlias(\_PhpScoper860bc98a0f96\Symfony\Component\Console\Application::class, $consoleApplicationClass)->setPublic(\true);
+        $containerBuilder->setAlias(\_PhpScoper68683f91c63d\Symfony\Component\Console\Application::class, $consoleApplicationClass)->setPublic(\true);
     }
-    private function resolveConsoleApplicationClass(\_PhpScoper860bc98a0f96\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : ?string
+    private function resolveConsoleApplicationClass(\_PhpScoper68683f91c63d\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : ?string
     {
         foreach ($containerBuilder->getDefinitions() as $definition) {
-            if (!\is_a((string) $definition->getClass(), \_PhpScoper860bc98a0f96\Symfony\Component\Console\Application::class, \true)) {
+            if (!\is_a((string) $definition->getClass(), \_PhpScoper68683f91c63d\Symfony\Component\Console\Application::class, \true)) {
                 continue;
             }
             return $definition->getClass();
