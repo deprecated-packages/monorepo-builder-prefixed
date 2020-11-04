@@ -3,13 +3,13 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\Command;
 
-use _PhpScoper68683f91c63d\PharIo\Version\Version;
-use _PhpScoper68683f91c63d\Symfony\Component\Console\Command\Command;
-use _PhpScoper68683f91c63d\Symfony\Component\Console\Input\InputArgument;
-use _PhpScoper68683f91c63d\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoper68683f91c63d\Symfony\Component\Console\Input\InputOption;
-use _PhpScoper68683f91c63d\Symfony\Component\Console\Output\OutputInterface;
-use _PhpScoper68683f91c63d\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoperce084f4275dd\PharIo\Version\Version;
+use _PhpScoperce084f4275dd\Symfony\Component\Console\Command\Command;
+use _PhpScoperce084f4275dd\Symfony\Component\Console\Input\InputArgument;
+use _PhpScoperce084f4275dd\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoperce084f4275dd\Symfony\Component\Console\Input\InputOption;
+use _PhpScoperce084f4275dd\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoperce084f4275dd\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface;
 use Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard;
@@ -19,7 +19,7 @@ use Symplify\MonorepoBuilder\Release\Version\VersionFactory;
 use Symplify\MonorepoBuilder\ValueObject\File;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Console\ShellCode;
-final class ReleaseCommand extends \_PhpScoper68683f91c63d\Symfony\Component\Console\Command\Command
+final class ReleaseCommand extends \_PhpScoperce084f4275dd\Symfony\Component\Console\Command\Command
 {
     /**
      * @var SymfonyStyle
@@ -37,7 +37,7 @@ final class ReleaseCommand extends \_PhpScoper68683f91c63d\Symfony\Component\Con
      * @var VersionFactory
      */
     private $versionFactory;
-    public function __construct(\_PhpScoper68683f91c63d\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Release\ReleaseWorkerProvider $releaseWorkerProvider, \Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard $releaseGuard, \Symplify\MonorepoBuilder\Release\Version\VersionFactory $versionFactory)
+    public function __construct(\_PhpScoperce084f4275dd\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Release\ReleaseWorkerProvider $releaseWorkerProvider, \Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard $releaseGuard, \Symplify\MonorepoBuilder\Release\Version\VersionFactory $versionFactory)
     {
         parent::__construct();
         $this->symfonyStyle = $symfonyStyle;
@@ -49,11 +49,11 @@ final class ReleaseCommand extends \_PhpScoper68683f91c63d\Symfony\Component\Con
     {
         $this->setDescription('Perform release process with set Release Workers.');
         $description = \sprintf('Release version, in format "<major>.<minor>.<patch>" or "v<major>.<minor>.<patch> or one of keywords: "%s"', \implode('", "', \Symplify\MonorepoBuilder\Release\ValueObject\SemVersion::ALL));
-        $this->addArgument(\Symplify\MonorepoBuilder\ValueObject\Option::VERSION, \_PhpScoper68683f91c63d\Symfony\Component\Console\Input\InputArgument::REQUIRED, $description);
-        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::DRY_RUN, null, \_PhpScoper68683f91c63d\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Do not perform operations, just their preview');
-        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::STAGE, null, \_PhpScoper68683f91c63d\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Name of stage to perform');
+        $this->addArgument(\Symplify\MonorepoBuilder\ValueObject\Option::VERSION, \_PhpScoperce084f4275dd\Symfony\Component\Console\Input\InputArgument::REQUIRED, $description);
+        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::DRY_RUN, null, \_PhpScoperce084f4275dd\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Do not perform operations, just their preview');
+        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::STAGE, null, \_PhpScoperce084f4275dd\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Name of stage to perform');
     }
-    protected function execute(\_PhpScoper68683f91c63d\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper68683f91c63d\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoperce084f4275dd\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperce084f4275dd\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         // validation phase
         $stage = $this->resolveStage($input);
@@ -98,7 +98,7 @@ final class ReleaseCommand extends \_PhpScoper68683f91c63d\Symfony\Component\Con
         }
         $this->symfonyStyle->newLine();
     }
-    private function resolveStage(\_PhpScoper68683f91c63d\Symfony\Component\Console\Input\InputInterface $input) : ?string
+    private function resolveStage(\_PhpScoperce084f4275dd\Symfony\Component\Console\Input\InputInterface $input) : ?string
     {
         $stage = $input->getOption(\Symplify\MonorepoBuilder\ValueObject\Option::STAGE);
         // string or null
@@ -110,7 +110,7 @@ final class ReleaseCommand extends \_PhpScoper68683f91c63d\Symfony\Component\Con
         $this->releaseGuard->guardStage($stage);
         return $stage;
     }
-    private function resolveVersion(\_PhpScoper68683f91c63d\Symfony\Component\Console\Input\InputInterface $input, ?string $stage) : \_PhpScoper68683f91c63d\PharIo\Version\Version
+    private function resolveVersion(\_PhpScoperce084f4275dd\Symfony\Component\Console\Input\InputInterface $input, ?string $stage) : \_PhpScoperce084f4275dd\PharIo\Version\Version
     {
         /** @var string $versionArgument */
         $versionArgument = $input->getArgument(\Symplify\MonorepoBuilder\ValueObject\Option::VERSION);

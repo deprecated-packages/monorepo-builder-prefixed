@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper68683f91c63d\PharIo\Version;
+namespace _PhpScoperce084f4275dd\PharIo\Version;
 
-abstract class AbstractVersionConstraint implements \_PhpScoper68683f91c63d\PharIo\Version\VersionConstraint
+abstract class AbstractVersionConstraint implements \_PhpScoperce084f4275dd\PharIo\Version\VersionConstraint
 {
     /**
      * @var string
