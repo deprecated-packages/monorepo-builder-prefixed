@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperce084f4275dd\Symfony\Component\Config\Definition\Exception;
+namespace _PhpScopere32570efa19a\Symfony\Component\Config\Definition\Exception;
 
 /**
  * Thrown when an error is detected in a node Definition.
  *
  * @author Victor Berchet <victor.berchet@suumit.com>
  */
-class InvalidDefinitionException extends \_PhpScoperce084f4275dd\Symfony\Component\Config\Definition\Exception\Exception
+class InvalidDefinitionException extends \_PhpScopere32570efa19a\Symfony\Component\Config\Definition\Exception\Exception
 {
 }

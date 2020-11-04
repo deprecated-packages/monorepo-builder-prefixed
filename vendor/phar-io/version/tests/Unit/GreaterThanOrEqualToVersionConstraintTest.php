@@ -8,28 +8,28 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperce084f4275dd\PharIo\Version;
+namespace _PhpScopere32570efa19a\PharIo\Version;
 
-use _PhpScoperce084f4275dd\PHPUnit\Framework\TestCase;
+use _PhpScopere32570efa19a\PHPUnit\Framework\TestCase;
 /**
  * @covers \PharIo\Version\GreaterThanOrEqualToVersionConstraint
  */
-class GreaterThanOrEqualToVersionConstraintTest extends \_PhpScoperce084f4275dd\PHPUnit\Framework\TestCase
+class GreaterThanOrEqualToVersionConstraintTest extends \_PhpScopere32570efa19a\PHPUnit\Framework\TestCase
 {
     public function versionProvider()
     {
         return [
             // compliant versions
-            [new \_PhpScoperce084f4275dd\PharIo\Version\Version('1.0.2'), new \_PhpScoperce084f4275dd\PharIo\Version\Version('1.0.2'), \true],
-            [new \_PhpScoperce084f4275dd\PharIo\Version\Version('1.0.2'), new \_PhpScoperce084f4275dd\PharIo\Version\Version('1.0.3'), \true],
-            [new \_PhpScoperce084f4275dd\PharIo\Version\Version('1.0.2'), new \_PhpScoperce084f4275dd\PharIo\Version\Version('1.1.1'), \true],
-            [new \_PhpScoperce084f4275dd\PharIo\Version\Version('1.0.2'), new \_PhpScoperce084f4275dd\PharIo\Version\Version('2.0.0'), \true],
-            [new \_PhpScoperce084f4275dd\PharIo\Version\Version('1.0.2'), new \_PhpScoperce084f4275dd\PharIo\Version\Version('1.0.3'), \true],
+            [new \_PhpScopere32570efa19a\PharIo\Version\Version('1.0.2'), new \_PhpScopere32570efa19a\PharIo\Version\Version('1.0.2'), \true],
+            [new \_PhpScopere32570efa19a\PharIo\Version\Version('1.0.2'), new \_PhpScopere32570efa19a\PharIo\Version\Version('1.0.3'), \true],
+            [new \_PhpScopere32570efa19a\PharIo\Version\Version('1.0.2'), new \_PhpScopere32570efa19a\PharIo\Version\Version('1.1.1'), \true],
+            [new \_PhpScopere32570efa19a\PharIo\Version\Version('1.0.2'), new \_PhpScopere32570efa19a\PharIo\Version\Version('2.0.0'), \true],
+            [new \_PhpScopere32570efa19a\PharIo\Version\Version('1.0.2'), new \_PhpScopere32570efa19a\PharIo\Version\Version('1.0.3'), \true],
             // non-compliant versions
-            [new \_PhpScoperce084f4275dd\PharIo\Version\Version('1.0.2'), new \_PhpScoperce084f4275dd\PharIo\Version\Version('1.0.1'), \false],
-            [new \_PhpScoperce084f4275dd\PharIo\Version\Version('1.9.8'), new \_PhpScoperce084f4275dd\PharIo\Version\Version('0.9.9'), \false],
-            [new \_PhpScoperce084f4275dd\PharIo\Version\Version('2.3.1'), new \_PhpScoperce084f4275dd\PharIo\Version\Version('2.2.3'), \false],
-            [new \_PhpScoperce084f4275dd\PharIo\Version\Version('3.0.2'), new \_PhpScoperce084f4275dd\PharIo\Version\Version('2.9.9'), \false],
+            [new \_PhpScopere32570efa19a\PharIo\Version\Version('1.0.2'), new \_PhpScopere32570efa19a\PharIo\Version\Version('1.0.1'), \false],
+            [new \_PhpScopere32570efa19a\PharIo\Version\Version('1.9.8'), new \_PhpScopere32570efa19a\PharIo\Version\Version('0.9.9'), \false],
+            [new \_PhpScopere32570efa19a\PharIo\Version\Version('2.3.1'), new \_PhpScopere32570efa19a\PharIo\Version\Version('2.2.3'), \false],
+            [new \_PhpScopere32570efa19a\PharIo\Version\Version('3.0.2'), new \_PhpScopere32570efa19a\PharIo\Version\Version('2.9.9'), \false],
         ];
     }
     /**
@@ -39,9 +39,9 @@ class GreaterThanOrEqualToVersionConstraintTest extends \_PhpScoperce084f4275dd\
      * @param Version $version
      * @param bool $expectedResult
      */
-    public function testReturnsTrueForCompliantVersions(\_PhpScoperce084f4275dd\PharIo\Version\Version $constraintVersion, \_PhpScoperce084f4275dd\PharIo\Version\Version $version, $expectedResult)
+    public function testReturnsTrueForCompliantVersions(\_PhpScopere32570efa19a\PharIo\Version\Version $constraintVersion, \_PhpScopere32570efa19a\PharIo\Version\Version $version, $expectedResult)
     {
-        $constraint = new \_PhpScoperce084f4275dd\PharIo\Version\GreaterThanOrEqualToVersionConstraint('foo', $constraintVersion);
+        $constraint = new \_PhpScopere32570efa19a\PharIo\Version\GreaterThanOrEqualToVersionConstraint('foo', $constraintVersion);
         $this->assertSame($expectedResult, $constraint->complies($version));
     }
 }

@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\Command;
 
-use _PhpScoperce084f4275dd\Symfony\Component\Console\Command\Command;
-use _PhpScoperce084f4275dd\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperce084f4275dd\Symfony\Component\Console\Output\OutputInterface;
-use _PhpScoperce084f4275dd\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScopere32570efa19a\Symfony\Component\Console\Command\Command;
+use _PhpScopere32570efa19a\Symfony\Component\Console\Input\InputInterface;
+use _PhpScopere32570efa19a\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScopere32570efa19a\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\ComposerJsonManipulator\ComposerJsonFactory;
 use Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\Console\Reporter\ConflictingPackageVersionsReporter;
@@ -15,7 +15,7 @@ use Symplify\MonorepoBuilder\Merge\Application\MergedAndDecoratedComposerJsonFac
 use Symplify\MonorepoBuilder\VersionValidator;
 use Symplify\PackageBuilder\Console\ShellCode;
 use Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
-final class MergeCommand extends \_PhpScoperce084f4275dd\Symfony\Component\Console\Command\Command
+final class MergeCommand extends \_PhpScopere32570efa19a\Symfony\Component\Console\Command\Command
 {
     /**
      * @var SymfonyStyle
@@ -45,7 +45,7 @@ final class MergeCommand extends \_PhpScoperce084f4275dd\Symfony\Component\Conso
      * @var MergedAndDecoratedComposerJsonFactory
      */
     private $mergedAndDecoratedComposerJsonFactory;
-    public function __construct(\_PhpScoperce084f4275dd\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\VersionValidator $versionValidator, \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \Symplify\MonorepoBuilder\Console\Reporter\ConflictingPackageVersionsReporter $conflictingPackageVersionsReporter, \Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory, \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \Symplify\MonorepoBuilder\Merge\Application\MergedAndDecoratedComposerJsonFactory $mergedAndDecoratedComposerJsonFactory)
+    public function __construct(\_PhpScopere32570efa19a\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\VersionValidator $versionValidator, \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \Symplify\MonorepoBuilder\Console\Reporter\ConflictingPackageVersionsReporter $conflictingPackageVersionsReporter, \Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory, \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \Symplify\MonorepoBuilder\Merge\Application\MergedAndDecoratedComposerJsonFactory $mergedAndDecoratedComposerJsonFactory)
     {
         $this->symfonyStyle = $symfonyStyle;
         $this->versionValidator = $versionValidator;
@@ -60,7 +60,7 @@ final class MergeCommand extends \_PhpScoperce084f4275dd\Symfony\Component\Conso
     {
         $this->setDescription('Merge "composer.json" from all found packages to root one');
     }
-    protected function execute(\_PhpScoperce084f4275dd\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperce084f4275dd\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScopere32570efa19a\Symfony\Component\Console\Input\InputInterface $input, \_PhpScopere32570efa19a\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $this->ensureNoConflictingPackageVersions();
         $mainComposerJsonFilePath = \getcwd() . '/composer.json';

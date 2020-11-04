@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\Guard;
 
-use _PhpScoperce084f4275dd\PharIo\Version\Version;
+use _PhpScopere32570efa19a\PharIo\Version\Version;
 use Symplify\MonorepoBuilder\Exception\Git\InvalidGitVersionException;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface;
@@ -65,7 +65,7 @@ final class ReleaseGuard
         // stage has invalid value
         throw new \Symplify\MonorepoBuilder\Release\Exception\ConfigurationException(\sprintf('Stage "%s" was not found. Pick one of: "%s"', $stage, \implode('", "', $this->getStages())));
     }
-    public function guardVersion(\_PhpScoperce084f4275dd\PharIo\Version\Version $version, ?string $stage) : void
+    public function guardVersion(\_PhpScopere32570efa19a\PharIo\Version\Version $version, ?string $stage) : void
     {
         // stage is set and it doesn't need a validation
         if ($stage && \in_array($stage, $this->stagesToAllowExistingTag, \true)) {
@@ -90,7 +90,7 @@ final class ReleaseGuard
         $this->stages = \array_unique($stages);
         return $this->stages;
     }
-    private function ensureVersionIsNewerThanLastOne(\_PhpScoperce084f4275dd\PharIo\Version\Version $version) : void
+    private function ensureVersionIsNewerThanLastOne(\_PhpScopere32570efa19a\PharIo\Version\Version $version) : void
     {
         $mostRecentVersion = $this->gitManager->getMostRecentTag(\getcwd());
         // no tag yet
@@ -98,7 +98,7 @@ final class ReleaseGuard
             return;
         }
         // validation
-        $mostRecentVersion = new \_PhpScoperce084f4275dd\PharIo\Version\Version($mostRecentVersion);
+        $mostRecentVersion = new \_PhpScopere32570efa19a\PharIo\Version\Version($mostRecentVersion);
         if ($version->isGreaterThan($mostRecentVersion)) {
             return;
         }
