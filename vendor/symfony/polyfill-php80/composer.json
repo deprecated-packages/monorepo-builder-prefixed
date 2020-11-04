@@ -29,7 +29,7 @@
     },
     "autoload": {
         "psr-4": {
-            "_PhpScoper9fc59dd81894\\Symfony\\Polyfill\\Php80\\": ""
+            "_PhpScoper9122d33f3e27\\Symfony\\Polyfill\\Php80\\": ""
         },
         "files": [
             "bootstrap.php"
