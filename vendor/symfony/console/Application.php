@@ -8,40 +8,44 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper37887d2f9246\Symfony\Component\Console;
+namespace _PhpScoper130e101f3ca6\Symfony\Component\Console;
 
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Command\Command;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Command\HelpCommand;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Command\ListCommand;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\CommandLoader\CommandLoaderInterface;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Event\ConsoleCommandEvent;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Event\ConsoleErrorEvent;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Event\ConsoleTerminateEvent;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Exception\CommandNotFoundException;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Exception\ExceptionInterface;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Exception\LogicException;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Exception\NamespaceNotFoundException;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Formatter\OutputFormatter;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Helper\DebugFormatterHelper;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Helper\FormatterHelper;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Helper\Helper;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Helper\HelperSet;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Helper\ProcessHelper;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Helper\QuestionHelper;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Input\ArgvInput;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Input\ArrayInput;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputArgument;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputAwareInterface;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputDefinition;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputOption;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Output\ConsoleOutput;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Style\SymfonyStyle;
-use _PhpScoper37887d2f9246\Symfony\Component\ErrorHandler\ErrorHandler;
-use _PhpScoper37887d2f9246\Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
-use _PhpScoper37887d2f9246\Symfony\Contracts\Service\ResetInterface;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Command\Command;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Command\HelpCommand;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Command\ListCommand;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\CommandLoader\CommandLoaderInterface;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Event\ConsoleCommandEvent;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Event\ConsoleErrorEvent;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Event\ConsoleTerminateEvent;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Exception\CommandNotFoundException;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Exception\ExceptionInterface;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Exception\LogicException;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Exception\NamespaceNotFoundException;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Formatter\OutputFormatter;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Helper\DebugFormatterHelper;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Helper\FormatterHelper;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Helper\Helper;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Helper\HelperSet;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Helper\ProcessHelper;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Helper\QuestionHelper;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Input\ArgvInput;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Input\ArrayInput;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputArgument;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputAwareInterface;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputDefinition;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputOption;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Input\StreamableInputInterface;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Output\ConsoleOutput;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoper130e101f3ca6\Symfony\Component\Debug\ErrorHandler as LegacyErrorHandler;
+use _PhpScoper130e101f3ca6\Symfony\Component\Debug\Exception\FatalThrowableError;
+use _PhpScoper130e101f3ca6\Symfony\Component\ErrorHandler\ErrorHandler;
+use _PhpScoper130e101f3ca6\Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use _PhpScoper130e101f3ca6\Symfony\Component\EventDispatcher\LegacyEventDispatcherProxy;
+use _PhpScoper130e101f3ca6\Symfony\Contracts\Service\ResetInterface;
 /**
  * An Application is the container for a collection of commands.
  *
@@ -57,7 +61,7 @@ use _PhpScoper37887d2f9246\Symfony\Contracts\Service\ResetInterface;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\ResetInterface
+class Application implements \_PhpScoper130e101f3ca6\Symfony\Contracts\Service\ResetInterface
 {
     private $commands = [];
     private $wantHelps = \false;
@@ -74,21 +78,25 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
     private $defaultCommand;
     private $singleCommand = \false;
     private $initialized;
+    /**
+     * @param string $name    The name of the application
+     * @param string $version The version of the application
+     */
     public function __construct(string $name = 'UNKNOWN', string $version = 'UNKNOWN')
     {
         $this->name = $name;
         $this->version = $version;
-        $this->terminal = new \_PhpScoper37887d2f9246\Symfony\Component\Console\Terminal();
+        $this->terminal = new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Terminal();
         $this->defaultCommand = 'list';
     }
     /**
-     * @final
+     * @final since Symfony 4.3, the type-hint will be updated to the interface from symfony/contracts in 5.0
      */
-    public function setDispatcher(\_PhpScoper37887d2f9246\Symfony\Contracts\EventDispatcher\EventDispatcherInterface $dispatcher)
+    public function setDispatcher(\_PhpScoper130e101f3ca6\Symfony\Component\EventDispatcher\EventDispatcherInterface $dispatcher)
     {
-        $this->dispatcher = $dispatcher;
+        $this->dispatcher = \_PhpScoper130e101f3ca6\Symfony\Component\EventDispatcher\LegacyEventDispatcherProxy::decorate($dispatcher);
     }
-    public function setCommandLoader(\_PhpScoper37887d2f9246\Symfony\Component\Console\CommandLoader\CommandLoaderInterface $commandLoader)
+    public function setCommandLoader(\_PhpScoper130e101f3ca6\Symfony\Component\Console\CommandLoader\CommandLoaderInterface $commandLoader)
     {
         $this->commandLoader = $commandLoader;
     }
@@ -99,20 +107,18 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
      *
      * @throws \Exception When running fails. Bypass this when {@link setCatchExceptions()}.
      */
-    public function run(\_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputInterface $input = null, \_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface $output = null)
+    public function run(\_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputInterface $input = null, \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface $output = null)
     {
-        if (\function_exists('putenv')) {
-            @\putenv('LINES=' . $this->terminal->getHeight());
-            @\putenv('COLUMNS=' . $this->terminal->getWidth());
-        }
+        \putenv('LINES=' . $this->terminal->getHeight());
+        \putenv('COLUMNS=' . $this->terminal->getWidth());
         if (null === $input) {
-            $input = new \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\ArgvInput();
+            $input = new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\ArgvInput();
         }
         if (null === $output) {
-            $output = new \_PhpScoper37887d2f9246\Symfony\Component\Console\Output\ConsoleOutput();
+            $output = new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\ConsoleOutput();
         }
         $renderException = function (\Throwable $e) use($output) {
-            if ($output instanceof \_PhpScoper37887d2f9246\Symfony\Component\Console\Output\ConsoleOutputInterface) {
+            if ($output instanceof \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\ConsoleOutputInterface) {
                 $this->renderThrowable($e, $output->getErrorOutput());
             } else {
                 $this->renderThrowable($e, $output);
@@ -120,7 +126,7 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
         };
         if ($phpHandler = \set_exception_handler($renderException)) {
             \restore_exception_handler();
-            if (!\is_array($phpHandler) || !$phpHandler[0] instanceof \_PhpScoper37887d2f9246\Symfony\Component\ErrorHandler\ErrorHandler) {
+            if (!\is_array($phpHandler) || !$phpHandler[0] instanceof \_PhpScoper130e101f3ca6\Symfony\Component\ErrorHandler\ErrorHandler && !$phpHandler[0] instanceof \_PhpScoper130e101f3ca6\Symfony\Component\Debug\ErrorHandler) {
                 $errorHandler = \true;
             } elseif ($errorHandler = $phpHandler[0]->setExceptionHandler($renderException)) {
                 $phpHandler[0]->setExceptionHandler($errorHandler);
@@ -171,7 +177,7 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
      *
      * @return int 0 if everything went fine, or an error code
      */
-    public function doRun(\_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface $output)
+    public function doRun(\_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface $output)
     {
         if (\true === $input->hasParameterOption(['--version', '-V'], \true)) {
             $output->writeln($this->getLongVersion());
@@ -180,14 +186,14 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
         try {
             // Makes ArgvInput::getFirstArgument() able to distinguish an option from an argument.
             $input->bind($this->getDefinition());
-        } catch (\_PhpScoper37887d2f9246\Symfony\Component\Console\Exception\ExceptionInterface $e) {
+        } catch (\_PhpScoper130e101f3ca6\Symfony\Component\Console\Exception\ExceptionInterface $e) {
             // Errors must be ignored, full binding/validation happens later when the command is known.
         }
         $name = $this->getCommandName($input);
         if (\true === $input->hasParameterOption(['--help', '-h'], \true)) {
             if (!$name) {
                 $name = 'help';
-                $input = new \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\ArrayInput(['command_name' => $this->defaultCommand]);
+                $input = new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\ArrayInput(['command_name' => $this->defaultCommand]);
             } else {
                 $this->wantHelps = \true;
             }
@@ -195,17 +201,17 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
         if (!$name) {
             $name = $this->defaultCommand;
             $definition = $this->getDefinition();
-            $definition->setArguments(\array_merge($definition->getArguments(), ['command' => new \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputArgument('command', \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputArgument::OPTIONAL, $definition->getArgument('command')->getDescription(), $name)]));
+            $definition->setArguments(\array_merge($definition->getArguments(), ['command' => new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputArgument('command', \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputArgument::OPTIONAL, $definition->getArgument('command')->getDescription(), $name)]));
         }
         try {
             $this->runningCommand = null;
             // the command name MUST be the first element of the input
             $command = $this->find($name);
         } catch (\Throwable $e) {
-            if (!($e instanceof \_PhpScoper37887d2f9246\Symfony\Component\Console\Exception\CommandNotFoundException && !$e instanceof \_PhpScoper37887d2f9246\Symfony\Component\Console\Exception\NamespaceNotFoundException) || 1 !== \count($alternatives = $e->getAlternatives()) || !$input->isInteractive()) {
+            if (!($e instanceof \_PhpScoper130e101f3ca6\Symfony\Component\Console\Exception\CommandNotFoundException && !$e instanceof \_PhpScoper130e101f3ca6\Symfony\Component\Console\Exception\NamespaceNotFoundException) || 1 !== \count($alternatives = $e->getAlternatives()) || !$input->isInteractive()) {
                 if (null !== $this->dispatcher) {
-                    $event = new \_PhpScoper37887d2f9246\Symfony\Component\Console\Event\ConsoleErrorEvent($input, $output, $e);
-                    $this->dispatcher->dispatch($event, \_PhpScoper37887d2f9246\Symfony\Component\Console\ConsoleEvents::ERROR);
+                    $event = new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Event\ConsoleErrorEvent($input, $output, $e);
+                    $this->dispatcher->dispatch($event, \_PhpScoper130e101f3ca6\Symfony\Component\Console\ConsoleEvents::ERROR);
                     if (0 === $event->getExitCode()) {
                         return 0;
                     }
@@ -214,12 +220,12 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
                 throw $e;
             }
             $alternative = $alternatives[0];
-            $style = new \_PhpScoper37887d2f9246\Symfony\Component\Console\Style\SymfonyStyle($input, $output);
+            $style = new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Style\SymfonyStyle($input, $output);
             $style->block(\sprintf("\nCommand \"%s\" is not defined.\n", $name), null, 'error');
             if (!$style->confirm(\sprintf('Do you want to run "%s" instead? ', $alternative), \false)) {
                 if (null !== $this->dispatcher) {
-                    $event = new \_PhpScoper37887d2f9246\Symfony\Component\Console\Event\ConsoleErrorEvent($input, $output, $e);
-                    $this->dispatcher->dispatch($event, \_PhpScoper37887d2f9246\Symfony\Component\Console\ConsoleEvents::ERROR);
+                    $event = new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Event\ConsoleErrorEvent($input, $output, $e);
+                    $this->dispatcher->dispatch($event, \_PhpScoper130e101f3ca6\Symfony\Component\Console\ConsoleEvents::ERROR);
                     return $event->getExitCode();
                 }
                 return 1;
@@ -237,7 +243,7 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
     public function reset()
     {
     }
-    public function setHelperSet(\_PhpScoper37887d2f9246\Symfony\Component\Console\Helper\HelperSet $helperSet)
+    public function setHelperSet(\_PhpScoper130e101f3ca6\Symfony\Component\Console\Helper\HelperSet $helperSet)
     {
         $this->helperSet = $helperSet;
     }
@@ -253,7 +259,7 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
         }
         return $this->helperSet;
     }
-    public function setDefinition(\_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputDefinition $definition)
+    public function setDefinition(\_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputDefinition $definition)
     {
         $this->definition = $definition;
     }
@@ -294,10 +300,12 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
     }
     /**
      * Sets whether to catch exceptions or not during commands execution.
+     *
+     * @param bool $boolean Whether to catch exceptions or not during commands execution
      */
-    public function setCatchExceptions(bool $boolean)
+    public function setCatchExceptions($boolean)
     {
-        $this->catchExceptions = $boolean;
+        $this->catchExceptions = (bool) $boolean;
     }
     /**
      * Gets whether to automatically exit after a command execution or not.
@@ -310,10 +318,12 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
     }
     /**
      * Sets whether to automatically exit after a command execution or not.
+     *
+     * @param bool $boolean Whether to automatically exit after a command execution or not
      */
-    public function setAutoExit(bool $boolean)
+    public function setAutoExit($boolean)
     {
-        $this->autoExit = $boolean;
+        $this->autoExit = (bool) $boolean;
     }
     /**
      * Gets the name of the application.
@@ -326,8 +336,10 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
     }
     /**
      * Sets the application name.
-     **/
-    public function setName(string $name)
+     *
+     * @param string $name The application name
+     */
+    public function setName($name)
     {
         $this->name = $name;
     }
@@ -342,8 +354,10 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
     }
     /**
      * Sets the application version.
+     *
+     * @param string $version The application version
      */
-    public function setVersion(string $version)
+    public function setVersion($version)
     {
         $this->version = $version;
     }
@@ -365,11 +379,13 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
     /**
      * Registers a new command.
      *
+     * @param string $name The command name
+     *
      * @return Command The newly created command
      */
-    public function register(string $name)
+    public function register($name)
     {
-        return $this->add(new \_PhpScoper37887d2f9246\Symfony\Component\Console\Command\Command($name));
+        return $this->add(new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Command\Command($name));
     }
     /**
      * Adds an array of command objects.
@@ -392,7 +408,7 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
      *
      * @return Command|null The registered command if enabled or null
      */
-    public function add(\_PhpScoper37887d2f9246\Symfony\Component\Console\Command\Command $command)
+    public function add(\_PhpScoper130e101f3ca6\Symfony\Component\Console\Command\Command $command)
     {
         $this->init();
         $command->setApplication($this);
@@ -403,7 +419,7 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
         // Will throw if the command is not correctly initialized.
         $command->getDefinition();
         if (!$command->getName()) {
-            throw new \_PhpScoper37887d2f9246\Symfony\Component\Console\Exception\LogicException(\sprintf('The command defined in "%s" cannot have an empty name.', \get_debug_type($command)));
+            throw new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Exception\LogicException(\sprintf('The command defined in "%s" cannot have an empty name.', \get_class($command)));
         }
         $this->commands[$command->getName()] = $command;
         foreach ($command->getAliases() as $alias) {
@@ -414,19 +430,17 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
     /**
      * Returns a registered command by name or alias.
      *
+     * @param string $name The command name or alias
+     *
      * @return Command A Command object
      *
      * @throws CommandNotFoundException When given command name does not exist
      */
-    public function get(string $name)
+    public function get($name)
     {
         $this->init();
         if (!$this->has($name)) {
-            throw new \_PhpScoper37887d2f9246\Symfony\Component\Console\Exception\CommandNotFoundException(\sprintf('The command "%s" does not exist.', $name));
-        }
-        // When the command has a different name than the one used at the command loader level
-        if (!isset($this->commands[$name])) {
-            throw new \_PhpScoper37887d2f9246\Symfony\Component\Console\Exception\CommandNotFoundException(\sprintf('The "%s" command cannot be found because it is registered under multiple names. Make sure you don\'t set a different name via constructor or "setName()".', $name));
+            throw new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Exception\CommandNotFoundException(\sprintf('The command "%s" does not exist.', $name));
         }
         $command = $this->commands[$name];
         if ($this->wantHelps) {
@@ -440,9 +454,11 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
     /**
      * Returns true if the command exists, false otherwise.
      *
+     * @param string $name The command name or alias
+     *
      * @return bool true if the command exists, false otherwise
      */
-    public function has(string $name)
+    public function has($name)
     {
         $this->init();
         return isset($this->commands[$name]) || $this->commandLoader && $this->commandLoader->has($name) && $this->add($this->commandLoader->get($name));
@@ -471,11 +487,13 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
     /**
      * Finds a registered namespace by a name or an abbreviation.
      *
+     * @param string $namespace A namespace or abbreviation to search for
+     *
      * @return string A registered namespace
      *
      * @throws NamespaceNotFoundException When namespace is incorrect or ambiguous
      */
-    public function findNamespace(string $namespace)
+    public function findNamespace($namespace)
     {
         $allNamespaces = $this->getNamespaces();
         $expr = \preg_replace_callback('{([^:]+|)}', function ($matches) {
@@ -492,11 +510,11 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
                 }
                 $message .= \implode("\n    ", $alternatives);
             }
-            throw new \_PhpScoper37887d2f9246\Symfony\Component\Console\Exception\NamespaceNotFoundException($message, $alternatives);
+            throw new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Exception\NamespaceNotFoundException($message, $alternatives);
         }
         $exact = \in_array($namespace, $namespaces, \true);
         if (\count($namespaces) > 1 && !$exact) {
-            throw new \_PhpScoper37887d2f9246\Symfony\Component\Console\Exception\NamespaceNotFoundException(\sprintf("The namespace \"%s\" is ambiguous.\nDid you mean one of these?\n%s.", $namespace, $this->getAbbreviationSuggestions(\array_values($namespaces))), \array_values($namespaces));
+            throw new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Exception\NamespaceNotFoundException(\sprintf("The namespace \"%s\" is ambiguous.\nDid you mean one of these?\n%s", $namespace, $this->getAbbreviationSuggestions(\array_values($namespaces))), \array_values($namespaces));
         }
         return $exact ? $namespace : \reset($namespaces);
     }
@@ -506,11 +524,13 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
      * Contrary to get, this command tries to find the best
      * match if you give it an abbreviation of a name or alias.
      *
+     * @param string $name A command name or a command alias
+     *
      * @return Command A Command instance
      *
      * @throws CommandNotFoundException When command name is incorrect or ambiguous
      */
-    public function find(string $name)
+    public function find($name)
     {
         $this->init();
         $aliases = [];
@@ -551,16 +571,13 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
                 }
                 $message .= \implode("\n    ", $alternatives);
             }
-            throw new \_PhpScoper37887d2f9246\Symfony\Component\Console\Exception\CommandNotFoundException($message, \array_values($alternatives));
+            throw new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Exception\CommandNotFoundException($message, \array_values($alternatives));
         }
         // filter out aliases for commands which are already on the list
         if (\count($commands) > 1) {
             $commandList = $this->commandLoader ? \array_merge(\array_flip($this->commandLoader->getNames()), $this->commands) : $this->commands;
-            $commands = \array_unique(\array_filter($commands, function ($nameOrAlias) use(&$commandList, $commands, &$aliases) {
-                if (!$commandList[$nameOrAlias] instanceof \_PhpScoper37887d2f9246\Symfony\Component\Console\Command\Command) {
-                    $commandList[$nameOrAlias] = $this->commandLoader->get($nameOrAlias);
-                }
-                $commandName = $commandList[$nameOrAlias]->getName();
+            $commands = \array_unique(\array_filter($commands, function ($nameOrAlias) use($commandList, $commands, &$aliases) {
+                $commandName = $commandList[$nameOrAlias] instanceof \_PhpScoper130e101f3ca6\Symfony\Component\Console\Command\Command ? $commandList[$nameOrAlias]->getName() : $nameOrAlias;
                 $aliases[$nameOrAlias] = $commandName;
                 return $commandName === $nameOrAlias || !\in_array($commandName, $commands);
             }));
@@ -570,24 +587,27 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
             $abbrevs = \array_values($commands);
             $maxLen = 0;
             foreach ($abbrevs as $abbrev) {
-                $maxLen = \max(\_PhpScoper37887d2f9246\Symfony\Component\Console\Helper\Helper::strlen($abbrev), $maxLen);
+                $maxLen = \max(\_PhpScoper130e101f3ca6\Symfony\Component\Console\Helper\Helper::strlen($abbrev), $maxLen);
             }
             $abbrevs = \array_map(function ($cmd) use($commandList, $usableWidth, $maxLen, &$commands) {
+                if (!$commandList[$cmd] instanceof \_PhpScoper130e101f3ca6\Symfony\Component\Console\Command\Command) {
+                    $commandList[$cmd] = $this->commandLoader->get($cmd);
+                }
                 if ($commandList[$cmd]->isHidden()) {
                     unset($commands[\array_search($cmd, $commands)]);
                     return \false;
                 }
                 $abbrev = \str_pad($cmd, $maxLen, ' ') . ' ' . $commandList[$cmd]->getDescription();
-                return \_PhpScoper37887d2f9246\Symfony\Component\Console\Helper\Helper::strlen($abbrev) > $usableWidth ? \_PhpScoper37887d2f9246\Symfony\Component\Console\Helper\Helper::substr($abbrev, 0, $usableWidth - 3) . '...' : $abbrev;
+                return \_PhpScoper130e101f3ca6\Symfony\Component\Console\Helper\Helper::strlen($abbrev) > $usableWidth ? \_PhpScoper130e101f3ca6\Symfony\Component\Console\Helper\Helper::substr($abbrev, 0, $usableWidth - 3) . '...' : $abbrev;
             }, \array_values($commands));
             if (\count($commands) > 1) {
                 $suggestions = $this->getAbbreviationSuggestions(\array_filter($abbrevs));
-                throw new \_PhpScoper37887d2f9246\Symfony\Component\Console\Exception\CommandNotFoundException(\sprintf("Command \"%s\" is ambiguous.\nDid you mean one of these?\n%s.", $name, $suggestions), \array_values($commands));
+                throw new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Exception\CommandNotFoundException(\sprintf("Command \"%s\" is ambiguous.\nDid you mean one of these?\n%s", $name, $suggestions), \array_values($commands));
             }
         }
         $command = $this->get(\reset($commands));
         if ($command->isHidden()) {
-            throw new \_PhpScoper37887d2f9246\Symfony\Component\Console\Exception\CommandNotFoundException(\sprintf('The command "%s" does not exist.', $name));
+            @\trigger_error(\sprintf('Command "%s" is hidden, finding it using an abbreviation is deprecated since Symfony 4.4, use its full name instead.', $command->getName()), \E_USER_DEPRECATED);
         }
         return $command;
     }
@@ -596,9 +616,11 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
      *
      * The array keys are the full names and the values the command instances.
      *
+     * @param string $namespace A namespace name
+     *
      * @return Command[] An array of Command instances
      */
-    public function all(string $namespace = null)
+    public function all($namespace = null)
     {
         $this->init();
         if (null === $namespace) {
@@ -631,9 +653,11 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
     /**
      * Returns an array of possible abbreviations given a set of names.
      *
-     * @return string[][] An array of abbreviations
+     * @param array $names An array of names
+     *
+     * @return array An array of abbreviations
      */
-    public static function getAbbreviations(array $names)
+    public static function getAbbreviations($names)
     {
         $abbrevs = [];
         foreach ($names as $name) {
@@ -644,29 +668,74 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
         }
         return $abbrevs;
     }
-    public function renderThrowable(\Throwable $e, \_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface $output) : void
+    /**
+     * Renders a caught exception.
+     *
+     * @deprecated since Symfony 4.4, use "renderThrowable()" instead
+     */
+    public function renderException(\Exception $e, \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface $output)
     {
-        $output->writeln('', \_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
+        @\trigger_error(\sprintf('The "%s::renderException()" method is deprecated since Symfony 4.4, use "renderThrowable()" instead.', __CLASS__), \E_USER_DEPRECATED);
+        $output->writeln('', \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
+        $this->doRenderException($e, $output);
+        $this->finishRenderThrowableOrException($output);
+    }
+    public function renderThrowable(\Throwable $e, \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface $output) : void
+    {
+        if (__CLASS__ !== \get_class($this) && __CLASS__ === (new \ReflectionMethod($this, 'renderThrowable'))->getDeclaringClass()->getName() && __CLASS__ !== (new \ReflectionMethod($this, 'renderException'))->getDeclaringClass()->getName()) {
+            @\trigger_error(\sprintf('The "%s::renderException()" method is deprecated since Symfony 4.4, use "renderThrowable()" instead.', __CLASS__), \E_USER_DEPRECATED);
+            if (!$e instanceof \Exception) {
+                $e = \class_exists(\_PhpScoper130e101f3ca6\Symfony\Component\Debug\Exception\FatalThrowableError::class) ? new \_PhpScoper130e101f3ca6\Symfony\Component\Debug\Exception\FatalThrowableError($e) : new \ErrorException($e->getMessage(), $e->getCode(), \E_ERROR, $e->getFile(), $e->getLine());
+            }
+            $this->renderException($e, $output);
+            return;
+        }
+        $output->writeln('', \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
         $this->doRenderThrowable($e, $output);
+        $this->finishRenderThrowableOrException($output);
+    }
+    private function finishRenderThrowableOrException(\_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface $output) : void
+    {
         if (null !== $this->runningCommand) {
-            $output->writeln(\sprintf('<info>%s</info>', \sprintf($this->runningCommand->getSynopsis(), $this->getName())), \_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
-            $output->writeln('', \_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
+            $output->writeln(\sprintf('<info>%s</info>', \sprintf($this->runningCommand->getSynopsis(), $this->getName())), \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
+            $output->writeln('', \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
         }
     }
-    protected function doRenderThrowable(\Throwable $e, \_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface $output) : void
+    /**
+     * @deprecated since Symfony 4.4, use "doRenderThrowable()" instead
+     */
+    protected function doRenderException(\Exception $e, \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface $output)
+    {
+        @\trigger_error(\sprintf('The "%s::doRenderException()" method is deprecated since Symfony 4.4, use "doRenderThrowable()" instead.', __CLASS__), \E_USER_DEPRECATED);
+        $this->doActuallyRenderThrowable($e, $output);
+    }
+    protected function doRenderThrowable(\Throwable $e, \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface $output) : void
+    {
+        if (__CLASS__ !== \get_class($this) && __CLASS__ === (new \ReflectionMethod($this, 'doRenderThrowable'))->getDeclaringClass()->getName() && __CLASS__ !== (new \ReflectionMethod($this, 'doRenderException'))->getDeclaringClass()->getName()) {
+            @\trigger_error(\sprintf('The "%s::doRenderException()" method is deprecated since Symfony 4.4, use "doRenderThrowable()" instead.', __CLASS__), \E_USER_DEPRECATED);
+            if (!$e instanceof \Exception) {
+                $e = \class_exists(\_PhpScoper130e101f3ca6\Symfony\Component\Debug\Exception\FatalThrowableError::class) ? new \_PhpScoper130e101f3ca6\Symfony\Component\Debug\Exception\FatalThrowableError($e) : new \ErrorException($e->getMessage(), $e->getCode(), \E_ERROR, $e->getFile(), $e->getLine());
+            }
+            $this->doRenderException($e, $output);
+            return;
+        }
+        $this->doActuallyRenderThrowable($e, $output);
+    }
+    private function doActuallyRenderThrowable(\Throwable $e, \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface $output) : void
     {
         do {
             $message = \trim($e->getMessage());
-            if ('' === $message || \_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERBOSE <= $output->getVerbosity()) {
-                $class = \get_debug_type($e);
+            if ('' === $message || \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERBOSE <= $output->getVerbosity()) {
+                $class = \get_class($e);
+                $class = 'c' === $class[0] && 0 === \strpos($class, "class@anonymous\0") ? \get_parent_class($class) . '@anonymous' : $class;
                 $title = \sprintf('  [%s%s]  ', $class, 0 !== ($code = $e->getCode()) ? ' (' . $code . ')' : '');
-                $len = \_PhpScoper37887d2f9246\Symfony\Component\Console\Helper\Helper::strlen($title);
+                $len = \_PhpScoper130e101f3ca6\Symfony\Component\Console\Helper\Helper::strlen($title);
             } else {
                 $len = 0;
             }
-            if (\false !== \strpos($message, "@anonymous\0")) {
-                $message = \preg_replace_callback('/[a-zA-Z_\\x7f-\\xff][\\\\a-zA-Z0-9_\\x7f-\\xff]*+@anonymous\\x00.*?\\.php(?:0x?|:[0-9]++\\$)[0-9a-fA-F]++/', function ($m) {
-                    return \class_exists($m[0], \false) ? (\get_parent_class($m[0]) ?: \key(\class_implements($m[0])) ?: 'class') . '@anonymous' : $m[0];
+            if (\false !== \strpos($message, "class@anonymous\0")) {
+                $message = \preg_replace_callback('/class@anonymous\\x00.*?\\.php0x?[0-9a-fA-F]++/', function ($m) {
+                    return \class_exists($m[0], \false) ? \get_parent_class($m[0]) . '@anonymous' : $m[0];
                 }, $message);
             }
             $width = $this->terminal->getWidth() ? $this->terminal->getWidth() - 1 : \PHP_INT_MAX;
@@ -674,27 +743,27 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
             foreach ('' !== $message ? \preg_split('/\\r?\\n/', $message) : [] as $line) {
                 foreach ($this->splitStringByWidth($line, $width - 4) as $line) {
                     // pre-format lines to get the right string length
-                    $lineLength = \_PhpScoper37887d2f9246\Symfony\Component\Console\Helper\Helper::strlen($line) + 4;
+                    $lineLength = \_PhpScoper130e101f3ca6\Symfony\Component\Console\Helper\Helper::strlen($line) + 4;
                     $lines[] = [$line, $lineLength];
                     $len = \max($lineLength, $len);
                 }
             }
             $messages = [];
-            if (!$e instanceof \_PhpScoper37887d2f9246\Symfony\Component\Console\Exception\ExceptionInterface || \_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERBOSE <= $output->getVerbosity()) {
-                $messages[] = \sprintf('<comment>%s</comment>', \_PhpScoper37887d2f9246\Symfony\Component\Console\Formatter\OutputFormatter::escape(\sprintf('In %s line %s:', \basename($e->getFile()) ?: 'n/a', $e->getLine() ?: 'n/a')));
+            if (!$e instanceof \_PhpScoper130e101f3ca6\Symfony\Component\Console\Exception\ExceptionInterface || \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERBOSE <= $output->getVerbosity()) {
+                $messages[] = \sprintf('<comment>%s</comment>', \_PhpScoper130e101f3ca6\Symfony\Component\Console\Formatter\OutputFormatter::escape(\sprintf('In %s line %s:', \basename($e->getFile()) ?: 'n/a', $e->getLine() ?: 'n/a')));
             }
             $messages[] = $emptyLine = \sprintf('<error>%s</error>', \str_repeat(' ', $len));
-            if ('' === $message || \_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERBOSE <= $output->getVerbosity()) {
-                $messages[] = \sprintf('<error>%s%s</error>', $title, \str_repeat(' ', \max(0, $len - \_PhpScoper37887d2f9246\Symfony\Component\Console\Helper\Helper::strlen($title))));
+            if ('' === $message || \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERBOSE <= $output->getVerbosity()) {
+                $messages[] = \sprintf('<error>%s%s</error>', $title, \str_repeat(' ', \max(0, $len - \_PhpScoper130e101f3ca6\Symfony\Component\Console\Helper\Helper::strlen($title))));
             }
             foreach ($lines as $line) {
-                $messages[] = \sprintf('<error>  %s  %s</error>', \_PhpScoper37887d2f9246\Symfony\Component\Console\Formatter\OutputFormatter::escape($line[0]), \str_repeat(' ', $len - $line[1]));
+                $messages[] = \sprintf('<error>  %s  %s</error>', \_PhpScoper130e101f3ca6\Symfony\Component\Console\Formatter\OutputFormatter::escape($line[0]), \str_repeat(' ', $len - $line[1]));
             }
             $messages[] = $emptyLine;
             $messages[] = '';
-            $output->writeln($messages, \_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
-            if (\_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERBOSE <= $output->getVerbosity()) {
-                $output->writeln('<comment>Exception trace:</comment>', \_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
+            $output->writeln($messages, \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
+            if (\_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERBOSE <= $output->getVerbosity()) {
+                $output->writeln('<comment>Exception trace:</comment>', \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
                 // exception related properties
                 $trace = $e->getTrace();
                 \array_unshift($trace, ['function' => '', 'file' => $e->getFile() ?: 'n/a', 'line' => $e->getLine() ?: 'n/a', 'args' => []]);
@@ -704,16 +773,16 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
                     $function = isset($trace[$i]['function']) ? $trace[$i]['function'] : '';
                     $file = isset($trace[$i]['file']) ? $trace[$i]['file'] : 'n/a';
                     $line = isset($trace[$i]['line']) ? $trace[$i]['line'] : 'n/a';
-                    $output->writeln(\sprintf(' %s%s at <info>%s:%s</info>', $class, $function ? $type . $function . '()' : '', $file, $line), \_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
+                    $output->writeln(\sprintf(' %s%s at <info>%s:%s</info>', $class, $function ? $type . $function . '()' : '', $file, $line), \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
                 }
-                $output->writeln('', \_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
+                $output->writeln('', \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
             }
         } while ($e = $e->getPrevious());
     }
     /**
      * Configures the input and output instances based on the user arguments and options.
      */
-    protected function configureIO(\_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface $output)
+    protected function configureIO(\_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface $output)
     {
         if (\true === $input->hasParameterOption(['--ansi'], \true)) {
             $output->setDecorated(\true);
@@ -722,45 +791,51 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
         }
         if (\true === $input->hasParameterOption(['--no-interaction', '-n'], \true)) {
             $input->setInteractive(\false);
+        } elseif (\function_exists('posix_isatty')) {
+            $inputStream = null;
+            if ($input instanceof \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\StreamableInputInterface) {
+                $inputStream = $input->getStream();
+            }
+            if (!@\posix_isatty($inputStream) && \false === \getenv('SHELL_INTERACTIVE')) {
+                $input->setInteractive(\false);
+            }
         }
         switch ($shellVerbosity = (int) \getenv('SHELL_VERBOSITY')) {
             case -1:
-                $output->setVerbosity(\_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
+                $output->setVerbosity(\_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
                 break;
             case 1:
-                $output->setVerbosity(\_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERBOSE);
+                $output->setVerbosity(\_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERBOSE);
                 break;
             case 2:
-                $output->setVerbosity(\_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERY_VERBOSE);
+                $output->setVerbosity(\_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERY_VERBOSE);
                 break;
             case 3:
-                $output->setVerbosity(\_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_DEBUG);
+                $output->setVerbosity(\_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_DEBUG);
                 break;
             default:
                 $shellVerbosity = 0;
                 break;
         }
         if (\true === $input->hasParameterOption(['--quiet', '-q'], \true)) {
-            $output->setVerbosity(\_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
+            $output->setVerbosity(\_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
             $shellVerbosity = -1;
         } else {
             if ($input->hasParameterOption('-vvv', \true) || $input->hasParameterOption('--verbose=3', \true) || 3 === $input->getParameterOption('--verbose', \false, \true)) {
-                $output->setVerbosity(\_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_DEBUG);
+                $output->setVerbosity(\_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_DEBUG);
                 $shellVerbosity = 3;
             } elseif ($input->hasParameterOption('-vv', \true) || $input->hasParameterOption('--verbose=2', \true) || 2 === $input->getParameterOption('--verbose', \false, \true)) {
-                $output->setVerbosity(\_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERY_VERBOSE);
+                $output->setVerbosity(\_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERY_VERBOSE);
                 $shellVerbosity = 2;
             } elseif ($input->hasParameterOption('-v', \true) || $input->hasParameterOption('--verbose=1', \true) || $input->hasParameterOption('--verbose', \true) || $input->getParameterOption('--verbose', \false, \true)) {
-                $output->setVerbosity(\_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERBOSE);
+                $output->setVerbosity(\_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERBOSE);
                 $shellVerbosity = 1;
             }
         }
         if (-1 === $shellVerbosity) {
             $input->setInteractive(\false);
         }
-        if (\function_exists('putenv')) {
-            @\putenv('SHELL_VERBOSITY=' . $shellVerbosity);
-        }
+        \putenv('SHELL_VERBOSITY=' . $shellVerbosity);
         $_ENV['SHELL_VERBOSITY'] = $shellVerbosity;
         $_SERVER['SHELL_VERBOSITY'] = $shellVerbosity;
     }
@@ -772,10 +847,10 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
      *
      * @return int 0 if everything went fine, or an error code
      */
-    protected function doRunCommand(\_PhpScoper37887d2f9246\Symfony\Component\Console\Command\Command $command, \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper37887d2f9246\Symfony\Component\Console\Output\OutputInterface $output)
+    protected function doRunCommand(\_PhpScoper130e101f3ca6\Symfony\Component\Console\Command\Command $command, \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\OutputInterface $output)
     {
         foreach ($command->getHelperSet() as $helper) {
-            if ($helper instanceof \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputAwareInterface) {
+            if ($helper instanceof \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputAwareInterface) {
                 $helper->setInput($input);
             }
         }
@@ -786,28 +861,28 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
         try {
             $command->mergeApplicationDefinition();
             $input->bind($command->getDefinition());
-        } catch (\_PhpScoper37887d2f9246\Symfony\Component\Console\Exception\ExceptionInterface $e) {
+        } catch (\_PhpScoper130e101f3ca6\Symfony\Component\Console\Exception\ExceptionInterface $e) {
             // ignore invalid options/arguments for now, to allow the event listeners to customize the InputDefinition
         }
-        $event = new \_PhpScoper37887d2f9246\Symfony\Component\Console\Event\ConsoleCommandEvent($command, $input, $output);
+        $event = new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Event\ConsoleCommandEvent($command, $input, $output);
         $e = null;
         try {
-            $this->dispatcher->dispatch($event, \_PhpScoper37887d2f9246\Symfony\Component\Console\ConsoleEvents::COMMAND);
+            $this->dispatcher->dispatch($event, \_PhpScoper130e101f3ca6\Symfony\Component\Console\ConsoleEvents::COMMAND);
             if ($event->commandShouldRun()) {
                 $exitCode = $command->run($input, $output);
             } else {
-                $exitCode = \_PhpScoper37887d2f9246\Symfony\Component\Console\Event\ConsoleCommandEvent::RETURN_CODE_DISABLED;
+                $exitCode = \_PhpScoper130e101f3ca6\Symfony\Component\Console\Event\ConsoleCommandEvent::RETURN_CODE_DISABLED;
             }
         } catch (\Throwable $e) {
-            $event = new \_PhpScoper37887d2f9246\Symfony\Component\Console\Event\ConsoleErrorEvent($input, $output, $e, $command);
-            $this->dispatcher->dispatch($event, \_PhpScoper37887d2f9246\Symfony\Component\Console\ConsoleEvents::ERROR);
+            $event = new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Event\ConsoleErrorEvent($input, $output, $e, $command);
+            $this->dispatcher->dispatch($event, \_PhpScoper130e101f3ca6\Symfony\Component\Console\ConsoleEvents::ERROR);
             $e = $event->getError();
             if (0 === ($exitCode = $event->getExitCode())) {
                 $e = null;
             }
         }
-        $event = new \_PhpScoper37887d2f9246\Symfony\Component\Console\Event\ConsoleTerminateEvent($command, $input, $output, $exitCode);
-        $this->dispatcher->dispatch($event, \_PhpScoper37887d2f9246\Symfony\Component\Console\ConsoleEvents::TERMINATE);
+        $event = new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Event\ConsoleTerminateEvent($command, $input, $output, $exitCode);
+        $this->dispatcher->dispatch($event, \_PhpScoper130e101f3ca6\Symfony\Component\Console\ConsoleEvents::TERMINATE);
         if (null !== $e) {
             throw $e;
         }
@@ -818,7 +893,7 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
      *
      * @return string|null
      */
-    protected function getCommandName(\_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputInterface $input)
+    protected function getCommandName(\_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputInterface $input)
     {
         return $this->singleCommand ? $this->defaultCommand : $input->getFirstArgument();
     }
@@ -829,7 +904,7 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
      */
     protected function getDefaultInputDefinition()
     {
-        return new \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputDefinition([new \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputArgument('command', \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'The command to execute'), new \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputOption('--help', '-h', \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Display this help message'), new \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputOption('--quiet', '-q', \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Do not output any message'), new \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputOption('--verbose', '-v|vv|vvv', \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug'), new \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputOption('--version', '-V', \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Display this application version'), new \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputOption('--ansi', '', \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Force ANSI output'), new \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputOption('--no-ansi', '', \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Disable ANSI output'), new \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputOption('--no-interaction', '-n', \_PhpScoper37887d2f9246\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Do not ask any interactive question')]);
+        return new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputDefinition([new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputArgument('command', \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'The command to execute'), new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputOption('--help', '-h', \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Display this help message'), new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputOption('--quiet', '-q', \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Do not output any message'), new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputOption('--verbose', '-v|vv|vvv', \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug'), new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputOption('--version', '-V', \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Display this application version'), new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputOption('--ansi', '', \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Force ANSI output'), new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputOption('--no-ansi', '', \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Disable ANSI output'), new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputOption('--no-interaction', '-n', \_PhpScoper130e101f3ca6\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Do not ask any interactive question')]);
     }
     /**
      * Gets the default commands that should always be available.
@@ -838,7 +913,7 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
      */
     protected function getDefaultCommands()
     {
-        return [new \_PhpScoper37887d2f9246\Symfony\Component\Console\Command\HelpCommand(), new \_PhpScoper37887d2f9246\Symfony\Component\Console\Command\ListCommand()];
+        return [new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Command\HelpCommand(), new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Command\ListCommand()];
     }
     /**
      * Gets the default helper set with the helpers that should always be available.
@@ -847,7 +922,7 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
      */
     protected function getDefaultHelperSet()
     {
-        return new \_PhpScoper37887d2f9246\Symfony\Component\Console\Helper\HelperSet([new \_PhpScoper37887d2f9246\Symfony\Component\Console\Helper\FormatterHelper(), new \_PhpScoper37887d2f9246\Symfony\Component\Console\Helper\DebugFormatterHelper(), new \_PhpScoper37887d2f9246\Symfony\Component\Console\Helper\ProcessHelper(), new \_PhpScoper37887d2f9246\Symfony\Component\Console\Helper\QuestionHelper()]);
+        return new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Helper\HelperSet([new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Helper\FormatterHelper(), new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Helper\DebugFormatterHelper(), new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Helper\ProcessHelper(), new \_PhpScoper130e101f3ca6\Symfony\Component\Console\Helper\QuestionHelper()]);
     }
     /**
      * Returns abbreviated suggestions in string format.
@@ -861,9 +936,12 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
      *
      * This method is not part of public API and should not be used directly.
      *
+     * @param string $name  The full name of the command
+     * @param string $limit The maximum number of parts of the namespace
+     *
      * @return string The namespace of the command
      */
-    public function extractNamespace(string $name, int $limit = null)
+    public function extractNamespace($name, $limit = null)
     {
         $parts = \explode(':', $name, -1);
         return \implode(':', null === $limit ? $parts : \array_slice($parts, 0, $limit));
@@ -914,9 +992,12 @@ class Application implements \_PhpScoper37887d2f9246\Symfony\Contracts\Service\R
     /**
      * Sets the default Command name.
      *
+     * @param string $commandName     The Command name
+     * @param bool   $isSingleCommand Set to true if there is only one command in this application
+     *
      * @return self
      */
-    public function setDefaultCommand(string $commandName, bool $isSingleCommand = \false)
+    public function setDefaultCommand($commandName, $isSingleCommand = \false)
     {
         $this->defaultCommand = $commandName;
         if ($isSingleCommand) {

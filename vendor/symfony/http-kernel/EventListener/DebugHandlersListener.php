@@ -8,29 +8,30 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper37887d2f9246\Symfony\Component\HttpKernel\EventListener;
+namespace _PhpScoper130e101f3ca6\Symfony\Component\HttpKernel\EventListener;
 
-use _PhpScoper37887d2f9246\Psr\Log\LoggerInterface;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\ConsoleEvents;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Event\ConsoleEvent;
-use _PhpScoper37887d2f9246\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use _PhpScoper37887d2f9246\Symfony\Component\ErrorHandler\ErrorHandler;
-use _PhpScoper37887d2f9246\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use _PhpScoper37887d2f9246\Symfony\Component\HttpKernel\Debug\FileLinkFormatter;
-use _PhpScoper37887d2f9246\Symfony\Component\HttpKernel\Event\KernelEvent;
-use _PhpScoper37887d2f9246\Symfony\Component\HttpKernel\KernelEvents;
+use _PhpScoper130e101f3ca6\Psr\Log\LoggerInterface;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\ConsoleEvents;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Event\ConsoleEvent;
+use _PhpScoper130e101f3ca6\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use _PhpScoper130e101f3ca6\Symfony\Component\Debug\Exception\FatalThrowableError;
+use _PhpScoper130e101f3ca6\Symfony\Component\ErrorHandler\ErrorHandler;
+use _PhpScoper130e101f3ca6\Symfony\Component\EventDispatcher\Event;
+use _PhpScoper130e101f3ca6\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use _PhpScoper130e101f3ca6\Symfony\Component\HttpKernel\Debug\FileLinkFormatter;
+use _PhpScoper130e101f3ca6\Symfony\Component\HttpKernel\Event\KernelEvent;
+use _PhpScoper130e101f3ca6\Symfony\Component\HttpKernel\KernelEvents;
 /**
  * Configures errors and exceptions handlers.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  *
- * @final
+ * @final since Symfony 4.4
  */
-class DebugHandlersListener implements \_PhpScoper37887d2f9246\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class DebugHandlersListener implements \_PhpScoper130e101f3ca6\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     private $exceptionHandler;
     private $logger;
-    private $deprecationLogger;
     private $levels;
     private $throwAt;
     private $scream;
@@ -46,7 +47,7 @@ class DebugHandlersListener implements \_PhpScoper37887d2f9246\Symfony\Component
      * @param string|FileLinkFormatter|null $fileLinkFormat   The format for links to source files
      * @param bool                          $scope            Enables/disables scoping mode
      */
-    public function __construct(callable $exceptionHandler = null, \_PhpScoper37887d2f9246\Psr\Log\LoggerInterface $logger = null, $levels = \E_ALL, ?int $throwAt = \E_ALL, bool $scream = \true, $fileLinkFormat = null, bool $scope = \true, \_PhpScoper37887d2f9246\Psr\Log\LoggerInterface $deprecationLogger = null)
+    public function __construct(callable $exceptionHandler = null, \_PhpScoper130e101f3ca6\Psr\Log\LoggerInterface $logger = null, $levels = \E_ALL, ?int $throwAt = \E_ALL, bool $scream = \true, $fileLinkFormat = null, bool $scope = \true)
     {
         $this->exceptionHandler = $exceptionHandler;
         $this->logger = $logger;
@@ -55,50 +56,48 @@ class DebugHandlersListener implements \_PhpScoper37887d2f9246\Symfony\Component
         $this->scream = $scream;
         $this->fileLinkFormat = $fileLinkFormat;
         $this->scope = $scope;
-        $this->deprecationLogger = $deprecationLogger;
     }
     /**
      * Configures the error handler.
      */
-    public function configure(object $event = null)
+    public function configure(\_PhpScoper130e101f3ca6\Symfony\Component\EventDispatcher\Event $event = null)
     {
-        if ($event instanceof \_PhpScoper37887d2f9246\Symfony\Component\Console\Event\ConsoleEvent && !\in_array(\PHP_SAPI, ['cli', 'phpdbg'], \true)) {
-            return;
-        }
-        if (!$event instanceof \_PhpScoper37887d2f9246\Symfony\Component\HttpKernel\Event\KernelEvent ? !$this->firstCall : !$event->isMasterRequest()) {
+        if (!$event instanceof \_PhpScoper130e101f3ca6\Symfony\Component\HttpKernel\Event\KernelEvent ? !$this->firstCall : !$event->isMasterRequest()) {
             return;
         }
         $this->firstCall = $this->hasTerminatedWithException = \false;
         $handler = \set_exception_handler('var_dump');
         $handler = \is_array($handler) ? $handler[0] : null;
         \restore_exception_handler();
-        if ($handler instanceof \_PhpScoper37887d2f9246\Symfony\Component\ErrorHandler\ErrorHandler) {
-            if ($this->logger || $this->deprecationLogger) {
-                $this->setDefaultLoggers($handler);
-                if (\is_array($this->levels)) {
-                    $levels = 0;
-                    foreach ($this->levels as $type => $log) {
-                        $levels |= $type;
+        if ($this->logger || null !== $this->throwAt) {
+            if ($handler instanceof \_PhpScoper130e101f3ca6\Symfony\Component\ErrorHandler\ErrorHandler) {
+                if ($this->logger) {
+                    $handler->setDefaultLogger($this->logger, $this->levels);
+                    if (\is_array($this->levels)) {
+                        $levels = 0;
+                        foreach ($this->levels as $type => $log) {
+                            $levels |= $type;
+                        }
+                    } else {
+                        $levels = $this->levels;
                     }
-                } else {
-                    $levels = $this->levels;
+                    if ($this->scream) {
+                        $handler->screamAt($levels);
+                    }
+                    if ($this->scope) {
+                        $handler->scopeAt($levels & ~\E_USER_DEPRECATED & ~\E_DEPRECATED);
+                    } else {
+                        $handler->scopeAt(0, \true);
+                    }
+                    $this->logger = $this->levels = null;
                 }
-                if ($this->scream) {
-                    $handler->screamAt($levels);
+                if (null !== $this->throwAt) {
+                    $handler->throwAt($this->throwAt, \true);
                 }
-                if ($this->scope) {
-                    $handler->scopeAt($levels & ~\E_USER_DEPRECATED & ~\E_DEPRECATED);
-                } else {
-                    $handler->scopeAt(0, \true);
-                }
-                $this->logger = $this->deprecationLogger = $this->levels = null;
-            }
-            if (null !== $this->throwAt) {
-                $handler->throwAt($this->throwAt, \true);
             }
         }
         if (!$this->exceptionHandler) {
-            if ($event instanceof \_PhpScoper37887d2f9246\Symfony\Component\HttpKernel\Event\KernelEvent) {
+            if ($event instanceof \_PhpScoper130e101f3ca6\Symfony\Component\HttpKernel\Event\KernelEvent) {
                 if (\method_exists($kernel = $event->getKernel(), 'terminateWithException')) {
                     $request = $event->getRequest();
                     $hasRun =& $this->hasTerminatedWithException;
@@ -110,53 +109,35 @@ class DebugHandlersListener implements \_PhpScoper37887d2f9246\Symfony\Component
                         $kernel->terminateWithException($e, $request);
                     };
                 }
-            } elseif ($event instanceof \_PhpScoper37887d2f9246\Symfony\Component\Console\Event\ConsoleEvent && ($app = $event->getCommand()->getApplication())) {
+            } elseif ($event instanceof \_PhpScoper130e101f3ca6\Symfony\Component\Console\Event\ConsoleEvent && ($app = $event->getCommand()->getApplication())) {
                 $output = $event->getOutput();
-                if ($output instanceof \_PhpScoper37887d2f9246\Symfony\Component\Console\Output\ConsoleOutputInterface) {
+                if ($output instanceof \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\ConsoleOutputInterface) {
                     $output = $output->getErrorOutput();
                 }
                 $this->exceptionHandler = static function (\Throwable $e) use($app, $output) {
-                    $app->renderThrowable($e, $output);
+                    if (\method_exists($app, 'renderThrowable')) {
+                        $app->renderThrowable($e, $output);
+                    } else {
+                        if (!$e instanceof \Exception) {
+                            $e = new \_PhpScoper130e101f3ca6\Symfony\Component\Debug\Exception\FatalThrowableError($e);
+                        }
+                        $app->renderException($e, $output);
+                    }
                 };
             }
         }
         if ($this->exceptionHandler) {
-            if ($handler instanceof \_PhpScoper37887d2f9246\Symfony\Component\ErrorHandler\ErrorHandler) {
+            if ($handler instanceof \_PhpScoper130e101f3ca6\Symfony\Component\ErrorHandler\ErrorHandler) {
                 $handler->setExceptionHandler($this->exceptionHandler);
             }
             $this->exceptionHandler = null;
         }
     }
-    private function setDefaultLoggers(\_PhpScoper37887d2f9246\Symfony\Component\ErrorHandler\ErrorHandler $handler) : void
+    public static function getSubscribedEvents()
     {
-        if (\is_array($this->levels)) {
-            $levelsDeprecatedOnly = [];
-            $levelsWithoutDeprecated = [];
-            foreach ($this->levels as $type => $log) {
-                if (\E_DEPRECATED == $type || \E_USER_DEPRECATED == $type) {
-                    $levelsDeprecatedOnly[$type] = $log;
-                } else {
-                    $levelsWithoutDeprecated[$type] = $log;
-                }
-            }
-        } else {
-            $levelsDeprecatedOnly = $this->levels & (\E_DEPRECATED | \E_USER_DEPRECATED);
-            $levelsWithoutDeprecated = $this->levels & ~\E_DEPRECATED & ~\E_USER_DEPRECATED;
-        }
-        $defaultLoggerLevels = $this->levels;
-        if ($this->deprecationLogger && $levelsDeprecatedOnly) {
-            $handler->setDefaultLogger($this->deprecationLogger, $levelsDeprecatedOnly);
-            $defaultLoggerLevels = $levelsWithoutDeprecated;
-        }
-        if ($this->logger && $defaultLoggerLevels) {
-            $handler->setDefaultLogger($this->logger, $defaultLoggerLevels);
-        }
-    }
-    public static function getSubscribedEvents() : array
-    {
-        $events = [\_PhpScoper37887d2f9246\Symfony\Component\HttpKernel\KernelEvents::REQUEST => ['configure', 2048]];
-        if (\defined('Symfony\\Component\\Console\\ConsoleEvents::COMMAND')) {
-            $events[\_PhpScoper37887d2f9246\Symfony\Component\Console\ConsoleEvents::COMMAND] = ['configure', 2048];
+        $events = [\_PhpScoper130e101f3ca6\Symfony\Component\HttpKernel\KernelEvents::REQUEST => ['configure', 2048]];
+        if ('cli' === \PHP_SAPI && \defined('Symfony\\Component\\Console\\ConsoleEvents::COMMAND')) {
+            $events[\_PhpScoper130e101f3ca6\Symfony\Component\Console\ConsoleEvents::COMMAND] = ['configure', 2048];
         }
         return $events;
     }

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper37887d2f9246\Symfony\Component\HttpKernel\CacheClearer;
+namespace _PhpScoper130e101f3ca6\Symfony\Component\HttpKernel\CacheClearer;
 
 /**
  * CacheClearerInterface.
@@ -19,6 +19,8 @@ interface CacheClearerInterface
 {
     /**
      * Clears any caches necessary.
+     *
+     * @param string $cacheDir The cache directory
      */
-    public function clear(string $cacheDir);
+    public function clear($cacheDir);
 }

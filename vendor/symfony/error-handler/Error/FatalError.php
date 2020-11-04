@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper37887d2f9246\Symfony\Component\ErrorHandler\Error;
+namespace _PhpScoper130e101f3ca6\Symfony\Component\ErrorHandler\Error;
 
 class FatalError extends \Error
 {
@@ -60,11 +60,9 @@ class FatalError extends \Error
             }
         }
         foreach (['file' => $error['file'], 'line' => $error['line'], 'trace' => $trace] as $property => $value) {
-            if (null !== $value) {
-                $refl = new \ReflectionProperty(\Error::class, $property);
-                $refl->setAccessible(\true);
-                $refl->setValue($this, $value);
-            }
+            $refl = new \ReflectionProperty(\Error::class, $property);
+            $refl->setAccessible(\true);
+            $refl->setValue($this, $value);
         }
     }
     /**

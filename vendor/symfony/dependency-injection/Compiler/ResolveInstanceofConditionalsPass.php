@@ -8,35 +8,39 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper37887d2f9246\Symfony\Component\DependencyInjection\Compiler;
+namespace _PhpScoper130e101f3ca6\Symfony\Component\DependencyInjection\Compiler;
 
-use _PhpScoper37887d2f9246\Symfony\Component\DependencyInjection\ChildDefinition;
-use _PhpScoper37887d2f9246\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScoper37887d2f9246\Symfony\Component\DependencyInjection\Definition;
-use _PhpScoper37887d2f9246\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use _PhpScoper37887d2f9246\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use _PhpScoper130e101f3ca6\Symfony\Component\DependencyInjection\ChildDefinition;
+use _PhpScoper130e101f3ca6\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoper130e101f3ca6\Symfony\Component\DependencyInjection\Definition;
+use _PhpScoper130e101f3ca6\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use _PhpScoper130e101f3ca6\Symfony\Component\DependencyInjection\Exception\RuntimeException;
 /**
  * Applies instanceof conditionals to definitions.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ResolveInstanceofConditionalsPass implements \_PhpScoper37887d2f9246\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class ResolveInstanceofConditionalsPass implements \_PhpScoper130e101f3ca6\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function process(\_PhpScoper37887d2f9246\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\_PhpScoper130e101f3ca6\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         foreach ($container->getAutoconfiguredInstanceof() as $interface => $definition) {
             if ($definition->getArguments()) {
-                throw new \_PhpScoper37887d2f9246\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Autoconfigured instanceof for type "%s" defines arguments but these are not supported and should be removed.', $interface));
+                throw new \_PhpScoper130e101f3ca6\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Autoconfigured instanceof for type "%s" defines arguments but these are not supported and should be removed.', $interface));
             }
         }
         foreach ($container->getDefinitions() as $id => $definition) {
+            if ($definition instanceof \_PhpScoper130e101f3ca6\Symfony\Component\DependencyInjection\ChildDefinition) {
+                // don't apply "instanceof" to children: it will be applied to their parent
+                continue;
+            }
             $container->setDefinition($id, $this->processDefinition($container, $id, $definition));
         }
     }
-    private function processDefinition(\_PhpScoper37887d2f9246\Symfony\Component\DependencyInjection\ContainerBuilder $container, string $id, \_PhpScoper37887d2f9246\Symfony\Component\DependencyInjection\Definition $definition) : \_PhpScoper37887d2f9246\Symfony\Component\DependencyInjection\Definition
+    private function processDefinition(\_PhpScoper130e101f3ca6\Symfony\Component\DependencyInjection\ContainerBuilder $container, string $id, \_PhpScoper130e101f3ca6\Symfony\Component\DependencyInjection\Definition $definition) : \_PhpScoper130e101f3ca6\Symfony\Component\DependencyInjection\Definition
     {
         $instanceofConditionals = $definition->getInstanceofConditionals();
         $autoconfiguredInstanceof = $definition->isAutoconfigured() ? $container->getAutoconfiguredInstanceof() : [];
@@ -48,14 +52,12 @@ class ResolveInstanceofConditionalsPass implements \_PhpScoper37887d2f9246\Symfo
         }
         $conditionals = $this->mergeConditionals($autoconfiguredInstanceof, $instanceofConditionals, $container);
         $definition->setInstanceofConditionals([]);
-        $shared = null;
+        $parent = $shared = null;
         $instanceofTags = [];
         $instanceofCalls = [];
         $instanceofBindings = [];
-        $reflectionClass = null;
-        $parent = $definition instanceof \_PhpScoper37887d2f9246\Symfony\Component\DependencyInjection\ChildDefinition ? $definition->getParent() : null;
         foreach ($conditionals as $interface => $instanceofDefs) {
-            if ($interface !== $class && !(null === $reflectionClass ? $reflectionClass = $container->getReflectionClass($class, \false) ?: \false : $reflectionClass)) {
+            if ($interface !== $class && !$container->getReflectionClass($class, \false)) {
                 continue;
             }
             if ($interface !== $class && !\is_subclass_of($class, $interface)) {
@@ -83,13 +85,11 @@ class ResolveInstanceofConditionalsPass implements \_PhpScoper37887d2f9246\Symfo
         if ($parent) {
             $bindings = $definition->getBindings();
             $abstract = $container->setDefinition('.abstract.instanceof.' . $id, $definition);
+            // cast Definition to ChildDefinition
             $definition->setBindings([]);
             $definition = \serialize($definition);
-            if (\_PhpScoper37887d2f9246\Symfony\Component\DependencyInjection\Definition::class === \get_class($abstract)) {
-                // cast Definition to ChildDefinition
-                $definition = \substr_replace($definition, '53', 2, 2);
-                $definition = \substr_replace($definition, 'Child', 44, 0);
-            }
+            $definition = \substr_replace($definition, '53', 2, 2);
+            $definition = \substr_replace($definition, 'Child', 44, 0);
             /** @var ChildDefinition $definition */
             $definition = \unserialize($definition);
             $definition->setParent($parent);
@@ -117,7 +117,7 @@ class ResolveInstanceofConditionalsPass implements \_PhpScoper37887d2f9246\Symfo
         }
         return $definition;
     }
-    private function mergeConditionals(array $autoconfiguredInstanceof, array $instanceofConditionals, \_PhpScoper37887d2f9246\Symfony\Component\DependencyInjection\ContainerBuilder $container) : array
+    private function mergeConditionals(array $autoconfiguredInstanceof, array $instanceofConditionals, \_PhpScoper130e101f3ca6\Symfony\Component\DependencyInjection\ContainerBuilder $container) : array
     {
         // make each value an array of ChildDefinition
         $conditionals = \array_map(function ($childDef) {
@@ -126,7 +126,7 @@ class ResolveInstanceofConditionalsPass implements \_PhpScoper37887d2f9246\Symfo
         foreach ($instanceofConditionals as $interface => $instanceofDef) {
             // make sure the interface/class exists (but don't validate automaticInstanceofConditionals)
             if (!$container->getReflectionClass($interface)) {
-                throw new \_PhpScoper37887d2f9246\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('"%s" is set as an "instanceof" conditional, but it does not exist.', $interface));
+                throw new \_PhpScoper130e101f3ca6\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('"%s" is set as an "instanceof" conditional, but it does not exist.', $interface));
             }
             if (!isset($autoconfiguredInstanceof[$interface])) {
                 $conditionals[$interface] = [];

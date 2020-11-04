@@ -8,9 +8,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper37887d2f9246\Symfony\Component\EventDispatcher;
+namespace _PhpScoper130e101f3ca6\Symfony\Component\EventDispatcher;
 
-use _PhpScoper37887d2f9246\Symfony\Contracts\EventDispatcher\Event;
 /**
  * Event encapsulation class.
  *
@@ -18,7 +17,7 @@ use _PhpScoper37887d2f9246\Symfony\Contracts\EventDispatcher\Event;
  *
  * @author Drak <drak@zikula.org>
  */
-class GenericEvent extends \_PhpScoper37887d2f9246\Symfony\Contracts\EventDispatcher\Event implements \ArrayAccess, \IteratorAggregate
+class GenericEvent extends \_PhpScoper130e101f3ca6\Symfony\Component\EventDispatcher\Event implements \ArrayAccess, \IteratorAggregate
 {
     protected $subject;
     protected $arguments;
@@ -45,11 +44,13 @@ class GenericEvent extends \_PhpScoper37887d2f9246\Symfony\Contracts\EventDispat
     /**
      * Get argument by key.
      *
+     * @param string $key Key
+     *
      * @return mixed Contents of array key
      *
      * @throws \InvalidArgumentException if key is not found
      */
-    public function getArgument(string $key)
+    public function getArgument($key)
     {
         if ($this->hasArgument($key)) {
             return $this->arguments[$key];
@@ -59,11 +60,12 @@ class GenericEvent extends \_PhpScoper37887d2f9246\Symfony\Contracts\EventDispat
     /**
      * Add argument to event.
      *
-     * @param mixed $value Value
+     * @param string $key   Argument name
+     * @param mixed  $value Value
      *
      * @return $this
      */
-    public function setArgument(string $key, $value)
+    public function setArgument($key, $value)
     {
         $this->arguments[$key] = $value;
         return $this;
@@ -80,6 +82,8 @@ class GenericEvent extends \_PhpScoper37887d2f9246\Symfony\Contracts\EventDispat
     /**
      * Set args property.
      *
+     * @param array $args Arguments
+     *
      * @return $this
      */
     public function setArguments(array $args = [])
@@ -90,9 +94,11 @@ class GenericEvent extends \_PhpScoper37887d2f9246\Symfony\Contracts\EventDispat
     /**
      * Has argument.
      *
+     * @param string $key Key of arguments array
+     *
      * @return bool
      */
-    public function hasArgument(string $key)
+    public function hasArgument($key)
     {
         return \array_key_exists($key, $this->arguments);
     }

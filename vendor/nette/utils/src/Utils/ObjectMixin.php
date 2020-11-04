@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace _PhpScoper37887d2f9246\Nette\Utils;
+namespace _PhpScoper130e101f3ca6\Nette\Utils;
 
-use _PhpScoper37887d2f9246\Nette;
+use _PhpScoper130e101f3ca6\Nette;
 /**
  * Nette\Object behaviour mixin.
  * @deprecated
@@ -15,17 +15,19 @@ use _PhpScoper37887d2f9246\Nette;
 final class ObjectMixin
 {
     use Nette\StaticClass;
-    /** @deprecated  use ObjectHelpers::getSuggestion() */
+    /**
+     * @deprecated  use ObjectHelpers::getSuggestion()
+     */
     public static function getSuggestion(array $possibilities, string $value) : ?string
     {
         \trigger_error(__METHOD__ . '() has been renamed to Nette\\Utils\\ObjectHelpers::getSuggestion()', \E_USER_DEPRECATED);
-        return \_PhpScoper37887d2f9246\Nette\Utils\ObjectHelpers::getSuggestion($possibilities, $value);
+        return \_PhpScoper130e101f3ca6\Nette\Utils\ObjectHelpers::getSuggestion($possibilities, $value);
     }
-    public static function setExtensionMethod() : void
+    public static function setExtensionMethod($class, $name, $callback)
     {
         \trigger_error('Class Nette\\Utils\\ObjectMixin is deprecated', \E_USER_DEPRECATED);
     }
-    public static function getExtensionMethod() : void
+    public static function getExtensionMethod($class, $name)
     {
         \trigger_error('Class Nette\\Utils\\ObjectMixin is deprecated', \E_USER_DEPRECATED);
     }

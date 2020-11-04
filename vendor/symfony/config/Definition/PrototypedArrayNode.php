@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper37887d2f9246\Symfony\Component\Config\Definition;
+namespace _PhpScoper130e101f3ca6\Symfony\Component\Config\Definition;
 
-use _PhpScoper37887d2f9246\Symfony\Component\Config\Definition\Exception\DuplicateKeyException;
-use _PhpScoper37887d2f9246\Symfony\Component\Config\Definition\Exception\Exception;
-use _PhpScoper37887d2f9246\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
-use _PhpScoper37887d2f9246\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
+use _PhpScoper130e101f3ca6\Symfony\Component\Config\Definition\Exception\DuplicateKeyException;
+use _PhpScoper130e101f3ca6\Symfony\Component\Config\Definition\Exception\Exception;
+use _PhpScoper130e101f3ca6\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use _PhpScoper130e101f3ca6\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
 /**
  * Represents a prototyped Array node in the config tree.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class PrototypedArrayNode extends \_PhpScoper37887d2f9246\Symfony\Component\Config\Definition\ArrayNode
+class PrototypedArrayNode extends \_PhpScoper130e101f3ca6\Symfony\Component\Config\Definition\ArrayNode
 {
     protected $prototype;
     protected $keyAttribute;
@@ -34,8 +34,10 @@ class PrototypedArrayNode extends \_PhpScoper37887d2f9246\Symfony\Component\Conf
     /**
      * Sets the minimum number of elements that a prototype based node must
      * contain. By default this is zero, meaning no elements.
+     *
+     * @param int $number
      */
-    public function setMinNumberOfElements(int $number)
+    public function setMinNumberOfElements($number)
     {
         $this->minNumberOfElements = $number;
     }
@@ -63,7 +65,7 @@ class PrototypedArrayNode extends \_PhpScoper37887d2f9246\Symfony\Component\Conf
      * @param string $attribute The name of the attribute which value is to be used as a key
      * @param bool   $remove    Whether or not to remove the key
      */
-    public function setKeyAttribute(string $attribute, bool $remove = \true)
+    public function setKeyAttribute($attribute, $remove = \true)
     {
         $this->keyAttribute = $attribute;
         $this->removeKeyAttribute = $remove;
@@ -79,9 +81,16 @@ class PrototypedArrayNode extends \_PhpScoper37887d2f9246\Symfony\Component\Conf
     }
     /**
      * Sets the default value of this node.
+     *
+     * @param string $value
+     *
+     * @throws \InvalidArgumentException if the default value is not an array
      */
-    public function setDefaultValue(array $value)
+    public function setDefaultValue($value)
     {
+        if (!\is_array($value)) {
+            throw new \InvalidArgumentException($this->getPath() . ': the default value of an array node has to be an array.');
+        }
         $this->defaultValue = $value;
     }
     /**
@@ -125,7 +134,7 @@ class PrototypedArrayNode extends \_PhpScoper37887d2f9246\Symfony\Component\Conf
     /**
      * Sets the node prototype.
      */
-    public function setPrototype(\_PhpScoper37887d2f9246\Symfony\Component\Config\Definition\PrototypeNodeInterface $node)
+    public function setPrototype(\_PhpScoper130e101f3ca6\Symfony\Component\Config\Definition\PrototypeNodeInterface $node)
     {
         $this->prototype = $node;
     }
@@ -143,9 +152,9 @@ class PrototypedArrayNode extends \_PhpScoper37887d2f9246\Symfony\Component\Conf
      *
      * @throws Exception
      */
-    public function addChild(\_PhpScoper37887d2f9246\Symfony\Component\Config\Definition\NodeInterface $node)
+    public function addChild(\_PhpScoper130e101f3ca6\Symfony\Component\Config\Definition\NodeInterface $node)
     {
-        throw new \_PhpScoper37887d2f9246\Symfony\Component\Config\Definition\Exception\Exception('A prototyped array node can not have concrete children.');
+        throw new \_PhpScoper130e101f3ca6\Symfony\Component\Config\Definition\Exception\Exception('A prototyped array node can not have concrete children.');
     }
     /**
      * Finalizes the value of this node.
@@ -160,18 +169,18 @@ class PrototypedArrayNode extends \_PhpScoper37887d2f9246\Symfony\Component\Conf
     protected function finalizeValue($value)
     {
         if (\false === $value) {
-            throw new \_PhpScoper37887d2f9246\Symfony\Component\Config\Definition\Exception\UnsetKeyException(\sprintf('Unsetting key for path "%s", value: %s.', $this->getPath(), \json_encode($value)));
+            throw new \_PhpScoper130e101f3ca6\Symfony\Component\Config\Definition\Exception\UnsetKeyException(\sprintf('Unsetting key for path "%s", value: %s', $this->getPath(), \json_encode($value)));
         }
         foreach ($value as $k => $v) {
             $prototype = $this->getPrototypeForChild($k);
             try {
                 $value[$k] = $prototype->finalize($v);
-            } catch (\_PhpScoper37887d2f9246\Symfony\Component\Config\Definition\Exception\UnsetKeyException $e) {
+            } catch (\_PhpScoper130e101f3ca6\Symfony\Component\Config\Definition\Exception\UnsetKeyException $e) {
                 unset($value[$k]);
             }
         }
         if (\count($value) < $this->minNumberOfElements) {
-            $ex = new \_PhpScoper37887d2f9246\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException(\sprintf('The path "%s" should have at least %d element(s) defined.', $this->getPath(), $this->minNumberOfElements));
+            $ex = new \_PhpScoper130e101f3ca6\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException(\sprintf('The path "%s" should have at least %d element(s) defined.', $this->getPath(), $this->minNumberOfElements));
             $ex->setPath($this->getPath());
             throw $ex;
         }
@@ -198,7 +207,7 @@ class PrototypedArrayNode extends \_PhpScoper37887d2f9246\Symfony\Component\Conf
         foreach ($value as $k => $v) {
             if (null !== $this->keyAttribute && \is_array($v)) {
                 if (!isset($v[$this->keyAttribute]) && \is_int($k) && !$isAssoc) {
-                    $ex = new \_PhpScoper37887d2f9246\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException(\sprintf('The attribute "%s" must be set for path "%s".', $this->keyAttribute, $this->getPath()));
+                    $ex = new \_PhpScoper130e101f3ca6\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException(\sprintf('The attribute "%s" must be set for path "%s".', $this->keyAttribute, $this->getPath()));
                     $ex->setPath($this->getPath());
                     throw $ex;
                 } elseif (isset($v[$this->keyAttribute])) {
@@ -210,7 +219,7 @@ class PrototypedArrayNode extends \_PhpScoper37887d2f9246\Symfony\Component\Conf
                     // if only "value" is left
                     if (\array_keys($v) === ['value']) {
                         $v = $v['value'];
-                        if ($this->prototype instanceof \_PhpScoper37887d2f9246\Symfony\Component\Config\Definition\ArrayNode && ($children = $this->prototype->getChildren()) && \array_key_exists('value', $children)) {
+                        if ($this->prototype instanceof \_PhpScoper130e101f3ca6\Symfony\Component\Config\Definition\ArrayNode && ($children = $this->prototype->getChildren()) && \array_key_exists('value', $children)) {
                             $valuePrototype = \current($this->valuePrototypes) ?: clone $children['value'];
                             $valuePrototype->parent = $this;
                             $originalClosures = $this->prototype->normalizationClosures;
@@ -223,7 +232,7 @@ class PrototypedArrayNode extends \_PhpScoper37887d2f9246\Symfony\Component\Conf
                     }
                 }
                 if (\array_key_exists($k, $normalized)) {
-                    $ex = new \_PhpScoper37887d2f9246\Symfony\Component\Config\Definition\Exception\DuplicateKeyException(\sprintf('Duplicate key "%s" for path "%s".', $k, $this->getPath()));
+                    $ex = new \_PhpScoper130e101f3ca6\Symfony\Component\Config\Definition\Exception\DuplicateKeyException(\sprintf('Duplicate key "%s" for path "%s".', $k, $this->getPath()));
                     $ex->setPath($this->getPath());
                     throw $ex;
                 }
@@ -267,7 +276,7 @@ class PrototypedArrayNode extends \_PhpScoper37887d2f9246\Symfony\Component\Conf
             // no conflict
             if (!\array_key_exists($k, $leftSide)) {
                 if (!$this->allowNewKeys) {
-                    $ex = new \_PhpScoper37887d2f9246\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException(\sprintf('You are not allowed to define new elements for path "%s". Please define all elements for this path in one config file.', $this->getPath()));
+                    $ex = new \_PhpScoper130e101f3ca6\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException(\sprintf('You are not allowed to define new elements for path "%s". Please define all elements for this path in one config file.', $this->getPath()));
                     $ex->setPath($this->getPath());
                     throw $ex;
                 }

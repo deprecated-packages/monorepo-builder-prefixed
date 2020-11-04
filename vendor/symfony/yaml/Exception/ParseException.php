@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper37887d2f9246\Symfony\Component\Yaml\Exception;
+namespace _PhpScoper130e101f3ca6\Symfony\Component\Yaml\Exception;
 
 /**
  * Exception class thrown when an error occurs during parsing.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ParseException extends \_PhpScoper37887d2f9246\Symfony\Component\Yaml\Exception\RuntimeException
+class ParseException extends \_PhpScoper130e101f3ca6\Symfony\Component\Yaml\Exception\RuntimeException
 {
     private $parsedFile;
     private $parsedLine;
@@ -48,8 +48,10 @@ class ParseException extends \_PhpScoper37887d2f9246\Symfony\Component\Yaml\Exce
     }
     /**
      * Sets the snippet of code near the error.
+     *
+     * @param string $snippet The code snippet
      */
-    public function setSnippet(string $snippet)
+    public function setSnippet($snippet)
     {
         $this->snippet = $snippet;
         $this->updateRepr();
@@ -67,8 +69,10 @@ class ParseException extends \_PhpScoper37887d2f9246\Symfony\Component\Yaml\Exce
     }
     /**
      * Sets the filename where the error occurred.
+     *
+     * @param string $parsedFile The filename
      */
-    public function setParsedFile(string $parsedFile)
+    public function setParsedFile($parsedFile)
     {
         $this->parsedFile = $parsedFile;
         $this->updateRepr();
@@ -84,8 +88,10 @@ class ParseException extends \_PhpScoper37887d2f9246\Symfony\Component\Yaml\Exce
     }
     /**
      * Sets the line where the error occurred.
+     *
+     * @param int $parsedLine The file line
      */
-    public function setParsedLine(int $parsedLine)
+    public function setParsedLine($parsedLine)
     {
         $this->parsedLine = $parsedLine;
         $this->updateRepr();

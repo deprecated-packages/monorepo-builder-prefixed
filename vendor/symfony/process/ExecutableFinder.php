@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper37887d2f9246\Symfony\Component\Process;
+namespace _PhpScoper130e101f3ca6\Symfony\Component\Process;
 
 /**
  * Generic executable finder.
@@ -28,8 +28,10 @@ class ExecutableFinder
     }
     /**
      * Adds new possible suffix to check for executable.
+     *
+     * @param string $suffix
      */
-    public function addSuffix(string $suffix)
+    public function addSuffix($suffix)
     {
         $this->suffixes[] = $suffix;
     }
@@ -42,7 +44,7 @@ class ExecutableFinder
      *
      * @return string|null The executable path or default value
      */
-    public function find(string $name, string $default = null, array $extraDirs = [])
+    public function find($name, $default = null, array $extraDirs = [])
     {
         if (\ini_get('open_basedir')) {
             $searchPath = \array_merge(\explode(\PATH_SEPARATOR, \ini_get('open_basedir')), $extraDirs);

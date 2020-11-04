@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper37887d2f9246\Symfony\Component\Console\Output;
+namespace _PhpScoper130e101f3ca6\Symfony\Component\Console\Output;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
-class BufferedOutput extends \_PhpScoper37887d2f9246\Symfony\Component\Console\Output\Output
+class BufferedOutput extends \_PhpScoper130e101f3ca6\Symfony\Component\Console\Output\Output
 {
     private $buffer = '';
     /**
@@ -30,7 +30,7 @@ class BufferedOutput extends \_PhpScoper37887d2f9246\Symfony\Component\Console\O
     /**
      * {@inheritdoc}
      */
-    protected function doWrite(string $message, bool $newline)
+    protected function doWrite($message, $newline)
     {
         $this->buffer .= $message;
         if ($newline) {
