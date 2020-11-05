@@ -8,28 +8,28 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperfd1a6a0ee9af\Symfony\Component\HttpKernel\DependencyInjection;
+namespace _PhpScoperb445cd48032c\Symfony\Component\HttpKernel\DependencyInjection;
 
-use _PhpScoperfd1a6a0ee9af\Psr\Log\LoggerInterface;
-use _PhpScoperfd1a6a0ee9af\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use _PhpScoperfd1a6a0ee9af\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScoperfd1a6a0ee9af\Symfony\Component\HttpKernel\Log\Logger;
+use _PhpScoperb445cd48032c\Psr\Log\LoggerInterface;
+use _PhpScoperb445cd48032c\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use _PhpScoperb445cd48032c\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoperb445cd48032c\Symfony\Component\HttpKernel\Log\Logger;
 /**
  * Registers the default logger if necessary.
  *
  * @author Kévin Dunglas <dunglas@gmail.com>
  */
-class LoggerPass implements \_PhpScoperfd1a6a0ee9af\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class LoggerPass implements \_PhpScoperb445cd48032c\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function process(\_PhpScoperfd1a6a0ee9af\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\_PhpScoperb445cd48032c\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
-        $container->setAlias(\_PhpScoperfd1a6a0ee9af\Psr\Log\LoggerInterface::class, 'logger')->setPublic(\false);
+        $container->setAlias(\_PhpScoperb445cd48032c\Psr\Log\LoggerInterface::class, 'logger')->setPublic(\false);
         if ($container->has('logger')) {
             return;
         }
-        $container->register('logger', \_PhpScoperfd1a6a0ee9af\Symfony\Component\HttpKernel\Log\Logger::class)->setPublic(\false);
+        $container->register('logger', \_PhpScoperb445cd48032c\Symfony\Component\HttpKernel\Log\Logger::class)->setPublic(\false);
     }
 }

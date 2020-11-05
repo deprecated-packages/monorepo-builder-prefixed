@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Testing\Command;
 
-use _PhpScoperfd1a6a0ee9af\Symfony\Component\Console\Command\Command;
-use _PhpScoperfd1a6a0ee9af\Symfony\Component\Console\Input\InputArgument;
-use _PhpScoperfd1a6a0ee9af\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperfd1a6a0ee9af\Symfony\Component\Console\Output\OutputInterface;
-use _PhpScoperfd1a6a0ee9af\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoperb445cd48032c\Symfony\Component\Console\Command\Command;
+use _PhpScoperb445cd48032c\Symfony\Component\Console\Input\InputArgument;
+use _PhpScoperb445cd48032c\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoperb445cd48032c\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoperb445cd48032c\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Testing\ComposerJsonRepositoriesUpdater;
 use Symplify\MonorepoBuilder\Testing\ComposerJsonRequireUpdater;
@@ -15,7 +15,7 @@ use Symplify\MonorepoBuilder\Testing\ValueObject\Option;
 use Symplify\PackageBuilder\Console\ShellCode;
 use Symplify\SmartFileSystem\FileSystemGuard;
 use Symplify\SmartFileSystem\SmartFileInfo;
-final class LocalizeComposerPathsCommand extends \_PhpScoperfd1a6a0ee9af\Symfony\Component\Console\Command\Command
+final class LocalizeComposerPathsCommand extends \_PhpScoperb445cd48032c\Symfony\Component\Console\Command\Command
 {
     /**
      * @var ComposerJsonProvider
@@ -37,7 +37,7 @@ final class LocalizeComposerPathsCommand extends \_PhpScoperfd1a6a0ee9af\Symfony
      * @var ComposerJsonRepositoriesUpdater
      */
     private $composerJsonRepositoriesUpdater;
-    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \_PhpScoperfd1a6a0ee9af\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Testing\ComposerJsonRequireUpdater $composerJsonRequireUpdater, \Symplify\MonorepoBuilder\Testing\ComposerJsonRepositoriesUpdater $composerJsonRepositoriesUpdater, \Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard)
+    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \_PhpScoperb445cd48032c\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Testing\ComposerJsonRequireUpdater $composerJsonRequireUpdater, \Symplify\MonorepoBuilder\Testing\ComposerJsonRepositoriesUpdater $composerJsonRepositoriesUpdater, \Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard)
     {
         $this->composerJsonProvider = $composerJsonProvider;
         $this->symfonyStyle = $symfonyStyle;
@@ -49,9 +49,9 @@ final class LocalizeComposerPathsCommand extends \_PhpScoperfd1a6a0ee9af\Symfony
     protected function configure() : void
     {
         $this->setDescription('Set mutual package paths to local packages - use for pre-split package testing');
-        $this->addArgument(\Symplify\MonorepoBuilder\Testing\ValueObject\Option::PACKAGE_COMPOSER_JSON, \_PhpScoperfd1a6a0ee9af\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'Path to package "composer.json"');
+        $this->addArgument(\Symplify\MonorepoBuilder\Testing\ValueObject\Option::PACKAGE_COMPOSER_JSON, \_PhpScoperb445cd48032c\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'Path to package "composer.json"');
     }
-    protected function execute(\_PhpScoperfd1a6a0ee9af\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperfd1a6a0ee9af\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoperb445cd48032c\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperb445cd48032c\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $packageComposerJson = (string) $input->getArgument(\Symplify\MonorepoBuilder\Testing\ValueObject\Option::PACKAGE_COMPOSER_JSON);
         $this->fileSystemGuard->ensureFileExists($packageComposerJson, __METHOD__);

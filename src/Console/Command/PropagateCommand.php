@@ -3,17 +3,17 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Console\Command;
 
-use _PhpScoperfd1a6a0ee9af\Symfony\Component\Console\Command\Command;
-use _PhpScoperfd1a6a0ee9af\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperfd1a6a0ee9af\Symfony\Component\Console\Output\OutputInterface;
-use _PhpScoperfd1a6a0ee9af\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoperb445cd48032c\Symfony\Component\Console\Command\Command;
+use _PhpScoperb445cd48032c\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoperb445cd48032c\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoperb445cd48032c\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\MonorepoBuilder\DependencyUpdater;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\ValueObject\File;
 use Symplify\MonorepoBuilder\VersionValidator;
 use Symplify\PackageBuilder\Console\ShellCode;
 use Symplify\SmartFileSystem\SmartFileInfo;
-final class PropagateCommand extends \_PhpScoperfd1a6a0ee9af\Symfony\Component\Console\Command\Command
+final class PropagateCommand extends \_PhpScoperb445cd48032c\Symfony\Component\Console\Command\Command
 {
     /**
      * @var SymfonyStyle
@@ -31,7 +31,7 @@ final class PropagateCommand extends \_PhpScoperfd1a6a0ee9af\Symfony\Component\C
      * @var DependencyUpdater
      */
     private $dependencyUpdater;
-    public function __construct(\_PhpScoperfd1a6a0ee9af\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\VersionValidator $versionValidator, \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \Symplify\MonorepoBuilder\DependencyUpdater $dependencyUpdater)
+    public function __construct(\_PhpScoperb445cd48032c\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\VersionValidator $versionValidator, \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \Symplify\MonorepoBuilder\DependencyUpdater $dependencyUpdater)
     {
         parent::__construct();
         $this->symfonyStyle = $symfonyStyle;
@@ -43,7 +43,7 @@ final class PropagateCommand extends \_PhpScoperfd1a6a0ee9af\Symfony\Component\C
     {
         $this->setDescription('Propagate versions from root "composer.json" to all packages, the opposite of "merge" command');
     }
-    protected function execute(\_PhpScoperfd1a6a0ee9af\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperfd1a6a0ee9af\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoperb445cd48032c\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperb445cd48032c\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $conflictingPackageVersions = $this->versionValidator->findConflictingPackageVersionsInFileInfos($this->composerJsonProvider->getRootAndPackageFileInfos());
         foreach ($conflictingPackageVersions as $packageName => $filesToVersion) {
