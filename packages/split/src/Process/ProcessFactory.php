@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Split\Process;
 
-use _PhpScoper6713430bfe3d\Nette\Utils\Strings;
-use _PhpScoper6713430bfe3d\Symfony\Component\Process\Process;
+use _PhpScoper3ac0b040c6af\Nette\Utils\Strings;
+use _PhpScoper3ac0b040c6af\Symfony\Component\Process\Process;
 use Symplify\MonorepoBuilder\Split\Configuration\RepositoryGuard;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
@@ -41,7 +41,7 @@ final class ProcessFactory
         $this->repository = $parameterProvider->provideStringParameter(\Symplify\MonorepoBuilder\ValueObject\Option::REPOSITORY);
         $this->smartFileSystem = $smartFileSystem;
     }
-    public function createSubsplit(?string $theMostRecentTag, string $directory, string $remoteRepository, string $branch) : \_PhpScoper6713430bfe3d\Symfony\Component\Process\Process
+    public function createSubsplit(?string $theMostRecentTag, string $directory, string $remoteRepository, string $branch) : \_PhpScoper3ac0b040c6af\Symfony\Component\Process\Process
     {
         $this->repositoryGuard->ensureIsRepository($remoteRepository);
         $commandLine = [\realpath(self::SUBSPLIT_BASH_FILE), \sprintf('--from-directory=%s', $directory), \sprintf('--to-repository=%s', $remoteRepository), \sprintf('--branch=%s', $branch), $theMostRecentTag ? \sprintf('--tag=%s', $theMostRecentTag) : '', \sprintf('--repository=%s', $this->repository)];
@@ -50,11 +50,11 @@ final class ProcessFactory
     /**
      * @param mixed[] $commandLine
      */
-    private function createProcessFromCommandLine(array $commandLine, string $directory) : \_PhpScoper6713430bfe3d\Symfony\Component\Process\Process
+    private function createProcessFromCommandLine(array $commandLine, string $directory) : \_PhpScoper3ac0b040c6af\Symfony\Component\Process\Process
     {
-        $directory = $this->subsplitCacheDirectory . \DIRECTORY_SEPARATOR . \_PhpScoper6713430bfe3d\Nette\Utils\Strings::webalize($directory);
+        $directory = $this->subsplitCacheDirectory . \DIRECTORY_SEPARATOR . \_PhpScoper3ac0b040c6af\Nette\Utils\Strings::webalize($directory);
         $this->smartFileSystem->remove($directory);
         $this->smartFileSystem->mkdir($directory);
-        return new \_PhpScoper6713430bfe3d\Symfony\Component\Process\Process($commandLine, $directory, null, null, null);
+        return new \_PhpScoper3ac0b040c6af\Symfony\Component\Process\Process($commandLine, $directory, null, null, null);
     }
 }

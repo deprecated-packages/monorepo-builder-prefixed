@@ -1,6 +1,6 @@
 <?php
 
-namespace _PhpScoper6713430bfe3d;
+namespace _PhpScoper3ac0b040c6af;
 
 /**
  * Random_* Compatibility Library 
@@ -57,11 +57,11 @@ if (!\function_exists('random_bytes') && \extension_loaded('com_dotnet')) {
          */
         do {
             $buf .= \base64_decode($util->GetRandom($bytes, 0));
-            if (\_PhpScoper6713430bfe3d\RandomCompat_strlen($buf) >= $bytes) {
+            if (\_PhpScoper3ac0b040c6af\RandomCompat_strlen($buf) >= $bytes) {
                 /**
                  * Return our random entropy buffer here:
                  */
-                return \_PhpScoper6713430bfe3d\RandomCompat_substr($buf, 0, $bytes);
+                return \_PhpScoper3ac0b040c6af\RandomCompat_substr($buf, 0, $bytes);
             }
             ++$execCount;
         } while ($execCount < $bytes);
