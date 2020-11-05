@@ -1,6 +1,6 @@
 <?php
 
-namespace _PhpScopere32570efa19a;
+namespace _PhpScoper47e141fb470a;
 
 /**
  * Random_* Compatibility Library 

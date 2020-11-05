@@ -8,22 +8,22 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere32570efa19a\Symfony\Component\HttpKernel\Profiler;
+namespace _PhpScoper47e141fb470a\Symfony\Component\HttpKernel\Profiler;
 
-use _PhpScopere32570efa19a\Psr\Log\LoggerInterface;
-use _PhpScopere32570efa19a\Symfony\Component\Debug\Exception\FatalThrowableError;
-use _PhpScopere32570efa19a\Symfony\Component\HttpFoundation\Exception\ConflictingHeadersException;
-use _PhpScopere32570efa19a\Symfony\Component\HttpFoundation\Request;
-use _PhpScopere32570efa19a\Symfony\Component\HttpFoundation\Response;
-use _PhpScopere32570efa19a\Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
-use _PhpScopere32570efa19a\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface;
-use _PhpScopere32570efa19a\Symfony\Contracts\Service\ResetInterface;
+use _PhpScoper47e141fb470a\Psr\Log\LoggerInterface;
+use _PhpScoper47e141fb470a\Symfony\Component\Debug\Exception\FatalThrowableError;
+use _PhpScoper47e141fb470a\Symfony\Component\HttpFoundation\Exception\ConflictingHeadersException;
+use _PhpScoper47e141fb470a\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper47e141fb470a\Symfony\Component\HttpFoundation\Response;
+use _PhpScoper47e141fb470a\Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
+use _PhpScoper47e141fb470a\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface;
+use _PhpScoper47e141fb470a\Symfony\Contracts\Service\ResetInterface;
 /**
  * Profiler.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class Profiler implements \_PhpScopere32570efa19a\Symfony\Contracts\Service\ResetInterface
+class Profiler implements \_PhpScoper47e141fb470a\Symfony\Contracts\Service\ResetInterface
 {
     private $storage;
     /**
@@ -33,7 +33,7 @@ class Profiler implements \_PhpScopere32570efa19a\Symfony\Contracts\Service\Rese
     private $logger;
     private $initiallyEnabled = \true;
     private $enabled = \true;
-    public function __construct(\_PhpScopere32570efa19a\Symfony\Component\HttpKernel\Profiler\ProfilerStorageInterface $storage, \_PhpScopere32570efa19a\Psr\Log\LoggerInterface $logger = null, bool $enable = \true)
+    public function __construct(\_PhpScoper47e141fb470a\Symfony\Component\HttpKernel\Profiler\ProfilerStorageInterface $storage, \_PhpScoper47e141fb470a\Psr\Log\LoggerInterface $logger = null, bool $enable = \true)
     {
         $this->storage = $storage;
         $this->logger = $logger;
@@ -58,7 +58,7 @@ class Profiler implements \_PhpScopere32570efa19a\Symfony\Contracts\Service\Rese
      *
      * @return Profile|null A Profile instance
      */
-    public function loadProfileFromResponse(\_PhpScopere32570efa19a\Symfony\Component\HttpFoundation\Response $response)
+    public function loadProfileFromResponse(\_PhpScoper47e141fb470a\Symfony\Component\HttpFoundation\Response $response)
     {
         if (!($token = $response->headers->get('X-Debug-Token'))) {
             return null;
@@ -81,11 +81,11 @@ class Profiler implements \_PhpScopere32570efa19a\Symfony\Contracts\Service\Rese
      *
      * @return bool
      */
-    public function saveProfile(\_PhpScopere32570efa19a\Symfony\Component\HttpKernel\Profiler\Profile $profile)
+    public function saveProfile(\_PhpScoper47e141fb470a\Symfony\Component\HttpKernel\Profiler\Profile $profile)
     {
         // late collect
         foreach ($profile->getCollectors() as $collector) {
-            if ($collector instanceof \_PhpScopere32570efa19a\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface) {
+            if ($collector instanceof \_PhpScoper47e141fb470a\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface) {
                 $collector->lateCollect();
             }
         }
@@ -127,20 +127,20 @@ class Profiler implements \_PhpScopere32570efa19a\Symfony\Contracts\Service\Rese
      *
      * @return Profile|null A Profile instance or null if the profiler is disabled
      */
-    public function collect(\_PhpScopere32570efa19a\Symfony\Component\HttpFoundation\Request $request, \_PhpScopere32570efa19a\Symfony\Component\HttpFoundation\Response $response)
+    public function collect(\_PhpScoper47e141fb470a\Symfony\Component\HttpFoundation\Request $request, \_PhpScoper47e141fb470a\Symfony\Component\HttpFoundation\Response $response)
     {
         $exception = 2 < \func_num_args() ? \func_get_arg(2) : null;
         if (\false === $this->enabled) {
             return null;
         }
-        $profile = new \_PhpScopere32570efa19a\Symfony\Component\HttpKernel\Profiler\Profile(\substr(\hash('sha256', \uniqid(\mt_rand(), \true)), 0, 6));
+        $profile = new \_PhpScoper47e141fb470a\Symfony\Component\HttpKernel\Profiler\Profile(\substr(\hash('sha256', \uniqid(\mt_rand(), \true)), 0, 6));
         $profile->setTime(\time());
         $profile->setUrl($request->getUri());
         $profile->setMethod($request->getMethod());
         $profile->setStatusCode($response->getStatusCode());
         try {
             $profile->setIp($request->getClientIp());
-        } catch (\_PhpScopere32570efa19a\Symfony\Component\HttpFoundation\Exception\ConflictingHeadersException $e) {
+        } catch (\_PhpScoper47e141fb470a\Symfony\Component\HttpFoundation\Exception\ConflictingHeadersException $e) {
             $profile->setIp('Unknown');
         }
         if ($prevToken = $response->headers->get('X-Debug-Token')) {
@@ -151,7 +151,7 @@ class Profiler implements \_PhpScopere32570efa19a\Symfony\Contracts\Service\Rese
         foreach ($this->collectors as $collector) {
             if (($e = $exception) instanceof \Error) {
                 $r = new \ReflectionMethod($collector, 'collect');
-                $e = 2 >= $r->getNumberOfParameters() || !($p = $r->getParameters()[2])->hasType() || \Exception::class !== $p->getType()->getName() ? $e : $wrappedException ?? ($wrappedException = new \_PhpScopere32570efa19a\Symfony\Component\Debug\Exception\FatalThrowableError($e));
+                $e = 2 >= $r->getNumberOfParameters() || !($p = $r->getParameters()[2])->hasType() || \Exception::class !== $p->getType()->getName() ? $e : $wrappedException ?? ($wrappedException = new \_PhpScoper47e141fb470a\Symfony\Component\Debug\Exception\FatalThrowableError($e));
             }
             $collector->collect($request, $response, $e);
             // we need to clone for sub-requests
@@ -190,7 +190,7 @@ class Profiler implements \_PhpScopere32570efa19a\Symfony\Contracts\Service\Rese
     /**
      * Adds a Collector.
      */
-    public function add(\_PhpScopere32570efa19a\Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface $collector)
+    public function add(\_PhpScoper47e141fb470a\Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface $collector)
     {
         $this->collectors[$collector->getName()] = $collector;
     }

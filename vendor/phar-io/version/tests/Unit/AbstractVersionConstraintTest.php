@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere32570efa19a\PharIo\Version;
+namespace _PhpScoper47e141fb470a\PharIo\Version;
 
-use _PhpScopere32570efa19a\PHPUnit\Framework\TestCase;
+use _PhpScoper47e141fb470a\PHPUnit\Framework\TestCase;
 /**
  * @covers \PharIo\Version\AbstractVersionConstraint
  */
-class AbstractVersionConstraintTest extends \_PhpScopere32570efa19a\PHPUnit\Framework\TestCase
+class AbstractVersionConstraintTest extends \_PhpScoper47e141fb470a\PHPUnit\Framework\TestCase
 {
     public function testAsString()
     {
         /** @var AbstractVersionConstraint|\PHPUnit_Framework_MockObject_MockObject $constraint */
-        $constraint = $this->getMockForAbstractClass(\_PhpScopere32570efa19a\PharIo\Version\AbstractVersionConstraint::class, ['foo']);
+        $constraint = $this->getMockForAbstractClass(\_PhpScoper47e141fb470a\PharIo\Version\AbstractVersionConstraint::class, ['foo']);
         $this->assertSame('foo', $constraint->asString());
     }
 }
