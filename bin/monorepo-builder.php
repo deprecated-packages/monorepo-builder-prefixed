@@ -2,9 +2,9 @@
 
 // decoupled in own "*.php" file, so ECS, Rector and PHPStan works out of the box here
 declare (strict_types=1);
-namespace _PhpScoper8aa7c2bece07;
+namespace _PhpScoper22d98a58be40;
 
-use _PhpScoper8aa7c2bece07\Symfony\Component\Console\Input\ArgvInput;
+use _PhpScoper22d98a58be40\Symfony\Component\Console\Input\ArgvInput;
 use Symplify\MonorepoBuilder\Console\MonorepoBuilderApplication;
 use Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel;
 use Symplify\MonorepoBuilder\ValueObject\File;
@@ -27,7 +27,7 @@ foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
 }
 $configFileInfos = [];
 $configResolver = new \Symplify\SetConfigResolver\ConfigResolver();
-$inputConfigFileInfo = $configResolver->resolveFromInputWithFallback(new \_PhpScoper8aa7c2bece07\Symfony\Component\Console\Input\ArgvInput(), [\Symplify\MonorepoBuilder\ValueObject\File::CONFIG]);
+$inputConfigFileInfo = $configResolver->resolveFromInputWithFallback(new \_PhpScoper22d98a58be40\Symfony\Component\Console\Input\ArgvInput(), [\Symplify\MonorepoBuilder\ValueObject\File::CONFIG]);
 if ($inputConfigFileInfo !== null) {
     $configFileInfos[] = $inputConfigFileInfo;
 }
