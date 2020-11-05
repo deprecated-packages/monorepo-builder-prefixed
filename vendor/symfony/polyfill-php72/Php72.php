@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper22d98a58be40\Symfony\Polyfill\Php72;
+namespace _PhpScoper6713430bfe3d\Symfony\Polyfill\Php72;
 
 /**
  * @author Nicolas Grekas <p@tchwork.com>

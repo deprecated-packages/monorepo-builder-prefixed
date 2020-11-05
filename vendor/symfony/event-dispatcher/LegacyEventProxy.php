@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper22d98a58be40\Symfony\Component\EventDispatcher;
+namespace _PhpScoper6713430bfe3d\Symfony\Component\EventDispatcher;
 
-use _PhpScoper22d98a58be40\Psr\EventDispatcher\StoppableEventInterface;
-use _PhpScoper22d98a58be40\Symfony\Contracts\EventDispatcher\Event as ContractsEvent;
+use _PhpScoper6713430bfe3d\Psr\EventDispatcher\StoppableEventInterface;
+use _PhpScoper6713430bfe3d\Symfony\Contracts\EventDispatcher\Event as ContractsEvent;
 /**
  * @internal to be removed in 5.0.
  */
-final class LegacyEventProxy extends \_PhpScoper22d98a58be40\Symfony\Component\EventDispatcher\Event
+final class LegacyEventProxy extends \_PhpScoper6713430bfe3d\Symfony\Component\EventDispatcher\Event
 {
     private $event;
     /**
@@ -34,14 +34,14 @@ final class LegacyEventProxy extends \_PhpScoper22d98a58be40\Symfony\Component\E
     }
     public function isPropagationStopped() : bool
     {
-        if (!$this->event instanceof \_PhpScoper22d98a58be40\Symfony\Contracts\EventDispatcher\Event && !$this->event instanceof \_PhpScoper22d98a58be40\Psr\EventDispatcher\StoppableEventInterface) {
+        if (!$this->event instanceof \_PhpScoper6713430bfe3d\Symfony\Contracts\EventDispatcher\Event && !$this->event instanceof \_PhpScoper6713430bfe3d\Psr\EventDispatcher\StoppableEventInterface) {
             return \false;
         }
         return $this->event->isPropagationStopped();
     }
     public function stopPropagation()
     {
-        if (!$this->event instanceof \_PhpScoper22d98a58be40\Symfony\Contracts\EventDispatcher\Event) {
+        if (!$this->event instanceof \_PhpScoper6713430bfe3d\Symfony\Contracts\EventDispatcher\Event) {
             return;
         }
         $this->event->stopPropagation();
