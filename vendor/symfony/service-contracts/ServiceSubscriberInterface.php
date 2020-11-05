@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf78d2b40800e\Symfony\Contracts\Service;
+namespace _PhpScoper717b2838a41b\Symfony\Contracts\Service;
 
 /**
  * A ServiceSubscriber exposes its dependencies via the static {@link getSubscribedServices} method.

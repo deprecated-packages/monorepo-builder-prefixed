@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf78d2b40800e\Symfony\Component\HttpKernel\Event;
+namespace _PhpScoper717b2838a41b\Symfony\Component\HttpKernel\Event;
 
-use _PhpScoperf78d2b40800e\Symfony\Component\HttpFoundation\Request;
-use _PhpScoperf78d2b40800e\Symfony\Component\HttpFoundation\Response;
-use _PhpScoperf78d2b40800e\Symfony\Component\HttpKernel\HttpKernelInterface;
+use _PhpScoper717b2838a41b\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper717b2838a41b\Symfony\Component\HttpFoundation\Response;
+use _PhpScoper717b2838a41b\Symfony\Component\HttpKernel\HttpKernelInterface;
 /**
  * @deprecated since Symfony 4.3, use ResponseEvent instead
  */
-class FilterResponseEvent extends \_PhpScoperf78d2b40800e\Symfony\Component\HttpKernel\Event\KernelEvent
+class FilterResponseEvent extends \_PhpScoper717b2838a41b\Symfony\Component\HttpKernel\Event\KernelEvent
 {
     private $response;
-    public function __construct(\_PhpScoperf78d2b40800e\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \_PhpScoperf78d2b40800e\Symfony\Component\HttpFoundation\Request $request, int $requestType, \_PhpScoperf78d2b40800e\Symfony\Component\HttpFoundation\Response $response)
+    public function __construct(\_PhpScoper717b2838a41b\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \_PhpScoper717b2838a41b\Symfony\Component\HttpFoundation\Request $request, int $requestType, \_PhpScoper717b2838a41b\Symfony\Component\HttpFoundation\Response $response)
     {
         parent::__construct($kernel, $request, $requestType);
         $this->setResponse($response);
@@ -36,7 +36,7 @@ class FilterResponseEvent extends \_PhpScoperf78d2b40800e\Symfony\Component\Http
     /**
      * Sets a new response object.
      */
-    public function setResponse(\_PhpScoperf78d2b40800e\Symfony\Component\HttpFoundation\Response $response)
+    public function setResponse(\_PhpScoper717b2838a41b\Symfony\Component\HttpFoundation\Response $response)
     {
         $this->response = $response;
     }

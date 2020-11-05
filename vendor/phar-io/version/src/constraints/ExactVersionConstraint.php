@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf78d2b40800e\PharIo\Version;
+namespace _PhpScoper717b2838a41b\PharIo\Version;
 
-class ExactVersionConstraint extends \_PhpScoperf78d2b40800e\PharIo\Version\AbstractVersionConstraint
+class ExactVersionConstraint extends \_PhpScoper717b2838a41b\PharIo\Version\AbstractVersionConstraint
 {
     /**
      * @param Version $version
      *
      * @return bool
      */
-    public function complies(\_PhpScoperf78d2b40800e\PharIo\Version\Version $version)
+    public function complies(\_PhpScoper717b2838a41b\PharIo\Version\Version $version)
     {
         return $this->asString() == $version->getVersionString();
     }

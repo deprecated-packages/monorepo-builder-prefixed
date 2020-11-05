@@ -3,15 +3,15 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Console\Command;
 
-use _PhpScoperf78d2b40800e\Symfony\Component\Console\Command\Command;
-use _PhpScoperf78d2b40800e\Symfony\Component\Console\Input\InputArgument;
-use _PhpScoperf78d2b40800e\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperf78d2b40800e\Symfony\Component\Console\Output\OutputInterface;
-use _PhpScoperf78d2b40800e\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoper717b2838a41b\Symfony\Component\Console\Command\Command;
+use _PhpScoper717b2838a41b\Symfony\Component\Console\Input\InputArgument;
+use _PhpScoper717b2838a41b\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoper717b2838a41b\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoper717b2838a41b\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\MonorepoBuilder\DependencyUpdater;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\PackageBuilder\Console\ShellCode;
-final class BumpInterdependencyCommand extends \_PhpScoperf78d2b40800e\Symfony\Component\Console\Command\Command
+final class BumpInterdependencyCommand extends \_PhpScoper717b2838a41b\Symfony\Component\Console\Command\Command
 {
     /**
      * @var string
@@ -29,7 +29,7 @@ final class BumpInterdependencyCommand extends \_PhpScoperf78d2b40800e\Symfony\C
      * @var ComposerJsonProvider
      */
     private $composerJsonProvider;
-    public function __construct(\_PhpScoperf78d2b40800e\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\DependencyUpdater $dependencyUpdater, \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider)
+    public function __construct(\_PhpScoper717b2838a41b\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\DependencyUpdater $dependencyUpdater, \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider)
     {
         parent::__construct();
         $this->symfonyStyle = $symfonyStyle;
@@ -39,9 +39,9 @@ final class BumpInterdependencyCommand extends \_PhpScoperf78d2b40800e\Symfony\C
     protected function configure() : void
     {
         $this->setDescription('Bump dependency of split packages on each other');
-        $this->addArgument(self::VERSION_ARGUMENT, \_PhpScoperf78d2b40800e\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'New version of inter-dependencies, e.g. "^4.4.2"');
+        $this->addArgument(self::VERSION_ARGUMENT, \_PhpScoper717b2838a41b\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'New version of inter-dependencies, e.g. "^4.4.2"');
     }
-    protected function execute(\_PhpScoperf78d2b40800e\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperf78d2b40800e\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoper717b2838a41b\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper717b2838a41b\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         /** @var string $version */
         $version = $input->getArgument(self::VERSION_ARGUMENT);
