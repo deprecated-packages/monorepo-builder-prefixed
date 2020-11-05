@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc0b8351d879b\Symfony\Component\HttpFoundation;
+namespace _PhpScoperfd1a6a0ee9af\Symfony\Component\HttpFoundation;
 
 /**
  * RequestMatcherInterface is an interface for strategies to match a Request.
@@ -22,5 +22,5 @@ interface RequestMatcherInterface
      *
      * @return bool true if the request matches, false otherwise
      */
-    public function matches(\_PhpScoperc0b8351d879b\Symfony\Component\HttpFoundation\Request $request);
+    public function matches(\_PhpScoperfd1a6a0ee9af\Symfony\Component\HttpFoundation\Request $request);
 }

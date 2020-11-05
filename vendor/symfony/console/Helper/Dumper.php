@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc0b8351d879b\Symfony\Component\Console\Helper;
+namespace _PhpScoperfd1a6a0ee9af\Symfony\Component\Console\Helper;
 
-use _PhpScoperc0b8351d879b\Symfony\Component\Console\Output\OutputInterface;
-use _PhpScoperc0b8351d879b\Symfony\Component\VarDumper\Cloner\ClonerInterface;
-use _PhpScoperc0b8351d879b\Symfony\Component\VarDumper\Cloner\VarCloner;
-use _PhpScoperc0b8351d879b\Symfony\Component\VarDumper\Dumper\CliDumper;
+use _PhpScoperfd1a6a0ee9af\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoperfd1a6a0ee9af\Symfony\Component\VarDumper\Cloner\ClonerInterface;
+use _PhpScoperfd1a6a0ee9af\Symfony\Component\VarDumper\Cloner\VarCloner;
+use _PhpScoperfd1a6a0ee9af\Symfony\Component\VarDumper\Dumper\CliDumper;
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
@@ -23,16 +23,16 @@ final class Dumper
     private $dumper;
     private $cloner;
     private $handler;
-    public function __construct(\_PhpScoperc0b8351d879b\Symfony\Component\Console\Output\OutputInterface $output, \_PhpScoperc0b8351d879b\Symfony\Component\VarDumper\Dumper\CliDumper $dumper = null, \_PhpScoperc0b8351d879b\Symfony\Component\VarDumper\Cloner\ClonerInterface $cloner = null)
+    public function __construct(\_PhpScoperfd1a6a0ee9af\Symfony\Component\Console\Output\OutputInterface $output, \_PhpScoperfd1a6a0ee9af\Symfony\Component\VarDumper\Dumper\CliDumper $dumper = null, \_PhpScoperfd1a6a0ee9af\Symfony\Component\VarDumper\Cloner\ClonerInterface $cloner = null)
     {
         $this->output = $output;
         $this->dumper = $dumper;
         $this->cloner = $cloner;
-        if (\class_exists(\_PhpScoperc0b8351d879b\Symfony\Component\VarDumper\Dumper\CliDumper::class)) {
+        if (\class_exists(\_PhpScoperfd1a6a0ee9af\Symfony\Component\VarDumper\Dumper\CliDumper::class)) {
             $this->handler = function ($var) : string {
-                $dumper = $this->dumper ?? ($this->dumper = new \_PhpScoperc0b8351d879b\Symfony\Component\VarDumper\Dumper\CliDumper(null, null, \_PhpScoperc0b8351d879b\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_LIGHT_ARRAY | \_PhpScoperc0b8351d879b\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_COMMA_SEPARATOR));
+                $dumper = $this->dumper ?? ($this->dumper = new \_PhpScoperfd1a6a0ee9af\Symfony\Component\VarDumper\Dumper\CliDumper(null, null, \_PhpScoperfd1a6a0ee9af\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_LIGHT_ARRAY | \_PhpScoperfd1a6a0ee9af\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_COMMA_SEPARATOR));
                 $dumper->setColors($this->output->isDecorated());
-                return \rtrim($dumper->dump(($this->cloner ?? ($this->cloner = new \_PhpScoperc0b8351d879b\Symfony\Component\VarDumper\Cloner\VarCloner()))->cloneVar($var)->withRefHandles(\false), \true));
+                return \rtrim($dumper->dump(($this->cloner ?? ($this->cloner = new \_PhpScoperfd1a6a0ee9af\Symfony\Component\VarDumper\Cloner\VarCloner()))->cloneVar($var)->withRefHandles(\false), \true));
             };
         } else {
             $this->handler = function ($var) : string {

@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc0b8351d879b\Symfony\Component\HttpKernel\EventListener;
+namespace _PhpScoperfd1a6a0ee9af\Symfony\Component\HttpKernel\EventListener;
 
-use _PhpScoperc0b8351d879b\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use _PhpScoperc0b8351d879b\Symfony\Component\HttpKernel\Event\FilterResponseEvent;
-use _PhpScoperc0b8351d879b\Symfony\Component\HttpKernel\KernelEvents;
+use _PhpScoperfd1a6a0ee9af\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use _PhpScoperfd1a6a0ee9af\Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+use _PhpScoperfd1a6a0ee9af\Symfony\Component\HttpKernel\KernelEvents;
 /**
  * ResponseListener fixes the Response headers based on the Request.
  *
@@ -20,7 +20,7 @@ use _PhpScoperc0b8351d879b\Symfony\Component\HttpKernel\KernelEvents;
  *
  * @final since Symfony 4.3
  */
-class ResponseListener implements \_PhpScoperc0b8351d879b\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class ResponseListener implements \_PhpScoperfd1a6a0ee9af\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     private $charset;
     public function __construct(string $charset)
@@ -30,7 +30,7 @@ class ResponseListener implements \_PhpScoperc0b8351d879b\Symfony\Component\Even
     /**
      * Filters the Response.
      */
-    public function onKernelResponse(\_PhpScoperc0b8351d879b\Symfony\Component\HttpKernel\Event\FilterResponseEvent $event)
+    public function onKernelResponse(\_PhpScoperfd1a6a0ee9af\Symfony\Component\HttpKernel\Event\FilterResponseEvent $event)
     {
         if (!$event->isMasterRequest()) {
             return;
@@ -43,6 +43,6 @@ class ResponseListener implements \_PhpScoperc0b8351d879b\Symfony\Component\Even
     }
     public static function getSubscribedEvents()
     {
-        return [\_PhpScoperc0b8351d879b\Symfony\Component\HttpKernel\KernelEvents::RESPONSE => 'onKernelResponse'];
+        return [\_PhpScoperfd1a6a0ee9af\Symfony\Component\HttpKernel\KernelEvents::RESPONSE => 'onKernelResponse'];
     }
 }

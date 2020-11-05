@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\SmartFileSystem\Finder;
 
-use _PhpScoperc0b8351d879b\Symfony\Component\Finder\Finder;
+use _PhpScoperfd1a6a0ee9af\Symfony\Component\Finder\Finder;
 use Symplify\SmartFileSystem\FileSystemFilter;
 use Symplify\SmartFileSystem\SmartFileInfo;
 /**
@@ -32,7 +32,7 @@ final class SmartFinder
         $directories = $this->fileSystemFilter->filterDirectories($directoriesOrFiles);
         $fileInfos = [];
         if (\count($directories) > 0) {
-            $finder = new \_PhpScoperc0b8351d879b\Symfony\Component\Finder\Finder();
+            $finder = new \_PhpScoperfd1a6a0ee9af\Symfony\Component\Finder\Finder();
             $finder->name($name)->in($directories)->files()->sortByName();
             $fileInfos = $this->finderSanitizer->sanitize($finder);
         }
