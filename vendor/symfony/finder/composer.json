@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "_PhpScoper3ac0b040c6af\\Symfony\\Component\\Finder\\": ""
+            "_PhpScoperf78d2b40800e\\Symfony\\Component\\Finder\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"
