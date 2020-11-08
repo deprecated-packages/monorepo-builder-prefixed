@@ -2,14 +2,13 @@
 
 // decoupled in own "*.php" file, so ECS, Rector and PHPStan works out of the box here
 declare (strict_types=1);
-namespace _PhpScoper717b2838a41b;
+namespace _PhpScoperda849baa4a45;
 
-use _PhpScoper717b2838a41b\Symfony\Component\Console\Input\ArgvInput;
-use Symplify\MonorepoBuilder\Console\MonorepoBuilderApplication;
+use _PhpScoperda849baa4a45\Symfony\Component\Console\Input\ArgvInput;
 use Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel;
 use Symplify\MonorepoBuilder\ValueObject\File;
-use Symplify\PackageBuilder\Console\Input\StaticInputDetector;
 use Symplify\SetConfigResolver\ConfigResolver;
+use Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
 # 1. autoload
 $possibleAutoloadPaths = [
     // after split package
@@ -27,18 +26,9 @@ foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
 }
 $configFileInfos = [];
 $configResolver = new \Symplify\SetConfigResolver\ConfigResolver();
-$inputConfigFileInfo = $configResolver->resolveFromInputWithFallback(new \_PhpScoper717b2838a41b\Symfony\Component\Console\Input\ArgvInput(), [\Symplify\MonorepoBuilder\ValueObject\File::CONFIG]);
+$inputConfigFileInfo = $configResolver->resolveFromInputWithFallback(new \_PhpScoperda849baa4a45\Symfony\Component\Console\Input\ArgvInput(), [\Symplify\MonorepoBuilder\ValueObject\File::CONFIG]);
 if ($inputConfigFileInfo !== null) {
     $configFileInfos[] = $inputConfigFileInfo;
 }
-// the environment name must be "random", so configs are invalidated without clearing the cache
-$environment = 'prod' . \random_int(0, 100000);
-$monorepoBuilderKernel = new \Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel($environment, \Symplify\PackageBuilder\Console\Input\StaticInputDetector::isDebug());
-if ($configFileInfos !== []) {
-    $monorepoBuilderKernel->setConfigs($configFileInfos);
-}
-$monorepoBuilderKernel->boot();
-$container = $monorepoBuilderKernel->getContainer();
-# 3. run it
-$application = $container->get(\Symplify\MonorepoBuilder\Console\MonorepoBuilderApplication::class);
-exit($application->run());
+$kernelBootAndApplicationRun = new \Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel::class);
+$kernelBootAndApplicationRun->run();

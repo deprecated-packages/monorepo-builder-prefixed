@@ -5,8 +5,8 @@ namespace Symplify\MonorepoBuilder\Tests\Finder\PackageComposerFinder;
 
 use Symplify\MonorepoBuilder\Finder\PackageComposerFinder;
 use Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel;
-use Symplify\PackageBuilder\Tests\AbstractKernelTestCase;
-final class PackageComposerFinderTest extends \Symplify\PackageBuilder\Tests\AbstractKernelTestCase
+use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class PackageComposerFinderTest extends \Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var PackageComposerFinder

@@ -7,8 +7,8 @@ use Symplify\ComposerJsonManipulator\ComposerJsonFactory;
 use Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel;
 use Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator\SortComposerJsonDecorator;
-use Symplify\PackageBuilder\Tests\AbstractKernelTestCase;
-final class SortComposerJsonDecoratorTest extends \Symplify\PackageBuilder\Tests\AbstractKernelTestCase
+use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+final class SortComposerJsonDecoratorTest extends \Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var ComposerJson

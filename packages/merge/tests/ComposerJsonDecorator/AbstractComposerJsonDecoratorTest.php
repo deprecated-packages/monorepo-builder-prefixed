@@ -6,9 +6,9 @@ namespace Symplify\MonorepoBuilder\Merge\Tests\ComposerJsonDecorator;
 use Symplify\ComposerJsonManipulator\ComposerJsonFactory;
 use Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel;
-use Symplify\PackageBuilder\Tests\AbstractKernelTestCase;
+use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
 use Symplify\SmartFileSystem\SmartFileInfo;
-abstract class AbstractComposerJsonDecoratorTest extends \Symplify\PackageBuilder\Tests\AbstractKernelTestCase
+abstract class AbstractComposerJsonDecoratorTest extends \Symplify\PackageBuilder\Testing\AbstractKernelTestCase
 {
     /**
      * @var ComposerJsonFactory

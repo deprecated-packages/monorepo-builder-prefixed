@@ -3,22 +3,22 @@
 declare (strict_types=1);
 namespace Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass;
 
-use _PhpScoper717b2838a41b\Nette\Utils\Reflection;
-use _PhpScoper717b2838a41b\Nette\Utils\Strings;
+use _PhpScoperda849baa4a45\Nette\Utils\Reflection;
+use _PhpScoperda849baa4a45\Nette\Utils\Strings;
 use ReflectionClass;
 use ReflectionMethod;
 use ReflectionParameter;
-use _PhpScoper717b2838a41b\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use _PhpScoper717b2838a41b\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScoper717b2838a41b\Symfony\Component\DependencyInjection\Definition;
-use _PhpScoper717b2838a41b\Symfony\Component\DependencyInjection\Reference;
+use _PhpScoperda849baa4a45\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use _PhpScoperda849baa4a45\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoperda849baa4a45\Symfony\Component\DependencyInjection\Definition;
+use _PhpScoperda849baa4a45\Symfony\Component\DependencyInjection\Reference;
 use Symplify\PackageBuilder\DependencyInjection\DefinitionFinder;
 /**
  * @inspiration https://github.com/nette/di/pull/178
  * Not final just for BC with previous class location
  * @see \Symplify\AutowireArrayParameter\Tests\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPassTest
  */
-final class AutowireArrayParameterCompilerPass implements \_PhpScoper717b2838a41b\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+final class AutowireArrayParameterCompilerPass implements \_PhpScoperda849baa4a45\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     /**
      * These namespaces are already configured by their bundles/extensions.
@@ -30,7 +30,7 @@ final class AutowireArrayParameterCompilerPass implements \_PhpScoper717b2838a41
      * @var string[]
      * @noRector
      */
-    private $excludedFatalClasses = ['_PhpScoper717b2838a41b\\Symfony\\Component\\Form\\FormExtensionInterface', '_PhpScoper717b2838a41b\\Symfony\\Component\\Asset\\PackageInterface', '_PhpScoper717b2838a41b\\Symfony\\Component\\Config\\Loader\\LoaderInterface', '_PhpScoper717b2838a41b\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', '_PhpScoper717b2838a41b\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', '_PhpScoper717b2838a41b\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', '_PhpScoper717b2838a41b\\Sonata\\Doctrine\\Adapter\\AdapterChain', '_PhpScoper717b2838a41b\\Sonata\\Twig\\Extension\\TemplateExtension'];
+    private $excludedFatalClasses = ['_PhpScoperda849baa4a45\\Symfony\\Component\\Form\\FormExtensionInterface', '_PhpScoperda849baa4a45\\Symfony\\Component\\Asset\\PackageInterface', '_PhpScoperda849baa4a45\\Symfony\\Component\\Config\\Loader\\LoaderInterface', '_PhpScoperda849baa4a45\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', '_PhpScoperda849baa4a45\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', '_PhpScoperda849baa4a45\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', '_PhpScoperda849baa4a45\\Sonata\\Doctrine\\Adapter\\AdapterChain', '_PhpScoperda849baa4a45\\Sonata\\Twig\\Extension\\TemplateExtension'];
     /**
      * @var DefinitionFinder
      */
@@ -43,7 +43,7 @@ final class AutowireArrayParameterCompilerPass implements \_PhpScoper717b2838a41
         $this->definitionFinder = new \Symplify\PackageBuilder\DependencyInjection\DefinitionFinder();
         $this->excludedFatalClasses = \array_merge($this->excludedFatalClasses, $excludedFatalClasses);
     }
-    public function process(\_PhpScoper717b2838a41b\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
+    public function process(\_PhpScoperda849baa4a45\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
     {
         $definitions = $containerBuilder->getDefinitions();
         foreach ($definitions as $definition) {
@@ -57,7 +57,7 @@ final class AutowireArrayParameterCompilerPass implements \_PhpScoper717b2838a41
             $this->processParameters($containerBuilder, $constructorMethodReflection, $definition);
         }
     }
-    private function shouldSkipDefinition(\_PhpScoper717b2838a41b\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, \_PhpScoper717b2838a41b\Symfony\Component\DependencyInjection\Definition $definition) : bool
+    private function shouldSkipDefinition(\_PhpScoperda849baa4a45\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, \_PhpScoperda849baa4a45\Symfony\Component\DependencyInjection\Definition $definition) : bool
     {
         if ($definition->isAbstract()) {
             return \true;
@@ -68,7 +68,8 @@ final class AutowireArrayParameterCompilerPass implements \_PhpScoper717b2838a41
         // here class name can be "%parameter.class%"
         $resolvedClassName = $containerBuilder->getParameterBag()->resolveValue($definition->getClass());
         // skip 3rd party classes, they're autowired by own config
-        if (\_PhpScoper717b2838a41b\Nette\Utils\Strings::match($resolvedClassName, '#^(' . \implode('|', self::EXCLUDED_NAMESPACES) . ')\\\\#')) {
+        $excludedNamespacePattern = '#^(' . \implode('|', self::EXCLUDED_NAMESPACES) . ')\\\\#';
+        if ((bool) \_PhpScoperda849baa4a45\Nette\Utils\Strings::match($resolvedClassName, $excludedNamespacePattern)) {
             return \true;
         }
         if (\in_array($resolvedClassName, $this->excludedFatalClasses, \true)) {
@@ -88,7 +89,7 @@ final class AutowireArrayParameterCompilerPass implements \_PhpScoper717b2838a41
         $constructorMethodReflection = $reflectionClass->getConstructor();
         return !$constructorMethodReflection->getParameters();
     }
-    private function processParameters(\_PhpScoper717b2838a41b\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, \ReflectionMethod $reflectionMethod, \_PhpScoper717b2838a41b\Symfony\Component\DependencyInjection\Definition $definition) : void
+    private function processParameters(\_PhpScoperda849baa4a45\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, \ReflectionMethod $reflectionMethod, \_PhpScoperda849baa4a45\Symfony\Component\DependencyInjection\Definition $definition) : void
     {
         $reflectionParameters = $reflectionMethod->getParameters();
         foreach ($reflectionParameters as $reflectionParameter) {
@@ -105,7 +106,7 @@ final class AutowireArrayParameterCompilerPass implements \_PhpScoper717b2838a41
             $definition->setArgument($argumentName, $this->createReferencesFromDefinitions($definitionsOfType));
         }
     }
-    private function shouldSkipParameter(\ReflectionMethod $reflectionMethod, \_PhpScoper717b2838a41b\Symfony\Component\DependencyInjection\Definition $definition, \ReflectionParameter $reflectionParameter) : bool
+    private function shouldSkipParameter(\ReflectionMethod $reflectionMethod, \_PhpScoperda849baa4a45\Symfony\Component\DependencyInjection\Definition $definition, \ReflectionParameter $reflectionParameter) : bool
     {
         if (!($reflectionParameter->getType() !== null && $reflectionParameter->getType()->getName() === 'array')) {
             return \true;
@@ -135,7 +136,7 @@ final class AutowireArrayParameterCompilerPass implements \_PhpScoper717b2838a41
     {
         $parameterDocTypeRegex = '#@param[ \\t]+(?<type>[\\w\\\\]+)\\[\\][ \\t]+\\$' . $parameterName . '#';
         // copied from https://github.com/nette/di/blob/d1c0598fdecef6d3b01e2ace5f2c30214b3108e6/src/DI/Autowiring.php#L215
-        $result = \_PhpScoper717b2838a41b\Nette\Utils\Strings::match((string) $reflectionMethod->getDocComment(), $parameterDocTypeRegex);
+        $result = \_PhpScoperda849baa4a45\Nette\Utils\Strings::match((string) $reflectionMethod->getDocComment(), $parameterDocTypeRegex);
         if ($result === null) {
             return null;
         }
@@ -143,7 +144,7 @@ final class AutowireArrayParameterCompilerPass implements \_PhpScoper717b2838a41
         if (\ctype_lower($result['type'][0])) {
             return null;
         }
-        return \_PhpScoper717b2838a41b\Nette\Utils\Reflection::expandClassName($result['type'], $reflectionMethod->getDeclaringClass());
+        return \_PhpScoperda849baa4a45\Nette\Utils\Reflection::expandClassName($result['type'], $reflectionMethod->getDeclaringClass());
     }
     /**
      * Abstract definitions cannot be the target of references
@@ -169,7 +170,7 @@ final class AutowireArrayParameterCompilerPass implements \_PhpScoper717b2838a41
         $references = [];
         $definitionOfTypeNames = \array_keys($definitions);
         foreach ($definitionOfTypeNames as $definitionOfTypeName) {
-            $references[] = new \_PhpScoper717b2838a41b\Symfony\Component\DependencyInjection\Reference($definitionOfTypeName);
+            $references[] = new \_PhpScoperda849baa4a45\Symfony\Component\DependencyInjection\Reference($definitionOfTypeName);
         }
         return $references;
     }
