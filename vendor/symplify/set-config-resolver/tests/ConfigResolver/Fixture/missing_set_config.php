@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace _PhpScoperda849baa4a45;
+namespace _PhpScoper3c46f40844ed;
 
-use _PhpScoperda849baa4a45\PhpCsFixer\Fixer\ArrayNotation\ArraySyntaxFixer;
-use _PhpScoperda849baa4a45\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-return static function (\_PhpScoperda849baa4a45\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
+use _PhpScoper3c46f40844ed\PhpCsFixer\Fixer\ArrayNotation\ArraySyntaxFixer;
+use _PhpScoper3c46f40844ed\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+return static function (\_PhpScoper3c46f40844ed\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $parameters = $containerConfigurator->parameters();
     $parameters->set('sets', ['not_here']);
     $services = $containerConfigurator->services();
-    $services->set(\_PhpScoperda849baa4a45\PhpCsFixer\Fixer\ArrayNotation\ArraySyntaxFixer::class)->call('configure', [['syntax' => 'short']]);
+    $services->set(\_PhpScoper3c46f40844ed\PhpCsFixer\Fixer\ArrayNotation\ArraySyntaxFixer::class)->call('configure', [['syntax' => 'short']]);
 };
