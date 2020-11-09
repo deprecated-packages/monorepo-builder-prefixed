@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperedfa898a454f\Symfony\Component\HttpKernel;
+namespace _PhpScoper650fbdd90fa0\Symfony\Component\HttpKernel;
 
 /**
  * Signs URIs.
