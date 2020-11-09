@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper650fbdd90fa0\Symfony\Component\HttpKernel\Exception;
+namespace _PhpScopere9939b84e968\Symfony\Component\HttpKernel\Exception;
 
 /**
  * @author Ben Ramsey <ben@benramsey.com>
  *
  * @see http://tools.ietf.org/html/rfc6585
  */
-class PreconditionRequiredHttpException extends \_PhpScoper650fbdd90fa0\Symfony\Component\HttpKernel\Exception\HttpException
+class PreconditionRequiredHttpException extends \_PhpScopere9939b84e968\Symfony\Component\HttpKernel\Exception\HttpException
 {
     /**
      * @param string     $message  The internal exception message
