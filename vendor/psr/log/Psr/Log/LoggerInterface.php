@@ -1,6 +1,6 @@
 <?php
 
-namespace _PhpScoper3c46f40844ed\Psr\Log;
+namespace _PhpScoper80b6fe7627f7\Psr\Log;
 
 /**
  * Describes a logger instance
