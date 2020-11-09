@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere9939b84e968\Symfony\Component\DependencyInjection\Compiler;
+namespace _PhpScoper8a4bdaafa6ec\Symfony\Component\DependencyInjection\Compiler;
 
-use _PhpScopere9939b84e968\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoper8a4bdaafa6ec\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * Remove private aliases from the container. They were only used to establish
  * dependencies between services, and these dependencies have been resolved in
@@ -18,12 +18,12 @@ use _PhpScopere9939b84e968\Symfony\Component\DependencyInjection\ContainerBuilde
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class RemovePrivateAliasesPass implements \_PhpScopere9939b84e968\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class RemovePrivateAliasesPass implements \_PhpScoper8a4bdaafa6ec\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     /**
      * Removes private aliases from the ContainerBuilder.
      */
-    public function process(\_PhpScopere9939b84e968\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\_PhpScoper8a4bdaafa6ec\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         foreach ($container->getAliases() as $id => $alias) {
             if ($alias->isPublic()) {

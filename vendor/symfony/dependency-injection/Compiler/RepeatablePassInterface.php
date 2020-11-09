@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere9939b84e968\Symfony\Component\DependencyInjection\Compiler;
+namespace _PhpScoper8a4bdaafa6ec\Symfony\Component\DependencyInjection\Compiler;
 
 /**
  * Interface that must be implemented by passes that are run as part of an
@@ -18,7 +18,7 @@ namespace _PhpScopere9939b84e968\Symfony\Component\DependencyInjection\Compiler;
  *
  * @deprecated since Symfony 4.2.
  */
-interface RepeatablePassInterface extends \_PhpScopere9939b84e968\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+interface RepeatablePassInterface extends \_PhpScoper8a4bdaafa6ec\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
-    public function setRepeatedPass(\_PhpScopere9939b84e968\Symfony\Component\DependencyInjection\Compiler\RepeatedPass $repeatedPass);
+    public function setRepeatedPass(\_PhpScoper8a4bdaafa6ec\Symfony\Component\DependencyInjection\Compiler\RepeatedPass $repeatedPass);
 }
