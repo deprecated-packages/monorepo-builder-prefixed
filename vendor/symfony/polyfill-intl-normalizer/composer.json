@@ -27,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "_PhpScoper058a557299a1\\Symfony\\Polyfill\\Intl\\Normalizer\\": ""
+            "_PhpScopera31d0d6ff47a\\Symfony\\Polyfill\\Intl\\Normalizer\\": ""
         },
         "files": [
             "bootstrap.php"
