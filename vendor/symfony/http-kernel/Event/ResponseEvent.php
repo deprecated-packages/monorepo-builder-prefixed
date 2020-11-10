@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper7371f586a1d2\Symfony\Component\HttpKernel\Event;
+namespace _PhpScoper31b05558ad5c\Symfony\Component\HttpKernel\Event;
 
 /**
  * Allows to filter a Response object.
@@ -21,6 +21,6 @@ namespace _PhpScoper7371f586a1d2\Symfony\Component\HttpKernel\Event;
  *
  * @final since Symfony 4.4
  */
-class ResponseEvent extends \_PhpScoper7371f586a1d2\Symfony\Component\HttpKernel\Event\FilterResponseEvent
+class ResponseEvent extends \_PhpScoper31b05558ad5c\Symfony\Component\HttpKernel\Event\FilterResponseEvent
 {
 }

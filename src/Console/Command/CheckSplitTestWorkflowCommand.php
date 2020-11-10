@@ -3,17 +3,17 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Console\Command;
 
-use _PhpScoper7371f586a1d2\Symfony\Component\Console\Command\Command;
-use _PhpScoper7371f586a1d2\Symfony\Component\Console\Input\InputArgument;
-use _PhpScoper7371f586a1d2\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoper7371f586a1d2\Symfony\Component\Console\Output\OutputInterface;
-use _PhpScoper7371f586a1d2\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoper31b05558ad5c\Symfony\Component\Console\Command\Command;
+use _PhpScoper31b05558ad5c\Symfony\Component\Console\Input\InputArgument;
+use _PhpScoper31b05558ad5c\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoper31b05558ad5c\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoper31b05558ad5c\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\MonorepoBuilder\GitHubActionsWorkflow\MissingPackageInWorkflowResolver;
 use Symplify\MonorepoBuilder\Package\PackageProvider;
 use Symplify\PackageBuilder\Console\ShellCode;
 use Symplify\SmartFileSystem\FileSystemGuard;
 use Symplify\SmartFileSystem\SmartFileInfo;
-final class CheckSplitTestWorkflowCommand extends \_PhpScoper7371f586a1d2\Symfony\Component\Console\Command\Command
+final class CheckSplitTestWorkflowCommand extends \_PhpScoper31b05558ad5c\Symfony\Component\Console\Command\Command
 {
     /**
      * @var string
@@ -35,7 +35,7 @@ final class CheckSplitTestWorkflowCommand extends \_PhpScoper7371f586a1d2\Symfon
      * @var MissingPackageInWorkflowResolver
      */
     private $missingPackageInWorkflowResolver;
-    public function __construct(\_PhpScoper7371f586a1d2\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Package\PackageProvider $packageProvider, \Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard, \Symplify\MonorepoBuilder\GitHubActionsWorkflow\MissingPackageInWorkflowResolver $missingPackageInWorkflowResolver)
+    public function __construct(\_PhpScoper31b05558ad5c\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Package\PackageProvider $packageProvider, \Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard, \Symplify\MonorepoBuilder\GitHubActionsWorkflow\MissingPackageInWorkflowResolver $missingPackageInWorkflowResolver)
     {
         parent::__construct();
         $this->symfonyStyle = $symfonyStyle;
@@ -45,10 +45,10 @@ final class CheckSplitTestWorkflowCommand extends \_PhpScoper7371f586a1d2\Symfon
     }
     protected function configure() : void
     {
-        $this->addArgument(self::ARGUMENT_SOURCE, \_PhpScoper7371f586a1d2\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'Path to Github Action workflow file with split tests');
+        $this->addArgument(self::ARGUMENT_SOURCE, \_PhpScoper31b05558ad5c\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'Path to Github Action workflow file with split tests');
         $this->setDescription('Checkes split workflow for all the packages with tests');
     }
-    protected function execute(\_PhpScoper7371f586a1d2\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper7371f586a1d2\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoper31b05558ad5c\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper31b05558ad5c\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $packages = $this->packageProvider->provideWithTests();
         $workflowFileInfo = $this->resolveWorkflowFileInfo($input);
@@ -67,7 +67,7 @@ final class CheckSplitTestWorkflowCommand extends \_PhpScoper7371f586a1d2\Symfon
         $this->symfonyStyle->newLine(2);
         return \Symplify\PackageBuilder\Console\ShellCode::ERROR;
     }
-    private function resolveWorkflowFileInfo(\_PhpScoper7371f586a1d2\Symfony\Component\Console\Input\InputInterface $input) : \Symplify\SmartFileSystem\SmartFileInfo
+    private function resolveWorkflowFileInfo(\_PhpScoper31b05558ad5c\Symfony\Component\Console\Input\InputInterface $input) : \Symplify\SmartFileSystem\SmartFileInfo
     {
         $workflowFilePath = (string) $input->getArgument(self::ARGUMENT_SOURCE);
         $workflowFilePath = \getcwd() . \DIRECTORY_SEPARATOR . $workflowFilePath;

@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\SymplifyKernel\Strings;
 
-use _PhpScoper7371f586a1d2\Nette\Utils\Strings;
+use _PhpScoper31b05558ad5c\Nette\Utils\Strings;
 final class StringsConverter
 {
     /**
@@ -16,11 +16,25 @@ final class StringsConverter
         if ($input === \strtolower($input)) {
             return $input;
         }
-        $matches = \_PhpScoper7371f586a1d2\Nette\Utils\Strings::matchAll($input, self::CAMEL_CASE_BY_WORD_REGEX);
+        $matches = \_PhpScoper31b05558ad5c\Nette\Utils\Strings::matchAll($input, self::CAMEL_CASE_BY_WORD_REGEX);
         $parts = [];
         foreach ($matches as $match) {
             $parts[] = $match[0] === \strtoupper($match[0]) ? \strtolower($match[0]) : \lcfirst($match[0]);
         }
         return \implode($glue, $parts);
+    }
+    public function dashedToCamelCaseWithGlue(string $content, string $glue) : string
+    {
+        $parts = \explode('-', $content);
+        $casedParts = [];
+        foreach ($parts as $part) {
+            // special names
+            if ($part === 'phpstan') {
+                $casedParts[] = 'PHPStan';
+                continue;
+            }
+            $casedParts[] = \ucfirst($part);
+        }
+        return \implode($glue, $casedParts);
     }
 }
