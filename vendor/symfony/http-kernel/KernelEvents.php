@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper31b05558ad5c\Symfony\Component\HttpKernel;
+namespace _PhpScoper711ac919263f\Symfony\Component\HttpKernel;
 
 /**
  * Contains all events thrown in the HttpKernel component.

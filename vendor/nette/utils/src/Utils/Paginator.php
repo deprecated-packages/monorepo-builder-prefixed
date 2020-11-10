@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace _PhpScoper31b05558ad5c\Nette\Utils;
+namespace _PhpScoper711ac919263f\Nette\Utils;
 
-use _PhpScoper31b05558ad5c\Nette;
+use _PhpScoper711ac919263f\Nette;
 /**
  * Paginating math.
  *
