@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Symplify\PackageBuilder\Testing;
 
-use _PhpScopera31d0d6ff47a\PHPUnit\Framework\TestCase;
-use _PhpScopera31d0d6ff47a\Psr\Container\ContainerInterface;
+use _PhpScoper7371f586a1d2\PHPUnit\Framework\TestCase;
+use _PhpScoper7371f586a1d2\Psr\Container\ContainerInterface;
 use ReflectionClass;
-use _PhpScopera31d0d6ff47a\Symfony\Component\Console\Output\OutputInterface;
-use _PhpScopera31d0d6ff47a\Symfony\Component\Console\Style\SymfonyStyle;
-use _PhpScopera31d0d6ff47a\Symfony\Component\DependencyInjection\Container;
-use _PhpScopera31d0d6ff47a\Symfony\Component\HttpKernel\KernelInterface;
-use _PhpScopera31d0d6ff47a\Symfony\Contracts\Service\ResetInterface;
+use _PhpScoper7371f586a1d2\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoper7371f586a1d2\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoper7371f586a1d2\Symfony\Component\DependencyInjection\Container;
+use _PhpScoper7371f586a1d2\Symfony\Component\HttpKernel\KernelInterface;
+use _PhpScoper7371f586a1d2\Symfony\Contracts\Service\ResetInterface;
 use Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface;
 use Symplify\PackageBuilder\Exception\HttpKernel\MissingInterfaceException;
 use Symplify\SmartFileSystem\SmartFileInfo;
@@ -19,7 +19,7 @@ use Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
  * Inspiration
  * @see https://github.com/symfony/symfony/blob/master/src/Symfony/Bundle/FrameworkBundle/Test/KernelTestCase.php
  */
-abstract class AbstractKernelTestCase extends \_PhpScopera31d0d6ff47a\PHPUnit\Framework\TestCase
+abstract class AbstractKernelTestCase extends \_PhpScoper7371f586a1d2\PHPUnit\Framework\TestCase
 {
     /**
      * @var KernelInterface
@@ -32,14 +32,14 @@ abstract class AbstractKernelTestCase extends \_PhpScopera31d0d6ff47a\PHPUnit\Fr
     /**
      * @param string[]|SmartFileInfo[] $configs
      */
-    protected function bootKernelWithConfigs(string $kernelClass, array $configs) : \_PhpScopera31d0d6ff47a\Symfony\Component\HttpKernel\KernelInterface
+    protected function bootKernelWithConfigs(string $kernelClass, array $configs) : \_PhpScoper7371f586a1d2\Symfony\Component\HttpKernel\KernelInterface
     {
         // unwrap file infos to real paths
         $configFilePaths = $this->resolveConfigFilePaths($configs);
         $configsHash = $this->resolveConfigsHash($configFilePaths);
         $this->ensureKernelShutdown();
         $kernel = new $kernelClass('test_' . $configsHash, \true);
-        if (!$kernel instanceof \_PhpScopera31d0d6ff47a\Symfony\Component\HttpKernel\KernelInterface) {
+        if (!$kernel instanceof \_PhpScoper7371f586a1d2\Symfony\Component\HttpKernel\KernelInterface) {
             throw new \Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
         }
         $this->ensureIsConfigAwareKernel($kernel);
@@ -52,7 +52,7 @@ abstract class AbstractKernelTestCase extends \_PhpScopera31d0d6ff47a\PHPUnit\Fr
     {
         $this->ensureKernelShutdown();
         $kernel = new $kernelClass('test', \true);
-        if (!$kernel instanceof \_PhpScopera31d0d6ff47a\Symfony\Component\HttpKernel\KernelInterface) {
+        if (!$kernel instanceof \_PhpScoper7371f586a1d2\Symfony\Component\HttpKernel\KernelInterface) {
             throw new \Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
         }
         static::$kernel = $this->bootAndReturnKernel($kernel);
@@ -72,7 +72,7 @@ abstract class AbstractKernelTestCase extends \_PhpScopera31d0d6ff47a\PHPUnit\Fr
             if ($kernel !== null) {
                 $container = static::$kernel->getContainer();
                 static::$kernel->shutdown();
-                if ($container instanceof \_PhpScopera31d0d6ff47a\Symfony\Contracts\Service\ResetInterface) {
+                if ($container instanceof \_PhpScoper7371f586a1d2\Symfony\Contracts\Service\ResetInterface) {
                     $container->reset();
                 }
             }
@@ -90,14 +90,14 @@ abstract class AbstractKernelTestCase extends \_PhpScopera31d0d6ff47a\PHPUnit\Fr
         }
         return \md5($configsHash);
     }
-    private function ensureIsConfigAwareKernel(\_PhpScopera31d0d6ff47a\Symfony\Component\HttpKernel\KernelInterface $kernel) : void
+    private function ensureIsConfigAwareKernel(\_PhpScoper7371f586a1d2\Symfony\Component\HttpKernel\KernelInterface $kernel) : void
     {
         if ($kernel instanceof \Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface) {
             return;
         }
         throw new \Symplify\PackageBuilder\Exception\HttpKernel\MissingInterfaceException(\sprintf('"%s" is missing an "%s" interface', \get_class($kernel), \Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface::class));
     }
-    private function bootAndReturnKernel(\_PhpScopera31d0d6ff47a\Symfony\Component\HttpKernel\KernelInterface $kernel) : \_PhpScopera31d0d6ff47a\Symfony\Component\HttpKernel\KernelInterface
+    private function bootAndReturnKernel(\_PhpScoper7371f586a1d2\Symfony\Component\HttpKernel\KernelInterface $kernel) : \_PhpScoper7371f586a1d2\Symfony\Component\HttpKernel\KernelInterface
     {
         $kernel->boot();
         $container = $kernel->getContainer();
@@ -105,13 +105,13 @@ abstract class AbstractKernelTestCase extends \_PhpScopera31d0d6ff47a\PHPUnit\Fr
         if ($container->has('test.service_container')) {
             $container = $container->get('test.service_container');
         }
-        if (!$container instanceof \_PhpScopera31d0d6ff47a\Psr\Container\ContainerInterface) {
+        if (!$container instanceof \_PhpScoper7371f586a1d2\Psr\Container\ContainerInterface) {
             throw new \Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
         }
         // has output? keep it silent out of tests
-        if ($container->has(\_PhpScopera31d0d6ff47a\Symfony\Component\Console\Style\SymfonyStyle::class)) {
-            $symfonyStyle = $container->get(\_PhpScopera31d0d6ff47a\Symfony\Component\Console\Style\SymfonyStyle::class);
-            $symfonyStyle->setVerbosity(\_PhpScopera31d0d6ff47a\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
+        if ($container->has(\_PhpScoper7371f586a1d2\Symfony\Component\Console\Style\SymfonyStyle::class)) {
+            $symfonyStyle = $container->get(\_PhpScoper7371f586a1d2\Symfony\Component\Console\Style\SymfonyStyle::class);
+            $symfonyStyle->setVerbosity(\_PhpScoper7371f586a1d2\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET);
         }
         static::$container = $container;
         return $kernel;

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopera31d0d6ff47a\Symfony\Component\Config\Resource;
+namespace _PhpScoper7371f586a1d2\Symfony\Component\Config\Resource;
 
 /**
  * ClassExistenceResource represents a class existence.
@@ -20,7 +20,7 @@ namespace _PhpScopera31d0d6ff47a\Symfony\Component\Config\Resource;
  *
  * @final since Symfony 4.3
  */
-class ClassExistenceResource implements \_PhpScopera31d0d6ff47a\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class ClassExistenceResource implements \_PhpScoper7371f586a1d2\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
 {
     private $resource;
     private $exists;

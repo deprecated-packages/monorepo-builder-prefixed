@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopera31d0d6ff47a\PharIo\Version;
+namespace _PhpScoper7371f586a1d2\PharIo\Version;
 
-class GreaterThanOrEqualToVersionConstraint extends \_PhpScopera31d0d6ff47a\PharIo\Version\AbstractVersionConstraint
+class GreaterThanOrEqualToVersionConstraint extends \_PhpScoper7371f586a1d2\PharIo\Version\AbstractVersionConstraint
 {
     /**
      * @var Version
@@ -20,7 +20,7 @@ class GreaterThanOrEqualToVersionConstraint extends \_PhpScopera31d0d6ff47a\Phar
      * @param string $originalValue
      * @param Version $minimalVersion
      */
-    public function __construct($originalValue, \_PhpScopera31d0d6ff47a\PharIo\Version\Version $minimalVersion)
+    public function __construct($originalValue, \_PhpScoper7371f586a1d2\PharIo\Version\Version $minimalVersion)
     {
         parent::__construct($originalValue);
         $this->minimalVersion = $minimalVersion;
@@ -30,7 +30,7 @@ class GreaterThanOrEqualToVersionConstraint extends \_PhpScopera31d0d6ff47a\Phar
      *
      * @return bool
      */
-    public function complies(\_PhpScopera31d0d6ff47a\PharIo\Version\Version $version)
+    public function complies(\_PhpScoper7371f586a1d2\PharIo\Version\Version $version)
     {
         return $version->getVersionString() == $this->minimalVersion->getVersionString() || $version->isGreaterThan($this->minimalVersion);
     }
