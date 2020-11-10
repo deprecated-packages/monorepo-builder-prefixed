@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\GitHubActionsWorkflow;
 
-use _PhpScopera2bd9a9af620\Nette\Utils\Strings;
+use _PhpScoper058a557299a1\Nette\Utils\Strings;
 use Symplify\MonorepoBuilder\ValueObject\Package;
 use Symplify\SmartFileSystem\SmartFileInfo;
 final class MissingPackageInWorkflowResolver
@@ -17,7 +17,7 @@ final class MissingPackageInWorkflowResolver
         $missingPackages = [];
         foreach ($packages as $package) {
             $packageNameItemPattern = '#\\-\\s+' . \preg_quote($package->getShortDirectory(), '#') . '\\b#';
-            if (\_PhpScopera2bd9a9af620\Nette\Utils\Strings::match($workflowFileInfo->getContents(), $packageNameItemPattern)) {
+            if (\_PhpScoper058a557299a1\Nette\Utils\Strings::match($workflowFileInfo->getContents(), $packageNameItemPattern)) {
                 // not important
                 continue;
             }
