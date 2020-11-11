@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Console\Command;
 
-use _PhpScoperf0b2c071f15d\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperf0b2c071f15d\Symfony\Component\Console\Output\OutputInterface;
-use _PhpScoperf0b2c071f15d\Symfony\Component\Process\Process;
+use _PhpScoper416e75c46c6e\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoper416e75c46c6e\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoper416e75c46c6e\Symfony\Component\Process\Process;
 use Symplify\MonorepoBuilder\DevMasterAliasUpdater;
 use Symplify\MonorepoBuilder\Finder\PackageComposerFinder;
 use Symplify\MonorepoBuilder\Utils\VersionUtils;
@@ -36,7 +36,7 @@ final class PackageAliasCommand extends \Symplify\PackageBuilder\Console\Command
     {
         $this->setDescription('Updates branch alias in "composer.json" all found packages');
     }
-    protected function execute(\_PhpScoperf0b2c071f15d\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperf0b2c071f15d\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoper416e75c46c6e\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper416e75c46c6e\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $composerPackageFiles = $this->packageComposerFinder->getPackageComposerFiles();
         if (\count($composerPackageFiles) === 0) {
@@ -51,7 +51,7 @@ final class PackageAliasCommand extends \Symplify\PackageBuilder\Console\Command
     }
     private function getExpectedAlias() : string
     {
-        $process = new \_PhpScoperf0b2c071f15d\Symfony\Component\Process\Process(['git', 'describe', '--abbrev=0', '--tags']);
+        $process = new \_PhpScoper416e75c46c6e\Symfony\Component\Process\Process(['git', 'describe', '--abbrev=0', '--tags']);
         $process->run();
         $output = $process->getOutput();
         return $this->versionUtils->getNextAliasFormat($output);

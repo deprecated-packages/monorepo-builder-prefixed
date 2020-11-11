@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf0b2c071f15d\Symfony\Component\DependencyInjection\Compiler;
+namespace _PhpScoper416e75c46c6e\Symfony\Component\DependencyInjection\Compiler;
 
-use _PhpScoperf0b2c071f15d\Symfony\Component\DependencyInjection\Alias;
-use _PhpScoperf0b2c071f15d\Symfony\Component\DependencyInjection\Definition;
+use _PhpScoper416e75c46c6e\Symfony\Component\DependencyInjection\Alias;
+use _PhpScoper416e75c46c6e\Symfony\Component\DependencyInjection\Definition;
 /**
  * Represents a node in your service graph.
  *
@@ -34,11 +34,11 @@ class ServiceReferenceGraphNode
         $this->id = $id;
         $this->value = $value;
     }
-    public function addInEdge(\_PhpScoperf0b2c071f15d\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphEdge $edge)
+    public function addInEdge(\_PhpScoper416e75c46c6e\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphEdge $edge)
     {
         $this->inEdges[] = $edge;
     }
-    public function addOutEdge(\_PhpScoperf0b2c071f15d\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphEdge $edge)
+    public function addOutEdge(\_PhpScoper416e75c46c6e\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphEdge $edge)
     {
         $this->outEdges[] = $edge;
     }
@@ -49,7 +49,7 @@ class ServiceReferenceGraphNode
      */
     public function isAlias()
     {
-        return $this->value instanceof \_PhpScoperf0b2c071f15d\Symfony\Component\DependencyInjection\Alias;
+        return $this->value instanceof \_PhpScoper416e75c46c6e\Symfony\Component\DependencyInjection\Alias;
     }
     /**
      * Checks if the value of this node is a Definition.
@@ -58,7 +58,7 @@ class ServiceReferenceGraphNode
      */
     public function isDefinition()
     {
-        return $this->value instanceof \_PhpScoperf0b2c071f15d\Symfony\Component\DependencyInjection\Definition;
+        return $this->value instanceof \_PhpScoper416e75c46c6e\Symfony\Component\DependencyInjection\Definition;
     }
     /**
      * Returns the identifier.

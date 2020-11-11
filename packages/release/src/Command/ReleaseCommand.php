@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\Command;
 
-use _PhpScoperf0b2c071f15d\PharIo\Version\Version;
-use _PhpScoperf0b2c071f15d\Symfony\Component\Console\Input\InputArgument;
-use _PhpScoperf0b2c071f15d\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperf0b2c071f15d\Symfony\Component\Console\Input\InputOption;
-use _PhpScoperf0b2c071f15d\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoper416e75c46c6e\PharIo\Version\Version;
+use _PhpScoper416e75c46c6e\Symfony\Component\Console\Input\InputArgument;
+use _PhpScoper416e75c46c6e\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoper416e75c46c6e\Symfony\Component\Console\Input\InputOption;
+use _PhpScoper416e75c46c6e\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface;
 use Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard;
@@ -49,11 +49,11 @@ final class ReleaseCommand extends \Symplify\PackageBuilder\Console\Command\Abst
     {
         $this->setDescription('Perform release process with set Release Workers.');
         $description = \sprintf('Release version, in format "<major>.<minor>.<patch>" or "v<major>.<minor>.<patch> or one of keywords: "%s"', \implode('", "', \Symplify\MonorepoBuilder\Release\ValueObject\SemVersion::ALL));
-        $this->addArgument(\Symplify\MonorepoBuilder\ValueObject\Option::VERSION, \_PhpScoperf0b2c071f15d\Symfony\Component\Console\Input\InputArgument::REQUIRED, $description);
-        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::DRY_RUN, null, \_PhpScoperf0b2c071f15d\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Do not perform operations, just their preview');
-        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::STAGE, null, \_PhpScoperf0b2c071f15d\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Name of stage to perform');
+        $this->addArgument(\Symplify\MonorepoBuilder\ValueObject\Option::VERSION, \_PhpScoper416e75c46c6e\Symfony\Component\Console\Input\InputArgument::REQUIRED, $description);
+        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::DRY_RUN, null, \_PhpScoper416e75c46c6e\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Do not perform operations, just their preview');
+        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::STAGE, null, \_PhpScoper416e75c46c6e\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Name of stage to perform');
     }
-    protected function execute(\_PhpScoperf0b2c071f15d\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperf0b2c071f15d\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoper416e75c46c6e\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper416e75c46c6e\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $this->sourcesPresenceValidator->validateRootComposerJsonName();
         // validation phase
@@ -99,7 +99,7 @@ final class ReleaseCommand extends \Symplify\PackageBuilder\Console\Command\Abst
         }
         $this->symfonyStyle->newLine();
     }
-    private function resolveStage(\_PhpScoperf0b2c071f15d\Symfony\Component\Console\Input\InputInterface $input) : ?string
+    private function resolveStage(\_PhpScoper416e75c46c6e\Symfony\Component\Console\Input\InputInterface $input) : ?string
     {
         $stage = $input->getOption(\Symplify\MonorepoBuilder\ValueObject\Option::STAGE);
         // string or null
@@ -111,7 +111,7 @@ final class ReleaseCommand extends \Symplify\PackageBuilder\Console\Command\Abst
         $this->releaseGuard->guardStage($stage);
         return $stage;
     }
-    private function resolveVersion(\_PhpScoperf0b2c071f15d\Symfony\Component\Console\Input\InputInterface $input, ?string $stage) : \_PhpScoperf0b2c071f15d\PharIo\Version\Version
+    private function resolveVersion(\_PhpScoper416e75c46c6e\Symfony\Component\Console\Input\InputInterface $input, ?string $stage) : \_PhpScoper416e75c46c6e\PharIo\Version\Version
     {
         /** @var string $versionArgument */
         $versionArgument = $input->getArgument(\Symplify\MonorepoBuilder\ValueObject\Option::VERSION);

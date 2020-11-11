@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\SymplifyKernel\Strings;
 
-use _PhpScoperf0b2c071f15d\Nette\Utils\Strings;
+use _PhpScoper416e75c46c6e\Nette\Utils\Strings;
 final class StringsConverter
 {
     /**
@@ -16,7 +16,7 @@ final class StringsConverter
         if ($input === \strtolower($input)) {
             return $input;
         }
-        $matches = \_PhpScoperf0b2c071f15d\Nette\Utils\Strings::matchAll($input, self::CAMEL_CASE_BY_WORD_REGEX);
+        $matches = \_PhpScoper416e75c46c6e\Nette\Utils\Strings::matchAll($input, self::CAMEL_CASE_BY_WORD_REGEX);
         $parts = [];
         foreach ($matches as $match) {
             $parts[] = $match[0] === \strtoupper($match[0]) ? \strtolower($match[0]) : \lcfirst($match[0]);

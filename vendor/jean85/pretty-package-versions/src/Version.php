@@ -1,6 +1,6 @@
 <?php
 
-namespace _PhpScoperf0b2c071f15d\Jean85;
+namespace _PhpScoper416e75c46c6e\Jean85;
 
 class Version
 {

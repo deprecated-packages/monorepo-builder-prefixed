@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\Command;
 
-use _PhpScoperf0b2c071f15d\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperf0b2c071f15d\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoper416e75c46c6e\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoper416e75c46c6e\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\ComposerJsonManipulator\ComposerJsonFactory;
 use Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\Console\Reporter\ConflictingPackageVersionsReporter;
@@ -60,7 +60,7 @@ final class MergeCommand extends \Symplify\PackageBuilder\Console\Command\Abstra
     {
         $this->setDescription('Merge "composer.json" from all found packages to root one');
     }
-    protected function execute(\_PhpScoperf0b2c071f15d\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperf0b2c071f15d\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoper416e75c46c6e\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper416e75c46c6e\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $this->sourcesPresenceValidator->validatePackageComposerJsons();
         $this->ensureNoConflictingPackageVersions();
