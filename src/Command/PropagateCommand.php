@@ -1,13 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\MonorepoBuilder\Console\Command;
+namespace Symplify\MonorepoBuilder\Command;
 
-use _PhpScoper416e75c46c6e\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoper416e75c46c6e\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoper5a7e73320450\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoper5a7e73320450\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\DependencyUpdater;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\ValueObject\File;
+use Symplify\MonorepoBuilder\VersionPropagator;
 use Symplify\MonorepoBuilder\VersionValidator;
 use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use Symplify\PackageBuilder\Console\ShellCode;
@@ -26,18 +27,23 @@ final class PropagateCommand extends \Symplify\PackageBuilder\Console\Command\Ab
      * @var DependencyUpdater
      */
     private $dependencyUpdater;
-    public function __construct(\Symplify\MonorepoBuilder\VersionValidator $versionValidator, \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \Symplify\MonorepoBuilder\DependencyUpdater $dependencyUpdater)
+    /**
+     * @var VersionPropagator
+     */
+    private $versionPropagator;
+    public function __construct(\Symplify\MonorepoBuilder\VersionValidator $versionValidator, \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \Symplify\MonorepoBuilder\DependencyUpdater $dependencyUpdater, \Symplify\MonorepoBuilder\VersionPropagator $versionPropagator)
     {
         parent::__construct();
         $this->versionValidator = $versionValidator;
         $this->composerJsonProvider = $composerJsonProvider;
         $this->dependencyUpdater = $dependencyUpdater;
+        $this->versionPropagator = $versionPropagator;
     }
     protected function configure() : void
     {
         $this->setDescription('Propagate versions from root "composer.json" to all packages, the opposite of "merge" command');
     }
-    protected function execute(\_PhpScoper416e75c46c6e\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper416e75c46c6e\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoper5a7e73320450\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper5a7e73320450\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $conflictingPackageVersions = $this->versionValidator->findConflictingPackageVersionsInFileInfos($this->composerJsonProvider->getRootAndPackageFileInfos());
         foreach ($conflictingPackageVersions as $packageName => $filesToVersion) {
@@ -48,7 +54,7 @@ final class PropagateCommand extends \Symplify\PackageBuilder\Console\Command\Ab
             // update all other files to root composer.json version
             $newVersion = $filesToVersion[\Symplify\MonorepoBuilder\ValueObject\File::COMPOSER_JSON];
             unset($filesToVersion[\Symplify\MonorepoBuilder\ValueObject\File::COMPOSER_JSON]);
-            $filesToVersion = $this->processManualConfigFiles($filesToVersion, $packageName, $newVersion);
+            $filesToVersion = $this->versionPropagator->processManualConfigFiles($filesToVersion, $packageName, $newVersion);
             $fileToVersionKeys = \array_keys($filesToVersion);
             foreach ($fileToVersionKeys as $filePath) {
                 $this->dependencyUpdater->updateFileInfosWithPackagesAndVersion([new \Symplify\SmartFileSystem\SmartFileInfo($filePath)], [$packageName], $newVersion);
@@ -56,19 +62,5 @@ final class PropagateCommand extends \Symplify\PackageBuilder\Console\Command\Ab
         }
         $this->symfonyStyle->success('Root "composer.json" versions are now propagated to all package "composer.json" files.');
         return \Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
-    }
-    /**
-     * @param array<string, string> $filesToVersion
-     * @return array<string, string>
-     */
-    private function processManualConfigFiles(array $filesToVersion, string $packageName, string $newVersion) : array
-    {
-        if (!isset($filesToVersion[\Symplify\MonorepoBuilder\ValueObject\File::CONFIG])) {
-            return $filesToVersion;
-        }
-        $message = \sprintf('Update "%s" to "%s" version in "%s" file manually', $packageName, $newVersion, \Symplify\MonorepoBuilder\ValueObject\File::CONFIG);
-        $this->symfonyStyle->warning($message);
-        unset($filesToVersion[\Symplify\MonorepoBuilder\ValueObject\File::CONFIG]);
-        return $filesToVersion;
     }
 }

@@ -9,21 +9,21 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper416e75c46c6e\SebastianBergmann\Diff;
+namespace _PhpScoper5a7e73320450\SebastianBergmann\Diff;
 
-use _PhpScoper416e75c46c6e\PHPUnit\Framework\TestCase;
+use _PhpScoper5a7e73320450\PHPUnit\Framework\TestCase;
 /**
  * @covers SebastianBergmann\Diff\InvalidArgumentException
  */
-final class InvalidArgumentExceptionTest extends \_PhpScoper416e75c46c6e\PHPUnit\Framework\TestCase
+final class InvalidArgumentExceptionTest extends \_PhpScoper5a7e73320450\PHPUnit\Framework\TestCase
 {
     public function testInvalidArgumentException() : void
     {
         $previousException = new \LogicException();
         $message = 'test';
         $code = 123;
-        $exception = new \_PhpScoper416e75c46c6e\SebastianBergmann\Diff\InvalidArgumentException($message, $code, $previousException);
-        $this->assertInstanceOf(\_PhpScoper416e75c46c6e\SebastianBergmann\Diff\Exception::class, $exception);
+        $exception = new \_PhpScoper5a7e73320450\SebastianBergmann\Diff\InvalidArgumentException($message, $code, $previousException);
+        $this->assertInstanceOf(\_PhpScoper5a7e73320450\SebastianBergmann\Diff\Exception::class, $exception);
         $this->assertSame($message, $exception->getMessage());
         $this->assertSame($code, $exception->getCode());
         $this->assertSame($previousException, $exception->getPrevious());
