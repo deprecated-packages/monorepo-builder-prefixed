@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Init\Command;
 
-use _PhpScoperad3f32c1b87c\PharIo\Version\Version;
-use _PhpScoperad3f32c1b87c\Symfony\Component\Console\Input\InputArgument;
-use _PhpScoperad3f32c1b87c\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperad3f32c1b87c\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoperb0f70d760c3d\PharIo\Version\Version;
+use _PhpScoperb0f70d760c3d\Symfony\Component\Console\Input\InputArgument;
+use _PhpScoperb0f70d760c3d\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoperb0f70d760c3d\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\Init\Composer\PackageNameVersionProvider;
 use Symplify\MonorepoBuilder\ValueObject\File;
 use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
@@ -29,9 +29,9 @@ final class InitCommand extends \Symplify\PackageBuilder\Console\Command\Abstrac
     protected function configure() : void
     {
         $this->setDescription('Creates empty monorepo directory and composer.json structure.');
-        $this->addArgument(self::OUTPUT, \_PhpScoperad3f32c1b87c\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'Directory to generate monorepo into.', \getcwd());
+        $this->addArgument(self::OUTPUT, \_PhpScoperb0f70d760c3d\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'Directory to generate monorepo into.', \getcwd());
     }
-    protected function execute(\_PhpScoperad3f32c1b87c\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperad3f32c1b87c\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoperb0f70d760c3d\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperb0f70d760c3d\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         /** @var string $output */
         $output = $input->getArgument(self::OUTPUT);

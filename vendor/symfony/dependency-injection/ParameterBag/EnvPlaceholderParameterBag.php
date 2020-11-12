@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperad3f32c1b87c\Symfony\Component\DependencyInjection\ParameterBag;
+namespace _PhpScoperb0f70d760c3d\Symfony\Component\DependencyInjection\ParameterBag;
 
-use _PhpScoperad3f32c1b87c\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use _PhpScoperad3f32c1b87c\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use _PhpScoperb0f70d760c3d\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use _PhpScoperb0f70d760c3d\Symfony\Component\DependencyInjection\Exception\RuntimeException;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class EnvPlaceholderParameterBag extends \_PhpScoperad3f32c1b87c\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag
+class EnvPlaceholderParameterBag extends \_PhpScoperb0f70d760c3d\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag
 {
     private $envPlaceholderUniquePrefix;
     private $envPlaceholders = [];
@@ -42,14 +42,14 @@ class EnvPlaceholderParameterBag extends \_PhpScoperad3f32c1b87c\Symfony\Compone
                 }
             }
             if (!\preg_match('/^(?:\\w*+:)*+\\w++$/', $env)) {
-                throw new \_PhpScoperad3f32c1b87c\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid %s name: only "word" characters are allowed.', $name));
+                throw new \_PhpScoperb0f70d760c3d\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid %s name: only "word" characters are allowed.', $name));
             }
             if ($this->has($name)) {
                 $defaultValue = parent::get($name);
                 if (null !== $defaultValue && !\is_scalar($defaultValue)) {
                     // !is_string in 5.0
                     //throw new RuntimeException(sprintf('The default value of an env() parameter must be a string or null, but "%s" given to "%s".', \gettype($defaultValue), $name));
-                    throw new \_PhpScoperad3f32c1b87c\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('The default value of an env() parameter must be scalar or null, but "%s" given to "%s".', \gettype($defaultValue), $name));
+                    throw new \_PhpScoperb0f70d760c3d\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('The default value of an env() parameter must be scalar or null, but "%s" given to "%s".', \gettype($defaultValue), $name));
                 } elseif (\is_scalar($defaultValue) && !\is_string($defaultValue)) {
                     @\trigger_error(\sprintf('A non-string default value of an env() parameter is deprecated since 4.3, cast "%s" to string instead.', $name), \E_USER_DEPRECATED);
                 }
@@ -147,7 +147,7 @@ class EnvPlaceholderParameterBag extends \_PhpScoperad3f32c1b87c\Symfony\Compone
             } elseif (null !== $default && !\is_scalar($default)) {
                 // !is_string in 5.0
                 //throw new RuntimeException(sprintf('The default value of env parameter "%s" must be a string or null, %s given.', $env, \gettype($default)));
-                throw new \_PhpScoperad3f32c1b87c\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('The default value of env parameter "%s" must be scalar or null, %s given.', $env, \gettype($default)));
+                throw new \_PhpScoperb0f70d760c3d\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('The default value of env parameter "%s" must be scalar or null, %s given.', $env, \gettype($default)));
             } elseif (\is_scalar($default) && !\is_string($default)) {
                 @\trigger_error(\sprintf('A non-string default value of env parameter "%s" is deprecated since 4.3, cast it to string instead.', $env), \E_USER_DEPRECATED);
             }

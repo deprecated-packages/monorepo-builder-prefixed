@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperad3f32c1b87c\Symfony\Component\Mime;
+namespace _PhpScoperb0f70d760c3d\Symfony\Component\Mime;
 
-use _PhpScoperad3f32c1b87c\Symfony\Component\Mime\Exception\LogicException;
+use _PhpScoperb0f70d760c3d\Symfony\Component\Mime\Exception\LogicException;
 /**
  * Manages MIME types and file extensions.
  *
@@ -34,7 +34,7 @@ use _PhpScoperad3f32c1b87c\Symfony\Component\Mime\Exception\LogicException;
  *
  * @experimental in 4.3
  */
-final class MimeTypes implements \_PhpScoperad3f32c1b87c\Symfony\Component\Mime\MimeTypesInterface
+final class MimeTypes implements \_PhpScoperb0f70d760c3d\Symfony\Component\Mime\MimeTypesInterface
 {
     private $extensions = [];
     private $mimeTypes = [];
@@ -51,8 +51,8 @@ final class MimeTypes implements \_PhpScoperad3f32c1b87c\Symfony\Component\Mime\
                 $this->mimeTypes[$extension] = $mimeType;
             }
         }
-        $this->registerGuesser(new \_PhpScoperad3f32c1b87c\Symfony\Component\Mime\FileBinaryMimeTypeGuesser());
-        $this->registerGuesser(new \_PhpScoperad3f32c1b87c\Symfony\Component\Mime\FileinfoMimeTypeGuesser());
+        $this->registerGuesser(new \_PhpScoperb0f70d760c3d\Symfony\Component\Mime\FileBinaryMimeTypeGuesser());
+        $this->registerGuesser(new \_PhpScoperb0f70d760c3d\Symfony\Component\Mime\FileinfoMimeTypeGuesser());
     }
     public static function setDefault(self $default)
     {
@@ -67,7 +67,7 @@ final class MimeTypes implements \_PhpScoperad3f32c1b87c\Symfony\Component\Mime\
      *
      * The last registered guesser has precedence over the other ones.
      */
-    public function registerGuesser(\_PhpScoperad3f32c1b87c\Symfony\Component\Mime\MimeTypeGuesserInterface $guesser)
+    public function registerGuesser(\_PhpScoperb0f70d760c3d\Symfony\Component\Mime\MimeTypeGuesserInterface $guesser)
     {
         \array_unshift($this->guessers, $guesser);
     }
@@ -122,7 +122,7 @@ final class MimeTypes implements \_PhpScoperad3f32c1b87c\Symfony\Component\Mime\
             }
         }
         if (!$this->isGuesserSupported()) {
-            throw new \_PhpScoperad3f32c1b87c\Symfony\Component\Mime\Exception\LogicException('Unable to guess the MIME type as no guessers are available (have you enable the php_fileinfo extension?).');
+            throw new \_PhpScoperb0f70d760c3d\Symfony\Component\Mime\Exception\LogicException('Unable to guess the MIME type as no guessers are available (have you enable the php_fileinfo extension?).');
         }
         return null;
     }

@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Tests\VersionValidator;
 
-use _PhpScoperad3f32c1b87c\Symfony\Component\Finder\Finder;
+use _PhpScoperb0f70d760c3d\Symfony\Component\Finder\Finder;
 use Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel;
 use Symplify\MonorepoBuilder\VersionValidator;
 use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
@@ -27,7 +27,7 @@ final class VersionValidatorTest extends \Symplify\PackageBuilder\Testing\Abstra
     }
     public function test() : void
     {
-        $finder = \_PhpScoperad3f32c1b87c\Symfony\Component\Finder\Finder::create()->name('*.json')->in(__DIR__ . '/Source');
+        $finder = \_PhpScoperb0f70d760c3d\Symfony\Component\Finder\Finder::create()->name('*.json')->in(__DIR__ . '/Source');
         $fileInfos = $this->finderSanitizer->sanitize($finder);
         $conflictingPackageVersionsPerFile = $this->versionValidator->findConflictingPackageVersionsInFileInfos($fileInfos);
         $this->assertArrayHasKey('some/package', $conflictingPackageVersionsPerFile);
