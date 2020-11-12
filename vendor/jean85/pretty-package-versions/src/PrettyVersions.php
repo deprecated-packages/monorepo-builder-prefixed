@@ -1,13 +1,13 @@
 <?php
 
-namespace _PhpScoper5e83c3f77e04\Jean85;
+namespace _PhpScoperad3f32c1b87c\Jean85;
 
-use _PhpScoper5e83c3f77e04\PackageVersions\Versions;
+use _PhpScoperad3f32c1b87c\PackageVersions\Versions;
 class PrettyVersions
 {
     const SHORT_COMMIT_LENGTH = 7;
-    public static function getVersion(string $packageName) : \_PhpScoper5e83c3f77e04\Jean85\Version
+    public static function getVersion(string $packageName) : \_PhpScoperad3f32c1b87c\Jean85\Version
     {
-        return new \_PhpScoper5e83c3f77e04\Jean85\Version($packageName, \_PhpScoper5e83c3f77e04\PackageVersions\Versions::getVersion($packageName));
+        return new \_PhpScoperad3f32c1b87c\Jean85\Version($packageName, \_PhpScoperad3f32c1b87c\PackageVersions\Versions::getVersion($packageName));
     }
 }

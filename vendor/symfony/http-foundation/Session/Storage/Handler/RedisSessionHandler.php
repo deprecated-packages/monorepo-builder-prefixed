@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper5e83c3f77e04\Symfony\Component\HttpFoundation\Session\Storage\Handler;
+namespace _PhpScoperad3f32c1b87c\Symfony\Component\HttpFoundation\Session\Storage\Handler;
 
-use _PhpScoper5e83c3f77e04\Predis\Response\ErrorInterface;
-use _PhpScoper5e83c3f77e04\Symfony\Component\Cache\Traits\RedisClusterProxy;
-use _PhpScoper5e83c3f77e04\Symfony\Component\Cache\Traits\RedisProxy;
+use _PhpScoperad3f32c1b87c\Predis\Response\ErrorInterface;
+use _PhpScoperad3f32c1b87c\Symfony\Component\Cache\Traits\RedisClusterProxy;
+use _PhpScoperad3f32c1b87c\Symfony\Component\Cache\Traits\RedisProxy;
 /**
  * Redis based session storage handler based on the Redis class
  * provided by the PHP redis extension.
  *
  * @author Dalibor Karlović <dalibor@flexolabs.io>
  */
-class RedisSessionHandler extends \_PhpScoper5e83c3f77e04\Symfony\Component\HttpFoundation\Session\Storage\Handler\AbstractSessionHandler
+class RedisSessionHandler extends \_PhpScoperad3f32c1b87c\Symfony\Component\HttpFoundation\Session\Storage\Handler\AbstractSessionHandler
 {
     private $redis;
     /**
@@ -41,7 +41,7 @@ class RedisSessionHandler extends \_PhpScoper5e83c3f77e04\Symfony\Component\Http
      */
     public function __construct($redis, array $options = [])
     {
-        if (!$redis instanceof \Redis && !$redis instanceof \RedisArray && !$redis instanceof \RedisCluster && !$redis instanceof \_PhpScoper5e83c3f77e04\Predis\ClientInterface && !$redis instanceof \_PhpScoper5e83c3f77e04\Symfony\Component\Cache\Traits\RedisProxy && !$redis instanceof \_PhpScoper5e83c3f77e04\Symfony\Component\Cache\Traits\RedisClusterProxy) {
+        if (!$redis instanceof \Redis && !$redis instanceof \RedisArray && !$redis instanceof \RedisCluster && !$redis instanceof \_PhpScoperad3f32c1b87c\Predis\ClientInterface && !$redis instanceof \_PhpScoperad3f32c1b87c\Symfony\Component\Cache\Traits\RedisProxy && !$redis instanceof \_PhpScoperad3f32c1b87c\Symfony\Component\Cache\Traits\RedisClusterProxy) {
             throw new \InvalidArgumentException(\sprintf('%s() expects parameter 1 to be Redis, RedisArray, RedisCluster or Predis\\ClientInterface, %s given', __METHOD__, \is_object($redis) ? \get_class($redis) : \gettype($redis)));
         }
         if ($diff = \array_diff(\array_keys($options), ['prefix', 'ttl'])) {
@@ -64,7 +64,7 @@ class RedisSessionHandler extends \_PhpScoper5e83c3f77e04\Symfony\Component\Http
     protected function doWrite($sessionId, $data) : bool
     {
         $result = $this->redis->setEx($this->prefix . $sessionId, $this->ttl, $data);
-        return $result && !$result instanceof \_PhpScoper5e83c3f77e04\Predis\Response\ErrorInterface;
+        return $result && !$result instanceof \_PhpScoperad3f32c1b87c\Predis\Response\ErrorInterface;
     }
     /**
      * {@inheritdoc}

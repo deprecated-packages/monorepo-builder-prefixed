@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper5e83c3f77e04\Symfony\Component\ErrorHandler;
+namespace _PhpScoperad3f32c1b87c\Symfony\Component\ErrorHandler;
 
-use _PhpScoper5e83c3f77e04\Doctrine\Common\Persistence\Proxy;
-use _PhpScoper5e83c3f77e04\PHPUnit\Framework\MockObject\Matcher\StatelessInvocation;
-use _PhpScoper5e83c3f77e04\PHPUnit\Framework\MockObject\MockObject;
-use _PhpScoper5e83c3f77e04\Prophecy\Prophecy\ProphecySubjectInterface;
-use _PhpScoper5e83c3f77e04\ProxyManager\Proxy\ProxyInterface;
+use _PhpScoperad3f32c1b87c\Doctrine\Common\Persistence\Proxy;
+use _PhpScoperad3f32c1b87c\PHPUnit\Framework\MockObject\Matcher\StatelessInvocation;
+use _PhpScoperad3f32c1b87c\PHPUnit\Framework\MockObject\MockObject;
+use _PhpScoperad3f32c1b87c\Prophecy\Prophecy\ProphecySubjectInterface;
+use _PhpScoperad3f32c1b87c\ProxyManager\Proxy\ProxyInterface;
 /**
  * Autoloader checking if the class is really defined in the file found.
  *
@@ -109,8 +109,8 @@ class DebugClassLoader
     public static function enable() : void
     {
         // Ensures we don't hit https://bugs.php.net/42098
-        \class_exists('_PhpScoper5e83c3f77e04\\Symfony\\Component\\ErrorHandler\\ErrorHandler');
-        \class_exists('_PhpScoper5e83c3f77e04\\Psr\\Log\\LogLevel');
+        \class_exists('_PhpScoperad3f32c1b87c\\Symfony\\Component\\ErrorHandler\\ErrorHandler');
+        \class_exists('_PhpScoperad3f32c1b87c\\Psr\\Log\\LogLevel');
         if (!\is_array($functions = \spl_autoload_functions())) {
             return;
         }
@@ -161,7 +161,7 @@ class DebugClassLoader
         foreach ($offsets as $getSymbols => $i) {
             $symbols = $getSymbols();
             for (; $i < \count($symbols); ++$i) {
-                if (!\is_subclass_of($symbols[$i], \_PhpScoper5e83c3f77e04\PHPUnit\Framework\MockObject\MockObject::class) && !\is_subclass_of($symbols[$i], \_PhpScoper5e83c3f77e04\Prophecy\Prophecy\ProphecySubjectInterface::class) && !\is_subclass_of($symbols[$i], \_PhpScoper5e83c3f77e04\Doctrine\Common\Persistence\Proxy::class) && !\is_subclass_of($symbols[$i], \_PhpScoper5e83c3f77e04\ProxyManager\Proxy\ProxyInterface::class)) {
+                if (!\is_subclass_of($symbols[$i], \_PhpScoperad3f32c1b87c\PHPUnit\Framework\MockObject\MockObject::class) && !\is_subclass_of($symbols[$i], \_PhpScoperad3f32c1b87c\Prophecy\Prophecy\ProphecySubjectInterface::class) && !\is_subclass_of($symbols[$i], \_PhpScoperad3f32c1b87c\Doctrine\Common\Persistence\Proxy::class) && !\is_subclass_of($symbols[$i], \_PhpScoperad3f32c1b87c\ProxyManager\Proxy\ProxyInterface::class)) {
                     $loader->checkClass($symbols[$i]);
                 }
             }
@@ -441,7 +441,7 @@ class DebugClassLoader
                     $finalOrInternal = \true;
                 }
             }
-            if ($finalOrInternal || $method->isConstructor() || \false === \strpos($doc, '@param') || \_PhpScoper5e83c3f77e04\PHPUnit\Framework\MockObject\Matcher\StatelessInvocation::class === $class) {
+            if ($finalOrInternal || $method->isConstructor() || \false === \strpos($doc, '@param') || \_PhpScoperad3f32c1b87c\PHPUnit\Framework\MockObject\Matcher\StatelessInvocation::class === $class) {
                 continue;
             }
             if (!\preg_match_all('#\\n\\s+\\* @param +((?(?!callable *\\().*?|callable *\\(.*\\).*?))(?<= )\\$([a-zA-Z0-9_\\x7f-\\xff]++)#', $doc, $matches, \PREG_SET_ORDER)) {
