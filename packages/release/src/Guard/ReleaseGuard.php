@@ -3,13 +3,13 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\Guard;
 
-use _PhpScopere6fd569fd43f\PharIo\Version\Version;
+use _PhpScopera2f1d1d42b88\PharIo\Version\Version;
 use Symplify\MonorepoBuilder\Exception\Git\InvalidGitVersionException;
+use Symplify\MonorepoBuilder\Git\MostRecentTagResolver;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface;
 use Symplify\MonorepoBuilder\Release\Exception\ConfigurationException;
 use Symplify\MonorepoBuilder\Release\ValueObject\Stage;
-use Symplify\MonorepoBuilder\Split\Git\GitManager;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class ReleaseGuard
@@ -31,18 +31,18 @@ final class ReleaseGuard
      */
     private $stagesToAllowExistingTag = [];
     /**
-     * @var GitManager
+     * @var MostRecentTagResolver
      */
-    private $gitManager;
+    private $mostRecentTagResolver;
     /**
      * @param ReleaseWorkerInterface[] $releaseWorkers
      */
-    public function __construct(\Symplify\MonorepoBuilder\Split\Git\GitManager $gitManager, array $releaseWorkers, \Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \Symplify\MonorepoBuilder\Git\MostRecentTagResolver $mostRecentTagResolver, array $releaseWorkers)
     {
-        $this->gitManager = $gitManager;
         $this->releaseWorkers = $releaseWorkers;
         $this->isStageRequired = $parameterProvider->provideBoolParameter(\Symplify\MonorepoBuilder\ValueObject\Option::IS_STAGE_REQUIRED);
         $this->stagesToAllowExistingTag = $parameterProvider->provideArrayParameter(\Symplify\MonorepoBuilder\ValueObject\Option::STAGES_TO_ALLOW_EXISTING_TAG);
+        $this->mostRecentTagResolver = $mostRecentTagResolver;
     }
     public function guardRequiredStageOnEmptyStage() : void
     {
@@ -66,7 +66,7 @@ final class ReleaseGuard
         // stage has invalid value
         throw new \Symplify\MonorepoBuilder\Release\Exception\ConfigurationException(\sprintf('Stage "%s" was not found. Pick one of: "%s"', $stage, \implode('", "', $this->getStages())));
     }
-    public function guardVersion(\_PhpScopere6fd569fd43f\PharIo\Version\Version $version, string $stage) : void
+    public function guardVersion(\_PhpScopera2f1d1d42b88\PharIo\Version\Version $version, string $stage) : void
     {
         // stage is set and it doesn't need a validation
         if ($stage !== \Symplify\MonorepoBuilder\Release\ValueObject\Stage::MAIN && \in_array($stage, $this->stagesToAllowExistingTag, \true)) {
@@ -91,15 +91,15 @@ final class ReleaseGuard
         $this->stages = \array_unique($stages);
         return $this->stages;
     }
-    private function ensureVersionIsNewerThanLastOne(\_PhpScopere6fd569fd43f\PharIo\Version\Version $version) : void
+    private function ensureVersionIsNewerThanLastOne(\_PhpScopera2f1d1d42b88\PharIo\Version\Version $version) : void
     {
-        $mostRecentVersion = $this->gitManager->getMostRecentTag(\getcwd());
+        $mostRecentVersion = $this->mostRecentTagResolver->resolve(\getcwd());
         // no tag yet
         if ($mostRecentVersion === null) {
             return;
         }
         // validation
-        $mostRecentVersion = new \_PhpScopere6fd569fd43f\PharIo\Version\Version($mostRecentVersion);
+        $mostRecentVersion = new \_PhpScopera2f1d1d42b88\PharIo\Version\Version($mostRecentVersion);
         if ($version->isGreaterThan($mostRecentVersion)) {
             return;
         }
