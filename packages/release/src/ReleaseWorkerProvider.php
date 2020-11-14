@@ -20,6 +20,8 @@ final class ReleaseWorkerProvider
      */
     public function __construct(array $releaseWorkers)
     {
+        dump($releaseWorkers);
+        die;
         $this->releaseWorkers = $releaseWorkers;
     }
     /**
@@ -30,7 +32,7 @@ final class ReleaseWorkerProvider
         return $this->releaseWorkers;
     }
     /**
-     * @return ReleaseWorkerInterface[]|StageAwareInterface[]
+     * @return ReleaseWorkerInterface[]
      */
     public function provideByStage(string $stage) : array
     {

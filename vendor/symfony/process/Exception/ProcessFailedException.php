@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopera2f1d1d42b88\Symfony\Component\Process\Exception;
+namespace _PhpScopera00544d51e07\Symfony\Component\Process\Exception;
 
-use _PhpScopera2f1d1d42b88\Symfony\Component\Process\Process;
+use _PhpScopera00544d51e07\Symfony\Component\Process\Process;
 /**
  * Exception for failed processes.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ProcessFailedException extends \_PhpScopera2f1d1d42b88\Symfony\Component\Process\Exception\RuntimeException
+class ProcessFailedException extends \_PhpScopera00544d51e07\Symfony\Component\Process\Exception\RuntimeException
 {
     private $process;
-    public function __construct(\_PhpScopera2f1d1d42b88\Symfony\Component\Process\Process $process)
+    public function __construct(\_PhpScopera00544d51e07\Symfony\Component\Process\Process $process)
     {
         if ($process->isSuccessful()) {
-            throw new \_PhpScopera2f1d1d42b88\Symfony\Component\Process\Exception\InvalidArgumentException('Expected a failed process, but the given process was successful.');
+            throw new \_PhpScopera00544d51e07\Symfony\Component\Process\Exception\InvalidArgumentException('Expected a failed process, but the given process was successful.');
         }
         $error = \sprintf('The command "%s" failed.' . "\n\nExit Code: %s(%s)\n\nWorking directory: %s", $process->getCommandLine(), $process->getExitCode(), $process->getExitCodeText(), $process->getWorkingDirectory());
         if (!$process->isOutputDisabled()) {
