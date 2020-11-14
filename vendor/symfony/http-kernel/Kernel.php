@@ -8,34 +8,34 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperef4638f5d8b1\Symfony\Component\HttpKernel;
+namespace _PhpScopere6fd569fd43f\Symfony\Component\HttpKernel;
 
-use _PhpScoperef4638f5d8b1\Symfony\Bridge\ProxyManager\LazyProxy\Instantiator\RuntimeInstantiator;
-use _PhpScoperef4638f5d8b1\Symfony\Bridge\ProxyManager\LazyProxy\PhpDumper\ProxyDumper;
-use _PhpScoperef4638f5d8b1\Symfony\Component\Config\ConfigCache;
-use _PhpScoperef4638f5d8b1\Symfony\Component\Config\Loader\DelegatingLoader;
-use _PhpScoperef4638f5d8b1\Symfony\Component\Config\Loader\LoaderResolver;
-use _PhpScoperef4638f5d8b1\Symfony\Component\Debug\DebugClassLoader as LegacyDebugClassLoader;
-use _PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use _PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Compiler\PassConfig;
-use _PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\ContainerInterface;
-use _PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Dumper\PhpDumper;
-use _PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Loader\ClosureLoader;
-use _PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Loader\DirectoryLoader;
-use _PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Loader\GlobFileLoader;
-use _PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Loader\IniFileLoader;
-use _PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-use _PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
-use _PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
-use _PhpScoperef4638f5d8b1\Symfony\Component\ErrorHandler\DebugClassLoader;
-use _PhpScoperef4638f5d8b1\Symfony\Component\Filesystem\Filesystem;
-use _PhpScoperef4638f5d8b1\Symfony\Component\HttpFoundation\Request;
-use _PhpScoperef4638f5d8b1\Symfony\Component\HttpFoundation\Response;
-use _PhpScoperef4638f5d8b1\Symfony\Component\HttpKernel\Bundle\BundleInterface;
-use _PhpScoperef4638f5d8b1\Symfony\Component\HttpKernel\Config\FileLocator;
-use _PhpScoperef4638f5d8b1\Symfony\Component\HttpKernel\DependencyInjection\AddAnnotatedClassesToCachePass;
-use _PhpScoperef4638f5d8b1\Symfony\Component\HttpKernel\DependencyInjection\MergeExtensionConfigurationPass;
+use _PhpScopere6fd569fd43f\Symfony\Bridge\ProxyManager\LazyProxy\Instantiator\RuntimeInstantiator;
+use _PhpScopere6fd569fd43f\Symfony\Bridge\ProxyManager\LazyProxy\PhpDumper\ProxyDumper;
+use _PhpScopere6fd569fd43f\Symfony\Component\Config\ConfigCache;
+use _PhpScopere6fd569fd43f\Symfony\Component\Config\Loader\DelegatingLoader;
+use _PhpScopere6fd569fd43f\Symfony\Component\Config\Loader\LoaderResolver;
+use _PhpScopere6fd569fd43f\Symfony\Component\Debug\DebugClassLoader as LegacyDebugClassLoader;
+use _PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use _PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\Compiler\PassConfig;
+use _PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\ContainerInterface;
+use _PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\Dumper\PhpDumper;
+use _PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\Loader\ClosureLoader;
+use _PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\Loader\DirectoryLoader;
+use _PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\Loader\GlobFileLoader;
+use _PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\Loader\IniFileLoader;
+use _PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use _PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use _PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use _PhpScopere6fd569fd43f\Symfony\Component\ErrorHandler\DebugClassLoader;
+use _PhpScopere6fd569fd43f\Symfony\Component\Filesystem\Filesystem;
+use _PhpScopere6fd569fd43f\Symfony\Component\HttpFoundation\Request;
+use _PhpScopere6fd569fd43f\Symfony\Component\HttpFoundation\Response;
+use _PhpScopere6fd569fd43f\Symfony\Component\HttpKernel\Bundle\BundleInterface;
+use _PhpScopere6fd569fd43f\Symfony\Component\HttpKernel\Config\FileLocator;
+use _PhpScopere6fd569fd43f\Symfony\Component\HttpKernel\DependencyInjection\AddAnnotatedClassesToCachePass;
+use _PhpScopere6fd569fd43f\Symfony\Component\HttpKernel\DependencyInjection\MergeExtensionConfigurationPass;
 /**
  * The Kernel is the heart of the Symfony system.
  *
@@ -46,7 +46,7 @@ use _PhpScoperef4638f5d8b1\Symfony\Component\HttpKernel\DependencyInjection\Merg
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Kernel implements \_PhpScoperef4638f5d8b1\Symfony\Component\HttpKernel\KernelInterface, \_PhpScoperef4638f5d8b1\Symfony\Component\HttpKernel\RebootableInterface, \_PhpScoperef4638f5d8b1\Symfony\Component\HttpKernel\TerminableInterface
+abstract class Kernel implements \_PhpScopere6fd569fd43f\Symfony\Component\HttpKernel\KernelInterface, \_PhpScopere6fd569fd43f\Symfony\Component\HttpKernel\RebootableInterface, \_PhpScopere6fd569fd43f\Symfony\Component\HttpKernel\TerminableInterface
 {
     /**
      * @var BundleInterface[]
@@ -139,12 +139,12 @@ abstract class Kernel implements \_PhpScoperef4638f5d8b1\Symfony\Component\HttpK
     /**
      * {@inheritdoc}
      */
-    public function terminate(\_PhpScoperef4638f5d8b1\Symfony\Component\HttpFoundation\Request $request, \_PhpScoperef4638f5d8b1\Symfony\Component\HttpFoundation\Response $response)
+    public function terminate(\_PhpScopere6fd569fd43f\Symfony\Component\HttpFoundation\Request $request, \_PhpScopere6fd569fd43f\Symfony\Component\HttpFoundation\Response $response)
     {
         if (\false === $this->booted) {
             return;
         }
-        if ($this->getHttpKernel() instanceof \_PhpScoperef4638f5d8b1\Symfony\Component\HttpKernel\TerminableInterface) {
+        if ($this->getHttpKernel() instanceof \_PhpScopere6fd569fd43f\Symfony\Component\HttpKernel\TerminableInterface) {
             $this->getHttpKernel()->terminate($request, $response);
         }
     }
@@ -168,7 +168,7 @@ abstract class Kernel implements \_PhpScoperef4638f5d8b1\Symfony\Component\HttpK
     /**
      * {@inheritdoc}
      */
-    public function handle(\_PhpScoperef4638f5d8b1\Symfony\Component\HttpFoundation\Request $request, $type = \_PhpScoperef4638f5d8b1\Symfony\Component\HttpKernel\HttpKernelInterface::MASTER_REQUEST, $catch = \true)
+    public function handle(\_PhpScopere6fd569fd43f\Symfony\Component\HttpFoundation\Request $request, $type = \_PhpScopere6fd569fd43f\Symfony\Component\HttpKernel\HttpKernelInterface::MASTER_REQUEST, $catch = \true)
     {
         $this->boot();
         ++$this->requestStackSize;
@@ -398,7 +398,7 @@ abstract class Kernel implements \_PhpScoperef4638f5d8b1\Symfony\Component\HttpK
      *
      * Use this method to register compiler passes and manipulate the container during the building process.
      */
-    protected function build(\_PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    protected function build(\_PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
     }
     /**
@@ -411,7 +411,7 @@ abstract class Kernel implements \_PhpScoperef4638f5d8b1\Symfony\Component\HttpK
     protected function getContainerClass()
     {
         $class = \get_class($this);
-        $class = 'c' === $class[0] && 0 === \strpos($class, "class@anonymous\0") ? \get_parent_class($class) . \str_replace('.', '_', \_PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\ContainerBuilder::hash($class)) : $class;
+        $class = 'c' === $class[0] && 0 === \strpos($class, "class@anonymous\0") ? \get_parent_class($class) . \str_replace('.', '_', \_PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\ContainerBuilder::hash($class)) : $class;
         $class = $this->name . \str_replace('\\', '_', $class) . \ucfirst($this->environment) . ($this->debug ? 'Debug' : '') . 'Container';
         if (!\preg_match('/^[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*$/', $class)) {
             throw new \InvalidArgumentException(\sprintf('The environment "%s" contains invalid characters, it can only contain characters allowed in PHP class names.', $this->environment));
@@ -439,7 +439,7 @@ abstract class Kernel implements \_PhpScoperef4638f5d8b1\Symfony\Component\HttpK
     {
         $class = $this->getContainerClass();
         $cacheDir = $this->warmupDir ?: $this->getCacheDir();
-        $cache = new \_PhpScoperef4638f5d8b1\Symfony\Component\Config\ConfigCache($cacheDir . '/' . $class . '.php', $this->debug);
+        $cache = new \_PhpScopere6fd569fd43f\Symfony\Component\Config\ConfigCache($cacheDir . '/' . $class . '.php', $this->debug);
         $cachePath = $cache->getPath();
         // Silence E_WARNING to ignore "include" failures - don't use "@" to prevent silencing fatal errors
         $errorLevel = \error_reporting(\E_ALL ^ \E_WARNING);
@@ -460,7 +460,7 @@ abstract class Kernel implements \_PhpScoperef4638f5d8b1\Symfony\Component\HttpK
                 if (!\flock($lock, $wouldBlock ? \LOCK_SH : \LOCK_EX)) {
                     \fclose($lock);
                 } else {
-                    $cache = new class($cachePath, $this->debug) extends \_PhpScoperef4638f5d8b1\Symfony\Component\Config\ConfigCache
+                    $cache = new class($cachePath, $this->debug) extends \_PhpScopere6fd569fd43f\Symfony\Component\Config\ConfigCache
                     {
                         public $lock;
                         public function write($content, array $metadata = null)
@@ -515,7 +515,7 @@ abstract class Kernel implements \_PhpScoperef4638f5d8b1\Symfony\Component\HttpK
                 }
                 // Remove frames added by DebugClassLoader.
                 for ($i = \count($backtrace) - 2; 0 < $i; --$i) {
-                    if (\in_array($backtrace[$i]['class'] ?? null, [\_PhpScoperef4638f5d8b1\Symfony\Component\ErrorHandler\DebugClassLoader::class, \_PhpScoperef4638f5d8b1\Symfony\Component\Debug\DebugClassLoader::class], \true)) {
+                    if (\in_array($backtrace[$i]['class'] ?? null, [\_PhpScopere6fd569fd43f\Symfony\Component\ErrorHandler\DebugClassLoader::class, \_PhpScopere6fd569fd43f\Symfony\Component\Debug\DebugClassLoader::class], \true)) {
                         $backtrace = [$backtrace[$i + 1]];
                         break;
                     }
@@ -548,7 +548,7 @@ abstract class Kernel implements \_PhpScoperef4638f5d8b1\Symfony\Component\HttpK
             $legacyContainers[$oldContainerDir . '.legacy'] = \true;
             foreach (\glob(\dirname($oldContainerDir) . \DIRECTORY_SEPARATOR . '*.legacy', \GLOB_NOSORT) as $legacyContainer) {
                 if (!isset($legacyContainers[$legacyContainer]) && @\unlink($legacyContainer)) {
-                    (new \_PhpScoperef4638f5d8b1\Symfony\Component\Filesystem\Filesystem())->remove(\substr($legacyContainer, 0, -7));
+                    (new \_PhpScopere6fd569fd43f\Symfony\Component\Filesystem\Filesystem())->remove(\substr($legacyContainer, 0, -7));
                 }
             }
             \touch($oldContainerDir . '.legacy');
@@ -614,13 +614,13 @@ abstract class Kernel implements \_PhpScoperef4638f5d8b1\Symfony\Component\HttpK
         if (null !== ($cont = $this->registerContainerConfiguration($this->getContainerLoader($container)))) {
             $container->merge($cont);
         }
-        $container->addCompilerPass(new \_PhpScoperef4638f5d8b1\Symfony\Component\HttpKernel\DependencyInjection\AddAnnotatedClassesToCachePass($this));
+        $container->addCompilerPass(new \_PhpScopere6fd569fd43f\Symfony\Component\HttpKernel\DependencyInjection\AddAnnotatedClassesToCachePass($this));
         return $container;
     }
     /**
      * Prepares the ContainerBuilder before it is compiled.
      */
-    protected function prepareContainer(\_PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    protected function prepareContainer(\_PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $extensions = [];
         foreach ($this->bundles as $bundle) {
@@ -639,7 +639,7 @@ abstract class Kernel implements \_PhpScoperef4638f5d8b1\Symfony\Component\HttpK
             $extensions[] = $extension->getAlias();
         }
         // ensure these extensions are implicitly loaded
-        $container->getCompilerPassConfig()->setMergePass(new \_PhpScoperef4638f5d8b1\Symfony\Component\HttpKernel\DependencyInjection\MergeExtensionConfigurationPass($extensions));
+        $container->getCompilerPassConfig()->setMergePass(new \_PhpScopere6fd569fd43f\Symfony\Component\HttpKernel\DependencyInjection\MergeExtensionConfigurationPass($extensions));
     }
     /**
      * Gets a new ContainerBuilder instance used to build the service container.
@@ -648,13 +648,13 @@ abstract class Kernel implements \_PhpScoperef4638f5d8b1\Symfony\Component\HttpK
      */
     protected function getContainerBuilder()
     {
-        $container = new \_PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\ContainerBuilder();
+        $container = new \_PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\ContainerBuilder();
         $container->getParameterBag()->add($this->getKernelParameters());
-        if ($this instanceof \_PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface) {
-            $container->addCompilerPass($this, \_PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Compiler\PassConfig::TYPE_BEFORE_OPTIMIZATION, -10000);
+        if ($this instanceof \_PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface) {
+            $container->addCompilerPass($this, \_PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\Compiler\PassConfig::TYPE_BEFORE_OPTIMIZATION, -10000);
         }
-        if (\class_exists('_PhpScoperef4638f5d8b1\\ProxyManager\\Configuration') && \class_exists('_PhpScoperef4638f5d8b1\\Symfony\\Bridge\\ProxyManager\\LazyProxy\\Instantiator\\RuntimeInstantiator')) {
-            $container->setProxyInstantiator(new \_PhpScoperef4638f5d8b1\Symfony\Bridge\ProxyManager\LazyProxy\Instantiator\RuntimeInstantiator());
+        if (\class_exists('_PhpScopere6fd569fd43f\\ProxyManager\\Configuration') && \class_exists('_PhpScopere6fd569fd43f\\Symfony\\Bridge\\ProxyManager\\LazyProxy\\Instantiator\\RuntimeInstantiator')) {
+            $container->setProxyInstantiator(new \_PhpScopere6fd569fd43f\Symfony\Bridge\ProxyManager\LazyProxy\Instantiator\RuntimeInstantiator());
         }
         return $container;
     }
@@ -664,17 +664,17 @@ abstract class Kernel implements \_PhpScoperef4638f5d8b1\Symfony\Component\HttpK
      * @param string $class     The name of the class to generate
      * @param string $baseClass The name of the container's base class
      */
-    protected function dumpContainer(\_PhpScoperef4638f5d8b1\Symfony\Component\Config\ConfigCache $cache, \_PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\ContainerBuilder $container, $class, $baseClass)
+    protected function dumpContainer(\_PhpScopere6fd569fd43f\Symfony\Component\Config\ConfigCache $cache, \_PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\ContainerBuilder $container, $class, $baseClass)
     {
         // cache the container
-        $dumper = new \_PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Dumper\PhpDumper($container);
-        if (\class_exists('_PhpScoperef4638f5d8b1\\ProxyManager\\Configuration') && \class_exists('_PhpScoperef4638f5d8b1\\Symfony\\Bridge\\ProxyManager\\LazyProxy\\PhpDumper\\ProxyDumper')) {
-            $dumper->setProxyDumper(new \_PhpScoperef4638f5d8b1\Symfony\Bridge\ProxyManager\LazyProxy\PhpDumper\ProxyDumper());
+        $dumper = new \_PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\Dumper\PhpDumper($container);
+        if (\class_exists('_PhpScopere6fd569fd43f\\ProxyManager\\Configuration') && \class_exists('_PhpScopere6fd569fd43f\\Symfony\\Bridge\\ProxyManager\\LazyProxy\\PhpDumper\\ProxyDumper')) {
+            $dumper->setProxyDumper(new \_PhpScopere6fd569fd43f\Symfony\Bridge\ProxyManager\LazyProxy\PhpDumper\ProxyDumper());
         }
         $content = $dumper->dump(['class' => $class, 'base_class' => $baseClass, 'file' => $cache->getPath(), 'as_files' => \true, 'debug' => $this->debug, 'build_time' => $container->hasParameter('kernel.container_build_time') ? $container->getParameter('kernel.container_build_time') : \time()]);
         $rootCode = \array_pop($content);
         $dir = \dirname($cache->getPath()) . '/';
-        $fs = new \_PhpScoperef4638f5d8b1\Symfony\Component\Filesystem\Filesystem();
+        $fs = new \_PhpScopere6fd569fd43f\Symfony\Component\Filesystem\Filesystem();
         foreach ($content as $file => $code) {
             $fs->dumpFile($dir . $file, $code);
             @\chmod($dir . $file, 0666 & ~\umask());
@@ -690,11 +690,11 @@ abstract class Kernel implements \_PhpScoperef4638f5d8b1\Symfony\Component\HttpK
      *
      * @return DelegatingLoader The loader
      */
-    protected function getContainerLoader(\_PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\ContainerInterface $container)
+    protected function getContainerLoader(\_PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\ContainerInterface $container)
     {
-        $locator = new \_PhpScoperef4638f5d8b1\Symfony\Component\HttpKernel\Config\FileLocator($this);
-        $resolver = new \_PhpScoperef4638f5d8b1\Symfony\Component\Config\Loader\LoaderResolver([new \_PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Loader\XmlFileLoader($container, $locator), new \_PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Loader\YamlFileLoader($container, $locator), new \_PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Loader\IniFileLoader($container, $locator), new \_PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Loader\PhpFileLoader($container, $locator), new \_PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Loader\GlobFileLoader($container, $locator), new \_PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Loader\DirectoryLoader($container, $locator), new \_PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Loader\ClosureLoader($container)]);
-        return new \_PhpScoperef4638f5d8b1\Symfony\Component\Config\Loader\DelegatingLoader($resolver);
+        $locator = new \_PhpScopere6fd569fd43f\Symfony\Component\HttpKernel\Config\FileLocator($this);
+        $resolver = new \_PhpScopere6fd569fd43f\Symfony\Component\Config\Loader\LoaderResolver([new \_PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\Loader\XmlFileLoader($container, $locator), new \_PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\Loader\YamlFileLoader($container, $locator), new \_PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\Loader\IniFileLoader($container, $locator), new \_PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\Loader\PhpFileLoader($container, $locator), new \_PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\Loader\GlobFileLoader($container, $locator), new \_PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\Loader\DirectoryLoader($container, $locator), new \_PhpScopere6fd569fd43f\Symfony\Component\DependencyInjection\Loader\ClosureLoader($container)]);
+        return new \_PhpScopere6fd569fd43f\Symfony\Component\Config\Loader\DelegatingLoader($resolver);
     }
     /**
      * Removes comments from a PHP source string.

@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Testing\Command;
 
-use _PhpScoperef4638f5d8b1\Symfony\Component\Console\Input\InputArgument;
-use _PhpScoperef4638f5d8b1\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperef4638f5d8b1\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScopere6fd569fd43f\Symfony\Component\Console\Input\InputArgument;
+use _PhpScopere6fd569fd43f\Symfony\Component\Console\Input\InputInterface;
+use _PhpScopere6fd569fd43f\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Testing\ComposerJsonRepositoriesUpdater;
 use Symplify\MonorepoBuilder\Testing\ComposerJsonRequireUpdater;
@@ -43,9 +43,9 @@ final class LocalizeComposerPathsCommand extends \Symplify\PackageBuilder\Consol
     protected function configure() : void
     {
         $this->setDescription('Set mutual package paths to local packages - use for pre-split package testing');
-        $this->addArgument(\Symplify\MonorepoBuilder\Testing\ValueObject\Option::PACKAGE_COMPOSER_JSON, \_PhpScoperef4638f5d8b1\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'Path to package "composer.json"');
+        $this->addArgument(\Symplify\MonorepoBuilder\Testing\ValueObject\Option::PACKAGE_COMPOSER_JSON, \_PhpScopere6fd569fd43f\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'Path to package "composer.json"');
     }
-    protected function execute(\_PhpScoperef4638f5d8b1\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperef4638f5d8b1\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScopere6fd569fd43f\Symfony\Component\Console\Input\InputInterface $input, \_PhpScopere6fd569fd43f\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $packageComposerJson = (string) $input->getArgument(\Symplify\MonorepoBuilder\Testing\ValueObject\Option::PACKAGE_COMPOSER_JSON);
         $this->fileSystemGuard->ensureFileExists($packageComposerJson, __METHOD__);

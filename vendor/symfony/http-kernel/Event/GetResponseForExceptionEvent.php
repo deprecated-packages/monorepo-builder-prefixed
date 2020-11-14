@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperef4638f5d8b1\Symfony\Component\HttpKernel\Event;
+namespace _PhpScopere6fd569fd43f\Symfony\Component\HttpKernel\Event;
 
-use _PhpScoperef4638f5d8b1\Symfony\Component\Debug\Exception\FatalThrowableError;
-use _PhpScoperef4638f5d8b1\Symfony\Component\HttpFoundation\Request;
-use _PhpScoperef4638f5d8b1\Symfony\Component\HttpKernel\HttpKernelInterface;
+use _PhpScopere6fd569fd43f\Symfony\Component\Debug\Exception\FatalThrowableError;
+use _PhpScopere6fd569fd43f\Symfony\Component\HttpFoundation\Request;
+use _PhpScopere6fd569fd43f\Symfony\Component\HttpKernel\HttpKernelInterface;
 /**
  * @deprecated since Symfony 4.3, use ExceptionEvent instead
  */
-class GetResponseForExceptionEvent extends \_PhpScoperef4638f5d8b1\Symfony\Component\HttpKernel\Event\RequestEvent
+class GetResponseForExceptionEvent extends \_PhpScopere6fd569fd43f\Symfony\Component\HttpKernel\Event\RequestEvent
 {
     private $throwable;
     private $exception;
     private $allowCustomResponseCode = \false;
-    public function __construct(\_PhpScoperef4638f5d8b1\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \_PhpScoperef4638f5d8b1\Symfony\Component\HttpFoundation\Request $request, int $requestType, \Throwable $e)
+    public function __construct(\_PhpScopere6fd569fd43f\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \_PhpScopere6fd569fd43f\Symfony\Component\HttpFoundation\Request $request, int $requestType, \Throwable $e)
     {
         parent::__construct($kernel, $request, $requestType);
         $this->setThrowable($e);
@@ -48,7 +48,7 @@ class GetResponseForExceptionEvent extends \_PhpScoperef4638f5d8b1\Symfony\Compo
     public function getException()
     {
         @\trigger_error(\sprintf('The "%s()" method is deprecated since Symfony 4.4, use "getThrowable()" instead.', __METHOD__), \E_USER_DEPRECATED);
-        return $this->exception ?? ($this->exception = $this->throwable instanceof \Exception ? $this->throwable : new \_PhpScoperef4638f5d8b1\Symfony\Component\Debug\Exception\FatalThrowableError($this->throwable));
+        return $this->exception ?? ($this->exception = $this->throwable instanceof \Exception ? $this->throwable : new \_PhpScopere6fd569fd43f\Symfony\Component\Debug\Exception\FatalThrowableError($this->throwable));
     }
     /**
      * @deprecated since Symfony 4.4, use setThrowable instead
