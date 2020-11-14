@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc35444adb584\Symfony\Component\DependencyInjection\Exception;
+namespace _PhpScoperb2110b0b3130\Symfony\Component\DependencyInjection\Exception;
 
 /**
  * This exception wraps exceptions whose messages contain a reference to an env parameter.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class EnvParameterException extends \_PhpScoperc35444adb584\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException
+class EnvParameterException extends \_PhpScoperb2110b0b3130\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException
 {
     public function __construct(array $envs, \Throwable $previous = null, string $message = 'Incompatible use of dynamic environment variables "%s" found in parameters.')
     {

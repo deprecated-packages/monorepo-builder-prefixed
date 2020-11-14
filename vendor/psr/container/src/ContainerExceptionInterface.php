@@ -3,7 +3,7 @@
 /**
  * @license http://www.opensource.org/licenses/mit-license.php MIT (see the LICENSE file)
  */
-namespace _PhpScoperc35444adb584\Psr\Container;
+namespace _PhpScoperb2110b0b3130\Psr\Container;
 
 /**
  * Base interface representing a generic exception in a container.

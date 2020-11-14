@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc35444adb584\Symfony\Component\HttpKernel\DependencyInjection;
+namespace _PhpScoperb2110b0b3130\Symfony\Component\HttpKernel\DependencyInjection;
 
-use _PhpScoperc35444adb584\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use _PhpScoperc35444adb584\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use _PhpScoperc35444adb584\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScoperc35444adb584\Symfony\Component\DependencyInjection\Reference;
+use _PhpScoperb2110b0b3130\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use _PhpScoperb2110b0b3130\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use _PhpScoperb2110b0b3130\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoperb2110b0b3130\Symfony\Component\DependencyInjection\Reference;
 /**
  * Register all services that have the "kernel.locale_aware" tag into the listener.
  *
  * @author Pierre Bobiet <pierrebobiet@gmail.com>
  */
-class RegisterLocaleAwareServicesPass implements \_PhpScoperc35444adb584\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class RegisterLocaleAwareServicesPass implements \_PhpScoperb2110b0b3130\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     private $listenerServiceId;
     private $localeAwareTag;
@@ -28,19 +28,19 @@ class RegisterLocaleAwareServicesPass implements \_PhpScoperc35444adb584\Symfony
         $this->listenerServiceId = $listenerServiceId;
         $this->localeAwareTag = $localeAwareTag;
     }
-    public function process(\_PhpScoperc35444adb584\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\_PhpScoperb2110b0b3130\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         if (!$container->hasDefinition($this->listenerServiceId)) {
             return;
         }
         $services = [];
         foreach ($container->findTaggedServiceIds($this->localeAwareTag) as $id => $tags) {
-            $services[] = new \_PhpScoperc35444adb584\Symfony\Component\DependencyInjection\Reference($id);
+            $services[] = new \_PhpScoperb2110b0b3130\Symfony\Component\DependencyInjection\Reference($id);
         }
         if (!$services) {
             $container->removeDefinition($this->listenerServiceId);
             return;
         }
-        $container->getDefinition($this->listenerServiceId)->setArgument(0, new \_PhpScoperc35444adb584\Symfony\Component\DependencyInjection\Argument\IteratorArgument($services));
+        $container->getDefinition($this->listenerServiceId)->setArgument(0, new \_PhpScoperb2110b0b3130\Symfony\Component\DependencyInjection\Argument\IteratorArgument($services));
     }
 }

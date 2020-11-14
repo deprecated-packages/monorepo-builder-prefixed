@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc35444adb584\Symfony\Component\Config\Definition;
+namespace _PhpScoperb2110b0b3130\Symfony\Component\Config\Definition;
 
-use _PhpScoperc35444adb584\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use _PhpScoperb2110b0b3130\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 /**
  * This node represents a numeric value in the config tree.
  *
  * @author David Jeanmonod <david.jeanmonod@gmail.com>
  */
-class NumericNode extends \_PhpScoperc35444adb584\Symfony\Component\Config\Definition\ScalarNode
+class NumericNode extends \_PhpScoperb2110b0b3130\Symfony\Component\Config\Definition\ScalarNode
 {
     protected $min;
     protected $max;
-    public function __construct(?string $name, \_PhpScoperc35444adb584\Symfony\Component\Config\Definition\NodeInterface $parent = null, $min = null, $max = null, string $pathSeparator = \_PhpScoperc35444adb584\Symfony\Component\Config\Definition\BaseNode::DEFAULT_PATH_SEPARATOR)
+    public function __construct(?string $name, \_PhpScoperb2110b0b3130\Symfony\Component\Config\Definition\NodeInterface $parent = null, $min = null, $max = null, string $pathSeparator = \_PhpScoperb2110b0b3130\Symfony\Component\Config\Definition\BaseNode::DEFAULT_PATH_SEPARATOR)
     {
         parent::__construct($name, $parent, $pathSeparator);
         $this->min = $min;
@@ -40,7 +40,7 @@ class NumericNode extends \_PhpScoperc35444adb584\Symfony\Component\Config\Defin
             $errorMsg = \sprintf('The value %s is too big for path "%s". Should be less than or equal to %s', $value, $this->getPath(), $this->max);
         }
         if (isset($errorMsg)) {
-            $ex = new \_PhpScoperc35444adb584\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException($errorMsg);
+            $ex = new \_PhpScoperb2110b0b3130\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException($errorMsg);
             $ex->setPath($this->getPath());
             throw $ex;
         }
