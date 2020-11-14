@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Command;
 
-use _PhpScoperb2110b0b3130\Symfony\Component\Console\Input\InputArgument;
-use _PhpScoperb2110b0b3130\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperb2110b0b3130\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScopera3f2f7450f99\Symfony\Component\Console\Input\InputArgument;
+use _PhpScopera3f2f7450f99\Symfony\Component\Console\Input\InputInterface;
+use _PhpScopera3f2f7450f99\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\DependencyUpdater;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
@@ -39,9 +39,9 @@ final class BumpInterdependencyCommand extends \Symplify\PackageBuilder\Console\
     protected function configure() : void
     {
         $this->setDescription('Bump dependency of split packages on each other');
-        $this->addArgument(self::VERSION_ARGUMENT, \_PhpScoperb2110b0b3130\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'New version of inter-dependencies, e.g. "^4.4.2"');
+        $this->addArgument(self::VERSION_ARGUMENT, \_PhpScopera3f2f7450f99\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'New version of inter-dependencies, e.g. "^4.4.2"');
     }
-    protected function execute(\_PhpScoperb2110b0b3130\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperb2110b0b3130\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScopera3f2f7450f99\Symfony\Component\Console\Input\InputInterface $input, \_PhpScopera3f2f7450f99\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $this->sourcesPresenceValidator->validateRootComposerJsonName();
         /** @var string $version */

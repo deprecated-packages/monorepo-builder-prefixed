@@ -1,18 +1,18 @@
 <?php
 
 declare (strict_types=1);
-namespace _PhpScoperb2110b0b3130;
+namespace _PhpScopera3f2f7450f99;
 
-use _PhpScoperb2110b0b3130\SebastianBergmann\Diff\Differ;
-use _PhpScoperb2110b0b3130\Symfony\Component\Console\Style\SymfonyStyle;
-use _PhpScoperb2110b0b3130\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use _PhpScopera3f2f7450f99\SebastianBergmann\Diff\Differ;
+use _PhpScopera3f2f7450f99\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScopera3f2f7450f99\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
-use function _PhpScoperb2110b0b3130\Symfony\Component\DependencyInjection\Loader\Configurator\ref;
-return static function (\_PhpScoperb2110b0b3130\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
+use function _PhpScopera3f2f7450f99\Symfony\Component\DependencyInjection\Loader\Configurator\ref;
+return static function (\_PhpScopera3f2f7450f99\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire()->autoconfigure();
     $services->load('Symplify\\ConsoleColorDiff\\', __DIR__ . '/../src');
-    $services->set(\_PhpScoperb2110b0b3130\SebastianBergmann\Diff\Differ::class);
+    $services->set(\_PhpScopera3f2f7450f99\SebastianBergmann\Diff\Differ::class);
     $services->set(\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory::class);
-    $services->set(\_PhpScoperb2110b0b3130\Symfony\Component\Console\Style\SymfonyStyle::class)->factory([\_PhpScoperb2110b0b3130\Symfony\Component\DependencyInjection\Loader\Configurator\ref(\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory::class), 'create']);
+    $services->set(\_PhpScopera3f2f7450f99\Symfony\Component\Console\Style\SymfonyStyle::class)->factory([\_PhpScopera3f2f7450f99\Symfony\Component\DependencyInjection\Loader\Configurator\ref(\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory::class), 'create']);
 };

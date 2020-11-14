@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Command;
 
-use _PhpScoperb2110b0b3130\Nette\Utils\Json;
-use _PhpScoperb2110b0b3130\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperb2110b0b3130\Symfony\Component\Console\Input\InputOption;
-use _PhpScoperb2110b0b3130\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScopera3f2f7450f99\Nette\Utils\Json;
+use _PhpScopera3f2f7450f99\Symfony\Component\Console\Input\InputInterface;
+use _PhpScopera3f2f7450f99\Symfony\Component\Console\Input\InputOption;
+use _PhpScopera3f2f7450f99\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\Json\PackageJsonProvider;
 use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use Symplify\PackageBuilder\Console\ShellCode;
@@ -28,16 +28,16 @@ final class PackagesJsonCommand extends \Symplify\PackageBuilder\Console\Command
     protected function configure() : void
     {
         $this->setDescription('Provides packages in json format. Useful for GitHub Actions Workflow');
-        $this->addOption(self::NAMES, null, \_PhpScoperb2110b0b3130\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Return package names');
+        $this->addOption(self::NAMES, null, \_PhpScopera3f2f7450f99\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Return package names');
     }
-    protected function execute(\_PhpScoperb2110b0b3130\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperb2110b0b3130\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScopera3f2f7450f99\Symfony\Component\Console\Input\InputInterface $input, \_PhpScopera3f2f7450f99\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         if ((bool) $input->getOption(self::NAMES)) {
             $data = $this->packageJsonProvider->createPackageNames();
         } else {
             $data = $this->packageJsonProvider->createPackagePaths();
         }
-        $json = \_PhpScoperb2110b0b3130\Nette\Utils\Json::encode($data);
+        $json = \_PhpScopera3f2f7450f99\Nette\Utils\Json::encode($data);
         $this->symfonyStyle->writeln($json);
         return \Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
     }
