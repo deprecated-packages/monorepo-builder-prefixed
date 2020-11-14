@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb0f70d760c3d\Symfony\Component\Config\Resource;
+namespace _PhpScoperef4638f5d8b1\Symfony\Component\Config\Resource;
 
-use _PhpScoperb0f70d760c3d\Symfony\Component\Finder\Finder;
-use _PhpScoperb0f70d760c3d\Symfony\Component\Finder\Glob;
+use _PhpScoperef4638f5d8b1\Symfony\Component\Finder\Finder;
+use _PhpScoperef4638f5d8b1\Symfony\Component\Finder\Glob;
 /**
  * GlobResource represents a set of resources stored on the filesystem.
  *
@@ -21,7 +21,7 @@ use _PhpScoperb0f70d760c3d\Symfony\Component\Finder\Glob;
  *
  * @final since Symfony 4.3
  */
-class GlobResource implements \IteratorAggregate, \_PhpScoperb0f70d760c3d\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class GlobResource implements \IteratorAggregate, \_PhpScoperef4638f5d8b1\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
 {
     private $prefix;
     private $pattern;
@@ -126,11 +126,11 @@ class GlobResource implements \IteratorAggregate, \_PhpScoperb0f70d760c3d\Symfon
             }
             return;
         }
-        if (!\class_exists(\_PhpScoperb0f70d760c3d\Symfony\Component\Finder\Finder::class)) {
+        if (!\class_exists(\_PhpScoperef4638f5d8b1\Symfony\Component\Finder\Finder::class)) {
             throw new \LogicException(\sprintf('Extended glob pattern "%s" cannot be used as the Finder component is not installed.', $this->pattern));
         }
-        $finder = new \_PhpScoperb0f70d760c3d\Symfony\Component\Finder\Finder();
-        $regex = \_PhpScoperb0f70d760c3d\Symfony\Component\Finder\Glob::toRegex($this->pattern);
+        $finder = new \_PhpScoperef4638f5d8b1\Symfony\Component\Finder\Finder();
+        $regex = \_PhpScoperef4638f5d8b1\Symfony\Component\Finder\Glob::toRegex($this->pattern);
         if ($this->recursive) {
             $regex = \substr_replace($regex, '(/|$)', -2, 1);
         }

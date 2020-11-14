@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb0f70d760c3d\Symfony\Component\Console\Tester;
+namespace _PhpScoperef4638f5d8b1\Symfony\Component\Console\Tester;
 
-use _PhpScoperb0f70d760c3d\Symfony\Component\Console\Application;
-use _PhpScoperb0f70d760c3d\Symfony\Component\Console\Input\ArrayInput;
+use _PhpScoperef4638f5d8b1\Symfony\Component\Console\Application;
+use _PhpScoperef4638f5d8b1\Symfony\Component\Console\Input\ArrayInput;
 /**
  * Eases the testing of console applications.
  *
@@ -28,7 +28,7 @@ class ApplicationTester
     private $application;
     private $input;
     private $statusCode;
-    public function __construct(\_PhpScoperb0f70d760c3d\Symfony\Component\Console\Application $application)
+    public function __construct(\_PhpScoperef4638f5d8b1\Symfony\Component\Console\Application $application)
     {
         $this->application = $application;
     }
@@ -49,7 +49,7 @@ class ApplicationTester
      */
     public function run(array $input, $options = [])
     {
-        $this->input = new \_PhpScoperb0f70d760c3d\Symfony\Component\Console\Input\ArrayInput($input);
+        $this->input = new \_PhpScoperef4638f5d8b1\Symfony\Component\Console\Input\ArrayInput($input);
         if (isset($options['interactive'])) {
             $this->input->setInteractive($options['interactive']);
         }

@@ -14,7 +14,7 @@ final class PackageComposerFinderTest extends \Symplify\PackageBuilder\Testing\A
     private $packageComposerFinder;
     protected function setUp() : void
     {
-        self::bootKernelWithConfigs(\Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel::class, [__DIR__ . '/Source/source_config.php']);
+        $this->bootKernelWithConfigs(\Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel::class, [__DIR__ . '/Source/source_config.php']);
         $this->packageComposerFinder = self::$container->get(\Symplify\MonorepoBuilder\Finder\PackageComposerFinder::class);
     }
     public function test() : void

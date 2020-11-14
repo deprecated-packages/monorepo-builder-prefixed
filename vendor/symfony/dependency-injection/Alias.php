@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb0f70d760c3d\Symfony\Component\DependencyInjection;
+namespace _PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection;
 
-use _PhpScoperb0f70d760c3d\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use _PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 class Alias
 {
     private $id;
@@ -89,10 +89,10 @@ class Alias
     {
         if (null !== $template) {
             if (\preg_match('#[\\r\\n]|\\*/#', $template)) {
-                throw new \_PhpScoperb0f70d760c3d\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('Invalid characters found in deprecation template.');
+                throw new \_PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('Invalid characters found in deprecation template.');
             }
             if (\false === \strpos($template, '%alias_id%')) {
-                throw new \_PhpScoperb0f70d760c3d\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('The deprecation template must contain the "%alias_id%" placeholder.');
+                throw new \_PhpScoperef4638f5d8b1\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('The deprecation template must contain the "%alias_id%" placeholder.');
             }
             $this->deprecationTemplate = $template;
         }

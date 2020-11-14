@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Split\Command;
 
-use _PhpScoperb0f70d760c3d\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperb0f70d760c3d\Symfony\Component\Console\Input\InputOption;
-use _PhpScoperb0f70d760c3d\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoperef4638f5d8b1\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoperef4638f5d8b1\Symfony\Component\Console\Input\InputOption;
+use _PhpScoperef4638f5d8b1\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\Split\Configuration\RepositoryGuard;
 use Symplify\MonorepoBuilder\Split\FileSystem\DirectoryToRepositoryProvider;
 use Symplify\MonorepoBuilder\Split\PackageToRepositorySplitter;
@@ -44,11 +44,11 @@ final class SplitCommand extends \Symplify\PackageBuilder\Console\Command\Abstra
     {
         $description = \sprintf('Splits monorepo packages to standalone repositories as defined in "%s" section of "%s" config.', '$parameters->set(Option::DIRECTORIES_REPOSITORY, [...])', \Symplify\MonorepoBuilder\ValueObject\File::CONFIG);
         $this->setDescription($description);
-        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::BRANCH, null, \_PhpScoperb0f70d760c3d\Symfony\Component\Console\Input\InputOption::VALUE_OPTIONAL, 'Branch to run split on, defaults to current branch');
-        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::MAX_PROCESSES, null, \_PhpScoperb0f70d760c3d\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Maximum number of processes to run in parallel');
-        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::TAG, 't', \_PhpScoperb0f70d760c3d\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Specify the Git tag use for split. Use the most recent one by default');
+        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::BRANCH, null, \_PhpScoperef4638f5d8b1\Symfony\Component\Console\Input\InputOption::VALUE_OPTIONAL, 'Branch to run split on, defaults to current branch');
+        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::MAX_PROCESSES, null, \_PhpScoperef4638f5d8b1\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Maximum number of processes to run in parallel');
+        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::TAG, 't', \_PhpScoperef4638f5d8b1\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Specify the Git tag use for split. Use the most recent one by default');
     }
-    protected function execute(\_PhpScoperb0f70d760c3d\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperb0f70d760c3d\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoperef4638f5d8b1\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperef4638f5d8b1\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $this->symfonyStyle->warning('This command is deprecated and will be removed in the future. No worries, switch to GitHub Action, that can do the work much faster and more reliable, then this poor wrapper around bash that wraps a git hacking.');
         // to get the attention
