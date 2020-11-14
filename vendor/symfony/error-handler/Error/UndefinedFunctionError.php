@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopera00544d51e07\Symfony\Component\ErrorHandler\Error;
+namespace _PhpScoper3901c1bd2445\Symfony\Component\ErrorHandler\Error;
 
 class UndefinedFunctionError extends \Error
 {

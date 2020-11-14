@@ -20,8 +20,6 @@ final class ReleaseWorkerProvider
      */
     public function __construct(array $releaseWorkers)
     {
-        dump($releaseWorkers);
-        die;
         $this->releaseWorkers = $releaseWorkers;
     }
     /**
