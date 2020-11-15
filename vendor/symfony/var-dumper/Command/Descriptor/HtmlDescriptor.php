@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper120e1a259c7c\Symfony\Component\VarDumper\Command\Descriptor;
+namespace _PhpScoper4a734d287afc\Symfony\Component\VarDumper\Command\Descriptor;
 
-use _PhpScoper120e1a259c7c\Symfony\Component\Console\Output\OutputInterface;
-use _PhpScoper120e1a259c7c\Symfony\Component\VarDumper\Cloner\Data;
-use _PhpScoper120e1a259c7c\Symfony\Component\VarDumper\Dumper\HtmlDumper;
+use _PhpScoper4a734d287afc\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoper4a734d287afc\Symfony\Component\VarDumper\Cloner\Data;
+use _PhpScoper4a734d287afc\Symfony\Component\VarDumper\Dumper\HtmlDumper;
 /**
  * Describe collected data clones for html output.
  *
@@ -20,15 +20,15 @@ use _PhpScoper120e1a259c7c\Symfony\Component\VarDumper\Dumper\HtmlDumper;
  *
  * @final
  */
-class HtmlDescriptor implements \_PhpScoper120e1a259c7c\Symfony\Component\VarDumper\Command\Descriptor\DumpDescriptorInterface
+class HtmlDescriptor implements \_PhpScoper4a734d287afc\Symfony\Component\VarDumper\Command\Descriptor\DumpDescriptorInterface
 {
     private $dumper;
     private $initialized = \false;
-    public function __construct(\_PhpScoper120e1a259c7c\Symfony\Component\VarDumper\Dumper\HtmlDumper $dumper)
+    public function __construct(\_PhpScoper4a734d287afc\Symfony\Component\VarDumper\Dumper\HtmlDumper $dumper)
     {
         $this->dumper = $dumper;
     }
-    public function describe(\_PhpScoper120e1a259c7c\Symfony\Component\Console\Output\OutputInterface $output, \_PhpScoper120e1a259c7c\Symfony\Component\VarDumper\Cloner\Data $data, array $context, int $clientId) : void
+    public function describe(\_PhpScoper4a734d287afc\Symfony\Component\Console\Output\OutputInterface $output, \_PhpScoper4a734d287afc\Symfony\Component\VarDumper\Cloner\Data $data, array $context, int $clientId) : void
     {
         if (!$this->initialized) {
             $styles = \file_get_contents(__DIR__ . '/../../Resources/css/htmlDescriptor.css');

@@ -8,31 +8,31 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper120e1a259c7c\Symfony\Component\Mime\Tests\DependencyInjection;
+namespace _PhpScoper4a734d287afc\Symfony\Component\Mime\Tests\DependencyInjection;
 
-use _PhpScoper120e1a259c7c\PHPUnit\Framework\TestCase;
-use _PhpScoper120e1a259c7c\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScoper120e1a259c7c\Symfony\Component\DependencyInjection\Definition;
-use _PhpScoper120e1a259c7c\Symfony\Component\DependencyInjection\Reference;
-use _PhpScoper120e1a259c7c\Symfony\Component\Mime\DependencyInjection\AddMimeTypeGuesserPass;
-use _PhpScoper120e1a259c7c\Symfony\Component\Mime\FileinfoMimeTypeGuesser;
-use _PhpScoper120e1a259c7c\Symfony\Component\Mime\MimeTypes;
-class AddMimeTypeGuesserPassTest extends \_PhpScoper120e1a259c7c\PHPUnit\Framework\TestCase
+use _PhpScoper4a734d287afc\PHPUnit\Framework\TestCase;
+use _PhpScoper4a734d287afc\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoper4a734d287afc\Symfony\Component\DependencyInjection\Definition;
+use _PhpScoper4a734d287afc\Symfony\Component\DependencyInjection\Reference;
+use _PhpScoper4a734d287afc\Symfony\Component\Mime\DependencyInjection\AddMimeTypeGuesserPass;
+use _PhpScoper4a734d287afc\Symfony\Component\Mime\FileinfoMimeTypeGuesser;
+use _PhpScoper4a734d287afc\Symfony\Component\Mime\MimeTypes;
+class AddMimeTypeGuesserPassTest extends \_PhpScoper4a734d287afc\PHPUnit\Framework\TestCase
 {
     public function testTags()
     {
-        $container = new \_PhpScoper120e1a259c7c\Symfony\Component\DependencyInjection\ContainerBuilder();
-        $container->addCompilerPass(new \_PhpScoper120e1a259c7c\Symfony\Component\Mime\DependencyInjection\AddMimeTypeGuesserPass());
-        $definition = new \_PhpScoper120e1a259c7c\Symfony\Component\DependencyInjection\Definition(\_PhpScoper120e1a259c7c\Symfony\Component\Mime\FileinfoMimeTypeGuesser::class);
+        $container = new \_PhpScoper4a734d287afc\Symfony\Component\DependencyInjection\ContainerBuilder();
+        $container->addCompilerPass(new \_PhpScoper4a734d287afc\Symfony\Component\Mime\DependencyInjection\AddMimeTypeGuesserPass());
+        $definition = new \_PhpScoper4a734d287afc\Symfony\Component\DependencyInjection\Definition(\_PhpScoper4a734d287afc\Symfony\Component\Mime\FileinfoMimeTypeGuesser::class);
         $definition->addArgument('/path/to/magic/file');
         $definition->addTag('mime.mime_type_guesser');
         $container->setDefinition('some_mime_type_guesser', $definition->setPublic(\true));
-        $container->register('mime_types', \_PhpScoper120e1a259c7c\Symfony\Component\Mime\MimeTypes::class)->setPublic(\true);
+        $container->register('mime_types', \_PhpScoper4a734d287afc\Symfony\Component\Mime\MimeTypes::class)->setPublic(\true);
         $container->compile();
         $router = $container->getDefinition('mime_types');
         $calls = $router->getMethodCalls();
         $this->assertCount(1, $calls);
         $this->assertEquals('registerGuesser', $calls[0][0]);
-        $this->assertEquals(new \_PhpScoper120e1a259c7c\Symfony\Component\DependencyInjection\Reference('some_mime_type_guesser'), $calls[0][1][0]);
+        $this->assertEquals(new \_PhpScoper4a734d287afc\Symfony\Component\DependencyInjection\Reference('some_mime_type_guesser'), $calls[0][1][0]);
     }
 }
