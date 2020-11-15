@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper777981beaf84\Symfony\Component\DependencyInjection;
+namespace _PhpScoper31a2d0e8f655\Symfony\Component\DependencyInjection;
 
-use _PhpScoper777981beaf84\Symfony\Contracts\Service\ResetInterface;
+use _PhpScoper31a2d0e8f655\Symfony\Contracts\Service\ResetInterface;
 /**
  * ResettableContainerInterface defines additional resetting functionality
  * for containers, allowing to release shared services when the container is
@@ -20,7 +20,7 @@ use _PhpScoper777981beaf84\Symfony\Contracts\Service\ResetInterface;
  *
  * @deprecated since Symfony 4.2, use "Symfony\Contracts\Service\ResetInterface" instead.
  */
-interface ResettableContainerInterface extends \_PhpScoper777981beaf84\Symfony\Component\DependencyInjection\ContainerInterface, \_PhpScoper777981beaf84\Symfony\Contracts\Service\ResetInterface
+interface ResettableContainerInterface extends \_PhpScoper31a2d0e8f655\Symfony\Component\DependencyInjection\ContainerInterface, \_PhpScoper31a2d0e8f655\Symfony\Contracts\Service\ResetInterface
 {
     /**
      * Resets shared services from the container.
