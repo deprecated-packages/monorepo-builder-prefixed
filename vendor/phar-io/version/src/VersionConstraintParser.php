@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper4a734d287afc\PharIo\Version;
+namespace _PhpScoper9e91fe07dbdd\PharIo\Version;
 
 class VersionConstraintParser
 {
@@ -25,7 +25,7 @@ class VersionConstraintParser
             return $this->handleOrGroup($value);
         }
         if (!\preg_match('/^[\\^~\\*]?[\\d.\\*]+(?:-.*)?$/', $value)) {
-            throw new \_PhpScoper4a734d287afc\PharIo\Version\UnsupportedVersionConstraintException(\sprintf('Version constraint %s is not supported.', $value));
+            throw new \_PhpScoper9e91fe07dbdd\PharIo\Version\UnsupportedVersionConstraintException(\sprintf('Version constraint %s is not supported.', $value));
         }
         switch ($value[0]) {
             case '~':
@@ -33,17 +33,17 @@ class VersionConstraintParser
             case '^':
                 return $this->handleCaretOperator($value);
         }
-        $version = new \_PhpScoper4a734d287afc\PharIo\Version\VersionConstraintValue($value);
+        $version = new \_PhpScoper9e91fe07dbdd\PharIo\Version\VersionConstraintValue($value);
         if ($version->getMajor()->isAny()) {
-            return new \_PhpScoper4a734d287afc\PharIo\Version\AnyVersionConstraint();
+            return new \_PhpScoper9e91fe07dbdd\PharIo\Version\AnyVersionConstraint();
         }
         if ($version->getMinor()->isAny()) {
-            return new \_PhpScoper4a734d287afc\PharIo\Version\SpecificMajorVersionConstraint($version->getVersionString(), $version->getMajor()->getValue());
+            return new \_PhpScoper9e91fe07dbdd\PharIo\Version\SpecificMajorVersionConstraint($version->getVersionString(), $version->getMajor()->getValue());
         }
         if ($version->getPatch()->isAny()) {
-            return new \_PhpScoper4a734d287afc\PharIo\Version\SpecificMajorAndMinorVersionConstraint($version->getVersionString(), $version->getMajor()->getValue(), $version->getMinor()->getValue());
+            return new \_PhpScoper9e91fe07dbdd\PharIo\Version\SpecificMajorAndMinorVersionConstraint($version->getVersionString(), $version->getMajor()->getValue(), $version->getMinor()->getValue());
         }
-        return new \_PhpScoper4a734d287afc\PharIo\Version\ExactVersionConstraint($version->getVersionString());
+        return new \_PhpScoper9e91fe07dbdd\PharIo\Version\ExactVersionConstraint($version->getVersionString());
     }
     /**
      * @param $value
@@ -56,7 +56,7 @@ class VersionConstraintParser
         foreach (\explode('||', $value) as $groupSegment) {
             $constraints[] = $this->parse(\trim($groupSegment));
         }
-        return new \_PhpScoper4a734d287afc\PharIo\Version\OrVersionConstraintGroup($value, $constraints);
+        return new \_PhpScoper9e91fe07dbdd\PharIo\Version\OrVersionConstraintGroup($value, $constraints);
     }
     /**
      * @param string $value
@@ -65,14 +65,14 @@ class VersionConstraintParser
      */
     private function handleTildeOperator($value)
     {
-        $version = new \_PhpScoper4a734d287afc\PharIo\Version\Version(\substr($value, 1));
-        $constraints = [new \_PhpScoper4a734d287afc\PharIo\Version\GreaterThanOrEqualToVersionConstraint($value, $version)];
+        $version = new \_PhpScoper9e91fe07dbdd\PharIo\Version\Version(\substr($value, 1));
+        $constraints = [new \_PhpScoper9e91fe07dbdd\PharIo\Version\GreaterThanOrEqualToVersionConstraint($value, $version)];
         if ($version->getPatch()->isAny()) {
-            $constraints[] = new \_PhpScoper4a734d287afc\PharIo\Version\SpecificMajorVersionConstraint($value, $version->getMajor()->getValue());
+            $constraints[] = new \_PhpScoper9e91fe07dbdd\PharIo\Version\SpecificMajorVersionConstraint($value, $version->getMajor()->getValue());
         } else {
-            $constraints[] = new \_PhpScoper4a734d287afc\PharIo\Version\SpecificMajorAndMinorVersionConstraint($value, $version->getMajor()->getValue(), $version->getMinor()->getValue());
+            $constraints[] = new \_PhpScoper9e91fe07dbdd\PharIo\Version\SpecificMajorAndMinorVersionConstraint($value, $version->getMajor()->getValue(), $version->getMinor()->getValue());
         }
-        return new \_PhpScoper4a734d287afc\PharIo\Version\AndVersionConstraintGroup($value, $constraints);
+        return new \_PhpScoper9e91fe07dbdd\PharIo\Version\AndVersionConstraintGroup($value, $constraints);
     }
     /**
      * @param string $value
@@ -81,7 +81,7 @@ class VersionConstraintParser
      */
     private function handleCaretOperator($value)
     {
-        $version = new \_PhpScoper4a734d287afc\PharIo\Version\Version(\substr($value, 1));
-        return new \_PhpScoper4a734d287afc\PharIo\Version\AndVersionConstraintGroup($value, [new \_PhpScoper4a734d287afc\PharIo\Version\GreaterThanOrEqualToVersionConstraint($value, $version), new \_PhpScoper4a734d287afc\PharIo\Version\SpecificMajorVersionConstraint($value, $version->getMajor()->getValue())]);
+        $version = new \_PhpScoper9e91fe07dbdd\PharIo\Version\Version(\substr($value, 1));
+        return new \_PhpScoper9e91fe07dbdd\PharIo\Version\AndVersionConstraintGroup($value, [new \_PhpScoper9e91fe07dbdd\PharIo\Version\GreaterThanOrEqualToVersionConstraint($value, $version), new \_PhpScoper9e91fe07dbdd\PharIo\Version\SpecificMajorVersionConstraint($value, $version->getMajor()->getValue())]);
     }
 }
