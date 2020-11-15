@@ -1,25 +1,25 @@
 {
     "autoload": {
         "psr-4": {
-            "_PhpScoperb25e75e9febe\\App\\Collection\\": [
+            "_PhpScoperaff2103cee1d\\App\\Collection\\": [
                 "src\/collection"
             ],
-            "_PhpScoperb25e75e9febe\\App\\Core\\": "src\/core",
-            "_PhpScoperb25e75e9febe\\App\\FixedArray\\": [
+            "_PhpScoperaff2103cee1d\\App\\Core\\": "src\/core",
+            "_PhpScoperaff2103cee1d\\App\\FixedArray\\": [
                 "src\/array",
                 "src\/list"
             ],
-            "_PhpScoperb25e75e9febe\\App\\Shared\\": "src\/shared",
-            "_PhpScoperb25e75e9febe\\App\\YetAnother\\": [
+            "_PhpScoperaff2103cee1d\\App\\Shared\\": "src\/shared",
+            "_PhpScoperaff2103cee1d\\App\\YetAnother\\": [
                 "src"
             ],
-            "_PhpScoperb25e75e9febe\\Monolog\\": "src\/Monolog\/",
-            "_PhpScoperb25e75e9febe\\Vendor\\Namespace\\": [
+            "_PhpScoperaff2103cee1d\\Monolog\\": "src\/Monolog\/",
+            "_PhpScoperaff2103cee1d\\Vendor\\Namespace\\": [
                 "src\/Vendor\/Namespace\/",
                 "lib\/Vendor\/Namespace\/"
             ],
-            "_PhpScoperb25e75e9febe\\UniqueGlobalClass\\": "\/UniqueGlobalClass\/",
-            "_PhpScoperb25e75e9febe\\\\": "src\/\/"
+            "_PhpScoperaff2103cee1d\\UniqueGlobalClass\\": "\/UniqueGlobalClass\/",
+            "_PhpScoperaff2103cee1d\\\\": "src\/\/"
         },
         "classmap": [
             "src\/",

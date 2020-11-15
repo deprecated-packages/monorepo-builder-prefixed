@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Init\Composer;
 
-use _PhpScoperb25e75e9febe\Jean85\PrettyVersions;
-use _PhpScoperb25e75e9febe\Nette\Utils\Json as NetteJson;
+use _PhpScoperaff2103cee1d\Jean85\PrettyVersions;
+use _PhpScoperaff2103cee1d\Nette\Utils\Json as NetteJson;
 use OutOfBoundsException;
-use _PhpScoperb25e75e9febe\PharIo\Version\InvalidVersionException;
-use _PhpScoperb25e75e9febe\PharIo\Version\Version;
+use _PhpScoperaff2103cee1d\PharIo\Version\InvalidVersionException;
+use _PhpScoperaff2103cee1d\PharIo\Version\Version;
 use Symplify\SmartFileSystem\SmartFileSystem;
 final class PackageNameVersionProvider
 {
@@ -26,9 +26,9 @@ final class PackageNameVersionProvider
     {
         $version = null;
         try {
-            $prettyVersion = \_PhpScoperb25e75e9febe\Jean85\PrettyVersions::getVersion($packageName)->getPrettyVersion();
-            $version = new \_PhpScoperb25e75e9febe\PharIo\Version\Version(\str_replace('x-dev', '0', $prettyVersion));
-        } catch (\OutOfBoundsException|\_PhpScoperb25e75e9febe\PharIo\Version\InvalidVersionException $exceptoin) {
+            $prettyVersion = \_PhpScoperaff2103cee1d\Jean85\PrettyVersions::getVersion($packageName)->getPrettyVersion();
+            $version = new \_PhpScoperaff2103cee1d\PharIo\Version\Version(\str_replace('x-dev', '0', $prettyVersion));
+        } catch (\OutOfBoundsException|\_PhpScoperaff2103cee1d\PharIo\Version\InvalidVersionException $exceptoin) {
             // Version might not be explicitly set inside composer.json, looking for "vendor/composer/installed.json"
             $version = $this->extractFromComposer($packageName);
         }
@@ -40,15 +40,15 @@ final class PackageNameVersionProvider
     /**
      * Returns current version of MonorepoBuilder extracting it from "vendor/composer/installed.json".
      */
-    private function extractFromComposer(string $packageName) : ?\_PhpScoperb25e75e9febe\PharIo\Version\Version
+    private function extractFromComposer(string $packageName) : ?\_PhpScoperaff2103cee1d\PharIo\Version\Version
     {
         $installedJsonFilename = \sprintf('%s/composer/installed.json', \dirname(__DIR__, 6));
         if (\is_file($installedJsonFilename)) {
             $installedJsonFileContent = $this->smartFileSystem->readFile($installedJsonFilename);
-            $installedJson = \_PhpScoperb25e75e9febe\Nette\Utils\Json::decode($installedJsonFileContent);
+            $installedJson = \_PhpScoperaff2103cee1d\Nette\Utils\Json::decode($installedJsonFileContent);
             foreach ($installedJson as $installedPackage) {
                 if ($installedPackage->name === $packageName) {
-                    return new \_PhpScoperb25e75e9febe\PharIo\Version\Version($installedPackage->version);
+                    return new \_PhpScoperaff2103cee1d\PharIo\Version\Version($installedPackage->version);
                 }
             }
         }
