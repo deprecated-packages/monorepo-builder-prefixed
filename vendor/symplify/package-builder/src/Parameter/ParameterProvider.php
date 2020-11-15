@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\PackageBuilder\Parameter;
 
-use _PhpScoper7606a7c2799b\Symfony\Component\DependencyInjection\Container;
-use _PhpScoper7606a7c2799b\Symfony\Component\DependencyInjection\ContainerInterface;
-use _PhpScoper7606a7c2799b\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use _PhpScoper4ef7335528ad\Symfony\Component\DependencyInjection\Container;
+use _PhpScoper4ef7335528ad\Symfony\Component\DependencyInjection\ContainerInterface;
+use _PhpScoper4ef7335528ad\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 /**
  * @see \Symplify\PackageBuilder\Tests\Parameter\ParameterProviderTest
  */
@@ -18,9 +18,10 @@ final class ParameterProvider
     /**
      * @param Container|ContainerInterface $container
      */
-    public function __construct(\_PhpScoper7606a7c2799b\Symfony\Component\DependencyInjection\ContainerInterface $container)
+    public function __construct(\_PhpScoper4ef7335528ad\Symfony\Component\DependencyInjection\ContainerInterface $container)
     {
-        $this->parameters = $container->getParameterBag()->all();
+        $parameterBag = $container->getParameterBag();
+        $this->parameters = $parameterBag->all();
     }
     /**
      * @return mixed|null
@@ -67,6 +68,6 @@ final class ParameterProvider
         if (\array_key_exists($name, $this->parameters)) {
             return;
         }
-        throw new \_PhpScoper7606a7c2799b\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException($name);
+        throw new \_PhpScoper4ef7335528ad\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException($name);
     }
 }
