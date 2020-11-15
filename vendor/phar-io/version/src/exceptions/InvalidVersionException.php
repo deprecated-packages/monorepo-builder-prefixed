@@ -1,7 +1,7 @@
 <?php
 
-namespace _PhpScoper4ef7335528ad\PharIo\Version;
+namespace _PhpScoper0fa0b2363a34\PharIo\Version;
 
-class InvalidVersionException extends \InvalidArgumentException implements \_PhpScoper4ef7335528ad\PharIo\Version\Exception
+class InvalidVersionException extends \InvalidArgumentException implements \_PhpScoper0fa0b2363a34\PharIo\Version\Exception
 {
 }

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper4ef7335528ad\Symfony\Component\Console\Formatter;
+namespace _PhpScoper0fa0b2363a34\Symfony\Component\Console\Formatter;
 
 /**
  * Formatter style interface for defining styles.
