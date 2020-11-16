@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper29d04ea58d14\Symfony\Component\Mime\Exception;
+namespace _PhpScoperb1086ecf2bcb\Symfony\Component\Mime\Exception;
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
  * @experimental in 4.3
  */
-class LogicException extends \LogicException implements \_PhpScoper29d04ea58d14\Symfony\Component\Mime\Exception\ExceptionInterface
+class LogicException extends \LogicException implements \_PhpScoperb1086ecf2bcb\Symfony\Component\Mime\Exception\ExceptionInterface
 {
 }

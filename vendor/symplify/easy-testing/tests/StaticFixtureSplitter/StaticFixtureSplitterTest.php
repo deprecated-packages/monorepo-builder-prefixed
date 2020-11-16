@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\EasyTesting\Tests\StaticFixtureSplitter;
 
-use _PhpScoper29d04ea58d14\PHPUnit\Framework\TestCase;
+use _PhpScoperb1086ecf2bcb\PHPUnit\Framework\TestCase;
 use Symplify\EasyTesting\StaticFixtureSplitter;
 use Symplify\SmartFileSystem\SmartFileInfo;
-final class StaticFixtureSplitterTest extends \_PhpScoper29d04ea58d14\PHPUnit\Framework\TestCase
+final class StaticFixtureSplitterTest extends \_PhpScoperb1086ecf2bcb\PHPUnit\Framework\TestCase
 {
     public function test() : void
     {
@@ -19,8 +19,8 @@ final class StaticFixtureSplitterTest extends \_PhpScoper29d04ea58d14\PHPUnit\Fr
     {
         $fileInfo = new \Symplify\SmartFileSystem\SmartFileInfo(__DIR__ . '/Source/file_and_value.php.inc');
         $inputFileInfoAndExpected = \Symplify\EasyTesting\StaticFixtureSplitter::splitFileInfoToLocalInputAndExpected($fileInfo);
-        $realPath = $inputFileInfoAndExpected->getInputFileRealPath();
-        $this->assertFileExists($realPath);
+        $inputFileRealPath = $inputFileInfoAndExpected->getInputFileRealPath();
+        $this->assertFileExists($inputFileRealPath);
         $this->assertSame(15025, $inputFileInfoAndExpected->getExpected());
     }
 }
