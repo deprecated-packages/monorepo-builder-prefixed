@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\SmartFileSystem;
 
-use _PhpScoperd9ee792cdaf4\Nette\Utils\Html;
-use _PhpScoperd9ee792cdaf4\Nette\Utils\Strings;
-use _PhpScoperd9ee792cdaf4\Symfony\Component\Filesystem\Exception\IOException;
-use _PhpScoperd9ee792cdaf4\Symfony\Component\Filesystem\Filesystem;
-final class SmartFileSystem extends \_PhpScoperd9ee792cdaf4\Symfony\Component\Filesystem\Filesystem
+use _PhpScoper716f383f1097\Nette\Utils\Html;
+use _PhpScoper716f383f1097\Nette\Utils\Strings;
+use _PhpScoper716f383f1097\Symfony\Component\Filesystem\Exception\IOException;
+use _PhpScoper716f383f1097\Symfony\Component\Filesystem\Filesystem;
+final class SmartFileSystem extends \_PhpScoper716f383f1097\Symfony\Component\Filesystem\Filesystem
 {
     /**
      * @var string
@@ -22,7 +22,7 @@ final class SmartFileSystem extends \_PhpScoperd9ee792cdaf4\Symfony\Component\Fi
         $source = @\file_get_contents($filename);
         if (!$source) {
             $message = \sprintf('Failed to read "%s" file: "%s"', $filename, $this->getLastError());
-            throw new \_PhpScoperd9ee792cdaf4\Symfony\Component\Filesystem\Exception\IOException($message, 0, null, $filename);
+            throw new \_PhpScoper716f383f1097\Symfony\Component\Filesystem\Exception\IOException($message, 0, null, $filename);
         }
         return $source;
     }
@@ -46,6 +46,6 @@ final class SmartFileSystem extends \_PhpScoperd9ee792cdaf4\Symfony\Component\Fi
     {
         $message = \error_get_last()['message'] ?? '';
         $message = \ini_get('html_errors') ? $this->htmlToText($message) : $message;
-        return \_PhpScoperd9ee792cdaf4\Nette\Utils\Strings::replace($message, self::BEFORE_COLLON_REGEX);
+        return \_PhpScoper716f383f1097\Nette\Utils\Strings::replace($message, self::BEFORE_COLLON_REGEX);
     }
 }
