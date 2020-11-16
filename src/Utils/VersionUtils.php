@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Utils;
 
-use _PhpScoper716f383f1097\PharIo\Version\Version;
+use _PhpScoper9a3298f96fa4\PharIo\Version\Version;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\MonorepoBuilder\ValueObjectFactory\VersionFactory;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
@@ -60,14 +60,14 @@ final class VersionUtils
     /**
      * @param Version|string $version
      */
-    private function normalizeVersion($version) : \_PhpScoper716f383f1097\PharIo\Version\Version
+    private function normalizeVersion($version) : \_PhpScoper9a3298f96fa4\PharIo\Version\Version
     {
         if (\is_string($version)) {
             return $this->versionFactory->create($version);
         }
         return $version;
     }
-    private function getNextMinorNumber(\_PhpScoper716f383f1097\PharIo\Version\Version $version) : int
+    private function getNextMinorNumber(\_PhpScoper9a3298f96fa4\PharIo\Version\Version $version) : int
     {
         if ($version->hasPreReleaseSuffix()) {
             return (int) $version->getMinor()->getValue();
