@@ -1,7 +1,7 @@
 <?php
 
-namespace _PhpScoper1c1f12bbe5a7\PharIo\Version;
+namespace _PhpScoperdfa889d8967a\PharIo\Version;
 
-class InvalidPreReleaseSuffixException extends \Exception implements \_PhpScoper1c1f12bbe5a7\PharIo\Version\Exception
+class InvalidPreReleaseSuffixException extends \Exception implements \_PhpScoperdfa889d8967a\PharIo\Version\Exception
 {
 }

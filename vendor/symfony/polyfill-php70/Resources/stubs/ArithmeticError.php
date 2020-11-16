@@ -1,8 +1,8 @@
 <?php
 
-namespace _PhpScoper1c1f12bbe5a7;
+namespace _PhpScoperdfa889d8967a;
 
 class ArithmeticError extends \Error
 {
 }
-\class_alias('_PhpScoper1c1f12bbe5a7\\ArithmeticError', 'ArithmeticError', \false);
+\class_alias('_PhpScoperdfa889d8967a\\ArithmeticError', 'ArithmeticError', \false);

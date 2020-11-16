@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper1c1f12bbe5a7\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace _PhpScoperdfa889d8967a\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use _PhpScoper1c1f12bbe5a7\Symfony\Component\DependencyInjection\Definition;
+use _PhpScoperdfa889d8967a\Symfony\Component\DependencyInjection\Definition;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class InstanceofConfigurator extends \_PhpScoper1c1f12bbe5a7\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
+class InstanceofConfigurator extends \_PhpScoperdfa889d8967a\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
 {
     const FACTORY = 'instanceof';
     use Traits\AutowireTrait;
@@ -27,7 +27,7 @@ class InstanceofConfigurator extends \_PhpScoper1c1f12bbe5a7\Symfony\Component\D
     use Traits\TagTrait;
     use Traits\BindTrait;
     private $path;
-    public function __construct(\_PhpScoper1c1f12bbe5a7\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \_PhpScoper1c1f12bbe5a7\Symfony\Component\DependencyInjection\Definition $definition, string $id, string $path = null)
+    public function __construct(\_PhpScoperdfa889d8967a\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \_PhpScoperdfa889d8967a\Symfony\Component\DependencyInjection\Definition $definition, string $id, string $path = null)
     {
         parent::__construct($parent, $definition, $id, []);
         $this->path = $path;

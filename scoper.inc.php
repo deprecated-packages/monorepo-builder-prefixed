@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace _PhpScoper1c1f12bbe5a7;
+namespace _PhpScoperdfa889d8967a;
 
 return ['files-whitelist' => [
     // do not prefix "trigger_deprecatoin" from symfony - https://github.com/symfony/symfony/commit/0032b2a2893d3be592d4312b7b098fb9d71aca03
@@ -11,5 +11,5 @@ return ['files-whitelist' => [
     // needed for autoload, that is not prefixed, since it's in bin/* file
     'Symplify\\*',
     // for config.php - Symfony PHP Configs
-    '_PhpScoper1c1f12bbe5a7\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator',
+    '_PhpScoperdfa889d8967a\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator',
 ]];

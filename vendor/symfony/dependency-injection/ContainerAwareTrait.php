@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper1c1f12bbe5a7\Symfony\Component\DependencyInjection;
+namespace _PhpScoperdfa889d8967a\Symfony\Component\DependencyInjection;
 
 /**
  * ContainerAware trait.
@@ -21,7 +21,7 @@ trait ContainerAwareTrait
      * @var ContainerInterface
      */
     protected $container;
-    public function setContainer(\_PhpScoper1c1f12bbe5a7\Symfony\Component\DependencyInjection\ContainerInterface $container = null)
+    public function setContainer(\_PhpScoperdfa889d8967a\Symfony\Component\DependencyInjection\ContainerInterface $container = null)
     {
         $this->container = $container;
     }
