@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb1086ecf2bcb\Symfony\Component\HttpFoundation\File;
+namespace _PhpScoper5da899d87662\Symfony\Component\HttpFoundation\File;
 
 /**
  * A PHP stream of unknown size.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class Stream extends \_PhpScoperb1086ecf2bcb\Symfony\Component\HttpFoundation\File\File
+class Stream extends \_PhpScoper5da899d87662\Symfony\Component\HttpFoundation\File\File
 {
     /**
      * {@inheritdoc}

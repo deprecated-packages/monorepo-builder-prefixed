@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb1086ecf2bcb\Symfony\Component\VarDumper\Caster;
+namespace _PhpScoper5da899d87662\Symfony\Component\VarDumper\Caster;
 
-use _PhpScoperb1086ecf2bcb\Symfony\Component\VarDumper\Cloner\Stub;
+use _PhpScoper5da899d87662\Symfony\Component\VarDumper\Cloner\Stub;
 /**
  * Represents a PHP class identifier.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ClassStub extends \_PhpScoperb1086ecf2bcb\Symfony\Component\VarDumper\Caster\ConstStub
+class ClassStub extends \_PhpScoper5da899d87662\Symfony\Component\VarDumper\Caster\ConstStub
 {
     /**
      * @param string   $identifier A PHP identifier, e.g. a class, method, interface, etc. name
@@ -56,8 +56,8 @@ class ClassStub extends \_PhpScoperb1086ecf2bcb\Symfony\Component\VarDumper\Cast
                 }, $identifier);
             }
             if (null !== $callable && $r instanceof \ReflectionFunctionAbstract) {
-                $s = \_PhpScoperb1086ecf2bcb\Symfony\Component\VarDumper\Caster\ReflectionCaster::castFunctionAbstract($r, [], new \_PhpScoperb1086ecf2bcb\Symfony\Component\VarDumper\Cloner\Stub(), \true, \_PhpScoperb1086ecf2bcb\Symfony\Component\VarDumper\Caster\Caster::EXCLUDE_VERBOSE);
-                $s = \_PhpScoperb1086ecf2bcb\Symfony\Component\VarDumper\Caster\ReflectionCaster::getSignature($s);
+                $s = \_PhpScoper5da899d87662\Symfony\Component\VarDumper\Caster\ReflectionCaster::castFunctionAbstract($r, [], new \_PhpScoper5da899d87662\Symfony\Component\VarDumper\Cloner\Stub(), \true, \_PhpScoper5da899d87662\Symfony\Component\VarDumper\Caster\Caster::EXCLUDE_VERBOSE);
+                $s = \_PhpScoper5da899d87662\Symfony\Component\VarDumper\Caster\ReflectionCaster::getSignature($s);
                 if ('()' === \substr($identifier, -2)) {
                     $this->value = \substr_replace($identifier, $s, -2);
                 } else {

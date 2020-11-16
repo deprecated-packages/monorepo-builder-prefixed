@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb1086ecf2bcb\Symfony\Component\Config;
+namespace _PhpScoper5da899d87662\Symfony\Component\Config;
 
 /**
  * Basic implementation of ConfigCacheFactoryInterface that
@@ -19,7 +19,7 @@ namespace _PhpScoperb1086ecf2bcb\Symfony\Component\Config;
  *
  * @author Matthias Pigulla <mp@webfactory.de>
  */
-class ConfigCacheFactory implements \_PhpScoperb1086ecf2bcb\Symfony\Component\Config\ConfigCacheFactoryInterface
+class ConfigCacheFactory implements \_PhpScoper5da899d87662\Symfony\Component\Config\ConfigCacheFactoryInterface
 {
     private $debug;
     /**
@@ -37,7 +37,7 @@ class ConfigCacheFactory implements \_PhpScoperb1086ecf2bcb\Symfony\Component\Co
         if (!\is_callable($callback)) {
             throw new \InvalidArgumentException(\sprintf('Invalid type for callback argument. Expected callable, but got "%s".', \gettype($callback)));
         }
-        $cache = new \_PhpScoperb1086ecf2bcb\Symfony\Component\Config\ConfigCache($file, $this->debug);
+        $cache = new \_PhpScoper5da899d87662\Symfony\Component\Config\ConfigCache($file, $this->debug);
         if (!$cache->isFresh()) {
             $callback($cache);
         }

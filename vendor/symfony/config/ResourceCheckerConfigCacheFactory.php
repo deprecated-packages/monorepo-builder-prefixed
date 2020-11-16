@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb1086ecf2bcb\Symfony\Component\Config;
+namespace _PhpScoper5da899d87662\Symfony\Component\Config;
 
 /**
  * A ConfigCacheFactory implementation that validates the
@@ -16,7 +16,7 @@ namespace _PhpScoperb1086ecf2bcb\Symfony\Component\Config;
  *
  * @author Matthias Pigulla <mp@webfactory.de>
  */
-class ResourceCheckerConfigCacheFactory implements \_PhpScoperb1086ecf2bcb\Symfony\Component\Config\ConfigCacheFactoryInterface
+class ResourceCheckerConfigCacheFactory implements \_PhpScoper5da899d87662\Symfony\Component\Config\ConfigCacheFactoryInterface
 {
     private $resourceCheckers = [];
     /**
@@ -34,7 +34,7 @@ class ResourceCheckerConfigCacheFactory implements \_PhpScoperb1086ecf2bcb\Symfo
         if (!\is_callable($callback)) {
             throw new \InvalidArgumentException(\sprintf('Invalid type for callback argument. Expected callable, but got "%s".', \gettype($callback)));
         }
-        $cache = new \_PhpScoperb1086ecf2bcb\Symfony\Component\Config\ResourceCheckerConfigCache($file, $this->resourceCheckers);
+        $cache = new \_PhpScoper5da899d87662\Symfony\Component\Config\ResourceCheckerConfigCache($file, $this->resourceCheckers);
         if (!$cache->isFresh()) {
             $callback($cache);
         }
