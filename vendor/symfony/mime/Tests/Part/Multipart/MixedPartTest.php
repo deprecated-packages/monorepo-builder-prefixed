@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper9a3298f96fa4\Symfony\Component\Mime\Tests\Part\Multipart;
+namespace _PhpScoper244a857c31f6\Symfony\Component\Mime\Tests\Part\Multipart;
 
-use _PhpScoper9a3298f96fa4\PHPUnit\Framework\TestCase;
-use _PhpScoper9a3298f96fa4\Symfony\Component\Mime\Part\Multipart\MixedPart;
-class MixedPartTest extends \_PhpScoper9a3298f96fa4\PHPUnit\Framework\TestCase
+use _PhpScoper244a857c31f6\PHPUnit\Framework\TestCase;
+use _PhpScoper244a857c31f6\Symfony\Component\Mime\Part\Multipart\MixedPart;
+class MixedPartTest extends \_PhpScoper244a857c31f6\PHPUnit\Framework\TestCase
 {
     public function testConstructor()
     {
-        $a = new \_PhpScoper9a3298f96fa4\Symfony\Component\Mime\Part\Multipart\MixedPart();
+        $a = new \_PhpScoper244a857c31f6\Symfony\Component\Mime\Part\Multipart\MixedPart();
         $this->assertEquals('multipart', $a->getMediaType());
         $this->assertEquals('mixed', $a->getMediaSubtype());
     }
