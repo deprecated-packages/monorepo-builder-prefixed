@@ -9,8 +9,8 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper5da899d87662\SebastianBergmann\Diff;
+namespace _PhpScoperd9ee792cdaf4\SebastianBergmann\Diff;
 
-class InvalidArgumentException extends \InvalidArgumentException implements \_PhpScoper5da899d87662\SebastianBergmann\Diff\Exception
+class InvalidArgumentException extends \InvalidArgumentException implements \_PhpScoperd9ee792cdaf4\SebastianBergmann\Diff\Exception
 {
 }

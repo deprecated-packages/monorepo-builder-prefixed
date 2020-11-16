@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper5da899d87662\Symfony\Component\Process\Exception;
+namespace _PhpScoperd9ee792cdaf4\Symfony\Component\Process\Exception;
 
 /**
  * LogicException for the Process Component.
  *
  * @author Romain Neutron <imprec@gmail.com>
  */
-class LogicException extends \LogicException implements \_PhpScoper5da899d87662\Symfony\Component\Process\Exception\ExceptionInterface
+class LogicException extends \LogicException implements \_PhpScoperd9ee792cdaf4\Symfony\Component\Process\Exception\ExceptionInterface
 {
 }
