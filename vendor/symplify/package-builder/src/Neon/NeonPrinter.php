@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\PackageBuilder\Neon;
 
-use _PhpScoperdfa889d8967a\Nette\Neon\Encoder;
-use _PhpScoperdfa889d8967a\Nette\Neon\Neon;
-use _PhpScoperdfa889d8967a\Nette\Utils\Strings;
+use _PhpScoperafeb7177e88e\Nette\Neon\Encoder;
+use _PhpScoperafeb7177e88e\Nette\Neon\Neon;
+use _PhpScoperafeb7177e88e\Nette\Utils\Strings;
 final class NeonPrinter
 {
     /**
@@ -23,7 +23,7 @@ final class NeonPrinter
      */
     public function printNeon(array $phpStanNeon) : string
     {
-        $neonContent = \_PhpScoperdfa889d8967a\Nette\Neon\Neon::encode($phpStanNeon, \_PhpScoperdfa889d8967a\Nette\Neon\Encoder::BLOCK);
+        $neonContent = \_PhpScoperafeb7177e88e\Nette\Neon\Neon::encode($phpStanNeon, \_PhpScoperafeb7177e88e\Nette\Neon\Encoder::BLOCK);
         // tabs to spaces for consistency
         $neonContent = $this->replaceTabsWithSpaces($neonContent);
         // inline single tags, dummy
@@ -33,14 +33,14 @@ final class NeonPrinter
     }
     private function replaceTabsWithSpaces(string $neonContent) : string
     {
-        return \_PhpScoperdfa889d8967a\Nette\Utils\Strings::replace($neonContent, '#\\t#', '    ');
+        return \_PhpScoperafeb7177e88e\Nette\Utils\Strings::replace($neonContent, '#\\t#', '    ');
     }
     private function inlineSingleTags(string $neonContent) : string
     {
-        return \_PhpScoperdfa889d8967a\Nette\Utils\Strings::replace($neonContent, self::TAGS_REGEX, 'tags: [$1]');
+        return \_PhpScoperafeb7177e88e\Nette\Utils\Strings::replace($neonContent, self::TAGS_REGEX, 'tags: [$1]');
     }
     private function fixDoubleSpaceInArguments(string $neonContent) : string
     {
-        return \_PhpScoperdfa889d8967a\Nette\Utils\Strings::replace($neonContent, self::ARGUMENTS_DOUBLE_SPACE_REGEX, '$1');
+        return \_PhpScoperafeb7177e88e\Nette\Utils\Strings::replace($neonContent, self::ARGUMENTS_DOUBLE_SPACE_REGEX, '$1');
     }
 }

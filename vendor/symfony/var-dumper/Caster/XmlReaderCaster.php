@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperdfa889d8967a\Symfony\Component\VarDumper\Caster;
+namespace _PhpScoperafeb7177e88e\Symfony\Component\VarDumper\Caster;
 
-use _PhpScoperdfa889d8967a\Symfony\Component\VarDumper\Cloner\Stub;
+use _PhpScoperafeb7177e88e\Symfony\Component\VarDumper\Cloner\Stub;
 /**
  * Casts XmlReader class to array representation.
  *
@@ -21,15 +21,15 @@ use _PhpScoperdfa889d8967a\Symfony\Component\VarDumper\Cloner\Stub;
 class XmlReaderCaster
 {
     private static $nodeTypes = [\XMLReader::NONE => 'NONE', \XMLReader::ELEMENT => 'ELEMENT', \XMLReader::ATTRIBUTE => 'ATTRIBUTE', \XMLReader::TEXT => 'TEXT', \XMLReader::CDATA => 'CDATA', \XMLReader::ENTITY_REF => 'ENTITY_REF', \XMLReader::ENTITY => 'ENTITY', \XMLReader::PI => 'PI (Processing Instruction)', \XMLReader::COMMENT => 'COMMENT', \XMLReader::DOC => 'DOC', \XMLReader::DOC_TYPE => 'DOC_TYPE', \XMLReader::DOC_FRAGMENT => 'DOC_FRAGMENT', \XMLReader::NOTATION => 'NOTATION', \XMLReader::WHITESPACE => 'WHITESPACE', \XMLReader::SIGNIFICANT_WHITESPACE => 'SIGNIFICANT_WHITESPACE', \XMLReader::END_ELEMENT => 'END_ELEMENT', \XMLReader::END_ENTITY => 'END_ENTITY', \XMLReader::XML_DECLARATION => 'XML_DECLARATION'];
-    public static function castXmlReader(\XMLReader $reader, array $a, \_PhpScoperdfa889d8967a\Symfony\Component\VarDumper\Cloner\Stub $stub, $isNested)
+    public static function castXmlReader(\XMLReader $reader, array $a, \_PhpScoperafeb7177e88e\Symfony\Component\VarDumper\Cloner\Stub $stub, $isNested)
     {
-        $props = \_PhpScoperdfa889d8967a\Symfony\Component\VarDumper\Caster\Caster::PREFIX_VIRTUAL . 'parserProperties';
-        $info = ['localName' => $reader->localName, 'prefix' => $reader->prefix, 'nodeType' => new \_PhpScoperdfa889d8967a\Symfony\Component\VarDumper\Caster\ConstStub(self::$nodeTypes[$reader->nodeType], $reader->nodeType), 'depth' => $reader->depth, 'isDefault' => $reader->isDefault, 'isEmptyElement' => \XMLReader::NONE === $reader->nodeType ? null : $reader->isEmptyElement, 'xmlLang' => $reader->xmlLang, 'attributeCount' => $reader->attributeCount, 'value' => $reader->value, 'namespaceURI' => $reader->namespaceURI, 'baseURI' => $reader->baseURI ? new \_PhpScoperdfa889d8967a\Symfony\Component\VarDumper\Caster\LinkStub($reader->baseURI) : $reader->baseURI, $props => ['LOADDTD' => $reader->getParserProperty(\XMLReader::LOADDTD), 'DEFAULTATTRS' => $reader->getParserProperty(\XMLReader::DEFAULTATTRS), 'VALIDATE' => $reader->getParserProperty(\XMLReader::VALIDATE), 'SUBST_ENTITIES' => $reader->getParserProperty(\XMLReader::SUBST_ENTITIES)]];
-        if ($info[$props] = \_PhpScoperdfa889d8967a\Symfony\Component\VarDumper\Caster\Caster::filter($info[$props], \_PhpScoperdfa889d8967a\Symfony\Component\VarDumper\Caster\Caster::EXCLUDE_EMPTY, [], $count)) {
-            $info[$props] = new \_PhpScoperdfa889d8967a\Symfony\Component\VarDumper\Caster\EnumStub($info[$props]);
+        $props = \_PhpScoperafeb7177e88e\Symfony\Component\VarDumper\Caster\Caster::PREFIX_VIRTUAL . 'parserProperties';
+        $info = ['localName' => $reader->localName, 'prefix' => $reader->prefix, 'nodeType' => new \_PhpScoperafeb7177e88e\Symfony\Component\VarDumper\Caster\ConstStub(self::$nodeTypes[$reader->nodeType], $reader->nodeType), 'depth' => $reader->depth, 'isDefault' => $reader->isDefault, 'isEmptyElement' => \XMLReader::NONE === $reader->nodeType ? null : $reader->isEmptyElement, 'xmlLang' => $reader->xmlLang, 'attributeCount' => $reader->attributeCount, 'value' => $reader->value, 'namespaceURI' => $reader->namespaceURI, 'baseURI' => $reader->baseURI ? new \_PhpScoperafeb7177e88e\Symfony\Component\VarDumper\Caster\LinkStub($reader->baseURI) : $reader->baseURI, $props => ['LOADDTD' => $reader->getParserProperty(\XMLReader::LOADDTD), 'DEFAULTATTRS' => $reader->getParserProperty(\XMLReader::DEFAULTATTRS), 'VALIDATE' => $reader->getParserProperty(\XMLReader::VALIDATE), 'SUBST_ENTITIES' => $reader->getParserProperty(\XMLReader::SUBST_ENTITIES)]];
+        if ($info[$props] = \_PhpScoperafeb7177e88e\Symfony\Component\VarDumper\Caster\Caster::filter($info[$props], \_PhpScoperafeb7177e88e\Symfony\Component\VarDumper\Caster\Caster::EXCLUDE_EMPTY, [], $count)) {
+            $info[$props] = new \_PhpScoperafeb7177e88e\Symfony\Component\VarDumper\Caster\EnumStub($info[$props]);
             $info[$props]->cut = $count;
         }
-        $info = \_PhpScoperdfa889d8967a\Symfony\Component\VarDumper\Caster\Caster::filter($info, \_PhpScoperdfa889d8967a\Symfony\Component\VarDumper\Caster\Caster::EXCLUDE_EMPTY, [], $count);
+        $info = \_PhpScoperafeb7177e88e\Symfony\Component\VarDumper\Caster\Caster::filter($info, \_PhpScoperafeb7177e88e\Symfony\Component\VarDumper\Caster\Caster::EXCLUDE_EMPTY, [], $count);
         // +2 because hasValue and hasAttributes are always filtered
         $stub->cut += $count + 2;
         return $a + $info;

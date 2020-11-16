@@ -6,7 +6,7 @@
     },
     "autoload": {
         "psr-4": {
-            "_PhpScoperdfa889d8967a\\YourMonorepo\\FirstPackage\\": "src"
+            "_PhpScoperafeb7177e88e\\YourMonorepo\\FirstPackage\\": "src"
         }
     }
 }

@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperdfa889d8967a\Symfony\Component\DependencyInjection\Compiler;
+namespace _PhpScoperafeb7177e88e\Symfony\Component\DependencyInjection\Compiler;
 
-use _PhpScoperdfa889d8967a\Symfony\Component\DependencyInjection\Definition;
-use _PhpScoperdfa889d8967a\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use _PhpScoperdfa889d8967a\Symfony\Component\DependencyInjection\Reference;
+use _PhpScoperafeb7177e88e\Symfony\Component\DependencyInjection\Definition;
+use _PhpScoperafeb7177e88e\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use _PhpScoperafeb7177e88e\Symfony\Component\DependencyInjection\Reference;
 /**
  * Checks the validity of references.
  *
@@ -21,17 +21,17 @@ use _PhpScoperdfa889d8967a\Symfony\Component\DependencyInjection\Reference;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class CheckReferenceValidityPass extends \_PhpScoperdfa889d8967a\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+class CheckReferenceValidityPass extends \_PhpScoperafeb7177e88e\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
 {
     protected function processValue($value, $isRoot = \false)
     {
-        if ($isRoot && $value instanceof \_PhpScoperdfa889d8967a\Symfony\Component\DependencyInjection\Definition && ($value->isSynthetic() || $value->isAbstract())) {
+        if ($isRoot && $value instanceof \_PhpScoperafeb7177e88e\Symfony\Component\DependencyInjection\Definition && ($value->isSynthetic() || $value->isAbstract())) {
             return $value;
         }
-        if ($value instanceof \_PhpScoperdfa889d8967a\Symfony\Component\DependencyInjection\Reference && $this->container->hasDefinition((string) $value)) {
+        if ($value instanceof \_PhpScoperafeb7177e88e\Symfony\Component\DependencyInjection\Reference && $this->container->hasDefinition((string) $value)) {
             $targetDefinition = $this->container->getDefinition((string) $value);
             if ($targetDefinition->isAbstract()) {
-                throw new \_PhpScoperdfa889d8967a\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('The definition "%s" has a reference to an abstract definition "%s". Abstract definitions cannot be the target of references.', $this->currentId, $value));
+                throw new \_PhpScoperafeb7177e88e\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('The definition "%s" has a reference to an abstract definition "%s". Abstract definitions cannot be the target of references.', $this->currentId, $value));
             }
         }
         return parent::processValue($value, $isRoot);

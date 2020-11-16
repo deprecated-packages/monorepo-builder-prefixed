@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperdfa889d8967a\Symfony\Component\Filesystem\Exception;
+namespace _PhpScoperafeb7177e88e\Symfony\Component\Filesystem\Exception;
 
 /**
  * Exception class thrown when a filesystem operation failure happens.
@@ -17,7 +17,7 @@ namespace _PhpScoperdfa889d8967a\Symfony\Component\Filesystem\Exception;
  * @author Christian Gärtner <christiangaertner.film@googlemail.com>
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class IOException extends \RuntimeException implements \_PhpScoperdfa889d8967a\Symfony\Component\Filesystem\Exception\IOExceptionInterface
+class IOException extends \RuntimeException implements \_PhpScoperafeb7177e88e\Symfony\Component\Filesystem\Exception\IOExceptionInterface
 {
     private $path;
     public function __construct(string $message, int $code = 0, \Throwable $previous = null, string $path = null)
