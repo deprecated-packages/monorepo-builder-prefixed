@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper6786b40fc02e\Symfony\Component\Mime\Tests;
+namespace _PhpScoperfdd2db5e123d\Symfony\Component\Mime\Tests;
 
-use _PhpScoper6786b40fc02e\PHPUnit\Framework\TestCase;
-use _PhpScoper6786b40fc02e\Symfony\Component\Mime\RawMessage;
-class RawMessageTest extends \_PhpScoper6786b40fc02e\PHPUnit\Framework\TestCase
+use _PhpScoperfdd2db5e123d\PHPUnit\Framework\TestCase;
+use _PhpScoperfdd2db5e123d\Symfony\Component\Mime\RawMessage;
+class RawMessageTest extends \_PhpScoperfdd2db5e123d\PHPUnit\Framework\TestCase
 {
     public function testToString()
     {
-        $message = new \_PhpScoper6786b40fc02e\Symfony\Component\Mime\RawMessage('string');
+        $message = new \_PhpScoperfdd2db5e123d\Symfony\Component\Mime\RawMessage('string');
         $this->assertEquals('string', $message->toString());
         $this->assertEquals('string', \implode('', \iterator_to_array($message->toIterable())));
         // calling methods more than once work
         $this->assertEquals('string', $message->toString());
         $this->assertEquals('string', \implode('', \iterator_to_array($message->toIterable())));
-        $message = new \_PhpScoper6786b40fc02e\Symfony\Component\Mime\RawMessage(new \ArrayObject(['some', ' ', 'string']));
+        $message = new \_PhpScoperfdd2db5e123d\Symfony\Component\Mime\RawMessage(new \ArrayObject(['some', ' ', 'string']));
         $this->assertEquals('some string', $message->toString());
         $this->assertEquals('some string', \implode('', \iterator_to_array($message->toIterable())));
         // calling methods more than once work

@@ -9,13 +9,13 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper6786b40fc02e\SebastianBergmann\Diff\Output;
+namespace _PhpScoperfdd2db5e123d\SebastianBergmann\Diff\Output;
 
-use _PhpScoper6786b40fc02e\PHPUnit\Framework\TestCase;
-use _PhpScoper6786b40fc02e\SebastianBergmann\Diff\Differ;
-use _PhpScoper6786b40fc02e\SebastianBergmann\Diff\Utils\FileUtils;
-use _PhpScoper6786b40fc02e\SebastianBergmann\Diff\Utils\UnifiedDiffAssertTrait;
-use _PhpScoper6786b40fc02e\Symfony\Component\Process\Process;
+use _PhpScoperfdd2db5e123d\PHPUnit\Framework\TestCase;
+use _PhpScoperfdd2db5e123d\SebastianBergmann\Diff\Differ;
+use _PhpScoperfdd2db5e123d\SebastianBergmann\Diff\Utils\FileUtils;
+use _PhpScoperfdd2db5e123d\SebastianBergmann\Diff\Utils\UnifiedDiffAssertTrait;
+use _PhpScoperfdd2db5e123d\Symfony\Component\Process\Process;
 /**
  * @covers SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilder
  *
@@ -24,7 +24,7 @@ use _PhpScoper6786b40fc02e\Symfony\Component\Process\Process;
  *
  * @requires OS Linux
  */
-final class StrictUnifiedDiffOutputBuilderIntegrationTest extends \_PhpScoper6786b40fc02e\PHPUnit\Framework\TestCase
+final class StrictUnifiedDiffOutputBuilderIntegrationTest extends \_PhpScoperfdd2db5e123d\PHPUnit\Framework\TestCase
 {
     use UnifiedDiffAssertTrait;
     private $dir;
@@ -61,9 +61,9 @@ final class StrictUnifiedDiffOutputBuilderIntegrationTest extends \_PhpScoper678
      */
     public function testIntegrationUsingPHPFileInVendorGitApply(string $fileFrom, string $fileTo) : void
     {
-        $from = \_PhpScoper6786b40fc02e\SebastianBergmann\Diff\Utils\FileUtils::getFileContent($fileFrom);
-        $to = \_PhpScoper6786b40fc02e\SebastianBergmann\Diff\Utils\FileUtils::getFileContent($fileTo);
-        $diff = (new \_PhpScoper6786b40fc02e\SebastianBergmann\Diff\Differ(new \_PhpScoper6786b40fc02e\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilder(['fromFile' => 'Original', 'toFile' => 'New'])))->diff($from, $to);
+        $from = \_PhpScoperfdd2db5e123d\SebastianBergmann\Diff\Utils\FileUtils::getFileContent($fileFrom);
+        $to = \_PhpScoperfdd2db5e123d\SebastianBergmann\Diff\Utils\FileUtils::getFileContent($fileTo);
+        $diff = (new \_PhpScoperfdd2db5e123d\SebastianBergmann\Diff\Differ(new \_PhpScoperfdd2db5e123d\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilder(['fromFile' => 'Original', 'toFile' => 'New'])))->diff($from, $to);
         if ('' === $diff && $from === $to) {
             // odd case: test after executing as it is more efficient than to read the files and check the contents every time
             $this->addToAssertionCount(1);
@@ -86,9 +86,9 @@ final class StrictUnifiedDiffOutputBuilderIntegrationTest extends \_PhpScoper678
      */
     public function testIntegrationUsingPHPFileInVendorPatch(string $fileFrom, string $fileTo) : void
     {
-        $from = \_PhpScoper6786b40fc02e\SebastianBergmann\Diff\Utils\FileUtils::getFileContent($fileFrom);
-        $to = \_PhpScoper6786b40fc02e\SebastianBergmann\Diff\Utils\FileUtils::getFileContent($fileTo);
-        $diff = (new \_PhpScoper6786b40fc02e\SebastianBergmann\Diff\Differ(new \_PhpScoper6786b40fc02e\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilder(['fromFile' => 'Original', 'toFile' => 'New'])))->diff($from, $to);
+        $from = \_PhpScoperfdd2db5e123d\SebastianBergmann\Diff\Utils\FileUtils::getFileContent($fileFrom);
+        $to = \_PhpScoperfdd2db5e123d\SebastianBergmann\Diff\Utils\FileUtils::getFileContent($fileTo);
+        $diff = (new \_PhpScoperfdd2db5e123d\SebastianBergmann\Diff\Differ(new \_PhpScoperfdd2db5e123d\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilder(['fromFile' => 'Original', 'toFile' => 'New'])))->diff($from, $to);
         if ('' === $diff && $from === $to) {
             // odd case: test after executing as it is more efficient than to read the files and check the contents every time
             $this->addToAssertionCount(1);
@@ -124,15 +124,15 @@ final class StrictUnifiedDiffOutputBuilderIntegrationTest extends \_PhpScoper678
     }
     public function provideOutputBuildingCases() : array
     {
-        return \_PhpScoper6786b40fc02e\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilderDataProvider::provideOutputBuildingCases();
+        return \_PhpScoperfdd2db5e123d\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilderDataProvider::provideOutputBuildingCases();
     }
     public function provideSample() : array
     {
-        return \_PhpScoper6786b40fc02e\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilderDataProvider::provideSample();
+        return \_PhpScoperfdd2db5e123d\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilderDataProvider::provideSample();
     }
     public function provideBasicDiffGeneration() : array
     {
-        return \_PhpScoper6786b40fc02e\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilderDataProvider::provideBasicDiffGeneration();
+        return \_PhpScoperfdd2db5e123d\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilderDataProvider::provideBasicDiffGeneration();
     }
     public function provideFilePairs() : array
     {
@@ -166,7 +166,7 @@ final class StrictUnifiedDiffOutputBuilderIntegrationTest extends \_PhpScoper678
         $this->assertValidUnifiedDiffFormat($diff);
         $this->assertNotFalse(\file_put_contents($this->fileFrom, $from));
         $this->assertNotFalse(\file_put_contents($this->fileTo, $to));
-        $p = new \_PhpScoper6786b40fc02e\Symfony\Component\Process\Process(\sprintf('diff -u %s %s', \escapeshellarg($this->fileFrom), \escapeshellarg($this->fileTo)));
+        $p = new \_PhpScoperfdd2db5e123d\Symfony\Component\Process\Process(\sprintf('diff -u %s %s', \escapeshellarg($this->fileFrom), \escapeshellarg($this->fileTo)));
         $p->run();
         $this->assertSame(1, $p->getExitCode());
         // note: Process assumes exit code 0 for `isSuccessful`, however `diff` uses the exit code `1` for success with diff
@@ -188,7 +188,7 @@ final class StrictUnifiedDiffOutputBuilderIntegrationTest extends \_PhpScoper678
         $diff = self::setDiffFileHeader($diff, $this->fileFrom);
         $this->assertNotFalse(\file_put_contents($this->fileFrom, $from));
         $this->assertNotFalse(\file_put_contents($this->filePatch, $diff));
-        $p = new \_PhpScoper6786b40fc02e\Symfony\Component\Process\Process(\sprintf('git --git-dir %s apply --check -v --unsafe-paths --ignore-whitespace %s', \escapeshellarg($this->dir), \escapeshellarg($this->filePatch)));
+        $p = new \_PhpScoperfdd2db5e123d\Symfony\Component\Process\Process(\sprintf('git --git-dir %s apply --check -v --unsafe-paths --ignore-whitespace %s', \escapeshellarg($this->dir), \escapeshellarg($this->filePatch)));
         $p->run();
         $this->assertProcessSuccessful($p);
     }
@@ -200,12 +200,12 @@ final class StrictUnifiedDiffOutputBuilderIntegrationTest extends \_PhpScoper678
         $this->assertNotFalse(\file_put_contents($this->fileFrom, $from));
         $this->assertNotFalse(\file_put_contents($this->filePatch, $diff));
         $command = \sprintf('patch -u --verbose --posix %s < %s', \escapeshellarg($this->fileFrom), \escapeshellarg($this->filePatch));
-        $p = new \_PhpScoper6786b40fc02e\Symfony\Component\Process\Process($command);
+        $p = new \_PhpScoperfdd2db5e123d\Symfony\Component\Process\Process($command);
         $p->run();
         $this->assertProcessSuccessful($p);
         $this->assertStringEqualsFile($this->fileFrom, $to, \sprintf('Patch command "%s".', $command));
     }
-    private function assertProcessSuccessful(\_PhpScoper6786b40fc02e\Symfony\Component\Process\Process $p) : void
+    private function assertProcessSuccessful(\_PhpScoperfdd2db5e123d\Symfony\Component\Process\Process $p) : void
     {
         $this->assertTrue($p->isSuccessful(), \sprintf("Command exec. was not successful:\n\"%s\"\nOutput:\n\"%s\"\nStdErr:\n\"%s\"\nExit code %d.\n", $p->getCommandLine(), $p->getOutput(), $p->getErrorOutput(), $p->getExitCode()));
     }
