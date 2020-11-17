@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\ConsoleColorDiff\Console\Output;
 
-use _PhpScoper55b61aca61e8\SebastianBergmann\Diff\Differ;
-use _PhpScoper55b61aca61e8\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScopere8131a326633\SebastianBergmann\Diff\Differ;
+use _PhpScopere8131a326633\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\ConsoleColorDiff\Console\Formatter\ColorConsoleDiffFormatter;
 final class ConsoleDiffer
 {
@@ -20,7 +20,7 @@ final class ConsoleDiffer
      * @var ColorConsoleDiffFormatter
      */
     private $colorConsoleDiffFormatter;
-    public function __construct(\_PhpScoper55b61aca61e8\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \_PhpScoper55b61aca61e8\SebastianBergmann\Diff\Differ $differ, \Symplify\ConsoleColorDiff\Console\Formatter\ColorConsoleDiffFormatter $colorConsoleDiffFormatter)
+    public function __construct(\_PhpScopere8131a326633\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \_PhpScopere8131a326633\SebastianBergmann\Diff\Differ $differ, \Symplify\ConsoleColorDiff\Console\Formatter\ColorConsoleDiffFormatter $colorConsoleDiffFormatter)
     {
         $this->symfonyStyle = $symfonyStyle;
         $this->differ = $differ;
