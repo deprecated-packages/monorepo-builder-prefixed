@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere8131a326633\Symfony\Component\DependencyInjection\Exception;
+namespace _PhpScoper6786b40fc02e\Symfony\Component\DependencyInjection\Exception;
 
 /**
  * Base InvalidArgumentException for Dependency Injection component.
  *
  * @author Bulat Shakirzyanov <bulat@theopenskyproject.com>
  */
-class InvalidArgumentException extends \InvalidArgumentException implements \_PhpScopere8131a326633\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
+class InvalidArgumentException extends \InvalidArgumentException implements \_PhpScoper6786b40fc02e\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
 {
 }

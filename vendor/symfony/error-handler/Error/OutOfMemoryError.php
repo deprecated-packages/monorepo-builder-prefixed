@@ -8,8 +8,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere8131a326633\Symfony\Component\ErrorHandler\Error;
+namespace _PhpScoper6786b40fc02e\Symfony\Component\ErrorHandler\Error;
 
-class OutOfMemoryError extends \_PhpScopere8131a326633\Symfony\Component\ErrorHandler\Error\FatalError
+class OutOfMemoryError extends \_PhpScoper6786b40fc02e\Symfony\Component\ErrorHandler\Error\FatalError
 {
 }

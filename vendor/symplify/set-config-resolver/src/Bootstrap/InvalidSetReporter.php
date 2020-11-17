@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\SetConfigResolver\Bootstrap;
 
-use _PhpScopere8131a326633\Nette\Utils\ObjectHelpers;
-use _PhpScopere8131a326633\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoper6786b40fc02e\Nette\Utils\ObjectHelpers;
+use _PhpScoper6786b40fc02e\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
 use Symplify\SetConfigResolver\Exception\SetNotFoundException;
 final class InvalidSetReporter
@@ -21,7 +21,7 @@ final class InvalidSetReporter
     public function report(\Symplify\SetConfigResolver\Exception\SetNotFoundException $setNotFoundException) : void
     {
         $message = $setNotFoundException->getMessage();
-        $suggestedSet = \_PhpScopere8131a326633\Nette\Utils\ObjectHelpers::getSuggestion($setNotFoundException->getAvailableSetNames(), $setNotFoundException->getSetName());
+        $suggestedSet = \_PhpScoper6786b40fc02e\Nette\Utils\ObjectHelpers::getSuggestion($setNotFoundException->getAvailableSetNames(), $setNotFoundException->getSetName());
         if ($suggestedSet !== null) {
             $message .= \sprintf('. Did you mean "%s"?', $suggestedSet);
             $this->symfonyStyle->error($message);
