@@ -9,7 +9,7 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperfdd2db5e123d\SebastianBergmann\Diff\Output;
+namespace _PhpScoper600b802aef08\SebastianBergmann\Diff\Output;
 
 final class UnifiedDiffOutputBuilderDataProvider
 {
