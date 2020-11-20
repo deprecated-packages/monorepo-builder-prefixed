@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperabca9a64438b\Symfony\Component\DependencyInjection\Argument;
+namespace _PhpScopercdc90a6628b6\Symfony\Component\DependencyInjection\Argument;
 
 /**
  * @author Guilhem Niot <guilhem.niot@gmail.com>
  */
-final class BoundArgument implements \_PhpScoperabca9a64438b\Symfony\Component\DependencyInjection\Argument\ArgumentInterface
+final class BoundArgument implements \_PhpScopercdc90a6628b6\Symfony\Component\DependencyInjection\Argument\ArgumentInterface
 {
     const SERVICE_BINDING = 0;
     const DEFAULTS_BINDING = 1;

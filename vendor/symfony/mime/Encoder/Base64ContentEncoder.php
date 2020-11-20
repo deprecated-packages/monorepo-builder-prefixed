@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperabca9a64438b\Symfony\Component\Mime\Encoder;
+namespace _PhpScopercdc90a6628b6\Symfony\Component\Mime\Encoder;
 
-use _PhpScoperabca9a64438b\Symfony\Component\Mime\Exception\RuntimeException;
+use _PhpScopercdc90a6628b6\Symfony\Component\Mime\Exception\RuntimeException;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
  * @experimental in 4.3
  */
-final class Base64ContentEncoder extends \_PhpScoperabca9a64438b\Symfony\Component\Mime\Encoder\Base64Encoder implements \_PhpScoperabca9a64438b\Symfony\Component\Mime\Encoder\ContentEncoderInterface
+final class Base64ContentEncoder extends \_PhpScopercdc90a6628b6\Symfony\Component\Mime\Encoder\Base64Encoder implements \_PhpScopercdc90a6628b6\Symfony\Component\Mime\Encoder\ContentEncoderInterface
 {
     public function encodeByteStream($stream, int $maxLineLength = 0) : iterable
     {
@@ -25,7 +25,7 @@ final class Base64ContentEncoder extends \_PhpScoperabca9a64438b\Symfony\Compone
         }
         $filter = \stream_filter_append($stream, 'convert.base64-encode', \STREAM_FILTER_READ, ['line-length' => 0 >= $maxLineLength || 76 < $maxLineLength ? 76 : $maxLineLength, 'line-break-chars' => "\r\n"]);
         if (!\is_resource($filter)) {
-            throw new \_PhpScoperabca9a64438b\Symfony\Component\Mime\Exception\RuntimeException('Unable to set the base64 content encoder to the filter.');
+            throw new \_PhpScopercdc90a6628b6\Symfony\Component\Mime\Exception\RuntimeException('Unable to set the base64 content encoder to the filter.');
         }
         if (\stream_get_meta_data($stream)['seekable'] ?? \false) {
             \rewind($stream);

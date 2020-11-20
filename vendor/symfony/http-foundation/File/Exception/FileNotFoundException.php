@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperabca9a64438b\Symfony\Component\HttpFoundation\File\Exception;
+namespace _PhpScopercdc90a6628b6\Symfony\Component\HttpFoundation\File\Exception;
 
 /**
  * Thrown when a file was not found.
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
-class FileNotFoundException extends \_PhpScoperabca9a64438b\Symfony\Component\HttpFoundation\File\Exception\FileException
+class FileNotFoundException extends \_PhpScopercdc90a6628b6\Symfony\Component\HttpFoundation\File\Exception\FileException
 {
     public function __construct(string $path)
     {

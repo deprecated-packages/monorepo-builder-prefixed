@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperabca9a64438b\PharIo\Version;
+namespace _PhpScopercdc90a6628b6\PharIo\Version;
 
-class SpecificMajorAndMinorVersionConstraint extends \_PhpScoperabca9a64438b\PharIo\Version\AbstractVersionConstraint
+class SpecificMajorAndMinorVersionConstraint extends \_PhpScopercdc90a6628b6\PharIo\Version\AbstractVersionConstraint
 {
     /**
      * @var int
@@ -36,7 +36,7 @@ class SpecificMajorAndMinorVersionConstraint extends \_PhpScoperabca9a64438b\Pha
      *
      * @return bool
      */
-    public function complies(\_PhpScoperabca9a64438b\PharIo\Version\Version $version)
+    public function complies(\_PhpScopercdc90a6628b6\PharIo\Version\Version $version)
     {
         if ($version->getMajor()->getValue() != $this->major) {
             return \false;

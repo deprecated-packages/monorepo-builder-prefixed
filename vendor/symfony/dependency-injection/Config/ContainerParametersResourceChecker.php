@@ -8,33 +8,33 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperabca9a64438b\Symfony\Component\DependencyInjection\Config;
+namespace _PhpScopercdc90a6628b6\Symfony\Component\DependencyInjection\Config;
 
-use _PhpScoperabca9a64438b\Symfony\Component\Config\Resource\ResourceInterface;
-use _PhpScoperabca9a64438b\Symfony\Component\Config\ResourceCheckerInterface;
-use _PhpScoperabca9a64438b\Symfony\Component\DependencyInjection\ContainerInterface;
+use _PhpScopercdc90a6628b6\Symfony\Component\Config\Resource\ResourceInterface;
+use _PhpScopercdc90a6628b6\Symfony\Component\Config\ResourceCheckerInterface;
+use _PhpScopercdc90a6628b6\Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * @author Maxime Steinhausser <maxime.steinhausser@gmail.com>
  */
-class ContainerParametersResourceChecker implements \_PhpScoperabca9a64438b\Symfony\Component\Config\ResourceCheckerInterface
+class ContainerParametersResourceChecker implements \_PhpScopercdc90a6628b6\Symfony\Component\Config\ResourceCheckerInterface
 {
     /** @var ContainerInterface */
     private $container;
-    public function __construct(\_PhpScoperabca9a64438b\Symfony\Component\DependencyInjection\ContainerInterface $container)
+    public function __construct(\_PhpScopercdc90a6628b6\Symfony\Component\DependencyInjection\ContainerInterface $container)
     {
         $this->container = $container;
     }
     /**
      * {@inheritdoc}
      */
-    public function supports(\_PhpScoperabca9a64438b\Symfony\Component\Config\Resource\ResourceInterface $metadata)
+    public function supports(\_PhpScopercdc90a6628b6\Symfony\Component\Config\Resource\ResourceInterface $metadata)
     {
-        return $metadata instanceof \_PhpScoperabca9a64438b\Symfony\Component\DependencyInjection\Config\ContainerParametersResource;
+        return $metadata instanceof \_PhpScopercdc90a6628b6\Symfony\Component\DependencyInjection\Config\ContainerParametersResource;
     }
     /**
      * {@inheritdoc}
      */
-    public function isFresh(\_PhpScoperabca9a64438b\Symfony\Component\Config\Resource\ResourceInterface $resource, $timestamp)
+    public function isFresh(\_PhpScopercdc90a6628b6\Symfony\Component\Config\Resource\ResourceInterface $resource, $timestamp)
     {
         foreach ($resource->getParameters() as $key => $value) {
             if (!$this->container->hasParameter($key) || $this->container->getParameter($key) !== $value) {
