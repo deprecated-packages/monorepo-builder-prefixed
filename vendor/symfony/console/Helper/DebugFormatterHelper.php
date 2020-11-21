@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb56893078f23\Symfony\Component\Console\Helper;
+namespace _PhpScoperdbf49b510e11\Symfony\Component\Console\Helper;
 
 /**
  * Helps outputting debug information when running an external program from a command.
@@ -17,7 +17,7 @@ namespace _PhpScoperb56893078f23\Symfony\Component\Console\Helper;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class DebugFormatterHelper extends \_PhpScoperb56893078f23\Symfony\Component\Console\Helper\Helper
+class DebugFormatterHelper extends \_PhpScoperdbf49b510e11\Symfony\Component\Console\Helper\Helper
 {
     private $colors = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white', 'default'];
     private $started = [];

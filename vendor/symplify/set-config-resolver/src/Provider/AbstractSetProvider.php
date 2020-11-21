@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\SetConfigResolver\Provider;
 
-use _PhpScoperb56893078f23\Nette\Utils\Strings;
+use _PhpScoperdbf49b510e11\Nette\Utils\Strings;
 use Symplify\SetConfigResolver\Contract\SetProviderInterface;
 use Symplify\SetConfigResolver\Exception\SetNotFoundException;
 use Symplify\SetConfigResolver\ValueObject\Set;
@@ -52,7 +52,7 @@ abstract class AbstractSetProvider implements \Symplify\SetConfigResolver\Contra
     }
     private function resolveSetUniquePathId(string $setPath) : string
     {
-        $setPath = \_PhpScoperb56893078f23\Nette\Utils\Strings::after($setPath, \DIRECTORY_SEPARATOR, -2);
+        $setPath = \_PhpScoperdbf49b510e11\Nette\Utils\Strings::after($setPath, \DIRECTORY_SEPARATOR, -2);
         if ($setPath === null) {
             throw new \Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
         }
