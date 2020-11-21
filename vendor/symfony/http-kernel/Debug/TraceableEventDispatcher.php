@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper7ef219076398\Symfony\Component\HttpKernel\Debug;
+namespace _PhpScoperb56893078f23\Symfony\Component\HttpKernel\Debug;
 
-use _PhpScoper7ef219076398\Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher as BaseTraceableEventDispatcher;
-use _PhpScoper7ef219076398\Symfony\Component\HttpKernel\KernelEvents;
+use _PhpScoperb56893078f23\Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher as BaseTraceableEventDispatcher;
+use _PhpScoperb56893078f23\Symfony\Component\HttpKernel\KernelEvents;
 /**
  * Collects some data about event listeners.
  *
@@ -19,7 +19,7 @@ use _PhpScoper7ef219076398\Symfony\Component\HttpKernel\KernelEvents;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class TraceableEventDispatcher extends \_PhpScoper7ef219076398\Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher
+class TraceableEventDispatcher extends \_PhpScoperb56893078f23\Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher
 {
     /**
      * {@inheritdoc}
@@ -27,17 +27,17 @@ class TraceableEventDispatcher extends \_PhpScoper7ef219076398\Symfony\Component
     protected function beforeDispatch(string $eventName, $event)
     {
         switch ($eventName) {
-            case \_PhpScoper7ef219076398\Symfony\Component\HttpKernel\KernelEvents::REQUEST:
+            case \_PhpScoperb56893078f23\Symfony\Component\HttpKernel\KernelEvents::REQUEST:
                 $this->stopwatch->openSection();
                 break;
-            case \_PhpScoper7ef219076398\Symfony\Component\HttpKernel\KernelEvents::VIEW:
-            case \_PhpScoper7ef219076398\Symfony\Component\HttpKernel\KernelEvents::RESPONSE:
+            case \_PhpScoperb56893078f23\Symfony\Component\HttpKernel\KernelEvents::VIEW:
+            case \_PhpScoperb56893078f23\Symfony\Component\HttpKernel\KernelEvents::RESPONSE:
                 // stop only if a controller has been executed
                 if ($this->stopwatch->isStarted('controller')) {
                     $this->stopwatch->stop('controller');
                 }
                 break;
-            case \_PhpScoper7ef219076398\Symfony\Component\HttpKernel\KernelEvents::TERMINATE:
+            case \_PhpScoperb56893078f23\Symfony\Component\HttpKernel\KernelEvents::TERMINATE:
                 $token = $event->getResponse()->headers->get('X-Debug-Token');
                 if (null === $token) {
                     break;
@@ -60,17 +60,17 @@ class TraceableEventDispatcher extends \_PhpScoper7ef219076398\Symfony\Component
     protected function afterDispatch(string $eventName, $event)
     {
         switch ($eventName) {
-            case \_PhpScoper7ef219076398\Symfony\Component\HttpKernel\KernelEvents::CONTROLLER_ARGUMENTS:
+            case \_PhpScoperb56893078f23\Symfony\Component\HttpKernel\KernelEvents::CONTROLLER_ARGUMENTS:
                 $this->stopwatch->start('controller', 'section');
                 break;
-            case \_PhpScoper7ef219076398\Symfony\Component\HttpKernel\KernelEvents::RESPONSE:
+            case \_PhpScoperb56893078f23\Symfony\Component\HttpKernel\KernelEvents::RESPONSE:
                 $token = $event->getResponse()->headers->get('X-Debug-Token');
                 if (null === $token) {
                     break;
                 }
                 $this->stopwatch->stopSection($token);
                 break;
-            case \_PhpScoper7ef219076398\Symfony\Component\HttpKernel\KernelEvents::TERMINATE:
+            case \_PhpScoperb56893078f23\Symfony\Component\HttpKernel\KernelEvents::TERMINATE:
                 // In the special case described in the `preDispatch` method above, the `$token` section
                 // does not exist, then closing it throws an exception which must be caught.
                 $token = $event->getResponse()->headers->get('X-Debug-Token');
