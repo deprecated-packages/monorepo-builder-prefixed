@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperdbf49b510e11\PharIo\Version;
+namespace _PhpScoperbc89827b806f\PharIo\Version;
 
 class VersionNumber
 {

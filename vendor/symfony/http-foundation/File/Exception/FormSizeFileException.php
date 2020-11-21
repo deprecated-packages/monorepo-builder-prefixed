@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperdbf49b510e11\Symfony\Component\HttpFoundation\File\Exception;
+namespace _PhpScoperbc89827b806f\Symfony\Component\HttpFoundation\File\Exception;
 
 /**
  * Thrown when an UPLOAD_ERR_FORM_SIZE error occurred with UploadedFile.
  *
  * @author Florent Mata <florentmata@gmail.com>
  */
-class FormSizeFileException extends \_PhpScoperdbf49b510e11\Symfony\Component\HttpFoundation\File\Exception\FileException
+class FormSizeFileException extends \_PhpScoperbc89827b806f\Symfony\Component\HttpFoundation\File\Exception\FileException
 {
 }

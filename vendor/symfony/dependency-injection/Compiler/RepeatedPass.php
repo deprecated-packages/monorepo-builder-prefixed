@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperdbf49b510e11\Symfony\Component\DependencyInjection\Compiler;
+namespace _PhpScoperbc89827b806f\Symfony\Component\DependencyInjection\Compiler;
 
-@\trigger_error(\sprintf('The "%s" class is deprecated since Symfony 4.2.', \_PhpScoperdbf49b510e11\Symfony\Component\DependencyInjection\Compiler\RepeatedPass::class), \E_USER_DEPRECATED);
-use _PhpScoperdbf49b510e11\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScoperdbf49b510e11\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+@\trigger_error(\sprintf('The "%s" class is deprecated since Symfony 4.2.', \_PhpScoperbc89827b806f\Symfony\Component\DependencyInjection\Compiler\RepeatedPass::class), \E_USER_DEPRECATED);
+use _PhpScoperbc89827b806f\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoperbc89827b806f\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 /**
  * A pass that might be run repeatedly.
  *
@@ -20,7 +20,7 @@ use _PhpScoperdbf49b510e11\Symfony\Component\DependencyInjection\Exception\Inval
  *
  * @deprecated since Symfony 4.2.
  */
-class RepeatedPass implements \_PhpScoperdbf49b510e11\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class RepeatedPass implements \_PhpScoperbc89827b806f\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     /**
      * @var bool
@@ -35,8 +35,8 @@ class RepeatedPass implements \_PhpScoperdbf49b510e11\Symfony\Component\Dependen
     public function __construct(array $passes)
     {
         foreach ($passes as $pass) {
-            if (!$pass instanceof \_PhpScoperdbf49b510e11\Symfony\Component\DependencyInjection\Compiler\RepeatablePassInterface) {
-                throw new \_PhpScoperdbf49b510e11\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('$passes must be an array of RepeatablePassInterface.');
+            if (!$pass instanceof \_PhpScoperbc89827b806f\Symfony\Component\DependencyInjection\Compiler\RepeatablePassInterface) {
+                throw new \_PhpScoperbc89827b806f\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('$passes must be an array of RepeatablePassInterface.');
             }
             $pass->setRepeatedPass($this);
         }
@@ -45,7 +45,7 @@ class RepeatedPass implements \_PhpScoperdbf49b510e11\Symfony\Component\Dependen
     /**
      * Process the repeatable passes that run more than once.
      */
-    public function process(\_PhpScoperdbf49b510e11\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\_PhpScoperbc89827b806f\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         do {
             $this->repeat = \false;

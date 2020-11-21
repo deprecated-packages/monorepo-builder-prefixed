@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperdbf49b510e11\Symfony\Component\HttpKernel\Event;
+namespace _PhpScoperbc89827b806f\Symfony\Component\HttpKernel\Event;
 
-use _PhpScoperdbf49b510e11\Symfony\Component\HttpFoundation\Request;
-use _PhpScoperdbf49b510e11\Symfony\Component\HttpKernel\HttpKernelInterface;
+use _PhpScoperbc89827b806f\Symfony\Component\HttpFoundation\Request;
+use _PhpScoperbc89827b806f\Symfony\Component\HttpKernel\HttpKernelInterface;
 /**
  * @deprecated since Symfony 4.3, use ViewEvent instead
  */
-class GetResponseForControllerResultEvent extends \_PhpScoperdbf49b510e11\Symfony\Component\HttpKernel\Event\RequestEvent
+class GetResponseForControllerResultEvent extends \_PhpScoperbc89827b806f\Symfony\Component\HttpKernel\Event\RequestEvent
 {
     /**
      * The return value of the controller.
@@ -23,7 +23,7 @@ class GetResponseForControllerResultEvent extends \_PhpScoperdbf49b510e11\Symfon
      * @var mixed
      */
     private $controllerResult;
-    public function __construct(\_PhpScoperdbf49b510e11\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \_PhpScoperdbf49b510e11\Symfony\Component\HttpFoundation\Request $request, int $requestType, $controllerResult)
+    public function __construct(\_PhpScoperbc89827b806f\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \_PhpScoperbc89827b806f\Symfony\Component\HttpFoundation\Request $request, int $requestType, $controllerResult)
     {
         parent::__construct($kernel, $request, $requestType);
         $this->controllerResult = $controllerResult;

@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperdbf49b510e11\Symfony\Component\Console\Formatter;
+namespace _PhpScoperbc89827b806f\Symfony\Component\Console\Formatter;
 
-use _PhpScoperdbf49b510e11\Symfony\Component\Console\Exception\InvalidArgumentException;
-use _PhpScoperdbf49b510e11\Symfony\Contracts\Service\ResetInterface;
+use _PhpScoperbc89827b806f\Symfony\Component\Console\Exception\InvalidArgumentException;
+use _PhpScoperbc89827b806f\Symfony\Contracts\Service\ResetInterface;
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
-class OutputFormatterStyleStack implements \_PhpScoperdbf49b510e11\Symfony\Contracts\Service\ResetInterface
+class OutputFormatterStyleStack implements \_PhpScoperbc89827b806f\Symfony\Contracts\Service\ResetInterface
 {
     /**
      * @var OutputFormatterStyleInterface[]
      */
     private $styles;
     private $emptyStyle;
-    public function __construct(\_PhpScoperdbf49b510e11\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $emptyStyle = null)
+    public function __construct(\_PhpScoperbc89827b806f\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $emptyStyle = null)
     {
-        $this->emptyStyle = $emptyStyle ?: new \_PhpScoperdbf49b510e11\Symfony\Component\Console\Formatter\OutputFormatterStyle();
+        $this->emptyStyle = $emptyStyle ?: new \_PhpScoperbc89827b806f\Symfony\Component\Console\Formatter\OutputFormatterStyle();
         $this->reset();
     }
     /**
@@ -37,7 +37,7 @@ class OutputFormatterStyleStack implements \_PhpScoperdbf49b510e11\Symfony\Contr
     /**
      * Pushes a style in the stack.
      */
-    public function push(\_PhpScoperdbf49b510e11\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style)
+    public function push(\_PhpScoperbc89827b806f\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style)
     {
         $this->styles[] = $style;
     }
@@ -48,7 +48,7 @@ class OutputFormatterStyleStack implements \_PhpScoperdbf49b510e11\Symfony\Contr
      *
      * @throws InvalidArgumentException When style tags incorrectly nested
      */
-    public function pop(\_PhpScoperdbf49b510e11\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style = null)
+    public function pop(\_PhpScoperbc89827b806f\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style = null)
     {
         if (empty($this->styles)) {
             return $this->emptyStyle;
@@ -62,7 +62,7 @@ class OutputFormatterStyleStack implements \_PhpScoperdbf49b510e11\Symfony\Contr
                 return $stackedStyle;
             }
         }
-        throw new \_PhpScoperdbf49b510e11\Symfony\Component\Console\Exception\InvalidArgumentException('Incorrectly nested style tag found.');
+        throw new \_PhpScoperbc89827b806f\Symfony\Component\Console\Exception\InvalidArgumentException('Incorrectly nested style tag found.');
     }
     /**
      * Computes current style with stacks top codes.
@@ -79,7 +79,7 @@ class OutputFormatterStyleStack implements \_PhpScoperdbf49b510e11\Symfony\Contr
     /**
      * @return $this
      */
-    public function setEmptyStyle(\_PhpScoperdbf49b510e11\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $emptyStyle)
+    public function setEmptyStyle(\_PhpScoperbc89827b806f\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $emptyStyle)
     {
         $this->emptyStyle = $emptyStyle;
         return $this;

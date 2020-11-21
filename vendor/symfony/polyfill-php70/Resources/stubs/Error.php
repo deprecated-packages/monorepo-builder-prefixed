@@ -1,8 +1,8 @@
 <?php
 
-namespace _PhpScoperdbf49b510e11;
+namespace _PhpScoperbc89827b806f;
 
 class Error extends \Exception
 {
 }
-\class_alias('_PhpScoperdbf49b510e11\\Error', 'Error', \false);
+\class_alias('_PhpScoperbc89827b806f\\Error', 'Error', \false);

@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperdbf49b510e11\Symfony\Component\Config\Loader;
+namespace _PhpScoperbc89827b806f\Symfony\Component\Config\Loader;
 
-use _PhpScoperdbf49b510e11\Symfony\Component\Config\Exception\LoaderLoadException;
+use _PhpScoperbc89827b806f\Symfony\Component\Config\Exception\LoaderLoadException;
 /**
  * Loader is the abstract class used by all built-in loaders.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Loader implements \_PhpScoperdbf49b510e11\Symfony\Component\Config\Loader\LoaderInterface
+abstract class Loader implements \_PhpScoperbc89827b806f\Symfony\Component\Config\Loader\LoaderInterface
 {
     protected $resolver;
     /**
@@ -29,7 +29,7 @@ abstract class Loader implements \_PhpScoperdbf49b510e11\Symfony\Component\Confi
     /**
      * {@inheritdoc}
      */
-    public function setResolver(\_PhpScoperdbf49b510e11\Symfony\Component\Config\Loader\LoaderResolverInterface $resolver)
+    public function setResolver(\_PhpScoperbc89827b806f\Symfony\Component\Config\Loader\LoaderResolverInterface $resolver)
     {
         $this->resolver = $resolver;
     }
@@ -62,7 +62,7 @@ abstract class Loader implements \_PhpScoperdbf49b510e11\Symfony\Component\Confi
         }
         $loader = null === $this->resolver ? \false : $this->resolver->resolve($resource, $type);
         if (\false === $loader) {
-            throw new \_PhpScoperdbf49b510e11\Symfony\Component\Config\Exception\LoaderLoadException($resource, null, null, null, $type);
+            throw new \_PhpScoperbc89827b806f\Symfony\Component\Config\Exception\LoaderLoadException($resource, null, null, null, $type);
         }
         return $loader;
     }
