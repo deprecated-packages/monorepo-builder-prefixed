@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace _PhpScoper66a1b4bf441c\Nette\Utils;
+namespace _PhpScoperb3d59f519671\Nette\Utils;
 
-use _PhpScoper66a1b4bf441c\Nette;
+use _PhpScoperb3d59f519671\Nette;
 use function is_array, is_object, is_string;
 /**
  * PHP callable tools.
@@ -24,7 +24,7 @@ final class Callback
         try {
             return \Closure::fromCallable($method === null ? $callable : [$callable, $method]);
         } catch (\TypeError $e) {
-            throw new \_PhpScoper66a1b4bf441c\Nette\InvalidArgumentException($e->getMessage());
+            throw new \_PhpScoperb3d59f519671\Nette\InvalidArgumentException($e->getMessage());
         }
     }
     /**
@@ -80,7 +80,7 @@ final class Callback
     public static function check($callable, bool $syntax = \false)
     {
         if (!\is_callable($callable, $syntax)) {
-            throw new \_PhpScoper66a1b4bf441c\Nette\InvalidArgumentException($syntax ? 'Given value is not a callable type.' : \sprintf("Callback '%s' is not callable.", self::toString($callable)));
+            throw new \_PhpScoperb3d59f519671\Nette\InvalidArgumentException($syntax ? 'Given value is not a callable type.' : \sprintf("Callback '%s' is not callable.", self::toString($callable)));
         }
         return $callable;
     }
