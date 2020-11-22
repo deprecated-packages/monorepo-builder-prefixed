@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\PackageBuilder\Strings;
 
-use _PhpScoper36654c852ab2\Nette\Utils\Strings;
+use _PhpScoper29aa9f1ba53d\Nette\Utils\Strings;
 /**
  * @see \Symplify\PackageBuilder\Tests\Strings\StringFormatConverterTest
  */
@@ -48,7 +48,7 @@ final class StringFormatConverter
     }
     private function camelCaseToGlue(string $input, string $glue) : string
     {
-        $matches = \_PhpScoper36654c852ab2\Nette\Utils\Strings::matchAll($input, self::BIG_LETTER_REGEX);
+        $matches = \_PhpScoper29aa9f1ba53d\Nette\Utils\Strings::matchAll($input, self::BIG_LETTER_REGEX);
         $parts = [];
         foreach ($matches as $match) {
             $parts[] = $match[0] === \strtoupper($match[0]) ? \strtolower($match[0]) : \lcfirst($match[0]);
