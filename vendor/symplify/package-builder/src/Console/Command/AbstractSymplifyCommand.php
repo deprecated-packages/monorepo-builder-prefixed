@@ -3,12 +3,13 @@
 declare (strict_types=1);
 namespace Symplify\PackageBuilder\Console\Command;
 
-use _PhpScoper7334003ee560\Symfony\Component\Console\Command\Command;
-use _PhpScoper7334003ee560\Symfony\Component\Console\Input\InputOption;
-use _PhpScoper7334003ee560\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoper36654c852ab2\Symfony\Component\Console\Command\Command;
+use _PhpScoper36654c852ab2\Symfony\Component\Console\Input\InputOption;
+use _PhpScoper36654c852ab2\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\PackageBuilder\ValueObject\Option;
+use Symplify\SmartFileSystem\Finder\SmartFinder;
 use Symplify\SmartFileSystem\SmartFileSystem;
-abstract class AbstractSymplifyCommand extends \_PhpScoper7334003ee560\Symfony\Component\Console\Command\Command
+abstract class AbstractSymplifyCommand extends \_PhpScoper36654c852ab2\Symfony\Component\Console\Command\Command
 {
     /**
      * @var SymfonyStyle
@@ -18,17 +19,22 @@ abstract class AbstractSymplifyCommand extends \_PhpScoper7334003ee560\Symfony\C
      * @var SmartFileSystem
      */
     protected $smartFileSystem;
+    /**
+     * @var SmartFinder
+     */
+    protected $smartFinder;
     public function __construct()
     {
         parent::__construct();
-        $this->addOption(\Symplify\PackageBuilder\ValueObject\Option::CONFIG, 'c', \_PhpScoper7334003ee560\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Path to config file');
+        $this->addOption(\Symplify\PackageBuilder\ValueObject\Option::CONFIG, 'c', \_PhpScoper36654c852ab2\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Path to config file');
     }
     /**
      * @required
      */
-    public function autowireAbstractSymplifyCommand(\_PhpScoper7334003ee560\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem) : void
+    public function autowireAbstractSymplifyCommand(\_PhpScoper36654c852ab2\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \Symplify\SmartFileSystem\Finder\SmartFinder $smartFinder) : void
     {
         $this->symfonyStyle = $symfonyStyle;
         $this->smartFileSystem = $smartFileSystem;
+        $this->smartFinder = $smartFinder;
     }
 }
