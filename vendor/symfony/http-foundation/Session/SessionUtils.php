@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper1f0085d891d8\Symfony\Component\HttpFoundation\Session;
+namespace _PhpScoper593efff6d962\Symfony\Component\HttpFoundation\Session;
 
 /**
  * Session utility functions.
