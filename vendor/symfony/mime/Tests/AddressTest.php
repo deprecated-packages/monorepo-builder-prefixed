@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf7284855206a\Symfony\Component\Mime\Tests;
+namespace _PhpScoperc41e8050ff3f\Symfony\Component\Mime\Tests;
 
-use _PhpScoperf7284855206a\PHPUnit\Framework\TestCase;
-use _PhpScoperf7284855206a\Symfony\Component\Mime\Address;
-use _PhpScoperf7284855206a\Symfony\Component\Mime\NamedAddress;
-class AddressTest extends \_PhpScoperf7284855206a\PHPUnit\Framework\TestCase
+use _PhpScoperc41e8050ff3f\PHPUnit\Framework\TestCase;
+use _PhpScoperc41e8050ff3f\Symfony\Component\Mime\Address;
+use _PhpScoperc41e8050ff3f\Symfony\Component\Mime\NamedAddress;
+class AddressTest extends \_PhpScoperc41e8050ff3f\PHPUnit\Framework\TestCase
 {
     public function testConstructor()
     {
-        $a = new \_PhpScoperf7284855206a\Symfony\Component\Mime\Address('fabien@symfonï.com');
+        $a = new \_PhpScoperc41e8050ff3f\Symfony\Component\Mime\Address('fabien@symfonï.com');
         $this->assertEquals('fabien@symfonï.com', $a->getAddress());
         $this->assertEquals('fabien@xn--symfon-nwa.com', $a->toString());
         $this->assertEquals('fabien@xn--symfon-nwa.com', $a->getEncodedAddress());
@@ -25,29 +25,29 @@ class AddressTest extends \_PhpScoperf7284855206a\PHPUnit\Framework\TestCase
     public function testConstructorWithInvalidAddress()
     {
         $this->expectException(\InvalidArgumentException::class);
-        new \_PhpScoperf7284855206a\Symfony\Component\Mime\Address('fab   pot@symfony.com');
+        new \_PhpScoperc41e8050ff3f\Symfony\Component\Mime\Address('fab   pot@symfony.com');
     }
     public function testCreate()
     {
-        $this->assertSame($a = new \_PhpScoperf7284855206a\Symfony\Component\Mime\Address('fabien@symfony.com'), \_PhpScoperf7284855206a\Symfony\Component\Mime\Address::create($a));
-        $this->assertSame($b = new \_PhpScoperf7284855206a\Symfony\Component\Mime\NamedAddress('helene@symfony.com', 'Helene'), \_PhpScoperf7284855206a\Symfony\Component\Mime\Address::create($b));
-        $this->assertEquals($a, \_PhpScoperf7284855206a\Symfony\Component\Mime\Address::create('fabien@symfony.com'));
+        $this->assertSame($a = new \_PhpScoperc41e8050ff3f\Symfony\Component\Mime\Address('fabien@symfony.com'), \_PhpScoperc41e8050ff3f\Symfony\Component\Mime\Address::create($a));
+        $this->assertSame($b = new \_PhpScoperc41e8050ff3f\Symfony\Component\Mime\NamedAddress('helene@symfony.com', 'Helene'), \_PhpScoperc41e8050ff3f\Symfony\Component\Mime\Address::create($b));
+        $this->assertEquals($a, \_PhpScoperc41e8050ff3f\Symfony\Component\Mime\Address::create('fabien@symfony.com'));
     }
     public function testCreateWrongArg()
     {
         $this->expectException(\InvalidArgumentException::class);
-        \_PhpScoperf7284855206a\Symfony\Component\Mime\Address::create(new \stdClass());
+        \_PhpScoperc41e8050ff3f\Symfony\Component\Mime\Address::create(new \stdClass());
     }
     public function testCreateArray()
     {
-        $fabien = new \_PhpScoperf7284855206a\Symfony\Component\Mime\Address('fabien@symfony.com');
-        $helene = new \_PhpScoperf7284855206a\Symfony\Component\Mime\NamedAddress('helene@symfony.com', 'Helene');
-        $this->assertSame([$fabien, $helene], \_PhpScoperf7284855206a\Symfony\Component\Mime\Address::createArray([$fabien, $helene]));
-        $this->assertEquals([$fabien], \_PhpScoperf7284855206a\Symfony\Component\Mime\Address::createArray(['fabien@symfony.com']));
+        $fabien = new \_PhpScoperc41e8050ff3f\Symfony\Component\Mime\Address('fabien@symfony.com');
+        $helene = new \_PhpScoperc41e8050ff3f\Symfony\Component\Mime\NamedAddress('helene@symfony.com', 'Helene');
+        $this->assertSame([$fabien, $helene], \_PhpScoperc41e8050ff3f\Symfony\Component\Mime\Address::createArray([$fabien, $helene]));
+        $this->assertEquals([$fabien], \_PhpScoperc41e8050ff3f\Symfony\Component\Mime\Address::createArray(['fabien@symfony.com']));
     }
     public function testCreateArrayWrongArg()
     {
         $this->expectException(\InvalidArgumentException::class);
-        \_PhpScoperf7284855206a\Symfony\Component\Mime\Address::createArray([new \stdClass()]);
+        \_PhpScoperc41e8050ff3f\Symfony\Component\Mime\Address::createArray([new \stdClass()]);
     }
 }

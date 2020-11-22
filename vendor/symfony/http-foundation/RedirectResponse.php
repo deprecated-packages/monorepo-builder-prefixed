@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf7284855206a\Symfony\Component\HttpFoundation;
+namespace _PhpScoperc41e8050ff3f\Symfony\Component\HttpFoundation;
 
 /**
  * RedirectResponse represents an HTTP response doing a redirect.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class RedirectResponse extends \_PhpScoperf7284855206a\Symfony\Component\HttpFoundation\Response
+class RedirectResponse extends \_PhpScoperc41e8050ff3f\Symfony\Component\HttpFoundation\Response
 {
     protected $targetUrl;
     /**
