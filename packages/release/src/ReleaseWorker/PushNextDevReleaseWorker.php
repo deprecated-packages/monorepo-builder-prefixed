@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\ReleaseWorker;
 
-use _PhpScoper29aa9f1ba53d\PharIo\Version\Version;
+use _PhpScoper9b5fd937b4d9\PharIo\Version\Version;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
 use Symplify\MonorepoBuilder\Utils\VersionUtils;
@@ -22,18 +22,18 @@ final class PushNextDevReleaseWorker implements \Symplify\MonorepoBuilder\Releas
         $this->processRunner = $processRunner;
         $this->versionUtils = $versionUtils;
     }
-    public function work(\_PhpScoper29aa9f1ba53d\PharIo\Version\Version $version) : void
+    public function work(\_PhpScoper9b5fd937b4d9\PharIo\Version\Version $version) : void
     {
         $versionInString = $this->getVersionDev($version);
         $gitAddCommitCommand = \sprintf('git add . && git commit --allow-empty -m "open %s" && git push origin master', $versionInString);
         $this->processRunner->run($gitAddCommitCommand);
     }
-    public function getDescription(\_PhpScoper29aa9f1ba53d\PharIo\Version\Version $version) : string
+    public function getDescription(\_PhpScoper9b5fd937b4d9\PharIo\Version\Version $version) : string
     {
         $versionInString = $this->getVersionDev($version);
         return \sprintf('Push "%s" open to remote repository', $versionInString);
     }
-    private function getVersionDev(\_PhpScoper29aa9f1ba53d\PharIo\Version\Version $version) : string
+    private function getVersionDev(\_PhpScoper9b5fd937b4d9\PharIo\Version\Version $version) : string
     {
         return $this->versionUtils->getNextAliasFormat($version);
     }

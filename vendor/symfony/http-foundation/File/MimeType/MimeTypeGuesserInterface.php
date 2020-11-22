@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper29aa9f1ba53d\Symfony\Component\HttpFoundation\File\MimeType;
+namespace _PhpScoper9b5fd937b4d9\Symfony\Component\HttpFoundation\File\MimeType;
 
-use _PhpScoper29aa9f1ba53d\Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
-use _PhpScoper29aa9f1ba53d\Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
-use _PhpScoper29aa9f1ba53d\Symfony\Component\Mime\MimeTypesInterface;
+use _PhpScoper9b5fd937b4d9\Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
+use _PhpScoper9b5fd937b4d9\Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
+use _PhpScoper9b5fd937b4d9\Symfony\Component\Mime\MimeTypesInterface;
 /**
  * Guesses the mime type of a file.
  *
