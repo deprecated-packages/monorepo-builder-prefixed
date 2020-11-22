@@ -4,7 +4,7 @@
     "type": "library",
     "require": {
         "php": "^7.0",
-        "ocramius\/package-versions": "^1.2.0"
+        "composer\/package-versions-deprecated": "^1.8.0"
     },
     "require-dev": {
         "phpunit\/phpunit": "^6.0"
@@ -32,12 +32,12 @@
     },
     "autoload": {
         "psr-4": {
-            "_PhpScoperb3d59f519671\\Jean85\\": "src\/"
+            "_PhpScoper1f0085d891d8\\Jean85\\": "src\/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "_PhpScoperb3d59f519671\\Tests\\": "tests"
+            "_PhpScoper1f0085d891d8\\Tests\\": "tests"
         }
     }
 }

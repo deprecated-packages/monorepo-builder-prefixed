@@ -2,7 +2,7 @@
     <thead class="trace-head">
         <tr>
             <th class="sf-toggle" data-toggle-selector="#trace-text-<?php 
-namespace _PhpScoperb3d59f519671;
+namespace _PhpScoper1f0085d891d8;
 
 echo $index;
 ?>" data-toggle-initial="<?php 

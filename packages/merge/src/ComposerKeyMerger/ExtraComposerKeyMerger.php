@@ -12,7 +12,16 @@ final class ExtraComposerKeyMerger extends \Symplify\MonorepoBuilder\Merge\Compo
         if ($newComposerJson->getExtra() === []) {
             return;
         }
-        $extra = $this->parametersMerger->mergeWithCombine($mainComposerJson->getExtra(), $newComposerJson->getExtra());
+        // clean content not desired to merge
+        $newComposerJsonExtra = $newComposerJson->getExtra();
+        // part of the plugin only
+        if (isset($newComposerJsonExtra['phpstan']['includes'])) {
+            unset($newComposerJsonExtra['phpstan']['includes']);
+            if ($newComposerJsonExtra['phpstan'] === []) {
+                unset($newComposerJsonExtra['phpstan']);
+            }
+        }
+        $extra = $this->parametersMerger->mergeWithCombine($mainComposerJson->getExtra(), $newComposerJsonExtra);
         // do not merge extra alias as only for local packages
         if (isset($extra['branch-alias'])) {
             unset($extra['branch-alias']);

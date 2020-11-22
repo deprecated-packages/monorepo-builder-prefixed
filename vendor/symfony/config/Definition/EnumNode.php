@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb3d59f519671\Symfony\Component\Config\Definition;
+namespace _PhpScoper1f0085d891d8\Symfony\Component\Config\Definition;
 
-use _PhpScoperb3d59f519671\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use _PhpScoper1f0085d891d8\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 /**
  * Node which only allows a finite set of values.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class EnumNode extends \_PhpScoperb3d59f519671\Symfony\Component\Config\Definition\ScalarNode
+class EnumNode extends \_PhpScoper1f0085d891d8\Symfony\Component\Config\Definition\ScalarNode
 {
     private $values;
-    public function __construct(?string $name, \_PhpScoperb3d59f519671\Symfony\Component\Config\Definition\NodeInterface $parent = null, array $values = [], string $pathSeparator = \_PhpScoperb3d59f519671\Symfony\Component\Config\Definition\BaseNode::DEFAULT_PATH_SEPARATOR)
+    public function __construct(?string $name, \_PhpScoper1f0085d891d8\Symfony\Component\Config\Definition\NodeInterface $parent = null, array $values = [], string $pathSeparator = \_PhpScoper1f0085d891d8\Symfony\Component\Config\Definition\BaseNode::DEFAULT_PATH_SEPARATOR)
     {
         $values = \array_unique($values);
         if (empty($values)) {
@@ -36,7 +36,7 @@ class EnumNode extends \_PhpScoperb3d59f519671\Symfony\Component\Config\Definiti
     {
         $value = parent::finalizeValue($value);
         if (!\in_array($value, $this->values, \true)) {
-            $ex = new \_PhpScoperb3d59f519671\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException(\sprintf('The value %s is not allowed for path "%s". Permissible values: %s', \json_encode($value), $this->getPath(), \implode(', ', \array_map('json_encode', $this->values))));
+            $ex = new \_PhpScoper1f0085d891d8\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException(\sprintf('The value %s is not allowed for path "%s". Permissible values: %s', \json_encode($value), $this->getPath(), \implode(', ', \array_map('json_encode', $this->values))));
             $ex->setPath($this->getPath());
             throw $ex;
         }

@@ -1,8 +1,8 @@
 <?php
 
-namespace _PhpScoperb3d59f519671;
+namespace _PhpScoper1f0085d891d8;
 
-class RandomBytesTest extends \_PhpScoperb3d59f519671\PHPUnit_Framework_TestCase
+class RandomBytesTest extends \_PhpScoper1f0085d891d8\PHPUnit_Framework_TestCase
 {
     public function testFuncExists()
     {
@@ -16,4 +16,4 @@ class RandomBytesTest extends \_PhpScoperb3d59f519671\PHPUnit_Framework_TestCase
         $this->assertFalse($bytes[1] === $bytes[2]);
     }
 }
-\class_alias('_PhpScoperb3d59f519671\\RandomBytesTest', 'RandomBytesTest', \false);
+\class_alias('_PhpScoper1f0085d891d8\\RandomBytesTest', 'RandomBytesTest', \false);
