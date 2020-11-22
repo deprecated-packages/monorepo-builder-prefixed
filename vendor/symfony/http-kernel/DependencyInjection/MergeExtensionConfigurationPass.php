@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc41e8050ff3f\Symfony\Component\HttpKernel\DependencyInjection;
+namespace _PhpScopera4d786bbd33f\Symfony\Component\HttpKernel\DependencyInjection;
 
-use _PhpScoperc41e8050ff3f\Symfony\Component\DependencyInjection\Compiler\MergeExtensionConfigurationPass as BaseMergeExtensionConfigurationPass;
-use _PhpScoperc41e8050ff3f\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScopera4d786bbd33f\Symfony\Component\DependencyInjection\Compiler\MergeExtensionConfigurationPass as BaseMergeExtensionConfigurationPass;
+use _PhpScopera4d786bbd33f\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * Ensures certain extensions are always loaded.
  *
  * @author Kris Wallsmith <kris@symfony.com>
  */
-class MergeExtensionConfigurationPass extends \_PhpScoperc41e8050ff3f\Symfony\Component\DependencyInjection\Compiler\MergeExtensionConfigurationPass
+class MergeExtensionConfigurationPass extends \_PhpScopera4d786bbd33f\Symfony\Component\DependencyInjection\Compiler\MergeExtensionConfigurationPass
 {
     private $extensions;
     public function __construct(array $extensions)
     {
         $this->extensions = $extensions;
     }
-    public function process(\_PhpScoperc41e8050ff3f\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\_PhpScopera4d786bbd33f\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         foreach ($this->extensions as $extension) {
             if (!\count($container->getExtensionConfig($extension))) {

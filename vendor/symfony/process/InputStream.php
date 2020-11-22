@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc41e8050ff3f\Symfony\Component\Process;
+namespace _PhpScopera4d786bbd33f\Symfony\Component\Process;
 
-use _PhpScoperc41e8050ff3f\Symfony\Component\Process\Exception\RuntimeException;
+use _PhpScopera4d786bbd33f\Symfony\Component\Process\Exception\RuntimeException;
 /**
  * Provides a way to continuously write to the input of a Process until the InputStream is closed.
  *
@@ -41,9 +41,9 @@ class InputStream implements \IteratorAggregate
             return;
         }
         if ($this->isClosed()) {
-            throw new \_PhpScoperc41e8050ff3f\Symfony\Component\Process\Exception\RuntimeException(\sprintf('%s is closed', static::class));
+            throw new \_PhpScopera4d786bbd33f\Symfony\Component\Process\Exception\RuntimeException(\sprintf('%s is closed', static::class));
         }
-        $this->input[] = \_PhpScoperc41e8050ff3f\Symfony\Component\Process\ProcessUtils::validateInput(__METHOD__, $input);
+        $this->input[] = \_PhpScopera4d786bbd33f\Symfony\Component\Process\ProcessUtils::validateInput(__METHOD__, $input);
     }
     /**
      * Closes the write buffer.

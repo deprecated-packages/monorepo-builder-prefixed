@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc41e8050ff3f\Symfony\Component\VarDumper\Caster;
+namespace _PhpScopera4d786bbd33f\Symfony\Component\VarDumper\Caster;
 
-use _PhpScoperc41e8050ff3f\Ramsey\Uuid\UuidInterface;
-use _PhpScoperc41e8050ff3f\Symfony\Component\VarDumper\Cloner\Stub;
+use _PhpScopera4d786bbd33f\Ramsey\Uuid\UuidInterface;
+use _PhpScopera4d786bbd33f\Symfony\Component\VarDumper\Cloner\Stub;
 /**
  * @author Grégoire Pineau <lyrixx@lyrixx.info>
  */
 final class UuidCaster
 {
-    public static function castRamseyUuid(\_PhpScoperc41e8050ff3f\Ramsey\Uuid\UuidInterface $c, array $a, \_PhpScoperc41e8050ff3f\Symfony\Component\VarDumper\Cloner\Stub $stub, bool $isNested) : array
+    public static function castRamseyUuid(\_PhpScopera4d786bbd33f\Ramsey\Uuid\UuidInterface $c, array $a, \_PhpScopera4d786bbd33f\Symfony\Component\VarDumper\Cloner\Stub $stub, bool $isNested) : array
     {
-        $a += [\_PhpScoperc41e8050ff3f\Symfony\Component\VarDumper\Caster\Caster::PREFIX_VIRTUAL . 'uuid' => (string) $c];
+        $a += [\_PhpScopera4d786bbd33f\Symfony\Component\VarDumper\Caster\Caster::PREFIX_VIRTUAL . 'uuid' => (string) $c];
         return $a;
     }
 }

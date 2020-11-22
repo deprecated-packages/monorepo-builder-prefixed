@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc41e8050ff3f\PharIo\Version;
+namespace _PhpScopera4d786bbd33f\PharIo\Version;
 
-use _PhpScoperc41e8050ff3f\PHPUnit\Framework\TestCase;
+use _PhpScopera4d786bbd33f\PHPUnit\Framework\TestCase;
 /**
  * @covers \PharIo\Version\Version
  */
-class VersionTest extends \_PhpScoperc41e8050ff3f\PHPUnit\Framework\TestCase
+class VersionTest extends \_PhpScopera4d786bbd33f\PHPUnit\Framework\TestCase
 {
     /**
      * @dataProvider versionProvider
@@ -28,7 +28,7 @@ class VersionTest extends \_PhpScoperc41e8050ff3f\PHPUnit\Framework\TestCase
      */
     public function testParsesVersionNumbers($versionString, $expectedMajor, $expectedMinor, $expectedPatch, $expectedPreReleaseValue = '', $expectedReleaseCount = 0)
     {
-        $version = new \_PhpScoperc41e8050ff3f\PharIo\Version\Version($versionString);
+        $version = new \_PhpScopera4d786bbd33f\PharIo\Version\Version($versionString);
         $this->assertSame($expectedMajor, $version->getMajor()->getValue());
         $this->assertSame($expectedMinor, $version->getMinor()->getValue());
         $this->assertSame($expectedPatch, $version->getPatch()->getValue());
@@ -51,7 +51,7 @@ class VersionTest extends \_PhpScoperc41e8050ff3f\PHPUnit\Framework\TestCase
      * @param Version $versionB
      * @param bool $expectedResult
      */
-    public function testIsGreaterThan(\_PhpScoperc41e8050ff3f\PharIo\Version\Version $versionA, \_PhpScoperc41e8050ff3f\PharIo\Version\Version $versionB, $expectedResult)
+    public function testIsGreaterThan(\_PhpScopera4d786bbd33f\PharIo\Version\Version $versionA, \_PhpScopera4d786bbd33f\PharIo\Version\Version $versionB, $expectedResult)
     {
         $this->assertSame($expectedResult, $versionA->isGreaterThan($versionB));
     }
@@ -60,7 +60,7 @@ class VersionTest extends \_PhpScoperc41e8050ff3f\PHPUnit\Framework\TestCase
      */
     public function versionGreaterThanProvider()
     {
-        return [[new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('1.0.0'), new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('1.0.1'), \false], [new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('1.0.1'), new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('1.0.0'), \true], [new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('1.1.0'), new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('1.0.1'), \true], [new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('1.1.0'), new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('2.0.1'), \false], [new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('1.1.0'), new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('1.1.0'), \false], [new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('2.5.8'), new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('1.6.8'), \true], [new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('2.5.8'), new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('2.6.8'), \false], [new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('2.5.8'), new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('3.1.2'), \false], [new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('3.0.0-alpha1'), new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('3.0.0-alpha2'), \false], [new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('3.0.0-alpha2'), new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('3.0.0-alpha1'), \true], [new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('3.0.0-alpha.1'), new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('3.0.0'), \false], [new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('3.0.0'), new \_PhpScoperc41e8050ff3f\PharIo\Version\Version('3.0.0-alpha.1'), \true]];
+        return [[new \_PhpScopera4d786bbd33f\PharIo\Version\Version('1.0.0'), new \_PhpScopera4d786bbd33f\PharIo\Version\Version('1.0.1'), \false], [new \_PhpScopera4d786bbd33f\PharIo\Version\Version('1.0.1'), new \_PhpScopera4d786bbd33f\PharIo\Version\Version('1.0.0'), \true], [new \_PhpScopera4d786bbd33f\PharIo\Version\Version('1.1.0'), new \_PhpScopera4d786bbd33f\PharIo\Version\Version('1.0.1'), \true], [new \_PhpScopera4d786bbd33f\PharIo\Version\Version('1.1.0'), new \_PhpScopera4d786bbd33f\PharIo\Version\Version('2.0.1'), \false], [new \_PhpScopera4d786bbd33f\PharIo\Version\Version('1.1.0'), new \_PhpScopera4d786bbd33f\PharIo\Version\Version('1.1.0'), \false], [new \_PhpScopera4d786bbd33f\PharIo\Version\Version('2.5.8'), new \_PhpScopera4d786bbd33f\PharIo\Version\Version('1.6.8'), \true], [new \_PhpScopera4d786bbd33f\PharIo\Version\Version('2.5.8'), new \_PhpScopera4d786bbd33f\PharIo\Version\Version('2.6.8'), \false], [new \_PhpScopera4d786bbd33f\PharIo\Version\Version('2.5.8'), new \_PhpScopera4d786bbd33f\PharIo\Version\Version('3.1.2'), \false], [new \_PhpScopera4d786bbd33f\PharIo\Version\Version('3.0.0-alpha1'), new \_PhpScopera4d786bbd33f\PharIo\Version\Version('3.0.0-alpha2'), \false], [new \_PhpScopera4d786bbd33f\PharIo\Version\Version('3.0.0-alpha2'), new \_PhpScopera4d786bbd33f\PharIo\Version\Version('3.0.0-alpha1'), \true], [new \_PhpScopera4d786bbd33f\PharIo\Version\Version('3.0.0-alpha.1'), new \_PhpScopera4d786bbd33f\PharIo\Version\Version('3.0.0'), \false], [new \_PhpScopera4d786bbd33f\PharIo\Version\Version('3.0.0'), new \_PhpScopera4d786bbd33f\PharIo\Version\Version('3.0.0-alpha.1'), \true]];
     }
     /**
      * @dataProvider invalidVersionStringProvider
@@ -69,8 +69,8 @@ class VersionTest extends \_PhpScoperc41e8050ff3f\PHPUnit\Framework\TestCase
      */
     public function testThrowsExceptionIfVersionStringDoesNotFollowSemVer($versionString)
     {
-        $this->expectException(\_PhpScoperc41e8050ff3f\PharIo\Version\InvalidVersionException::class);
-        new \_PhpScoperc41e8050ff3f\PharIo\Version\Version($versionString);
+        $this->expectException(\_PhpScopera4d786bbd33f\PharIo\Version\InvalidVersionException::class);
+        new \_PhpScopera4d786bbd33f\PharIo\Version\Version($versionString);
     }
     /**
      * @return array

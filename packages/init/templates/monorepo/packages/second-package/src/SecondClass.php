@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace _PhpScoperc41e8050ff3f\YourMonorepo\SecondPackage;
+namespace _PhpScopera4d786bbd33f\YourMonorepo\SecondPackage;
 
 final class SecondClass
 {

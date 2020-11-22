@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc41e8050ff3f\Symfony\Component\Config\Loader;
+namespace _PhpScopera4d786bbd33f\Symfony\Component\Config\Loader;
 
 /**
  * LoaderResolverInterface selects a loader for a given resource.
