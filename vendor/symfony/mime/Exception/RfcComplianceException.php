@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper9693ff52999d\Symfony\Component\Mime\Exception;
+namespace _PhpScopere2a14c1f9852\Symfony\Component\Mime\Exception;
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
  * @experimental in 4.3
  */
-class RfcComplianceException extends \InvalidArgumentException implements \_PhpScoper9693ff52999d\Symfony\Component\Mime\Exception\ExceptionInterface
+class RfcComplianceException extends \InvalidArgumentException implements \_PhpScopere2a14c1f9852\Symfony\Component\Mime\Exception\ExceptionInterface
 {
 }
