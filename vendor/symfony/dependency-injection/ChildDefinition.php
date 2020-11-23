@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper51570eac51fe\Symfony\Component\DependencyInjection;
+namespace _PhpScoperb2724c6b069f\Symfony\Component\DependencyInjection;
 
-use _PhpScoper51570eac51fe\Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
-use _PhpScoper51570eac51fe\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use _PhpScoper51570eac51fe\Symfony\Component\DependencyInjection\Exception\OutOfBoundsException;
+use _PhpScoperb2724c6b069f\Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
+use _PhpScoperb2724c6b069f\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use _PhpScoperb2724c6b069f\Symfony\Component\DependencyInjection\Exception\OutOfBoundsException;
 /**
  * This definition extends another definition.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ChildDefinition extends \_PhpScoper51570eac51fe\Symfony\Component\DependencyInjection\Definition
+class ChildDefinition extends \_PhpScoperb2724c6b069f\Symfony\Component\DependencyInjection\Definition
 {
     private $parent;
     /**
@@ -91,7 +91,7 @@ class ChildDefinition extends \_PhpScoper51570eac51fe\Symfony\Component\Dependen
         } elseif (0 === \strpos($index, '$')) {
             $this->arguments[$index] = $value;
         } else {
-            throw new \_PhpScoper51570eac51fe\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('The argument must be an existing index or the name of a constructor\'s parameter.');
+            throw new \_PhpScoperb2724c6b069f\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('The argument must be an existing index or the name of a constructor\'s parameter.');
         }
         return $this;
     }
@@ -100,13 +100,13 @@ class ChildDefinition extends \_PhpScoper51570eac51fe\Symfony\Component\Dependen
      */
     public function setAutoconfigured($autoconfigured) : self
     {
-        throw new \_PhpScoper51570eac51fe\Symfony\Component\DependencyInjection\Exception\BadMethodCallException('A ChildDefinition cannot be autoconfigured.');
+        throw new \_PhpScoperb2724c6b069f\Symfony\Component\DependencyInjection\Exception\BadMethodCallException('A ChildDefinition cannot be autoconfigured.');
     }
     /**
      * @internal
      */
     public function setInstanceofConditionals(array $instanceof) : self
     {
-        throw new \_PhpScoper51570eac51fe\Symfony\Component\DependencyInjection\Exception\BadMethodCallException('A ChildDefinition cannot have instanceof conditionals set on it.');
+        throw new \_PhpScoperb2724c6b069f\Symfony\Component\DependencyInjection\Exception\BadMethodCallException('A ChildDefinition cannot have instanceof conditionals set on it.');
     }
 }
