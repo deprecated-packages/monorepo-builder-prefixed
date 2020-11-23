@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb2724c6b069f\Symfony\Component\VarDumper\Caster;
+namespace _PhpScoper9693ff52999d\Symfony\Component\VarDumper\Caster;
 
 /**
  * Represents a single backtrace frame as returned by debug_backtrace() or Exception->getTrace().
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class FrameStub extends \_PhpScoperb2724c6b069f\Symfony\Component\VarDumper\Caster\EnumStub
+class FrameStub extends \_PhpScoper9693ff52999d\Symfony\Component\VarDumper\Caster\EnumStub
 {
     public $keepArgs;
     public $inTraceStub;
