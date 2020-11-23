@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere2a14c1f9852\Symfony\Component\Config\Resource;
+namespace _PhpScoperc9dc9dec1b4a\Symfony\Component\Config\Resource;
 
-use _PhpScopere2a14c1f9852\Symfony\Component\DependencyInjection\ServiceSubscriberInterface as LegacyServiceSubscriberInterface;
-use _PhpScopere2a14c1f9852\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use _PhpScopere2a14c1f9852\Symfony\Component\Messenger\Handler\MessageSubscriberInterface;
-use _PhpScopere2a14c1f9852\Symfony\Contracts\Service\ServiceSubscriberInterface;
+use _PhpScoperc9dc9dec1b4a\Symfony\Component\DependencyInjection\ServiceSubscriberInterface as LegacyServiceSubscriberInterface;
+use _PhpScoperc9dc9dec1b4a\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use _PhpScoperc9dc9dec1b4a\Symfony\Component\Messenger\Handler\MessageSubscriberInterface;
+use _PhpScoperc9dc9dec1b4a\Symfony\Contracts\Service\ServiceSubscriberInterface;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  *
  * @final since Symfony 4.3
  */
-class ReflectionClassResource implements \_PhpScopere2a14c1f9852\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class ReflectionClassResource implements \_PhpScoperc9dc9dec1b4a\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
 {
     private $files = [];
     private $className;
@@ -132,21 +132,21 @@ class ReflectionClassResource implements \_PhpScopere2a14c1f9852\Symfony\Compone
         if ($class->isAbstract() || $class->isInterface() || $class->isTrait()) {
             return;
         }
-        if (\interface_exists(\_PhpScopere2a14c1f9852\Symfony\Component\EventDispatcher\EventSubscriberInterface::class, \false) && $class->isSubclassOf(\_PhpScopere2a14c1f9852\Symfony\Component\EventDispatcher\EventSubscriberInterface::class)) {
-            (yield \_PhpScopere2a14c1f9852\Symfony\Component\EventDispatcher\EventSubscriberInterface::class);
+        if (\interface_exists(\_PhpScoperc9dc9dec1b4a\Symfony\Component\EventDispatcher\EventSubscriberInterface::class, \false) && $class->isSubclassOf(\_PhpScoperc9dc9dec1b4a\Symfony\Component\EventDispatcher\EventSubscriberInterface::class)) {
+            (yield \_PhpScoperc9dc9dec1b4a\Symfony\Component\EventDispatcher\EventSubscriberInterface::class);
             (yield \print_r($class->name::getSubscribedEvents(), \true));
         }
-        if (\interface_exists(\_PhpScopere2a14c1f9852\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class, \false) && $class->isSubclassOf(\_PhpScopere2a14c1f9852\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class)) {
-            (yield \_PhpScopere2a14c1f9852\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class);
+        if (\interface_exists(\_PhpScoperc9dc9dec1b4a\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class, \false) && $class->isSubclassOf(\_PhpScoperc9dc9dec1b4a\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class)) {
+            (yield \_PhpScoperc9dc9dec1b4a\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class);
             foreach ($class->name::getHandledMessages() as $key => $value) {
                 (yield $key . \print_r($value, \true));
             }
         }
-        if (\interface_exists(\_PhpScopere2a14c1f9852\Symfony\Component\DependencyInjection\ServiceSubscriberInterface::class, \false) && $class->isSubclassOf(\_PhpScopere2a14c1f9852\Symfony\Component\DependencyInjection\ServiceSubscriberInterface::class)) {
-            (yield \_PhpScopere2a14c1f9852\Symfony\Component\DependencyInjection\ServiceSubscriberInterface::class);
+        if (\interface_exists(\_PhpScoperc9dc9dec1b4a\Symfony\Component\DependencyInjection\ServiceSubscriberInterface::class, \false) && $class->isSubclassOf(\_PhpScoperc9dc9dec1b4a\Symfony\Component\DependencyInjection\ServiceSubscriberInterface::class)) {
+            (yield \_PhpScoperc9dc9dec1b4a\Symfony\Component\DependencyInjection\ServiceSubscriberInterface::class);
             (yield \print_r([$class->name, 'getSubscribedServices'](), \true));
-        } elseif (\interface_exists(\_PhpScopere2a14c1f9852\Symfony\Contracts\Service\ServiceSubscriberInterface::class, \false) && $class->isSubclassOf(\_PhpScopere2a14c1f9852\Symfony\Contracts\Service\ServiceSubscriberInterface::class)) {
-            (yield \_PhpScopere2a14c1f9852\Symfony\Contracts\Service\ServiceSubscriberInterface::class);
+        } elseif (\interface_exists(\_PhpScoperc9dc9dec1b4a\Symfony\Contracts\Service\ServiceSubscriberInterface::class, \false) && $class->isSubclassOf(\_PhpScoperc9dc9dec1b4a\Symfony\Contracts\Service\ServiceSubscriberInterface::class)) {
+            (yield \_PhpScoperc9dc9dec1b4a\Symfony\Contracts\Service\ServiceSubscriberInterface::class);
             (yield \print_r($class->name::getSubscribedServices(), \true));
         }
     }

@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere2a14c1f9852\Symfony\Component\DependencyInjection;
+namespace _PhpScoperc9dc9dec1b4a\Symfony\Component\DependencyInjection;
 
-use _PhpScopere2a14c1f9852\Psr\Container\ContainerInterface as PsrContainerInterface;
-use _PhpScopere2a14c1f9852\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use _PhpScopere2a14c1f9852\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use _PhpScopere2a14c1f9852\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use _PhpScoperc9dc9dec1b4a\Psr\Container\ContainerInterface as PsrContainerInterface;
+use _PhpScoperc9dc9dec1b4a\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use _PhpScoperc9dc9dec1b4a\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use _PhpScoperc9dc9dec1b4a\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 /**
  * ContainerInterface is the interface implemented by service container classes.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-interface ContainerInterface extends \_PhpScopere2a14c1f9852\Psr\Container\ContainerInterface
+interface ContainerInterface extends \_PhpScoperc9dc9dec1b4a\Psr\Container\ContainerInterface
 {
     const RUNTIME_EXCEPTION_ON_INVALID_REFERENCE = 0;
     const EXCEPTION_ON_INVALID_REFERENCE = 1;

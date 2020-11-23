@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere2a14c1f9852\Symfony\Component\Config\Definition\Builder;
+namespace _PhpScoperc9dc9dec1b4a\Symfony\Component\Config\Definition\Builder;
 
-use _PhpScopere2a14c1f9852\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
+use _PhpScoperc9dc9dec1b4a\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
 /**
  * Abstract class that contains common code of integer and float node definitions.
  *
  * @author David Jeanmonod <david.jeanmonod@gmail.com>
  */
-abstract class NumericNodeDefinition extends \_PhpScopere2a14c1f9852\Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition
+abstract class NumericNodeDefinition extends \_PhpScoperc9dc9dec1b4a\Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition
 {
     protected $min;
     protected $max;
@@ -61,6 +61,6 @@ abstract class NumericNodeDefinition extends \_PhpScopere2a14c1f9852\Symfony\Com
      */
     public function cannotBeEmpty()
     {
-        throw new \_PhpScopere2a14c1f9852\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException('->cannotBeEmpty() is not applicable to NumericNodeDefinition.');
+        throw new \_PhpScoperc9dc9dec1b4a\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException('->cannotBeEmpty() is not applicable to NumericNodeDefinition.');
     }
 }

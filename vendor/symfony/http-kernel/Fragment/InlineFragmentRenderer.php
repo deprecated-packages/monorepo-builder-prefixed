@@ -8,30 +8,30 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere2a14c1f9852\Symfony\Component\HttpKernel\Fragment;
+namespace _PhpScoperc9dc9dec1b4a\Symfony\Component\HttpKernel\Fragment;
 
-use _PhpScopere2a14c1f9852\Symfony\Component\EventDispatcher\LegacyEventDispatcherProxy;
-use _PhpScopere2a14c1f9852\Symfony\Component\HttpFoundation\Request;
-use _PhpScopere2a14c1f9852\Symfony\Component\HttpFoundation\Response;
-use _PhpScopere2a14c1f9852\Symfony\Component\HttpKernel\Controller\ControllerReference;
-use _PhpScopere2a14c1f9852\Symfony\Component\HttpKernel\Event\ExceptionEvent;
-use _PhpScopere2a14c1f9852\Symfony\Component\HttpKernel\HttpCache\SubRequestHandler;
-use _PhpScopere2a14c1f9852\Symfony\Component\HttpKernel\HttpKernelInterface;
-use _PhpScopere2a14c1f9852\Symfony\Component\HttpKernel\KernelEvents;
-use _PhpScopere2a14c1f9852\Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
+use _PhpScoperc9dc9dec1b4a\Symfony\Component\EventDispatcher\LegacyEventDispatcherProxy;
+use _PhpScoperc9dc9dec1b4a\Symfony\Component\HttpFoundation\Request;
+use _PhpScoperc9dc9dec1b4a\Symfony\Component\HttpFoundation\Response;
+use _PhpScoperc9dc9dec1b4a\Symfony\Component\HttpKernel\Controller\ControllerReference;
+use _PhpScoperc9dc9dec1b4a\Symfony\Component\HttpKernel\Event\ExceptionEvent;
+use _PhpScoperc9dc9dec1b4a\Symfony\Component\HttpKernel\HttpCache\SubRequestHandler;
+use _PhpScoperc9dc9dec1b4a\Symfony\Component\HttpKernel\HttpKernelInterface;
+use _PhpScoperc9dc9dec1b4a\Symfony\Component\HttpKernel\KernelEvents;
+use _PhpScoperc9dc9dec1b4a\Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 /**
  * Implements the inline rendering strategy where the Request is rendered by the current HTTP kernel.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class InlineFragmentRenderer extends \_PhpScopere2a14c1f9852\Symfony\Component\HttpKernel\Fragment\RoutableFragmentRenderer
+class InlineFragmentRenderer extends \_PhpScoperc9dc9dec1b4a\Symfony\Component\HttpKernel\Fragment\RoutableFragmentRenderer
 {
     private $kernel;
     private $dispatcher;
-    public function __construct(\_PhpScopere2a14c1f9852\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \_PhpScopere2a14c1f9852\Symfony\Contracts\EventDispatcher\EventDispatcherInterface $dispatcher = null)
+    public function __construct(\_PhpScoperc9dc9dec1b4a\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \_PhpScoperc9dc9dec1b4a\Symfony\Contracts\EventDispatcher\EventDispatcherInterface $dispatcher = null)
     {
         $this->kernel = $kernel;
-        $this->dispatcher = \_PhpScopere2a14c1f9852\Symfony\Component\EventDispatcher\LegacyEventDispatcherProxy::decorate($dispatcher);
+        $this->dispatcher = \_PhpScoperc9dc9dec1b4a\Symfony\Component\EventDispatcher\LegacyEventDispatcherProxy::decorate($dispatcher);
     }
     /**
      * {@inheritdoc}
@@ -40,10 +40,10 @@ class InlineFragmentRenderer extends \_PhpScopere2a14c1f9852\Symfony\Component\H
      *
      *  * alt: an alternative URI to render in case of an error
      */
-    public function render($uri, \_PhpScopere2a14c1f9852\Symfony\Component\HttpFoundation\Request $request, array $options = [])
+    public function render($uri, \_PhpScoperc9dc9dec1b4a\Symfony\Component\HttpFoundation\Request $request, array $options = [])
     {
         $reference = null;
-        if ($uri instanceof \_PhpScopere2a14c1f9852\Symfony\Component\HttpKernel\Controller\ControllerReference) {
+        if ($uri instanceof \_PhpScoperc9dc9dec1b4a\Symfony\Component\HttpKernel\Controller\ControllerReference) {
             $reference = $uri;
             // Remove attributes from the generated URI because if not, the Symfony
             // routing system will use them to populate the Request attributes. We don't
@@ -67,16 +67,16 @@ class InlineFragmentRenderer extends \_PhpScopere2a14c1f9852\Symfony\Component\H
         }
         $level = \ob_get_level();
         try {
-            return \_PhpScopere2a14c1f9852\Symfony\Component\HttpKernel\HttpCache\SubRequestHandler::handle($this->kernel, $subRequest, \_PhpScopere2a14c1f9852\Symfony\Component\HttpKernel\HttpKernelInterface::SUB_REQUEST, \false);
+            return \_PhpScoperc9dc9dec1b4a\Symfony\Component\HttpKernel\HttpCache\SubRequestHandler::handle($this->kernel, $subRequest, \_PhpScoperc9dc9dec1b4a\Symfony\Component\HttpKernel\HttpKernelInterface::SUB_REQUEST, \false);
         } catch (\Exception $e) {
             // we dispatch the exception event to trigger the logging
             // the response that comes back is ignored
             if (isset($options['ignore_errors']) && $options['ignore_errors'] && $this->dispatcher) {
-                $event = new \_PhpScopere2a14c1f9852\Symfony\Component\HttpKernel\Event\ExceptionEvent($this->kernel, $request, \_PhpScopere2a14c1f9852\Symfony\Component\HttpKernel\HttpKernelInterface::SUB_REQUEST, $e);
-                $this->dispatcher->dispatch($event, \_PhpScopere2a14c1f9852\Symfony\Component\HttpKernel\KernelEvents::EXCEPTION);
+                $event = new \_PhpScoperc9dc9dec1b4a\Symfony\Component\HttpKernel\Event\ExceptionEvent($this->kernel, $request, \_PhpScoperc9dc9dec1b4a\Symfony\Component\HttpKernel\HttpKernelInterface::SUB_REQUEST, $e);
+                $this->dispatcher->dispatch($event, \_PhpScoperc9dc9dec1b4a\Symfony\Component\HttpKernel\KernelEvents::EXCEPTION);
             }
             // let's clean up the output buffers that were created by the sub-request
-            \_PhpScopere2a14c1f9852\Symfony\Component\HttpFoundation\Response::closeOutputBuffers($level, \false);
+            \_PhpScoperc9dc9dec1b4a\Symfony\Component\HttpFoundation\Response::closeOutputBuffers($level, \false);
             if (isset($options['alt'])) {
                 $alt = $options['alt'];
                 unset($options['alt']);
@@ -85,16 +85,16 @@ class InlineFragmentRenderer extends \_PhpScopere2a14c1f9852\Symfony\Component\H
             if (!isset($options['ignore_errors']) || !$options['ignore_errors']) {
                 throw $e;
             }
-            return new \_PhpScopere2a14c1f9852\Symfony\Component\HttpFoundation\Response();
+            return new \_PhpScoperc9dc9dec1b4a\Symfony\Component\HttpFoundation\Response();
         }
     }
-    protected function createSubRequest($uri, \_PhpScopere2a14c1f9852\Symfony\Component\HttpFoundation\Request $request)
+    protected function createSubRequest($uri, \_PhpScoperc9dc9dec1b4a\Symfony\Component\HttpFoundation\Request $request)
     {
         $cookies = $request->cookies->all();
         $server = $request->server->all();
         unset($server['HTTP_IF_MODIFIED_SINCE']);
         unset($server['HTTP_IF_NONE_MATCH']);
-        $subRequest = \_PhpScopere2a14c1f9852\Symfony\Component\HttpFoundation\Request::create($uri, 'get', [], $cookies, [], $server);
+        $subRequest = \_PhpScoperc9dc9dec1b4a\Symfony\Component\HttpFoundation\Request::create($uri, 'get', [], $cookies, [], $server);
         if ($request->headers->has('Surrogate-Capability')) {
             $subRequest->headers->set('Surrogate-Capability', $request->headers->get('Surrogate-Capability'));
         }
@@ -102,7 +102,7 @@ class InlineFragmentRenderer extends \_PhpScopere2a14c1f9852\Symfony\Component\H
         if (null === $setSession) {
             $setSession = \Closure::bind(static function ($subRequest, $request) {
                 $subRequest->session = $request->session;
-            }, null, \_PhpScopere2a14c1f9852\Symfony\Component\HttpFoundation\Request::class);
+            }, null, \_PhpScoperc9dc9dec1b4a\Symfony\Component\HttpFoundation\Request::class);
         }
         $setSession($subRequest, $request);
         if ($request->get('_format')) {

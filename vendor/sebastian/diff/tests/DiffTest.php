@@ -9,21 +9,21 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere2a14c1f9852\SebastianBergmann\Diff;
+namespace _PhpScoperc9dc9dec1b4a\SebastianBergmann\Diff;
 
-use _PhpScopere2a14c1f9852\PHPUnit\Framework\TestCase;
+use _PhpScoperc9dc9dec1b4a\PHPUnit\Framework\TestCase;
 /**
  * @covers SebastianBergmann\Diff\Diff
  *
  * @uses SebastianBergmann\Diff\Chunk
  */
-final class DiffTest extends \_PhpScopere2a14c1f9852\PHPUnit\Framework\TestCase
+final class DiffTest extends \_PhpScoperc9dc9dec1b4a\PHPUnit\Framework\TestCase
 {
     public function testGettersAfterConstructionWithDefault() : void
     {
         $from = 'line1a';
         $to = 'line2a';
-        $diff = new \_PhpScopere2a14c1f9852\SebastianBergmann\Diff\Diff($from, $to);
+        $diff = new \_PhpScoperc9dc9dec1b4a\SebastianBergmann\Diff\Diff($from, $to);
         $this->assertSame($from, $diff->getFrom());
         $this->assertSame($to, $diff->getTo());
         $this->assertSame([], $diff->getChunks(), 'Expect chunks to be default value "array()".');
@@ -32,17 +32,17 @@ final class DiffTest extends \_PhpScopere2a14c1f9852\PHPUnit\Framework\TestCase
     {
         $from = 'line1b';
         $to = 'line2b';
-        $chunks = [new \_PhpScopere2a14c1f9852\SebastianBergmann\Diff\Chunk(), new \_PhpScopere2a14c1f9852\SebastianBergmann\Diff\Chunk(2, 3)];
-        $diff = new \_PhpScopere2a14c1f9852\SebastianBergmann\Diff\Diff($from, $to, $chunks);
+        $chunks = [new \_PhpScoperc9dc9dec1b4a\SebastianBergmann\Diff\Chunk(), new \_PhpScoperc9dc9dec1b4a\SebastianBergmann\Diff\Chunk(2, 3)];
+        $diff = new \_PhpScoperc9dc9dec1b4a\SebastianBergmann\Diff\Diff($from, $to, $chunks);
         $this->assertSame($from, $diff->getFrom());
         $this->assertSame($to, $diff->getTo());
         $this->assertSame($chunks, $diff->getChunks(), 'Expect chunks to be passed value.');
     }
     public function testSetChunksAfterConstruction() : void
     {
-        $diff = new \_PhpScopere2a14c1f9852\SebastianBergmann\Diff\Diff('line1c', 'line2c');
+        $diff = new \_PhpScoperc9dc9dec1b4a\SebastianBergmann\Diff\Diff('line1c', 'line2c');
         $this->assertSame([], $diff->getChunks(), 'Expect chunks to be default value "array()".');
-        $chunks = [new \_PhpScopere2a14c1f9852\SebastianBergmann\Diff\Chunk(), new \_PhpScopere2a14c1f9852\SebastianBergmann\Diff\Chunk(2, 3)];
+        $chunks = [new \_PhpScoperc9dc9dec1b4a\SebastianBergmann\Diff\Chunk(), new \_PhpScoperc9dc9dec1b4a\SebastianBergmann\Diff\Chunk(2, 3)];
         $diff->setChunks($chunks);
         $this->assertSame($chunks, $diff->getChunks(), 'Expect chunks to be passed value.');
     }

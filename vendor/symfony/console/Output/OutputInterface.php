@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere2a14c1f9852\Symfony\Component\Console\Output;
+namespace _PhpScoperc9dc9dec1b4a\Symfony\Component\Console\Output;
 
-use _PhpScopere2a14c1f9852\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use _PhpScoperc9dc9dec1b4a\Symfony\Component\Console\Formatter\OutputFormatterInterface;
 /**
  * OutputInterface is the interface implemented by all Output classes.
  *
@@ -89,7 +89,7 @@ interface OutputInterface
      * @return bool true if the output will decorate messages, false otherwise
      */
     public function isDecorated();
-    public function setFormatter(\_PhpScopere2a14c1f9852\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter);
+    public function setFormatter(\_PhpScoperc9dc9dec1b4a\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter);
     /**
      * Returns current output formatter instance.
      *
