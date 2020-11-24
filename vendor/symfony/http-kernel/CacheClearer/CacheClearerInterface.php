@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper641780a4edd2\Symfony\Component\HttpKernel\CacheClearer;
+namespace _PhpScoper3ceab9fdc42a\Symfony\Component\HttpKernel\CacheClearer;
 
 /**
  * CacheClearerInterface.
