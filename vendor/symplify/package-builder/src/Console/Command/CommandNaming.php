@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\PackageBuilder\Console\Command;
 
-use _PhpScoper963537526adf\Nette\Utils\Strings;
-use _PhpScoper963537526adf\Symfony\Component\Console\Command\Command;
+use _PhpScoper0f23ef1f1d10\Nette\Utils\Strings;
+use _PhpScoper0f23ef1f1d10\Symfony\Component\Console\Command\Command;
 /**
  * @see \Symplify\PackageBuilder\Tests\Console\Command\CommandNamingTest
  */
@@ -20,7 +20,7 @@ final class CommandNaming
      *  "SomeClass\SomeSuperCommand" → "some-super"
      *  "SomeClass\SOMESuperCommand" → "some-super"
      */
-    public function resolveFromCommand(\_PhpScoper963537526adf\Symfony\Component\Console\Command\Command $command) : string
+    public function resolveFromCommand(\_PhpScoper0f23ef1f1d10\Symfony\Component\Console\Command\Command $command) : string
     {
         $commandClass = \get_class($command);
         return self::classToName($commandClass);
@@ -34,7 +34,7 @@ final class CommandNaming
     {
         /** @var string $shortClassName */
         $shortClassName = self::getShortClassName($class);
-        $rawCommandName = \_PhpScoper963537526adf\Nette\Utils\Strings::substring($shortClassName, 0, -\strlen('Command'));
+        $rawCommandName = \_PhpScoper0f23ef1f1d10\Nette\Utils\Strings::substring($shortClassName, 0, -\strlen('Command'));
         // ECSCommand => ecs
         for ($i = 0; $i < \strlen($rawCommandName); ++$i) {
             if (\ctype_upper($rawCommandName[$i]) && self::isFollowedByUpperCaseLetterOrNothing($rawCommandName, $i)) {
@@ -44,7 +44,7 @@ final class CommandNaming
             }
         }
         $rawCommandName = \lcfirst($rawCommandName);
-        return \_PhpScoper963537526adf\Nette\Utils\Strings::replace($rawCommandName, self::BIG_LETTER_REGEX, function (array $matches) : string {
+        return \_PhpScoper0f23ef1f1d10\Nette\Utils\Strings::replace($rawCommandName, self::BIG_LETTER_REGEX, function (array $matches) : string {
             return '-' . \strtolower($matches[0]);
         });
     }
