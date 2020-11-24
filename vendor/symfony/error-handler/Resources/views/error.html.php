@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="<?php 
-namespace _PhpScoper0f23ef1f1d10;
+namespace _PhpScoper3c696cbcc510;
 
 echo $this->charset;
 ?>" />
