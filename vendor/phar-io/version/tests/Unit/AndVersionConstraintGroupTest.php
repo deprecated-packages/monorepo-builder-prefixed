@@ -8,30 +8,30 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere3ed9f66440c\PharIo\Version;
+namespace _PhpScoper641780a4edd2\PharIo\Version;
 
-use _PhpScopere3ed9f66440c\PHPUnit\Framework\TestCase;
+use _PhpScoper641780a4edd2\PHPUnit\Framework\TestCase;
 /**
  * @covers \PharIo\Version\AndVersionConstraintGroup
  */
-class AndVersionConstraintGroupTest extends \_PhpScopere3ed9f66440c\PHPUnit\Framework\TestCase
+class AndVersionConstraintGroupTest extends \_PhpScoper641780a4edd2\PHPUnit\Framework\TestCase
 {
     public function testReturnsFalseIfOneConstraintReturnsFalse()
     {
-        $firstConstraint = $this->createMock(\_PhpScopere3ed9f66440c\PharIo\Version\VersionConstraint::class);
-        $secondConstraint = $this->createMock(\_PhpScopere3ed9f66440c\PharIo\Version\VersionConstraint::class);
+        $firstConstraint = $this->createMock(\_PhpScoper641780a4edd2\PharIo\Version\VersionConstraint::class);
+        $secondConstraint = $this->createMock(\_PhpScoper641780a4edd2\PharIo\Version\VersionConstraint::class);
         $firstConstraint->expects($this->once())->method('complies')->will($this->returnValue(\true));
         $secondConstraint->expects($this->once())->method('complies')->will($this->returnValue(\false));
-        $group = new \_PhpScopere3ed9f66440c\PharIo\Version\AndVersionConstraintGroup('foo', [$firstConstraint, $secondConstraint]);
-        $this->assertFalse($group->complies(new \_PhpScopere3ed9f66440c\PharIo\Version\Version('1.0.0')));
+        $group = new \_PhpScoper641780a4edd2\PharIo\Version\AndVersionConstraintGroup('foo', [$firstConstraint, $secondConstraint]);
+        $this->assertFalse($group->complies(new \_PhpScoper641780a4edd2\PharIo\Version\Version('1.0.0')));
     }
     public function testReturnsTrueIfAllConstraintsReturnsTrue()
     {
-        $firstConstraint = $this->createMock(\_PhpScopere3ed9f66440c\PharIo\Version\VersionConstraint::class);
-        $secondConstraint = $this->createMock(\_PhpScopere3ed9f66440c\PharIo\Version\VersionConstraint::class);
+        $firstConstraint = $this->createMock(\_PhpScoper641780a4edd2\PharIo\Version\VersionConstraint::class);
+        $secondConstraint = $this->createMock(\_PhpScoper641780a4edd2\PharIo\Version\VersionConstraint::class);
         $firstConstraint->expects($this->once())->method('complies')->will($this->returnValue(\true));
         $secondConstraint->expects($this->once())->method('complies')->will($this->returnValue(\true));
-        $group = new \_PhpScopere3ed9f66440c\PharIo\Version\AndVersionConstraintGroup('foo', [$firstConstraint, $secondConstraint]);
-        $this->assertTrue($group->complies(new \_PhpScopere3ed9f66440c\PharIo\Version\Version('1.0.0')));
+        $group = new \_PhpScoper641780a4edd2\PharIo\Version\AndVersionConstraintGroup('foo', [$firstConstraint, $secondConstraint]);
+        $this->assertTrue($group->complies(new \_PhpScoper641780a4edd2\PharIo\Version\Version('1.0.0')));
     }
 }
