@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere97aad8070b4\Symfony\Component\Debug\FatalErrorHandler;
+namespace _PhpScoper3d7663d13234\Symfony\Component\Debug\FatalErrorHandler;
 
-use _PhpScopere97aad8070b4\Symfony\Component\Debug\Exception\FatalErrorException;
-@\trigger_error(\sprintf('The "%s" class is deprecated since Symfony 4.4, use "%s" instead.', \_PhpScopere97aad8070b4\Symfony\Component\Debug\FatalErrorHandler\FatalErrorHandlerInterface::class, \_PhpScopere97aad8070b4\Symfony\Component\ErrorHandler\FatalErrorHandler\FatalErrorHandlerInterface::class), \E_USER_DEPRECATED);
+use _PhpScoper3d7663d13234\Symfony\Component\Debug\Exception\FatalErrorException;
+@\trigger_error(\sprintf('The "%s" class is deprecated since Symfony 4.4, use "%s" instead.', \_PhpScoper3d7663d13234\Symfony\Component\Debug\FatalErrorHandler\FatalErrorHandlerInterface::class, \_PhpScoper3d7663d13234\Symfony\Component\ErrorHandler\FatalErrorHandler\FatalErrorHandlerInterface::class), \E_USER_DEPRECATED);
 /**
  * Attempts to convert fatal errors to exceptions.
  *
@@ -28,5 +28,5 @@ interface FatalErrorHandlerInterface
      *
      * @return FatalErrorException|null A FatalErrorException instance if the class is able to convert the error, null otherwise
      */
-    public function handleError(array $error, \_PhpScopere97aad8070b4\Symfony\Component\Debug\Exception\FatalErrorException $exception);
+    public function handleError(array $error, \_PhpScoper3d7663d13234\Symfony\Component\Debug\Exception\FatalErrorException $exception);
 }

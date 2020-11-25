@@ -1,8 +1,8 @@
 <?php
 
-namespace _PhpScopere97aad8070b4;
+namespace _PhpScoper3d7663d13234;
 
-class DieHardTest extends \_PhpScopere97aad8070b4\PHPUnit_Framework_TestCase
+class DieHardTest extends \_PhpScoper3d7663d13234\PHPUnit_Framework_TestCase
 {
     /**
      * Birthday spacings: Choose random points on a large interval. 
@@ -43,4 +43,4 @@ class DieHardTest extends \_PhpScopere97aad8070b4\PHPUnit_Framework_TestCase
         }
     }
 }
-\class_alias('_PhpScopere97aad8070b4\\DieHardTest', 'DieHardTest', \false);
+\class_alias('_PhpScoper3d7663d13234\\DieHardTest', 'DieHardTest', \false);

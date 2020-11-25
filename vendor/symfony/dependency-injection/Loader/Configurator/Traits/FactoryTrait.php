@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere97aad8070b4\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
+namespace _PhpScoper3d7663d13234\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
 
-use _PhpScopere97aad8070b4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use _PhpScoper3d7663d13234\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 trait FactoryTrait
 {
     /**
@@ -24,7 +24,7 @@ trait FactoryTrait
     {
         if (\is_string($factory) && 1 === \substr_count($factory, ':')) {
             $factoryParts = \explode(':', $factory);
-            throw new \_PhpScopere97aad8070b4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid factory "%s": the "service:method" notation is not available when using PHP-based DI configuration. Use "[service(\'%s\'), \'%s\']" instead.', $factory, $factoryParts[0], $factoryParts[1]));
+            throw new \_PhpScoper3d7663d13234\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid factory "%s": the "service:method" notation is not available when using PHP-based DI configuration. Use "[service(\'%s\'), \'%s\']" instead.', $factory, $factoryParts[0], $factoryParts[1]));
         }
         $this->definition->setFactory(static::processValue($factory, \true));
         return $this;
