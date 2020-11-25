@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper7609e473a4cb\Symfony\Component\DependencyInjection\Argument;
+namespace _PhpScoper47d898182bf9\Symfony\Component\DependencyInjection\Argument;
 
 /**
  * Represents a complex argument containing nested values.
