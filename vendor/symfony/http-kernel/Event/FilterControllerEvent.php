@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb9e77befe692\Symfony\Component\HttpKernel\Event;
+namespace _PhpScoper5665d3e54f4c\Symfony\Component\HttpKernel\Event;
 
-use _PhpScoperb9e77befe692\Symfony\Component\HttpFoundation\Request;
-use _PhpScoperb9e77befe692\Symfony\Component\HttpKernel\HttpKernelInterface;
+use _PhpScoper5665d3e54f4c\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper5665d3e54f4c\Symfony\Component\HttpKernel\HttpKernelInterface;
 /**
  * @deprecated since Symfony 4.3, use ControllerEvent instead
  */
-class FilterControllerEvent extends \_PhpScoperb9e77befe692\Symfony\Component\HttpKernel\Event\KernelEvent
+class FilterControllerEvent extends \_PhpScoper5665d3e54f4c\Symfony\Component\HttpKernel\Event\KernelEvent
 {
     private $controller;
-    public function __construct(\_PhpScoperb9e77befe692\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, callable $controller, \_PhpScoperb9e77befe692\Symfony\Component\HttpFoundation\Request $request, ?int $requestType)
+    public function __construct(\_PhpScoper5665d3e54f4c\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, callable $controller, \_PhpScoper5665d3e54f4c\Symfony\Component\HttpFoundation\Request $request, ?int $requestType)
     {
         parent::__construct($kernel, $request, $requestType);
         $this->setController($controller);

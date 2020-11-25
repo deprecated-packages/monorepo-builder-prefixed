@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb9e77befe692\Symfony\Component\Console\Helper;
+namespace _PhpScoper5665d3e54f4c\Symfony\Component\Console\Helper;
 
-use _PhpScoperb9e77befe692\Symfony\Component\Console\Formatter\OutputFormatter;
+use _PhpScoper5665d3e54f4c\Symfony\Component\Console\Formatter\OutputFormatter;
 /**
  * The Formatter class provides helpers to format messages.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class FormatterHelper extends \_PhpScoperb9e77befe692\Symfony\Component\Console\Helper\Helper
+class FormatterHelper extends \_PhpScoper5665d3e54f4c\Symfony\Component\Console\Helper\Helper
 {
     /**
      * Formats a message within a section.
@@ -48,7 +48,7 @@ class FormatterHelper extends \_PhpScoperb9e77befe692\Symfony\Component\Console\
         $len = 0;
         $lines = [];
         foreach ($messages as $message) {
-            $message = \_PhpScoperb9e77befe692\Symfony\Component\Console\Formatter\OutputFormatter::escape($message);
+            $message = \_PhpScoper5665d3e54f4c\Symfony\Component\Console\Formatter\OutputFormatter::escape($message);
             $lines[] = \sprintf($large ? '  %s  ' : ' %s ', $message);
             $len = \max($this->strlen($message) + ($large ? 4 : 2), $len);
         }
