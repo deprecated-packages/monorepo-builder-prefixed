@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper5665d3e54f4c\Symfony\Component\VarDumper\Caster;
+namespace _PhpScoperd659a053ca1c\Symfony\Component\VarDumper\Caster;
 
-use _PhpScoper5665d3e54f4c\ProxyManager\Proxy\ProxyInterface;
-use _PhpScoper5665d3e54f4c\Symfony\Component\VarDumper\Cloner\Stub;
+use _PhpScoperd659a053ca1c\ProxyManager\Proxy\ProxyInterface;
+use _PhpScoperd659a053ca1c\Symfony\Component\VarDumper\Cloner\Stub;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  *
@@ -19,7 +19,7 @@ use _PhpScoper5665d3e54f4c\Symfony\Component\VarDumper\Cloner\Stub;
  */
 class ProxyManagerCaster
 {
-    public static function castProxy(\_PhpScoper5665d3e54f4c\ProxyManager\Proxy\ProxyInterface $c, array $a, \_PhpScoper5665d3e54f4c\Symfony\Component\VarDumper\Cloner\Stub $stub, $isNested)
+    public static function castProxy(\_PhpScoperd659a053ca1c\ProxyManager\Proxy\ProxyInterface $c, array $a, \_PhpScoperd659a053ca1c\Symfony\Component\VarDumper\Cloner\Stub $stub, $isNested)
     {
         if ($parent = \get_parent_class($c)) {
             $stub->class .= ' - ' . $parent;

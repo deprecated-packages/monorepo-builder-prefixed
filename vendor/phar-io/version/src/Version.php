@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper5665d3e54f4c\PharIo\Version;
+namespace _PhpScoperd659a053ca1c\PharIo\Version;
 
 class Version
 {
@@ -66,7 +66,7 @@ class Version
      *
      * @return bool
      */
-    public function isGreaterThan(\_PhpScoper5665d3e54f4c\PharIo\Version\Version $version)
+    public function isGreaterThan(\_PhpScoperd659a053ca1c\PharIo\Version\Version $version)
     {
         if ($version->getMajor()->getValue() > $this->getMajor()->getValue()) {
             return \false;
@@ -123,11 +123,11 @@ class Version
      */
     private function parseVersion(array $matches)
     {
-        $this->major = new \_PhpScoper5665d3e54f4c\PharIo\Version\VersionNumber($matches['Major']);
-        $this->minor = new \_PhpScoper5665d3e54f4c\PharIo\Version\VersionNumber($matches['Minor']);
-        $this->patch = isset($matches['Patch']) ? new \_PhpScoper5665d3e54f4c\PharIo\Version\VersionNumber($matches['Patch']) : new \_PhpScoper5665d3e54f4c\PharIo\Version\VersionNumber(null);
+        $this->major = new \_PhpScoperd659a053ca1c\PharIo\Version\VersionNumber($matches['Major']);
+        $this->minor = new \_PhpScoperd659a053ca1c\PharIo\Version\VersionNumber($matches['Minor']);
+        $this->patch = isset($matches['Patch']) ? new \_PhpScoperd659a053ca1c\PharIo\Version\VersionNumber($matches['Patch']) : new \_PhpScoperd659a053ca1c\PharIo\Version\VersionNumber(null);
         if (isset($matches['PreReleaseSuffix'])) {
-            $this->preReleaseSuffix = new \_PhpScoper5665d3e54f4c\PharIo\Version\PreReleaseSuffix($matches['PreReleaseSuffix']);
+            $this->preReleaseSuffix = new \_PhpScoperd659a053ca1c\PharIo\Version\PreReleaseSuffix($matches['PreReleaseSuffix']);
         }
     }
     /**
@@ -150,7 +150,7 @@ class Version
             )?       
         $/x';
         if (\preg_match($regex, $version, $matches) !== 1) {
-            throw new \_PhpScoper5665d3e54f4c\PharIo\Version\InvalidVersionException(\sprintf("Version string '%s' does not follow SemVer semantics", $version));
+            throw new \_PhpScoperd659a053ca1c\PharIo\Version\InvalidVersionException(\sprintf("Version string '%s' does not follow SemVer semantics", $version));
         }
         $this->parseVersion($matches);
     }
