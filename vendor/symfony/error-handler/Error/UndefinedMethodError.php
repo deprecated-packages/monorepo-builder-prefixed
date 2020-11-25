@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopereaa2cae8e093\Symfony\Component\ErrorHandler\Error;
+namespace _PhpScopere97aad8070b4\Symfony\Component\ErrorHandler\Error;
 
 class UndefinedMethodError extends \Error
 {

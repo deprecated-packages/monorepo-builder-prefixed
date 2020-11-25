@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopereaa2cae8e093\Symfony\Component\Console\Command;
+namespace _PhpScopere97aad8070b4\Symfony\Component\Console\Command;
 
-use _PhpScopereaa2cae8e093\Symfony\Component\Console\Exception\LogicException;
-use _PhpScopereaa2cae8e093\Symfony\Component\Lock\Lock;
-use _PhpScopereaa2cae8e093\Symfony\Component\Lock\LockFactory;
-use _PhpScopereaa2cae8e093\Symfony\Component\Lock\Store\FlockStore;
-use _PhpScopereaa2cae8e093\Symfony\Component\Lock\Store\SemaphoreStore;
+use _PhpScopere97aad8070b4\Symfony\Component\Console\Exception\LogicException;
+use _PhpScopere97aad8070b4\Symfony\Component\Lock\Lock;
+use _PhpScopere97aad8070b4\Symfony\Component\Lock\LockFactory;
+use _PhpScopere97aad8070b4\Symfony\Component\Lock\Store\FlockStore;
+use _PhpScopere97aad8070b4\Symfony\Component\Lock\Store\SemaphoreStore;
 /**
  * Basic lock feature for commands.
  *
@@ -29,18 +29,18 @@ trait LockableTrait
      */
     private function lock(string $name = null, bool $blocking = \false) : bool
     {
-        if (!\class_exists(\_PhpScopereaa2cae8e093\Symfony\Component\Lock\Store\SemaphoreStore::class)) {
-            throw new \_PhpScopereaa2cae8e093\Symfony\Component\Console\Exception\LogicException('To enable the locking feature you must install the symfony/lock component.');
+        if (!\class_exists(\_PhpScopere97aad8070b4\Symfony\Component\Lock\Store\SemaphoreStore::class)) {
+            throw new \_PhpScopere97aad8070b4\Symfony\Component\Console\Exception\LogicException('To enable the locking feature you must install the symfony/lock component.');
         }
         if (null !== $this->lock) {
-            throw new \_PhpScopereaa2cae8e093\Symfony\Component\Console\Exception\LogicException('A lock is already in place.');
+            throw new \_PhpScopere97aad8070b4\Symfony\Component\Console\Exception\LogicException('A lock is already in place.');
         }
-        if (\_PhpScopereaa2cae8e093\Symfony\Component\Lock\Store\SemaphoreStore::isSupported()) {
-            $store = new \_PhpScopereaa2cae8e093\Symfony\Component\Lock\Store\SemaphoreStore();
+        if (\_PhpScopere97aad8070b4\Symfony\Component\Lock\Store\SemaphoreStore::isSupported()) {
+            $store = new \_PhpScopere97aad8070b4\Symfony\Component\Lock\Store\SemaphoreStore();
         } else {
-            $store = new \_PhpScopereaa2cae8e093\Symfony\Component\Lock\Store\FlockStore();
+            $store = new \_PhpScopere97aad8070b4\Symfony\Component\Lock\Store\FlockStore();
         }
-        $this->lock = (new \_PhpScopereaa2cae8e093\Symfony\Component\Lock\LockFactory($store))->createLock($name ?: $this->getName());
+        $this->lock = (new \_PhpScopere97aad8070b4\Symfony\Component\Lock\LockFactory($store))->createLock($name ?: $this->getName());
         if (!$this->lock->acquire($blocking)) {
             $this->lock = null;
             return \false;

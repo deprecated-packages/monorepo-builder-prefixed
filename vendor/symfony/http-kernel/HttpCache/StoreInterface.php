@@ -11,10 +11,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopereaa2cae8e093\Symfony\Component\HttpKernel\HttpCache;
+namespace _PhpScopere97aad8070b4\Symfony\Component\HttpKernel\HttpCache;
 
-use _PhpScopereaa2cae8e093\Symfony\Component\HttpFoundation\Request;
-use _PhpScopereaa2cae8e093\Symfony\Component\HttpFoundation\Response;
+use _PhpScopere97aad8070b4\Symfony\Component\HttpFoundation\Request;
+use _PhpScopere97aad8070b4\Symfony\Component\HttpFoundation\Response;
 /**
  * Interface implemented by HTTP cache stores.
  *
@@ -27,7 +27,7 @@ interface StoreInterface
      *
      * @return Response|null A Response instance, or null if no cache entry was found
      */
-    public function lookup(\_PhpScopereaa2cae8e093\Symfony\Component\HttpFoundation\Request $request);
+    public function lookup(\_PhpScopere97aad8070b4\Symfony\Component\HttpFoundation\Request $request);
     /**
      * Writes a cache entry to the store for the given Request and Response.
      *
@@ -36,29 +36,29 @@ interface StoreInterface
      *
      * @return string The key under which the response is stored
      */
-    public function write(\_PhpScopereaa2cae8e093\Symfony\Component\HttpFoundation\Request $request, \_PhpScopereaa2cae8e093\Symfony\Component\HttpFoundation\Response $response);
+    public function write(\_PhpScopere97aad8070b4\Symfony\Component\HttpFoundation\Request $request, \_PhpScopere97aad8070b4\Symfony\Component\HttpFoundation\Response $response);
     /**
      * Invalidates all cache entries that match the request.
      */
-    public function invalidate(\_PhpScopereaa2cae8e093\Symfony\Component\HttpFoundation\Request $request);
+    public function invalidate(\_PhpScopere97aad8070b4\Symfony\Component\HttpFoundation\Request $request);
     /**
      * Locks the cache for a given Request.
      *
      * @return bool|string true if the lock is acquired, the path to the current lock otherwise
      */
-    public function lock(\_PhpScopereaa2cae8e093\Symfony\Component\HttpFoundation\Request $request);
+    public function lock(\_PhpScopere97aad8070b4\Symfony\Component\HttpFoundation\Request $request);
     /**
      * Releases the lock for the given Request.
      *
      * @return bool False if the lock file does not exist or cannot be unlocked, true otherwise
      */
-    public function unlock(\_PhpScopereaa2cae8e093\Symfony\Component\HttpFoundation\Request $request);
+    public function unlock(\_PhpScopere97aad8070b4\Symfony\Component\HttpFoundation\Request $request);
     /**
      * Returns whether or not a lock exists.
      *
      * @return bool true if lock exists, false otherwise
      */
-    public function isLocked(\_PhpScopereaa2cae8e093\Symfony\Component\HttpFoundation\Request $request);
+    public function isLocked(\_PhpScopere97aad8070b4\Symfony\Component\HttpFoundation\Request $request);
     /**
      * Purges data for the given URL.
      *

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopereaa2cae8e093\Symfony\Component\Console\CommandLoader;
+namespace _PhpScopere97aad8070b4\Symfony\Component\Console\CommandLoader;
 
-use _PhpScopereaa2cae8e093\Symfony\Component\Console\Command\Command;
-use _PhpScopereaa2cae8e093\Symfony\Component\Console\Exception\CommandNotFoundException;
+use _PhpScopere97aad8070b4\Symfony\Component\Console\Command\Command;
+use _PhpScopere97aad8070b4\Symfony\Component\Console\Exception\CommandNotFoundException;
 /**
  * @author Robin Chalas <robin.chalas@gmail.com>
  */

@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopereaa2cae8e093\Symfony\Component\Mime\Exception;
+namespace _PhpScopere97aad8070b4\Symfony\Component\Mime\Exception;
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
  * @experimental in 4.3
  */
-class AddressEncoderException extends \_PhpScopereaa2cae8e093\Symfony\Component\Mime\Exception\RfcComplianceException
+class AddressEncoderException extends \_PhpScopere97aad8070b4\Symfony\Component\Mime\Exception\RfcComplianceException
 {
 }
