@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperfa8ac9431c57\Symfony\Component\HttpKernel\Controller;
+namespace _PhpScopereaa2cae8e093\Symfony\Component\HttpKernel\Controller;
 
-use _PhpScoperfa8ac9431c57\Symfony\Component\HttpFoundation\Request;
-use _PhpScoperfa8ac9431c57\Symfony\Component\Stopwatch\Stopwatch;
+use _PhpScopereaa2cae8e093\Symfony\Component\HttpFoundation\Request;
+use _PhpScopereaa2cae8e093\Symfony\Component\Stopwatch\Stopwatch;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class TraceableArgumentResolver implements \_PhpScoperfa8ac9431c57\Symfony\Component\HttpKernel\Controller\ArgumentResolverInterface
+class TraceableArgumentResolver implements \_PhpScopereaa2cae8e093\Symfony\Component\HttpKernel\Controller\ArgumentResolverInterface
 {
     private $resolver;
     private $stopwatch;
-    public function __construct(\_PhpScoperfa8ac9431c57\Symfony\Component\HttpKernel\Controller\ArgumentResolverInterface $resolver, \_PhpScoperfa8ac9431c57\Symfony\Component\Stopwatch\Stopwatch $stopwatch)
+    public function __construct(\_PhpScopereaa2cae8e093\Symfony\Component\HttpKernel\Controller\ArgumentResolverInterface $resolver, \_PhpScopereaa2cae8e093\Symfony\Component\Stopwatch\Stopwatch $stopwatch)
     {
         $this->resolver = $resolver;
         $this->stopwatch = $stopwatch;
@@ -27,7 +27,7 @@ class TraceableArgumentResolver implements \_PhpScoperfa8ac9431c57\Symfony\Compo
     /**
      * {@inheritdoc}
      */
-    public function getArguments(\_PhpScoperfa8ac9431c57\Symfony\Component\HttpFoundation\Request $request, $controller)
+    public function getArguments(\_PhpScopereaa2cae8e093\Symfony\Component\HttpFoundation\Request $request, $controller)
     {
         $e = $this->stopwatch->start('controller.get_arguments');
         $ret = $this->resolver->getArguments($request, $controller);

@@ -8,34 +8,34 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperfa8ac9431c57\Symfony\Component\HttpKernel\DependencyInjection;
+namespace _PhpScopereaa2cae8e093\Symfony\Component\HttpKernel\DependencyInjection;
 
-use _PhpScoperfa8ac9431c57\Composer\Autoload\ClassLoader;
-use _PhpScoperfa8ac9431c57\Symfony\Component\Debug\DebugClassLoader as LegacyDebugClassLoader;
-use _PhpScoperfa8ac9431c57\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use _PhpScoperfa8ac9431c57\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScoperfa8ac9431c57\Symfony\Component\ErrorHandler\DebugClassLoader;
-use _PhpScoperfa8ac9431c57\Symfony\Component\HttpKernel\Kernel;
+use _PhpScopereaa2cae8e093\Composer\Autoload\ClassLoader;
+use _PhpScopereaa2cae8e093\Symfony\Component\Debug\DebugClassLoader as LegacyDebugClassLoader;
+use _PhpScopereaa2cae8e093\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use _PhpScopereaa2cae8e093\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScopereaa2cae8e093\Symfony\Component\ErrorHandler\DebugClassLoader;
+use _PhpScopereaa2cae8e093\Symfony\Component\HttpKernel\Kernel;
 /**
  * Sets the classes to compile in the cache for the container.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class AddAnnotatedClassesToCachePass implements \_PhpScoperfa8ac9431c57\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class AddAnnotatedClassesToCachePass implements \_PhpScopereaa2cae8e093\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     private $kernel;
-    public function __construct(\_PhpScoperfa8ac9431c57\Symfony\Component\HttpKernel\Kernel $kernel)
+    public function __construct(\_PhpScopereaa2cae8e093\Symfony\Component\HttpKernel\Kernel $kernel)
     {
         $this->kernel = $kernel;
     }
     /**
      * {@inheritdoc}
      */
-    public function process(\_PhpScoperfa8ac9431c57\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\_PhpScopereaa2cae8e093\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $annotatedClasses = $this->kernel->getAnnotatedClassesToCompile();
         foreach ($container->getExtensions() as $extension) {
-            if ($extension instanceof \_PhpScoperfa8ac9431c57\Symfony\Component\HttpKernel\DependencyInjection\Extension) {
+            if ($extension instanceof \_PhpScopereaa2cae8e093\Symfony\Component\HttpKernel\DependencyInjection\Extension) {
                 $annotatedClasses = \array_merge($annotatedClasses, $extension->getAnnotatedClassesToCompile());
             }
         }
@@ -76,10 +76,10 @@ class AddAnnotatedClassesToCachePass implements \_PhpScoperfa8ac9431c57\Symfony\
             if (!\is_array($function)) {
                 continue;
             }
-            if ($function[0] instanceof \_PhpScoperfa8ac9431c57\Symfony\Component\ErrorHandler\DebugClassLoader || $function[0] instanceof \_PhpScoperfa8ac9431c57\Symfony\Component\Debug\DebugClassLoader) {
+            if ($function[0] instanceof \_PhpScopereaa2cae8e093\Symfony\Component\ErrorHandler\DebugClassLoader || $function[0] instanceof \_PhpScopereaa2cae8e093\Symfony\Component\Debug\DebugClassLoader) {
                 $function = $function[0]->getClassLoader();
             }
-            if (\is_array($function) && $function[0] instanceof \_PhpScoperfa8ac9431c57\Composer\Autoload\ClassLoader) {
+            if (\is_array($function) && $function[0] instanceof \_PhpScopereaa2cae8e093\Composer\Autoload\ClassLoader) {
                 $classes += \array_filter($function[0]->getClassMap());
             }
         }
