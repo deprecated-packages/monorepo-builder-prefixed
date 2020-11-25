@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace _PhpScoperd659a053ca1c\PackageVersions;
+namespace _PhpScoper7609e473a4cb\PackageVersions;
 
 use Generator;
 use OutOfBoundsException;
