@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper44b9ade4c89e\Symfony\Component\HttpKernel\EventListener;
+namespace _PhpScoperfa8ac9431c57\Symfony\Component\HttpKernel\EventListener;
 
-use _PhpScoper44b9ade4c89e\Psr\Container\ContainerInterface;
-use _PhpScoper44b9ade4c89e\Symfony\Component\HttpFoundation\Session\SessionInterface;
-use _PhpScoper44b9ade4c89e\Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
+use _PhpScoperfa8ac9431c57\Psr\Container\ContainerInterface;
+use _PhpScoperfa8ac9431c57\Symfony\Component\HttpFoundation\Session\SessionInterface;
+use _PhpScoperfa8ac9431c57\Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
 /**
  * Sets the session in the request.
  *
@@ -24,18 +24,18 @@ use _PhpScoper44b9ade4c89e\Symfony\Component\HttpFoundation\Session\Storage\Nati
  *
  * @final
  */
-class SessionListener extends \_PhpScoper44b9ade4c89e\Symfony\Component\HttpKernel\EventListener\AbstractSessionListener
+class SessionListener extends \_PhpScoperfa8ac9431c57\Symfony\Component\HttpKernel\EventListener\AbstractSessionListener
 {
-    public function __construct(\_PhpScoper44b9ade4c89e\Psr\Container\ContainerInterface $container)
+    public function __construct(\_PhpScoperfa8ac9431c57\Psr\Container\ContainerInterface $container)
     {
         $this->container = $container;
     }
-    protected function getSession() : ?\_PhpScoper44b9ade4c89e\Symfony\Component\HttpFoundation\Session\SessionInterface
+    protected function getSession() : ?\_PhpScoperfa8ac9431c57\Symfony\Component\HttpFoundation\Session\SessionInterface
     {
         if (!$this->container->has('session')) {
             return null;
         }
-        if ($this->container->has('session_storage') && ($storage = $this->container->get('session_storage')) instanceof \_PhpScoper44b9ade4c89e\Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage && ($masterRequest = $this->container->get('request_stack')->getMasterRequest()) && $masterRequest->isSecure()) {
+        if ($this->container->has('session_storage') && ($storage = $this->container->get('session_storage')) instanceof \_PhpScoperfa8ac9431c57\Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage && ($masterRequest = $this->container->get('request_stack')->getMasterRequest()) && $masterRequest->isSecure()) {
             $storage->setOptions(['cookie_secure' => \true]);
         }
         return $this->container->get('session');
