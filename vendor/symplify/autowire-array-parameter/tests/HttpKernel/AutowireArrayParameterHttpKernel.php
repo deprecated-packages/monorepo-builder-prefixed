@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Symplify\AutowireArrayParameter\Tests\HttpKernel;
 
-use _PhpScopera5e5d165d78c\Symfony\Component\Config\Loader\LoaderInterface;
-use _PhpScopera5e5d165d78c\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScopera5e5d165d78c\Symfony\Component\HttpKernel\Bundle\BundleInterface;
-use _PhpScopera5e5d165d78c\Symfony\Component\HttpKernel\Kernel;
+use _PhpScoperb9e77befe692\Symfony\Component\Config\Loader\LoaderInterface;
+use _PhpScoperb9e77befe692\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoperb9e77befe692\Symfony\Component\HttpKernel\Bundle\BundleInterface;
+use _PhpScoperb9e77befe692\Symfony\Component\HttpKernel\Kernel;
 use Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
-final class AutowireArrayParameterHttpKernel extends \_PhpScopera5e5d165d78c\Symfony\Component\HttpKernel\Kernel
+final class AutowireArrayParameterHttpKernel extends \_PhpScoperb9e77befe692\Symfony\Component\HttpKernel\Kernel
 {
-    public function registerContainerConfiguration(\_PhpScopera5e5d165d78c\Symfony\Component\Config\Loader\LoaderInterface $loader) : void
+    public function registerContainerConfiguration(\_PhpScoperb9e77befe692\Symfony\Component\Config\Loader\LoaderInterface $loader) : void
     {
         $loader->load(__DIR__ . '/../config/autowire_array_parameter.php');
     }
@@ -29,7 +29,7 @@ final class AutowireArrayParameterHttpKernel extends \_PhpScopera5e5d165d78c\Sym
     {
         return [];
     }
-    protected function build(\_PhpScopera5e5d165d78c\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
+    protected function build(\_PhpScoperb9e77befe692\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
     {
         $containerBuilder->addCompilerPass(new \Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass());
     }

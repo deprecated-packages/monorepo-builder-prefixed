@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopera5e5d165d78c\Symfony\Component\ErrorHandler\Error;
+namespace _PhpScoperb9e77befe692\Symfony\Component\ErrorHandler\Error;
 
 class FatalError extends \Error
 {
