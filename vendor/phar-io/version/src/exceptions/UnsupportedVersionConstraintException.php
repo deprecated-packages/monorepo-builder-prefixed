@@ -8,8 +8,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper93a7e58d9dd1\PharIo\Version;
+namespace _PhpScoper44b9ade4c89e\PharIo\Version;
 
-final class UnsupportedVersionConstraintException extends \RuntimeException implements \_PhpScoper93a7e58d9dd1\PharIo\Version\Exception
+final class UnsupportedVersionConstraintException extends \RuntimeException implements \_PhpScoper44b9ade4c89e\PharIo\Version\Exception
 {
 }

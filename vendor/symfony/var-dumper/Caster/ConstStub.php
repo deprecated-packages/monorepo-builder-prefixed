@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper93a7e58d9dd1\Symfony\Component\VarDumper\Caster;
+namespace _PhpScoper44b9ade4c89e\Symfony\Component\VarDumper\Caster;
 
-use _PhpScoper93a7e58d9dd1\Symfony\Component\VarDumper\Cloner\Stub;
+use _PhpScoper44b9ade4c89e\Symfony\Component\VarDumper\Cloner\Stub;
 /**
  * Represents a PHP constant and its value.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ConstStub extends \_PhpScoper93a7e58d9dd1\Symfony\Component\VarDumper\Cloner\Stub
+class ConstStub extends \_PhpScoper44b9ade4c89e\Symfony\Component\VarDumper\Cloner\Stub
 {
     public function __construct(string $name, $value = null)
     {
