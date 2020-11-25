@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper76c4aa553101\Symfony\Contracts\EventDispatcher;
+namespace _PhpScoper79999b045682\Symfony\Contracts\EventDispatcher;
 
-use _PhpScoper76c4aa553101\Psr\EventDispatcher\StoppableEventInterface;
-if (\interface_exists(\_PhpScoper76c4aa553101\Psr\EventDispatcher\StoppableEventInterface::class)) {
+use _PhpScoper79999b045682\Psr\EventDispatcher\StoppableEventInterface;
+if (\interface_exists(\_PhpScoper79999b045682\Psr\EventDispatcher\StoppableEventInterface::class)) {
     /**
      * Event is the base class for classes containing event data.
      *
@@ -27,7 +27,7 @@ if (\interface_exists(\_PhpScoper76c4aa553101\Psr\EventDispatcher\StoppableEvent
      * @author Bernhard Schussek <bschussek@gmail.com>
      * @author Nicolas Grekas <p@tchwork.com>
      */
-    class Event implements \_PhpScoper76c4aa553101\Psr\EventDispatcher\StoppableEventInterface
+    class Event implements \_PhpScoper79999b045682\Psr\EventDispatcher\StoppableEventInterface
     {
         private $propagationStopped = \false;
         /**
