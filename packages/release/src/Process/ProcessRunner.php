@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\Process;
 
-use _PhpScoper8a1d608a1a7e\Symfony\Component\Console\Style\SymfonyStyle;
-use _PhpScoper8a1d608a1a7e\Symfony\Component\Process\Exception\ProcessFailedException;
-use _PhpScoper8a1d608a1a7e\Symfony\Component\Process\Process;
+use _PhpScopera3403994bd90\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScopera3403994bd90\Symfony\Component\Process\Exception\ProcessFailedException;
+use _PhpScopera3403994bd90\Symfony\Component\Process\Process;
 final class ProcessRunner
 {
     /**
@@ -17,7 +17,7 @@ final class ProcessRunner
      * @var SymfonyStyle
      */
     private $symfonyStyle;
-    public function __construct(\_PhpScoper8a1d608a1a7e\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
+    public function __construct(\_PhpScopera3403994bd90\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
     {
         $this->symfonyStyle = $symfonyStyle;
     }
@@ -47,19 +47,19 @@ final class ProcessRunner
     /**
      * @param string|string[] $commandLine
      */
-    private function createProcess($commandLine) : \_PhpScoper8a1d608a1a7e\Symfony\Component\Process\Process
+    private function createProcess($commandLine) : \_PhpScopera3403994bd90\Symfony\Component\Process\Process
     {
         // @since Symfony 4.2: https://github.com/symfony/symfony/pull/27821
-        if (\is_string($commandLine) && \method_exists(\_PhpScoper8a1d608a1a7e\Symfony\Component\Process\Process::class, 'fromShellCommandline')) {
-            return \_PhpScoper8a1d608a1a7e\Symfony\Component\Process\Process::fromShellCommandline($commandLine, null, null, null, self::TIMEOUT);
+        if (\is_string($commandLine) && \method_exists(\_PhpScopera3403994bd90\Symfony\Component\Process\Process::class, 'fromShellCommandline')) {
+            return \_PhpScopera3403994bd90\Symfony\Component\Process\Process::fromShellCommandline($commandLine, null, null, null, self::TIMEOUT);
         }
-        return new \_PhpScoper8a1d608a1a7e\Symfony\Component\Process\Process($commandLine, null, null, null, self::TIMEOUT);
+        return new \_PhpScopera3403994bd90\Symfony\Component\Process\Process($commandLine, null, null, null, self::TIMEOUT);
     }
-    private function reportResult(\_PhpScoper8a1d608a1a7e\Symfony\Component\Process\Process $process) : void
+    private function reportResult(\_PhpScopera3403994bd90\Symfony\Component\Process\Process $process) : void
     {
         if ($process->isSuccessful()) {
             return;
         }
-        throw new \_PhpScoper8a1d608a1a7e\Symfony\Component\Process\Exception\ProcessFailedException($process);
+        throw new \_PhpScopera3403994bd90\Symfony\Component\Process\Exception\ProcessFailedException($process);
     }
 }
