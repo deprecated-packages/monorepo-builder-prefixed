@@ -1,7 +1,7 @@
 {
     "autoload": {
         "psr-4": {
-            "_PhpScopera3403994bd90\\App\\Sub\\": "src\/package-d"
+            "_PhpScoper1411c9dba342\\App\\Sub\\": "src\/package-d"
         }
     }
 }
