@@ -1,6 +1,6 @@
 <?php
 
-namespace _PhpScoper1411c9dba342\PharIo\Version;
+namespace _PhpScoper27e2e7523871\PharIo\Version;
 
 class VersionConstraintValue
 {
@@ -86,11 +86,11 @@ class VersionConstraintValue
         $this->extractBuildMetaData($versionString);
         $this->extractLabel($versionString);
         $versionSegments = \explode('.', $versionString);
-        $this->major = new \_PhpScoper1411c9dba342\PharIo\Version\VersionNumber($versionSegments[0]);
+        $this->major = new \_PhpScoper27e2e7523871\PharIo\Version\VersionNumber($versionSegments[0]);
         $minorValue = isset($versionSegments[1]) ? $versionSegments[1] : null;
         $patchValue = isset($versionSegments[2]) ? $versionSegments[2] : null;
-        $this->minor = new \_PhpScoper1411c9dba342\PharIo\Version\VersionNumber($minorValue);
-        $this->patch = new \_PhpScoper1411c9dba342\PharIo\Version\VersionNumber($patchValue);
+        $this->minor = new \_PhpScoper27e2e7523871\PharIo\Version\VersionNumber($minorValue);
+        $this->patch = new \_PhpScoper27e2e7523871\PharIo\Version\VersionNumber($patchValue);
     }
     /**
      * @param string $versionString

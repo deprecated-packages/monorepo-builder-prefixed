@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper1411c9dba342\Symfony\Component\DependencyInjection\Loader;
+namespace _PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\Loader;
 
-use _PhpScoper1411c9dba342\Symfony\Component\Config\Util\XmlUtils;
-use _PhpScoper1411c9dba342\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use _PhpScoper27e2e7523871\Symfony\Component\Config\Util\XmlUtils;
+use _PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 /**
  * IniFileLoader loads parameters from INI files.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class IniFileLoader extends \_PhpScoper1411c9dba342\Symfony\Component\DependencyInjection\Loader\FileLoader
+class IniFileLoader extends \_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\Loader\FileLoader
 {
     /**
      * {@inheritdoc}
@@ -29,7 +29,7 @@ class IniFileLoader extends \_PhpScoper1411c9dba342\Symfony\Component\Dependency
         // first pass to catch parsing errors
         $result = \parse_ini_file($path, \true);
         if (\false === $result || [] === $result) {
-            throw new \_PhpScoper1411c9dba342\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The "%s" file is not valid.', $resource));
+            throw new \_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The "%s" file is not valid.', $resource));
         }
         // real raw parsing
         $result = \parse_ini_file($path, \true, \INI_SCANNER_RAW);
@@ -77,7 +77,7 @@ class IniFileLoader extends \_PhpScoper1411c9dba342\Symfony\Component\Dependency
                 // quoted string
                 return \substr($value, 1, -1);
             default:
-                return \_PhpScoper1411c9dba342\Symfony\Component\Config\Util\XmlUtils::phpize($value);
+                return \_PhpScoper27e2e7523871\Symfony\Component\Config\Util\XmlUtils::phpize($value);
         }
     }
 }

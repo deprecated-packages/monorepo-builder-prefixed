@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper1411c9dba342\Symfony\Component\Mime\Header;
+namespace _PhpScoper27e2e7523871\Symfony\Component\Mime\Header;
 
-use _PhpScoper1411c9dba342\Symfony\Component\Mime\Encoder\Rfc2231Encoder;
+use _PhpScoper27e2e7523871\Symfony\Component\Mime\Encoder\Rfc2231Encoder;
 /**
  * @author Chris Corbyn
  *
  * @experimental in 4.3
  */
-final class ParameterizedHeader extends \_PhpScoper1411c9dba342\Symfony\Component\Mime\Header\UnstructuredHeader
+final class ParameterizedHeader extends \_PhpScoper27e2e7523871\Symfony\Component\Mime\Header\UnstructuredHeader
 {
     /**
      * RFC 2231's definition of a token.
@@ -33,7 +33,7 @@ final class ParameterizedHeader extends \_PhpScoper1411c9dba342\Symfony\Componen
             $this->setParameter($k, $v);
         }
         if ('content-disposition' === \strtolower($name)) {
-            $this->encoder = new \_PhpScoper1411c9dba342\Symfony\Component\Mime\Encoder\Rfc2231Encoder();
+            $this->encoder = new \_PhpScoper27e2e7523871\Symfony\Component\Mime\Encoder\Rfc2231Encoder();
         }
     }
     public function setParameter(string $parameter, ?string $value)
