@@ -43,7 +43,7 @@
             "Resources\/functions\/dump.php"
         ],
         "psr-4": {
-            "_PhpScoper1f602fe576f8\\Symfony\\Component\\VarDumper\\": ""
+            "_PhpScoper485f3a9238ad\\Symfony\\Component\\VarDumper\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"
