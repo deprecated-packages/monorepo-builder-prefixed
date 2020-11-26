@@ -8,26 +8,26 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper27e2e7523871\Symfony\Component\HttpKernel\DependencyInjection;
+namespace _PhpScoper905a278e297d\Symfony\Component\HttpKernel\DependencyInjection;
 
-use _PhpScoper27e2e7523871\Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use _PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\ChildDefinition;
-use _PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use _PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\Compiler\ServiceLocatorTagPass;
-use _PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use _PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\ContainerInterface;
-use _PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use _PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper;
-use _PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\Reference;
-use _PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\TypedReference;
-use _PhpScoper27e2e7523871\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper905a278e297d\Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use _PhpScoper905a278e297d\Symfony\Component\DependencyInjection\ChildDefinition;
+use _PhpScoper905a278e297d\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use _PhpScoper905a278e297d\Symfony\Component\DependencyInjection\Compiler\ServiceLocatorTagPass;
+use _PhpScoper905a278e297d\Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use _PhpScoper905a278e297d\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoper905a278e297d\Symfony\Component\DependencyInjection\ContainerInterface;
+use _PhpScoper905a278e297d\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use _PhpScoper905a278e297d\Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper;
+use _PhpScoper905a278e297d\Symfony\Component\DependencyInjection\Reference;
+use _PhpScoper905a278e297d\Symfony\Component\DependencyInjection\TypedReference;
+use _PhpScoper905a278e297d\Symfony\Component\HttpFoundation\Request;
 /**
  * Creates the service-locators required by ServiceValueResolver.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class RegisterControllerArgumentLocatorsPass implements \_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class RegisterControllerArgumentLocatorsPass implements \_PhpScoper905a278e297d\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     private $resolverServiceId;
     private $controllerTag;
@@ -40,7 +40,7 @@ class RegisterControllerArgumentLocatorsPass implements \_PhpScoper27e2e7523871\
         $this->controllerLocator = $controllerLocator;
         $this->notTaggedControllerResolverServiceId = $notTaggedControllerResolverServiceId;
     }
-    public function process(\_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\_PhpScoper905a278e297d\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         if (\false === $container->hasDefinition($this->resolverServiceId) && \false === $container->hasDefinition($this->notTaggedControllerResolverServiceId)) {
             return;
@@ -54,16 +54,16 @@ class RegisterControllerArgumentLocatorsPass implements \_PhpScoper27e2e7523871\
             $autowire = $def->isAutowired();
             $bindings = $def->getBindings();
             // resolve service class, taking parent definitions into account
-            while ($def instanceof \_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\ChildDefinition) {
+            while ($def instanceof \_PhpScoper905a278e297d\Symfony\Component\DependencyInjection\ChildDefinition) {
                 $def = $container->findDefinition($def->getParent());
                 $class = $class ?: $def->getClass();
                 $bindings += $def->getBindings();
             }
             $class = $parameterBag->resolveValue($class);
             if (!($r = $container->getReflectionClass($class))) {
-                throw new \_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Class "%s" used for service "%s" cannot be found.', $class, $id));
+                throw new \_PhpScoper905a278e297d\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Class "%s" used for service "%s" cannot be found.', $class, $id));
             }
-            $isContainerAware = $r->implementsInterface(\_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\ContainerAwareInterface::class) || \is_subclass_of($class, \_PhpScoper27e2e7523871\Symfony\Bundle\FrameworkBundle\Controller\AbstractController::class);
+            $isContainerAware = $r->implementsInterface(\_PhpScoper905a278e297d\Symfony\Component\DependencyInjection\ContainerAwareInterface::class) || \is_subclass_of($class, \_PhpScoper905a278e297d\Symfony\Bundle\FrameworkBundle\Controller\AbstractController::class);
             // get regular public methods
             $methods = [];
             $arguments = [];
@@ -83,11 +83,11 @@ class RegisterControllerArgumentLocatorsPass implements \_PhpScoper27e2e7523871\
                 }
                 foreach (['action', 'argument', 'id'] as $k) {
                     if (!isset($attributes[$k][0])) {
-                        throw new \_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Missing "%s" attribute on tag "%s" %s for service "%s".', $k, $this->controllerTag, \json_encode($attributes, \JSON_UNESCAPED_UNICODE), $id));
+                        throw new \_PhpScoper905a278e297d\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Missing "%s" attribute on tag "%s" %s for service "%s".', $k, $this->controllerTag, \json_encode($attributes, \JSON_UNESCAPED_UNICODE), $id));
                     }
                 }
                 if (!isset($methods[$action = \strtolower($attributes['action'])])) {
-                    throw new \_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid "action" attribute on tag "%s" for service "%s": no public "%s()" method found on class "%s".', $this->controllerTag, $id, $attributes['action'], $class));
+                    throw new \_PhpScoper905a278e297d\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid "action" attribute on tag "%s" for service "%s": no public "%s()" method found on class "%s".', $this->controllerTag, $id, $attributes['action'], $class));
                 }
                 list($r, $parameters) = $methods[$action];
                 $found = \false;
@@ -101,7 +101,7 @@ class RegisterControllerArgumentLocatorsPass implements \_PhpScoper27e2e7523871\
                     }
                 }
                 if (!$found) {
-                    throw new \_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid "%s" tag for service "%s": method "%s()" has no "%s" argument on class "%s".', $this->controllerTag, $id, $r->name, $attributes['argument'], $class));
+                    throw new \_PhpScoper905a278e297d\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid "%s" tag for service "%s": method "%s()" has no "%s" argument on class "%s".', $this->controllerTag, $id, $r->name, $attributes['argument'], $class));
                 }
             }
             foreach ($methods as list($r, $parameters)) {
@@ -110,23 +110,23 @@ class RegisterControllerArgumentLocatorsPass implements \_PhpScoper27e2e7523871\
                 $args = [];
                 foreach ($parameters as $p) {
                     /** @var \ReflectionParameter $p */
-                    $type = \ltrim($target = \_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper::getTypeHint($r, $p), '\\');
-                    $invalidBehavior = \_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE;
+                    $type = \ltrim($target = \_PhpScoper905a278e297d\Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper::getTypeHint($r, $p), '\\');
+                    $invalidBehavior = \_PhpScoper905a278e297d\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE;
                     if (isset($arguments[$r->name][$p->name])) {
                         $target = $arguments[$r->name][$p->name];
                         if ('?' !== $target[0]) {
-                            $invalidBehavior = \_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\ContainerInterface::RUNTIME_EXCEPTION_ON_INVALID_REFERENCE;
+                            $invalidBehavior = \_PhpScoper905a278e297d\Symfony\Component\DependencyInjection\ContainerInterface::RUNTIME_EXCEPTION_ON_INVALID_REFERENCE;
                         } elseif ('' === ($target = (string) \substr($target, 1))) {
-                            throw new \_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('A "%s" tag must have non-empty "id" attributes for service "%s".', $this->controllerTag, $id));
+                            throw new \_PhpScoper905a278e297d\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('A "%s" tag must have non-empty "id" attributes for service "%s".', $this->controllerTag, $id));
                         } elseif ($p->allowsNull() && !$p->isOptional()) {
-                            $invalidBehavior = \_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE;
+                            $invalidBehavior = \_PhpScoper905a278e297d\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE;
                         }
                     } elseif (isset($bindings[$bindingName = $type . ' $' . $p->name]) || isset($bindings[$bindingName = '$' . $p->name]) || isset($bindings[$bindingName = $type])) {
                         $binding = $bindings[$bindingName];
                         list($bindingValue, $bindingId, , $bindingType, $bindingFile) = $binding->getValues();
                         $binding->setValues([$bindingValue, $bindingId, \true, $bindingType, $bindingFile]);
-                        if (!$bindingValue instanceof \_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\Reference) {
-                            $args[$p->name] = new \_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\Reference('.value.' . $container->hash($bindingValue));
+                        if (!$bindingValue instanceof \_PhpScoper905a278e297d\Symfony\Component\DependencyInjection\Reference) {
+                            $args[$p->name] = new \_PhpScoper905a278e297d\Symfony\Component\DependencyInjection\Reference('.value.' . $container->hash($bindingValue));
                             $container->register((string) $args[$p->name], 'mixed')->setFactory('current')->addArgument([$bindingValue]);
                         } else {
                             $args[$p->name] = $bindingValue;
@@ -135,9 +135,9 @@ class RegisterControllerArgumentLocatorsPass implements \_PhpScoper27e2e7523871\
                     } elseif (!$type || !$autowire || '\\' !== $target[0]) {
                         continue;
                     } elseif (!$p->allowsNull()) {
-                        $invalidBehavior = \_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\ContainerInterface::RUNTIME_EXCEPTION_ON_INVALID_REFERENCE;
+                        $invalidBehavior = \_PhpScoper905a278e297d\Symfony\Component\DependencyInjection\ContainerInterface::RUNTIME_EXCEPTION_ON_INVALID_REFERENCE;
                     }
-                    if (\_PhpScoper27e2e7523871\Symfony\Component\HttpFoundation\Request::class === $type) {
+                    if (\_PhpScoper905a278e297d\Symfony\Component\HttpFoundation\Request::class === $type) {
                         continue;
                     }
                     if ($type && !$p->isOptional() && !$p->allowsNull() && !\class_exists($type) && !\interface_exists($type, \false)) {
@@ -146,18 +146,18 @@ class RegisterControllerArgumentLocatorsPass implements \_PhpScoper27e2e7523871\
                         if (0 === \strncmp($type, $class, \strrpos($class, '\\'))) {
                             $message .= ' Did you forget to add a use statement?';
                         }
-                        throw new \_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException($message);
+                        throw new \_PhpScoper905a278e297d\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException($message);
                     }
                     $target = \ltrim($target, '\\');
-                    $args[$p->name] = $type ? new \_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\TypedReference($target, $type, $invalidBehavior, $p->name) : new \_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\Reference($target, $invalidBehavior);
+                    $args[$p->name] = $type ? new \_PhpScoper905a278e297d\Symfony\Component\DependencyInjection\TypedReference($target, $type, $invalidBehavior, $p->name) : new \_PhpScoper905a278e297d\Symfony\Component\DependencyInjection\Reference($target, $invalidBehavior);
                 }
                 // register the maps as a per-method service-locators
                 if ($args) {
-                    $controllers[$id . '::' . $r->name] = \_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\Compiler\ServiceLocatorTagPass::register($container, $args);
+                    $controllers[$id . '::' . $r->name] = \_PhpScoper905a278e297d\Symfony\Component\DependencyInjection\Compiler\ServiceLocatorTagPass::register($container, $args);
                 }
             }
         }
-        $controllerLocatorRef = \_PhpScoper27e2e7523871\Symfony\Component\DependencyInjection\Compiler\ServiceLocatorTagPass::register($container, $controllers);
+        $controllerLocatorRef = \_PhpScoper905a278e297d\Symfony\Component\DependencyInjection\Compiler\ServiceLocatorTagPass::register($container, $controllers);
         if ($container->hasDefinition($this->resolverServiceId)) {
             $container->getDefinition($this->resolverServiceId)->replaceArgument(0, $controllerLocatorRef);
         }

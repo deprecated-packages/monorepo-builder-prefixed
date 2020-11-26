@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper27e2e7523871\Symfony\Component\Config;
+namespace _PhpScoper905a278e297d\Symfony\Component\Config;
 
-use _PhpScoper27e2e7523871\Symfony\Component\Config\Resource\ResourceInterface;
+use _PhpScoper905a278e297d\Symfony\Component\Config\Resource\ResourceInterface;
 /**
  * Interface for ResourceCheckers.
  *
@@ -30,7 +30,7 @@ interface ResourceCheckerInterface
      *
      * @return bool True if the ResourceChecker can handle this resource type, false if not
      */
-    public function supports(\_PhpScoper27e2e7523871\Symfony\Component\Config\Resource\ResourceInterface $metadata);
+    public function supports(\_PhpScoper905a278e297d\Symfony\Component\Config\Resource\ResourceInterface $metadata);
     /**
      * Validates the resource.
      *
@@ -38,5 +38,5 @@ interface ResourceCheckerInterface
      *
      * @return bool True if the resource has not changed since the given timestamp, false otherwise
      */
-    public function isFresh(\_PhpScoper27e2e7523871\Symfony\Component\Config\Resource\ResourceInterface $resource, int $timestamp);
+    public function isFresh(\_PhpScoper905a278e297d\Symfony\Component\Config\Resource\ResourceInterface $resource, int $timestamp);
 }
