@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper79999b045682\Symfony\Component\Finder\Comparator;
+namespace _PhpScoper97d4f3c5628a\Symfony\Component\Finder\Comparator;
 
 /**
  * Comparator.
