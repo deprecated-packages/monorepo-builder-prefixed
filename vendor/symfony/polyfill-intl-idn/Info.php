@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper7d1be3c5de07\Symfony\Polyfill\Intl\Idn;
+namespace _PhpScoper5818bcaf1010\Symfony\Polyfill\Intl\Idn;
 
 /**
  * @internal
