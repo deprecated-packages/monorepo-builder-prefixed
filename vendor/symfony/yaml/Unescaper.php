@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperbe77f3b0e77d\Symfony\Component\Yaml;
+namespace _PhpScoper1ff8e175c295\Symfony\Component\Yaml;
 
-use _PhpScoperbe77f3b0e77d\Symfony\Component\Yaml\Exception\ParseException;
+use _PhpScoper1ff8e175c295\Symfony\Component\Yaml\Exception\ParseException;
 /**
  * Unescaper encapsulates unescaping rules for single and double-quoted
  * YAML strings.
@@ -108,7 +108,7 @@ class Unescaper
             case 'U':
                 return self::utf8chr(\hexdec(\substr($value, 2, 8)));
             default:
-                throw new \_PhpScoperbe77f3b0e77d\Symfony\Component\Yaml\Exception\ParseException(\sprintf('Found unknown escape character "%s".', $value));
+                throw new \_PhpScoper1ff8e175c295\Symfony\Component\Yaml\Exception\ParseException(\sprintf('Found unknown escape character "%s".', $value));
         }
     }
     /**
