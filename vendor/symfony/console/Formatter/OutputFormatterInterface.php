@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper5818bcaf1010\Symfony\Component\Console\Formatter;
+namespace _PhpScoperbe77f3b0e77d\Symfony\Component\Console\Formatter;
 
 /**
  * Formatter interface for console output.
@@ -34,7 +34,7 @@ interface OutputFormatterInterface
      *
      * @param string $name The style name
      */
-    public function setStyle($name, \_PhpScoper5818bcaf1010\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style);
+    public function setStyle($name, \_PhpScoperbe77f3b0e77d\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style);
     /**
      * Checks if output formatter has style with specified name.
      *

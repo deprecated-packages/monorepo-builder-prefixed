@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper5818bcaf1010\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace _PhpScoperbe77f3b0e77d\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use _PhpScoper5818bcaf1010\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScoper5818bcaf1010\Symfony\Component\DependencyInjection\Definition;
+use _PhpScoperbe77f3b0e77d\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoperbe77f3b0e77d\Symfony\Component\DependencyInjection\Definition;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ServiceConfigurator extends \_PhpScoper5818bcaf1010\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
+class ServiceConfigurator extends \_PhpScoperbe77f3b0e77d\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
 {
     const FACTORY = 'services';
     use Traits\AbstractTrait;
@@ -41,7 +41,7 @@ class ServiceConfigurator extends \_PhpScoper5818bcaf1010\Symfony\Component\Depe
     private $instanceof;
     private $allowParent;
     private $path;
-    public function __construct(\_PhpScoper5818bcaf1010\Symfony\Component\DependencyInjection\ContainerBuilder $container, array $instanceof, bool $allowParent, \_PhpScoper5818bcaf1010\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \_PhpScoper5818bcaf1010\Symfony\Component\DependencyInjection\Definition $definition, $id, array $defaultTags, string $path = null)
+    public function __construct(\_PhpScoperbe77f3b0e77d\Symfony\Component\DependencyInjection\ContainerBuilder $container, array $instanceof, bool $allowParent, \_PhpScoperbe77f3b0e77d\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \_PhpScoperbe77f3b0e77d\Symfony\Component\DependencyInjection\Definition $definition, $id, array $defaultTags, string $path = null)
     {
         $this->container = $container;
         $this->instanceof = $instanceof;

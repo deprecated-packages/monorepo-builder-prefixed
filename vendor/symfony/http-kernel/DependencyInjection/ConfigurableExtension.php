@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper5818bcaf1010\Symfony\Component\HttpKernel\DependencyInjection;
+namespace _PhpScoperbe77f3b0e77d\Symfony\Component\HttpKernel\DependencyInjection;
 
-use _PhpScoper5818bcaf1010\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoperbe77f3b0e77d\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * This extension sub-class provides first-class integration with the
  * Config/Definition Component.
@@ -23,17 +23,17 @@ use _PhpScoper5818bcaf1010\Symfony\Component\DependencyInjection\ContainerBuilde
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-abstract class ConfigurableExtension extends \_PhpScoper5818bcaf1010\Symfony\Component\HttpKernel\DependencyInjection\Extension
+abstract class ConfigurableExtension extends \_PhpScoperbe77f3b0e77d\Symfony\Component\HttpKernel\DependencyInjection\Extension
 {
     /**
      * {@inheritdoc}
      */
-    public final function load(array $configs, \_PhpScoper5818bcaf1010\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public final function load(array $configs, \_PhpScoperbe77f3b0e77d\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $this->loadInternal($this->processConfiguration($this->getConfiguration($configs, $container), $configs), $container);
     }
     /**
      * Configures the passed container according to the merged configuration.
      */
-    protected abstract function loadInternal(array $mergedConfig, \_PhpScoper5818bcaf1010\Symfony\Component\DependencyInjection\ContainerBuilder $container);
+    protected abstract function loadInternal(array $mergedConfig, \_PhpScoperbe77f3b0e77d\Symfony\Component\DependencyInjection\ContainerBuilder $container);
 }

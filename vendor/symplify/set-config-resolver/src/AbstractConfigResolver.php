@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\SetConfigResolver;
 
-use _PhpScoper5818bcaf1010\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoperbe77f3b0e77d\Symfony\Component\Console\Input\InputInterface;
 use Symplify\SetConfigResolver\Console\Option\OptionName;
 use Symplify\SetConfigResolver\Console\OptionValueResolver;
 use Symplify\SmartFileSystem\Exception\FileNotFoundException;
@@ -22,7 +22,7 @@ abstract class AbstractConfigResolver
     {
         $this->optionValueResolver = new \Symplify\SetConfigResolver\Console\OptionValueResolver();
     }
-    public function resolveFromInput(\_PhpScoper5818bcaf1010\Symfony\Component\Console\Input\InputInterface $input) : ?\Symplify\SmartFileSystem\SmartFileInfo
+    public function resolveFromInput(\_PhpScoperbe77f3b0e77d\Symfony\Component\Console\Input\InputInterface $input) : ?\Symplify\SmartFileSystem\SmartFileInfo
     {
         $configValue = $this->optionValueResolver->getOptionValue($input, \Symplify\SetConfigResolver\Console\Option\OptionName::CONFIG);
         if ($configValue !== null) {
@@ -37,7 +37,7 @@ abstract class AbstractConfigResolver
     /**
      * @param string[] $fallbackFiles
      */
-    public function resolveFromInputWithFallback(\_PhpScoper5818bcaf1010\Symfony\Component\Console\Input\InputInterface $input, array $fallbackFiles) : ?\Symplify\SmartFileSystem\SmartFileInfo
+    public function resolveFromInputWithFallback(\_PhpScoperbe77f3b0e77d\Symfony\Component\Console\Input\InputInterface $input, array $fallbackFiles) : ?\Symplify\SmartFileSystem\SmartFileInfo
     {
         $configFileInfo = $this->resolveFromInput($input);
         if ($configFileInfo !== null) {

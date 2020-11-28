@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper5818bcaf1010\Symfony\Component\VarDumper\Caster;
+namespace _PhpScoperbe77f3b0e77d\Symfony\Component\VarDumper\Caster;
 
-use _PhpScoper5818bcaf1010\Symfony\Component\VarDumper\Cloner\Stub;
+use _PhpScoperbe77f3b0e77d\Symfony\Component\VarDumper\Cloner\Stub;
 /**
  * Casts a caster's Stub.
  *
@@ -20,7 +20,7 @@ use _PhpScoper5818bcaf1010\Symfony\Component\VarDumper\Cloner\Stub;
  */
 class StubCaster
 {
-    public static function castStub(\_PhpScoper5818bcaf1010\Symfony\Component\VarDumper\Cloner\Stub $c, array $a, \_PhpScoper5818bcaf1010\Symfony\Component\VarDumper\Cloner\Stub $stub, $isNested)
+    public static function castStub(\_PhpScoperbe77f3b0e77d\Symfony\Component\VarDumper\Cloner\Stub $c, array $a, \_PhpScoperbe77f3b0e77d\Symfony\Component\VarDumper\Cloner\Stub $stub, $isNested)
     {
         if ($isNested) {
             $stub->type = $c->type;
@@ -29,19 +29,19 @@ class StubCaster
             $stub->handle = $c->handle;
             $stub->cut = $c->cut;
             $stub->attr = $c->attr;
-            if (\_PhpScoper5818bcaf1010\Symfony\Component\VarDumper\Cloner\Stub::TYPE_REF === $c->type && !$c->class && \is_string($c->value) && !\preg_match('//u', $c->value)) {
-                $stub->type = \_PhpScoper5818bcaf1010\Symfony\Component\VarDumper\Cloner\Stub::TYPE_STRING;
-                $stub->class = \_PhpScoper5818bcaf1010\Symfony\Component\VarDumper\Cloner\Stub::STRING_BINARY;
+            if (\_PhpScoperbe77f3b0e77d\Symfony\Component\VarDumper\Cloner\Stub::TYPE_REF === $c->type && !$c->class && \is_string($c->value) && !\preg_match('//u', $c->value)) {
+                $stub->type = \_PhpScoperbe77f3b0e77d\Symfony\Component\VarDumper\Cloner\Stub::TYPE_STRING;
+                $stub->class = \_PhpScoperbe77f3b0e77d\Symfony\Component\VarDumper\Cloner\Stub::STRING_BINARY;
             }
             $a = [];
         }
         return $a;
     }
-    public static function castCutArray(\_PhpScoper5818bcaf1010\Symfony\Component\VarDumper\Caster\CutArrayStub $c, array $a, \_PhpScoper5818bcaf1010\Symfony\Component\VarDumper\Cloner\Stub $stub, $isNested)
+    public static function castCutArray(\_PhpScoperbe77f3b0e77d\Symfony\Component\VarDumper\Caster\CutArrayStub $c, array $a, \_PhpScoperbe77f3b0e77d\Symfony\Component\VarDumper\Cloner\Stub $stub, $isNested)
     {
         return $isNested ? $c->preservedSubset : $a;
     }
-    public static function cutInternals($obj, array $a, \_PhpScoper5818bcaf1010\Symfony\Component\VarDumper\Cloner\Stub $stub, $isNested)
+    public static function cutInternals($obj, array $a, \_PhpScoperbe77f3b0e77d\Symfony\Component\VarDumper\Cloner\Stub $stub, $isNested)
     {
         if ($isNested) {
             $stub->cut += \count($a);
@@ -49,7 +49,7 @@ class StubCaster
         }
         return $a;
     }
-    public static function castEnum(\_PhpScoper5818bcaf1010\Symfony\Component\VarDumper\Caster\EnumStub $c, array $a, \_PhpScoper5818bcaf1010\Symfony\Component\VarDumper\Cloner\Stub $stub, $isNested)
+    public static function castEnum(\_PhpScoperbe77f3b0e77d\Symfony\Component\VarDumper\Caster\EnumStub $c, array $a, \_PhpScoperbe77f3b0e77d\Symfony\Component\VarDumper\Cloner\Stub $stub, $isNested)
     {
         if ($isNested) {
             $stub->class = $c->dumpKeys ? '' : null;
@@ -60,7 +60,7 @@ class StubCaster
             $a = [];
             if ($c->value) {
                 foreach (\array_keys($c->value) as $k) {
-                    $keys[] = !isset($k[0]) || "\0" !== $k[0] ? \_PhpScoper5818bcaf1010\Symfony\Component\VarDumper\Caster\Caster::PREFIX_VIRTUAL . $k : $k;
+                    $keys[] = !isset($k[0]) || "\0" !== $k[0] ? \_PhpScoperbe77f3b0e77d\Symfony\Component\VarDumper\Caster\Caster::PREFIX_VIRTUAL . $k : $k;
                 }
                 // Preserve references with array_combine()
                 $a = \array_combine($keys, $c->value);

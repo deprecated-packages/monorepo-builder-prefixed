@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Command;
 
-use _PhpScoper5818bcaf1010\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoper5818bcaf1010\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoperbe77f3b0e77d\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoperbe77f3b0e77d\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\DependencyUpdater;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\ValueObject\File;
@@ -43,7 +43,7 @@ final class PropagateCommand extends \Symplify\PackageBuilder\Console\Command\Ab
     {
         $this->setDescription('Propagate versions from root "composer.json" to all packages, the opposite of "merge" command');
     }
-    protected function execute(\_PhpScoper5818bcaf1010\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper5818bcaf1010\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoperbe77f3b0e77d\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperbe77f3b0e77d\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $conflictingPackageVersions = $this->versionValidator->findConflictingPackageVersionsInFileInfos($this->composerJsonProvider->getRootAndPackageFileInfos());
         foreach ($conflictingPackageVersions as $packageName => $filesToVersion) {

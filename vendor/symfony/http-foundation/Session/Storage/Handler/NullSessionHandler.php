@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper5818bcaf1010\Symfony\Component\HttpFoundation\Session\Storage\Handler;
+namespace _PhpScoperbe77f3b0e77d\Symfony\Component\HttpFoundation\Session\Storage\Handler;
 
 /**
  * Can be used in unit testing or in a situations where persisted sessions are not desired.
  *
  * @author Drak <drak@zikula.org>
  */
-class NullSessionHandler extends \_PhpScoper5818bcaf1010\Symfony\Component\HttpFoundation\Session\Storage\Handler\AbstractSessionHandler
+class NullSessionHandler extends \_PhpScoperbe77f3b0e77d\Symfony\Component\HttpFoundation\Session\Storage\Handler\AbstractSessionHandler
 {
     /**
      * @return bool
