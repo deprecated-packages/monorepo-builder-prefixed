@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper1ff8e175c295\Symfony\Component\HttpFoundation;
+namespace _PhpScoper31c74f11c4b8\Symfony\Component\HttpFoundation;
 
 /**
  * Response represents an HTTP response in JSON format.
@@ -21,7 +21,7 @@ namespace _PhpScoper1ff8e175c295\Symfony\Component\HttpFoundation;
  *
  * @author Igor Wiedler <igor@wiedler.ch>
  */
-class JsonResponse extends \_PhpScoper1ff8e175c295\Symfony\Component\HttpFoundation\Response
+class JsonResponse extends \_PhpScoper31c74f11c4b8\Symfony\Component\HttpFoundation\Response
 {
     protected $data;
     protected $callback;

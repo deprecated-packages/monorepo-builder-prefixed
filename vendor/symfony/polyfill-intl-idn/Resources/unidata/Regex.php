@@ -1,6 +1,6 @@
 <?php
 
-namespace _PhpScoper1ff8e175c295\Symfony\Polyfill\Intl\Idn\Resources\unidata;
+namespace _PhpScoper31c74f11c4b8\Symfony\Polyfill\Intl\Idn\Resources\unidata;
 
 /**
  * @internal
