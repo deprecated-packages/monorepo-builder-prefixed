@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper68d19594b147\Symfony\Component\Filesystem\Exception;
+namespace _PhpScoper8a93e17d4d47\Symfony\Component\Filesystem\Exception;
 
 /**
  * @author Christian Flothmann <christian.flothmann@sensiolabs.de>
  */
-class InvalidArgumentException extends \InvalidArgumentException implements \_PhpScoper68d19594b147\Symfony\Component\Filesystem\Exception\ExceptionInterface
+class InvalidArgumentException extends \InvalidArgumentException implements \_PhpScoper8a93e17d4d47\Symfony\Component\Filesystem\Exception\ExceptionInterface
 {
 }
