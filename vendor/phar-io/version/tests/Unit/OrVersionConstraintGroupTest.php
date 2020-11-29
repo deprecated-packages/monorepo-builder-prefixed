@@ -8,38 +8,38 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper9ca278c9ad44\PharIo\Version;
+namespace _PhpScoperf4997c409394\PharIo\Version;
 
-use _PhpScoper9ca278c9ad44\PHPUnit\Framework\TestCase;
+use _PhpScoperf4997c409394\PHPUnit\Framework\TestCase;
 /**
  * @covers \PharIo\Version\OrVersionConstraintGroup
  */
-class OrVersionConstraintGroupTest extends \_PhpScoper9ca278c9ad44\PHPUnit\Framework\TestCase
+class OrVersionConstraintGroupTest extends \_PhpScoperf4997c409394\PHPUnit\Framework\TestCase
 {
     public function testReturnsTrueIfOneConstraintReturnsFalse()
     {
-        $firstConstraint = $this->createMock(\_PhpScoper9ca278c9ad44\PharIo\Version\VersionConstraint::class);
-        $secondConstraint = $this->createMock(\_PhpScoper9ca278c9ad44\PharIo\Version\VersionConstraint::class);
+        $firstConstraint = $this->createMock(\_PhpScoperf4997c409394\PharIo\Version\VersionConstraint::class);
+        $secondConstraint = $this->createMock(\_PhpScoperf4997c409394\PharIo\Version\VersionConstraint::class);
         $firstConstraint->expects($this->once())->method('complies')->will($this->returnValue(\false));
         $secondConstraint->expects($this->once())->method('complies')->will($this->returnValue(\true));
-        $group = new \_PhpScoper9ca278c9ad44\PharIo\Version\OrVersionConstraintGroup('foo', [$firstConstraint, $secondConstraint]);
-        $this->assertTrue($group->complies(new \_PhpScoper9ca278c9ad44\PharIo\Version\Version('1.0.0')));
+        $group = new \_PhpScoperf4997c409394\PharIo\Version\OrVersionConstraintGroup('foo', [$firstConstraint, $secondConstraint]);
+        $this->assertTrue($group->complies(new \_PhpScoperf4997c409394\PharIo\Version\Version('1.0.0')));
     }
     public function testReturnsTrueIfAllConstraintsReturnsTrue()
     {
-        $firstConstraint = $this->createMock(\_PhpScoper9ca278c9ad44\PharIo\Version\VersionConstraint::class);
-        $secondConstraint = $this->createMock(\_PhpScoper9ca278c9ad44\PharIo\Version\VersionConstraint::class);
+        $firstConstraint = $this->createMock(\_PhpScoperf4997c409394\PharIo\Version\VersionConstraint::class);
+        $secondConstraint = $this->createMock(\_PhpScoperf4997c409394\PharIo\Version\VersionConstraint::class);
         $firstConstraint->expects($this->once())->method('complies')->will($this->returnValue(\true));
-        $group = new \_PhpScoper9ca278c9ad44\PharIo\Version\OrVersionConstraintGroup('foo', [$firstConstraint, $secondConstraint]);
-        $this->assertTrue($group->complies(new \_PhpScoper9ca278c9ad44\PharIo\Version\Version('1.0.0')));
+        $group = new \_PhpScoperf4997c409394\PharIo\Version\OrVersionConstraintGroup('foo', [$firstConstraint, $secondConstraint]);
+        $this->assertTrue($group->complies(new \_PhpScoperf4997c409394\PharIo\Version\Version('1.0.0')));
     }
     public function testReturnsFalseIfAllConstraintsReturnsFalse()
     {
-        $firstConstraint = $this->createMock(\_PhpScoper9ca278c9ad44\PharIo\Version\VersionConstraint::class);
-        $secondConstraint = $this->createMock(\_PhpScoper9ca278c9ad44\PharIo\Version\VersionConstraint::class);
+        $firstConstraint = $this->createMock(\_PhpScoperf4997c409394\PharIo\Version\VersionConstraint::class);
+        $secondConstraint = $this->createMock(\_PhpScoperf4997c409394\PharIo\Version\VersionConstraint::class);
         $firstConstraint->expects($this->once())->method('complies')->will($this->returnValue(\false));
         $secondConstraint->expects($this->once())->method('complies')->will($this->returnValue(\false));
-        $group = new \_PhpScoper9ca278c9ad44\PharIo\Version\OrVersionConstraintGroup('foo', [$firstConstraint, $secondConstraint]);
-        $this->assertFalse($group->complies(new \_PhpScoper9ca278c9ad44\PharIo\Version\Version('1.0.0')));
+        $group = new \_PhpScoperf4997c409394\PharIo\Version\OrVersionConstraintGroup('foo', [$firstConstraint, $secondConstraint]);
+        $this->assertFalse($group->complies(new \_PhpScoperf4997c409394\PharIo\Version\Version('1.0.0')));
     }
 }

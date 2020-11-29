@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper9ca278c9ad44\Symfony\Component\Console\Exception;
+namespace _PhpScoperf4997c409394\Symfony\Component\Console\Exception;
 
 /**
  * @author Jérôme Tamarelle <jerome@tamarelle.net>
  */
-class InvalidArgumentException extends \InvalidArgumentException implements \_PhpScoper9ca278c9ad44\Symfony\Component\Console\Exception\ExceptionInterface
+class InvalidArgumentException extends \InvalidArgumentException implements \_PhpScoperf4997c409394\Symfony\Component\Console\Exception\ExceptionInterface
 {
 }
