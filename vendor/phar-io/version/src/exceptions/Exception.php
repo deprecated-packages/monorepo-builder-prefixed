@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf4997c409394\PharIo\Version;
+namespace _PhpScoper68d19594b147\PharIo\Version;
 
 interface Exception
 {

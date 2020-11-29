@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf4997c409394\Symfony\Component\HttpKernel\EventListener;
+namespace _PhpScoper68d19594b147\Symfony\Component\HttpKernel\EventListener;
 
-use _PhpScoperf4997c409394\Psr\Container\ContainerInterface;
-use _PhpScoperf4997c409394\Symfony\Component\HttpFoundation\Session\SessionInterface;
+use _PhpScoper68d19594b147\Psr\Container\ContainerInterface;
+use _PhpScoper68d19594b147\Symfony\Component\HttpFoundation\Session\SessionInterface;
 /**
  * Sets the session in the request.
  *
@@ -19,15 +19,15 @@ use _PhpScoperf4997c409394\Symfony\Component\HttpFoundation\Session\SessionInter
  *
  * @final
  */
-class TestSessionListener extends \_PhpScoperf4997c409394\Symfony\Component\HttpKernel\EventListener\AbstractTestSessionListener
+class TestSessionListener extends \_PhpScoper68d19594b147\Symfony\Component\HttpKernel\EventListener\AbstractTestSessionListener
 {
     private $container;
-    public function __construct(\_PhpScoperf4997c409394\Psr\Container\ContainerInterface $container, array $sessionOptions = [])
+    public function __construct(\_PhpScoper68d19594b147\Psr\Container\ContainerInterface $container, array $sessionOptions = [])
     {
         $this->container = $container;
         parent::__construct($sessionOptions);
     }
-    protected function getSession() : ?\_PhpScoperf4997c409394\Symfony\Component\HttpFoundation\Session\SessionInterface
+    protected function getSession() : ?\_PhpScoper68d19594b147\Symfony\Component\HttpFoundation\Session\SessionInterface
     {
         if (!$this->container->has('session')) {
             return null;

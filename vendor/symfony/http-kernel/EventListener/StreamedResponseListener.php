@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf4997c409394\Symfony\Component\HttpKernel\EventListener;
+namespace _PhpScoper68d19594b147\Symfony\Component\HttpKernel\EventListener;
 
-use _PhpScoperf4997c409394\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use _PhpScoperf4997c409394\Symfony\Component\HttpFoundation\StreamedResponse;
-use _PhpScoperf4997c409394\Symfony\Component\HttpKernel\Event\FilterResponseEvent;
-use _PhpScoperf4997c409394\Symfony\Component\HttpKernel\KernelEvents;
+use _PhpScoper68d19594b147\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use _PhpScoper68d19594b147\Symfony\Component\HttpFoundation\StreamedResponse;
+use _PhpScoper68d19594b147\Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+use _PhpScoper68d19594b147\Symfony\Component\HttpKernel\KernelEvents;
 /**
  * StreamedResponseListener is responsible for sending the Response
  * to the client.
@@ -22,23 +22,23 @@ use _PhpScoperf4997c409394\Symfony\Component\HttpKernel\KernelEvents;
  *
  * @final since Symfony 4.3
  */
-class StreamedResponseListener implements \_PhpScoperf4997c409394\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class StreamedResponseListener implements \_PhpScoper68d19594b147\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     /**
      * Filters the Response.
      */
-    public function onKernelResponse(\_PhpScoperf4997c409394\Symfony\Component\HttpKernel\Event\FilterResponseEvent $event)
+    public function onKernelResponse(\_PhpScoper68d19594b147\Symfony\Component\HttpKernel\Event\FilterResponseEvent $event)
     {
         if (!$event->isMasterRequest()) {
             return;
         }
         $response = $event->getResponse();
-        if ($response instanceof \_PhpScoperf4997c409394\Symfony\Component\HttpFoundation\StreamedResponse) {
+        if ($response instanceof \_PhpScoper68d19594b147\Symfony\Component\HttpFoundation\StreamedResponse) {
             $response->send();
         }
     }
     public static function getSubscribedEvents()
     {
-        return [\_PhpScoperf4997c409394\Symfony\Component\HttpKernel\KernelEvents::RESPONSE => ['onKernelResponse', -1024]];
+        return [\_PhpScoper68d19594b147\Symfony\Component\HttpKernel\KernelEvents::RESPONSE => ['onKernelResponse', -1024]];
     }
 }
