@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper8293d234e7ed\Symfony\Component\Config\Definition\Exception;
+namespace _PhpScoper1c9ce01e7be6\Symfony\Component\Config\Definition\Exception;
 
 /**
  * Base exception for all configuration exceptions.
