@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper46d05083fbc3\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
+namespace _PhpScopera28be7b3fe51\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
 
 trait ArgumentTrait
 {

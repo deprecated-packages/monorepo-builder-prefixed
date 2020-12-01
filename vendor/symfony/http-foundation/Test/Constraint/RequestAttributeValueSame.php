@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper46d05083fbc3\Symfony\Component\HttpFoundation\Test\Constraint;
+namespace _PhpScopera28be7b3fe51\Symfony\Component\HttpFoundation\Test\Constraint;
 
-use _PhpScoper46d05083fbc3\PHPUnit\Framework\Constraint\Constraint;
-use _PhpScoper46d05083fbc3\Symfony\Component\HttpFoundation\Request;
-final class RequestAttributeValueSame extends \_PhpScoper46d05083fbc3\PHPUnit\Framework\Constraint\Constraint
+use _PhpScopera28be7b3fe51\PHPUnit\Framework\Constraint\Constraint;
+use _PhpScopera28be7b3fe51\Symfony\Component\HttpFoundation\Request;
+final class RequestAttributeValueSame extends \_PhpScopera28be7b3fe51\PHPUnit\Framework\Constraint\Constraint
 {
     private $name;
     private $value;

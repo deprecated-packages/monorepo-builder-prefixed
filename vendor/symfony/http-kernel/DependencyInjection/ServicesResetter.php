@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper46d05083fbc3\Symfony\Component\HttpKernel\DependencyInjection;
+namespace _PhpScopera28be7b3fe51\Symfony\Component\HttpKernel\DependencyInjection;
 
-use _PhpScoper46d05083fbc3\Symfony\Contracts\Service\ResetInterface;
+use _PhpScopera28be7b3fe51\Symfony\Contracts\Service\ResetInterface;
 /**
  * Resets provided services.
  *
@@ -19,7 +19,7 @@ use _PhpScoper46d05083fbc3\Symfony\Contracts\Service\ResetInterface;
  *
  * @internal
  */
-class ServicesResetter implements \_PhpScoper46d05083fbc3\Symfony\Contracts\Service\ResetInterface
+class ServicesResetter implements \_PhpScopera28be7b3fe51\Symfony\Contracts\Service\ResetInterface
 {
     private $resettableServices;
     private $resetMethods;
