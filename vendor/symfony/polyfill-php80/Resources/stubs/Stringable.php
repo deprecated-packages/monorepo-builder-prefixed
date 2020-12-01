@@ -1,6 +1,6 @@
 <?php
 
-namespace _PhpScoperc4633daa1458;
+namespace _PhpScoper912e6d747d7e;
 
 interface Stringable
 {
@@ -9,4 +9,4 @@ interface Stringable
      */
     public function __toString();
 }
-\class_alias('_PhpScoperc4633daa1458\\Stringable', 'Stringable', \false);
+\class_alias('_PhpScoper912e6d747d7e\\Stringable', 'Stringable', \false);
