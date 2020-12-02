@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper3c4d71e1434d\Symfony\Component\HttpFoundation\Test\Constraint;
+namespace _PhpScoper98290f688d14\Symfony\Component\HttpFoundation\Test\Constraint;
 
-use _PhpScoper3c4d71e1434d\PHPUnit\Framework\Constraint\Constraint;
-use _PhpScoper3c4d71e1434d\Symfony\Component\HttpFoundation\Cookie;
-use _PhpScoper3c4d71e1434d\Symfony\Component\HttpFoundation\Response;
-final class ResponseHasCookie extends \_PhpScoper3c4d71e1434d\PHPUnit\Framework\Constraint\Constraint
+use _PhpScoper98290f688d14\PHPUnit\Framework\Constraint\Constraint;
+use _PhpScoper98290f688d14\Symfony\Component\HttpFoundation\Cookie;
+use _PhpScoper98290f688d14\Symfony\Component\HttpFoundation\Response;
+final class ResponseHasCookie extends \_PhpScoper98290f688d14\PHPUnit\Framework\Constraint\Constraint
 {
     private $name;
     private $path;
@@ -56,10 +56,10 @@ final class ResponseHasCookie extends \_PhpScoper3c4d71e1434d\PHPUnit\Framework\
     {
         return 'the Response ' . $this->toString();
     }
-    private function getCookie(\_PhpScoper3c4d71e1434d\Symfony\Component\HttpFoundation\Response $response) : ?\_PhpScoper3c4d71e1434d\Symfony\Component\HttpFoundation\Cookie
+    private function getCookie(\_PhpScoper98290f688d14\Symfony\Component\HttpFoundation\Response $response) : ?\_PhpScoper98290f688d14\Symfony\Component\HttpFoundation\Cookie
     {
         $cookies = $response->headers->getCookies();
-        $filteredCookies = \array_filter($cookies, function (\_PhpScoper3c4d71e1434d\Symfony\Component\HttpFoundation\Cookie $cookie) {
+        $filteredCookies = \array_filter($cookies, function (\_PhpScoper98290f688d14\Symfony\Component\HttpFoundation\Cookie $cookie) {
             return $cookie->getName() === $this->name && $cookie->getPath() === $this->path && $cookie->getDomain() === $this->domain;
         });
         return \reset($filteredCookies) ?: null;
