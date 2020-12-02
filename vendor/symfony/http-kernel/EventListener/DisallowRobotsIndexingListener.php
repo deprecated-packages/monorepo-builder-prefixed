@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper98290f688d14\Symfony\Component\HttpKernel\EventListener;
+namespace _PhpScopercd844fca8af3\Symfony\Component\HttpKernel\EventListener;
 
-use _PhpScoper98290f688d14\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use _PhpScoper98290f688d14\Symfony\Component\HttpKernel\Event\ResponseEvent;
-use _PhpScoper98290f688d14\Symfony\Component\HttpKernel\KernelEvents;
+use _PhpScopercd844fca8af3\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use _PhpScopercd844fca8af3\Symfony\Component\HttpKernel\Event\ResponseEvent;
+use _PhpScopercd844fca8af3\Symfony\Component\HttpKernel\KernelEvents;
 /**
  * Ensures that the application is not indexed by search engines.
  *
  * @author Gary PEGEOT <garypegeot@gmail.com>
  */
-class DisallowRobotsIndexingListener implements \_PhpScoper98290f688d14\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class DisallowRobotsIndexingListener implements \_PhpScopercd844fca8af3\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     private const HEADER_NAME = 'X-Robots-Tag';
-    public function onResponse(\_PhpScoper98290f688d14\Symfony\Component\HttpKernel\Event\ResponseEvent $event) : void
+    public function onResponse(\_PhpScopercd844fca8af3\Symfony\Component\HttpKernel\Event\ResponseEvent $event) : void
     {
         if (!$event->getResponse()->headers->has(static::HEADER_NAME)) {
             $event->getResponse()->headers->set(static::HEADER_NAME, 'noindex');
@@ -32,6 +32,6 @@ class DisallowRobotsIndexingListener implements \_PhpScoper98290f688d14\Symfony\
      */
     public static function getSubscribedEvents()
     {
-        return [\_PhpScoper98290f688d14\Symfony\Component\HttpKernel\KernelEvents::RESPONSE => ['onResponse', -255]];
+        return [\_PhpScopercd844fca8af3\Symfony\Component\HttpKernel\KernelEvents::RESPONSE => ['onResponse', -255]];
     }
 }

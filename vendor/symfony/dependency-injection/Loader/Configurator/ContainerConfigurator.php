@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace _PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use _PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use _PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use _PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use _PhpScoper98290f688d14\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Definition;
-use _PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use _PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use _PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-use _PhpScoper98290f688d14\Symfony\Component\ExpressionLanguage\Expression;
+use _PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use _PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use _PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use _PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Definition;
+use _PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use _PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use _PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use _PhpScopercd844fca8af3\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ContainerConfigurator extends \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
+class ContainerConfigurator extends \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
 {
     const FACTORY = 'container';
     private $container;
@@ -31,7 +31,7 @@ class ContainerConfigurator extends \_PhpScoper98290f688d14\Symfony\Component\De
     private $path;
     private $file;
     private $anonymousCount = 0;
-    public function __construct(\_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\ContainerBuilder $container, \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Loader\PhpFileLoader $loader, array &$instanceof, string $path, string $file)
+    public function __construct(\_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\ContainerBuilder $container, \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Loader\PhpFileLoader $loader, array &$instanceof, string $path, string $file)
     {
         $this->container = $container;
         $this->loader = $loader;
@@ -42,10 +42,10 @@ class ContainerConfigurator extends \_PhpScoper98290f688d14\Symfony\Component\De
     public final function extension(string $namespace, array $config)
     {
         if (!$this->container->hasExtension($namespace)) {
-            $extensions = \array_filter(\array_map(function (\_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Extension\ExtensionInterface $ext) {
+            $extensions = \array_filter(\array_map(function (\_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Extension\ExtensionInterface $ext) {
                 return $ext->getAlias();
             }, $this->container->getExtensions()));
-            throw new \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('There is no extension able to load the configuration for "%s" (in "%s"). Looked for namespace "%s", found "%s".', $namespace, $this->file, $namespace, $extensions ? \implode('", "', $extensions) : 'none'));
+            throw new \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('There is no extension able to load the configuration for "%s" (in "%s"). Looked for namespace "%s", found "%s".', $namespace, $this->file, $namespace, $extensions ? \implode('", "', $extensions) : 'none'));
         }
         $this->container->loadFromExtension($namespace, static::processValue($config));
     }
@@ -54,13 +54,13 @@ class ContainerConfigurator extends \_PhpScoper98290f688d14\Symfony\Component\De
         $this->loader->setCurrentDir(\dirname($this->path));
         $this->loader->import($resource, $type, $ignoreErrors, $this->file);
     }
-    public final function parameters() : \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Loader\Configurator\ParametersConfigurator
+    public final function parameters() : \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Loader\Configurator\ParametersConfigurator
     {
-        return new \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Loader\Configurator\ParametersConfigurator($this->container);
+        return new \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Loader\Configurator\ParametersConfigurator($this->container);
     }
-    public final function services() : \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator
+    public final function services() : \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator
     {
-        return new \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator($this->container, $this->loader, $this->instanceof, $this->path, $this->anonymousCount);
+        return new \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator($this->container, $this->loader, $this->instanceof, $this->path, $this->anonymousCount);
     }
     /**
      * @return static
@@ -75,77 +75,77 @@ class ContainerConfigurator extends \_PhpScoper98290f688d14\Symfony\Component\De
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-\class_alias('_PhpScoper98290f688d14\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator', 'Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator', \false);
+\class_alias('_PhpScopercd844fca8af3\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator', 'Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator', \false);
 /**
  * Creates a service reference.
  *
  * @deprecated since Symfony 5.1, use service() instead.
  */
-function ref(string $id) : \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator
+function ref(string $id) : \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator
 {
     trigger_deprecation('symfony/dependency-injection', '5.1', '"%s()" is deprecated, use "service()" instead.', __FUNCTION__);
-    return new \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator($id);
+    return new \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator($id);
 }
 /**
  * Creates a reference to a service.
  */
-function service(string $serviceId) : \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator
+function service(string $serviceId) : \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator
 {
-    return new \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator($serviceId);
+    return new \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator($serviceId);
 }
 /**
  * Creates an inline service.
  *
  * @deprecated since Symfony 5.1, use inline_service() instead.
  */
-function inline(string $class = null) : \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Loader\Configurator\InlineServiceConfigurator
+function inline(string $class = null) : \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Loader\Configurator\InlineServiceConfigurator
 {
     trigger_deprecation('symfony/dependency-injection', '5.1', '"%s()" is deprecated, use "inline_service()" instead.', __FUNCTION__);
-    return new \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Loader\Configurator\InlineServiceConfigurator(new \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Definition($class));
+    return new \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Loader\Configurator\InlineServiceConfigurator(new \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Definition($class));
 }
 /**
  * Creates an inline service.
  */
-function inline_service(string $class = null) : \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Loader\Configurator\InlineServiceConfigurator
+function inline_service(string $class = null) : \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Loader\Configurator\InlineServiceConfigurator
 {
-    return new \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Loader\Configurator\InlineServiceConfigurator(new \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Definition($class));
+    return new \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Loader\Configurator\InlineServiceConfigurator(new \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Definition($class));
 }
 /**
  * Creates a service locator.
  *
  * @param ReferenceConfigurator[] $values
  */
-function service_locator(array $values) : \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument
+function service_locator(array $values) : \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument
 {
-    return new \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument(\_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator::processValue($values, \true));
+    return new \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument(\_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator::processValue($values, \true));
 }
 /**
  * Creates a lazy iterator.
  *
  * @param ReferenceConfigurator[] $values
  */
-function iterator(array $values) : \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Argument\IteratorArgument
+function iterator(array $values) : \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Argument\IteratorArgument
 {
-    return new \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Argument\IteratorArgument(\_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator::processValue($values, \true));
+    return new \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Argument\IteratorArgument(\_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator::processValue($values, \true));
 }
 /**
  * Creates a lazy iterator by tag name.
  */
-function tagged_iterator(string $tag, string $indexAttribute = null, string $defaultIndexMethod = null, string $defaultPriorityMethod = null) : \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument
+function tagged_iterator(string $tag, string $indexAttribute = null, string $defaultIndexMethod = null, string $defaultPriorityMethod = null) : \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument
 {
-    return new \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument($tag, $indexAttribute, $defaultIndexMethod, \false, $defaultPriorityMethod);
+    return new \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument($tag, $indexAttribute, $defaultIndexMethod, \false, $defaultPriorityMethod);
 }
 /**
  * Creates a service locator by tag name.
  */
-function tagged_locator(string $tag, string $indexAttribute = null, string $defaultIndexMethod = null) : \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument
+function tagged_locator(string $tag, string $indexAttribute = null, string $defaultIndexMethod = null) : \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument
 {
-    return new \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument(new \_PhpScoper98290f688d14\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument($tag, $indexAttribute, $defaultIndexMethod, \true));
+    return new \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument(new \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument($tag, $indexAttribute, $defaultIndexMethod, \true));
 }
 /**
  * Creates an expression.
  */
-function expr(string $expression) : \_PhpScoper98290f688d14\Symfony\Component\ExpressionLanguage\Expression
+function expr(string $expression) : \_PhpScopercd844fca8af3\Symfony\Component\ExpressionLanguage\Expression
 {
-    return new \_PhpScoper98290f688d14\Symfony\Component\ExpressionLanguage\Expression($expression);
+    return new \_PhpScopercd844fca8af3\Symfony\Component\ExpressionLanguage\Expression($expression);
 }

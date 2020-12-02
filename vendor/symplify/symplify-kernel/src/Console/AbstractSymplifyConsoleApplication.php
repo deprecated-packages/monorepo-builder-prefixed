@@ -3,16 +3,16 @@
 declare (strict_types=1);
 namespace Symplify\SymplifyKernel\Console;
 
-use _PhpScoper98290f688d14\Nette\Utils\Strings;
-use _PhpScoper98290f688d14\Symfony\Component\Console\Application;
-use _PhpScoper98290f688d14\Symfony\Component\Console\Command\Command;
-use _PhpScoper98290f688d14\Symfony\Component\Console\Descriptor\TextDescriptor;
-use _PhpScoper98290f688d14\Symfony\Component\Console\Exception\RuntimeException;
-use _PhpScoper98290f688d14\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoper98290f688d14\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScopercd844fca8af3\Nette\Utils\Strings;
+use _PhpScopercd844fca8af3\Symfony\Component\Console\Application;
+use _PhpScopercd844fca8af3\Symfony\Component\Console\Command\Command;
+use _PhpScopercd844fca8af3\Symfony\Component\Console\Descriptor\TextDescriptor;
+use _PhpScopercd844fca8af3\Symfony\Component\Console\Exception\RuntimeException;
+use _PhpScopercd844fca8af3\Symfony\Component\Console\Input\InputInterface;
+use _PhpScopercd844fca8af3\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\PackageBuilder\Console\Command\CommandNaming;
 use Symplify\PackageBuilder\Console\ShellCode;
-abstract class AbstractSymplifyConsoleApplication extends \_PhpScoper98290f688d14\Symfony\Component\Console\Application
+abstract class AbstractSymplifyConsoleApplication extends \_PhpScopercd844fca8af3\Symfony\Component\Console\Application
 {
     /**
      * @var string
@@ -43,18 +43,18 @@ abstract class AbstractSymplifyConsoleApplication extends \_PhpScoper98290f688d1
         }
         parent::addCommands($commands);
     }
-    protected function doRunCommand(\_PhpScoper98290f688d14\Symfony\Component\Console\Command\Command $command, \_PhpScoper98290f688d14\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper98290f688d14\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function doRunCommand(\_PhpScopercd844fca8af3\Symfony\Component\Console\Command\Command $command, \_PhpScopercd844fca8af3\Symfony\Component\Console\Input\InputInterface $input, \_PhpScopercd844fca8af3\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         return $this->doRunCommandAndShowHelpOnArgumentError($command, $input, $output);
     }
-    protected function doRunCommandAndShowHelpOnArgumentError(\_PhpScoper98290f688d14\Symfony\Component\Console\Command\Command $command, \_PhpScoper98290f688d14\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper98290f688d14\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function doRunCommandAndShowHelpOnArgumentError(\_PhpScopercd844fca8af3\Symfony\Component\Console\Command\Command $command, \_PhpScopercd844fca8af3\Symfony\Component\Console\Input\InputInterface $input, \_PhpScopercd844fca8af3\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         try {
             return parent::doRunCommand($command, $input, $output);
-        } catch (\_PhpScoper98290f688d14\Symfony\Component\Console\Exception\RuntimeException $runtimeException) {
-            if (\_PhpScoper98290f688d14\Nette\Utils\Strings::contains($runtimeException->getMessage(), 'Provide required arguments')) {
+        } catch (\_PhpScopercd844fca8af3\Symfony\Component\Console\Exception\RuntimeException $runtimeException) {
+            if (\_PhpScopercd844fca8af3\Nette\Utils\Strings::contains($runtimeException->getMessage(), 'Provide required arguments')) {
                 $this->cleanExtraCommandArgument($command);
-                $textDescriptor = new \_PhpScoper98290f688d14\Symfony\Component\Console\Descriptor\TextDescriptor();
+                $textDescriptor = new \_PhpScopercd844fca8af3\Symfony\Component\Console\Descriptor\TextDescriptor();
                 $textDescriptor->describe($output, $command);
                 return \Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
             }
@@ -65,7 +65,7 @@ abstract class AbstractSymplifyConsoleApplication extends \_PhpScoper98290f688d1
      * Sometimes there is "command" argument,
      * not really needed on fail of missing argument
      */
-    private function cleanExtraCommandArgument(\_PhpScoper98290f688d14\Symfony\Component\Console\Command\Command $command) : void
+    private function cleanExtraCommandArgument(\_PhpScopercd844fca8af3\Symfony\Component\Console\Command\Command $command) : void
     {
         $inputDefinition = $command->getDefinition();
         $arguments = $inputDefinition->getArguments();
