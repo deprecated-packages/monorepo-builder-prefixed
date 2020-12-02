@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopera28be7b3fe51\Symfony\Component\HttpKernel\ControllerMetadata;
+namespace _PhpScoper9ea409d355af\Symfony\Component\HttpKernel\ControllerMetadata;
 
 /**
  * Responsible for storing metadata of an argument.
