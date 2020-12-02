@@ -1,6 +1,6 @@
 <?php
 
-namespace _PhpScopera2ff5fd2b59c;
+namespace _PhpScoper056b892061ac;
 
 /*
  * This file is part of the Symfony package.
@@ -10,14 +10,14 @@ namespace _PhpScopera2ff5fd2b59c;
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-use _PhpScopera2ff5fd2b59c\Symfony\Polyfill\Intl\Normalizer as p;
+use _PhpScoper056b892061ac\Symfony\Polyfill\Intl\Normalizer as p;
 if (!\function_exists('normalizer_is_normalized')) {
-    function normalizer_is_normalized($s, $form = \_PhpScopera2ff5fd2b59c\Symfony\Polyfill\Intl\Normalizer\Normalizer::NFC)
+    function normalizer_is_normalized($s, $form = \_PhpScoper056b892061ac\Symfony\Polyfill\Intl\Normalizer\Normalizer::NFC)
     {
-        return \_PhpScopera2ff5fd2b59c\Symfony\Polyfill\Intl\Normalizer\Normalizer::isNormalized($s, $form);
+        return \_PhpScoper056b892061ac\Symfony\Polyfill\Intl\Normalizer\Normalizer::isNormalized($s, $form);
     }
-    function normalizer_normalize($s, $form = \_PhpScopera2ff5fd2b59c\Symfony\Polyfill\Intl\Normalizer\Normalizer::NFC)
+    function normalizer_normalize($s, $form = \_PhpScoper056b892061ac\Symfony\Polyfill\Intl\Normalizer\Normalizer::NFC)
     {
-        return \_PhpScopera2ff5fd2b59c\Symfony\Polyfill\Intl\Normalizer\Normalizer::normalize($s, $form);
+        return \_PhpScoper056b892061ac\Symfony\Polyfill\Intl\Normalizer\Normalizer::normalize($s, $form);
     }
 }

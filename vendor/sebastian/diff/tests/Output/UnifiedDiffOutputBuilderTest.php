@@ -9,10 +9,10 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopera2ff5fd2b59c\SebastianBergmann\Diff\Output;
+namespace _PhpScoper056b892061ac\SebastianBergmann\Diff\Output;
 
-use _PhpScopera2ff5fd2b59c\PHPUnit\Framework\TestCase;
-use _PhpScopera2ff5fd2b59c\SebastianBergmann\Diff\Differ;
+use _PhpScoper056b892061ac\PHPUnit\Framework\TestCase;
+use _PhpScoper056b892061ac\SebastianBergmann\Diff\Differ;
 /**
  * @covers SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder
  *
@@ -20,7 +20,7 @@ use _PhpScopera2ff5fd2b59c\SebastianBergmann\Diff\Differ;
  * @uses SebastianBergmann\Diff\Output\AbstractChunkOutputBuilder
  * @uses SebastianBergmann\Diff\TimeEfficientLongestCommonSubsequenceCalculator
  */
-final class UnifiedDiffOutputBuilderTest extends \_PhpScopera2ff5fd2b59c\PHPUnit\Framework\TestCase
+final class UnifiedDiffOutputBuilderTest extends \_PhpScoper056b892061ac\PHPUnit\Framework\TestCase
 {
     /**
      * @param string $expected
@@ -32,7 +32,7 @@ final class UnifiedDiffOutputBuilderTest extends \_PhpScopera2ff5fd2b59c\PHPUnit
      */
     public function testCustomHeaderCanBeUsed(string $expected, string $from, string $to, string $header) : void
     {
-        $differ = new \_PhpScopera2ff5fd2b59c\SebastianBergmann\Diff\Differ(new \_PhpScopera2ff5fd2b59c\SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder($header));
+        $differ = new \_PhpScoper056b892061ac\SebastianBergmann\Diff\Differ(new \_PhpScoper056b892061ac\SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder($header));
         $this->assertSame($expected, $differ->diff($from, $to));
     }
     public function headerProvider() : array
@@ -48,11 +48,11 @@ final class UnifiedDiffOutputBuilderTest extends \_PhpScopera2ff5fd2b59c\PHPUnit
      */
     public function testDiffWithLineNumbers($expected, $from, $to) : void
     {
-        $differ = new \_PhpScopera2ff5fd2b59c\SebastianBergmann\Diff\Differ(new \_PhpScopera2ff5fd2b59c\SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder("--- Original\n+++ New\n", \true));
+        $differ = new \_PhpScoper056b892061ac\SebastianBergmann\Diff\Differ(new \_PhpScoper056b892061ac\SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder("--- Original\n+++ New\n", \true));
         $this->assertSame($expected, $differ->diff($from, $to));
     }
     public function provideDiffWithLineNumbers() : array
     {
-        return \_PhpScopera2ff5fd2b59c\SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilderDataProvider::provideDiffWithLineNumbers();
+        return \_PhpScoper056b892061ac\SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilderDataProvider::provideDiffWithLineNumbers();
     }
 }

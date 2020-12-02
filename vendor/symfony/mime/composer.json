@@ -29,7 +29,7 @@
     },
     "autoload": {
         "psr-4": {
-            "_PhpScopera2ff5fd2b59c\\Symfony\\Component\\Mime\\": ""
+            "_PhpScoper056b892061ac\\Symfony\\Component\\Mime\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"

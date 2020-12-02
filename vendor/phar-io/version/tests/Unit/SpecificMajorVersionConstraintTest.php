@@ -8,25 +8,25 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopera2ff5fd2b59c\PharIo\Version;
+namespace _PhpScoper056b892061ac\PharIo\Version;
 
-use _PhpScopera2ff5fd2b59c\PHPUnit\Framework\TestCase;
+use _PhpScoper056b892061ac\PHPUnit\Framework\TestCase;
 /**
  * @covers \PharIo\Version\SpecificMajorVersionConstraint
  */
-class SpecificMajorVersionConstraintTest extends \_PhpScopera2ff5fd2b59c\PHPUnit\Framework\TestCase
+class SpecificMajorVersionConstraintTest extends \_PhpScoper056b892061ac\PHPUnit\Framework\TestCase
 {
     public function versionProvider()
     {
         return [
             // compliant versions
-            [1, new \_PhpScopera2ff5fd2b59c\PharIo\Version\Version('1.0.2'), \true],
-            [1, new \_PhpScopera2ff5fd2b59c\PharIo\Version\Version('1.0.3'), \true],
-            [1, new \_PhpScopera2ff5fd2b59c\PharIo\Version\Version('1.1.1'), \true],
+            [1, new \_PhpScoper056b892061ac\PharIo\Version\Version('1.0.2'), \true],
+            [1, new \_PhpScoper056b892061ac\PharIo\Version\Version('1.0.3'), \true],
+            [1, new \_PhpScoper056b892061ac\PharIo\Version\Version('1.1.1'), \true],
             // non-compliant versions
-            [2, new \_PhpScopera2ff5fd2b59c\PharIo\Version\Version('0.9.9'), \false],
-            [3, new \_PhpScopera2ff5fd2b59c\PharIo\Version\Version('2.2.3'), \false],
-            [3, new \_PhpScopera2ff5fd2b59c\PharIo\Version\Version('2.9.9'), \false],
+            [2, new \_PhpScoper056b892061ac\PharIo\Version\Version('0.9.9'), \false],
+            [3, new \_PhpScoper056b892061ac\PharIo\Version\Version('2.2.3'), \false],
+            [3, new \_PhpScoper056b892061ac\PharIo\Version\Version('2.9.9'), \false],
         ];
     }
     /**
@@ -36,9 +36,9 @@ class SpecificMajorVersionConstraintTest extends \_PhpScopera2ff5fd2b59c\PHPUnit
      * @param Version $version
      * @param bool $expectedResult
      */
-    public function testReturnsTrueForCompliantVersions($major, \_PhpScopera2ff5fd2b59c\PharIo\Version\Version $version, $expectedResult)
+    public function testReturnsTrueForCompliantVersions($major, \_PhpScoper056b892061ac\PharIo\Version\Version $version, $expectedResult)
     {
-        $constraint = new \_PhpScopera2ff5fd2b59c\PharIo\Version\SpecificMajorVersionConstraint('foo', $major);
+        $constraint = new \_PhpScoper056b892061ac\PharIo\Version\SpecificMajorVersionConstraint('foo', $major);
         $this->assertSame($expectedResult, $constraint->complies($version));
     }
 }

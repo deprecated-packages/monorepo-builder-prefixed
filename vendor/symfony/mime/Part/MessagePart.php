@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopera2ff5fd2b59c\Symfony\Component\Mime\Part;
+namespace _PhpScoper056b892061ac\Symfony\Component\Mime\Part;
 
-use _PhpScopera2ff5fd2b59c\Symfony\Component\Mime\Message;
-use _PhpScopera2ff5fd2b59c\Symfony\Component\Mime\RawMessage;
+use _PhpScoper056b892061ac\Symfony\Component\Mime\Message;
+use _PhpScoper056b892061ac\Symfony\Component\Mime\RawMessage;
 /**
  * @final
  *
@@ -19,12 +19,12 @@ use _PhpScopera2ff5fd2b59c\Symfony\Component\Mime\RawMessage;
  *
  * @experimental in 4.3
  */
-class MessagePart extends \_PhpScopera2ff5fd2b59c\Symfony\Component\Mime\Part\DataPart
+class MessagePart extends \_PhpScoper056b892061ac\Symfony\Component\Mime\Part\DataPart
 {
     private $message;
-    public function __construct(\_PhpScopera2ff5fd2b59c\Symfony\Component\Mime\RawMessage $message)
+    public function __construct(\_PhpScoper056b892061ac\Symfony\Component\Mime\RawMessage $message)
     {
-        if ($message instanceof \_PhpScopera2ff5fd2b59c\Symfony\Component\Mime\Message) {
+        if ($message instanceof \_PhpScoper056b892061ac\Symfony\Component\Mime\Message) {
             $name = $message->getHeaders()->getHeaderBody('Subject') . '.eml';
         } else {
             $name = 'email.eml';
