@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopercd844fca8af3\Symfony\Component\Process\Pipes;
+namespace _PhpScoper3bda9af7e0fd\Symfony\Component\Process\Pipes;
 
 /**
  * PipesInterface manages descriptors and pipes for the use of proc_open.

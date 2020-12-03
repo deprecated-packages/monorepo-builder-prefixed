@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopercd844fca8af3\Symfony\Component\Mime\Part;
+namespace _PhpScoper3bda9af7e0fd\Symfony\Component\Mime\Part;
 
-use _PhpScopercd844fca8af3\Symfony\Component\Mime\Header\Headers;
+use _PhpScoper3bda9af7e0fd\Symfony\Component\Mime\Header\Headers;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
@@ -21,13 +21,13 @@ abstract class AbstractPart
     private $headers;
     public function __construct()
     {
-        $this->headers = new \_PhpScopercd844fca8af3\Symfony\Component\Mime\Header\Headers();
+        $this->headers = new \_PhpScoper3bda9af7e0fd\Symfony\Component\Mime\Header\Headers();
     }
-    public function getHeaders() : \_PhpScopercd844fca8af3\Symfony\Component\Mime\Header\Headers
+    public function getHeaders() : \_PhpScoper3bda9af7e0fd\Symfony\Component\Mime\Header\Headers
     {
         return $this->headers;
     }
-    public function getPreparedHeaders() : \_PhpScopercd844fca8af3\Symfony\Component\Mime\Header\Headers
+    public function getPreparedHeaders() : \_PhpScoper3bda9af7e0fd\Symfony\Component\Mime\Header\Headers
     {
         $headers = clone $this->headers;
         $headers->setHeaderBody('Parameterized', 'Content-Type', $this->getMediaType() . '/' . $this->getMediaSubtype());

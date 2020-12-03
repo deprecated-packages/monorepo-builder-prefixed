@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Exception;
+namespace _PhpScoper3bda9af7e0fd\Symfony\Component\DependencyInjection\Exception;
 
-use _PhpScopercd844fca8af3\Psr\Container\NotFoundExceptionInterface;
+use _PhpScoper3bda9af7e0fd\Psr\Container\NotFoundExceptionInterface;
 /**
  * This exception is thrown when a non-existent service is requested.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ServiceNotFoundException extends \_PhpScopercd844fca8af3\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException implements \_PhpScopercd844fca8af3\Psr\Container\NotFoundExceptionInterface
+class ServiceNotFoundException extends \_PhpScoper3bda9af7e0fd\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException implements \_PhpScoper3bda9af7e0fd\Psr\Container\NotFoundExceptionInterface
 {
     private $id;
     private $sourceId;
