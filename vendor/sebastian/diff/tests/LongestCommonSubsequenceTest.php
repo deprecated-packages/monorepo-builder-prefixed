@@ -9,13 +9,13 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper56e9de378e59\SebastianBergmann\Diff;
+namespace _PhpScoper23507306fdfc\SebastianBergmann\Diff;
 
-use _PhpScoper56e9de378e59\PHPUnit\Framework\TestCase;
+use _PhpScoper23507306fdfc\PHPUnit\Framework\TestCase;
 /**
  * @coversNothing
  */
-abstract class LongestCommonSubsequenceTest extends \_PhpScoper56e9de378e59\PHPUnit\Framework\TestCase
+abstract class LongestCommonSubsequenceTest extends \_PhpScoper23507306fdfc\PHPUnit\Framework\TestCase
 {
     /**
      * @var LongestCommonSubsequenceCalculator
@@ -154,5 +154,5 @@ abstract class LongestCommonSubsequenceTest extends \_PhpScoper56e9de378e59\PHPU
     /**
      * @return LongestCommonSubsequenceCalculator
      */
-    protected abstract function createImplementation() : \_PhpScoper56e9de378e59\SebastianBergmann\Diff\LongestCommonSubsequenceCalculator;
+    protected abstract function createImplementation() : \_PhpScoper23507306fdfc\SebastianBergmann\Diff\LongestCommonSubsequenceCalculator;
 }
