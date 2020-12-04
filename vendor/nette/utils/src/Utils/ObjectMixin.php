@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace _PhpScoper23507306fdfc\Nette\Utils;
+namespace _PhpScoper7b254e6a7108\Nette\Utils;
 
-use _PhpScoper23507306fdfc\Nette;
+use _PhpScoper7b254e6a7108\Nette;
 /**
  * Nette\Object behaviour mixin.
  * @deprecated
@@ -21,7 +21,7 @@ final class ObjectMixin
     public static function getSuggestion(array $possibilities, string $value) : ?string
     {
         \trigger_error(__METHOD__ . '() has been renamed to Nette\\Utils\\ObjectHelpers::getSuggestion()', \E_USER_DEPRECATED);
-        return \_PhpScoper23507306fdfc\Nette\Utils\ObjectHelpers::getSuggestion($possibilities, $value);
+        return \_PhpScoper7b254e6a7108\Nette\Utils\ObjectHelpers::getSuggestion($possibilities, $value);
     }
     public static function setExtensionMethod($class, $name, $callback)
     {
