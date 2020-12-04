@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper12b9214dc5a9\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
+namespace _PhpScoper56e9de378e59\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
 
-use _PhpScoper12b9214dc5a9\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use _PhpScoper56e9de378e59\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 trait DeprecateTrait
 {
     /**

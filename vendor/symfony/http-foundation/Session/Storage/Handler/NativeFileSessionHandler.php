@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper12b9214dc5a9\Symfony\Component\HttpFoundation\Session\Storage\Handler;
+namespace _PhpScoper56e9de378e59\Symfony\Component\HttpFoundation\Session\Storage\Handler;
 
 /**
  * Native session handler using PHP's built in file storage.
