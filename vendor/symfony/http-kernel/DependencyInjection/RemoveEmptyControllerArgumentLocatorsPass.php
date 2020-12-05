@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper44d485ef56a2\Symfony\Component\HttpKernel\DependencyInjection;
+namespace _PhpScoper37b79542cc43\Symfony\Component\HttpKernel\DependencyInjection;
 
-use _PhpScoper44d485ef56a2\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use _PhpScoper44d485ef56a2\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoper37b79542cc43\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use _PhpScoper37b79542cc43\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * Removes empty service-locators registered for ServiceValueResolver.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class RemoveEmptyControllerArgumentLocatorsPass implements \_PhpScoper44d485ef56a2\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class RemoveEmptyControllerArgumentLocatorsPass implements \_PhpScoper37b79542cc43\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     private $controllerLocator;
     public function __construct(string $controllerLocator = 'argument_resolver.controller_locator')
     {
         $this->controllerLocator = $controllerLocator;
     }
-    public function process(\_PhpScoper44d485ef56a2\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\_PhpScoper37b79542cc43\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $controllerLocator = $container->findDefinition($this->controllerLocator);
         $controllers = $controllerLocator->getArgument(0);
