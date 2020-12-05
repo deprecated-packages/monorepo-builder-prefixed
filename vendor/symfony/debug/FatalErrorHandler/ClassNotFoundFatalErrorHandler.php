@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperbd03d493ccc6\Symfony\Component\Debug\FatalErrorHandler;
+namespace _PhpScoperc1a0b7b3175f\Symfony\Component\Debug\FatalErrorHandler;
 
-use _PhpScoperbd03d493ccc6\Composer\Autoload\ClassLoader as ComposerClassLoader;
-use _PhpScoperbd03d493ccc6\Symfony\Component\ClassLoader\ClassLoader as SymfonyClassLoader;
-use _PhpScoperbd03d493ccc6\Symfony\Component\Debug\DebugClassLoader;
-use _PhpScoperbd03d493ccc6\Symfony\Component\Debug\Exception\ClassNotFoundException;
-use _PhpScoperbd03d493ccc6\Symfony\Component\Debug\Exception\FatalErrorException;
-@\trigger_error(\sprintf('The "%s" class is deprecated since Symfony 4.4, use "%s" instead.', \_PhpScoperbd03d493ccc6\Symfony\Component\Debug\FatalErrorHandler\ClassNotFoundFatalErrorHandler::class, \_PhpScoperbd03d493ccc6\Symfony\Component\ErrorHandler\FatalErrorHandler\ClassNotFoundFatalErrorHandler::class), \E_USER_DEPRECATED);
+use _PhpScoperc1a0b7b3175f\Composer\Autoload\ClassLoader as ComposerClassLoader;
+use _PhpScoperc1a0b7b3175f\Symfony\Component\ClassLoader\ClassLoader as SymfonyClassLoader;
+use _PhpScoperc1a0b7b3175f\Symfony\Component\Debug\DebugClassLoader;
+use _PhpScoperc1a0b7b3175f\Symfony\Component\Debug\Exception\ClassNotFoundException;
+use _PhpScoperc1a0b7b3175f\Symfony\Component\Debug\Exception\FatalErrorException;
+@\trigger_error(\sprintf('The "%s" class is deprecated since Symfony 4.4, use "%s" instead.', \_PhpScoperc1a0b7b3175f\Symfony\Component\Debug\FatalErrorHandler\ClassNotFoundFatalErrorHandler::class, \_PhpScoperc1a0b7b3175f\Symfony\Component\ErrorHandler\FatalErrorHandler\ClassNotFoundFatalErrorHandler::class), \E_USER_DEPRECATED);
 /**
  * ErrorHandler for classes that do not exist.
  *
@@ -23,12 +23,12 @@ use _PhpScoperbd03d493ccc6\Symfony\Component\Debug\Exception\FatalErrorException
  *
  * @deprecated since Symfony 4.4, use Symfony\Component\ErrorHandler\FatalErrorHandler\ClassNotFoundFatalErrorHandler instead.
  */
-class ClassNotFoundFatalErrorHandler implements \_PhpScoperbd03d493ccc6\Symfony\Component\Debug\FatalErrorHandler\FatalErrorHandlerInterface
+class ClassNotFoundFatalErrorHandler implements \_PhpScoperc1a0b7b3175f\Symfony\Component\Debug\FatalErrorHandler\FatalErrorHandlerInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function handleError(array $error, \_PhpScoperbd03d493ccc6\Symfony\Component\Debug\Exception\FatalErrorException $exception)
+    public function handleError(array $error, \_PhpScoperc1a0b7b3175f\Symfony\Component\Debug\Exception\FatalErrorException $exception)
     {
         $messageLen = \strlen($error['message']);
         $notFoundSuffix = '\' not found';
@@ -65,7 +65,7 @@ class ClassNotFoundFatalErrorHandler implements \_PhpScoperbd03d493ccc6\Symfony\
                 }
             }
             $message .= "\nDid you forget a \"use\" statement" . $tail;
-            return new \_PhpScoperbd03d493ccc6\Symfony\Component\Debug\Exception\ClassNotFoundException($message, $exception);
+            return new \_PhpScoperc1a0b7b3175f\Symfony\Component\Debug\Exception\ClassNotFoundException($message, $exception);
         }
         return null;
     }
@@ -91,20 +91,20 @@ class ClassNotFoundFatalErrorHandler implements \_PhpScoperbd03d493ccc6\Symfony\
                 continue;
             }
             // get class loaders wrapped by DebugClassLoader
-            if ($function[0] instanceof \_PhpScoperbd03d493ccc6\Symfony\Component\Debug\DebugClassLoader) {
+            if ($function[0] instanceof \_PhpScoperc1a0b7b3175f\Symfony\Component\Debug\DebugClassLoader) {
                 $function = $function[0]->getClassLoader();
                 if (!\is_array($function)) {
                     continue;
                 }
             }
-            if ($function[0] instanceof \_PhpScoperbd03d493ccc6\Composer\Autoload\ClassLoader || $function[0] instanceof \_PhpScoperbd03d493ccc6\Symfony\Component\ClassLoader\ClassLoader) {
+            if ($function[0] instanceof \_PhpScoperc1a0b7b3175f\Composer\Autoload\ClassLoader || $function[0] instanceof \_PhpScoperc1a0b7b3175f\Symfony\Component\ClassLoader\ClassLoader) {
                 foreach ($function[0]->getPrefixes() as $prefix => $paths) {
                     foreach ($paths as $path) {
                         $classes = \array_merge($classes, $this->findClassInPath($path, $class, $prefix));
                     }
                 }
             }
-            if ($function[0] instanceof \_PhpScoperbd03d493ccc6\Composer\Autoload\ClassLoader) {
+            if ($function[0] instanceof \_PhpScoperc1a0b7b3175f\Composer\Autoload\ClassLoader) {
                 foreach ($function[0]->getPrefixesPsr4() as $prefix => $paths) {
                     foreach ($paths as $path) {
                         $classes = \array_merge($classes, $this->findClassInPath($path, $class, $prefix));
