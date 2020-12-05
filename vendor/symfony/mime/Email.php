@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopereaa086e6f852\Symfony\Component\Mime;
+namespace _PhpScoper34ecf47f3155\Symfony\Component\Mime;
 
-use _PhpScopereaa086e6f852\Symfony\Component\Mime\Exception\LogicException;
-use _PhpScopereaa086e6f852\Symfony\Component\Mime\Part\AbstractPart;
-use _PhpScopereaa086e6f852\Symfony\Component\Mime\Part\DataPart;
-use _PhpScopereaa086e6f852\Symfony\Component\Mime\Part\Multipart\AlternativePart;
-use _PhpScopereaa086e6f852\Symfony\Component\Mime\Part\Multipart\MixedPart;
-use _PhpScopereaa086e6f852\Symfony\Component\Mime\Part\Multipart\RelatedPart;
-use _PhpScopereaa086e6f852\Symfony\Component\Mime\Part\TextPart;
+use _PhpScoper34ecf47f3155\Symfony\Component\Mime\Exception\LogicException;
+use _PhpScoper34ecf47f3155\Symfony\Component\Mime\Part\AbstractPart;
+use _PhpScoper34ecf47f3155\Symfony\Component\Mime\Part\DataPart;
+use _PhpScoper34ecf47f3155\Symfony\Component\Mime\Part\Multipart\AlternativePart;
+use _PhpScoper34ecf47f3155\Symfony\Component\Mime\Part\Multipart\MixedPart;
+use _PhpScoper34ecf47f3155\Symfony\Component\Mime\Part\Multipart\RelatedPart;
+use _PhpScoper34ecf47f3155\Symfony\Component\Mime\Part\TextPart;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
  * @experimental in 4.3
  */
-class Email extends \_PhpScopereaa086e6f852\Symfony\Component\Mime\Message
+class Email extends \_PhpScoper34ecf47f3155\Symfony\Component\Mime\Message
 {
     const PRIORITY_HIGHEST = 1;
     const PRIORITY_HIGH = 2;
@@ -64,9 +64,9 @@ class Email extends \_PhpScopereaa086e6f852\Symfony\Component\Mime\Message
      */
     public function returnPath($address)
     {
-        return $this->setHeaderBody('Path', 'Return-Path', \_PhpScopereaa086e6f852\Symfony\Component\Mime\Address::create($address));
+        return $this->setHeaderBody('Path', 'Return-Path', \_PhpScoper34ecf47f3155\Symfony\Component\Mime\Address::create($address));
     }
-    public function getReturnPath() : ?\_PhpScopereaa086e6f852\Symfony\Component\Mime\Address
+    public function getReturnPath() : ?\_PhpScoper34ecf47f3155\Symfony\Component\Mime\Address
     {
         return $this->getHeaders()->getHeaderBody('Return-Path');
     }
@@ -77,9 +77,9 @@ class Email extends \_PhpScopereaa086e6f852\Symfony\Component\Mime\Message
      */
     public function sender($address)
     {
-        return $this->setHeaderBody('Mailbox', 'Sender', \_PhpScopereaa086e6f852\Symfony\Component\Mime\Address::create($address));
+        return $this->setHeaderBody('Mailbox', 'Sender', \_PhpScoper34ecf47f3155\Symfony\Component\Mime\Address::create($address));
     }
-    public function getSender() : ?\_PhpScopereaa086e6f852\Symfony\Component\Mime\Address
+    public function getSender() : ?\_PhpScoper34ecf47f3155\Symfony\Component\Mime\Address
     {
         return $this->getHeaders()->getHeaderBody('Sender');
     }
@@ -318,7 +318,7 @@ class Email extends \_PhpScopereaa086e6f852\Symfony\Component\Mime\Message
     /**
      * @return $this
      */
-    public function attachPart(\_PhpScopereaa086e6f852\Symfony\Component\Mime\Part\DataPart $part)
+    public function attachPart(\_PhpScoper34ecf47f3155\Symfony\Component\Mime\Part\DataPart $part)
     {
         $this->attachments[] = ['part' => $part];
         return $this;
@@ -334,7 +334,7 @@ class Email extends \_PhpScopereaa086e6f852\Symfony\Component\Mime\Message
         }
         return $parts;
     }
-    public function getBody() : \_PhpScopereaa086e6f852\Symfony\Component\Mime\Part\AbstractPart
+    public function getBody() : \_PhpScoper34ecf47f3155\Symfony\Component\Mime\Part\AbstractPart
     {
         if (null !== ($body = parent::getBody())) {
             return $body;
@@ -361,25 +361,25 @@ class Email extends \_PhpScopereaa086e6f852\Symfony\Component\Mime\Message
      *         |
      *          ------------> application/pdf (with content)
      */
-    private function generateBody() : \_PhpScopereaa086e6f852\Symfony\Component\Mime\Part\AbstractPart
+    private function generateBody() : \_PhpScoper34ecf47f3155\Symfony\Component\Mime\Part\AbstractPart
     {
         if (null === $this->text && null === $this->html) {
-            throw new \_PhpScopereaa086e6f852\Symfony\Component\Mime\Exception\LogicException('A message must have a text and/or an HTML part.');
+            throw new \_PhpScoper34ecf47f3155\Symfony\Component\Mime\Exception\LogicException('A message must have a text and/or an HTML part.');
         }
-        $part = null === $this->text ? null : new \_PhpScopereaa086e6f852\Symfony\Component\Mime\Part\TextPart($this->text, $this->textCharset);
+        $part = null === $this->text ? null : new \_PhpScoper34ecf47f3155\Symfony\Component\Mime\Part\TextPart($this->text, $this->textCharset);
         [$htmlPart, $attachmentParts, $inlineParts] = $this->prepareParts();
         if (null !== $htmlPart) {
             if (null !== $part) {
-                $part = new \_PhpScopereaa086e6f852\Symfony\Component\Mime\Part\Multipart\AlternativePart($part, $htmlPart);
+                $part = new \_PhpScoper34ecf47f3155\Symfony\Component\Mime\Part\Multipart\AlternativePart($part, $htmlPart);
             } else {
                 $part = $htmlPart;
             }
         }
         if ($inlineParts) {
-            $part = new \_PhpScopereaa086e6f852\Symfony\Component\Mime\Part\Multipart\RelatedPart($part, ...$inlineParts);
+            $part = new \_PhpScoper34ecf47f3155\Symfony\Component\Mime\Part\Multipart\RelatedPart($part, ...$inlineParts);
         }
         if ($attachmentParts) {
-            $part = new \_PhpScopereaa086e6f852\Symfony\Component\Mime\Part\Multipart\MixedPart($part, ...$attachmentParts);
+            $part = new \_PhpScoper34ecf47f3155\Symfony\Component\Mime\Part\Multipart\MixedPart($part, ...$attachmentParts);
         }
         return $part;
     }
@@ -395,7 +395,7 @@ class Email extends \_PhpScopereaa086e6f852\Symfony\Component\Mime\Message
                 }
                 $html = \stream_get_contents($html);
             }
-            $htmlPart = new \_PhpScopereaa086e6f852\Symfony\Component\Mime\Part\TextPart($html, $this->htmlCharset, 'html');
+            $htmlPart = new \_PhpScoper34ecf47f3155\Symfony\Component\Mime\Part\TextPart($html, $this->htmlCharset, 'html');
             \preg_match_all('(<img\\s+[^>]*src\\s*=\\s*(?:([\'"])cid:([^"]+)\\1|cid:([^>\\s]+)))i', $html, $names);
             $names = \array_filter(\array_unique(\array_merge($names[2], $names[3])));
         }
@@ -419,19 +419,19 @@ class Email extends \_PhpScopereaa086e6f852\Symfony\Component\Mime\Message
             $attachmentParts[] = $this->createDataPart($attachment);
         }
         if (null !== $htmlPart) {
-            $htmlPart = new \_PhpScopereaa086e6f852\Symfony\Component\Mime\Part\TextPart($html, $this->htmlCharset, 'html');
+            $htmlPart = new \_PhpScoper34ecf47f3155\Symfony\Component\Mime\Part\TextPart($html, $this->htmlCharset, 'html');
         }
         return [$htmlPart, $attachmentParts, \array_values($inlineParts)];
     }
-    private function createDataPart(array $attachment) : \_PhpScopereaa086e6f852\Symfony\Component\Mime\Part\DataPart
+    private function createDataPart(array $attachment) : \_PhpScoper34ecf47f3155\Symfony\Component\Mime\Part\DataPart
     {
         if (isset($attachment['part'])) {
             return $attachment['part'];
         }
         if (isset($attachment['body'])) {
-            $part = new \_PhpScopereaa086e6f852\Symfony\Component\Mime\Part\DataPart($attachment['body'], $attachment['name'] ?? null, $attachment['content-type'] ?? null);
+            $part = new \_PhpScoper34ecf47f3155\Symfony\Component\Mime\Part\DataPart($attachment['body'], $attachment['name'] ?? null, $attachment['content-type'] ?? null);
         } else {
-            $part = \_PhpScopereaa086e6f852\Symfony\Component\Mime\Part\DataPart::fromPath($attachment['path'] ?? '', $attachment['name'] ?? null, $attachment['content-type'] ?? null);
+            $part = \_PhpScoper34ecf47f3155\Symfony\Component\Mime\Part\DataPart::fromPath($attachment['path'] ?? '', $attachment['name'] ?? null, $attachment['content-type'] ?? null);
         }
         if ($attachment['inline']) {
             $part->asInline();
@@ -451,12 +451,12 @@ class Email extends \_PhpScopereaa086e6f852\Symfony\Component\Mime\Message
         if (!($to = $this->getHeaders()->get($name))) {
             return $this->setListAddressHeaderBody($name, $addresses);
         }
-        $to->addAddresses(\_PhpScopereaa086e6f852\Symfony\Component\Mime\Address::createArray($addresses));
+        $to->addAddresses(\_PhpScoper34ecf47f3155\Symfony\Component\Mime\Address::createArray($addresses));
         return $this;
     }
     private function setListAddressHeaderBody($name, array $addresses)
     {
-        $addresses = \_PhpScopereaa086e6f852\Symfony\Component\Mime\Address::createArray($addresses);
+        $addresses = \_PhpScoper34ecf47f3155\Symfony\Component\Mime\Address::createArray($addresses);
         $headers = $this->getHeaders();
         if ($to = $headers->get($name)) {
             $to->setAddresses($addresses);

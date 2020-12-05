@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopereaa086e6f852\Symfony\Component\Filesystem\Exception;
+namespace _PhpScoper34ecf47f3155\Symfony\Component\Filesystem\Exception;
 
 /**
  * Exception class thrown when a file couldn't be found.
@@ -16,7 +16,7 @@ namespace _PhpScopereaa086e6f852\Symfony\Component\Filesystem\Exception;
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Christian Gärtner <christiangaertner.film@googlemail.com>
  */
-class FileNotFoundException extends \_PhpScopereaa086e6f852\Symfony\Component\Filesystem\Exception\IOException
+class FileNotFoundException extends \_PhpScoper34ecf47f3155\Symfony\Component\Filesystem\Exception\IOException
 {
     public function __construct(string $message = null, int $code = 0, \Throwable $previous = null, string $path = null)
     {

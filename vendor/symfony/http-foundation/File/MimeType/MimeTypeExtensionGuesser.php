@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopereaa086e6f852\Symfony\Component\HttpFoundation\File\MimeType;
+namespace _PhpScoper34ecf47f3155\Symfony\Component\HttpFoundation\File\MimeType;
 
-use _PhpScopereaa086e6f852\Symfony\Component\Mime\MimeTypes;
-@\trigger_error(\sprintf('The "%s" class is deprecated since Symfony 4.3, use "%s" instead.', \_PhpScopereaa086e6f852\Symfony\Component\HttpFoundation\File\MimeType\MimeTypeExtensionGuesser::class, \_PhpScopereaa086e6f852\Symfony\Component\Mime\MimeTypes::class), \E_USER_DEPRECATED);
+use _PhpScoper34ecf47f3155\Symfony\Component\Mime\MimeTypes;
+@\trigger_error(\sprintf('The "%s" class is deprecated since Symfony 4.3, use "%s" instead.', \_PhpScoper34ecf47f3155\Symfony\Component\HttpFoundation\File\MimeType\MimeTypeExtensionGuesser::class, \_PhpScoper34ecf47f3155\Symfony\Component\Mime\MimeTypes::class), \E_USER_DEPRECATED);
 /**
  * Provides a best-guess mapping of mime type to file extension.
  *
  * @deprecated since Symfony 4.3, use {@link MimeTypes} instead
  */
-class MimeTypeExtensionGuesser implements \_PhpScopereaa086e6f852\Symfony\Component\HttpFoundation\File\MimeType\ExtensionGuesserInterface
+class MimeTypeExtensionGuesser implements \_PhpScoper34ecf47f3155\Symfony\Component\HttpFoundation\File\MimeType\ExtensionGuesserInterface
 {
     /**
      * A map of mime types and their default extensions.
