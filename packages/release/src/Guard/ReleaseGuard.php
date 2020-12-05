@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\Guard;
 
-use _PhpScoper34ecf47f3155\PharIo\Version\Version;
+use _PhpScoperbd03d493ccc6\PharIo\Version\Version;
 use Symplify\MonorepoBuilder\Exception\Git\InvalidGitVersionException;
 use Symplify\MonorepoBuilder\Git\MostRecentTagResolver;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
@@ -66,7 +66,7 @@ final class ReleaseGuard
         // stage has invalid value
         throw new \Symplify\MonorepoBuilder\Release\Exception\ConfigurationException(\sprintf('Stage "%s" was not found. Pick one of: "%s"', $stage, \implode('", "', $this->getStages())));
     }
-    public function guardVersion(\_PhpScoper34ecf47f3155\PharIo\Version\Version $version, string $stage) : void
+    public function guardVersion(\_PhpScoperbd03d493ccc6\PharIo\Version\Version $version, string $stage) : void
     {
         // stage is set and it doesn't need a validation
         if ($stage !== \Symplify\MonorepoBuilder\Release\ValueObject\Stage::MAIN && \in_array($stage, $this->stagesToAllowExistingTag, \true)) {
@@ -91,17 +91,17 @@ final class ReleaseGuard
         $this->stages = \array_unique($stages);
         return $this->stages;
     }
-    private function ensureVersionIsNewerThanLastOne(\_PhpScoper34ecf47f3155\PharIo\Version\Version $version) : void
+    private function ensureVersionIsNewerThanLastOne(\_PhpScoperbd03d493ccc6\PharIo\Version\Version $version) : void
     {
         $mostRecentVersion = $this->mostRecentTagResolver->resolve(\getcwd());
-        // normalize to workaround phar-io bug
-        $mostRecentVersion = \strtolower($mostRecentVersion);
         // no tag yet
         if ($mostRecentVersion === null) {
             return;
         }
+        // normalize to workaround phar-io bug
+        $mostRecentVersion = \strtolower($mostRecentVersion);
         // validation
-        $mostRecentVersion = new \_PhpScoper34ecf47f3155\PharIo\Version\Version($mostRecentVersion);
+        $mostRecentVersion = new \_PhpScoperbd03d493ccc6\PharIo\Version\Version($mostRecentVersion);
         if ($version->isGreaterThan($mostRecentVersion)) {
             return;
         }

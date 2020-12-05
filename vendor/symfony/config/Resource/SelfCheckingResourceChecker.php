@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper34ecf47f3155\Symfony\Component\Config\Resource;
+namespace _PhpScoperbd03d493ccc6\Symfony\Component\Config\Resource;
 
-use _PhpScoper34ecf47f3155\Symfony\Component\Config\ResourceCheckerInterface;
+use _PhpScoperbd03d493ccc6\Symfony\Component\Config\ResourceCheckerInterface;
 /**
  * Resource checker for instances of SelfCheckingResourceInterface.
  *
@@ -19,13 +19,13 @@ use _PhpScoper34ecf47f3155\Symfony\Component\Config\ResourceCheckerInterface;
  *
  * @author Matthias Pigulla <mp@webfactory.de>
  */
-class SelfCheckingResourceChecker implements \_PhpScoper34ecf47f3155\Symfony\Component\Config\ResourceCheckerInterface
+class SelfCheckingResourceChecker implements \_PhpScoperbd03d493ccc6\Symfony\Component\Config\ResourceCheckerInterface
 {
-    public function supports(\_PhpScoper34ecf47f3155\Symfony\Component\Config\Resource\ResourceInterface $metadata)
+    public function supports(\_PhpScoperbd03d493ccc6\Symfony\Component\Config\Resource\ResourceInterface $metadata)
     {
-        return $metadata instanceof \_PhpScoper34ecf47f3155\Symfony\Component\Config\Resource\SelfCheckingResourceInterface;
+        return $metadata instanceof \_PhpScoperbd03d493ccc6\Symfony\Component\Config\Resource\SelfCheckingResourceInterface;
     }
-    public function isFresh(\_PhpScoper34ecf47f3155\Symfony\Component\Config\Resource\ResourceInterface $resource, int $timestamp)
+    public function isFresh(\_PhpScoperbd03d493ccc6\Symfony\Component\Config\Resource\ResourceInterface $resource, int $timestamp)
     {
         /* @var SelfCheckingResourceInterface $resource */
         return $resource->isFresh($timestamp);

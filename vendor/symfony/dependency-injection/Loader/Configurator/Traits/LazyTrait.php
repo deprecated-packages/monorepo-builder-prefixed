@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper34ecf47f3155\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
+namespace _PhpScoperbd03d493ccc6\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
 
 trait LazyTrait
 {
