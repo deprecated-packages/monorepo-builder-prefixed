@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper7b254e6a7108\Symfony\Component\DependencyInjection\Dumper;
+namespace _PhpScoper722a1d9fee2c\Symfony\Component\DependencyInjection\Dumper;
 
 /**
  * DumperInterface is the interface implemented by service container dumper classes.
