@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperd607abf1de8e\Symfony\Component\Mime\Exception;
+namespace _PhpScoper44d485ef56a2\Symfony\Component\Mime\Exception;
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
  * @experimental in 4.3
  */
-class RuntimeException extends \RuntimeException implements \_PhpScoperd607abf1de8e\Symfony\Component\Mime\Exception\ExceptionInterface
+class RuntimeException extends \RuntimeException implements \_PhpScoper44d485ef56a2\Symfony\Component\Mime\Exception\ExceptionInterface
 {
 }
