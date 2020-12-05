@@ -19,7 +19,7 @@ final class RootRemoveComposerJsonDecoratorTest extends \Symplify\MonorepoBuilde
     {
         parent::setUp();
         $this->bootKernel(\Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel::class);
-        $this->composerJsonMerger = self::$container->get(\Symplify\MonorepoBuilder\Merge\ComposerJsonMerger::class);
+        $this->composerJsonMerger = $this->getService(\Symplify\MonorepoBuilder\Merge\ComposerJsonMerger::class);
     }
     /**
      * Only packages collected from /packages directory should be removed

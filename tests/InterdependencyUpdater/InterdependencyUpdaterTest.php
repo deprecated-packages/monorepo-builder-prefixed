@@ -21,8 +21,8 @@ final class InterdependencyUpdaterTest extends \Symplify\PackageBuilder\Testing\
     protected function setUp() : void
     {
         $this->bootKernel(\Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel::class);
-        $this->dependencyUpdater = self::$container->get(\Symplify\MonorepoBuilder\DependencyUpdater::class);
-        $this->smartFileSystem = self::$container->get(\Symplify\SmartFileSystem\SmartFileSystem::class);
+        $this->dependencyUpdater = $this->getService(\Symplify\MonorepoBuilder\DependencyUpdater::class);
+        $this->smartFileSystem = $this->getService(\Symplify\SmartFileSystem\SmartFileSystem::class);
     }
     protected function tearDown() : void
     {

@@ -22,7 +22,7 @@ final class SortComposerJsonDecoratorTest extends \Symplify\PackageBuilder\Testi
     {
         $this->bootKernel(\Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel::class);
         $this->composerJson = $this->createComposerJson();
-        $this->sortComposerJsonDecorator = self::$container->get(\Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator\SortComposerJsonDecorator::class);
+        $this->sortComposerJsonDecorator = $this->getService(\Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator\SortComposerJsonDecorator::class);
     }
     public function test() : void
     {
@@ -32,7 +32,7 @@ final class SortComposerJsonDecoratorTest extends \Symplify\PackageBuilder\Testi
     private function createComposerJson() : \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
     {
         /** @var ComposerJsonFactory $composerJsonFactory */
-        $composerJsonFactory = self::$container->get(\Symplify\ComposerJsonManipulator\ComposerJsonFactory::class);
+        $composerJsonFactory = $this->getService(\Symplify\ComposerJsonManipulator\ComposerJsonFactory::class);
         return $composerJsonFactory->createFromArray(['random-this' => [], 'autoload-dev' => [], 'autoload' => [], 'random-that' => [], 'require-dev' => [], 'require' => []]);
     }
 }

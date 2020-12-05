@@ -16,7 +16,7 @@ final class VersionUtilsTest extends \Symplify\PackageBuilder\Testing\AbstractKe
     protected function setUp() : void
     {
         $this->bootKernel(\Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel::class);
-        $this->versionUtils = self::$container->get(\Symplify\MonorepoBuilder\Utils\VersionUtils::class);
+        $this->versionUtils = $this->getService(\Symplify\MonorepoBuilder\Utils\VersionUtils::class);
     }
     /**
      * @dataProvider provideDataAlias()

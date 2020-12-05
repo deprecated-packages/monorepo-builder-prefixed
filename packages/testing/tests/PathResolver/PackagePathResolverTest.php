@@ -16,7 +16,7 @@ final class PackagePathResolverTest extends \Symplify\PackageBuilder\Testing\Abs
     protected function setUp() : void
     {
         $this->bootKernel(\Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel::class);
-        $this->packagePathResolver = self::$container->get(\Symplify\MonorepoBuilder\Testing\PathResolver\PackagePathResolver::class);
+        $this->packagePathResolver = $this->getService(\Symplify\MonorepoBuilder\Testing\PathResolver\PackagePathResolver::class);
     }
     public function test() : void
     {

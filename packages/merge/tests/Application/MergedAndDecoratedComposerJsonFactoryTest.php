@@ -15,7 +15,7 @@ final class MergedAndDecoratedComposerJsonFactoryTest extends \Symplify\Monorepo
     protected function setUp() : void
     {
         parent::setUp();
-        $this->mergedAndDecoratedComposerJsonFactory = self::$container->get(\Symplify\MonorepoBuilder\Merge\Application\MergedAndDecoratedComposerJsonFactory::class);
+        $this->mergedAndDecoratedComposerJsonFactory = $this->getService(\Symplify\MonorepoBuilder\Merge\Application\MergedAndDecoratedComposerJsonFactory::class);
     }
     public function test() : void
     {

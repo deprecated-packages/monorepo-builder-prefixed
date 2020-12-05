@@ -21,8 +21,8 @@ final class ComposerJsonSymlinkerTest extends \Symplify\PackageBuilder\Testing\A
     protected function setUp() : void
     {
         $this->bootKernel(\Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel::class);
-        $this->jsonFileManager = self::$container->get(\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager::class);
-        $this->composerJsonSymlinker = self::$container->get(\Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerJsonSymlinker::class);
+        $this->jsonFileManager = $this->getService(\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager::class);
+        $this->composerJsonSymlinker = $this->getService(\Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerJsonSymlinker::class);
     }
     public function testItCanAppendPathRepository() : void
     {

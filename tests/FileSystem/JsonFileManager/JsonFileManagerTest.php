@@ -21,8 +21,8 @@ final class JsonFileManagerTest extends \Symplify\PackageBuilder\Testing\Abstrac
     protected function setUp() : void
     {
         $this->bootKernelWithConfigs(\Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel::class, [__DIR__ . '/config/inlined_section_config.php']);
-        $this->jsonFileManager = self::$container->get(\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager::class);
-        $this->smartFileSystem = self::$container->get(\Symplify\SmartFileSystem\SmartFileSystem::class);
+        $this->jsonFileManager = $this->getService(\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager::class);
+        $this->smartFileSystem = $this->getService(\Symplify\SmartFileSystem\SmartFileSystem::class);
     }
     protected function tearDown() : void
     {

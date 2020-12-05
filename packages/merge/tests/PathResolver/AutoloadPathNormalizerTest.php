@@ -15,7 +15,7 @@ final class AutoloadPathNormalizerTest extends \Symplify\MonorepoBuilder\Merge\T
     protected function setUp() : void
     {
         parent::setUp();
-        $this->autoloadPathNormalizer = self::$container->get(\Symplify\MonorepoBuilder\Merge\PathResolver\AutoloadPathNormalizer::class);
+        $this->autoloadPathNormalizer = $this->getService(\Symplify\MonorepoBuilder\Merge\PathResolver\AutoloadPathNormalizer::class);
     }
     public function test() : void
     {

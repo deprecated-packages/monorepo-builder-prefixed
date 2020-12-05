@@ -17,7 +17,7 @@ abstract class AbstractComposerJsonDecoratorTest extends \Symplify\PackageBuilde
     protected function setUp() : void
     {
         $this->bootKernel(\Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel::class);
-        $this->composerJsonFactory = self::$container->get(\Symplify\ComposerJsonManipulator\ComposerJsonFactory::class);
+        $this->composerJsonFactory = $this->getService(\Symplify\ComposerJsonManipulator\ComposerJsonFactory::class);
     }
     /**
      * @param mixed[]|SmartFileInfo|string $source

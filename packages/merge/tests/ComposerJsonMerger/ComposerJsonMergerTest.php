@@ -14,7 +14,7 @@ final class ComposerJsonMergerTest extends \Symplify\MonorepoBuilder\Merge\Tests
     protected function setUp() : void
     {
         parent::setUp();
-        $this->composerJsonMerger = self::$container->get(\Symplify\MonorepoBuilder\Merge\ComposerJsonMerger::class);
+        $this->composerJsonMerger = $this->getService(\Symplify\MonorepoBuilder\Merge\ComposerJsonMerger::class);
     }
     public function test() : void
     {

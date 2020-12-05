@@ -32,9 +32,9 @@ final class RemoverComposerJsonDecoratorTest extends \Symplify\MonorepoBuilder\M
     {
         $this->bootKernel(\Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel::class);
         /** @var ParameterProvider $parameterProvider */
-        $parameterProvider = self::$container->get(\Symplify\PackageBuilder\Parameter\ParameterProvider::class);
+        $parameterProvider = $this->getService(\Symplify\PackageBuilder\Parameter\ParameterProvider::class);
         $parameterProvider->changeParameter(\Symplify\MonorepoBuilder\ValueObject\Option::DATA_TO_REMOVE, ['require' => ['phpunit/phpunit' => '*'], 'autoload-dev' => ['psr-4' => ['Symplify\\Tests\\' => 'tests'], 'files' => ['src/SomeFile.php']]]);
-        $this->removerComposerJsonDecorator = self::$container->get(\Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator\RemoverComposerJsonDecorator::class);
+        $this->removerComposerJsonDecorator = $this->getService(\Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator\RemoverComposerJsonDecorator::class);
         $this->composerJson = $this->createMainComposerJson();
         $this->expectedComposerJson = $this->createExpectedComposerJson();
     }
@@ -46,13 +46,13 @@ final class RemoverComposerJsonDecoratorTest extends \Symplify\MonorepoBuilder\M
     private function createMainComposerJson() : \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
     {
         /** @var ComposerJsonFactory $composerJsonFactory */
-        $composerJsonFactory = self::$container->get(\Symplify\ComposerJsonManipulator\ComposerJsonFactory::class);
+        $composerJsonFactory = $this->getService(\Symplify\ComposerJsonManipulator\ComposerJsonFactory::class);
         return $composerJsonFactory->createFromArray(self::COMPOSER_JSON_DATA);
     }
     private function createExpectedComposerJson() : \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
     {
         /** @var ComposerJsonFactory $composerJsonFactory */
-        $composerJsonFactory = self::$container->get(\Symplify\ComposerJsonManipulator\ComposerJsonFactory::class);
+        $composerJsonFactory = $this->getService(\Symplify\ComposerJsonManipulator\ComposerJsonFactory::class);
         $expectedComposerJson = ['require' => ['rector/rector' => 'v1.0.0'], 'autoload-dev' => ['psr-4' => ['Symplify\\SuperTests\\' => 'super-tests'], 'files' => [1 => 'src/KeepFile.php']]];
         return $composerJsonFactory->createFromArray($expectedComposerJson);
     }

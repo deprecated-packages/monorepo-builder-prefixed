@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\ReleaseWorker;
 
-use _PhpScoper37b79542cc43\Nette\Utils\DateTime;
-use _PhpScoper37b79542cc43\Nette\Utils\Strings;
-use _PhpScoper37b79542cc43\PharIo\Version\Version;
+use _PhpScoper9aac61c94bdb\Nette\Utils\DateTime;
+use _PhpScoper9aac61c94bdb\Nette\Utils\Strings;
+use _PhpScoper9aac61c94bdb\PharIo\Version\Version;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\SmartFileSystem\SmartFileSystem;
 final class AddTagToChangelogReleaseWorker implements \Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface
@@ -23,7 +23,7 @@ final class AddTagToChangelogReleaseWorker implements \Symplify\MonorepoBuilder\
     {
         $this->smartFileSystem = $smartFileSystem;
     }
-    public function work(\_PhpScoper37b79542cc43\PharIo\Version\Version $version) : void
+    public function work(\_PhpScoper9aac61c94bdb\PharIo\Version\Version $version) : void
     {
         $changelogFilePath = \getcwd() . '/CHANGELOG.md';
         if (!\file_exists($changelogFilePath)) {
@@ -31,17 +31,17 @@ final class AddTagToChangelogReleaseWorker implements \Symplify\MonorepoBuilder\
         }
         $newHeadline = $this->createNewHeadline($version);
         $changelogFileContent = $this->smartFileSystem->readFile($changelogFilePath);
-        $changelogFileContent = \_PhpScoper37b79542cc43\Nette\Utils\Strings::replace($changelogFileContent, self::UNRELEASED_HEADLINE_REGEX, '## ' . $newHeadline);
+        $changelogFileContent = \_PhpScoper9aac61c94bdb\Nette\Utils\Strings::replace($changelogFileContent, self::UNRELEASED_HEADLINE_REGEX, '## ' . $newHeadline);
         $this->smartFileSystem->dumpFile($changelogFilePath, $changelogFileContent);
     }
-    public function getDescription(\_PhpScoper37b79542cc43\PharIo\Version\Version $version) : string
+    public function getDescription(\_PhpScoper9aac61c94bdb\PharIo\Version\Version $version) : string
     {
         $newHeadline = $this->createNewHeadline($version);
         return \sprintf('Change "Unreleased" in `CHANGELOG.md` to "%s"', $newHeadline);
     }
-    private function createNewHeadline(\_PhpScoper37b79542cc43\PharIo\Version\Version $version) : string
+    private function createNewHeadline(\_PhpScoper9aac61c94bdb\PharIo\Version\Version $version) : string
     {
-        $dateTime = new \_PhpScoper37b79542cc43\Nette\Utils\DateTime();
+        $dateTime = new \_PhpScoper9aac61c94bdb\Nette\Utils\DateTime();
         return $version->getVersionString() . ' - ' . $dateTime->format('Y-m-d');
     }
 }

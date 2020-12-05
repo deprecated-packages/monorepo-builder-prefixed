@@ -21,8 +21,8 @@ final class DevMasterAliasUpdaterTest extends \Symplify\PackageBuilder\Testing\A
     protected function setUp() : void
     {
         $this->bootKernel(\Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel::class);
-        $this->devMasterAliasUpdater = self::$container->get(\Symplify\MonorepoBuilder\DevMasterAliasUpdater::class);
-        $this->smartFileSystem = self::$container->get(\Symplify\SmartFileSystem\SmartFileSystem::class);
+        $this->devMasterAliasUpdater = $this->getService(\Symplify\MonorepoBuilder\DevMasterAliasUpdater::class);
+        $this->smartFileSystem = $this->getService(\Symplify\SmartFileSystem\SmartFileSystem::class);
     }
     protected function tearDown() : void
     {

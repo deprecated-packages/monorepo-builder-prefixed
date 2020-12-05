@@ -15,7 +15,7 @@ final class ReleaseWorkerProviderTest extends \Symplify\PackageBuilder\Testing\A
     protected function setUp() : void
     {
         $this->bootKernelWithConfigs(\Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel::class, [__DIR__ . '/config/all_release_workers.php']);
-        $this->releaseWorkerProvider = self::$container->get(\Symplify\MonorepoBuilder\Release\ReleaseWorkerProvider::class);
+        $this->releaseWorkerProvider = $this->getService(\Symplify\MonorepoBuilder\Release\ReleaseWorkerProvider::class);
     }
     public function test() : void
     {
