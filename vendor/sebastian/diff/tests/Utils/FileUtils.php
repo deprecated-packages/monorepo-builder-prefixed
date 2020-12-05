@@ -9,7 +9,7 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper722a1d9fee2c\SebastianBergmann\Diff\Utils;
+namespace _PhpScoperd607abf1de8e\SebastianBergmann\Diff\Utils;
 
 final class FileUtils
 {

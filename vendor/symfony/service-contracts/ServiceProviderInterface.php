@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper722a1d9fee2c\Symfony\Contracts\Service;
+namespace _PhpScoperd607abf1de8e\Symfony\Contracts\Service;
 
-use _PhpScoper722a1d9fee2c\Psr\Container\ContainerInterface;
+use _PhpScoperd607abf1de8e\Psr\Container\ContainerInterface;
 /**
  * A ServiceProviderInterface exposes the identifiers and the types of services provided by a container.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  * @author Mateusz Sip <mateusz.sip@gmail.com>
  */
-interface ServiceProviderInterface extends \_PhpScoper722a1d9fee2c\Psr\Container\ContainerInterface
+interface ServiceProviderInterface extends \_PhpScoperd607abf1de8e\Psr\Container\ContainerInterface
 {
     /**
      * Returns an associative array of service types keyed by the identifiers provided by the current container.
