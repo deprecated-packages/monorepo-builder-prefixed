@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc1a0b7b3175f\Symfony\Component\Debug;
+namespace _PhpScoper96a284484937\Symfony\Component\Debug;
 
-@\trigger_error(\sprintf('The "%s" class is deprecated since Symfony 4.4, use "%s" instead.', \_PhpScoperc1a0b7b3175f\Symfony\Component\Debug\Debug::class, \_PhpScoperc1a0b7b3175f\Symfony\Component\ErrorHandler\Debug::class), \E_USER_DEPRECATED);
+@\trigger_error(\sprintf('The "%s" class is deprecated since Symfony 4.4, use "%s" instead.', \_PhpScoper96a284484937\Symfony\Component\Debug\Debug::class, \_PhpScoper96a284484937\Symfony\Component\ErrorHandler\Debug::class), \E_USER_DEPRECATED);
 /**
  * Registers all the debug tools.
  *
@@ -42,16 +42,16 @@ class Debug
         }
         if (!\in_array(\PHP_SAPI, ['cli', 'phpdbg'], \true)) {
             \ini_set('display_errors', 0);
-            \_PhpScoperc1a0b7b3175f\Symfony\Component\Debug\ExceptionHandler::register();
+            \_PhpScoper96a284484937\Symfony\Component\Debug\ExceptionHandler::register();
         } elseif ($displayErrors && (!\filter_var(\ini_get('log_errors'), \FILTER_VALIDATE_BOOLEAN) || \ini_get('error_log'))) {
             // CLI - display errors only if they're not already logged to STDERR
             \ini_set('display_errors', 1);
         }
         if ($displayErrors) {
-            \_PhpScoperc1a0b7b3175f\Symfony\Component\Debug\ErrorHandler::register(new \_PhpScoperc1a0b7b3175f\Symfony\Component\Debug\ErrorHandler(new \_PhpScoperc1a0b7b3175f\Symfony\Component\Debug\BufferingLogger()));
+            \_PhpScoper96a284484937\Symfony\Component\Debug\ErrorHandler::register(new \_PhpScoper96a284484937\Symfony\Component\Debug\ErrorHandler(new \_PhpScoper96a284484937\Symfony\Component\Debug\BufferingLogger()));
         } else {
-            \_PhpScoperc1a0b7b3175f\Symfony\Component\Debug\ErrorHandler::register()->throwAt(0, \true);
+            \_PhpScoper96a284484937\Symfony\Component\Debug\ErrorHandler::register()->throwAt(0, \true);
         }
-        \_PhpScoperc1a0b7b3175f\Symfony\Component\Debug\DebugClassLoader::enable();
+        \_PhpScoper96a284484937\Symfony\Component\Debug\DebugClassLoader::enable();
     }
 }

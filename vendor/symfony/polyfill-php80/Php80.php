@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc1a0b7b3175f\Symfony\Polyfill\Php80;
+namespace _PhpScoper96a284484937\Symfony\Polyfill\Php80;
 
 /**
  * @author Ion Bazan <ion.bazan@gmail.com>
@@ -55,7 +55,7 @@ final class Php80
         if (\false === \strpos($class, '@')) {
             return $class;
         }
-        return (\get_parent_class($class) ?: \key(\class_implements($class)) ?: 'class') . '@anonymous';
+        return ((\get_parent_class($class) ?: \key(\class_implements($class))) ?: 'class') . '@anonymous';
     }
     public static function preg_last_error_msg() : string
     {
