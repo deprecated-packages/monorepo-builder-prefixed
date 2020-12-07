@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperdab52924cf3e\Symfony\Component\HttpKernel\EventListener;
+namespace _PhpScoper897dcdb71069\Symfony\Component\HttpKernel\EventListener;
 
-@\trigger_error(\sprintf('The "%s" class is deprecated since Symfony 4.3 and will be removed in 5.0, use LocaleAwareListener instead.', \_PhpScoperdab52924cf3e\Symfony\Component\HttpKernel\EventListener\TranslatorListener::class), \E_USER_DEPRECATED);
-use _PhpScoperdab52924cf3e\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use _PhpScoperdab52924cf3e\Symfony\Component\HttpFoundation\Request;
-use _PhpScoperdab52924cf3e\Symfony\Component\HttpFoundation\RequestStack;
-use _PhpScoperdab52924cf3e\Symfony\Component\HttpKernel\Event\FinishRequestEvent;
-use _PhpScoperdab52924cf3e\Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use _PhpScoperdab52924cf3e\Symfony\Component\HttpKernel\KernelEvents;
-use _PhpScoperdab52924cf3e\Symfony\Component\Translation\TranslatorInterface;
-use _PhpScoperdab52924cf3e\Symfony\Contracts\Translation\LocaleAwareInterface;
+@\trigger_error(\sprintf('The "%s" class is deprecated since Symfony 4.3 and will be removed in 5.0, use LocaleAwareListener instead.', \_PhpScoper897dcdb71069\Symfony\Component\HttpKernel\EventListener\TranslatorListener::class), \E_USER_DEPRECATED);
+use _PhpScoper897dcdb71069\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use _PhpScoper897dcdb71069\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper897dcdb71069\Symfony\Component\HttpFoundation\RequestStack;
+use _PhpScoper897dcdb71069\Symfony\Component\HttpKernel\Event\FinishRequestEvent;
+use _PhpScoper897dcdb71069\Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use _PhpScoper897dcdb71069\Symfony\Component\HttpKernel\KernelEvents;
+use _PhpScoper897dcdb71069\Symfony\Component\Translation\TranslatorInterface;
+use _PhpScoper897dcdb71069\Symfony\Contracts\Translation\LocaleAwareInterface;
 /**
  * Synchronizes the locale between the request and the translator.
  *
@@ -26,26 +26,26 @@ use _PhpScoperdab52924cf3e\Symfony\Contracts\Translation\LocaleAwareInterface;
  *
  * @deprecated since Symfony 4.3, use LocaleAwareListener instead
  */
-class TranslatorListener implements \_PhpScoperdab52924cf3e\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class TranslatorListener implements \_PhpScoper897dcdb71069\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     private $translator;
     private $requestStack;
     /**
      * @param LocaleAwareInterface $translator
      */
-    public function __construct($translator, \_PhpScoperdab52924cf3e\Symfony\Component\HttpFoundation\RequestStack $requestStack)
+    public function __construct($translator, \_PhpScoper897dcdb71069\Symfony\Component\HttpFoundation\RequestStack $requestStack)
     {
-        if (!$translator instanceof \_PhpScoperdab52924cf3e\Symfony\Component\Translation\TranslatorInterface && !$translator instanceof \_PhpScoperdab52924cf3e\Symfony\Contracts\Translation\LocaleAwareInterface) {
-            throw new \TypeError(\sprintf('Argument 1 passed to %s() must be an instance of %s, %s given.', __METHOD__, \_PhpScoperdab52924cf3e\Symfony\Contracts\Translation\LocaleAwareInterface::class, \is_object($translator) ? \get_class($translator) : \gettype($translator)));
+        if (!$translator instanceof \_PhpScoper897dcdb71069\Symfony\Component\Translation\TranslatorInterface && !$translator instanceof \_PhpScoper897dcdb71069\Symfony\Contracts\Translation\LocaleAwareInterface) {
+            throw new \TypeError(\sprintf('Argument 1 passed to %s() must be an instance of %s, %s given.', __METHOD__, \_PhpScoper897dcdb71069\Symfony\Contracts\Translation\LocaleAwareInterface::class, \is_object($translator) ? \get_class($translator) : \gettype($translator)));
         }
         $this->translator = $translator;
         $this->requestStack = $requestStack;
     }
-    public function onKernelRequest(\_PhpScoperdab52924cf3e\Symfony\Component\HttpKernel\Event\GetResponseEvent $event)
+    public function onKernelRequest(\_PhpScoper897dcdb71069\Symfony\Component\HttpKernel\Event\GetResponseEvent $event)
     {
         $this->setLocale($event->getRequest());
     }
-    public function onKernelFinishRequest(\_PhpScoperdab52924cf3e\Symfony\Component\HttpKernel\Event\FinishRequestEvent $event)
+    public function onKernelFinishRequest(\_PhpScoper897dcdb71069\Symfony\Component\HttpKernel\Event\FinishRequestEvent $event)
     {
         if (null === ($parentRequest = $this->requestStack->getParentRequest())) {
             return;
@@ -56,11 +56,11 @@ class TranslatorListener implements \_PhpScoperdab52924cf3e\Symfony\Component\Ev
     {
         return [
             // must be registered after the Locale listener
-            \_PhpScoperdab52924cf3e\Symfony\Component\HttpKernel\KernelEvents::REQUEST => [['onKernelRequest', 10]],
-            \_PhpScoperdab52924cf3e\Symfony\Component\HttpKernel\KernelEvents::FINISH_REQUEST => [['onKernelFinishRequest', 0]],
+            \_PhpScoper897dcdb71069\Symfony\Component\HttpKernel\KernelEvents::REQUEST => [['onKernelRequest', 10]],
+            \_PhpScoper897dcdb71069\Symfony\Component\HttpKernel\KernelEvents::FINISH_REQUEST => [['onKernelFinishRequest', 0]],
         ];
     }
-    private function setLocale(\_PhpScoperdab52924cf3e\Symfony\Component\HttpFoundation\Request $request)
+    private function setLocale(\_PhpScoper897dcdb71069\Symfony\Component\HttpFoundation\Request $request)
     {
         try {
             $this->translator->setLocale($request->getLocale());

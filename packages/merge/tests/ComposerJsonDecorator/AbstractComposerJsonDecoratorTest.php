@@ -51,5 +51,6 @@ abstract class AbstractComposerJsonDecoratorTest extends \Symplify\PackageBuilde
         $this->assertSame($firstComposerJson->getName(), $secondComposerJson->getName());
         $this->assertSame($firstComposerJson->getLicense(), $secondComposerJson->getLicense());
         $this->assertSame($firstComposerJson->getDescription(), $secondComposerJson->getDescription());
+        $this->assertSame($firstComposerJson->getAuthors(), $secondComposerJson->getAuthors());
     }
 }
