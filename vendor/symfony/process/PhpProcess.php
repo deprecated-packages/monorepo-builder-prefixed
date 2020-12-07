@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperab93339c6bca\Symfony\Component\Process;
+namespace _PhpScoper94f327c48d46\Symfony\Component\Process;
 
-use _PhpScoperab93339c6bca\Symfony\Component\Process\Exception\RuntimeException;
+use _PhpScoper94f327c48d46\Symfony\Component\Process\Exception\RuntimeException;
 /**
  * PhpProcess runs a PHP script in an independent process.
  *
@@ -20,7 +20,7 @@ use _PhpScoperab93339c6bca\Symfony\Component\Process\Exception\RuntimeException;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class PhpProcess extends \_PhpScoperab93339c6bca\Symfony\Component\Process\Process
+class PhpProcess extends \_PhpScoper94f327c48d46\Symfony\Component\Process\Process
 {
     /**
      * @param string      $script  The PHP script to run (as a string)
@@ -32,7 +32,7 @@ class PhpProcess extends \_PhpScoperab93339c6bca\Symfony\Component\Process\Proce
     public function __construct(string $script, string $cwd = null, array $env = null, int $timeout = 60, array $php = null)
     {
         if (null === $php) {
-            $executableFinder = new \_PhpScoperab93339c6bca\Symfony\Component\Process\PhpExecutableFinder();
+            $executableFinder = new \_PhpScoper94f327c48d46\Symfony\Component\Process\PhpExecutableFinder();
             $php = $executableFinder->find(\false);
             $php = \false === $php ? null : \array_merge([$php], $executableFinder->findArguments());
         }
@@ -61,7 +61,7 @@ class PhpProcess extends \_PhpScoperab93339c6bca\Symfony\Component\Process\Proce
     public function start(callable $callback = null, array $env = [])
     {
         if (null === $this->getCommandLine()) {
-            throw new \_PhpScoperab93339c6bca\Symfony\Component\Process\Exception\RuntimeException('Unable to find the PHP executable.');
+            throw new \_PhpScoper94f327c48d46\Symfony\Component\Process\Exception\RuntimeException('Unable to find the PHP executable.');
         }
         parent::start($callback, $env);
     }
