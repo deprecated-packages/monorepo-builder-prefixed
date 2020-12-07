@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper897dcdb71069\Symfony\Component\Debug\Exception;
+namespace _PhpScoperab93339c6bca\Symfony\Component\Debug\Exception;
 
-@\trigger_error(\sprintf('The "%s" class is deprecated since Symfony 4.4, use "%s" instead.', \_PhpScoper897dcdb71069\Symfony\Component\Debug\Exception\FatalErrorException::class, \_PhpScoper897dcdb71069\Symfony\Component\ErrorHandler\Error\FatalError::class), \E_USER_DEPRECATED);
+@\trigger_error(\sprintf('The "%s" class is deprecated since Symfony 4.4, use "%s" instead.', \_PhpScoperab93339c6bca\Symfony\Component\Debug\Exception\FatalErrorException::class, \_PhpScoperab93339c6bca\Symfony\Component\ErrorHandler\Error\FatalError::class), \E_USER_DEPRECATED);
 /**
  * Fatal Error Exception.
  *
