@@ -1,5 +1,6 @@
 <?php
 
+declare (strict_types=1);
 /*
  * This file is part of PharIo\Version.
  *
@@ -8,30 +9,22 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper96a284484937\PharIo\Version;
+namespace _PhpScopera8413c4aa124\PharIo\Version;
 
-class GreaterThanOrEqualToVersionConstraint extends \_PhpScoper96a284484937\PharIo\Version\AbstractVersionConstraint
+class GreaterThanOrEqualToVersionConstraint extends \_PhpScopera8413c4aa124\PharIo\Version\AbstractVersionConstraint
 {
-    /**
-     * @var Version
-     */
+    /** @var Version */
     private $minimalVersion;
     /**
      * @param string $originalValue
-     * @param Version $minimalVersion
      */
-    public function __construct($originalValue, \_PhpScoper96a284484937\PharIo\Version\Version $minimalVersion)
+    public function __construct($originalValue, \_PhpScopera8413c4aa124\PharIo\Version\Version $minimalVersion)
     {
         parent::__construct($originalValue);
         $this->minimalVersion = $minimalVersion;
     }
-    /**
-     * @param Version $version
-     *
-     * @return bool
-     */
-    public function complies(\_PhpScoper96a284484937\PharIo\Version\Version $version)
+    public function complies(\_PhpScopera8413c4aa124\PharIo\Version\Version $version) : bool
     {
-        return $version->getVersionString() == $this->minimalVersion->getVersionString() || $version->isGreaterThan($this->minimalVersion);
+        return $version->getVersionString() === $this->minimalVersion->getVersionString() || $version->isGreaterThan($this->minimalVersion);
     }
 }

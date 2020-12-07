@@ -1,49 +1,39 @@
 <?php
 
-namespace _PhpScoper96a284484937\PharIo\Version;
+declare (strict_types=1);
+namespace _PhpScopera8413c4aa124\PharIo\Version;
 
 class PreReleaseSuffix
 {
-    private $valueScoreMap = ['dev' => 0, 'a' => 1, 'alpha' => 1, 'b' => 2, 'beta' => 2, 'rc' => 3, 'p' => 4, 'patch' => 4];
-    /**
-     * @var string
-     */
+    private const valueScoreMap = ['dev' => 0, 'a' => 1, 'alpha' => 1, 'b' => 2, 'beta' => 2, 'rc' => 3, 'p' => 4, 'patch' => 4];
+    /** @var string */
     private $value;
-    /**
-     * @var int
-     */
+    /** @var int */
     private $valueScore;
-    /**
-     * @var int
-     */
+    /** @var int */
     private $number = 0;
+    /** @var string  */
+    private $full;
     /**
-     * @param string $value
+     * @throws InvalidPreReleaseSuffixException
      */
-    public function __construct($value)
+    public function __construct(string $value)
     {
         $this->parseValue($value);
     }
-    /**
-     * @return string
-     */
-    public function getValue()
+    public function asString() : string
+    {
+        return $this->full;
+    }
+    public function getValue() : string
     {
         return $this->value;
     }
-    /**
-     * @return int|null
-     */
-    public function getNumber()
+    public function getNumber() : ?int
     {
         return $this->number;
     }
-    /**
-     * @param PreReleaseSuffix $suffix
-     *
-     * @return bool
-     */
-    public function isGreaterThan(\_PhpScoper96a284484937\PharIo\Version\PreReleaseSuffix $suffix)
+    public function isGreaterThan(\_PhpScopera8413c4aa124\PharIo\Version\PreReleaseSuffix $suffix) : bool
     {
         if ($this->valueScore > $suffix->valueScore) {
             return \true;
@@ -55,26 +45,25 @@ class PreReleaseSuffix
     }
     /**
      * @param $value
-     *
-     * @return int
      */
-    private function mapValueToScore($value)
+    private function mapValueToScore($value) : int
     {
-        if (\array_key_exists($value, $this->valueScoreMap)) {
-            return $this->valueScoreMap[$value];
+        if (\array_key_exists($value, self::valueScoreMap)) {
+            return self::valueScoreMap[$value];
         }
         return 0;
     }
-    private function parseValue($value)
+    private function parseValue($value) : void
     {
-        $regex = '/-?(dev|beta|b|rc|alpha|a|patch|p)\\.?(\\d*).*$/i';
+        $regex = '/-?((dev|beta|b|rc|alpha|a|patch|p)\\.?(\\d*)).*$/i';
         if (\preg_match($regex, $value, $matches) !== 1) {
-            throw new \_PhpScoper96a284484937\PharIo\Version\InvalidPreReleaseSuffixException(\sprintf('Invalid label %s', $value));
+            throw new \_PhpScopera8413c4aa124\PharIo\Version\InvalidPreReleaseSuffixException(\sprintf('Invalid label %s', $value));
         }
-        $this->value = $matches[1];
-        if (isset($matches[2])) {
-            $this->number = (int) $matches[2];
+        $this->full = $matches[1];
+        $this->value = $matches[2];
+        if ($matches[3] !== '') {
+            $this->number = (int) $matches[3];
         }
-        $this->valueScore = $this->mapValueToScore($this->value);
+        $this->valueScore = $this->mapValueToScore($matches[2]);
     }
 }

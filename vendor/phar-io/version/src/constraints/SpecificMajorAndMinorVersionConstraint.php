@@ -1,5 +1,6 @@
 <?php
 
+declare (strict_types=1);
 /*
  * This file is part of PharIo\Version.
  *
@@ -8,22 +9,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper96a284484937\PharIo\Version;
+namespace _PhpScopera8413c4aa124\PharIo\Version;
 
-class SpecificMajorAndMinorVersionConstraint extends \_PhpScoper96a284484937\PharIo\Version\AbstractVersionConstraint
+class SpecificMajorAndMinorVersionConstraint extends \_PhpScopera8413c4aa124\PharIo\Version\AbstractVersionConstraint
 {
-    /**
-     * @var int
-     */
+    /** @var int */
     private $major = 0;
-    /**
-     * @var int
-     */
+    /** @var int */
     private $minor = 0;
     /**
      * @param string $originalValue
-     * @param int $major
-     * @param int $minor
+     * @param int    $major
+     * @param int    $minor
      */
     public function __construct($originalValue, $major, $minor)
     {
@@ -31,16 +28,11 @@ class SpecificMajorAndMinorVersionConstraint extends \_PhpScoper96a284484937\Pha
         $this->major = $major;
         $this->minor = $minor;
     }
-    /**
-     * @param Version $version
-     *
-     * @return bool
-     */
-    public function complies(\_PhpScoper96a284484937\PharIo\Version\Version $version)
+    public function complies(\_PhpScopera8413c4aa124\PharIo\Version\Version $version) : bool
     {
-        if ($version->getMajor()->getValue() != $this->major) {
+        if ($version->getMajor()->getValue() !== $this->major) {
             return \false;
         }
-        return $version->getMinor()->getValue() == $this->minor;
+        return $version->getMinor()->getValue() === $this->minor;
     }
 }

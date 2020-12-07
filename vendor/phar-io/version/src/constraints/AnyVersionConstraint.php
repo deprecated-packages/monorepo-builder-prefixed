@@ -1,5 +1,6 @@
 <?php
 
+declare (strict_types=1);
 /*
  * This file is part of PharIo\Version.
  *
@@ -8,23 +9,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper96a284484937\PharIo\Version;
+namespace _PhpScopera8413c4aa124\PharIo\Version;
 
-class AnyVersionConstraint implements \_PhpScoper96a284484937\PharIo\Version\VersionConstraint
+class AnyVersionConstraint implements \_PhpScopera8413c4aa124\PharIo\Version\VersionConstraint
 {
-    /**
-     * @param Version $version
-     *
-     * @return bool
-     */
-    public function complies(\_PhpScoper96a284484937\PharIo\Version\Version $version)
+    public function complies(\_PhpScopera8413c4aa124\PharIo\Version\Version $version) : bool
     {
         return \true;
     }
-    /**
-     * @return string
-     */
-    public function asString()
+    public function asString() : string
     {
         return '*';
     }

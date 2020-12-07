@@ -1,32 +1,21 @@
 <?php
 
-namespace _PhpScoper96a284484937\PharIo\Version;
+declare (strict_types=1);
+namespace _PhpScopera8413c4aa124\PharIo\Version;
 
 class VersionConstraintValue
 {
-    /**
-     * @var VersionNumber
-     */
+    /** @var VersionNumber */
     private $major;
-    /**
-     * @var VersionNumber
-     */
+    /** @var VersionNumber */
     private $minor;
-    /**
-     * @var VersionNumber
-     */
+    /** @var VersionNumber */
     private $patch;
-    /**
-     * @var string
-     */
+    /** @var string */
     private $label = '';
-    /**
-     * @var string
-     */
+    /** @var string */
     private $buildMetaData = '';
-    /**
-     * @var string
-     */
+    /** @var string */
     private $versionString = '';
     /**
      * @param string $versionString
@@ -36,68 +25,51 @@ class VersionConstraintValue
         $this->versionString = $versionString;
         $this->parseVersion($versionString);
     }
-    /**
-     * @return string
-     */
-    public function getLabel()
+    public function getLabel() : string
     {
         return $this->label;
     }
-    /**
-     * @return string
-     */
-    public function getBuildMetaData()
+    public function getBuildMetaData() : string
     {
         return $this->buildMetaData;
     }
-    /**
-     * @return string
-     */
-    public function getVersionString()
+    public function getVersionString() : string
     {
         return $this->versionString;
     }
-    /**
-     * @return VersionNumber
-     */
-    public function getMajor()
+    public function getMajor() : \_PhpScopera8413c4aa124\PharIo\Version\VersionNumber
     {
         return $this->major;
     }
-    /**
-     * @return VersionNumber
-     */
-    public function getMinor()
+    public function getMinor() : \_PhpScopera8413c4aa124\PharIo\Version\VersionNumber
     {
         return $this->minor;
     }
-    /**
-     * @return VersionNumber
-     */
-    public function getPatch()
+    public function getPatch() : \_PhpScopera8413c4aa124\PharIo\Version\VersionNumber
     {
         return $this->patch;
     }
     /**
      * @param $versionString
      */
-    private function parseVersion($versionString)
+    private function parseVersion($versionString) : void
     {
         $this->extractBuildMetaData($versionString);
         $this->extractLabel($versionString);
+        $this->stripPotentialVPrefix($versionString);
         $versionSegments = \explode('.', $versionString);
-        $this->major = new \_PhpScoper96a284484937\PharIo\Version\VersionNumber($versionSegments[0]);
-        $minorValue = isset($versionSegments[1]) ? $versionSegments[1] : null;
-        $patchValue = isset($versionSegments[2]) ? $versionSegments[2] : null;
-        $this->minor = new \_PhpScoper96a284484937\PharIo\Version\VersionNumber($minorValue);
-        $this->patch = new \_PhpScoper96a284484937\PharIo\Version\VersionNumber($patchValue);
+        $this->major = new \_PhpScopera8413c4aa124\PharIo\Version\VersionNumber(\is_numeric($versionSegments[0]) ? (int) $versionSegments[0] : null);
+        $minorValue = isset($versionSegments[1]) && \is_numeric($versionSegments[1]) ? (int) $versionSegments[1] : null;
+        $patchValue = isset($versionSegments[2]) && \is_numeric($versionSegments[2]) ? (int) $versionSegments[2] : null;
+        $this->minor = new \_PhpScopera8413c4aa124\PharIo\Version\VersionNumber($minorValue);
+        $this->patch = new \_PhpScopera8413c4aa124\PharIo\Version\VersionNumber($patchValue);
     }
     /**
      * @param string $versionString
      */
-    private function extractBuildMetaData(&$versionString)
+    private function extractBuildMetaData(&$versionString) : void
     {
-        if (\preg_match('/\\+(.*)/', $versionString, $matches) == 1) {
+        if (\preg_match('/\\+(.*)/', $versionString, $matches) === 1) {
             $this->buildMetaData = $matches[1];
             $versionString = \str_replace($matches[0], '', $versionString);
         }
@@ -105,11 +77,18 @@ class VersionConstraintValue
     /**
      * @param string $versionString
      */
-    private function extractLabel(&$versionString)
+    private function extractLabel(&$versionString) : void
     {
-        if (\preg_match('/\\-(.*)/', $versionString, $matches) == 1) {
+        if (\preg_match('/-(.*)/', $versionString, $matches) === 1) {
             $this->label = $matches[1];
             $versionString = \str_replace($matches[0], '', $versionString);
         }
+    }
+    private function stripPotentialVPrefix(&$versionString) : void
+    {
+        if ($versionString[0] !== 'v') {
+            return;
+        }
+        $versionString = \substr($versionString, 1);
     }
 }

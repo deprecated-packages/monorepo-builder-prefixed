@@ -1,5 +1,6 @@
 <?php
 
+declare (strict_types=1);
 /*
  * This file is part of PharIo\Version.
  *
@@ -8,29 +9,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper96a284484937\PharIo\Version;
+namespace _PhpScopera8413c4aa124\PharIo\Version;
 
-class AndVersionConstraintGroup extends \_PhpScoper96a284484937\PharIo\Version\AbstractVersionConstraint
+class AndVersionConstraintGroup extends \_PhpScopera8413c4aa124\PharIo\Version\AbstractVersionConstraint
 {
-    /**
-     * @var VersionConstraint[]
-     */
+    /** @var VersionConstraint[] */
     private $constraints = [];
     /**
-     * @param string $originalValue
      * @param VersionConstraint[] $constraints
      */
-    public function __construct($originalValue, array $constraints)
+    public function __construct(string $originalValue, array $constraints)
     {
         parent::__construct($originalValue);
         $this->constraints = $constraints;
     }
-    /**
-     * @param Version $version
-     *
-     * @return bool
-     */
-    public function complies(\_PhpScoper96a284484937\PharIo\Version\Version $version)
+    public function complies(\_PhpScopera8413c4aa124\PharIo\Version\Version $version) : bool
     {
         foreach ($this->constraints as $constraint) {
             if (!$constraint->complies($version)) {

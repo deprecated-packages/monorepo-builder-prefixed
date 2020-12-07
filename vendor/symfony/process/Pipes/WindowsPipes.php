@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper96a284484937\Symfony\Component\Process\Pipes;
+namespace _PhpScopera8413c4aa124\Symfony\Component\Process\Pipes;
 
-use _PhpScoper96a284484937\Symfony\Component\Process\Exception\RuntimeException;
-use _PhpScoper96a284484937\Symfony\Component\Process\Process;
+use _PhpScopera8413c4aa124\Symfony\Component\Process\Exception\RuntimeException;
+use _PhpScopera8413c4aa124\Symfony\Component\Process\Process;
 /**
  * WindowsPipes implementation uses temporary files as handles.
  *
@@ -22,12 +22,12 @@ use _PhpScoper96a284484937\Symfony\Component\Process\Process;
  *
  * @internal
  */
-class WindowsPipes extends \_PhpScoper96a284484937\Symfony\Component\Process\Pipes\AbstractPipes
+class WindowsPipes extends \_PhpScopera8413c4aa124\Symfony\Component\Process\Pipes\AbstractPipes
 {
     private $files = [];
     private $fileHandles = [];
     private $lockHandles = [];
-    private $readBytes = [\_PhpScoper96a284484937\Symfony\Component\Process\Process::STDOUT => 0, \_PhpScoper96a284484937\Symfony\Component\Process\Process::STDERR => 0];
+    private $readBytes = [\_PhpScopera8413c4aa124\Symfony\Component\Process\Process::STDOUT => 0, \_PhpScopera8413c4aa124\Symfony\Component\Process\Process::STDERR => 0];
     private $haveReadSupport;
     public function __construct($input, bool $haveReadSupport)
     {
@@ -37,7 +37,7 @@ class WindowsPipes extends \_PhpScoper96a284484937\Symfony\Component\Process\Pip
             // Workaround for this problem is to use temporary files instead of pipes on Windows platform.
             //
             // @see https://bugs.php.net/51800
-            $pipes = [\_PhpScoper96a284484937\Symfony\Component\Process\Process::STDOUT => \_PhpScoper96a284484937\Symfony\Component\Process\Process::OUT, \_PhpScoper96a284484937\Symfony\Component\Process\Process::STDERR => \_PhpScoper96a284484937\Symfony\Component\Process\Process::ERR];
+            $pipes = [\_PhpScopera8413c4aa124\Symfony\Component\Process\Process::STDOUT => \_PhpScopera8413c4aa124\Symfony\Component\Process\Process::OUT, \_PhpScopera8413c4aa124\Symfony\Component\Process\Process::STDERR => \_PhpScopera8413c4aa124\Symfony\Component\Process\Process::ERR];
             $tmpDir = \sys_get_temp_dir();
             $lastError = 'unknown reason';
             \set_error_handler(function ($type, $msg) use(&$lastError) {
@@ -48,7 +48,7 @@ class WindowsPipes extends \_PhpScoper96a284484937\Symfony\Component\Process\Pip
                     $file = \sprintf('%s\\sf_proc_%02X.%s', $tmpDir, $i, $name);
                     if (!($h = \fopen($file . '.lock', 'w'))) {
                         \restore_error_handler();
-                        throw new \_PhpScoper96a284484937\Symfony\Component\Process\Exception\RuntimeException(\sprintf('A temporary file could not be opened to write the process output: %s', $lastError));
+                        throw new \_PhpScopera8413c4aa124\Symfony\Component\Process\Exception\RuntimeException(\sprintf('A temporary file could not be opened to write the process output: %s', $lastError));
                     }
                     if (!\flock($h, \LOCK_EX | \LOCK_NB)) {
                         continue 2;
@@ -108,9 +108,9 @@ class WindowsPipes extends \_PhpScoper96a284484937\Symfony\Component\Process\Pip
         $read = $r = $e = [];
         if ($blocking) {
             if ($w) {
-                @\stream_select($r, $w, $e, 0, \_PhpScoper96a284484937\Symfony\Component\Process\Process::TIMEOUT_PRECISION * 1000000.0);
+                @\stream_select($r, $w, $e, 0, \_PhpScopera8413c4aa124\Symfony\Component\Process\Process::TIMEOUT_PRECISION * 1000000.0);
             } elseif ($this->fileHandles) {
-                \usleep(\_PhpScoper96a284484937\Symfony\Component\Process\Process::TIMEOUT_PRECISION * 1000000.0);
+                \usleep(\_PhpScopera8413c4aa124\Symfony\Component\Process\Process::TIMEOUT_PRECISION * 1000000.0);
             }
         }
         foreach ($this->fileHandles as $type => $fileHandle) {

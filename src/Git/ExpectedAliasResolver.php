@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Git;
 
-use _PhpScoper96a284484937\Symfony\Component\Process\Process;
+use _PhpScopera8413c4aa124\Symfony\Component\Process\Process;
 use Symplify\MonorepoBuilder\Utils\VersionUtils;
 final class ExpectedAliasResolver
 {
@@ -17,7 +17,7 @@ final class ExpectedAliasResolver
     }
     public function resolve() : string
     {
-        $process = new \_PhpScoper96a284484937\Symfony\Component\Process\Process(['git', 'describe', '--abbrev=0', '--tags']);
+        $process = new \_PhpScopera8413c4aa124\Symfony\Component\Process\Process(['git', 'describe', '--abbrev=0', '--tags']);
         $process->run();
         $output = $process->getOutput();
         return $this->versionUtils->getNextAliasFormat($output);

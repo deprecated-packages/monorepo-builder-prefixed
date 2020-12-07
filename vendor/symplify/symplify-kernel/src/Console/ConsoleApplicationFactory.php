@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\SymplifyKernel\Console;
 
-use _PhpScoper96a284484937\Jean85\PrettyVersions;
-use _PhpScoper96a284484937\Symfony\Component\Console\Application;
-use _PhpScoper96a284484937\Symfony\Component\Console\Command\Command;
+use _PhpScopera8413c4aa124\Jean85\PrettyVersions;
+use _PhpScopera8413c4aa124\Symfony\Component\Console\Application;
+use _PhpScopera8413c4aa124\Symfony\Component\Console\Command\Command;
 use Symplify\ComposerJsonManipulator\ComposerJsonFactory;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 use Symplify\SmartFileSystem\SmartFileSystem;
@@ -50,7 +50,7 @@ final class ConsoleApplicationFactory
         $this->decorateApplicationWithNameAndVersion($autowiredConsoleApplication);
         return $autowiredConsoleApplication;
     }
-    private function decorateApplicationWithNameAndVersion(\_PhpScoper96a284484937\Symfony\Component\Console\Application $application) : void
+    private function decorateApplicationWithNameAndVersion(\_PhpScopera8413c4aa124\Symfony\Component\Console\Application $application) : void
     {
         $projectDir = $this->parameterProvider->provideStringParameter('kernel.project_dir');
         $packageComposerJsonFilePath = $projectDir . \DIRECTORY_SEPARATOR . 'composer.json';
@@ -76,7 +76,7 @@ final class ConsoleApplicationFactory
     private function resolveVersionFromPackageName(string $packageName) : string
     {
         try {
-            $version = \_PhpScoper96a284484937\Jean85\PrettyVersions::getVersion($packageName);
+            $version = \_PhpScopera8413c4aa124\Jean85\PrettyVersions::getVersion($packageName);
             return $version->getPrettyVersion();
         } catch (\Throwable $throwable) {
             return 'Unknown';
