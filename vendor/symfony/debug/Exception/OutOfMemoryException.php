@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopercd5c1af09a49\Symfony\Component\Debug\Exception;
+namespace _PhpScopereb7fcd8f999a\Symfony\Component\Debug\Exception;
 
-@\trigger_error(\sprintf('The "%s" class is deprecated since Symfony 4.4, use "%s" instead.', \_PhpScopercd5c1af09a49\Symfony\Component\Debug\Exception\OutOfMemoryException::class, \_PhpScopercd5c1af09a49\Symfony\Component\ErrorHandler\Error\OutOfMemoryError::class), \E_USER_DEPRECATED);
+@\trigger_error(\sprintf('The "%s" class is deprecated since Symfony 4.4, use "%s" instead.', \_PhpScopereb7fcd8f999a\Symfony\Component\Debug\Exception\OutOfMemoryException::class, \_PhpScopereb7fcd8f999a\Symfony\Component\ErrorHandler\Error\OutOfMemoryError::class), \E_USER_DEPRECATED);
 /**
  * Out of memory exception.
  *
@@ -18,6 +18,6 @@ namespace _PhpScopercd5c1af09a49\Symfony\Component\Debug\Exception;
  *
  * @deprecated since Symfony 4.4, use Symfony\Component\ErrorHandler\Error\OutOfMemoryError instead.
  */
-class OutOfMemoryException extends \_PhpScopercd5c1af09a49\Symfony\Component\Debug\Exception\FatalErrorException
+class OutOfMemoryException extends \_PhpScopereb7fcd8f999a\Symfony\Component\Debug\Exception\FatalErrorException
 {
 }

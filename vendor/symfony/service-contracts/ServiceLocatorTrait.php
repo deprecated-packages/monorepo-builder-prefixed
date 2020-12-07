@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopercd5c1af09a49\Symfony\Contracts\Service;
+namespace _PhpScopereb7fcd8f999a\Symfony\Contracts\Service;
 
-use _PhpScopercd5c1af09a49\Psr\Container\ContainerExceptionInterface;
-use _PhpScopercd5c1af09a49\Psr\Container\NotFoundExceptionInterface;
+use _PhpScopereb7fcd8f999a\Psr\Container\ContainerExceptionInterface;
+use _PhpScopereb7fcd8f999a\Psr\Container\NotFoundExceptionInterface;
 /**
  * A trait to help implement ServiceProviderInterface.
  *
@@ -78,7 +78,7 @@ trait ServiceLocatorTrait
         }
         return $this->providedTypes;
     }
-    private function createNotFoundException(string $id) : \_PhpScopercd5c1af09a49\Psr\Container\NotFoundExceptionInterface
+    private function createNotFoundException(string $id) : \_PhpScopereb7fcd8f999a\Psr\Container\NotFoundExceptionInterface
     {
         if (!($alternatives = \array_keys($this->factories))) {
             $message = 'is empty...';
@@ -95,13 +95,13 @@ trait ServiceLocatorTrait
         } else {
             $message = \sprintf('Service "%s" not found: the current service locator %s', $id, $message);
         }
-        return new class($message) extends \InvalidArgumentException implements \_PhpScopercd5c1af09a49\Psr\Container\NotFoundExceptionInterface
+        return new class($message) extends \InvalidArgumentException implements \_PhpScopereb7fcd8f999a\Psr\Container\NotFoundExceptionInterface
         {
         };
     }
-    private function createCircularReferenceException(string $id, array $path) : \_PhpScopercd5c1af09a49\Psr\Container\ContainerExceptionInterface
+    private function createCircularReferenceException(string $id, array $path) : \_PhpScopereb7fcd8f999a\Psr\Container\ContainerExceptionInterface
     {
-        return new class(\sprintf('Circular reference detected for service "%s", path: "%s".', $id, \implode(' -> ', $path))) extends \RuntimeException implements \_PhpScopercd5c1af09a49\Psr\Container\ContainerExceptionInterface
+        return new class(\sprintf('Circular reference detected for service "%s", path: "%s".', $id, \implode(' -> ', $path))) extends \RuntimeException implements \_PhpScopereb7fcd8f999a\Psr\Container\ContainerExceptionInterface
         {
         };
     }

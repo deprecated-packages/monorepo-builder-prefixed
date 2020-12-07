@@ -8,44 +8,44 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopercd5c1af09a49\Symfony\Component\Mime\Tests\Header;
+namespace _PhpScopereb7fcd8f999a\Symfony\Component\Mime\Tests\Header;
 
-use _PhpScopercd5c1af09a49\PHPUnit\Framework\TestCase;
-use _PhpScopercd5c1af09a49\Symfony\Component\Mime\Address;
-use _PhpScopercd5c1af09a49\Symfony\Component\Mime\Header\MailboxHeader;
-use _PhpScopercd5c1af09a49\Symfony\Component\Mime\NamedAddress;
-class MailboxHeaderTest extends \_PhpScopercd5c1af09a49\PHPUnit\Framework\TestCase
+use _PhpScopereb7fcd8f999a\PHPUnit\Framework\TestCase;
+use _PhpScopereb7fcd8f999a\Symfony\Component\Mime\Address;
+use _PhpScopereb7fcd8f999a\Symfony\Component\Mime\Header\MailboxHeader;
+use _PhpScopereb7fcd8f999a\Symfony\Component\Mime\NamedAddress;
+class MailboxHeaderTest extends \_PhpScopereb7fcd8f999a\PHPUnit\Framework\TestCase
 {
     public function testConstructor()
     {
-        $header = new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\Header\MailboxHeader('Sender', $address = new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\Address('fabien@symfony.com'));
+        $header = new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\Header\MailboxHeader('Sender', $address = new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\Address('fabien@symfony.com'));
         $this->assertEquals($address, $header->getAddress());
         $this->assertEquals($address, $header->getBody());
     }
     public function testAddress()
     {
-        $header = new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\Header\MailboxHeader('Sender', new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\Address('fabien@symfony.com'));
-        $header->setBody($address = new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\Address('helene@symfony.com'));
+        $header = new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\Header\MailboxHeader('Sender', new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\Address('fabien@symfony.com'));
+        $header->setBody($address = new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\Address('helene@symfony.com'));
         $this->assertEquals($address, $header->getAddress());
         $this->assertEquals($address, $header->getBody());
-        $header->setAddress($address = new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\Address('thomas@symfony.com'));
+        $header->setAddress($address = new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\Address('thomas@symfony.com'));
         $this->assertEquals($address, $header->getAddress());
         $this->assertEquals($address, $header->getBody());
     }
     public function testgetBodyAsString()
     {
-        $header = new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\Header\MailboxHeader('Sender', new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\Address('fabien@symfony.com'));
+        $header = new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\Header\MailboxHeader('Sender', new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\Address('fabien@symfony.com'));
         $this->assertEquals('fabien@symfony.com', $header->getBodyAsString());
-        $header->setAddress(new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\Address('fabien@sïmfony.com'));
+        $header->setAddress(new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\Address('fabien@sïmfony.com'));
         $this->assertEquals('fabien@xn--smfony-iwa.com', $header->getBodyAsString());
-        $header = new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\Header\MailboxHeader('Sender', new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\NamedAddress('fabien@symfony.com', 'Fabien Potencier'));
+        $header = new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\Header\MailboxHeader('Sender', new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\NamedAddress('fabien@symfony.com', 'Fabien Potencier'));
         $this->assertEquals('Fabien Potencier <fabien@symfony.com>', $header->getBodyAsString());
-        $header = new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\Header\MailboxHeader('Sender', new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\NamedAddress('fabien@symfony.com', 'Fabien Potencier, "from Symfony"'));
+        $header = new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\Header\MailboxHeader('Sender', new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\NamedAddress('fabien@symfony.com', 'Fabien Potencier, "from Symfony"'));
         $this->assertEquals('"Fabien Potencier, \\"from Symfony\\"" <fabien@symfony.com>', $header->getBodyAsString());
-        $header = new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\Header\MailboxHeader('From', new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\NamedAddress('fabien@symfony.com', 'Fabien Potencier, \\escaped\\'));
+        $header = new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\Header\MailboxHeader('From', new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\NamedAddress('fabien@symfony.com', 'Fabien Potencier, \\escaped\\'));
         $this->assertEquals('"Fabien Potencier, \\\\escaped\\\\" <fabien@symfony.com>', $header->getBodyAsString());
         $name = 'P' . \pack('C', 0x8f) . 'tencier';
-        $header = new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\Header\MailboxHeader('Sender', new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\NamedAddress('fabien@symfony.com', 'Fabien ' . $name));
+        $header = new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\Header\MailboxHeader('Sender', new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\NamedAddress('fabien@symfony.com', 'Fabien ' . $name));
         $header->setCharset('iso-8859-1');
         $this->assertEquals('Fabien =?' . $header->getCharset() . '?Q?P=8Ftencier?= <fabien@symfony.com>', $header->getBodyAsString());
     }
@@ -54,14 +54,14 @@ class MailboxHeaderTest extends \_PhpScopercd5c1af09a49\PHPUnit\Framework\TestCa
      */
     public function testUtf8CharsInLocalPartThrows()
     {
-        $header = new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\Header\MailboxHeader('Sender', new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\Address('fabïen@symfony.com'));
+        $header = new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\Header\MailboxHeader('Sender', new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\Address('fabïen@symfony.com'));
         $header->getBodyAsString();
     }
     public function testToString()
     {
-        $header = new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\Header\MailboxHeader('Sender', new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\Address('fabien@symfony.com'));
+        $header = new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\Header\MailboxHeader('Sender', new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\Address('fabien@symfony.com'));
         $this->assertEquals('Sender: fabien@symfony.com', $header->toString());
-        $header = new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\Header\MailboxHeader('Sender', new \_PhpScopercd5c1af09a49\Symfony\Component\Mime\NamedAddress('fabien@symfony.com', 'Fabien Potencier'));
+        $header = new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\Header\MailboxHeader('Sender', new \_PhpScopereb7fcd8f999a\Symfony\Component\Mime\NamedAddress('fabien@symfony.com', 'Fabien Potencier'));
         $this->assertEquals('Sender: Fabien Potencier <fabien@symfony.com>', $header->toString());
     }
 }

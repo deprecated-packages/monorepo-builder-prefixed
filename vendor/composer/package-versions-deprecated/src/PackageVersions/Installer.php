@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace _PhpScopercd5c1af09a49\PackageVersions;
+namespace _PhpScopereb7fcd8f999a\PackageVersions;
 
-use _PhpScopercd5c1af09a49\Composer\Composer;
-use _PhpScopercd5c1af09a49\Composer\Config;
-use _PhpScopercd5c1af09a49\Composer\EventDispatcher\EventSubscriberInterface;
-use _PhpScopercd5c1af09a49\Composer\IO\IOInterface;
-use _PhpScopercd5c1af09a49\Composer\Package\AliasPackage;
-use _PhpScopercd5c1af09a49\Composer\Package\Locker;
-use _PhpScopercd5c1af09a49\Composer\Package\PackageInterface;
-use _PhpScopercd5c1af09a49\Composer\Package\RootPackageInterface;
-use _PhpScopercd5c1af09a49\Composer\Plugin\PluginInterface;
-use _PhpScopercd5c1af09a49\Composer\Script\Event;
-use _PhpScopercd5c1af09a49\Composer\Script\ScriptEvents;
+use _PhpScopereb7fcd8f999a\Composer\Composer;
+use _PhpScopereb7fcd8f999a\Composer\Config;
+use _PhpScopereb7fcd8f999a\Composer\EventDispatcher\EventSubscriberInterface;
+use _PhpScopereb7fcd8f999a\Composer\IO\IOInterface;
+use _PhpScopereb7fcd8f999a\Composer\Package\AliasPackage;
+use _PhpScopereb7fcd8f999a\Composer\Package\Locker;
+use _PhpScopereb7fcd8f999a\Composer\Package\PackageInterface;
+use _PhpScopereb7fcd8f999a\Composer\Package\RootPackageInterface;
+use _PhpScopereb7fcd8f999a\Composer\Plugin\PluginInterface;
+use _PhpScopereb7fcd8f999a\Composer\Script\Event;
+use _PhpScopereb7fcd8f999a\Composer\Script\ScriptEvents;
 use Generator;
 use RuntimeException;
 use function array_key_exists;
@@ -27,7 +27,7 @@ use function rename;
 use function sprintf;
 use function uniqid;
 use function var_export;
-final class Installer implements \_PhpScopercd5c1af09a49\Composer\Plugin\PluginInterface, \_PhpScopercd5c1af09a49\Composer\EventDispatcher\EventSubscriberInterface
+final class Installer implements \_PhpScopereb7fcd8f999a\Composer\Plugin\PluginInterface, \_PhpScopereb7fcd8f999a\Composer\EventDispatcher\EventSubscriberInterface
 {
     private static $generatedClassTemplate = <<<'PHP'
 <?php
@@ -79,15 +79,15 @@ use OutOfBoundsException;
 }
 
 PHP;
-    public function activate(\_PhpScopercd5c1af09a49\Composer\Composer $composer, \_PhpScopercd5c1af09a49\Composer\IO\IOInterface $io)
+    public function activate(\_PhpScopereb7fcd8f999a\Composer\Composer $composer, \_PhpScopereb7fcd8f999a\Composer\IO\IOInterface $io)
     {
         // Nothing to do here, as all features are provided through event listeners
     }
-    public function deactivate(\_PhpScopercd5c1af09a49\Composer\Composer $composer, \_PhpScopercd5c1af09a49\Composer\IO\IOInterface $io)
+    public function deactivate(\_PhpScopereb7fcd8f999a\Composer\Composer $composer, \_PhpScopereb7fcd8f999a\Composer\IO\IOInterface $io)
     {
         // Nothing to do here, as all features are provided through event listeners
     }
-    public function uninstall(\_PhpScopercd5c1af09a49\Composer\Composer $composer, \_PhpScopercd5c1af09a49\Composer\IO\IOInterface $io)
+    public function uninstall(\_PhpScopereb7fcd8f999a\Composer\Composer $composer, \_PhpScopereb7fcd8f999a\Composer\IO\IOInterface $io)
     {
         // Nothing to do here, as all features are provided through event listeners
     }
@@ -96,12 +96,12 @@ PHP;
      */
     public static function getSubscribedEvents() : array
     {
-        return [\_PhpScopercd5c1af09a49\Composer\Script\ScriptEvents::POST_AUTOLOAD_DUMP => 'dumpVersionsClass'];
+        return [\_PhpScopereb7fcd8f999a\Composer\Script\ScriptEvents::POST_AUTOLOAD_DUMP => 'dumpVersionsClass'];
     }
     /**
      * @throws RuntimeException
      */
-    public static function dumpVersionsClass(\_PhpScopercd5c1af09a49\Composer\Script\Event $composerEvent)
+    public static function dumpVersionsClass(\_PhpScopereb7fcd8f999a\Composer\Script\Event $composerEvent)
     {
         $composer = $composerEvent->getComposer();
         $rootPackage = $composer->getPackage();
@@ -130,7 +130,7 @@ PHP;
     /**
      * @throws RuntimeException
      */
-    private static function writeVersionClassToFile(string $versionClassSource, \_PhpScopercd5c1af09a49\Composer\Composer $composer, \_PhpScopercd5c1af09a49\Composer\IO\IOInterface $io)
+    private static function writeVersionClassToFile(string $versionClassSource, \_PhpScopereb7fcd8f999a\Composer\Composer $composer, \_PhpScopereb7fcd8f999a\Composer\IO\IOInterface $io)
     {
         $installPath = self::locateRootPackageInstallPath($composer->getConfig(), $composer->getPackage()) . '/src/PackageVersions/Versions.php';
         if (!\file_exists(\dirname($installPath))) {
@@ -143,24 +143,24 @@ PHP;
         \chmod($installPathTmp, 0664);
         \rename($installPathTmp, $installPath);
         $io->write('<info>composer/package-versions-deprecated:</info> ...done generating version class');
-        if (\version_compare(\_PhpScopercd5c1af09a49\Composer\Plugin\PluginInterface::PLUGIN_API_VERSION, '2.0.0', '>=')) {
+        if (\version_compare(\_PhpScopereb7fcd8f999a\Composer\Plugin\PluginInterface::PLUGIN_API_VERSION, '2.0.0', '>=')) {
             $io->write('<info>composer/package-versions-deprecated:</info> <warning>You should rely on the Composer\\InstalledVersions class instead of this package as you are using Composer 2. You can require composer-runtime-api:^2 to ensure it is present.</warning>');
         }
     }
     /**
      * @throws RuntimeException
      */
-    private static function locateRootPackageInstallPath(\_PhpScopercd5c1af09a49\Composer\Config $composerConfig, \_PhpScopercd5c1af09a49\Composer\Package\RootPackageInterface $rootPackage) : string
+    private static function locateRootPackageInstallPath(\_PhpScopereb7fcd8f999a\Composer\Config $composerConfig, \_PhpScopereb7fcd8f999a\Composer\Package\RootPackageInterface $rootPackage) : string
     {
         if (self::getRootPackageAlias($rootPackage)->getName() === 'composer/package-versions-deprecated') {
             return \dirname($composerConfig->get('vendor-dir'));
         }
         return $composerConfig->get('vendor-dir') . '/composer/package-versions-deprecated';
     }
-    private static function getRootPackageAlias(\_PhpScopercd5c1af09a49\Composer\Package\RootPackageInterface $rootPackage) : \_PhpScopercd5c1af09a49\Composer\Package\PackageInterface
+    private static function getRootPackageAlias(\_PhpScopereb7fcd8f999a\Composer\Package\RootPackageInterface $rootPackage) : \_PhpScopereb7fcd8f999a\Composer\Package\PackageInterface
     {
         $package = $rootPackage;
-        while ($package instanceof \_PhpScopercd5c1af09a49\Composer\Package\AliasPackage) {
+        while ($package instanceof \_PhpScopereb7fcd8f999a\Composer\Package\AliasPackage) {
             $package = $package->getAliasOf();
         }
         return $package;
@@ -170,7 +170,7 @@ PHP;
      *
      * @psalm-return Generator<string, string>
      */
-    private static function getVersions(\_PhpScopercd5c1af09a49\Composer\Package\Locker $locker, \_PhpScopercd5c1af09a49\Composer\Package\RootPackageInterface $rootPackage) : \Generator
+    private static function getVersions(\_PhpScopereb7fcd8f999a\Composer\Package\Locker $locker, \_PhpScopereb7fcd8f999a\Composer\Package\RootPackageInterface $rootPackage) : \Generator
     {
         $lockData = $locker->getLockData();
         $lockData['packages-dev'] = $lockData['packages-dev'] ?? [];
