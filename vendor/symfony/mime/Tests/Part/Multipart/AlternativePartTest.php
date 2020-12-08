@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperfa13b4bfa005\Symfony\Component\Mime\Tests\Part\Multipart;
+namespace _PhpScoper78864f032ec6\Symfony\Component\Mime\Tests\Part\Multipart;
 
-use _PhpScoperfa13b4bfa005\PHPUnit\Framework\TestCase;
-use _PhpScoperfa13b4bfa005\Symfony\Component\Mime\Part\Multipart\AlternativePart;
-class AlternativePartTest extends \_PhpScoperfa13b4bfa005\PHPUnit\Framework\TestCase
+use _PhpScoper78864f032ec6\PHPUnit\Framework\TestCase;
+use _PhpScoper78864f032ec6\Symfony\Component\Mime\Part\Multipart\AlternativePart;
+class AlternativePartTest extends \_PhpScoper78864f032ec6\PHPUnit\Framework\TestCase
 {
     public function testConstructor()
     {
-        $a = new \_PhpScoperfa13b4bfa005\Symfony\Component\Mime\Part\Multipart\AlternativePart();
+        $a = new \_PhpScoper78864f032ec6\Symfony\Component\Mime\Part\Multipart\AlternativePart();
         $this->assertEquals('multipart', $a->getMediaType());
         $this->assertEquals('alternative', $a->getMediaSubtype());
     }

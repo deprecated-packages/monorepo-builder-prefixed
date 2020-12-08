@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperfa13b4bfa005\Symfony\Component\HttpKernel;
+namespace _PhpScoper78864f032ec6\Symfony\Component\HttpKernel;
 
-use _PhpScoperfa13b4bfa005\Symfony\Component\HttpFoundation\Request;
-use _PhpScoperfa13b4bfa005\Symfony\Component\HttpFoundation\Response;
+use _PhpScoper78864f032ec6\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper78864f032ec6\Symfony\Component\HttpFoundation\Response;
 /**
  * Terminable extends the Kernel request/response cycle with dispatching a post
  * response event after sending the response and before shutting down the kernel.
@@ -26,5 +26,5 @@ interface TerminableInterface
      *
      * Should be called after sending the response and before shutting down the kernel.
      */
-    public function terminate(\_PhpScoperfa13b4bfa005\Symfony\Component\HttpFoundation\Request $request, \_PhpScoperfa13b4bfa005\Symfony\Component\HttpFoundation\Response $response);
+    public function terminate(\_PhpScoper78864f032ec6\Symfony\Component\HttpFoundation\Request $request, \_PhpScoper78864f032ec6\Symfony\Component\HttpFoundation\Response $response);
 }
