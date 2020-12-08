@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper78864f032ec6\Symfony\Component\Finder\Iterator;
+namespace _PhpScoper3c875050d97b\Symfony\Component\Finder\Iterator;
 
 /**
  * ExcludeDirectoryFilterIterator filters out directories.
