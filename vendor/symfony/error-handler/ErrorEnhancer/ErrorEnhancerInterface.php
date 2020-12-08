@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopereb7fcd8f999a\Symfony\Component\ErrorHandler\ErrorEnhancer;
+namespace _PhpScoperfa13b4bfa005\Symfony\Component\ErrorHandler\ErrorEnhancer;
 
 interface ErrorEnhancerInterface
 {
