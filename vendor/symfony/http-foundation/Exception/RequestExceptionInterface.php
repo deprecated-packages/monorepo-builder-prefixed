@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper3c875050d97b\Symfony\Component\HttpFoundation\Exception;
+namespace _PhpScopera85504f0ea7b\Symfony\Component\HttpFoundation\Exception;
 
 /**
  * Interface for Request exceptions.

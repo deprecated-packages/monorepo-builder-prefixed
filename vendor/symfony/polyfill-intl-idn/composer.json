@@ -34,7 +34,7 @@
     },
     "autoload": {
         "psr-4": {
-            "_PhpScoper3c875050d97b\\Symfony\\Polyfill\\Intl\\Idn\\": ""
+            "_PhpScopera85504f0ea7b\\Symfony\\Polyfill\\Intl\\Idn\\": ""
         },
         "files": [
             "bootstrap.php"
