@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\Command;
 
-use _PhpScoperaf523e5605cc\Symfony\Component\Console\Input\InputArgument;
-use _PhpScoperaf523e5605cc\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperaf523e5605cc\Symfony\Component\Console\Input\InputOption;
-use _PhpScoperaf523e5605cc\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\Console\Input\InputArgument;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\Console\Input\InputOption;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\Release\Configuration\StageResolver;
 use Symplify\MonorepoBuilder\Release\Configuration\VersionResolver;
 use Symplify\MonorepoBuilder\Release\Output\ReleaseWorkerReporter;
@@ -53,11 +53,11 @@ final class ReleaseCommand extends \Symplify\PackageBuilder\Console\Command\Abst
     {
         $this->setDescription('Perform release process with set Release Workers.');
         $description = \sprintf('Release version, in format "<major>.<minor>.<patch>" or "v<major>.<minor>.<patch> or one of keywords: "%s"', \implode('", "', \Symplify\MonorepoBuilder\Release\ValueObject\SemVersion::ALL));
-        $this->addArgument(\Symplify\MonorepoBuilder\ValueObject\Option::VERSION, \_PhpScoperaf523e5605cc\Symfony\Component\Console\Input\InputArgument::REQUIRED, $description);
-        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::DRY_RUN, null, \_PhpScoperaf523e5605cc\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Do not perform operations, just their preview');
-        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::STAGE, null, \_PhpScoperaf523e5605cc\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Name of stage to perform', \Symplify\MonorepoBuilder\Release\ValueObject\Stage::MAIN);
+        $this->addArgument(\Symplify\MonorepoBuilder\ValueObject\Option::VERSION, \_PhpScoperb15c77d6bb3b\Symfony\Component\Console\Input\InputArgument::REQUIRED, $description);
+        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::DRY_RUN, null, \_PhpScoperb15c77d6bb3b\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Do not perform operations, just their preview');
+        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::STAGE, null, \_PhpScoperb15c77d6bb3b\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Name of stage to perform', \Symplify\MonorepoBuilder\Release\ValueObject\Stage::MAIN);
     }
-    protected function execute(\_PhpScoperaf523e5605cc\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperaf523e5605cc\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoperb15c77d6bb3b\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperb15c77d6bb3b\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $this->sourcesPresenceValidator->validateRootComposerJsonName();
         // validation phase

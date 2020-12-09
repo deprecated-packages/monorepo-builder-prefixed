@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperaf523e5605cc\Symfony\Component\DependencyInjection\Config;
+namespace _PhpScoperb15c77d6bb3b\Symfony\Component\DependencyInjection\Config;
 
-use _PhpScoperaf523e5605cc\Symfony\Component\Config\Resource\ResourceInterface;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\Config\Resource\ResourceInterface;
 /**
  * Tracks container parameters.
  *
@@ -18,7 +18,7 @@ use _PhpScoperaf523e5605cc\Symfony\Component\Config\Resource\ResourceInterface;
  *
  * @final
  */
-class ContainerParametersResource implements \_PhpScoperaf523e5605cc\Symfony\Component\Config\Resource\ResourceInterface
+class ContainerParametersResource implements \_PhpScoperb15c77d6bb3b\Symfony\Component\Config\Resource\ResourceInterface
 {
     private $parameters;
     /**

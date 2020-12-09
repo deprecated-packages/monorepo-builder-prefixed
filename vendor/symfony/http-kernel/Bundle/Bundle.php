@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperaf523e5605cc\Symfony\Component\HttpKernel\Bundle;
+namespace _PhpScoperb15c77d6bb3b\Symfony\Component\HttpKernel\Bundle;
 
-use _PhpScoperaf523e5605cc\Symfony\Component\Console\Application;
-use _PhpScoperaf523e5605cc\Symfony\Component\DependencyInjection\Container;
-use _PhpScoperaf523e5605cc\Symfony\Component\DependencyInjection\ContainerAwareTrait;
-use _PhpScoperaf523e5605cc\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScoperaf523e5605cc\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\Console\Application;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\DependencyInjection\Container;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 /**
  * An implementation of BundleInterface that adds a few conventions for DependencyInjection extensions.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Bundle implements \_PhpScoperaf523e5605cc\Symfony\Component\HttpKernel\Bundle\BundleInterface
+abstract class Bundle implements \_PhpScoperb15c77d6bb3b\Symfony\Component\HttpKernel\Bundle\BundleInterface
 {
     use ContainerAwareTrait;
     protected $name;
@@ -45,7 +45,7 @@ abstract class Bundle implements \_PhpScoperaf523e5605cc\Symfony\Component\HttpK
      * This method can be overridden to register compilation passes,
      * other extensions, ...
      */
-    public function build(\_PhpScoperaf523e5605cc\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function build(\_PhpScoperb15c77d6bb3b\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
     }
     /**
@@ -60,12 +60,12 @@ abstract class Bundle implements \_PhpScoperaf523e5605cc\Symfony\Component\HttpK
         if (null === $this->extension) {
             $extension = $this->createContainerExtension();
             if (null !== $extension) {
-                if (!$extension instanceof \_PhpScoperaf523e5605cc\Symfony\Component\DependencyInjection\Extension\ExtensionInterface) {
+                if (!$extension instanceof \_PhpScoperb15c77d6bb3b\Symfony\Component\DependencyInjection\Extension\ExtensionInterface) {
                     throw new \LogicException(\sprintf('Extension %s must implement Symfony\\Component\\DependencyInjection\\Extension\\ExtensionInterface.', \get_class($extension)));
                 }
                 // check naming convention
                 $basename = \preg_replace('/Bundle$/', '', $this->getName());
-                $expectedAlias = \_PhpScoperaf523e5605cc\Symfony\Component\DependencyInjection\Container::underscore($basename);
+                $expectedAlias = \_PhpScoperb15c77d6bb3b\Symfony\Component\DependencyInjection\Container::underscore($basename);
                 if ($expectedAlias != $extension->getAlias()) {
                     throw new \LogicException(\sprintf('Users will expect the alias of the default extension of a bundle to be the underscored version of the bundle name ("%s"). You can override "Bundle::getContainerExtension()" if you want to use "%s" or another alias.', $expectedAlias, $extension->getAlias()));
                 }
@@ -107,7 +107,7 @@ abstract class Bundle implements \_PhpScoperaf523e5605cc\Symfony\Component\HttpK
         }
         return $this->name;
     }
-    public function registerCommands(\_PhpScoperaf523e5605cc\Symfony\Component\Console\Application $application)
+    public function registerCommands(\_PhpScoperb15c77d6bb3b\Symfony\Component\Console\Application $application)
     {
     }
     /**

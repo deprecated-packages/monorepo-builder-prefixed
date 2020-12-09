@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperaf523e5605cc\Symfony\Component\Mime\Tests\Part;
+namespace _PhpScoperb15c77d6bb3b\Symfony\Component\Mime\Tests\Part;
 
-use _PhpScoperaf523e5605cc\PHPUnit\Framework\TestCase;
-use _PhpScoperaf523e5605cc\Symfony\Component\Mime\Email;
-use _PhpScoperaf523e5605cc\Symfony\Component\Mime\Header\Headers;
-use _PhpScoperaf523e5605cc\Symfony\Component\Mime\Header\ParameterizedHeader;
-use _PhpScoperaf523e5605cc\Symfony\Component\Mime\Header\UnstructuredHeader;
-use _PhpScoperaf523e5605cc\Symfony\Component\Mime\Part\MessagePart;
-class MessagePartTest extends \_PhpScoperaf523e5605cc\PHPUnit\Framework\TestCase
+use _PhpScoperb15c77d6bb3b\PHPUnit\Framework\TestCase;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\Mime\Email;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\Mime\Header\Headers;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\Mime\Header\ParameterizedHeader;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\Mime\Header\UnstructuredHeader;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\Mime\Part\MessagePart;
+class MessagePartTest extends \_PhpScoperb15c77d6bb3b\PHPUnit\Framework\TestCase
 {
     public function testConstructor()
     {
-        $p = new \_PhpScoperaf523e5605cc\Symfony\Component\Mime\Part\MessagePart((new \_PhpScoperaf523e5605cc\Symfony\Component\Mime\Email())->from('fabien@symfony.com')->text('content'));
+        $p = new \_PhpScoperb15c77d6bb3b\Symfony\Component\Mime\Part\MessagePart((new \_PhpScoperb15c77d6bb3b\Symfony\Component\Mime\Email())->from('fabien@symfony.com')->text('content'));
         $this->assertContains('content', $p->getBody());
         $this->assertContains('content', $p->bodyToString());
         $this->assertContains('content', \implode('', \iterator_to_array($p->bodyToIterable())));
@@ -29,7 +29,7 @@ class MessagePartTest extends \_PhpScoperaf523e5605cc\PHPUnit\Framework\TestCase
     }
     public function testHeaders()
     {
-        $p = new \_PhpScoperaf523e5605cc\Symfony\Component\Mime\Part\MessagePart((new \_PhpScoperaf523e5605cc\Symfony\Component\Mime\Email())->from('fabien@symfony.com')->text('content')->subject('Subject'));
-        $this->assertEquals(new \_PhpScoperaf523e5605cc\Symfony\Component\Mime\Header\Headers(new \_PhpScoperaf523e5605cc\Symfony\Component\Mime\Header\ParameterizedHeader('Content-Type', 'message/rfc822', ['name' => 'Subject.eml']), new \_PhpScoperaf523e5605cc\Symfony\Component\Mime\Header\UnstructuredHeader('Content-Transfer-Encoding', 'base64'), new \_PhpScoperaf523e5605cc\Symfony\Component\Mime\Header\ParameterizedHeader('Content-Disposition', 'attachment', ['name' => 'Subject.eml', 'filename' => 'Subject.eml'])), $p->getPreparedHeaders());
+        $p = new \_PhpScoperb15c77d6bb3b\Symfony\Component\Mime\Part\MessagePart((new \_PhpScoperb15c77d6bb3b\Symfony\Component\Mime\Email())->from('fabien@symfony.com')->text('content')->subject('Subject'));
+        $this->assertEquals(new \_PhpScoperb15c77d6bb3b\Symfony\Component\Mime\Header\Headers(new \_PhpScoperb15c77d6bb3b\Symfony\Component\Mime\Header\ParameterizedHeader('Content-Type', 'message/rfc822', ['name' => 'Subject.eml']), new \_PhpScoperb15c77d6bb3b\Symfony\Component\Mime\Header\UnstructuredHeader('Content-Transfer-Encoding', 'base64'), new \_PhpScoperb15c77d6bb3b\Symfony\Component\Mime\Header\ParameterizedHeader('Content-Disposition', 'attachment', ['name' => 'Subject.eml', 'filename' => 'Subject.eml'])), $p->getPreparedHeaders());
     }
 }

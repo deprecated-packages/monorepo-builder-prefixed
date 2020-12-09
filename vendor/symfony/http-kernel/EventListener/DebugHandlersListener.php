@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperaf523e5605cc\Symfony\Component\HttpKernel\EventListener;
+namespace _PhpScoperb15c77d6bb3b\Symfony\Component\HttpKernel\EventListener;
 
-use _PhpScoperaf523e5605cc\Psr\Log\LoggerInterface;
-use _PhpScoperaf523e5605cc\Symfony\Component\Console\ConsoleEvents;
-use _PhpScoperaf523e5605cc\Symfony\Component\Console\Event\ConsoleEvent;
-use _PhpScoperaf523e5605cc\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use _PhpScoperaf523e5605cc\Symfony\Component\Debug\Exception\FatalThrowableError;
-use _PhpScoperaf523e5605cc\Symfony\Component\ErrorHandler\ErrorHandler;
-use _PhpScoperaf523e5605cc\Symfony\Component\EventDispatcher\Event;
-use _PhpScoperaf523e5605cc\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use _PhpScoperaf523e5605cc\Symfony\Component\HttpKernel\Debug\FileLinkFormatter;
-use _PhpScoperaf523e5605cc\Symfony\Component\HttpKernel\Event\KernelEvent;
-use _PhpScoperaf523e5605cc\Symfony\Component\HttpKernel\KernelEvents;
+use _PhpScoperb15c77d6bb3b\Psr\Log\LoggerInterface;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\Console\ConsoleEvents;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\Console\Event\ConsoleEvent;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\Debug\Exception\FatalThrowableError;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\ErrorHandler\ErrorHandler;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\EventDispatcher\Event;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\HttpKernel\Debug\FileLinkFormatter;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\HttpKernel\Event\KernelEvent;
+use _PhpScoperb15c77d6bb3b\Symfony\Component\HttpKernel\KernelEvents;
 /**
  * Configures errors and exceptions handlers.
  *
@@ -28,7 +28,7 @@ use _PhpScoperaf523e5605cc\Symfony\Component\HttpKernel\KernelEvents;
  *
  * @final since Symfony 4.4
  */
-class DebugHandlersListener implements \_PhpScoperaf523e5605cc\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class DebugHandlersListener implements \_PhpScoperb15c77d6bb3b\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     private $exceptionHandler;
     private $logger;
@@ -47,7 +47,7 @@ class DebugHandlersListener implements \_PhpScoperaf523e5605cc\Symfony\Component
      * @param string|FileLinkFormatter|null $fileLinkFormat   The format for links to source files
      * @param bool                          $scope            Enables/disables scoping mode
      */
-    public function __construct(callable $exceptionHandler = null, \_PhpScoperaf523e5605cc\Psr\Log\LoggerInterface $logger = null, $levels = \E_ALL, ?int $throwAt = \E_ALL, bool $scream = \true, $fileLinkFormat = null, bool $scope = \true)
+    public function __construct(callable $exceptionHandler = null, \_PhpScoperb15c77d6bb3b\Psr\Log\LoggerInterface $logger = null, $levels = \E_ALL, ?int $throwAt = \E_ALL, bool $scream = \true, $fileLinkFormat = null, bool $scope = \true)
     {
         $this->exceptionHandler = $exceptionHandler;
         $this->logger = $logger;
@@ -60,9 +60,9 @@ class DebugHandlersListener implements \_PhpScoperaf523e5605cc\Symfony\Component
     /**
      * Configures the error handler.
      */
-    public function configure(\_PhpScoperaf523e5605cc\Symfony\Component\EventDispatcher\Event $event = null)
+    public function configure(\_PhpScoperb15c77d6bb3b\Symfony\Component\EventDispatcher\Event $event = null)
     {
-        if (!$event instanceof \_PhpScoperaf523e5605cc\Symfony\Component\HttpKernel\Event\KernelEvent ? !$this->firstCall : !$event->isMasterRequest()) {
+        if (!$event instanceof \_PhpScoperb15c77d6bb3b\Symfony\Component\HttpKernel\Event\KernelEvent ? !$this->firstCall : !$event->isMasterRequest()) {
             return;
         }
         $this->firstCall = $this->hasTerminatedWithException = \false;
@@ -70,7 +70,7 @@ class DebugHandlersListener implements \_PhpScoperaf523e5605cc\Symfony\Component
         $handler = \is_array($handler) ? $handler[0] : null;
         \restore_exception_handler();
         if ($this->logger || null !== $this->throwAt) {
-            if ($handler instanceof \_PhpScoperaf523e5605cc\Symfony\Component\ErrorHandler\ErrorHandler) {
+            if ($handler instanceof \_PhpScoperb15c77d6bb3b\Symfony\Component\ErrorHandler\ErrorHandler) {
                 if ($this->logger) {
                     $handler->setDefaultLogger($this->logger, $this->levels);
                     if (\is_array($this->levels)) {
@@ -97,7 +97,7 @@ class DebugHandlersListener implements \_PhpScoperaf523e5605cc\Symfony\Component
             }
         }
         if (!$this->exceptionHandler) {
-            if ($event instanceof \_PhpScoperaf523e5605cc\Symfony\Component\HttpKernel\Event\KernelEvent) {
+            if ($event instanceof \_PhpScoperb15c77d6bb3b\Symfony\Component\HttpKernel\Event\KernelEvent) {
                 if (\method_exists($kernel = $event->getKernel(), 'terminateWithException')) {
                     $request = $event->getRequest();
                     $hasRun =& $this->hasTerminatedWithException;
@@ -109,9 +109,9 @@ class DebugHandlersListener implements \_PhpScoperaf523e5605cc\Symfony\Component
                         $kernel->terminateWithException($e, $request);
                     };
                 }
-            } elseif ($event instanceof \_PhpScoperaf523e5605cc\Symfony\Component\Console\Event\ConsoleEvent && ($app = $event->getCommand()->getApplication())) {
+            } elseif ($event instanceof \_PhpScoperb15c77d6bb3b\Symfony\Component\Console\Event\ConsoleEvent && ($app = $event->getCommand()->getApplication())) {
                 $output = $event->getOutput();
-                if ($output instanceof \_PhpScoperaf523e5605cc\Symfony\Component\Console\Output\ConsoleOutputInterface) {
+                if ($output instanceof \_PhpScoperb15c77d6bb3b\Symfony\Component\Console\Output\ConsoleOutputInterface) {
                     $output = $output->getErrorOutput();
                 }
                 $this->exceptionHandler = static function (\Throwable $e) use($app, $output) {
@@ -119,7 +119,7 @@ class DebugHandlersListener implements \_PhpScoperaf523e5605cc\Symfony\Component
                         $app->renderThrowable($e, $output);
                     } else {
                         if (!$e instanceof \Exception) {
-                            $e = new \_PhpScoperaf523e5605cc\Symfony\Component\Debug\Exception\FatalThrowableError($e);
+                            $e = new \_PhpScoperb15c77d6bb3b\Symfony\Component\Debug\Exception\FatalThrowableError($e);
                         }
                         $app->renderException($e, $output);
                     }
@@ -127,7 +127,7 @@ class DebugHandlersListener implements \_PhpScoperaf523e5605cc\Symfony\Component
             }
         }
         if ($this->exceptionHandler) {
-            if ($handler instanceof \_PhpScoperaf523e5605cc\Symfony\Component\ErrorHandler\ErrorHandler) {
+            if ($handler instanceof \_PhpScoperb15c77d6bb3b\Symfony\Component\ErrorHandler\ErrorHandler) {
                 $handler->setExceptionHandler($this->exceptionHandler);
             }
             $this->exceptionHandler = null;
@@ -135,9 +135,9 @@ class DebugHandlersListener implements \_PhpScoperaf523e5605cc\Symfony\Component
     }
     public static function getSubscribedEvents()
     {
-        $events = [\_PhpScoperaf523e5605cc\Symfony\Component\HttpKernel\KernelEvents::REQUEST => ['configure', 2048]];
+        $events = [\_PhpScoperb15c77d6bb3b\Symfony\Component\HttpKernel\KernelEvents::REQUEST => ['configure', 2048]];
         if ('cli' === \PHP_SAPI && \defined('Symfony\\Component\\Console\\ConsoleEvents::COMMAND')) {
-            $events[\_PhpScoperaf523e5605cc\Symfony\Component\Console\ConsoleEvents::COMMAND] = ['configure', 2048];
+            $events[\_PhpScoperb15c77d6bb3b\Symfony\Component\Console\ConsoleEvents::COMMAND] = ['configure', 2048];
         }
         return $events;
     }
