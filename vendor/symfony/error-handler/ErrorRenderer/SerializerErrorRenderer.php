@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper62cf10e7b378\Symfony\Component\ErrorHandler\ErrorRenderer;
+namespace _PhpScoperaf523e5605cc\Symfony\Component\ErrorHandler\ErrorRenderer;
 
-use _PhpScoper62cf10e7b378\Symfony\Component\ErrorHandler\Exception\FlattenException;
-use _PhpScoper62cf10e7b378\Symfony\Component\HttpFoundation\RequestStack;
-use _PhpScoper62cf10e7b378\Symfony\Component\Serializer\Exception\NotEncodableValueException;
-use _PhpScoper62cf10e7b378\Symfony\Component\Serializer\SerializerInterface;
+use _PhpScoperaf523e5605cc\Symfony\Component\ErrorHandler\Exception\FlattenException;
+use _PhpScoperaf523e5605cc\Symfony\Component\HttpFoundation\RequestStack;
+use _PhpScoperaf523e5605cc\Symfony\Component\Serializer\Exception\NotEncodableValueException;
+use _PhpScoperaf523e5605cc\Symfony\Component\Serializer\SerializerInterface;
 /**
  * Formats an exception using Serializer for rendering.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class SerializerErrorRenderer implements \_PhpScoper62cf10e7b378\Symfony\Component\ErrorHandler\ErrorRenderer\ErrorRendererInterface
+class SerializerErrorRenderer implements \_PhpScoperaf523e5605cc\Symfony\Component\ErrorHandler\ErrorRenderer\ErrorRendererInterface
 {
     private $serializer;
     private $format;
@@ -27,33 +27,33 @@ class SerializerErrorRenderer implements \_PhpScoper62cf10e7b378\Symfony\Compone
     /**
      * @param string|callable(FlattenException) $format The format as a string or a callable that should return it
      */
-    public function __construct(\_PhpScoper62cf10e7b378\Symfony\Component\Serializer\SerializerInterface $serializer, $format, \_PhpScoper62cf10e7b378\Symfony\Component\ErrorHandler\ErrorRenderer\ErrorRendererInterface $fallbackErrorRenderer = null)
+    public function __construct(\_PhpScoperaf523e5605cc\Symfony\Component\Serializer\SerializerInterface $serializer, $format, \_PhpScoperaf523e5605cc\Symfony\Component\ErrorHandler\ErrorRenderer\ErrorRendererInterface $fallbackErrorRenderer = null)
     {
         if (!\is_string($format) && !\is_callable($format)) {
             throw new \TypeError(\sprintf('Argument 2 passed to %s() must be a string or a callable, %s given.', __METHOD__, \is_object($format) ? \get_class($format) : \gettype($format)));
         }
         $this->serializer = $serializer;
         $this->format = $format;
-        $this->fallbackErrorRenderer = $fallbackErrorRenderer ?? new \_PhpScoper62cf10e7b378\Symfony\Component\ErrorHandler\ErrorRenderer\HtmlErrorRenderer();
+        $this->fallbackErrorRenderer = $fallbackErrorRenderer ?? new \_PhpScoperaf523e5605cc\Symfony\Component\ErrorHandler\ErrorRenderer\HtmlErrorRenderer();
     }
     /**
      * {@inheritdoc}
      */
-    public function render(\Throwable $exception) : \_PhpScoper62cf10e7b378\Symfony\Component\ErrorHandler\Exception\FlattenException
+    public function render(\Throwable $exception) : \_PhpScoperaf523e5605cc\Symfony\Component\ErrorHandler\Exception\FlattenException
     {
-        $flattenException = \_PhpScoper62cf10e7b378\Symfony\Component\ErrorHandler\Exception\FlattenException::createFromThrowable($exception);
+        $flattenException = \_PhpScoperaf523e5605cc\Symfony\Component\ErrorHandler\Exception\FlattenException::createFromThrowable($exception);
         try {
             $format = \is_string($this->format) ? $this->format : ($this->format)($flattenException);
             return $flattenException->setAsString($this->serializer->serialize($flattenException, $format, ['exception' => $exception]));
-        } catch (\_PhpScoper62cf10e7b378\Symfony\Component\Serializer\Exception\NotEncodableValueException $e) {
+        } catch (\_PhpScoperaf523e5605cc\Symfony\Component\Serializer\Exception\NotEncodableValueException $e) {
             return $this->fallbackErrorRenderer->render($exception);
         }
     }
-    public static function getPreferredFormat(\_PhpScoper62cf10e7b378\Symfony\Component\HttpFoundation\RequestStack $requestStack) : \Closure
+    public static function getPreferredFormat(\_PhpScoperaf523e5605cc\Symfony\Component\HttpFoundation\RequestStack $requestStack) : \Closure
     {
         return static function () use($requestStack) {
             if (!($request = $requestStack->getCurrentRequest())) {
-                throw new \_PhpScoper62cf10e7b378\Symfony\Component\Serializer\Exception\NotEncodableValueException();
+                throw new \_PhpScoperaf523e5605cc\Symfony\Component\Serializer\Exception\NotEncodableValueException();
             }
             return $request->getPreferredFormat();
         };
