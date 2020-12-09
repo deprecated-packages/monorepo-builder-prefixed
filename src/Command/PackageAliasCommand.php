@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Command;
 
-use _PhpScoperb15c77d6bb3b\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperb15c77d6bb3b\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoperc86a79e2d6b2\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoperc86a79e2d6b2\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\DevMasterAliasUpdater;
 use Symplify\MonorepoBuilder\Finder\PackageComposerFinder;
 use Symplify\MonorepoBuilder\Git\ExpectedAliasResolver;
@@ -35,7 +35,7 @@ final class PackageAliasCommand extends \Symplify\PackageBuilder\Console\Command
     {
         $this->setDescription('Updates branch alias in "composer.json" all found packages');
     }
-    protected function execute(\_PhpScoperb15c77d6bb3b\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperb15c77d6bb3b\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoperc86a79e2d6b2\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperc86a79e2d6b2\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $composerPackageFiles = $this->packageComposerFinder->getPackageComposerFiles();
         if (\count($composerPackageFiles) === 0) {
