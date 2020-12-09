@@ -9,9 +9,9 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopera85504f0ea7b\SebastianBergmann\Diff;
+namespace _PhpScoper62cf10e7b378\SebastianBergmann\Diff;
 
-final class MemoryEfficientLongestCommonSubsequenceCalculator implements \_PhpScopera85504f0ea7b\SebastianBergmann\Diff\LongestCommonSubsequenceCalculator
+final class MemoryEfficientLongestCommonSubsequenceCalculator implements \_PhpScoper62cf10e7b378\SebastianBergmann\Diff\LongestCommonSubsequenceCalculator
 {
     /**
      * {@inheritdoc}

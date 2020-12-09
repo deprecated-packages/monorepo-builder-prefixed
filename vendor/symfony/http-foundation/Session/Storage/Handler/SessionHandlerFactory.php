@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopera85504f0ea7b\Symfony\Component\HttpFoundation\Session\Storage\Handler;
+namespace _PhpScoper62cf10e7b378\Symfony\Component\HttpFoundation\Session\Storage\Handler;
 
-use _PhpScopera85504f0ea7b\Doctrine\DBAL\DriverManager;
-use _PhpScopera85504f0ea7b\Symfony\Component\Cache\Adapter\AbstractAdapter;
-use _PhpScopera85504f0ea7b\Symfony\Component\Cache\Traits\RedisClusterProxy;
-use _PhpScopera85504f0ea7b\Symfony\Component\Cache\Traits\RedisProxy;
+use _PhpScoper62cf10e7b378\Doctrine\DBAL\DriverManager;
+use _PhpScoper62cf10e7b378\Symfony\Component\Cache\Adapter\AbstractAdapter;
+use _PhpScoper62cf10e7b378\Symfony\Component\Cache\Traits\RedisClusterProxy;
+use _PhpScoper62cf10e7b378\Symfony\Component\Cache\Traits\RedisProxy;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
@@ -22,7 +22,7 @@ class SessionHandlerFactory
     /**
      * @param \Redis|\RedisArray|\RedisCluster|\Predis\ClientInterface|RedisProxy|RedisClusterProxy|\Memcached|\PDO|string $connection Connection or DSN
      */
-    public static function createHandler($connection) : \_PhpScopera85504f0ea7b\Symfony\Component\HttpFoundation\Session\Storage\Handler\AbstractSessionHandler
+    public static function createHandler($connection) : \_PhpScoper62cf10e7b378\Symfony\Component\HttpFoundation\Session\Storage\Handler\AbstractSessionHandler
     {
         if (!\is_string($connection) && !\is_object($connection)) {
             throw new \TypeError(\sprintf('Argument 1 passed to %s() must be a string or a connection object, %s given.', __METHOD__, \gettype($connection)));
@@ -31,32 +31,32 @@ class SessionHandlerFactory
             case $connection instanceof \Redis:
             case $connection instanceof \RedisArray:
             case $connection instanceof \RedisCluster:
-            case $connection instanceof \_PhpScopera85504f0ea7b\Predis\ClientInterface:
-            case $connection instanceof \_PhpScopera85504f0ea7b\Symfony\Component\Cache\Traits\RedisProxy:
-            case $connection instanceof \_PhpScopera85504f0ea7b\Symfony\Component\Cache\Traits\RedisClusterProxy:
-                return new \_PhpScopera85504f0ea7b\Symfony\Component\HttpFoundation\Session\Storage\Handler\RedisSessionHandler($connection);
+            case $connection instanceof \_PhpScoper62cf10e7b378\Predis\ClientInterface:
+            case $connection instanceof \_PhpScoper62cf10e7b378\Symfony\Component\Cache\Traits\RedisProxy:
+            case $connection instanceof \_PhpScoper62cf10e7b378\Symfony\Component\Cache\Traits\RedisClusterProxy:
+                return new \_PhpScoper62cf10e7b378\Symfony\Component\HttpFoundation\Session\Storage\Handler\RedisSessionHandler($connection);
             case $connection instanceof \Memcached:
-                return new \_PhpScopera85504f0ea7b\Symfony\Component\HttpFoundation\Session\Storage\Handler\MemcachedSessionHandler($connection);
+                return new \_PhpScoper62cf10e7b378\Symfony\Component\HttpFoundation\Session\Storage\Handler\MemcachedSessionHandler($connection);
             case $connection instanceof \PDO:
-                return new \_PhpScopera85504f0ea7b\Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler($connection);
+                return new \_PhpScoper62cf10e7b378\Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler($connection);
             case !\is_string($connection):
                 throw new \InvalidArgumentException(\sprintf('Unsupported Connection: %s.', \get_class($connection)));
             case 0 === \strpos($connection, 'file://'):
-                return new \_PhpScopera85504f0ea7b\Symfony\Component\HttpFoundation\Session\Storage\Handler\StrictSessionHandler(new \_PhpScopera85504f0ea7b\Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler(\substr($connection, 7)));
+                return new \_PhpScoper62cf10e7b378\Symfony\Component\HttpFoundation\Session\Storage\Handler\StrictSessionHandler(new \_PhpScoper62cf10e7b378\Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler(\substr($connection, 7)));
             case 0 === \strpos($connection, 'redis://'):
             case 0 === \strpos($connection, 'rediss://'):
             case 0 === \strpos($connection, 'memcached://'):
-                if (!\class_exists(\_PhpScopera85504f0ea7b\Symfony\Component\Cache\Adapter\AbstractAdapter::class)) {
-                    throw new \_PhpScopera85504f0ea7b\Symfony\Component\HttpFoundation\Session\Storage\Handler\InvalidArgumentException(\sprintf('Unsupported DSN "%s". Try running "composer require symfony/cache".', $connection));
+                if (!\class_exists(\_PhpScoper62cf10e7b378\Symfony\Component\Cache\Adapter\AbstractAdapter::class)) {
+                    throw new \_PhpScoper62cf10e7b378\Symfony\Component\HttpFoundation\Session\Storage\Handler\InvalidArgumentException(\sprintf('Unsupported DSN "%s". Try running "composer require symfony/cache".', $connection));
                 }
-                $handlerClass = 0 === \strpos($connection, 'memcached://') ? \_PhpScopera85504f0ea7b\Symfony\Component\HttpFoundation\Session\Storage\Handler\MemcachedSessionHandler::class : \_PhpScopera85504f0ea7b\Symfony\Component\HttpFoundation\Session\Storage\Handler\RedisSessionHandler::class;
-                $connection = \_PhpScopera85504f0ea7b\Symfony\Component\Cache\Adapter\AbstractAdapter::createConnection($connection, ['lazy' => \true]);
+                $handlerClass = 0 === \strpos($connection, 'memcached://') ? \_PhpScoper62cf10e7b378\Symfony\Component\HttpFoundation\Session\Storage\Handler\MemcachedSessionHandler::class : \_PhpScoper62cf10e7b378\Symfony\Component\HttpFoundation\Session\Storage\Handler\RedisSessionHandler::class;
+                $connection = \_PhpScoper62cf10e7b378\Symfony\Component\Cache\Adapter\AbstractAdapter::createConnection($connection, ['lazy' => \true]);
                 return new $handlerClass($connection);
             case 0 === \strpos($connection, 'pdo_oci://'):
-                if (!\class_exists(\_PhpScopera85504f0ea7b\Doctrine\DBAL\DriverManager::class)) {
+                if (!\class_exists(\_PhpScoper62cf10e7b378\Doctrine\DBAL\DriverManager::class)) {
                     throw new \InvalidArgumentException(\sprintf('Unsupported DSN "%s". Try running "composer require doctrine/dbal".', $connection));
                 }
-                $connection = \_PhpScopera85504f0ea7b\Doctrine\DBAL\DriverManager::getConnection(['url' => $connection])->getWrappedConnection();
+                $connection = \_PhpScoper62cf10e7b378\Doctrine\DBAL\DriverManager::getConnection(['url' => $connection])->getWrappedConnection();
             // no break;
             case 0 === \strpos($connection, 'mssql://'):
             case 0 === \strpos($connection, 'mysql://'):
@@ -67,7 +67,7 @@ class SessionHandlerFactory
             case 0 === \strpos($connection, 'sqlsrv://'):
             case 0 === \strpos($connection, 'sqlite://'):
             case 0 === \strpos($connection, 'sqlite3://'):
-                return new \_PhpScopera85504f0ea7b\Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler($connection);
+                return new \_PhpScoper62cf10e7b378\Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler($connection);
         }
         throw new \InvalidArgumentException(\sprintf('Unsupported Connection: %s.', $connection));
     }

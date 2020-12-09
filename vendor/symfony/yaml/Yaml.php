@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopera85504f0ea7b\Symfony\Component\Yaml;
+namespace _PhpScoper62cf10e7b378\Symfony\Component\Yaml;
 
-use _PhpScopera85504f0ea7b\Symfony\Component\Yaml\Exception\ParseException;
+use _PhpScoper62cf10e7b378\Symfony\Component\Yaml\Exception\ParseException;
 /**
  * Yaml offers convenience methods to load and dump YAML.
  *
@@ -49,7 +49,7 @@ class Yaml
      */
     public static function parseFile(string $filename, int $flags = 0)
     {
-        $yaml = new \_PhpScopera85504f0ea7b\Symfony\Component\Yaml\Parser();
+        $yaml = new \_PhpScoper62cf10e7b378\Symfony\Component\Yaml\Parser();
         return $yaml->parseFile($filename, $flags);
     }
     /**
@@ -70,7 +70,7 @@ class Yaml
      */
     public static function parse(string $input, int $flags = 0)
     {
-        $yaml = new \_PhpScopera85504f0ea7b\Symfony\Component\Yaml\Parser();
+        $yaml = new \_PhpScoper62cf10e7b378\Symfony\Component\Yaml\Parser();
         return $yaml->parse($input, $flags);
     }
     /**
@@ -88,7 +88,7 @@ class Yaml
      */
     public static function dump($input, int $inline = 2, int $indent = 4, int $flags = 0) : string
     {
-        $yaml = new \_PhpScopera85504f0ea7b\Symfony\Component\Yaml\Dumper($indent);
+        $yaml = new \_PhpScoper62cf10e7b378\Symfony\Component\Yaml\Dumper($indent);
         return $yaml->dump($input, $inline, 0, $flags);
     }
 }
