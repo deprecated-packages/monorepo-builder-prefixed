@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere691b6ebfa72\Symfony\Component\HttpKernel\Exception;
+namespace _PhpScoper8db311958ad1\Symfony\Component\HttpKernel\Exception;
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class NotFoundHttpException extends \_PhpScopere691b6ebfa72\Symfony\Component\HttpKernel\Exception\HttpException
+class NotFoundHttpException extends \_PhpScoper8db311958ad1\Symfony\Component\HttpKernel\Exception\HttpException
 {
     /**
      * @param string     $message  The internal exception message

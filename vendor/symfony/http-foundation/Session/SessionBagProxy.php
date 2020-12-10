@@ -8,25 +8,25 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere691b6ebfa72\Symfony\Component\HttpFoundation\Session;
+namespace _PhpScoper8db311958ad1\Symfony\Component\HttpFoundation\Session;
 
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  *
  * @internal
  */
-final class SessionBagProxy implements \_PhpScopere691b6ebfa72\Symfony\Component\HttpFoundation\Session\SessionBagInterface
+final class SessionBagProxy implements \_PhpScoper8db311958ad1\Symfony\Component\HttpFoundation\Session\SessionBagInterface
 {
     private $bag;
     private $data;
     private $usageIndex;
-    public function __construct(\_PhpScopere691b6ebfa72\Symfony\Component\HttpFoundation\Session\SessionBagInterface $bag, array &$data, ?int &$usageIndex)
+    public function __construct(\_PhpScoper8db311958ad1\Symfony\Component\HttpFoundation\Session\SessionBagInterface $bag, array &$data, ?int &$usageIndex)
     {
         $this->bag = $bag;
         $this->data =& $data;
         $this->usageIndex =& $usageIndex;
     }
-    public function getBag() : \_PhpScopere691b6ebfa72\Symfony\Component\HttpFoundation\Session\SessionBagInterface
+    public function getBag() : \_PhpScoper8db311958ad1\Symfony\Component\HttpFoundation\Session\SessionBagInterface
     {
         ++$this->usageIndex;
         return $this->bag;
