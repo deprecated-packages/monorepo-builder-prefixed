@@ -1,6 +1,6 @@
 <?php
 
-namespace _PhpScoper8db311958ad1;
+namespace _PhpScoper88e2bb777a57;
 
 /**
  * Random_* Compatibility Library 
@@ -51,7 +51,7 @@ if (!\function_exists('random_bytes') && \function_exists('mcrypt_create_iv') &&
         }
         $buf = \mcrypt_create_iv($bytes, \MCRYPT_DEV_URANDOM);
         if ($buf !== \false) {
-            if (\_PhpScoper8db311958ad1\RandomCompat_strlen($buf) === $bytes) {
+            if (\_PhpScoper88e2bb777a57\RandomCompat_strlen($buf) === $bytes) {
                 /**
                  * Return our random entropy buffer here:
                  */

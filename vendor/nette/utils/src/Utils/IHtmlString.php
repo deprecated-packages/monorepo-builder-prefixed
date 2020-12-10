@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace _PhpScoper8db311958ad1\Nette\Utils;
+namespace _PhpScoper88e2bb777a57\Nette\Utils;
 
 interface IHtmlString
 {
