@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperfa7966ff486f\Symfony\Component\Config\Loader;
+namespace _PhpScoperd1c9c8ec01a8\Symfony\Component\Config\Loader;
 
 /**
  * LoaderInterface is the interface implemented by all loader classes.
@@ -42,5 +42,5 @@ interface LoaderInterface
     /**
      * Sets the loader resolver.
      */
-    public function setResolver(\_PhpScoperfa7966ff486f\Symfony\Component\Config\Loader\LoaderResolverInterface $resolver);
+    public function setResolver(\_PhpScoperd1c9c8ec01a8\Symfony\Component\Config\Loader\LoaderResolverInterface $resolver);
 }
