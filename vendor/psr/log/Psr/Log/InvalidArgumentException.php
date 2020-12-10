@@ -1,6 +1,6 @@
 <?php
 
-namespace _PhpScoper4f38ae1287f3\Psr\Log;
+namespace _PhpScoperc53cafc6ca57\Psr\Log;
 
 class InvalidArgumentException extends \InvalidArgumentException
 {
