@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\ComposerJsonManipulator\ValueObject;
 
-use _PhpScoperc86a79e2d6b2\Nette\Utils\Arrays;
-use _PhpScoperc86a79e2d6b2\Nette\Utils\Strings;
+use _PhpScoperf4d251e01a80\Nette\Utils\Arrays;
+use _PhpScoperf4d251e01a80\Nette\Utils\Strings;
 use Symplify\ComposerJsonManipulator\Sorter\ComposerPackageSorter;
 use Symplify\SmartFileSystem\SmartFileInfo;
 use Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
@@ -285,7 +285,7 @@ final class ComposerJson
         if ($this->name === null) {
             return null;
         }
-        return \_PhpScoperc86a79e2d6b2\Nette\Utils\Strings::after($this->name, '/', -1);
+        return \_PhpScoperf4d251e01a80\Nette\Utils\Strings::after($this->name, '/', -1);
     }
     /**
      * @return string[]
@@ -499,7 +499,7 @@ final class ComposerJson
     private function getAutoloadDirectories() : array
     {
         $autoloadDirectories = \array_merge($this->getPsr4AndClassmapDirectories(), $this->getPsr4AndClassmapDevDirectories());
-        return \_PhpScoperc86a79e2d6b2\Nette\Utils\Arrays::flatten($autoloadDirectories);
+        return \_PhpScoperf4d251e01a80\Nette\Utils\Arrays::flatten($autoloadDirectories);
     }
     /**
      * @return string[]

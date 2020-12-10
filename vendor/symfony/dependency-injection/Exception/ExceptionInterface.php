@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc86a79e2d6b2\Symfony\Component\DependencyInjection\Exception;
+namespace _PhpScoperf4d251e01a80\Symfony\Component\DependencyInjection\Exception;
 
-use _PhpScoperc86a79e2d6b2\Psr\Container\ContainerExceptionInterface;
+use _PhpScoperf4d251e01a80\Psr\Container\ContainerExceptionInterface;
 /**
  * Base ExceptionInterface for Dependency Injection component.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Bulat Shakirzyanov <bulat@theopenskyproject.com>
  */
-interface ExceptionInterface extends \_PhpScoperc86a79e2d6b2\Psr\Container\ContainerExceptionInterface, \Throwable
+interface ExceptionInterface extends \_PhpScoperf4d251e01a80\Psr\Container\ContainerExceptionInterface, \Throwable
 {
 }

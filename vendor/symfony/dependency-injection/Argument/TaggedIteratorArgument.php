@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc86a79e2d6b2\Symfony\Component\DependencyInjection\Argument;
+namespace _PhpScoperf4d251e01a80\Symfony\Component\DependencyInjection\Argument;
 
 /**
  * Represents a collection of services found by tag name to lazily iterate over.
  *
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
-class TaggedIteratorArgument extends \_PhpScoperc86a79e2d6b2\Symfony\Component\DependencyInjection\Argument\IteratorArgument
+class TaggedIteratorArgument extends \_PhpScoperf4d251e01a80\Symfony\Component\DependencyInjection\Argument\IteratorArgument
 {
     private $tag;
     private $indexAttribute;

@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc86a79e2d6b2\Symfony\Component\ErrorHandler\ErrorRenderer;
+namespace _PhpScoperf4d251e01a80\Symfony\Component\ErrorHandler\ErrorRenderer;
 
-use _PhpScoperc86a79e2d6b2\Symfony\Component\ErrorHandler\Exception\FlattenException;
-use _PhpScoperc86a79e2d6b2\Symfony\Component\VarDumper\Cloner\VarCloner;
-use _PhpScoperc86a79e2d6b2\Symfony\Component\VarDumper\Dumper\CliDumper;
+use _PhpScoperf4d251e01a80\Symfony\Component\ErrorHandler\Exception\FlattenException;
+use _PhpScoperf4d251e01a80\Symfony\Component\VarDumper\Cloner\VarCloner;
+use _PhpScoperf4d251e01a80\Symfony\Component\VarDumper\Dumper\CliDumper;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class CliErrorRenderer implements \_PhpScoperc86a79e2d6b2\Symfony\Component\ErrorHandler\ErrorRenderer\ErrorRendererInterface
+class CliErrorRenderer implements \_PhpScoperf4d251e01a80\Symfony\Component\ErrorHandler\ErrorRenderer\ErrorRendererInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function render(\Throwable $exception) : \_PhpScoperc86a79e2d6b2\Symfony\Component\ErrorHandler\Exception\FlattenException
+    public function render(\Throwable $exception) : \_PhpScoperf4d251e01a80\Symfony\Component\ErrorHandler\Exception\FlattenException
     {
-        $cloner = new \_PhpScoperc86a79e2d6b2\Symfony\Component\VarDumper\Cloner\VarCloner();
-        $dumper = new class extends \_PhpScoperc86a79e2d6b2\Symfony\Component\VarDumper\Dumper\CliDumper
+        $cloner = new \_PhpScoperf4d251e01a80\Symfony\Component\VarDumper\Cloner\VarCloner();
+        $dumper = new class extends \_PhpScoperf4d251e01a80\Symfony\Component\VarDumper\Dumper\CliDumper
         {
             protected function supportsColors() : bool
             {
@@ -37,6 +37,6 @@ class CliErrorRenderer implements \_PhpScoperc86a79e2d6b2\Symfony\Component\Erro
                 }
             }
         };
-        return \_PhpScoperc86a79e2d6b2\Symfony\Component\ErrorHandler\Exception\FlattenException::createFromThrowable($exception)->setAsString($dumper->dump($cloner->cloneVar($exception), \true));
+        return \_PhpScoperf4d251e01a80\Symfony\Component\ErrorHandler\Exception\FlattenException::createFromThrowable($exception)->setAsString($dumper->dump($cloner->cloneVar($exception), \true));
     }
 }

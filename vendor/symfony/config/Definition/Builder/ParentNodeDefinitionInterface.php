@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc86a79e2d6b2\Symfony\Component\Config\Definition\Builder;
+namespace _PhpScoperf4d251e01a80\Symfony\Component\Config\Definition\Builder;
 
 /**
  * An interface that must be implemented by nodes which can have children.
  *
  * @author Victor Berchet <victor@suumit.com>
  */
-interface ParentNodeDefinitionInterface extends \_PhpScoperc86a79e2d6b2\Symfony\Component\Config\Definition\Builder\BuilderAwareInterface
+interface ParentNodeDefinitionInterface extends \_PhpScoperf4d251e01a80\Symfony\Component\Config\Definition\Builder\BuilderAwareInterface
 {
     /**
      * Returns a builder to add children nodes.
@@ -38,7 +38,7 @@ interface ParentNodeDefinitionInterface extends \_PhpScoperc86a79e2d6b2\Symfony\
      *
      * @return $this
      */
-    public function append(\_PhpScoperc86a79e2d6b2\Symfony\Component\Config\Definition\Builder\NodeDefinition $node);
+    public function append(\_PhpScoperf4d251e01a80\Symfony\Component\Config\Definition\Builder\NodeDefinition $node);
     /**
      * Gets the child node definitions.
      *

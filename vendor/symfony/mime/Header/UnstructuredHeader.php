@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc86a79e2d6b2\Symfony\Component\Mime\Header;
+namespace _PhpScoperf4d251e01a80\Symfony\Component\Mime\Header;
 
 /**
  * A Simple MIME Header.
@@ -17,7 +17,7 @@ namespace _PhpScoperc86a79e2d6b2\Symfony\Component\Mime\Header;
  *
  * @experimental in 4.3
  */
-class UnstructuredHeader extends \_PhpScoperc86a79e2d6b2\Symfony\Component\Mime\Header\AbstractHeader
+class UnstructuredHeader extends \_PhpScoperf4d251e01a80\Symfony\Component\Mime\Header\AbstractHeader
 {
     private $value;
     public function __construct(string $name, string $value)
