@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper4c229f9734b6\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
+namespace _PhpScoper8d3e33bd2be8\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
 
-use _PhpScoper4c229f9734b6\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use _PhpScoper8d3e33bd2be8\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 trait AutoconfigureTrait
 {
     /**
