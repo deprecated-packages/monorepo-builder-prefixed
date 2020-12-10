@@ -9,7 +9,7 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf4d251e01a80\SebastianBergmann\Diff\Utils;
+namespace _PhpScoperfa7966ff486f\SebastianBergmann\Diff\Utils;
 
 trait UnifiedDiffAssertTrait
 {

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf4d251e01a80\Symfony\Polyfill\Ctype;
+namespace _PhpScoperfa7966ff486f\Symfony\Polyfill\Ctype;
 
 /**
  * Ctype implementation through regex.

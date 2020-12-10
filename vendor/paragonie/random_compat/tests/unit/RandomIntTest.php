@@ -1,8 +1,8 @@
 <?php
 
-namespace _PhpScoperf4d251e01a80;
+namespace _PhpScoperfa7966ff486f;
 
-class RandomIntTest extends \_PhpScoperf4d251e01a80\PHPUnit_Framework_TestCase
+class RandomIntTest extends \_PhpScoperfa7966ff486f\PHPUnit_Framework_TestCase
 {
     public function testFuncExists()
     {
@@ -19,4 +19,4 @@ class RandomIntTest extends \_PhpScoperf4d251e01a80\PHPUnit_Framework_TestCase
         $this->assertTrue($integers[4] >= ~\PHP_INT_MAX && $integers[4] <= \PHP_INT_MAX);
     }
 }
-\class_alias('_PhpScoperf4d251e01a80\\RandomIntTest', 'RandomIntTest', \false);
+\class_alias('_PhpScoperfa7966ff486f\\RandomIntTest', 'RandomIntTest', \false);
