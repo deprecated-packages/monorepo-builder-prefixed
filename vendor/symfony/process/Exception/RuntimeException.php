@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperfccd2ca01403\Symfony\Component\Process\Exception;
+namespace _PhpScoperec2b815193b4\Symfony\Component\Process\Exception;
 
 /**
  * RuntimeException for the Process Component.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class RuntimeException extends \RuntimeException implements \_PhpScoperfccd2ca01403\Symfony\Component\Process\Exception\ExceptionInterface
+class RuntimeException extends \RuntimeException implements \_PhpScoperec2b815193b4\Symfony\Component\Process\Exception\ExceptionInterface
 {
 }

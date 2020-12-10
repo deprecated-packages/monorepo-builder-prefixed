@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperfccd2ca01403\Symfony\Component\Mime;
+namespace _PhpScoperec2b815193b4\Symfony\Component\Mime;
 
-use _PhpScoperfccd2ca01403\Egulias\EmailValidator\EmailValidator;
-use _PhpScoperfccd2ca01403\Egulias\EmailValidator\Validation\RFCValidation;
-use _PhpScoperfccd2ca01403\Symfony\Component\Mime\Encoder\IdnAddressEncoder;
-use _PhpScoperfccd2ca01403\Symfony\Component\Mime\Exception\InvalidArgumentException;
-use _PhpScoperfccd2ca01403\Symfony\Component\Mime\Exception\LogicException;
-use _PhpScoperfccd2ca01403\Symfony\Component\Mime\Exception\RfcComplianceException;
+use _PhpScoperec2b815193b4\Egulias\EmailValidator\EmailValidator;
+use _PhpScoperec2b815193b4\Egulias\EmailValidator\Validation\RFCValidation;
+use _PhpScoperec2b815193b4\Symfony\Component\Mime\Encoder\IdnAddressEncoder;
+use _PhpScoperec2b815193b4\Symfony\Component\Mime\Exception\InvalidArgumentException;
+use _PhpScoperec2b815193b4\Symfony\Component\Mime\Exception\LogicException;
+use _PhpScoperec2b815193b4\Symfony\Component\Mime\Exception\RfcComplianceException;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
@@ -28,14 +28,14 @@ class Address
     private $address;
     public function __construct(string $address)
     {
-        if (!\class_exists(\_PhpScoperfccd2ca01403\Egulias\EmailValidator\EmailValidator::class)) {
-            throw new \_PhpScoperfccd2ca01403\Symfony\Component\Mime\Exception\LogicException(\sprintf('The "%s" class cannot be used as it needs "%s"; try running "composer require egulias/email-validator".', __CLASS__, \_PhpScoperfccd2ca01403\Egulias\EmailValidator\EmailValidator::class));
+        if (!\class_exists(\_PhpScoperec2b815193b4\Egulias\EmailValidator\EmailValidator::class)) {
+            throw new \_PhpScoperec2b815193b4\Symfony\Component\Mime\Exception\LogicException(\sprintf('The "%s" class cannot be used as it needs "%s"; try running "composer require egulias/email-validator".', __CLASS__, \_PhpScoperec2b815193b4\Egulias\EmailValidator\EmailValidator::class));
         }
         if (null === self::$validator) {
-            self::$validator = new \_PhpScoperfccd2ca01403\Egulias\EmailValidator\EmailValidator();
+            self::$validator = new \_PhpScoperec2b815193b4\Egulias\EmailValidator\EmailValidator();
         }
-        if (!self::$validator->isValid($address, new \_PhpScoperfccd2ca01403\Egulias\EmailValidator\Validation\RFCValidation())) {
-            throw new \_PhpScoperfccd2ca01403\Symfony\Component\Mime\Exception\RfcComplianceException(\sprintf('Email "%s" does not comply with addr-spec of RFC 2822.', $address));
+        if (!self::$validator->isValid($address, new \_PhpScoperec2b815193b4\Egulias\EmailValidator\Validation\RFCValidation())) {
+            throw new \_PhpScoperec2b815193b4\Symfony\Component\Mime\Exception\RfcComplianceException(\sprintf('Email "%s" does not comply with addr-spec of RFC 2822.', $address));
         }
         $this->address = $address;
     }
@@ -46,7 +46,7 @@ class Address
     public function getEncodedAddress() : string
     {
         if (null === self::$encoder) {
-            self::$encoder = new \_PhpScoperfccd2ca01403\Symfony\Component\Mime\Encoder\IdnAddressEncoder();
+            self::$encoder = new \_PhpScoperec2b815193b4\Symfony\Component\Mime\Encoder\IdnAddressEncoder();
         }
         return self::$encoder->encodeString($this->address);
     }
@@ -65,7 +65,7 @@ class Address
         if (\is_string($address)) {
             return new self($address);
         }
-        throw new \_PhpScoperfccd2ca01403\Symfony\Component\Mime\Exception\InvalidArgumentException(\sprintf('An address can be an instance of Address or a string ("%s") given).', \is_object($address) ? \get_class($address) : \gettype($address)));
+        throw new \_PhpScoperec2b815193b4\Symfony\Component\Mime\Exception\InvalidArgumentException(\sprintf('An address can be an instance of Address or a string ("%s") given).', \is_object($address) ? \get_class($address) : \gettype($address)));
     }
     /**
      * @param (Address|string)[] $addresses

@@ -8,35 +8,35 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperfccd2ca01403\Symfony\Component\DependencyInjection\Compiler;
+namespace _PhpScoperec2b815193b4\Symfony\Component\DependencyInjection\Compiler;
 
-use _PhpScoperfccd2ca01403\Symfony\Component\DependencyInjection\Alias;
-use _PhpScoperfccd2ca01403\Symfony\Component\DependencyInjection\ChildDefinition;
-use _PhpScoperfccd2ca01403\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScoperfccd2ca01403\Symfony\Component\DependencyInjection\Definition;
-use _PhpScoperfccd2ca01403\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use _PhpScoperfccd2ca01403\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use _PhpScoperfccd2ca01403\Symfony\Component\DependencyInjection\Reference;
+use _PhpScoperec2b815193b4\Symfony\Component\DependencyInjection\Alias;
+use _PhpScoperec2b815193b4\Symfony\Component\DependencyInjection\ChildDefinition;
+use _PhpScoperec2b815193b4\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoperec2b815193b4\Symfony\Component\DependencyInjection\Definition;
+use _PhpScoperec2b815193b4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use _PhpScoperec2b815193b4\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use _PhpScoperec2b815193b4\Symfony\Component\DependencyInjection\Reference;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ResolveDecoratorStackPass implements \_PhpScoperfccd2ca01403\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class ResolveDecoratorStackPass implements \_PhpScoperec2b815193b4\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     private $tag;
     public function __construct(string $tag = 'container.stack')
     {
         $this->tag = $tag;
     }
-    public function process(\_PhpScoperfccd2ca01403\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\_PhpScoperec2b815193b4\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $stacks = [];
         foreach ($container->findTaggedServiceIds($this->tag) as $id => $tags) {
             $definition = $container->getDefinition($id);
-            if (!$definition instanceof \_PhpScoperfccd2ca01403\Symfony\Component\DependencyInjection\ChildDefinition) {
-                throw new \_PhpScoperfccd2ca01403\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid service "%s": only definitions with a "parent" can have the "%s" tag.', $id, $this->tag));
+            if (!$definition instanceof \_PhpScoperec2b815193b4\Symfony\Component\DependencyInjection\ChildDefinition) {
+                throw new \_PhpScoperec2b815193b4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid service "%s": only definitions with a "parent" can have the "%s" tag.', $id, $this->tag));
             }
             if (!($stack = $definition->getArguments())) {
-                throw new \_PhpScoperfccd2ca01403\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid service "%s": the stack of decorators is empty.', $id));
+                throw new \_PhpScoperec2b815193b4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid service "%s": the stack of decorators is empty.', $id));
             }
             $stacks[$id] = $stack;
         }
@@ -68,27 +68,27 @@ class ResolveDecoratorStackPass implements \_PhpScoperfccd2ca01403\Symfony\Compo
         $id = \end($path);
         $prefix = '.' . $id . '.';
         if (!isset($stacks[$id])) {
-            return [$id => new \_PhpScoperfccd2ca01403\Symfony\Component\DependencyInjection\ChildDefinition($id)];
+            return [$id => new \_PhpScoperec2b815193b4\Symfony\Component\DependencyInjection\ChildDefinition($id)];
         }
         if (\key($path) !== ($searchKey = \array_search($id, $path))) {
-            throw new \_PhpScoperfccd2ca01403\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException($id, \array_slice($path, $searchKey));
+            throw new \_PhpScoperec2b815193b4\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException($id, \array_slice($path, $searchKey));
         }
         foreach ($stacks[$id] as $k => $definition) {
-            if ($definition instanceof \_PhpScoperfccd2ca01403\Symfony\Component\DependencyInjection\ChildDefinition && isset($stacks[$definition->getParent()])) {
+            if ($definition instanceof \_PhpScoperec2b815193b4\Symfony\Component\DependencyInjection\ChildDefinition && isset($stacks[$definition->getParent()])) {
                 $path[] = $definition->getParent();
                 $definition = \unserialize(\serialize($definition));
                 // deep clone
-            } elseif ($definition instanceof \_PhpScoperfccd2ca01403\Symfony\Component\DependencyInjection\Definition) {
+            } elseif ($definition instanceof \_PhpScoperec2b815193b4\Symfony\Component\DependencyInjection\Definition) {
                 $definitions[$decoratedId = $prefix . $k] = $definition;
                 continue;
-            } elseif ($definition instanceof \_PhpScoperfccd2ca01403\Symfony\Component\DependencyInjection\Reference || $definition instanceof \_PhpScoperfccd2ca01403\Symfony\Component\DependencyInjection\Alias) {
+            } elseif ($definition instanceof \_PhpScoperec2b815193b4\Symfony\Component\DependencyInjection\Reference || $definition instanceof \_PhpScoperec2b815193b4\Symfony\Component\DependencyInjection\Alias) {
                 $path[] = (string) $definition;
             } else {
-                throw new \_PhpScoperfccd2ca01403\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid service "%s": unexpected value of type "%s" found in the stack of decorators.', $id, \get_debug_type($definition)));
+                throw new \_PhpScoperec2b815193b4\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid service "%s": unexpected value of type "%s" found in the stack of decorators.', $id, \get_debug_type($definition)));
             }
             $p = $prefix . $k;
             foreach ($this->resolveStack($stacks, $path) as $k => $v) {
-                $definitions[$decoratedId = $p . $k] = $definition instanceof \_PhpScoperfccd2ca01403\Symfony\Component\DependencyInjection\ChildDefinition ? $definition->setParent($k) : new \_PhpScoperfccd2ca01403\Symfony\Component\DependencyInjection\ChildDefinition($k);
+                $definitions[$decoratedId = $p . $k] = $definition instanceof \_PhpScoperec2b815193b4\Symfony\Component\DependencyInjection\ChildDefinition ? $definition->setParent($k) : new \_PhpScoperec2b815193b4\Symfony\Component\DependencyInjection\ChildDefinition($k);
                 $definition = null;
             }
             \array_pop($path);
