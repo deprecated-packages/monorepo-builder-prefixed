@@ -32,12 +32,12 @@
     },
     "autoload": {
         "psr-4": {
-            "_PhpScoper8d3e33bd2be8\\Jean85\\": "src\/"
+            "_PhpScoper53a6895b9c5b\\Jean85\\": "src\/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "_PhpScoper8d3e33bd2be8\\Tests\\": "tests"
+            "_PhpScoper53a6895b9c5b\\Tests\\": "tests"
         }
     }
 }
