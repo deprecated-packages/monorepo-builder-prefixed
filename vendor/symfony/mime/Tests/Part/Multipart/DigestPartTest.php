@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperd1c9c8ec01a8\Symfony\Component\Mime\Tests\Part\Multipart;
+namespace _PhpScoper37010f304ea9\Symfony\Component\Mime\Tests\Part\Multipart;
 
-use _PhpScoperd1c9c8ec01a8\PHPUnit\Framework\TestCase;
-use _PhpScoperd1c9c8ec01a8\Symfony\Component\Mime\Message;
-use _PhpScoperd1c9c8ec01a8\Symfony\Component\Mime\Part\MessagePart;
-use _PhpScoperd1c9c8ec01a8\Symfony\Component\Mime\Part\Multipart\DigestPart;
-class DigestPartTest extends \_PhpScoperd1c9c8ec01a8\PHPUnit\Framework\TestCase
+use _PhpScoper37010f304ea9\PHPUnit\Framework\TestCase;
+use _PhpScoper37010f304ea9\Symfony\Component\Mime\Message;
+use _PhpScoper37010f304ea9\Symfony\Component\Mime\Part\MessagePart;
+use _PhpScoper37010f304ea9\Symfony\Component\Mime\Part\Multipart\DigestPart;
+class DigestPartTest extends \_PhpScoper37010f304ea9\PHPUnit\Framework\TestCase
 {
     public function testConstructor()
     {
-        $r = new \_PhpScoperd1c9c8ec01a8\Symfony\Component\Mime\Part\Multipart\DigestPart($a = new \_PhpScoperd1c9c8ec01a8\Symfony\Component\Mime\Part\MessagePart(new \_PhpScoperd1c9c8ec01a8\Symfony\Component\Mime\Message()), $b = new \_PhpScoperd1c9c8ec01a8\Symfony\Component\Mime\Part\MessagePart(new \_PhpScoperd1c9c8ec01a8\Symfony\Component\Mime\Message()));
+        $r = new \_PhpScoper37010f304ea9\Symfony\Component\Mime\Part\Multipart\DigestPart($a = new \_PhpScoper37010f304ea9\Symfony\Component\Mime\Part\MessagePart(new \_PhpScoper37010f304ea9\Symfony\Component\Mime\Message()), $b = new \_PhpScoper37010f304ea9\Symfony\Component\Mime\Part\MessagePart(new \_PhpScoper37010f304ea9\Symfony\Component\Mime\Message()));
         $this->assertEquals('multipart', $r->getMediaType());
         $this->assertEquals('digest', $r->getMediaSubtype());
         $this->assertEquals([$a, $b], $r->getParts());

@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker;
 
-use _PhpScoperd1c9c8ec01a8\PharIo\Version\Version;
+use _PhpScoper37010f304ea9\PharIo\Version\Version;
 interface ReleaseWorkerInterface
 {
     /**
@@ -12,6 +12,6 @@ interface ReleaseWorkerInterface
      * - "Dump new items to CHANGELOG.md"
      * - "Run coding standards"
      */
-    public function getDescription(\_PhpScoperd1c9c8ec01a8\PharIo\Version\Version $version) : string;
-    public function work(\_PhpScoperd1c9c8ec01a8\PharIo\Version\Version $version) : void;
+    public function getDescription(\_PhpScoper37010f304ea9\PharIo\Version\Version $version) : string;
+    public function work(\_PhpScoper37010f304ea9\PharIo\Version\Version $version) : void;
 }

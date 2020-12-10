@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperd1c9c8ec01a8\Symfony\Component\Console\Tester;
+namespace _PhpScoper37010f304ea9\Symfony\Component\Console\Tester;
 
-use _PhpScoperd1c9c8ec01a8\Symfony\Component\Console\Command\Command;
-use _PhpScoperd1c9c8ec01a8\Symfony\Component\Console\Input\ArrayInput;
+use _PhpScoper37010f304ea9\Symfony\Component\Console\Command\Command;
+use _PhpScoper37010f304ea9\Symfony\Component\Console\Input\ArrayInput;
 /**
  * Eases the testing of console commands.
  *
@@ -24,7 +24,7 @@ class CommandTester
     private $command;
     private $input;
     private $statusCode;
-    public function __construct(\_PhpScoperd1c9c8ec01a8\Symfony\Component\Console\Command\Command $command)
+    public function __construct(\_PhpScoper37010f304ea9\Symfony\Component\Console\Command\Command $command)
     {
         $this->command = $command;
     }
@@ -50,7 +50,7 @@ class CommandTester
         if (!isset($input['command']) && null !== ($application = $this->command->getApplication()) && $application->getDefinition()->hasArgument('command')) {
             $input = \array_merge(['command' => $this->command->getName()], $input);
         }
-        $this->input = new \_PhpScoperd1c9c8ec01a8\Symfony\Component\Console\Input\ArrayInput($input);
+        $this->input = new \_PhpScoper37010f304ea9\Symfony\Component\Console\Input\ArrayInput($input);
         // Use an in-memory input stream even if no inputs are set so that QuestionHelper::ask() does not rely on the blocking STDIN.
         $this->input->setStream(self::createStream($this->inputs));
         if (isset($options['interactive'])) {
