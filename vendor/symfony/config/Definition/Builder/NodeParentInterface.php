@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper654dfdb702e5\Symfony\Component\Config\Definition\Builder;
+namespace _PhpScoperc8aee0bf0015\Symfony\Component\Config\Definition\Builder;
 
 /**
  * An interface that must be implemented by all node parents.

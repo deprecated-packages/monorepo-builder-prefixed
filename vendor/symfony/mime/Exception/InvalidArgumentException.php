@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper654dfdb702e5\Symfony\Component\Mime\Exception;
+namespace _PhpScoperc8aee0bf0015\Symfony\Component\Mime\Exception;
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
  * @experimental in 4.3
  */
-class InvalidArgumentException extends \InvalidArgumentException implements \_PhpScoper654dfdb702e5\Symfony\Component\Mime\Exception\ExceptionInterface
+class InvalidArgumentException extends \InvalidArgumentException implements \_PhpScoperc8aee0bf0015\Symfony\Component\Mime\Exception\ExceptionInterface
 {
 }
