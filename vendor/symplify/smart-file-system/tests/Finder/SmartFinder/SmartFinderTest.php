@@ -4,11 +4,11 @@ declare (strict_types=1);
 namespace Symplify\SmartFileSystem\Tests\Finder\SmartFinder;
 
 use Iterator;
-use _PhpScoper9a38f5ee6cbc\PHPUnit\Framework\TestCase;
+use _PhpScoper204b3b8f3e0d\PHPUnit\Framework\TestCase;
 use Symplify\SmartFileSystem\FileSystemFilter;
 use Symplify\SmartFileSystem\Finder\FinderSanitizer;
 use Symplify\SmartFileSystem\Finder\SmartFinder;
-final class SmartFinderTest extends \_PhpScoper9a38f5ee6cbc\PHPUnit\Framework\TestCase
+final class SmartFinderTest extends \_PhpScoper204b3b8f3e0d\PHPUnit\Framework\TestCase
 {
     /**
      * @var SmartFinder
