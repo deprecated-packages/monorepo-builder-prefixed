@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Testing\Command;
 
-use _PhpScoper354754c20063\Symfony\Component\Console\Input\InputArgument;
-use _PhpScoper354754c20063\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoper354754c20063\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoperbb737891eded\Symfony\Component\Console\Input\InputArgument;
+use _PhpScoperbb737891eded\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoperbb737891eded\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Testing\ComposerJsonRepositoriesUpdater;
 use Symplify\MonorepoBuilder\Testing\ComposerJsonRequireUpdater;
@@ -37,21 +37,21 @@ final class LocalizeComposerPathsCommand extends \Symplify\PackageBuilder\Consol
     protected function configure() : void
     {
         $this->setDescription('Set mutual package paths to local packages - use for pre-split package testing');
-        $this->addArgument(\Symplify\MonorepoBuilder\Testing\ValueObject\Option::PACKAGE_COMPOSER_JSON, \_PhpScoper354754c20063\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'Path to package "composer.json"');
+        $this->addArgument(\Symplify\MonorepoBuilder\Testing\ValueObject\Option::PACKAGE_COMPOSER_JSON, \_PhpScoperbb737891eded\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'Path to package "composer.json"');
     }
-    protected function execute(\_PhpScoper354754c20063\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoper354754c20063\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoperbb737891eded\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperbb737891eded\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $packageComposerJson = (string) $input->getArgument(\Symplify\MonorepoBuilder\Testing\ValueObject\Option::PACKAGE_COMPOSER_JSON);
         $this->fileSystemGuard->ensureFileExists($packageComposerJson, __METHOD__);
         $packageComposerJsonFileInfo = new \Symplify\SmartFileSystem\SmartFileInfo($packageComposerJson);
-        $rootFileInfo = $this->composerJsonProvider->getRootFileInfo();
+        $rootComposerJson = $this->composerJsonProvider->getRootComposerJson();
         // 1. update "require" to "*" for all local packages
         $packagesFileInfos = $this->composerJsonProvider->getPackagesComposerFileInfos();
         foreach ($packagesFileInfos as $packageFileInfo) {
             $this->composerJsonRequireUpdater->processPackage($packageFileInfo);
         }
         // 2. update "repository" to "*" for current composer.json
-        $this->composerJsonRepositoriesUpdater->processPackage($packageComposerJsonFileInfo, $rootFileInfo);
+        $this->composerJsonRepositoriesUpdater->processPackage($packageComposerJsonFileInfo, $rootComposerJson);
         $message = \sprintf('Package paths in "%s" have been updated', $packageComposerJsonFileInfo->getRelativeFilePathFromCwd());
         $this->symfonyStyle->success($message);
         return \Symplify\PackageBuilder\Console\ShellCode::SUCCESS;

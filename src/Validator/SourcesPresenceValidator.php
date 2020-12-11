@@ -32,8 +32,8 @@ final class SourcesPresenceValidator
     }
     public function validateRootComposerJsonName() : void
     {
-        $mainComposerJson = $this->composerJsonProvider->getRootJson();
-        if (isset($mainComposerJson['name'])) {
+        $rootComposerJson = $this->composerJsonProvider->getRootComposerJson();
+        if ($rootComposerJson->getName() !== null) {
             return;
         }
         throw new \Symplify\MonorepoBuilder\Exception\Validator\InvalidComposerJsonSetupException('Complete "name" to your root "composer.json".');

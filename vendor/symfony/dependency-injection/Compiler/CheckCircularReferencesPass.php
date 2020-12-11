@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper354754c20063\Symfony\Component\DependencyInjection\Compiler;
+namespace _PhpScoperbb737891eded\Symfony\Component\DependencyInjection\Compiler;
 
-use _PhpScoper354754c20063\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScoper354754c20063\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use _PhpScoperbb737891eded\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoperbb737891eded\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
 /**
  * Checks your services for circular references.
  *
@@ -22,14 +22,14 @@ use _PhpScoper354754c20063\Symfony\Component\DependencyInjection\Exception\Servi
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class CheckCircularReferencesPass implements \_PhpScoper354754c20063\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class CheckCircularReferencesPass implements \_PhpScoperbb737891eded\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     private $currentPath;
     private $checkedNodes;
     /**
      * Checks the ContainerBuilder object for circular references.
      */
-    public function process(\_PhpScoper354754c20063\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\_PhpScoperbb737891eded\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $graph = $container->getCompiler()->getServiceReferenceGraph();
         $this->checkedNodes = [];
@@ -56,7 +56,7 @@ class CheckCircularReferencesPass implements \_PhpScoper354754c20063\Symfony\Com
                     $searchKey = \array_search($id, $this->currentPath);
                     $this->currentPath[] = $id;
                     if (\false !== $searchKey) {
-                        throw new \_PhpScoper354754c20063\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException($id, \array_slice($this->currentPath, $searchKey));
+                        throw new \_PhpScoperbb737891eded\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException($id, \array_slice($this->currentPath, $searchKey));
                     }
                     $this->checkOutEdges($node->getOutEdges());
                 }

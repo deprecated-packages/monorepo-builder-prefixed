@@ -34,13 +34,6 @@ final class ComposerJsonProvider
         return $this->packageComposerFinder->getRootPackageComposerFile();
     }
     /**
-     * @return mixed[]
-     */
-    public function getRootJson() : array
-    {
-        return $this->jsonFileManager->loadFromFilePath(\getcwd() . '/composer.json');
-    }
-    /**
      * @return SmartFileInfo[]
      */
     public function getPackagesComposerFileInfos() : array

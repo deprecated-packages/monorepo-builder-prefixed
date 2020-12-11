@@ -3,13 +3,15 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Testing;
 
-use _PhpScoper354754c20063\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoperbb737891eded\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\ConsoleColorDiff\Console\Output\ConsoleDiffer;
 use Symplify\MonorepoBuilder\Package\PackageNamesProvider;
 use Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerJsonSymlinker;
 use Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver;
 use Symplify\SmartFileSystem\SmartFileInfo;
+use Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class ComposerJsonRepositoriesUpdater
 {
     /**
@@ -36,7 +38,7 @@ final class ComposerJsonRepositoriesUpdater
      * @var ConsoleDiffer
      */
     private $consoleDiffer;
-    public function __construct(\Symplify\MonorepoBuilder\Package\PackageNamesProvider $packageNamesProvider, \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \_PhpScoper354754c20063\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerJsonSymlinker $composerJsonSymlinker, \Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver $usedPackagesResolver, \Symplify\ConsoleColorDiff\Console\Output\ConsoleDiffer $consoleDiffer)
+    public function __construct(\Symplify\MonorepoBuilder\Package\PackageNamesProvider $packageNamesProvider, \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \_PhpScoperbb737891eded\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerJsonSymlinker $composerJsonSymlinker, \Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver $usedPackagesResolver, \Symplify\ConsoleColorDiff\Console\Output\ConsoleDiffer $consoleDiffer)
     {
         $this->packageNamesProvider = $packageNamesProvider;
         $this->jsonFileManager = $jsonFileManager;
@@ -45,7 +47,7 @@ final class ComposerJsonRepositoriesUpdater
         $this->usedPackagesResolver = $usedPackagesResolver;
         $this->consoleDiffer = $consoleDiffer;
     }
-    public function processPackage(\Symplify\SmartFileSystem\SmartFileInfo $packageFileInfo, \Symplify\SmartFileSystem\SmartFileInfo $mainComposerJsonFileInfo) : void
+    public function processPackage(\Symplify\SmartFileSystem\SmartFileInfo $packageFileInfo, \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $rootComposerJson) : void
     {
         $packageComposerJson = $this->jsonFileManager->loadFromFileInfo($packageFileInfo);
         $usedPackageNames = $this->usedPackagesResolver->resolveForPackage($packageComposerJson);
@@ -57,7 +59,11 @@ final class ComposerJsonRepositoriesUpdater
         // possibly replace them all to cover recursive secondary dependencies
         $packageNames = $this->packageNamesProvider->provide();
         $oldComposerJsonContents = $packageFileInfo->getContents();
-        $packageComposerJson = $this->composerJsonSymlinker->decoratePackageComposerJsonWithPackageSymlinks($packageComposerJson, $packageNames, $mainComposerJsonFileInfo);
+        $rootComposerJsonFileInfo = $rootComposerJson->getFileInfo();
+        if ($rootComposerJsonFileInfo === null) {
+            throw new \Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+        }
+        $packageComposerJson = $this->composerJsonSymlinker->decoratePackageComposerJsonWithPackageSymlinks($packageComposerJson, $packageNames, $rootComposerJsonFileInfo);
         $newComposerJsonContents = $this->jsonFileManager->printJsonToFileInfo($packageComposerJson, $packageFileInfo);
         $message = \sprintf('File "%s" was updated', $packageFileInfo->getRelativeFilePathFromCwd());
         $this->symfonyStyle->title($message);
