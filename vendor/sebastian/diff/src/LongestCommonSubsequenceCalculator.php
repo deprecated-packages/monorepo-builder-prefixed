@@ -9,17 +9,12 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper8f797d20934a\SebastianBergmann\Diff;
+namespace _PhpScoper7d795aa8de8d\SebastianBergmann\Diff;
 
 interface LongestCommonSubsequenceCalculator
 {
     /**
      * Calculates the longest common subsequence of two arrays.
-     *
-     * @param array $from
-     * @param array $to
-     *
-     * @return array
      */
     public function calculate(array $from, array $to) : array;
 }

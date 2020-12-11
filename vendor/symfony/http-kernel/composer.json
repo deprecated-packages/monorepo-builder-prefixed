@@ -61,7 +61,7 @@
     },
     "autoload": {
         "psr-4": {
-            "_PhpScoper8f797d20934a\\Symfony\\Component\\HttpKernel\\": ""
+            "_PhpScoper7d795aa8de8d\\Symfony\\Component\\HttpKernel\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"

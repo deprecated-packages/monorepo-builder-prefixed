@@ -9,7 +9,7 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper8f797d20934a\SebastianBergmann\Diff;
+namespace _PhpScoper7d795aa8de8d\SebastianBergmann\Diff;
 
 final class Diff
 {
@@ -26,8 +26,6 @@ final class Diff
      */
     private $chunks;
     /**
-     * @param string  $from
-     * @param string  $to
      * @param Chunk[] $chunks
      */
     public function __construct(string $from, string $to, array $chunks = [])
