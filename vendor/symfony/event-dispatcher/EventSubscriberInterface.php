@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper53a6895b9c5b\Symfony\Component\EventDispatcher;
+namespace _PhpScoper8f797d20934a\Symfony\Component\EventDispatcher;
 
 /**
  * An EventSubscriber knows itself what events it is interested in.

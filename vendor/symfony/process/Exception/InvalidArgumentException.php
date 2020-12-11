@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper53a6895b9c5b\Symfony\Component\Process\Exception;
+namespace _PhpScoper8f797d20934a\Symfony\Component\Process\Exception;
 
 /**
  * InvalidArgumentException for the Process Component.
  *
  * @author Romain Neutron <imprec@gmail.com>
  */
-class InvalidArgumentException extends \InvalidArgumentException implements \_PhpScoper53a6895b9c5b\Symfony\Component\Process\Exception\ExceptionInterface
+class InvalidArgumentException extends \InvalidArgumentException implements \_PhpScoper8f797d20934a\Symfony\Component\Process\Exception\ExceptionInterface
 {
 }

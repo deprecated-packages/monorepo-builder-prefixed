@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper53a6895b9c5b\Symfony\Component\DependencyInjection;
+namespace _PhpScoper8f797d20934a\Symfony\Component\DependencyInjection;
 
 /**
  * EnvVarLoaderInterface objects return key/value pairs that are added to the list of available env vars.

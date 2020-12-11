@@ -9,9 +9,9 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper53a6895b9c5b\PharIo\Version;
+namespace _PhpScoper8f797d20934a\PharIo\Version;
 
-abstract class AbstractVersionConstraint implements \_PhpScoper53a6895b9c5b\PharIo\Version\VersionConstraint
+abstract class AbstractVersionConstraint implements \_PhpScoper8f797d20934a\PharIo\Version\VersionConstraint
 {
     /** @var string */
     private $originalValue;
