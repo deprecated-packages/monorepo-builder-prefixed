@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperbb737891eded\Symfony\Component\Mime\Tests;
+namespace _PhpScoperbecbc4cd500f\Symfony\Component\Mime\Tests;
 
-use _PhpScoperbb737891eded\PHPUnit\Framework\TestCase;
-use _PhpScoperbb737891eded\Symfony\Component\Mime\NamedAddress;
-class NamedAddressTest extends \_PhpScoperbb737891eded\PHPUnit\Framework\TestCase
+use _PhpScoperbecbc4cd500f\PHPUnit\Framework\TestCase;
+use _PhpScoperbecbc4cd500f\Symfony\Component\Mime\NamedAddress;
+class NamedAddressTest extends \_PhpScoperbecbc4cd500f\PHPUnit\Framework\TestCase
 {
     public function testConstructor()
     {
-        $a = new \_PhpScoperbb737891eded\Symfony\Component\Mime\NamedAddress('fabien@symfonï.com', 'Fabien');
+        $a = new \_PhpScoperbecbc4cd500f\Symfony\Component\Mime\NamedAddress('fabien@symfonï.com', 'Fabien');
         $this->assertEquals('Fabien', $a->getName());
         $this->assertEquals('fabien@symfonï.com', $a->getAddress());
         $this->assertEquals('Fabien <fabien@xn--symfon-nwa.com>', $a->toString());

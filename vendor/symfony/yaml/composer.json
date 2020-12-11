@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "_PhpScoperbb737891eded\\Symfony\\Component\\Yaml\\": ""
+            "_PhpScoperbecbc4cd500f\\Symfony\\Component\\Yaml\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"
