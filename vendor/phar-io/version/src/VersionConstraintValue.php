@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace _PhpScoperd72531165ef5\PharIo\Version;
+namespace _PhpScoperdf352df6d893\PharIo\Version;
 
 class VersionConstraintValue
 {
@@ -37,15 +37,15 @@ class VersionConstraintValue
     {
         return $this->versionString;
     }
-    public function getMajor() : \_PhpScoperd72531165ef5\PharIo\Version\VersionNumber
+    public function getMajor() : \_PhpScoperdf352df6d893\PharIo\Version\VersionNumber
     {
         return $this->major;
     }
-    public function getMinor() : \_PhpScoperd72531165ef5\PharIo\Version\VersionNumber
+    public function getMinor() : \_PhpScoperdf352df6d893\PharIo\Version\VersionNumber
     {
         return $this->minor;
     }
-    public function getPatch() : \_PhpScoperd72531165ef5\PharIo\Version\VersionNumber
+    public function getPatch() : \_PhpScoperdf352df6d893\PharIo\Version\VersionNumber
     {
         return $this->patch;
     }
@@ -58,11 +58,11 @@ class VersionConstraintValue
         $this->extractLabel($versionString);
         $this->stripPotentialVPrefix($versionString);
         $versionSegments = \explode('.', $versionString);
-        $this->major = new \_PhpScoperd72531165ef5\PharIo\Version\VersionNumber(\is_numeric($versionSegments[0]) ? (int) $versionSegments[0] : null);
+        $this->major = new \_PhpScoperdf352df6d893\PharIo\Version\VersionNumber(\is_numeric($versionSegments[0]) ? (int) $versionSegments[0] : null);
         $minorValue = isset($versionSegments[1]) && \is_numeric($versionSegments[1]) ? (int) $versionSegments[1] : null;
         $patchValue = isset($versionSegments[2]) && \is_numeric($versionSegments[2]) ? (int) $versionSegments[2] : null;
-        $this->minor = new \_PhpScoperd72531165ef5\PharIo\Version\VersionNumber($minorValue);
-        $this->patch = new \_PhpScoperd72531165ef5\PharIo\Version\VersionNumber($patchValue);
+        $this->minor = new \_PhpScoperdf352df6d893\PharIo\Version\VersionNumber($minorValue);
+        $this->patch = new \_PhpScoperdf352df6d893\PharIo\Version\VersionNumber($patchValue);
     }
     /**
      * @param string $versionString
