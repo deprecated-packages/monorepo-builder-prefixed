@@ -9,19 +9,19 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf40000691b7b\SebastianBergmann\Diff\Output;
+namespace _PhpScoper369d742135b8\SebastianBergmann\Diff\Output;
 
 use function fclose;
 use function fopen;
 use function fwrite;
 use function stream_get_contents;
 use function substr;
-use _PhpScoperf40000691b7b\SebastianBergmann\Diff\Differ;
+use _PhpScoper369d742135b8\SebastianBergmann\Diff\Differ;
 /**
  * Builds a diff string representation in a loose unified diff format
  * listing only changes lines. Does not include line numbers.
  */
-final class DiffOnlyOutputBuilder implements \_PhpScoperf40000691b7b\SebastianBergmann\Diff\Output\DiffOutputBuilderInterface
+final class DiffOnlyOutputBuilder implements \_PhpScoper369d742135b8\SebastianBergmann\Diff\Output\DiffOutputBuilderInterface
 {
     /**
      * @var string
@@ -41,11 +41,11 @@ final class DiffOnlyOutputBuilder implements \_PhpScoperf40000691b7b\SebastianBe
             }
         }
         foreach ($diff as $diffEntry) {
-            if ($diffEntry[1] === \_PhpScoperf40000691b7b\SebastianBergmann\Diff\Differ::ADDED) {
+            if ($diffEntry[1] === \_PhpScoper369d742135b8\SebastianBergmann\Diff\Differ::ADDED) {
                 \fwrite($buffer, '+' . $diffEntry[0]);
-            } elseif ($diffEntry[1] === \_PhpScoperf40000691b7b\SebastianBergmann\Diff\Differ::REMOVED) {
+            } elseif ($diffEntry[1] === \_PhpScoper369d742135b8\SebastianBergmann\Diff\Differ::REMOVED) {
                 \fwrite($buffer, '-' . $diffEntry[0]);
-            } elseif ($diffEntry[1] === \_PhpScoperf40000691b7b\SebastianBergmann\Diff\Differ::DIFF_LINE_END_WARNING) {
+            } elseif ($diffEntry[1] === \_PhpScoper369d742135b8\SebastianBergmann\Diff\Differ::DIFF_LINE_END_WARNING) {
                 \fwrite($buffer, ' ' . $diffEntry[0]);
                 continue;
                 // Warnings should not be tested for line break, it will always be there
