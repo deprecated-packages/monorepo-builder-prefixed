@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Symplify\PackageBuilder\Console\Input;
 
-use _PhpScoperad5317739bda\Symfony\Component\Console\Input\ArgvInput;
+use _PhpScoper9ce838b06e67\Symfony\Component\Console\Input\ArgvInput;
 class StaticInputDetector
 {
     public static function isDebug() : bool
     {
-        $argvInput = new \_PhpScoperad5317739bda\Symfony\Component\Console\Input\ArgvInput();
+        $argvInput = new \_PhpScoper9ce838b06e67\Symfony\Component\Console\Input\ArgvInput();
         return $argvInput->hasParameterOption(['--debug', '-v', '-vv', '-vvv']);
     }
 }
