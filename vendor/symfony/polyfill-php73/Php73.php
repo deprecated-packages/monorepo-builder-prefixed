@@ -1,6 +1,6 @@
 <?php
 
-namespace _PhpScoper59bf8deb8cc1\Symfony\Polyfill\Php73;
+namespace _PhpScoperc693a7d83f11\Symfony\Polyfill\Php73;
 
 /**
  * @author Gabriel Caruso <carusogabriel34@gmail.com>
