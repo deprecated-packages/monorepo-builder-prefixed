@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\ValueObjectFactory;
 
-use _PhpScoperdf352df6d893\PharIo\Version\Version;
+use _PhpScoper0677321b414b\PharIo\Version\Version;
 final class VersionFactory
 {
-    public function create(string $version) : \_PhpScoperdf352df6d893\PharIo\Version\Version
+    public function create(string $version) : \_PhpScoper0677321b414b\PharIo\Version\Version
     {
-        return new \_PhpScoperdf352df6d893\PharIo\Version\Version($version);
+        return new \_PhpScoper0677321b414b\PharIo\Version\Version($version);
     }
 }
