@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper6d6fbd28d6a9\Symfony\Component\HttpKernel\Controller;
+namespace _PhpScoper7cc068f3f5d1\Symfony\Component\HttpKernel\Controller;
 
-use _PhpScoper6d6fbd28d6a9\Symfony\Component\HttpKernel\Fragment\FragmentRendererInterface;
+use _PhpScoper7cc068f3f5d1\Symfony\Component\HttpKernel\Fragment\FragmentRendererInterface;
 /**
  * Acts as a marker and a data holder for a Controller.
  *
