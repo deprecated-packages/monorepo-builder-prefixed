@@ -1,13 +1,13 @@
 {
     "autoload": {
         "psr-4": {
-            "_PhpScoper7cc068f3f5d1\\App\\Collection\\": [
+            "_PhpScoperf40000691b7b\\App\\Collection\\": [
                 "src\/collection"
             ],
-            "_PhpScoper7cc068f3f5d1\\App\\Core\\": "src\/core-extension",
-            "_PhpScoper7cc068f3f5d1\\App\\Model\\": "src\/interfaces",
-            "_PhpScoper7cc068f3f5d1\\App\\Shared\\": "src\/shared",
-            "_PhpScoper7cc068f3f5d1\\App\\YetAnother\\": "src"
+            "_PhpScoperf40000691b7b\\App\\Core\\": "src\/core-extension",
+            "_PhpScoperf40000691b7b\\App\\Model\\": "src\/interfaces",
+            "_PhpScoperf40000691b7b\\App\\Shared\\": "src\/shared",
+            "_PhpScoperf40000691b7b\\App\\YetAnother\\": "src"
         }
     }
 }
