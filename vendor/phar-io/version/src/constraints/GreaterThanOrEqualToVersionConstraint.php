@@ -9,21 +9,21 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper204b3b8f3e0d\PharIo\Version;
+namespace _PhpScoper0087e037e0f7\PharIo\Version;
 
-class GreaterThanOrEqualToVersionConstraint extends \_PhpScoper204b3b8f3e0d\PharIo\Version\AbstractVersionConstraint
+class GreaterThanOrEqualToVersionConstraint extends \_PhpScoper0087e037e0f7\PharIo\Version\AbstractVersionConstraint
 {
     /** @var Version */
     private $minimalVersion;
     /**
      * @param string $originalValue
      */
-    public function __construct($originalValue, \_PhpScoper204b3b8f3e0d\PharIo\Version\Version $minimalVersion)
+    public function __construct($originalValue, \_PhpScoper0087e037e0f7\PharIo\Version\Version $minimalVersion)
     {
         parent::__construct($originalValue);
         $this->minimalVersion = $minimalVersion;
     }
-    public function complies(\_PhpScoper204b3b8f3e0d\PharIo\Version\Version $version) : bool
+    public function complies(\_PhpScoper0087e037e0f7\PharIo\Version\Version $version) : bool
     {
         return $version->getVersionString() === $this->minimalVersion->getVersionString() || $version->isGreaterThan($this->minimalVersion);
     }

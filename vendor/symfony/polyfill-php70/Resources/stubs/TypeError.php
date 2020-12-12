@@ -1,8 +1,8 @@
 <?php
 
-namespace _PhpScoper204b3b8f3e0d;
+namespace _PhpScoper0087e037e0f7;
 
 class TypeError extends \Error
 {
 }
-\class_alias('_PhpScoper204b3b8f3e0d\\TypeError', 'TypeError', \false);
+\class_alias('_PhpScoper0087e037e0f7\\TypeError', 'TypeError', \false);
