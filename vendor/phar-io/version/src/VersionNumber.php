@@ -9,7 +9,7 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper09a4cc789a22\PharIo\Version;
+namespace _PhpScoper290ab17573f9\PharIo\Version;
 
 class VersionNumber
 {
