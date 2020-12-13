@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace _PhpScoperee3ad0c2c096\PharIo\Version;
+namespace _PhpScoper3fb9389c704a\PharIo\Version;
 
 class PreReleaseSuffix
 {
@@ -33,7 +33,7 @@ class PreReleaseSuffix
     {
         return $this->number;
     }
-    public function isGreaterThan(\_PhpScoperee3ad0c2c096\PharIo\Version\PreReleaseSuffix $suffix) : bool
+    public function isGreaterThan(\_PhpScoper3fb9389c704a\PharIo\Version\PreReleaseSuffix $suffix) : bool
     {
         if ($this->valueScore > $suffix->valueScore) {
             return \true;
@@ -57,7 +57,7 @@ class PreReleaseSuffix
     {
         $regex = '/-?((dev|beta|b|rc|alpha|a|patch|p)\\.?(\\d*)).*$/i';
         if (\preg_match($regex, $value, $matches) !== 1) {
-            throw new \_PhpScoperee3ad0c2c096\PharIo\Version\InvalidPreReleaseSuffixException(\sprintf('Invalid label %s', $value));
+            throw new \_PhpScoper3fb9389c704a\PharIo\Version\InvalidPreReleaseSuffixException(\sprintf('Invalid label %s', $value));
         }
         $this->full = $matches[1];
         $this->value = $matches[2];

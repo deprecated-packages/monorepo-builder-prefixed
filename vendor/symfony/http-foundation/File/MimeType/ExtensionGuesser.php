@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperee3ad0c2c096\Symfony\Component\HttpFoundation\File\MimeType;
+namespace _PhpScoper3fb9389c704a\Symfony\Component\HttpFoundation\File\MimeType;
 
-use _PhpScoperee3ad0c2c096\Symfony\Component\Mime\MimeTypes;
-@\trigger_error(\sprintf('The "%s" class is deprecated since Symfony 4.3, use "%s" instead.', \_PhpScoperee3ad0c2c096\Symfony\Component\HttpFoundation\File\MimeType\ExtensionGuesser::class, \_PhpScoperee3ad0c2c096\Symfony\Component\Mime\MimeTypes::class), \E_USER_DEPRECATED);
+use _PhpScoper3fb9389c704a\Symfony\Component\Mime\MimeTypes;
+@\trigger_error(\sprintf('The "%s" class is deprecated since Symfony 4.3, use "%s" instead.', \_PhpScoper3fb9389c704a\Symfony\Component\HttpFoundation\File\MimeType\ExtensionGuesser::class, \_PhpScoper3fb9389c704a\Symfony\Component\Mime\MimeTypes::class), \E_USER_DEPRECATED);
 /**
  * A singleton mime type to file extension guesser.
  *
@@ -26,7 +26,7 @@ use _PhpScoperee3ad0c2c096\Symfony\Component\Mime\MimeTypes;
  *
  * @deprecated since Symfony 4.3, use {@link MimeTypes} instead
  */
-class ExtensionGuesser implements \_PhpScoperee3ad0c2c096\Symfony\Component\HttpFoundation\File\MimeType\ExtensionGuesserInterface
+class ExtensionGuesser implements \_PhpScoper3fb9389c704a\Symfony\Component\HttpFoundation\File\MimeType\ExtensionGuesserInterface
 {
     /**
      * The singleton instance.
@@ -57,14 +57,14 @@ class ExtensionGuesser implements \_PhpScoperee3ad0c2c096\Symfony\Component\Http
      */
     private function __construct()
     {
-        $this->register(new \_PhpScoperee3ad0c2c096\Symfony\Component\HttpFoundation\File\MimeType\MimeTypeExtensionGuesser());
+        $this->register(new \_PhpScoper3fb9389c704a\Symfony\Component\HttpFoundation\File\MimeType\MimeTypeExtensionGuesser());
     }
     /**
      * Registers a new extension guesser.
      *
      * When guessing, this guesser is preferred over previously registered ones.
      */
-    public function register(\_PhpScoperee3ad0c2c096\Symfony\Component\HttpFoundation\File\MimeType\ExtensionGuesserInterface $guesser)
+    public function register(\_PhpScoper3fb9389c704a\Symfony\Component\HttpFoundation\File\MimeType\ExtensionGuesserInterface $guesser)
     {
         \array_unshift($this->guessers, $guesser);
     }

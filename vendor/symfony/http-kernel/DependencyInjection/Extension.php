@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperee3ad0c2c096\Symfony\Component\HttpKernel\DependencyInjection;
+namespace _PhpScoper3fb9389c704a\Symfony\Component\HttpKernel\DependencyInjection;
 
-use _PhpScoperee3ad0c2c096\Symfony\Component\DependencyInjection\Extension\Extension as BaseExtension;
+use _PhpScoper3fb9389c704a\Symfony\Component\DependencyInjection\Extension\Extension as BaseExtension;
 /**
  * Allow adding classes to the class cache.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Extension extends \_PhpScoperee3ad0c2c096\Symfony\Component\DependencyInjection\Extension\Extension
+abstract class Extension extends \_PhpScoper3fb9389c704a\Symfony\Component\DependencyInjection\Extension\Extension
 {
     private $annotatedClasses = [];
     /**

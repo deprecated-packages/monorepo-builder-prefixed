@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperee3ad0c2c096\Symfony\Component\Mime\Header;
+namespace _PhpScoper3fb9389c704a\Symfony\Component\Mime\Header;
 
 /**
  * A MIME Header.
