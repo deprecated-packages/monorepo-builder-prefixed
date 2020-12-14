@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\Configuration;
 
-use _PhpScoper5f41da07187c\PharIo\Version\Version;
-use _PhpScoper5f41da07187c\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoperc9dee8f3b3e7\PharIo\Version\Version;
+use _PhpScoperc9dee8f3b3e7\Symfony\Component\Console\Input\InputInterface;
 use Symplify\MonorepoBuilder\Release\Version\VersionFactory;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 final class VersionResolver
@@ -17,7 +17,7 @@ final class VersionResolver
     {
         $this->versionFactory = $versionFactory;
     }
-    public function resolveVersion(\_PhpScoper5f41da07187c\Symfony\Component\Console\Input\InputInterface $input, string $stage) : \_PhpScoper5f41da07187c\PharIo\Version\Version
+    public function resolveVersion(\_PhpScoperc9dee8f3b3e7\Symfony\Component\Console\Input\InputInterface $input, string $stage) : \_PhpScoperc9dee8f3b3e7\PharIo\Version\Version
     {
         /** @var string $versionArgument */
         $versionArgument = $input->getArgument(\Symplify\MonorepoBuilder\ValueObject\Option::VERSION);
