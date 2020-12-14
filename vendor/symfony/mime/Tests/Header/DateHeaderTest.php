@@ -8,62 +8,62 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc9dee8f3b3e7\Symfony\Component\Mime\Tests\Header;
+namespace _PhpScoperdd624bbcb4e5\Symfony\Component\Mime\Tests\Header;
 
-use _PhpScoperc9dee8f3b3e7\PHPUnit\Framework\TestCase;
-use _PhpScoperc9dee8f3b3e7\Symfony\Component\Mime\Header\DateHeader;
-class DateHeaderTest extends \_PhpScoperc9dee8f3b3e7\PHPUnit\Framework\TestCase
+use _PhpScoperdd624bbcb4e5\PHPUnit\Framework\TestCase;
+use _PhpScoperdd624bbcb4e5\Symfony\Component\Mime\Header\DateHeader;
+class DateHeaderTest extends \_PhpScoperdd624bbcb4e5\PHPUnit\Framework\TestCase
 {
     /* --
        The following tests refer to RFC 2822, section 3.6.1 and 3.3.
        */
     public function testGetDateTime()
     {
-        $header = new \_PhpScoperc9dee8f3b3e7\Symfony\Component\Mime\Header\DateHeader('Date', $dateTime = new \DateTimeImmutable());
+        $header = new \_PhpScoperdd624bbcb4e5\Symfony\Component\Mime\Header\DateHeader('Date', $dateTime = new \DateTimeImmutable());
         $this->assertSame($dateTime, $header->getDateTime());
     }
     public function testDateTimeCanBeSetBySetter()
     {
-        $header = new \_PhpScoperc9dee8f3b3e7\Symfony\Component\Mime\Header\DateHeader('Date', new \DateTimeImmutable());
+        $header = new \_PhpScoperdd624bbcb4e5\Symfony\Component\Mime\Header\DateHeader('Date', new \DateTimeImmutable());
         $header->setDateTime($dateTime = new \DateTimeImmutable());
         $this->assertSame($dateTime, $header->getDateTime());
     }
     public function testDateTimeIsConvertedToImmutable()
     {
         $dateTime = new \DateTime();
-        $header = new \_PhpScoperc9dee8f3b3e7\Symfony\Component\Mime\Header\DateHeader('Date', $dateTime);
+        $header = new \_PhpScoperdd624bbcb4e5\Symfony\Component\Mime\Header\DateHeader('Date', $dateTime);
         $this->assertInstanceOf('DateTimeImmutable', $header->getDateTime());
         $this->assertEquals($dateTime->getTimestamp(), $header->getDateTime()->getTimestamp());
         $this->assertEquals($dateTime->getTimezone(), $header->getDateTime()->getTimezone());
     }
     public function testDateTimeIsImmutable()
     {
-        $header = new \_PhpScoperc9dee8f3b3e7\Symfony\Component\Mime\Header\DateHeader('Date', $dateTime = new \DateTime('2000-01-01 12:00:00 Europe/Berlin'));
+        $header = new \_PhpScoperdd624bbcb4e5\Symfony\Component\Mime\Header\DateHeader('Date', $dateTime = new \DateTime('2000-01-01 12:00:00 Europe/Berlin'));
         $dateTime->setDate(2002, 2, 2);
         $this->assertEquals('Sat, 01 Jan 2000 12:00:00 +0100', $header->getDateTime()->format('r'));
         $this->assertEquals('Sat, 01 Jan 2000 12:00:00 +0100', $header->getBodyAsString());
     }
     public function testDateTimeIsConvertedToRfc2822Date()
     {
-        $header = new \_PhpScoperc9dee8f3b3e7\Symfony\Component\Mime\Header\DateHeader('Date', $dateTime = new \DateTimeImmutable('2000-01-01 12:00:00 Europe/Berlin'));
+        $header = new \_PhpScoperdd624bbcb4e5\Symfony\Component\Mime\Header\DateHeader('Date', $dateTime = new \DateTimeImmutable('2000-01-01 12:00:00 Europe/Berlin'));
         $header->setDateTime($dateTime);
         $this->assertEquals('Sat, 01 Jan 2000 12:00:00 +0100', $header->getBodyAsString());
     }
     public function testSetBody()
     {
-        $header = new \_PhpScoperc9dee8f3b3e7\Symfony\Component\Mime\Header\DateHeader('Date', $dateTime = new \DateTimeImmutable());
+        $header = new \_PhpScoperdd624bbcb4e5\Symfony\Component\Mime\Header\DateHeader('Date', $dateTime = new \DateTimeImmutable());
         $header->setBody($dateTime);
         $this->assertEquals($dateTime->format('r'), $header->getBodyAsString());
     }
     public function testGetBody()
     {
-        $header = new \_PhpScoperc9dee8f3b3e7\Symfony\Component\Mime\Header\DateHeader('Date', $dateTime = new \DateTimeImmutable());
+        $header = new \_PhpScoperdd624bbcb4e5\Symfony\Component\Mime\Header\DateHeader('Date', $dateTime = new \DateTimeImmutable());
         $header->setDateTime($dateTime);
         $this->assertEquals($dateTime, $header->getBody());
     }
     public function testToString()
     {
-        $header = new \_PhpScoperc9dee8f3b3e7\Symfony\Component\Mime\Header\DateHeader('Date', $dateTime = new \DateTimeImmutable('2000-01-01 12:00:00 Europe/Berlin'));
+        $header = new \_PhpScoperdd624bbcb4e5\Symfony\Component\Mime\Header\DateHeader('Date', $dateTime = new \DateTimeImmutable('2000-01-01 12:00:00 Europe/Berlin'));
         $header->setDateTime($dateTime);
         $this->assertEquals('Date: Sat, 01 Jan 2000 12:00:00 +0100', $header->toString());
     }

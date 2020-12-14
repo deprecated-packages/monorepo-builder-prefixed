@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc9dee8f3b3e7\Symfony\Component\HttpKernel\HttpCache;
+namespace _PhpScoperdd624bbcb4e5\Symfony\Component\HttpKernel\HttpCache;
 
-use _PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\IpUtils;
-use _PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\Request;
-use _PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\Response;
-use _PhpScoperc9dee8f3b3e7\Symfony\Component\HttpKernel\HttpKernelInterface;
+use _PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\IpUtils;
+use _PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\Request;
+use _PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\Response;
+use _PhpScoperdd624bbcb4e5\Symfony\Component\HttpKernel\HttpKernelInterface;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  *
@@ -21,15 +21,15 @@ use _PhpScoperc9dee8f3b3e7\Symfony\Component\HttpKernel\HttpKernelInterface;
  */
 class SubRequestHandler
 {
-    public static function handle(\_PhpScoperc9dee8f3b3e7\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \_PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\Request $request, $type, $catch) : \_PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\Response
+    public static function handle(\_PhpScoperdd624bbcb4e5\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \_PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\Request $request, $type, $catch) : \_PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\Response
     {
         // save global state related to trusted headers and proxies
-        $trustedProxies = \_PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\Request::getTrustedProxies();
-        $trustedHeaderSet = \_PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\Request::getTrustedHeaderSet();
+        $trustedProxies = \_PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\Request::getTrustedProxies();
+        $trustedHeaderSet = \_PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\Request::getTrustedHeaderSet();
         // remove untrusted values
         $remoteAddr = $request->server->get('REMOTE_ADDR');
-        if (!\_PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\IpUtils::checkIp($remoteAddr, $trustedProxies)) {
-            $trustedHeaders = ['FORWARDED' => $trustedHeaderSet & \_PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\Request::HEADER_FORWARDED, 'X_FORWARDED_FOR' => $trustedHeaderSet & \_PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_FOR, 'X_FORWARDED_HOST' => $trustedHeaderSet & \_PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_HOST, 'X_FORWARDED_PROTO' => $trustedHeaderSet & \_PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_PROTO, 'X_FORWARDED_PORT' => $trustedHeaderSet & \_PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_PORT];
+        if (!\_PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\IpUtils::checkIp($remoteAddr, $trustedProxies)) {
+            $trustedHeaders = ['FORWARDED' => $trustedHeaderSet & \_PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\Request::HEADER_FORWARDED, 'X_FORWARDED_FOR' => $trustedHeaderSet & \_PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_FOR, 'X_FORWARDED_HOST' => $trustedHeaderSet & \_PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_HOST, 'X_FORWARDED_PROTO' => $trustedHeaderSet & \_PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_PROTO, 'X_FORWARDED_PORT' => $trustedHeaderSet & \_PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_PORT];
             foreach (\array_filter($trustedHeaders) as $name => $key) {
                 $request->headers->remove($name);
                 $request->server->remove('HTTP_' . $name);
@@ -47,16 +47,16 @@ class SubRequestHandler
             $trustedValues[] = \sprintf('for="%s"', $remoteAddr);
         }
         // set trusted values, reusing as much as possible the global trusted settings
-        if (\_PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\Request::HEADER_FORWARDED & $trustedHeaderSet) {
+        if (\_PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\Request::HEADER_FORWARDED & $trustedHeaderSet) {
             $trustedValues[0] .= \sprintf(';host="%s";proto=%s', $request->getHttpHost(), $request->getScheme());
             $request->headers->set('Forwarded', $v = \implode(', ', $trustedValues));
             $request->server->set('HTTP_FORWARDED', $v);
         }
-        if (\_PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_FOR & $trustedHeaderSet) {
+        if (\_PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_FOR & $trustedHeaderSet) {
             $request->headers->set('X-Forwarded-For', $v = \implode(', ', $trustedIps));
             $request->server->set('HTTP_X_FORWARDED_FOR', $v);
-        } elseif (!(\_PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\Request::HEADER_FORWARDED & $trustedHeaderSet)) {
-            \_PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\Request::setTrustedProxies($trustedProxies, $trustedHeaderSet | \_PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_FOR);
+        } elseif (!(\_PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\Request::HEADER_FORWARDED & $trustedHeaderSet)) {
+            \_PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\Request::setTrustedProxies($trustedProxies, $trustedHeaderSet | \_PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_FOR);
             $request->headers->set('X-Forwarded-For', $v = \implode(', ', $trustedIps));
             $request->server->set('HTTP_X_FORWARDED_FOR', $v);
         }
@@ -64,14 +64,14 @@ class SubRequestHandler
         // which is the core responsibility of this method
         $request->server->set('REMOTE_ADDR', '127.0.0.1');
         // ensure 127.0.0.1 is set as trusted proxy
-        if (!\_PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\IpUtils::checkIp('127.0.0.1', $trustedProxies)) {
-            \_PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\Request::setTrustedProxies(\array_merge($trustedProxies, ['127.0.0.1']), \_PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\Request::getTrustedHeaderSet());
+        if (!\_PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\IpUtils::checkIp('127.0.0.1', $trustedProxies)) {
+            \_PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\Request::setTrustedProxies(\array_merge($trustedProxies, ['127.0.0.1']), \_PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\Request::getTrustedHeaderSet());
         }
         try {
             return $kernel->handle($request, $type, $catch);
         } finally {
             // restore global state
-            \_PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\Request::setTrustedProxies($trustedProxies, $trustedHeaderSet);
+            \_PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\Request::setTrustedProxies($trustedProxies, $trustedHeaderSet);
         }
     }
 }

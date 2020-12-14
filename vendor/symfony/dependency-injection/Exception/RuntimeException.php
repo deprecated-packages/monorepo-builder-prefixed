@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc9dee8f3b3e7\Symfony\Component\DependencyInjection\Exception;
+namespace _PhpScoperdd624bbcb4e5\Symfony\Component\DependencyInjection\Exception;
 
 /**
  * Base RuntimeException for Dependency Injection component.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class RuntimeException extends \RuntimeException implements \_PhpScoperc9dee8f3b3e7\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
+class RuntimeException extends \RuntimeException implements \_PhpScoperdd624bbcb4e5\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
 {
 }

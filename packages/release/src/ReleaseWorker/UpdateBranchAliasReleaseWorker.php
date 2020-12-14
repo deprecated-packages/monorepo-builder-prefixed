@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\ReleaseWorker;
 
-use _PhpScoperc9dee8f3b3e7\PharIo\Version\Version;
+use _PhpScoperdd624bbcb4e5\PharIo\Version\Version;
 use Symplify\MonorepoBuilder\DevMasterAliasUpdater;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
@@ -28,12 +28,12 @@ final class UpdateBranchAliasReleaseWorker implements \Symplify\MonorepoBuilder\
         $this->composerJsonProvider = $composerJsonProvider;
         $this->versionUtils = $versionUtils;
     }
-    public function work(\_PhpScoperc9dee8f3b3e7\PharIo\Version\Version $version) : void
+    public function work(\_PhpScoperdd624bbcb4e5\PharIo\Version\Version $version) : void
     {
         $nextAlias = $this->versionUtils->getNextAliasFormat($version);
         $this->devMasterAliasUpdater->updateFileInfosWithAlias($this->composerJsonProvider->getPackagesComposerFileInfos(), $nextAlias);
     }
-    public function getDescription(\_PhpScoperc9dee8f3b3e7\PharIo\Version\Version $version) : string
+    public function getDescription(\_PhpScoperdd624bbcb4e5\PharIo\Version\Version $version) : string
     {
         $nextAlias = $this->versionUtils->getNextAliasFormat($version);
         return \sprintf('Set branch alias "%s" to all packages', $nextAlias);

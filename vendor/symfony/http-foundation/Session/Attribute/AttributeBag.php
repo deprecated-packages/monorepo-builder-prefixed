@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\Session\Attribute;
+namespace _PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\Session\Attribute;
 
 /**
  * This class relates to session attribute storage.
  */
-class AttributeBag implements \_PhpScoperc9dee8f3b3e7\Symfony\Component\HttpFoundation\Session\Attribute\AttributeBagInterface, \IteratorAggregate, \Countable
+class AttributeBag implements \_PhpScoperdd624bbcb4e5\Symfony\Component\HttpFoundation\Session\Attribute\AttributeBagInterface, \IteratorAggregate, \Countable
 {
     private $name = 'attributes';
     private $storageKey;
