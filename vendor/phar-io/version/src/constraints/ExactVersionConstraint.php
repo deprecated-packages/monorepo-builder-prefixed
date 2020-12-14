@@ -9,11 +9,11 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperd924ce906654\PharIo\Version;
+namespace _PhpScoper5f41da07187c\PharIo\Version;
 
-class ExactVersionConstraint extends \_PhpScoperd924ce906654\PharIo\Version\AbstractVersionConstraint
+class ExactVersionConstraint extends \_PhpScoper5f41da07187c\PharIo\Version\AbstractVersionConstraint
 {
-    public function complies(\_PhpScoperd924ce906654\PharIo\Version\Version $version) : bool
+    public function complies(\_PhpScoper5f41da07187c\PharIo\Version\Version $version) : bool
     {
         return $this->asString() === $version->getVersionString();
     }
