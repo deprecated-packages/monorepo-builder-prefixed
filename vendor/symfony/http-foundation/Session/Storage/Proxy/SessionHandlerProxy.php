@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper345e6b5f632f\Symfony\Component\HttpFoundation\Session\Storage\Proxy;
+namespace _PhpScoperc51531d67326\Symfony\Component\HttpFoundation\Session\Storage\Proxy;
 
 /**
  * @author Drak <drak@zikula.org>
  */
-class SessionHandlerProxy extends \_PhpScoper345e6b5f632f\Symfony\Component\HttpFoundation\Session\Storage\Proxy\AbstractProxy implements \SessionHandlerInterface, \SessionUpdateTimestampHandlerInterface
+class SessionHandlerProxy extends \_PhpScoperc51531d67326\Symfony\Component\HttpFoundation\Session\Storage\Proxy\AbstractProxy implements \SessionHandlerInterface, \SessionUpdateTimestampHandlerInterface
 {
     protected $handler;
     public function __construct(\SessionHandlerInterface $handler)
