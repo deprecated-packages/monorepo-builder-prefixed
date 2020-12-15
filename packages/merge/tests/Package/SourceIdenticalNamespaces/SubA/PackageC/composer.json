@@ -1,8 +1,8 @@
 {
     "autoload": {
         "psr-4": {
-            "_PhpScoperd79f30a2f8be\\App\\Model\\": "src\/models",
-            "_PhpScoperd79f30a2f8be\\App\\Sub\\": "src\/package-c"
+            "_PhpScoperc7f1624089a3\\App\\Model\\": "src\/models",
+            "_PhpScoperc7f1624089a3\\App\\Sub\\": "src\/package-c"
         }
     }
 }
