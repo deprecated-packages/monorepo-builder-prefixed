@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere1b4619561f2\Symfony\Component\Finder\Comparator;
+namespace _PhpScoperc0c27da9e1f7\Symfony\Component\Finder\Comparator;
 
 /**
  * NumberComparator compiles a simple comparison to an anonymous
@@ -31,7 +31,7 @@ namespace _PhpScopere1b4619561f2\Symfony\Component\Finder\Comparator;
  *
  * @see http://physics.nist.gov/cuu/Units/binary.html
  */
-class NumberComparator extends \_PhpScopere1b4619561f2\Symfony\Component\Finder\Comparator\Comparator
+class NumberComparator extends \_PhpScoperc0c27da9e1f7\Symfony\Component\Finder\Comparator\Comparator
 {
     /**
      * @param string|int $test A comparison string or an integer

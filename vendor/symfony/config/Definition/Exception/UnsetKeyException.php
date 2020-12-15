@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere1b4619561f2\Symfony\Component\Config\Definition\Exception;
+namespace _PhpScoperc0c27da9e1f7\Symfony\Component\Config\Definition\Exception;
 
 /**
  * This exception is usually not encountered by the end-user, but only used
@@ -16,6 +16,6 @@ namespace _PhpScopere1b4619561f2\Symfony\Component\Config\Definition\Exception;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class UnsetKeyException extends \_PhpScopere1b4619561f2\Symfony\Component\Config\Definition\Exception\Exception
+class UnsetKeyException extends \_PhpScoperc0c27da9e1f7\Symfony\Component\Config\Definition\Exception\Exception
 {
 }

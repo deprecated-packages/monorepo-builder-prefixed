@@ -9,9 +9,9 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere1b4619561f2\PharIo\Version;
+namespace _PhpScoperc0c27da9e1f7\PharIo\Version;
 
-class AndVersionConstraintGroup extends \_PhpScopere1b4619561f2\PharIo\Version\AbstractVersionConstraint
+class AndVersionConstraintGroup extends \_PhpScoperc0c27da9e1f7\PharIo\Version\AbstractVersionConstraint
 {
     /** @var VersionConstraint[] */
     private $constraints = [];
@@ -23,7 +23,7 @@ class AndVersionConstraintGroup extends \_PhpScopere1b4619561f2\PharIo\Version\A
         parent::__construct($originalValue);
         $this->constraints = $constraints;
     }
-    public function complies(\_PhpScopere1b4619561f2\PharIo\Version\Version $version) : bool
+    public function complies(\_PhpScoperc0c27da9e1f7\PharIo\Version\Version $version) : bool
     {
         foreach ($this->constraints as $constraint) {
             if (!$constraint->complies($version)) {
