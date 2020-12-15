@@ -1,6 +1,6 @@
 {
     "name": "symplify/monorepo-builder-prefixed",
-    "description": "Prefixed scoped version of symplify/monorepo-builder package",
+    "description": "Prefixed scoped version of \"symplify/monorepo-builder\" package",
     "license": "MIT",
     "require": {
         "php": ">=7.3"

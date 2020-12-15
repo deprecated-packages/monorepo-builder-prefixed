@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\ReleaseWorker;
 
-use _PhpScoperc0c27da9e1f7\PharIo\Version\Version;
+use _PhpScoperd79f30a2f8be\PharIo\Version\Version;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
 use Throwable;
@@ -17,7 +17,7 @@ final class TagVersionReleaseWorker implements \Symplify\MonorepoBuilder\Release
     {
         $this->processRunner = $processRunner;
     }
-    public function work(\_PhpScoperc0c27da9e1f7\PharIo\Version\Version $version) : void
+    public function work(\_PhpScoperd79f30a2f8be\PharIo\Version\Version $version) : void
     {
         try {
             $this->processRunner->run('git add . && git commit -m "prepare release" && git push origin master');
@@ -26,7 +26,7 @@ final class TagVersionReleaseWorker implements \Symplify\MonorepoBuilder\Release
         }
         $this->processRunner->run('git tag ' . $version->getVersionString());
     }
-    public function getDescription(\_PhpScoperc0c27da9e1f7\PharIo\Version\Version $version) : string
+    public function getDescription(\_PhpScoperd79f30a2f8be\PharIo\Version\Version $version) : string
     {
         return \sprintf('Add local tag "%s"', $version->getVersionString());
     }
