@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperfec5e512f2f8\Symfony\Component\DependencyInjection;
+namespace _PhpScoper1ceaf4cbd5cb\Symfony\Component\DependencyInjection;
 
 /**
  * Represents a variable.
