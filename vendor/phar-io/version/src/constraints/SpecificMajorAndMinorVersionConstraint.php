@@ -9,9 +9,9 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopera1d8e0344ecf\PharIo\Version;
+namespace _PhpScoper0ce3ac6864aa\PharIo\Version;
 
-class SpecificMajorAndMinorVersionConstraint extends \_PhpScopera1d8e0344ecf\PharIo\Version\AbstractVersionConstraint
+class SpecificMajorAndMinorVersionConstraint extends \_PhpScoper0ce3ac6864aa\PharIo\Version\AbstractVersionConstraint
 {
     /** @var int */
     private $major = 0;
@@ -28,7 +28,7 @@ class SpecificMajorAndMinorVersionConstraint extends \_PhpScopera1d8e0344ecf\Pha
         $this->major = $major;
         $this->minor = $minor;
     }
-    public function complies(\_PhpScopera1d8e0344ecf\PharIo\Version\Version $version) : bool
+    public function complies(\_PhpScoper0ce3ac6864aa\PharIo\Version\Version $version) : bool
     {
         if ($version->getMajor()->getValue() !== $this->major) {
             return \false;

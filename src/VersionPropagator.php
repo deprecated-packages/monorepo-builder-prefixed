@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder;
 
-use _PhpScopera1d8e0344ecf\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoper0ce3ac6864aa\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\MonorepoBuilder\ValueObject\File;
 final class VersionPropagator
 {
@@ -11,7 +11,7 @@ final class VersionPropagator
      * @var SymfonyStyle
      */
     private $symfonyStyle;
-    public function __construct(\_PhpScopera1d8e0344ecf\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
+    public function __construct(\_PhpScoper0ce3ac6864aa\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
     {
         $this->symfonyStyle = $symfonyStyle;
     }
