@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper39d95f01712b\Symfony\Component\Config\Resource;
+namespace _PhpScopera1d8e0344ecf\Symfony\Component\Config\Resource;
 
-use _PhpScoper39d95f01712b\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use _PhpScoper39d95f01712b\Symfony\Component\Messenger\Handler\MessageSubscriberInterface;
-use _PhpScoper39d95f01712b\Symfony\Contracts\Service\ServiceSubscriberInterface;
+use _PhpScopera1d8e0344ecf\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use _PhpScopera1d8e0344ecf\Symfony\Component\Messenger\Handler\MessageSubscriberInterface;
+use _PhpScopera1d8e0344ecf\Symfony\Contracts\Service\ServiceSubscriberInterface;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  *
  * @final
  */
-class ReflectionClassResource implements \_PhpScoper39d95f01712b\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class ReflectionClassResource implements \_PhpScopera1d8e0344ecf\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
 {
     private $files = [];
     private $className;
@@ -164,18 +164,18 @@ class ReflectionClassResource implements \_PhpScoper39d95f01712b\Symfony\Compone
         if ($class->isAbstract() || $class->isInterface() || $class->isTrait()) {
             return;
         }
-        if (\interface_exists(\_PhpScoper39d95f01712b\Symfony\Component\EventDispatcher\EventSubscriberInterface::class, \false) && $class->isSubclassOf(\_PhpScoper39d95f01712b\Symfony\Component\EventDispatcher\EventSubscriberInterface::class)) {
-            (yield \_PhpScoper39d95f01712b\Symfony\Component\EventDispatcher\EventSubscriberInterface::class);
+        if (\interface_exists(\_PhpScopera1d8e0344ecf\Symfony\Component\EventDispatcher\EventSubscriberInterface::class, \false) && $class->isSubclassOf(\_PhpScopera1d8e0344ecf\Symfony\Component\EventDispatcher\EventSubscriberInterface::class)) {
+            (yield \_PhpScopera1d8e0344ecf\Symfony\Component\EventDispatcher\EventSubscriberInterface::class);
             (yield \print_r($class->name::getSubscribedEvents(), \true));
         }
-        if (\interface_exists(\_PhpScoper39d95f01712b\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class, \false) && $class->isSubclassOf(\_PhpScoper39d95f01712b\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class)) {
-            (yield \_PhpScoper39d95f01712b\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class);
+        if (\interface_exists(\_PhpScopera1d8e0344ecf\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class, \false) && $class->isSubclassOf(\_PhpScopera1d8e0344ecf\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class)) {
+            (yield \_PhpScopera1d8e0344ecf\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class);
             foreach ($class->name::getHandledMessages() as $key => $value) {
                 (yield $key . \print_r($value, \true));
             }
         }
-        if (\interface_exists(\_PhpScoper39d95f01712b\Symfony\Contracts\Service\ServiceSubscriberInterface::class, \false) && $class->isSubclassOf(\_PhpScoper39d95f01712b\Symfony\Contracts\Service\ServiceSubscriberInterface::class)) {
-            (yield \_PhpScoper39d95f01712b\Symfony\Contracts\Service\ServiceSubscriberInterface::class);
+        if (\interface_exists(\_PhpScopera1d8e0344ecf\Symfony\Contracts\Service\ServiceSubscriberInterface::class, \false) && $class->isSubclassOf(\_PhpScopera1d8e0344ecf\Symfony\Contracts\Service\ServiceSubscriberInterface::class)) {
+            (yield \_PhpScopera1d8e0344ecf\Symfony\Contracts\Service\ServiceSubscriberInterface::class);
             (yield \print_r($class->name::getSubscribedServices(), \true));
         }
     }

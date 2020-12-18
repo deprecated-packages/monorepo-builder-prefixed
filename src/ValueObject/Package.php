@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\ValueObject;
 
-use _PhpScoper39d95f01712b\Nette\Utils\Strings;
+use _PhpScopera1d8e0344ecf\Nette\Utils\Strings;
 use Symplify\SmartFileSystem\SmartFileInfo;
 final class Package
 {
@@ -26,9 +26,9 @@ final class Package
     public function __construct(string $name, \Symplify\SmartFileSystem\SmartFileInfo $composerJsonFileInfo)
     {
         $this->name = $name;
-        $this->shortName = (string) \_PhpScoper39d95f01712b\Nette\Utils\Strings::after($name, '/', -1);
+        $this->shortName = (string) \_PhpScopera1d8e0344ecf\Nette\Utils\Strings::after($name, '/', -1);
         $this->rootDirectoryFileInfo = new \Symplify\SmartFileSystem\SmartFileInfo($composerJsonFileInfo->getPath());
-        $this->shortDirectory = (string) \_PhpScoper39d95f01712b\Nette\Utils\Strings::after($composerJsonFileInfo->getPath(), '/', -1);
+        $this->shortDirectory = (string) \_PhpScopera1d8e0344ecf\Nette\Utils\Strings::after($composerJsonFileInfo->getPath(), '/', -1);
     }
     public function getName() : string
     {

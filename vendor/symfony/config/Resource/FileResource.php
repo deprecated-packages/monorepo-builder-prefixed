@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper39d95f01712b\Symfony\Component\Config\Resource;
+namespace _PhpScopera1d8e0344ecf\Symfony\Component\Config\Resource;
 
 /**
  * FileResource represents a resource stored on the filesystem.
@@ -19,7 +19,7 @@ namespace _PhpScoper39d95f01712b\Symfony\Component\Config\Resource;
  *
  * @final
  */
-class FileResource implements \_PhpScoper39d95f01712b\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class FileResource implements \_PhpScopera1d8e0344ecf\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
 {
     /**
      * @var string|false

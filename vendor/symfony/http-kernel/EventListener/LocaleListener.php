@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper39d95f01712b\Symfony\Component\HttpKernel\EventListener;
+namespace _PhpScopera1d8e0344ecf\Symfony\Component\HttpKernel\EventListener;
 
-use _PhpScoper39d95f01712b\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use _PhpScoper39d95f01712b\Symfony\Component\HttpFoundation\Request;
-use _PhpScoper39d95f01712b\Symfony\Component\HttpFoundation\RequestStack;
-use _PhpScoper39d95f01712b\Symfony\Component\HttpKernel\Event\FinishRequestEvent;
-use _PhpScoper39d95f01712b\Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use _PhpScoper39d95f01712b\Symfony\Component\HttpKernel\Event\KernelEvent;
-use _PhpScoper39d95f01712b\Symfony\Component\HttpKernel\KernelEvents;
-use _PhpScoper39d95f01712b\Symfony\Component\Routing\RequestContextAwareInterface;
+use _PhpScopera1d8e0344ecf\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use _PhpScopera1d8e0344ecf\Symfony\Component\HttpFoundation\Request;
+use _PhpScopera1d8e0344ecf\Symfony\Component\HttpFoundation\RequestStack;
+use _PhpScopera1d8e0344ecf\Symfony\Component\HttpKernel\Event\FinishRequestEvent;
+use _PhpScopera1d8e0344ecf\Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use _PhpScopera1d8e0344ecf\Symfony\Component\HttpKernel\Event\KernelEvent;
+use _PhpScopera1d8e0344ecf\Symfony\Component\HttpKernel\KernelEvents;
+use _PhpScopera1d8e0344ecf\Symfony\Component\Routing\RequestContextAwareInterface;
 /**
  * Initializes the locale based on the current request.
  *
@@ -25,40 +25,40 @@ use _PhpScoper39d95f01712b\Symfony\Component\Routing\RequestContextAwareInterfac
  *
  * @final since Symfony 4.3
  */
-class LocaleListener implements \_PhpScoper39d95f01712b\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class LocaleListener implements \_PhpScopera1d8e0344ecf\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     private $router;
     private $defaultLocale;
     private $requestStack;
-    public function __construct(\_PhpScoper39d95f01712b\Symfony\Component\HttpFoundation\RequestStack $requestStack, string $defaultLocale = 'en', \_PhpScoper39d95f01712b\Symfony\Component\Routing\RequestContextAwareInterface $router = null)
+    public function __construct(\_PhpScopera1d8e0344ecf\Symfony\Component\HttpFoundation\RequestStack $requestStack, string $defaultLocale = 'en', \_PhpScopera1d8e0344ecf\Symfony\Component\Routing\RequestContextAwareInterface $router = null)
     {
         $this->defaultLocale = $defaultLocale;
         $this->requestStack = $requestStack;
         $this->router = $router;
     }
-    public function setDefaultLocale(\_PhpScoper39d95f01712b\Symfony\Component\HttpKernel\Event\KernelEvent $event)
+    public function setDefaultLocale(\_PhpScopera1d8e0344ecf\Symfony\Component\HttpKernel\Event\KernelEvent $event)
     {
         $event->getRequest()->setDefaultLocale($this->defaultLocale);
     }
-    public function onKernelRequest(\_PhpScoper39d95f01712b\Symfony\Component\HttpKernel\Event\GetResponseEvent $event)
+    public function onKernelRequest(\_PhpScopera1d8e0344ecf\Symfony\Component\HttpKernel\Event\GetResponseEvent $event)
     {
         $request = $event->getRequest();
         $this->setLocale($request);
         $this->setRouterContext($request);
     }
-    public function onKernelFinishRequest(\_PhpScoper39d95f01712b\Symfony\Component\HttpKernel\Event\FinishRequestEvent $event)
+    public function onKernelFinishRequest(\_PhpScopera1d8e0344ecf\Symfony\Component\HttpKernel\Event\FinishRequestEvent $event)
     {
         if (null !== ($parentRequest = $this->requestStack->getParentRequest())) {
             $this->setRouterContext($parentRequest);
         }
     }
-    private function setLocale(\_PhpScoper39d95f01712b\Symfony\Component\HttpFoundation\Request $request)
+    private function setLocale(\_PhpScopera1d8e0344ecf\Symfony\Component\HttpFoundation\Request $request)
     {
         if ($locale = $request->attributes->get('_locale')) {
             $request->setLocale($locale);
         }
     }
-    private function setRouterContext(\_PhpScoper39d95f01712b\Symfony\Component\HttpFoundation\Request $request)
+    private function setRouterContext(\_PhpScopera1d8e0344ecf\Symfony\Component\HttpFoundation\Request $request)
     {
         if (null !== $this->router) {
             $this->router->getContext()->setParameter('_locale', $request->getLocale());
@@ -66,10 +66,10 @@ class LocaleListener implements \_PhpScoper39d95f01712b\Symfony\Component\EventD
     }
     public static function getSubscribedEvents()
     {
-        return [\_PhpScoper39d95f01712b\Symfony\Component\HttpKernel\KernelEvents::REQUEST => [
+        return [\_PhpScopera1d8e0344ecf\Symfony\Component\HttpKernel\KernelEvents::REQUEST => [
             ['setDefaultLocale', 100],
             // must be registered after the Router to have access to the _locale
             ['onKernelRequest', 16],
-        ], \_PhpScoper39d95f01712b\Symfony\Component\HttpKernel\KernelEvents::FINISH_REQUEST => [['onKernelFinishRequest', 0]]];
+        ], \_PhpScopera1d8e0344ecf\Symfony\Component\HttpKernel\KernelEvents::FINISH_REQUEST => [['onKernelFinishRequest', 0]]];
     }
 }
