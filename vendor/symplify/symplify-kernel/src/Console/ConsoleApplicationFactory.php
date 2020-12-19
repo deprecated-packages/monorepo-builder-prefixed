@@ -3,9 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\SymplifyKernel\Console;
 
-use _PhpScopere71835ca1415\Jean85\PrettyVersions;
-use _PhpScopere71835ca1415\Symfony\Component\Console\Application;
-use _PhpScopere71835ca1415\Symfony\Component\Console\Command\Command;
+use _PhpScoperac0a9a33ae94\Jean85\PrettyVersions;
+use _PhpScoperac0a9a33ae94\Symfony\Component\Console\Command\Command;
 use Symplify\ComposerJsonManipulator\ComposerJsonFactory;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 use Symplify\SmartFileSystem\SmartFileSystem;
@@ -50,7 +49,7 @@ final class ConsoleApplicationFactory
         $this->decorateApplicationWithNameAndVersion($autowiredConsoleApplication);
         return $autowiredConsoleApplication;
     }
-    private function decorateApplicationWithNameAndVersion(\_PhpScopere71835ca1415\Symfony\Component\Console\Application $application) : void
+    private function decorateApplicationWithNameAndVersion(\Symplify\SymplifyKernel\Console\AutowiredConsoleApplication $autowiredConsoleApplication) : void
     {
         $projectDir = $this->parameterProvider->provideStringParameter('kernel.project_dir');
         $packageComposerJsonFilePath = $projectDir . \DIRECTORY_SEPARATOR . 'composer.json';
@@ -64,19 +63,19 @@ final class ConsoleApplicationFactory
             return;
         }
         $projectName = $this->stringsConverter->dashedToCamelCaseWithGlue($shortName, ' ');
-        $application->setName($projectName);
+        $autowiredConsoleApplication->setName($projectName);
         // version
         $packageName = $composerJson->getName();
         if ($packageName === null) {
             return;
         }
         $packageVersion = $this->resolveVersionFromPackageName($packageName);
-        $application->setVersion($packageVersion);
+        $autowiredConsoleApplication->setVersion($packageVersion);
     }
     private function resolveVersionFromPackageName(string $packageName) : string
     {
         try {
-            $version = \_PhpScopere71835ca1415\Jean85\PrettyVersions::getVersion($packageName);
+            $version = \_PhpScoperac0a9a33ae94\Jean85\PrettyVersions::getVersion($packageName);
             return $version->getPrettyVersion();
         } catch (\Throwable $throwable) {
             return 'Unknown';
