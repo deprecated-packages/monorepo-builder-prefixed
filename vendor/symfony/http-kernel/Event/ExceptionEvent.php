@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf6f8e31183c3\Symfony\Component\HttpKernel\Event;
+namespace _PhpScoper6d6e02e9c455\Symfony\Component\HttpKernel\Event;
 
 /**
  * Allows to create a response for a thrown exception.
@@ -25,6 +25,6 @@ namespace _PhpScoperf6f8e31183c3\Symfony\Component\HttpKernel\Event;
  *
  * @final since Symfony 4.4
  */
-class ExceptionEvent extends \_PhpScoperf6f8e31183c3\Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent
+class ExceptionEvent extends \_PhpScoper6d6e02e9c455\Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent
 {
 }

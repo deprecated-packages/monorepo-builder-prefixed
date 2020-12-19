@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace _PhpScoperf6f8e31183c3\Nette\Utils;
+namespace _PhpScoper6d6e02e9c455\Nette\Utils;
 
-use _PhpScoperf6f8e31183c3\Nette;
+use _PhpScoper6d6e02e9c455\Nette;
 /**
  * Provides the base class for a generic list (items can be accessed by index).
  */
@@ -39,7 +39,7 @@ class ArrayList implements \ArrayAccess, \Countable, \IteratorAggregate
         if ($index === null) {
             $this->list[] = $value;
         } elseif (!\is_int($index) || $index < 0 || $index >= \count($this->list)) {
-            throw new \_PhpScoperf6f8e31183c3\Nette\OutOfRangeException('Offset invalid or out of range');
+            throw new \_PhpScoper6d6e02e9c455\Nette\OutOfRangeException('Offset invalid or out of range');
         } else {
             $this->list[$index] = $value;
         }
@@ -53,7 +53,7 @@ class ArrayList implements \ArrayAccess, \Countable, \IteratorAggregate
     public function offsetGet($index)
     {
         if (!\is_int($index) || $index < 0 || $index >= \count($this->list)) {
-            throw new \_PhpScoperf6f8e31183c3\Nette\OutOfRangeException('Offset invalid or out of range');
+            throw new \_PhpScoper6d6e02e9c455\Nette\OutOfRangeException('Offset invalid or out of range');
         }
         return $this->list[$index];
     }
@@ -73,7 +73,7 @@ class ArrayList implements \ArrayAccess, \Countable, \IteratorAggregate
     public function offsetUnset($index) : void
     {
         if (!\is_int($index) || $index < 0 || $index >= \count($this->list)) {
-            throw new \_PhpScoperf6f8e31183c3\Nette\OutOfRangeException('Offset invalid or out of range');
+            throw new \_PhpScoper6d6e02e9c455\Nette\OutOfRangeException('Offset invalid or out of range');
         }
         \array_splice($this->list, $index, 1);
     }
