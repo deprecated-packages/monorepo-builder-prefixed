@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper9e30392f4506\Symfony\Component\Console\Output;
+namespace _PhpScoper77ed23b49cd3\Symfony\Component\Console\Output;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
-class BufferedOutput extends \_PhpScoper9e30392f4506\Symfony\Component\Console\Output\Output
+class BufferedOutput extends \_PhpScoper77ed23b49cd3\Symfony\Component\Console\Output\Output
 {
     private $buffer = '';
     /**
