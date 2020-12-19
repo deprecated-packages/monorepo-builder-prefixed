@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Testing;
 
-use _PhpScoper184bc0c88d68\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoper3b1dc0f3c466\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\ConsoleColorDiff\Console\Output\ConsoleDiffer;
@@ -38,7 +38,7 @@ final class ComposerJsonRepositoriesUpdater
      * @var ConsoleDiffer
      */
     private $consoleDiffer;
-    public function __construct(\Symplify\MonorepoBuilder\Package\PackageNamesProvider $packageNamesProvider, \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \_PhpScoper184bc0c88d68\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerJsonSymlinker $composerJsonSymlinker, \Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver $usedPackagesResolver, \Symplify\ConsoleColorDiff\Console\Output\ConsoleDiffer $consoleDiffer)
+    public function __construct(\Symplify\MonorepoBuilder\Package\PackageNamesProvider $packageNamesProvider, \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \_PhpScoper3b1dc0f3c466\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerJsonSymlinker $composerJsonSymlinker, \Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver $usedPackagesResolver, \Symplify\ConsoleColorDiff\Console\Output\ConsoleDiffer $consoleDiffer)
     {
         $this->packageNamesProvider = $packageNamesProvider;
         $this->jsonFileManager = $jsonFileManager;

@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper184bc0c88d68\Symfony\Component\DependencyInjection\Exception;
+namespace _PhpScoper3b1dc0f3c466\Symfony\Component\DependencyInjection\Exception;
 
 /**
  * Base BadMethodCallException for Dependency Injection component.
  */
-class BadMethodCallException extends \BadMethodCallException implements \_PhpScoper184bc0c88d68\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
+class BadMethodCallException extends \BadMethodCallException implements \_PhpScoper3b1dc0f3c466\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
 {
 }
