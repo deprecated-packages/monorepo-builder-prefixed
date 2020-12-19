@@ -1,6 +1,6 @@
 <?php
 
-namespace _PhpScoper2f1e52375c65;
+namespace _PhpScoper184bc0c88d68;
 
 /*
  * This file is part of the Symfony package.
@@ -10,7 +10,7 @@ namespace _PhpScoper2f1e52375c65;
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-use _PhpScoper2f1e52375c65\Symfony\Polyfill\Intl\Idn as p;
+use _PhpScoper184bc0c88d68\Symfony\Polyfill\Intl\Idn as p;
 if (\extension_loaded('intl')) {
     return;
 }
@@ -126,26 +126,26 @@ if (\PHP_VERSION_ID < 70400) {
     if (!\function_exists('idn_to_ascii')) {
         function idn_to_ascii($domain, $options = \IDNA_DEFAULT, $variant = \INTL_IDNA_VARIANT_2003, &$idna_info = array())
         {
-            return \_PhpScoper2f1e52375c65\Symfony\Polyfill\Intl\Idn\Idn::idn_to_ascii($domain, $options, $variant, $idna_info);
+            return \_PhpScoper184bc0c88d68\Symfony\Polyfill\Intl\Idn\Idn::idn_to_ascii($domain, $options, $variant, $idna_info);
         }
     }
     if (!\function_exists('idn_to_utf8')) {
         function idn_to_utf8($domain, $options = \IDNA_DEFAULT, $variant = \INTL_IDNA_VARIANT_2003, &$idna_info = array())
         {
-            return \_PhpScoper2f1e52375c65\Symfony\Polyfill\Intl\Idn\Idn::idn_to_utf8($domain, $options, $variant, $idna_info);
+            return \_PhpScoper184bc0c88d68\Symfony\Polyfill\Intl\Idn\Idn::idn_to_utf8($domain, $options, $variant, $idna_info);
         }
     }
 } else {
     if (!\function_exists('idn_to_ascii')) {
         function idn_to_ascii($domain, $options = \IDNA_DEFAULT, $variant = \INTL_IDNA_VARIANT_UTS46, &$idna_info = array())
         {
-            return \_PhpScoper2f1e52375c65\Symfony\Polyfill\Intl\Idn\Idn::idn_to_ascii($domain, $options, $variant, $idna_info);
+            return \_PhpScoper184bc0c88d68\Symfony\Polyfill\Intl\Idn\Idn::idn_to_ascii($domain, $options, $variant, $idna_info);
         }
     }
     if (!\function_exists('idn_to_utf8')) {
         function idn_to_utf8($domain, $options = \IDNA_DEFAULT, $variant = \INTL_IDNA_VARIANT_UTS46, &$idna_info = array())
         {
-            return \_PhpScoper2f1e52375c65\Symfony\Polyfill\Intl\Idn\Idn::idn_to_utf8($domain, $options, $variant, $idna_info);
+            return \_PhpScoper184bc0c88d68\Symfony\Polyfill\Intl\Idn\Idn::idn_to_utf8($domain, $options, $variant, $idna_info);
         }
     }
 }
