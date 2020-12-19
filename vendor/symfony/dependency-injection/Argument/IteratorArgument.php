@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper77ed23b49cd3\Symfony\Component\DependencyInjection\Argument;
+namespace _PhpScoperb0229f14f861\Symfony\Component\DependencyInjection\Argument;
 
 /**
  * Represents a collection of values to lazily iterate over.
  *
  * @author Titouan Galopin <galopintitouan@gmail.com>
  */
-class IteratorArgument implements \_PhpScoper77ed23b49cd3\Symfony\Component\DependencyInjection\Argument\ArgumentInterface
+class IteratorArgument implements \_PhpScoperb0229f14f861\Symfony\Component\DependencyInjection\Argument\ArgumentInterface
 {
     use ReferenceSetArgumentTrait;
 }

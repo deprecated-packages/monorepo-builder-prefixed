@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper77ed23b49cd3\Symfony\Component\Console\Exception;
+namespace _PhpScoperb0229f14f861\Symfony\Component\Console\Exception;
 
 /**
  * Represents an incorrect namespace typed in the console.
  *
  * @author Pierre du Plessis <pdples@gmail.com>
  */
-class NamespaceNotFoundException extends \_PhpScoper77ed23b49cd3\Symfony\Component\Console\Exception\CommandNotFoundException
+class NamespaceNotFoundException extends \_PhpScoperb0229f14f861\Symfony\Component\Console\Exception\CommandNotFoundException
 {
 }
