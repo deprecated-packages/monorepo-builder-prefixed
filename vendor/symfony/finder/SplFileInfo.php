@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb0229f14f861\Symfony\Component\Finder;
+namespace _PhpScoperf6f8e31183c3\Symfony\Component\Finder;
 
 /**
  * Extends \SplFileInfo to support relative paths.

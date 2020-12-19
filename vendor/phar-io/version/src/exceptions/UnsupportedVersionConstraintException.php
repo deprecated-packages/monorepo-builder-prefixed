@@ -9,8 +9,8 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb0229f14f861\PharIo\Version;
+namespace _PhpScoperf6f8e31183c3\PharIo\Version;
 
-final class UnsupportedVersionConstraintException extends \RuntimeException implements \_PhpScoperb0229f14f861\PharIo\Version\Exception
+final class UnsupportedVersionConstraintException extends \RuntimeException implements \_PhpScoperf6f8e31183c3\PharIo\Version\Exception
 {
 }

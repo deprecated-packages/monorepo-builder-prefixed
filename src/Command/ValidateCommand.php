@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Command;
 
-use _PhpScoperb0229f14f861\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperb0229f14f861\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoperf6f8e31183c3\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoperf6f8e31183c3\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Validator\ConflictingPackageVersionsReporter;
 use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
@@ -41,7 +41,7 @@ final class ValidateCommand extends \Symplify\PackageBuilder\Console\Command\Abs
     {
         $this->setDescription('Validates synchronized versions in "composer.json" in all found packages.');
     }
-    protected function execute(\_PhpScoperb0229f14f861\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperb0229f14f861\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoperf6f8e31183c3\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperf6f8e31183c3\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $this->sourcesPresenceValidator->validatePackageComposerJsons();
         $conflictingPackageVersions = $this->versionValidator->findConflictingPackageVersionsInFileInfos($this->composerJsonProvider->getRootAndPackageFileInfos());

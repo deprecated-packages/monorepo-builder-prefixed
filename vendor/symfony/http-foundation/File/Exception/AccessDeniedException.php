@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb0229f14f861\Symfony\Component\HttpFoundation\File\Exception;
+namespace _PhpScoperf6f8e31183c3\Symfony\Component\HttpFoundation\File\Exception;
 
 /**
  * Thrown when the access on a file was denied.
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
-class AccessDeniedException extends \_PhpScoperb0229f14f861\Symfony\Component\HttpFoundation\File\Exception\FileException
+class AccessDeniedException extends \_PhpScoperf6f8e31183c3\Symfony\Component\HttpFoundation\File\Exception\FileException
 {
     public function __construct(string $path)
     {

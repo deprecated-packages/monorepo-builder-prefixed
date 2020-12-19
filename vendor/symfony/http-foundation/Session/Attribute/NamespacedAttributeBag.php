@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb0229f14f861\Symfony\Component\HttpFoundation\Session\Attribute;
+namespace _PhpScoperf6f8e31183c3\Symfony\Component\HttpFoundation\Session\Attribute;
 
 /**
  * This class provides structured storage of session attributes using
@@ -16,7 +16,7 @@ namespace _PhpScoperb0229f14f861\Symfony\Component\HttpFoundation\Session\Attrib
  *
  * @author Drak <drak@zikula.org>
  */
-class NamespacedAttributeBag extends \_PhpScoperb0229f14f861\Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag
+class NamespacedAttributeBag extends \_PhpScoperf6f8e31183c3\Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag
 {
     private $namespaceCharacter;
     /**

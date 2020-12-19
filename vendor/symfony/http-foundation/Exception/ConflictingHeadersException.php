@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb0229f14f861\Symfony\Component\HttpFoundation\Exception;
+namespace _PhpScoperf6f8e31183c3\Symfony\Component\HttpFoundation\Exception;
 
 /**
  * The HTTP request contains headers with conflicting information.
  *
  * @author Magnus Nordlander <magnus@fervo.se>
  */
-class ConflictingHeadersException extends \UnexpectedValueException implements \_PhpScoperb0229f14f861\Symfony\Component\HttpFoundation\Exception\RequestExceptionInterface
+class ConflictingHeadersException extends \UnexpectedValueException implements \_PhpScoperf6f8e31183c3\Symfony\Component\HttpFoundation\Exception\RequestExceptionInterface
 {
 }
