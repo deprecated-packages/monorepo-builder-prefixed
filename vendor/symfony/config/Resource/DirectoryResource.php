@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper6b92aa0ec16f\Symfony\Component\Config\Resource;
+namespace _PhpScoper32df52184457\Symfony\Component\Config\Resource;
 
 /**
  * DirectoryResource represents a resources stored in a subdirectory tree.
@@ -17,7 +17,7 @@ namespace _PhpScoper6b92aa0ec16f\Symfony\Component\Config\Resource;
  *
  * @final
  */
-class DirectoryResource implements \_PhpScoper6b92aa0ec16f\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class DirectoryResource implements \_PhpScoper32df52184457\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
 {
     private $resource;
     private $pattern;
