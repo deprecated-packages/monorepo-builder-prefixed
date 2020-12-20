@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb2067b9f36f8\Symfony\Component\Mime\Encoder;
+namespace _PhpScoperc84013ed9ae7\Symfony\Component\Mime\Encoder;
 
 /**
  * @author Chris Corbyn
  *
  * @experimental in 4.3
  */
-interface ContentEncoderInterface extends \_PhpScoperb2067b9f36f8\Symfony\Component\Mime\Encoder\EncoderInterface
+interface ContentEncoderInterface extends \_PhpScoperc84013ed9ae7\Symfony\Component\Mime\Encoder\EncoderInterface
 {
     /**
      * Encodes the stream to a Generator.

@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb2067b9f36f8\Symfony\Component\HttpKernel\HttpCache;
+namespace _PhpScoperc84013ed9ae7\Symfony\Component\HttpKernel\HttpCache;
 
-use _PhpScoperb2067b9f36f8\Symfony\Component\HttpFoundation\Request;
-use _PhpScoperb2067b9f36f8\Symfony\Component\HttpFoundation\Response;
+use _PhpScoperc84013ed9ae7\Symfony\Component\HttpFoundation\Request;
+use _PhpScoperc84013ed9ae7\Symfony\Component\HttpFoundation\Response;
 /**
  * Ssi implements the SSI capabilities to Request and Response instances.
  *
  * @author Sebastian Krebs <krebs.seb@gmail.com>
  */
-class Ssi extends \_PhpScoperb2067b9f36f8\Symfony\Component\HttpKernel\HttpCache\AbstractSurrogate
+class Ssi extends \_PhpScoperc84013ed9ae7\Symfony\Component\HttpKernel\HttpCache\AbstractSurrogate
 {
     /**
      * {@inheritdoc}
@@ -29,7 +29,7 @@ class Ssi extends \_PhpScoperb2067b9f36f8\Symfony\Component\HttpKernel\HttpCache
     /**
      * {@inheritdoc}
      */
-    public function addSurrogateControl(\_PhpScoperb2067b9f36f8\Symfony\Component\HttpFoundation\Response $response)
+    public function addSurrogateControl(\_PhpScoperc84013ed9ae7\Symfony\Component\HttpFoundation\Response $response)
     {
         if (\false !== \strpos($response->getContent(), '<!--#include')) {
             $response->headers->set('Surrogate-Control', 'content="SSI/1.0"');
@@ -45,7 +45,7 @@ class Ssi extends \_PhpScoperb2067b9f36f8\Symfony\Component\HttpKernel\HttpCache
     /**
      * {@inheritdoc}
      */
-    public function process(\_PhpScoperb2067b9f36f8\Symfony\Component\HttpFoundation\Request $request, \_PhpScoperb2067b9f36f8\Symfony\Component\HttpFoundation\Response $response)
+    public function process(\_PhpScoperc84013ed9ae7\Symfony\Component\HttpFoundation\Request $request, \_PhpScoperc84013ed9ae7\Symfony\Component\HttpFoundation\Response $response)
     {
         $type = $response->headers->get('Content-Type');
         if (empty($type)) {

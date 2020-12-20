@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperb2067b9f36f8\Symfony\Component\Finder\Iterator;
+namespace _PhpScoperc84013ed9ae7\Symfony\Component\Finder\Iterator;
 
-use _PhpScoperb2067b9f36f8\Symfony\Component\Finder\Comparator\DateComparator;
+use _PhpScoperc84013ed9ae7\Symfony\Component\Finder\Comparator\DateComparator;
 /**
  * DateRangeFilterIterator filters out files that are not in the given date range (last modified dates).
  *

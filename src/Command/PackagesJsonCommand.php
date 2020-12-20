@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Command;
 
-use _PhpScoperb2067b9f36f8\Nette\Utils\Json;
-use _PhpScoperb2067b9f36f8\Symfony\Component\Console\Input\InputInterface;
-use _PhpScoperb2067b9f36f8\Symfony\Component\Console\Output\OutputInterface;
+use _PhpScoperc84013ed9ae7\Nette\Utils\Json;
+use _PhpScoperc84013ed9ae7\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoperc84013ed9ae7\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\Json\PackageJsonProvider;
 use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use Symplify\PackageBuilder\Console\ShellCode;
@@ -24,11 +24,11 @@ final class PackagesJsonCommand extends \Symplify\PackageBuilder\Console\Command
     {
         $this->setDescription('Provides package paths in json format. Useful for GitHub Actions Workflow');
     }
-    protected function execute(\_PhpScoperb2067b9f36f8\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperb2067b9f36f8\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\_PhpScoperc84013ed9ae7\Symfony\Component\Console\Input\InputInterface $input, \_PhpScoperc84013ed9ae7\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $packagePaths = $this->packageJsonProvider->providePackages();
         // must be without spaces, otherwise it breaks GitHub Actions json
-        $json = \_PhpScoperb2067b9f36f8\Nette\Utils\Json::encode($packagePaths);
+        $json = \_PhpScoperc84013ed9ae7\Nette\Utils\Json::encode($packagePaths);
         $this->symfonyStyle->writeln($json);
         return \Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
     }
