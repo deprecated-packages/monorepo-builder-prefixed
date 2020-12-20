@@ -37,7 +37,7 @@
     },
     "autoload": {
         "psr-4": {
-            "_PhpScoper50e98fdc5bc0\\Symfony\\Component\\Config\\": ""
+            "_PhpScoperb2257feafd7d\\Symfony\\Component\\Config\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"
