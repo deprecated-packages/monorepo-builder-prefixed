@@ -1,6 +1,6 @@
 <?php
 
-namespace _PhpScoperb73fd1606666;
+namespace _PhpScoperb2067b9f36f8;
 
 /*
  * This file is part of the Symfony package.
@@ -10,50 +10,50 @@ namespace _PhpScoperb73fd1606666;
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-use _PhpScoperb73fd1606666\Symfony\Polyfill\Ctype as p;
+use _PhpScoperb2067b9f36f8\Symfony\Polyfill\Ctype as p;
 if (!\function_exists('ctype_alnum')) {
     function ctype_alnum($text)
     {
-        return \_PhpScoperb73fd1606666\Symfony\Polyfill\Ctype\Ctype::ctype_alnum($text);
+        return \_PhpScoperb2067b9f36f8\Symfony\Polyfill\Ctype\Ctype::ctype_alnum($text);
     }
     function ctype_alpha($text)
     {
-        return \_PhpScoperb73fd1606666\Symfony\Polyfill\Ctype\Ctype::ctype_alpha($text);
+        return \_PhpScoperb2067b9f36f8\Symfony\Polyfill\Ctype\Ctype::ctype_alpha($text);
     }
     function ctype_cntrl($text)
     {
-        return \_PhpScoperb73fd1606666\Symfony\Polyfill\Ctype\Ctype::ctype_cntrl($text);
+        return \_PhpScoperb2067b9f36f8\Symfony\Polyfill\Ctype\Ctype::ctype_cntrl($text);
     }
     function ctype_digit($text)
     {
-        return \_PhpScoperb73fd1606666\Symfony\Polyfill\Ctype\Ctype::ctype_digit($text);
+        return \_PhpScoperb2067b9f36f8\Symfony\Polyfill\Ctype\Ctype::ctype_digit($text);
     }
     function ctype_graph($text)
     {
-        return \_PhpScoperb73fd1606666\Symfony\Polyfill\Ctype\Ctype::ctype_graph($text);
+        return \_PhpScoperb2067b9f36f8\Symfony\Polyfill\Ctype\Ctype::ctype_graph($text);
     }
     function ctype_lower($text)
     {
-        return \_PhpScoperb73fd1606666\Symfony\Polyfill\Ctype\Ctype::ctype_lower($text);
+        return \_PhpScoperb2067b9f36f8\Symfony\Polyfill\Ctype\Ctype::ctype_lower($text);
     }
     function ctype_print($text)
     {
-        return \_PhpScoperb73fd1606666\Symfony\Polyfill\Ctype\Ctype::ctype_print($text);
+        return \_PhpScoperb2067b9f36f8\Symfony\Polyfill\Ctype\Ctype::ctype_print($text);
     }
     function ctype_punct($text)
     {
-        return \_PhpScoperb73fd1606666\Symfony\Polyfill\Ctype\Ctype::ctype_punct($text);
+        return \_PhpScoperb2067b9f36f8\Symfony\Polyfill\Ctype\Ctype::ctype_punct($text);
     }
     function ctype_space($text)
     {
-        return \_PhpScoperb73fd1606666\Symfony\Polyfill\Ctype\Ctype::ctype_space($text);
+        return \_PhpScoperb2067b9f36f8\Symfony\Polyfill\Ctype\Ctype::ctype_space($text);
     }
     function ctype_upper($text)
     {
-        return \_PhpScoperb73fd1606666\Symfony\Polyfill\Ctype\Ctype::ctype_upper($text);
+        return \_PhpScoperb2067b9f36f8\Symfony\Polyfill\Ctype\Ctype::ctype_upper($text);
     }
     function ctype_xdigit($text)
     {
-        return \_PhpScoperb73fd1606666\Symfony\Polyfill\Ctype\Ctype::ctype_xdigit($text);
+        return \_PhpScoperb2067b9f36f8\Symfony\Polyfill\Ctype\Ctype::ctype_xdigit($text);
     }
 }
