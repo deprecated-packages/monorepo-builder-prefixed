@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace _PhpScoper0217ecc5969a;
+namespace _PhpScoper50e98fdc5bc0;
 
-use _PhpScoper0217ecc5969a\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use _PhpScoper0217ecc5969a\Symfony\Component\EventDispatcher\EventDispatcher;
-use _PhpScoper0217ecc5969a\Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use _PhpScoper50e98fdc5bc0\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use _PhpScoper50e98fdc5bc0\Symfony\Component\EventDispatcher\EventDispatcher;
+use _PhpScoper50e98fdc5bc0\Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symplify\PackageBuilder\Reflection\PrivatesCaller;
 use Symplify\PackageBuilder\Yaml\ParametersMerger;
-return static function (\_PhpScoper0217ecc5969a\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
+return static function (\_PhpScoper50e98fdc5bc0\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire()->autoconfigure();
     $services->load('Symplify\\MonorepoBuilder\\', __DIR__ . '/../src')->exclude([__DIR__ . '/../src/Exception', __DIR__ . '/../src/HttpKernel', __DIR__ . '/../src/ValueObject']);
-    $services->set(\_PhpScoper0217ecc5969a\Symfony\Component\EventDispatcher\EventDispatcher::class);
-    $services->alias(\_PhpScoper0217ecc5969a\Symfony\Component\EventDispatcher\EventDispatcherInterface::class, \_PhpScoper0217ecc5969a\Symfony\Component\EventDispatcher\EventDispatcher::class);
+    $services->set(\_PhpScoper50e98fdc5bc0\Symfony\Component\EventDispatcher\EventDispatcher::class);
+    $services->alias(\_PhpScoper50e98fdc5bc0\Symfony\Component\EventDispatcher\EventDispatcherInterface::class, \_PhpScoper50e98fdc5bc0\Symfony\Component\EventDispatcher\EventDispatcher::class);
     $services->set(\Symplify\PackageBuilder\Reflection\PrivatesCaller::class);
     $services->set(\Symplify\PackageBuilder\Yaml\ParametersMerger::class);
 };

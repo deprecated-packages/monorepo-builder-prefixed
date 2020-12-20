@@ -3,17 +3,17 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\ReleaseWorker;
 
-use _PhpScoper0217ecc5969a\PharIo\Version\Version;
+use _PhpScoper50e98fdc5bc0\PharIo\Version\Version;
 final class SetCurrentMutualDependenciesReleaseWorker extends \Symplify\MonorepoBuilder\Release\ReleaseWorker\AbstractMutualDependencyReleaseWorker
 {
-    public function work(\_PhpScoper0217ecc5969a\PharIo\Version\Version $version) : void
+    public function work(\_PhpScoper50e98fdc5bc0\PharIo\Version\Version $version) : void
     {
         $versionInString = $this->versionUtils->getRequiredFormat($version);
         $this->dependencyUpdater->updateFileInfosWithPackagesAndVersion($this->composerJsonProvider->getPackagesComposerFileInfos(), $this->packageNamesProvider->provide(), $versionInString);
         // give time to propagate values before commit
         \sleep(1);
     }
-    public function getDescription(\_PhpScoper0217ecc5969a\PharIo\Version\Version $version) : string
+    public function getDescription(\_PhpScoper50e98fdc5bc0\PharIo\Version\Version $version) : string
     {
         $versionInString = $this->versionUtils->getRequiredFormat($version);
         return \sprintf('Set packages mutual dependencies to "%s" version', $versionInString);
