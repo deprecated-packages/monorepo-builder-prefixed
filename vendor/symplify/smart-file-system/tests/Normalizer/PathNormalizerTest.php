@@ -4,9 +4,9 @@ declare (strict_types=1);
 namespace Symplify\SmartFileSystem\Tests\Normalizer;
 
 use Iterator;
-use _PhpScoperc84013ed9ae7\PHPUnit\Framework\TestCase;
+use _PhpScoper03a47c44ad4f\PHPUnit\Framework\TestCase;
 use Symplify\SmartFileSystem\Normalizer\PathNormalizer;
-final class PathNormalizerTest extends \_PhpScoperc84013ed9ae7\PHPUnit\Framework\TestCase
+final class PathNormalizerTest extends \_PhpScoper03a47c44ad4f\PHPUnit\Framework\TestCase
 {
     /**
      * @var PathNormalizer
@@ -28,6 +28,6 @@ final class PathNormalizerTest extends \_PhpScoperc84013ed9ae7\PHPUnit\Framework
     {
         // based on Linux
         (yield ['/any/path', '/any/path']);
-        (yield ['_PhpScoperc84013ed9ae7\\any\\path', '/any/path']);
+        (yield ['_PhpScoper03a47c44ad4f\\any\\path', '/any/path']);
     }
 }

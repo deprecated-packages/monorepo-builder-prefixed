@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperc84013ed9ae7\Symfony\Component\HttpKernel\DataCollector;
+namespace _PhpScoper03a47c44ad4f\Symfony\Component\HttpKernel\DataCollector;
 
-use _PhpScoperc84013ed9ae7\Symfony\Component\HttpFoundation\Request;
-use _PhpScoperc84013ed9ae7\Symfony\Component\HttpFoundation\Response;
+use _PhpScoper03a47c44ad4f\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper03a47c44ad4f\Symfony\Component\HttpFoundation\Response;
 /**
  * MemoryDataCollector.
  *
@@ -19,7 +19,7 @@ use _PhpScoperc84013ed9ae7\Symfony\Component\HttpFoundation\Response;
  *
  * @final since Symfony 4.4
  */
-class MemoryDataCollector extends \_PhpScoperc84013ed9ae7\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \_PhpScoperc84013ed9ae7\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface
+class MemoryDataCollector extends \_PhpScoper03a47c44ad4f\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \_PhpScoper03a47c44ad4f\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface
 {
     public function __construct()
     {
@@ -30,7 +30,7 @@ class MemoryDataCollector extends \_PhpScoperc84013ed9ae7\Symfony\Component\Http
      *
      * @param \Throwable|null $exception
      */
-    public function collect(\_PhpScoperc84013ed9ae7\Symfony\Component\HttpFoundation\Request $request, \_PhpScoperc84013ed9ae7\Symfony\Component\HttpFoundation\Response $response)
+    public function collect(\_PhpScoper03a47c44ad4f\Symfony\Component\HttpFoundation\Request $request, \_PhpScoper03a47c44ad4f\Symfony\Component\HttpFoundation\Response $response)
     {
         $this->updateMemoryUsage();
     }
