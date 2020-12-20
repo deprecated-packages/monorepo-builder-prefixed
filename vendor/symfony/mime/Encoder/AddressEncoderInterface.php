@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper764e721c42e8\Symfony\Component\Mime\Encoder;
+namespace _PhpScoper0217ecc5969a\Symfony\Component\Mime\Encoder;
 
-use _PhpScoper764e721c42e8\Symfony\Component\Mime\Exception\AddressEncoderException;
+use _PhpScoper0217ecc5969a\Symfony\Component\Mime\Exception\AddressEncoderException;
 /**
  * @author Christian Schmidt
  *
