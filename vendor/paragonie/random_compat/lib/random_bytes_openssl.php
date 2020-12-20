@@ -1,6 +1,6 @@
 <?php
 
-namespace _PhpScoper955845c5b45f;
+namespace _PhpScoper6cc1788cdd91;
 
 /**
  * Random_* Compatibility Library 
@@ -60,7 +60,7 @@ if (!\function_exists('random_bytes') && \function_exists('openssl_random_pseudo
          */
         $buf = \openssl_random_pseudo_bytes($bytes, $secure);
         if ($buf !== \false && $secure) {
-            if (\_PhpScoper955845c5b45f\RandomCompat_strlen($buf) === $bytes) {
+            if (\_PhpScoper6cc1788cdd91\RandomCompat_strlen($buf) === $bytes) {
                 return $buf;
             }
         }

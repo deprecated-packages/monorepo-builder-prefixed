@@ -1,8 +1,8 @@
 <?php
 
-namespace _PhpScoper955845c5b45f;
+namespace _PhpScoper6cc1788cdd91;
 
 class AssertionError extends \Error
 {
 }
-\class_alias('_PhpScoper955845c5b45f\\AssertionError', 'AssertionError', \false);
+\class_alias('_PhpScoper6cc1788cdd91\\AssertionError', 'AssertionError', \false);
