@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper6cc1788cdd91\Symfony\Component\HttpKernel\Controller;
+namespace _PhpScoper764e721c42e8\Symfony\Component\HttpKernel\Controller;
 
-use _PhpScoper6cc1788cdd91\Symfony\Component\HttpFoundation\Request;
-use _PhpScoper6cc1788cdd91\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
+use _PhpScoper764e721c42e8\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper764e721c42e8\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 /**
  * Responsible for resolving the value of an argument based on its metadata.
  *
@@ -24,11 +24,11 @@ interface ArgumentValueResolverInterface
      *
      * @return bool
      */
-    public function supports(\_PhpScoper6cc1788cdd91\Symfony\Component\HttpFoundation\Request $request, \_PhpScoper6cc1788cdd91\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument);
+    public function supports(\_PhpScoper764e721c42e8\Symfony\Component\HttpFoundation\Request $request, \_PhpScoper764e721c42e8\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument);
     /**
      * Returns the possible value(s).
      *
      * @return iterable
      */
-    public function resolve(\_PhpScoper6cc1788cdd91\Symfony\Component\HttpFoundation\Request $request, \_PhpScoper6cc1788cdd91\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument);
+    public function resolve(\_PhpScoper764e721c42e8\Symfony\Component\HttpFoundation\Request $request, \_PhpScoper764e721c42e8\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument);
 }

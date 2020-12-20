@@ -31,7 +31,7 @@
     },
     "autoload": {
         "psr-4": {
-            "_PhpScoper6cc1788cdd91\\Symfony\\Contracts\\Service\\": ""
+            "_PhpScoper764e721c42e8\\Symfony\\Contracts\\Service\\": ""
         }
     },
     "minimum-stability": "dev",

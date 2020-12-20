@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\SymplifyKernel\Console;
 
-use _PhpScoper6cc1788cdd91\Jean85\PrettyVersions;
-use _PhpScoper6cc1788cdd91\Symfony\Component\Console\Command\Command;
+use _PhpScoper764e721c42e8\Jean85\PrettyVersions;
+use _PhpScoper764e721c42e8\Symfony\Component\Console\Command\Command;
 use Symplify\ComposerJsonManipulator\ComposerJsonFactory;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 use Symplify\SmartFileSystem\SmartFileSystem;
@@ -75,7 +75,7 @@ final class ConsoleApplicationFactory
     private function resolveVersionFromPackageName(string $packageName) : string
     {
         try {
-            $version = \_PhpScoper6cc1788cdd91\Jean85\PrettyVersions::getVersion($packageName);
+            $version = \_PhpScoper764e721c42e8\Jean85\PrettyVersions::getVersion($packageName);
             return $version->getPrettyVersion();
         } catch (\Throwable $throwable) {
             return 'Unknown';
