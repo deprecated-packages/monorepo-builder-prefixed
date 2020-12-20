@@ -9,7 +9,7 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper32df52184457\SebastianBergmann\Diff;
+namespace _PhpScoperb73fd1606666\SebastianBergmann\Diff;
 
 interface Exception
 {

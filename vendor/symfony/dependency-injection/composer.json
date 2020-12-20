@@ -46,7 +46,7 @@
     },
     "autoload": {
         "psr-4": {
-            "_PhpScoper32df52184457\\Symfony\\Component\\DependencyInjection\\": ""
+            "_PhpScoperb73fd1606666\\Symfony\\Component\\DependencyInjection\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"
