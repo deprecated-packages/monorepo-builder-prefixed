@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\Output;
 
-use _PhpScoper9aa6186049d8\Symfony\Component\Console\Style\SymfonyStyle;
+use _PhpScoperb397db9687c8\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface;
 final class ReleaseWorkerReporter
@@ -12,7 +12,7 @@ final class ReleaseWorkerReporter
      * @var SymfonyStyle
      */
     private $symfonyStyle;
-    public function __construct(\_PhpScoper9aa6186049d8\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
+    public function __construct(\_PhpScoperb397db9687c8\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
     {
         $this->symfonyStyle = $symfonyStyle;
     }
