@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper03a47c44ad4f\Symfony\Component\HttpKernel\Event;
+namespace _PhpScoper9aa6186049d8\Symfony\Component\HttpKernel\Event;
 
 /**
  * Allows to execute logic after a response was sent.
@@ -20,6 +20,6 @@ namespace _PhpScoper03a47c44ad4f\Symfony\Component\HttpKernel\Event;
  *
  * @final since Symfony 4.4
  */
-class TerminateEvent extends \_PhpScoper03a47c44ad4f\Symfony\Component\HttpKernel\Event\PostResponseEvent
+class TerminateEvent extends \_PhpScoper9aa6186049d8\Symfony\Component\HttpKernel\Event\PostResponseEvent
 {
 }
