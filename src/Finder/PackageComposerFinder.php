@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Finder;
 
-use _PhpScoperb397db9687c8\Symfony\Component\Finder\Finder;
+use _PhpScoper674f850a9604\Symfony\Component\Finder\Finder;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 use Symplify\SmartFileSystem\Finder\FinderSanitizer;
@@ -40,7 +40,7 @@ final class PackageComposerFinder
      */
     public function getPackageComposerFiles() : array
     {
-        $finder = \_PhpScoperb397db9687c8\Symfony\Component\Finder\Finder::create()->files()->in($this->packageDirectories)->exclude('compiler')->exclude('templates')->exclude('vendor')->exclude('node_modules')->name('composer.json');
+        $finder = \_PhpScoper674f850a9604\Symfony\Component\Finder\Finder::create()->files()->in($this->packageDirectories)->exclude('compiler')->exclude('templates')->exclude('vendor')->exclude('node_modules')->name('composer.json');
         foreach ($this->packageDirectoriesExcludes as $excludeFolder) {
             $finder->exclude($excludeFolder);
         }
