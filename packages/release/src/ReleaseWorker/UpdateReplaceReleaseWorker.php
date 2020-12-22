@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\ReleaseWorker;
 
-use _PhpScoper674f850a9604\PharIo\Version\Version;
+use _PhpScoper621af75be782\PharIo\Version\Version;
 use Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\EasyCI\Exception\ShouldNotHappenException;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
@@ -23,7 +23,7 @@ final class UpdateReplaceReleaseWorker implements \Symplify\MonorepoBuilder\Rele
         $this->composerJsonProvider = $composerJsonProvider;
         $this->jsonFileManager = $jsonFileManager;
     }
-    public function work(\_PhpScoper674f850a9604\PharIo\Version\Version $version) : void
+    public function work(\_PhpScoper621af75be782\PharIo\Version\Version $version) : void
     {
         $rootComposerJson = $this->composerJsonProvider->getRootComposerJson();
         $replace = $rootComposerJson->getReplace();
@@ -41,7 +41,7 @@ final class UpdateReplaceReleaseWorker implements \Symplify\MonorepoBuilder\Rele
         }
         $this->jsonFileManager->printJsonToFileInfo($rootComposerJson->getJsonArray(), $rootFileInfo);
     }
-    public function getDescription(\_PhpScoper674f850a9604\PharIo\Version\Version $version) : string
+    public function getDescription(\_PhpScoper621af75be782\PharIo\Version\Version $version) : string
     {
         return 'Update "replace" version in "composer.json" to new tag to avoid circular dependencies conflicts';
     }
