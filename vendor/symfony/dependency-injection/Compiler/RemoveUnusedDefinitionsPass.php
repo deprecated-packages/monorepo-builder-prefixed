@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper8e5d8d76215d\Symfony\Component\DependencyInjection\Compiler;
+namespace _PhpScopere0f28e6b9bde\Symfony\Component\DependencyInjection\Compiler;
 
-use _PhpScoper8e5d8d76215d\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScoper8e5d8d76215d\Symfony\Component\DependencyInjection\Reference;
+use _PhpScopere0f28e6b9bde\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScopere0f28e6b9bde\Symfony\Component\DependencyInjection\Reference;
 /**
  * Removes unused service definitions from the container.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class RemoveUnusedDefinitionsPass extends \_PhpScoper8e5d8d76215d\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+class RemoveUnusedDefinitionsPass extends \_PhpScopere0f28e6b9bde\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
 {
     private $connectedIds = [];
     /**
      * Processes the ContainerBuilder to remove unused definitions.
      */
-    public function process(\_PhpScoper8e5d8d76215d\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\_PhpScopere0f28e6b9bde\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         try {
             $this->enableExpressionProcessing();
@@ -69,10 +69,10 @@ class RemoveUnusedDefinitionsPass extends \_PhpScoper8e5d8d76215d\Symfony\Compon
      */
     protected function processValue($value, bool $isRoot = \false)
     {
-        if (!$value instanceof \_PhpScoper8e5d8d76215d\Symfony\Component\DependencyInjection\Reference) {
+        if (!$value instanceof \_PhpScopere0f28e6b9bde\Symfony\Component\DependencyInjection\Reference) {
             return parent::processValue($value, $isRoot);
         }
-        if (\_PhpScoper8e5d8d76215d\Symfony\Component\DependencyInjection\ContainerBuilder::IGNORE_ON_UNINITIALIZED_REFERENCE !== $value->getInvalidBehavior()) {
+        if (\_PhpScopere0f28e6b9bde\Symfony\Component\DependencyInjection\ContainerBuilder::IGNORE_ON_UNINITIALIZED_REFERENCE !== $value->getInvalidBehavior()) {
             $this->connectedIds[] = (string) $value;
         }
         return $value;
