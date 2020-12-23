@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Symplify\SymplifyKernel\HttpKernel;
 
-use _PhpScopere0f28e6b9bde\Symfony\Component\Config\Loader\LoaderInterface;
-use _PhpScopere0f28e6b9bde\Symfony\Component\HttpKernel\Bundle\BundleInterface;
-use _PhpScopere0f28e6b9bde\Symfony\Component\HttpKernel\Kernel;
+use _PhpScopere6d124d1f7ba\Symfony\Component\Config\Loader\LoaderInterface;
+use _PhpScopere6d124d1f7ba\Symfony\Component\HttpKernel\Bundle\BundleInterface;
+use _PhpScopere6d124d1f7ba\Symfony\Component\HttpKernel\Kernel;
 use Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface;
 use Symplify\SmartFileSystem\SmartFileInfo;
 use Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle;
 use Symplify\SymplifyKernel\Strings\KernelUniqueHasher;
-abstract class AbstractSymplifyKernel extends \_PhpScopere0f28e6b9bde\Symfony\Component\HttpKernel\Kernel implements \Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface
+abstract class AbstractSymplifyKernel extends \_PhpScopere6d124d1f7ba\Symfony\Component\HttpKernel\Kernel implements \Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface
 {
     /**
      * @var string[]
@@ -43,7 +43,7 @@ abstract class AbstractSymplifyKernel extends \_PhpScopere0f28e6b9bde\Symfony\Co
             $this->configs[] = $config;
         }
     }
-    public function registerContainerConfiguration(\_PhpScopere0f28e6b9bde\Symfony\Component\Config\Loader\LoaderInterface $loader) : void
+    public function registerContainerConfiguration(\_PhpScopere6d124d1f7ba\Symfony\Component\Config\Loader\LoaderInterface $loader) : void
     {
         foreach ($this->configs as $config) {
             $loader->load($config);

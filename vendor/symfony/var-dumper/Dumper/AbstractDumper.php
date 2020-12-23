@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere0f28e6b9bde\Symfony\Component\VarDumper\Dumper;
+namespace _PhpScopere6d124d1f7ba\Symfony\Component\VarDumper\Dumper;
 
-use _PhpScopere0f28e6b9bde\Symfony\Component\VarDumper\Cloner\Data;
-use _PhpScopere0f28e6b9bde\Symfony\Component\VarDumper\Cloner\DumperInterface;
+use _PhpScopere6d124d1f7ba\Symfony\Component\VarDumper\Cloner\Data;
+use _PhpScopere6d124d1f7ba\Symfony\Component\VarDumper\Cloner\DumperInterface;
 /**
  * Abstract mechanism for dumping a Data object.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-abstract class AbstractDumper implements \_PhpScopere0f28e6b9bde\Symfony\Component\VarDumper\Dumper\DataDumperInterface, \_PhpScopere0f28e6b9bde\Symfony\Component\VarDumper\Cloner\DumperInterface
+abstract class AbstractDumper implements \_PhpScopere6d124d1f7ba\Symfony\Component\VarDumper\Dumper\DataDumperInterface, \_PhpScopere6d124d1f7ba\Symfony\Component\VarDumper\Cloner\DumperInterface
 {
     const DUMP_LIGHT_ARRAY = 1;
     const DUMP_STRING_LENGTH = 2;
@@ -105,7 +105,7 @@ abstract class AbstractDumper implements \_PhpScopere0f28e6b9bde\Symfony\Compone
      *
      * @return string|null The dump as string when $output is true
      */
-    public function dump(\_PhpScopere0f28e6b9bde\Symfony\Component\VarDumper\Cloner\Data $data, $output = null)
+    public function dump(\_PhpScopere6d124d1f7ba\Symfony\Component\VarDumper\Cloner\Data $data, $output = null)
     {
         $this->decimalPoint = \localeconv();
         $this->decimalPoint = $this->decimalPoint['decimal_point'];

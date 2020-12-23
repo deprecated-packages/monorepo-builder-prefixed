@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere0f28e6b9bde\Symfony\Component\Yaml\Exception;
+namespace _PhpScopere6d124d1f7ba\Symfony\Component\Yaml\Exception;
 
 /**
  * Exception class thrown when an error occurs during parsing.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ParseException extends \_PhpScopere0f28e6b9bde\Symfony\Component\Yaml\Exception\RuntimeException
+class ParseException extends \_PhpScopere6d124d1f7ba\Symfony\Component\Yaml\Exception\RuntimeException
 {
     private $parsedFile;
     private $parsedLine;

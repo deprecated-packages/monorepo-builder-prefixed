@@ -8,26 +8,26 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere0f28e6b9bde\Symfony\Component\VarDumper\Dumper;
+namespace _PhpScopere6d124d1f7ba\Symfony\Component\VarDumper\Dumper;
 
-use _PhpScopere0f28e6b9bde\Symfony\Component\VarDumper\Cloner\Data;
-use _PhpScopere0f28e6b9bde\Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface;
+use _PhpScopere6d124d1f7ba\Symfony\Component\VarDumper\Cloner\Data;
+use _PhpScopere6d124d1f7ba\Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface;
 /**
  * @author Kévin Thérage <therage.kevin@gmail.com>
  */
-class ContextualizedDumper implements \_PhpScopere0f28e6b9bde\Symfony\Component\VarDumper\Dumper\DataDumperInterface
+class ContextualizedDumper implements \_PhpScopere6d124d1f7ba\Symfony\Component\VarDumper\Dumper\DataDumperInterface
 {
     private $wrappedDumper;
     private $contextProviders;
     /**
      * @param ContextProviderInterface[] $contextProviders
      */
-    public function __construct(\_PhpScopere0f28e6b9bde\Symfony\Component\VarDumper\Dumper\DataDumperInterface $wrappedDumper, array $contextProviders)
+    public function __construct(\_PhpScopere6d124d1f7ba\Symfony\Component\VarDumper\Dumper\DataDumperInterface $wrappedDumper, array $contextProviders)
     {
         $this->wrappedDumper = $wrappedDumper;
         $this->contextProviders = $contextProviders;
     }
-    public function dump(\_PhpScopere0f28e6b9bde\Symfony\Component\VarDumper\Cloner\Data $data)
+    public function dump(\_PhpScopere6d124d1f7ba\Symfony\Component\VarDumper\Cloner\Data $data)
     {
         $context = [];
         foreach ($this->contextProviders as $contextProvider) {

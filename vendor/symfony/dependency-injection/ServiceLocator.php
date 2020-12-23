@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere0f28e6b9bde\Symfony\Component\DependencyInjection;
+namespace _PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection;
 
-use _PhpScopere0f28e6b9bde\Psr\Container\ContainerExceptionInterface;
-use _PhpScopere0f28e6b9bde\Psr\Container\NotFoundExceptionInterface;
-use _PhpScopere0f28e6b9bde\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use _PhpScopere0f28e6b9bde\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use _PhpScopere0f28e6b9bde\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use _PhpScopere0f28e6b9bde\Symfony\Contracts\Service\ServiceLocatorTrait;
-use _PhpScopere0f28e6b9bde\Symfony\Contracts\Service\ServiceProviderInterface;
-use _PhpScopere0f28e6b9bde\Symfony\Contracts\Service\ServiceSubscriberInterface;
+use _PhpScopere6d124d1f7ba\Psr\Container\ContainerExceptionInterface;
+use _PhpScopere6d124d1f7ba\Psr\Container\NotFoundExceptionInterface;
+use _PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use _PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use _PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use _PhpScopere6d124d1f7ba\Symfony\Contracts\Service\ServiceLocatorTrait;
+use _PhpScopere6d124d1f7ba\Symfony\Contracts\Service\ServiceProviderInterface;
+use _PhpScopere6d124d1f7ba\Symfony\Contracts\Service\ServiceSubscriberInterface;
 /**
  * @author Robin Chalas <robin.chalas@gmail.com>
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ServiceLocator implements \_PhpScopere0f28e6b9bde\Symfony\Contracts\Service\ServiceProviderInterface
+class ServiceLocator implements \_PhpScopere6d124d1f7ba\Symfony\Contracts\Service\ServiceProviderInterface
 {
     use ServiceLocatorTrait {
         get as private doGet;
@@ -36,7 +36,7 @@ class ServiceLocator implements \_PhpScopere0f28e6b9bde\Symfony\Contracts\Servic
         }
         try {
             return $this->doGet($id);
-        } catch (\_PhpScopere0f28e6b9bde\Symfony\Component\DependencyInjection\Exception\RuntimeException $e) {
+        } catch (\_PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection\Exception\RuntimeException $e) {
             $what = \sprintf('service "%s" required by "%s"', $id, $this->externalId);
             $message = \preg_replace('/service "\\.service_locator\\.[^"]++"/', $what, $e->getMessage());
             if ($e->getMessage() === $message) {
@@ -57,18 +57,18 @@ class ServiceLocator implements \_PhpScopere0f28e6b9bde\Symfony\Contracts\Servic
      *
      * @return static
      */
-    public function withContext(string $externalId, \_PhpScopere0f28e6b9bde\Symfony\Component\DependencyInjection\Container $container) : self
+    public function withContext(string $externalId, \_PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection\Container $container) : self
     {
         $locator = clone $this;
         $locator->externalId = $externalId;
         $locator->container = $container;
         return $locator;
     }
-    private function createNotFoundException(string $id) : \_PhpScopere0f28e6b9bde\Psr\Container\NotFoundExceptionInterface
+    private function createNotFoundException(string $id) : \_PhpScopere6d124d1f7ba\Psr\Container\NotFoundExceptionInterface
     {
         if ($this->loading) {
             $msg = \sprintf('The service "%s" has a dependency on a non-existent service "%s". This locator %s', \end($this->loading), $id, $this->formatAlternatives());
-            return new \_PhpScopere0f28e6b9bde\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException($id, \end($this->loading) ?: null, null, [], $msg);
+            return new \_PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException($id, \end($this->loading) ?: null, null, [], $msg);
         }
         $class = \debug_backtrace(\DEBUG_BACKTRACE_PROVIDE_OBJECT | \DEBUG_BACKTRACE_IGNORE_ARGS, 4);
         $class = isset($class[3]['object']) ? \get_class($class[3]['object']) : null;
@@ -83,7 +83,7 @@ class ServiceLocator implements \_PhpScopere0f28e6b9bde\Symfony\Contracts\Servic
             try {
                 $this->container->get($id);
                 $class = null;
-            } catch (\_PhpScopere0f28e6b9bde\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException $e) {
+            } catch (\_PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException $e) {
                 if ($e->getAlternatives()) {
                     $msg[] = \sprintf('did you mean %s? Anyway,', $this->formatAlternatives($e->getAlternatives(), 'or'));
                 } else {
@@ -98,16 +98,16 @@ class ServiceLocator implements \_PhpScopere0f28e6b9bde\Symfony\Contracts\Servic
         }
         if (!$class) {
             // no-op
-        } elseif (\is_subclass_of($class, \_PhpScopere0f28e6b9bde\Symfony\Contracts\Service\ServiceSubscriberInterface::class)) {
+        } elseif (\is_subclass_of($class, \_PhpScopere6d124d1f7ba\Symfony\Contracts\Service\ServiceSubscriberInterface::class)) {
             $msg[] = \sprintf('Unless you need extra laziness, try using dependency injection instead. Otherwise, you need to declare it using "%s::getSubscribedServices()".', \preg_replace('/([^\\\\]++\\\\)++/', '', $class));
         } else {
             $msg[] = 'Try using dependency injection instead.';
         }
-        return new \_PhpScopere0f28e6b9bde\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException($id, \end($this->loading) ?: null, null, [], \implode(' ', $msg));
+        return new \_PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException($id, \end($this->loading) ?: null, null, [], \implode(' ', $msg));
     }
-    private function createCircularReferenceException(string $id, array $path) : \_PhpScopere0f28e6b9bde\Psr\Container\ContainerExceptionInterface
+    private function createCircularReferenceException(string $id, array $path) : \_PhpScopere6d124d1f7ba\Psr\Container\ContainerExceptionInterface
     {
-        return new \_PhpScopere0f28e6b9bde\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException($id, $path);
+        return new \_PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException($id, $path);
     }
     private function formatAlternatives(array $alternatives = null, string $separator = 'and') : string
     {

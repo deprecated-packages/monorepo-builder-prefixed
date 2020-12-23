@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere0f28e6b9bde\Symfony\Component\DependencyInjection;
+namespace _PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection;
 
 /**
  * TaggedContainerInterface is the interface implemented when a container knows how to deals with tags.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-interface TaggedContainerInterface extends \_PhpScopere0f28e6b9bde\Symfony\Component\DependencyInjection\ContainerInterface
+interface TaggedContainerInterface extends \_PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection\ContainerInterface
 {
     /**
      * Returns service ids for a given tag.

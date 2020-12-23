@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\HttpKernel;
 
-use _PhpScopere0f28e6b9bde\Symfony\Component\Config\Loader\LoaderInterface;
-use _PhpScopere0f28e6b9bde\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScopere0f28e6b9bde\Symfony\Component\HttpKernel\Bundle\BundleInterface;
+use _PhpScopere6d124d1f7ba\Symfony\Component\Config\Loader\LoaderInterface;
+use _PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScopere6d124d1f7ba\Symfony\Component\HttpKernel\Bundle\BundleInterface;
 use Symplify\ComposerJsonManipulator\Bundle\ComposerJsonManipulatorBundle;
 use Symplify\ConsoleColorDiff\Bundle\ConsoleColorDiffBundle;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
@@ -14,7 +14,7 @@ use Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle;
 use Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
 final class MonorepoBuilderKernel extends \Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel
 {
-    public function registerContainerConfiguration(\_PhpScopere0f28e6b9bde\Symfony\Component\Config\Loader\LoaderInterface $loader) : void
+    public function registerContainerConfiguration(\_PhpScopere6d124d1f7ba\Symfony\Component\Config\Loader\LoaderInterface $loader) : void
     {
         $loader->load(__DIR__ . '/../../config/config.php');
         parent::registerContainerConfiguration($loader);
@@ -26,7 +26,7 @@ final class MonorepoBuilderKernel extends \Symplify\SymplifyKernel\HttpKernel\Ab
     {
         return [new \Symplify\ComposerJsonManipulator\Bundle\ComposerJsonManipulatorBundle(), new \Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle(), new \Symplify\ConsoleColorDiff\Bundle\ConsoleColorDiffBundle()];
     }
-    protected function build(\_PhpScopere0f28e6b9bde\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
+    protected function build(\_PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
     {
         $containerBuilder->addCompilerPass(new \Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireInterfacesCompilerPass([\Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface::class]));
     }

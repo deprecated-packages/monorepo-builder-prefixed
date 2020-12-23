@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere0f28e6b9bde\Symfony\Component\Debug\FatalErrorHandler;
+namespace _PhpScopere6d124d1f7ba\Symfony\Component\Debug\FatalErrorHandler;
 
-use _PhpScopere0f28e6b9bde\Symfony\Component\Debug\Exception\FatalErrorException;
-use _PhpScopere0f28e6b9bde\Symfony\Component\Debug\Exception\UndefinedFunctionException;
-@\trigger_error(\sprintf('The "%s" class is deprecated since Symfony 4.4, use "%s" instead.', \_PhpScopere0f28e6b9bde\Symfony\Component\Debug\FatalErrorHandler\UndefinedFunctionFatalErrorHandler::class, \_PhpScopere0f28e6b9bde\Symfony\Component\ErrorHandler\ErrorEnhancer\UndefinedFunctionErrorEnhancer::class), \E_USER_DEPRECATED);
+use _PhpScopere6d124d1f7ba\Symfony\Component\Debug\Exception\FatalErrorException;
+use _PhpScopere6d124d1f7ba\Symfony\Component\Debug\Exception\UndefinedFunctionException;
+@\trigger_error(\sprintf('The "%s" class is deprecated since Symfony 4.4, use "%s" instead.', \_PhpScopere6d124d1f7ba\Symfony\Component\Debug\FatalErrorHandler\UndefinedFunctionFatalErrorHandler::class, \_PhpScopere6d124d1f7ba\Symfony\Component\ErrorHandler\ErrorEnhancer\UndefinedFunctionErrorEnhancer::class), \E_USER_DEPRECATED);
 /**
  * ErrorHandler for undefined functions.
  *
@@ -20,12 +20,12 @@ use _PhpScopere0f28e6b9bde\Symfony\Component\Debug\Exception\UndefinedFunctionEx
  *
  * @deprecated since Symfony 4.4, use Symfony\Component\ErrorHandler\ErrorEnhancer\UndefinedFunctionErrorEnhancer instead.
  */
-class UndefinedFunctionFatalErrorHandler implements \_PhpScopere0f28e6b9bde\Symfony\Component\Debug\FatalErrorHandler\FatalErrorHandlerInterface
+class UndefinedFunctionFatalErrorHandler implements \_PhpScopere6d124d1f7ba\Symfony\Component\Debug\FatalErrorHandler\FatalErrorHandlerInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function handleError(array $error, \_PhpScopere0f28e6b9bde\Symfony\Component\Debug\Exception\FatalErrorException $exception)
+    public function handleError(array $error, \_PhpScopere6d124d1f7ba\Symfony\Component\Debug\Exception\FatalErrorException $exception)
     {
         $messageLen = \strlen($error['message']);
         $notFoundSuffix = '()';
@@ -73,6 +73,6 @@ class UndefinedFunctionFatalErrorHandler implements \_PhpScopere0f28e6b9bde\Symf
             }
             $message .= "\nDid you mean to call " . $candidates;
         }
-        return new \_PhpScopere0f28e6b9bde\Symfony\Component\Debug\Exception\UndefinedFunctionException($message, $exception);
+        return new \_PhpScopere6d124d1f7ba\Symfony\Component\Debug\Exception\UndefinedFunctionException($message, $exception);
     }
 }

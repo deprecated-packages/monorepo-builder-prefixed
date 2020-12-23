@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere0f28e6b9bde\Symfony\Component\Mime\Encoder;
+namespace _PhpScopere6d124d1f7ba\Symfony\Component\Mime\Encoder;
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
  * @experimental in 4.3
  */
-final class EightBitContentEncoder implements \_PhpScopere0f28e6b9bde\Symfony\Component\Mime\Encoder\ContentEncoderInterface
+final class EightBitContentEncoder implements \_PhpScopere6d124d1f7ba\Symfony\Component\Mime\Encoder\ContentEncoderInterface
 {
     public function encodeByteStream($stream, int $maxLineLength = 0) : iterable
     {
