@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper68e56c1b5bd9\Symfony\Component\HttpKernel\Log;
+namespace _PhpScoper7aa910bab0da\Symfony\Component\HttpKernel\Log;
 
-use _PhpScoper68e56c1b5bd9\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper7aa910bab0da\Symfony\Component\HttpFoundation\Request;
 /**
  * DebugLoggerInterface.
  *
