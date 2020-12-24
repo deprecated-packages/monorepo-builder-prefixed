@@ -9,7 +9,7 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf237fc62366a\PharIo\Version;
+namespace _PhpScoper69b0f14b2eca\PharIo\Version;
 
 class Version
 {
@@ -28,7 +28,7 @@ class Version
     {
         $this->ensureVersionStringIsValid($versionString);
     }
-    public function getPreReleaseSuffix() : \_PhpScoperf237fc62366a\PharIo\Version\PreReleaseSuffix
+    public function getPreReleaseSuffix() : \_PhpScoper69b0f14b2eca\PharIo\Version\PreReleaseSuffix
     {
         return $this->preReleaseSuffix;
     }
@@ -44,11 +44,11 @@ class Version
     {
         return $this->preReleaseSuffix !== null;
     }
-    public function equals(\_PhpScoperf237fc62366a\PharIo\Version\Version $other) : bool
+    public function equals(\_PhpScoper69b0f14b2eca\PharIo\Version\Version $other) : bool
     {
         return $this->getVersionString() === $other->getVersionString();
     }
-    public function isGreaterThan(\_PhpScoperf237fc62366a\PharIo\Version\Version $version) : bool
+    public function isGreaterThan(\_PhpScoper69b0f14b2eca\PharIo\Version\Version $version) : bool
     {
         if ($version->getMajor()->getValue() > $this->getMajor()->getValue()) {
             return \false;
@@ -79,25 +79,25 @@ class Version
         }
         return $this->getPreReleaseSuffix()->isGreaterThan($version->getPreReleaseSuffix());
     }
-    public function getMajor() : \_PhpScoperf237fc62366a\PharIo\Version\VersionNumber
+    public function getMajor() : \_PhpScoper69b0f14b2eca\PharIo\Version\VersionNumber
     {
         return $this->major;
     }
-    public function getMinor() : \_PhpScoperf237fc62366a\PharIo\Version\VersionNumber
+    public function getMinor() : \_PhpScoper69b0f14b2eca\PharIo\Version\VersionNumber
     {
         return $this->minor;
     }
-    public function getPatch() : \_PhpScoperf237fc62366a\PharIo\Version\VersionNumber
+    public function getPatch() : \_PhpScoper69b0f14b2eca\PharIo\Version\VersionNumber
     {
         return $this->patch;
     }
     private function parseVersion(array $matches) : void
     {
-        $this->major = new \_PhpScoperf237fc62366a\PharIo\Version\VersionNumber((int) $matches['Major']);
-        $this->minor = new \_PhpScoperf237fc62366a\PharIo\Version\VersionNumber((int) $matches['Minor']);
-        $this->patch = isset($matches['Patch']) ? new \_PhpScoperf237fc62366a\PharIo\Version\VersionNumber((int) $matches['Patch']) : new \_PhpScoperf237fc62366a\PharIo\Version\VersionNumber(0);
+        $this->major = new \_PhpScoper69b0f14b2eca\PharIo\Version\VersionNumber((int) $matches['Major']);
+        $this->minor = new \_PhpScoper69b0f14b2eca\PharIo\Version\VersionNumber((int) $matches['Minor']);
+        $this->patch = isset($matches['Patch']) ? new \_PhpScoper69b0f14b2eca\PharIo\Version\VersionNumber((int) $matches['Patch']) : new \_PhpScoper69b0f14b2eca\PharIo\Version\VersionNumber(0);
         if (isset($matches['PreReleaseSuffix'])) {
-            $this->preReleaseSuffix = new \_PhpScoperf237fc62366a\PharIo\Version\PreReleaseSuffix($matches['PreReleaseSuffix']);
+            $this->preReleaseSuffix = new \_PhpScoper69b0f14b2eca\PharIo\Version\PreReleaseSuffix($matches['PreReleaseSuffix']);
         }
     }
     /**
@@ -120,7 +120,7 @@ class Version
             )?       
         $/xi';
         if (\preg_match($regex, $version, $matches) !== 1) {
-            throw new \_PhpScoperf237fc62366a\PharIo\Version\InvalidVersionException(\sprintf("Version string '%s' does not follow SemVer semantics", $version));
+            throw new \_PhpScoper69b0f14b2eca\PharIo\Version\InvalidVersionException(\sprintf("Version string '%s' does not follow SemVer semantics", $version));
         }
         $this->parseVersion($matches);
     }

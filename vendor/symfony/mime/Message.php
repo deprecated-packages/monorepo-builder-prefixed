@@ -8,24 +8,24 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperf237fc62366a\Symfony\Component\Mime;
+namespace _PhpScoper69b0f14b2eca\Symfony\Component\Mime;
 
-use _PhpScoperf237fc62366a\Symfony\Component\Mime\Exception\LogicException;
-use _PhpScoperf237fc62366a\Symfony\Component\Mime\Header\Headers;
-use _PhpScoperf237fc62366a\Symfony\Component\Mime\Part\AbstractPart;
-use _PhpScoperf237fc62366a\Symfony\Component\Mime\Part\TextPart;
+use _PhpScoper69b0f14b2eca\Symfony\Component\Mime\Exception\LogicException;
+use _PhpScoper69b0f14b2eca\Symfony\Component\Mime\Header\Headers;
+use _PhpScoper69b0f14b2eca\Symfony\Component\Mime\Part\AbstractPart;
+use _PhpScoper69b0f14b2eca\Symfony\Component\Mime\Part\TextPart;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
  * @experimental in 4.3
  */
-class Message extends \_PhpScoperf237fc62366a\Symfony\Component\Mime\RawMessage
+class Message extends \_PhpScoper69b0f14b2eca\Symfony\Component\Mime\RawMessage
 {
     private $headers;
     private $body;
-    public function __construct(\_PhpScoperf237fc62366a\Symfony\Component\Mime\Header\Headers $headers = null, \_PhpScoperf237fc62366a\Symfony\Component\Mime\Part\AbstractPart $body = null)
+    public function __construct(\_PhpScoper69b0f14b2eca\Symfony\Component\Mime\Header\Headers $headers = null, \_PhpScoper69b0f14b2eca\Symfony\Component\Mime\Part\AbstractPart $body = null)
     {
-        $this->headers = $headers ? clone $headers : new \_PhpScoperf237fc62366a\Symfony\Component\Mime\Header\Headers();
+        $this->headers = $headers ? clone $headers : new \_PhpScoper69b0f14b2eca\Symfony\Component\Mime\Header\Headers();
         $this->body = $body;
     }
     public function __clone()
@@ -40,32 +40,32 @@ class Message extends \_PhpScoperf237fc62366a\Symfony\Component\Mime\RawMessage
     /**
      * @return $this
      */
-    public function setBody(\_PhpScoperf237fc62366a\Symfony\Component\Mime\Part\AbstractPart $body = null)
+    public function setBody(\_PhpScoper69b0f14b2eca\Symfony\Component\Mime\Part\AbstractPart $body = null)
     {
         $this->body = $body;
         return $this;
     }
-    public function getBody() : ?\_PhpScoperf237fc62366a\Symfony\Component\Mime\Part\AbstractPart
+    public function getBody() : ?\_PhpScoper69b0f14b2eca\Symfony\Component\Mime\Part\AbstractPart
     {
         return $this->body;
     }
     /**
      * @return $this
      */
-    public function setHeaders(\_PhpScoperf237fc62366a\Symfony\Component\Mime\Header\Headers $headers)
+    public function setHeaders(\_PhpScoper69b0f14b2eca\Symfony\Component\Mime\Header\Headers $headers)
     {
         $this->headers = $headers;
         return $this;
     }
-    public function getHeaders() : \_PhpScoperf237fc62366a\Symfony\Component\Mime\Header\Headers
+    public function getHeaders() : \_PhpScoper69b0f14b2eca\Symfony\Component\Mime\Header\Headers
     {
         return $this->headers;
     }
-    public function getPreparedHeaders() : \_PhpScoperf237fc62366a\Symfony\Component\Mime\Header\Headers
+    public function getPreparedHeaders() : \_PhpScoper69b0f14b2eca\Symfony\Component\Mime\Header\Headers
     {
         $headers = clone $this->headers;
         if (!$headers->has('From')) {
-            throw new \_PhpScoperf237fc62366a\Symfony\Component\Mime\Exception\LogicException('An email must have a "From" header.');
+            throw new \_PhpScoper69b0f14b2eca\Symfony\Component\Mime\Exception\LogicException('An email must have a "From" header.');
         }
         $headers->addTextHeader('MIME-Version', '1.0');
         if (!$headers->has('Date')) {
@@ -89,14 +89,14 @@ class Message extends \_PhpScoperf237fc62366a\Symfony\Component\Mime\RawMessage
     public function toString() : string
     {
         if (null === ($body = $this->getBody())) {
-            $body = new \_PhpScoperf237fc62366a\Symfony\Component\Mime\Part\TextPart('');
+            $body = new \_PhpScoper69b0f14b2eca\Symfony\Component\Mime\Part\TextPart('');
         }
         return $this->getPreparedHeaders()->toString() . $body->toString();
     }
     public function toIterable() : iterable
     {
         if (null === ($body = $this->getBody())) {
-            $body = new \_PhpScoperf237fc62366a\Symfony\Component\Mime\Part\TextPart('');
+            $body = new \_PhpScoper69b0f14b2eca\Symfony\Component\Mime\Part\TextPart('');
         }
         (yield $this->getPreparedHeaders()->toString());
         yield from $body->toIterable();
