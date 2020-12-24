@@ -8,22 +8,22 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection\Compiler;
+namespace _PhpScoperf237fc62366a\Symfony\Component\DependencyInjection\Compiler;
 
-use _PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use _PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection\Reference;
+use _PhpScoperf237fc62366a\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoperf237fc62366a\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use _PhpScoperf237fc62366a\Symfony\Component\DependencyInjection\Reference;
 /**
  * Replaces all references to aliases with references to the actual service.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ResolveReferencesToAliasesPass extends \_PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+class ResolveReferencesToAliasesPass extends \_PhpScoperf237fc62366a\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
 {
     /**
      * {@inheritdoc}
      */
-    public function process(\_PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\_PhpScoperf237fc62366a\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         parent::process($container);
         foreach ($container->getAliases() as $id => $alias) {
@@ -39,13 +39,13 @@ class ResolveReferencesToAliasesPass extends \_PhpScopere6d124d1f7ba\Symfony\Com
      */
     protected function processValue($value, bool $isRoot = \false)
     {
-        if (!$value instanceof \_PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection\Reference) {
+        if (!$value instanceof \_PhpScoperf237fc62366a\Symfony\Component\DependencyInjection\Reference) {
             return parent::processValue($value, $isRoot);
         }
         $defId = $this->getDefinitionId($id = (string) $value, $this->container);
-        return $defId !== $id ? new \_PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection\Reference($defId, $value->getInvalidBehavior()) : $value;
+        return $defId !== $id ? new \_PhpScoperf237fc62366a\Symfony\Component\DependencyInjection\Reference($defId, $value->getInvalidBehavior()) : $value;
     }
-    private function getDefinitionId(string $id, \_PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection\ContainerBuilder $container) : string
+    private function getDefinitionId(string $id, \_PhpScoperf237fc62366a\Symfony\Component\DependencyInjection\ContainerBuilder $container) : string
     {
         if (!$container->hasAlias($id)) {
             return $id;
@@ -58,7 +58,7 @@ class ResolveReferencesToAliasesPass extends \_PhpScopere6d124d1f7ba\Symfony\Com
         $seen = [];
         do {
             if (isset($seen[$id])) {
-                throw new \_PhpScopere6d124d1f7ba\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException($id, \array_merge(\array_keys($seen), [$id]));
+                throw new \_PhpScoperf237fc62366a\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException($id, \array_merge(\array_keys($seen), [$id]));
             }
             $seen[$id] = \true;
             $id = (string) $container->getAlias($id);

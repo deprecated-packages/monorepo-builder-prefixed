@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere6d124d1f7ba\Symfony\Component\Mime\Header;
+namespace _PhpScoperf237fc62366a\Symfony\Component\Mime\Header;
 
-use _PhpScopere6d124d1f7ba\Symfony\Component\Mime\Address;
-use _PhpScopere6d124d1f7ba\Symfony\Component\Mime\Exception\RfcComplianceException;
-use _PhpScopere6d124d1f7ba\Symfony\Component\Mime\NamedAddress;
+use _PhpScoperf237fc62366a\Symfony\Component\Mime\Address;
+use _PhpScoperf237fc62366a\Symfony\Component\Mime\Exception\RfcComplianceException;
+use _PhpScoperf237fc62366a\Symfony\Component\Mime\NamedAddress;
 /**
  * A Mailbox MIME Header for something like Sender (one named address).
  *
@@ -20,10 +20,10 @@ use _PhpScopere6d124d1f7ba\Symfony\Component\Mime\NamedAddress;
  *
  * @experimental in 4.3
  */
-final class MailboxHeader extends \_PhpScopere6d124d1f7ba\Symfony\Component\Mime\Header\AbstractHeader
+final class MailboxHeader extends \_PhpScoperf237fc62366a\Symfony\Component\Mime\Header\AbstractHeader
 {
     private $address;
-    public function __construct(string $name, \_PhpScopere6d124d1f7ba\Symfony\Component\Mime\Address $address)
+    public function __construct(string $name, \_PhpScoperf237fc62366a\Symfony\Component\Mime\Address $address)
     {
         parent::__construct($name);
         $this->setAddress($address);
@@ -49,21 +49,21 @@ final class MailboxHeader extends \_PhpScopere6d124d1f7ba\Symfony\Component\Mime
     /**
      * @throws RfcComplianceException
      */
-    public function setAddress(\_PhpScopere6d124d1f7ba\Symfony\Component\Mime\Address $address)
+    public function setAddress(\_PhpScoperf237fc62366a\Symfony\Component\Mime\Address $address)
     {
         $this->address = $address;
     }
     /**
      * @return Address
      */
-    public function getAddress() : \_PhpScopere6d124d1f7ba\Symfony\Component\Mime\Address
+    public function getAddress() : \_PhpScoperf237fc62366a\Symfony\Component\Mime\Address
     {
         return $this->address;
     }
     public function getBodyAsString() : string
     {
         $str = $this->address->getEncodedAddress();
-        if ($this->address instanceof \_PhpScopere6d124d1f7ba\Symfony\Component\Mime\NamedAddress && ($name = $this->address->getName())) {
+        if ($this->address instanceof \_PhpScoperf237fc62366a\Symfony\Component\Mime\NamedAddress && ($name = $this->address->getName())) {
             $str = $this->createPhrase($this, $name, $this->getCharset(), \true) . ' <' . $str . '>';
         }
         return $str;

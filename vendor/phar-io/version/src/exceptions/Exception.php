@@ -9,7 +9,7 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScopere6d124d1f7ba\PharIo\Version;
+namespace _PhpScoperf237fc62366a\PharIo\Version;
 
 use Throwable;
 interface Exception extends \Throwable
