@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\Tests\Package;
 
-use _PhpScoper2f9b0ac741dd\Symfony\Component\Finder\Finder;
+use _PhpScoper68e56c1b5bd9\Symfony\Component\Finder\Finder;
 use Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\ComposerJsonMerger;
 use Symplify\MonorepoBuilder\Merge\Tests\ComposerJsonDecorator\AbstractComposerJsonDecoratorTest;
@@ -36,7 +36,7 @@ abstract class AbstractMergeTestCase extends \Symplify\MonorepoBuilder\Merge\Tes
      */
     private function getFileInfosFromDirectory(string $directory) : array
     {
-        $finder = \_PhpScoper2f9b0ac741dd\Symfony\Component\Finder\Finder::create()->files()->in($directory)->name('*.json')->sortByName();
+        $finder = \_PhpScoper68e56c1b5bd9\Symfony\Component\Finder\Finder::create()->files()->in($directory)->name('*.json')->sortByName();
         return $this->finderSanitizer->sanitize($finder);
     }
 }
