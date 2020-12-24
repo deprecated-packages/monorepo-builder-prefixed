@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper69b0f14b2eca\Symfony\Component\HttpFoundation\Session\Storage;
+namespace _PhpScoper2f9b0ac741dd\Symfony\Component\HttpFoundation\Session\Storage;
 
-use _PhpScoper69b0f14b2eca\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
+use _PhpScoper2f9b0ac741dd\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
 /**
  * MockArraySessionStorage mocks the session for unit tests.
  *
@@ -23,7 +23,7 @@ use _PhpScoper69b0f14b2eca\Symfony\Component\HttpFoundation\Session\SessionBagIn
  * @author Bulat Shakirzyanov <mallluhuct@gmail.com>
  * @author Drak <drak@zikula.org>
  */
-class MockArraySessionStorage implements \_PhpScoper69b0f14b2eca\Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface
+class MockArraySessionStorage implements \_PhpScoper2f9b0ac741dd\Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface
 {
     /**
      * @var string
@@ -53,7 +53,7 @@ class MockArraySessionStorage implements \_PhpScoper69b0f14b2eca\Symfony\Compone
      * @var array|SessionBagInterface[]
      */
     protected $bags = [];
-    public function __construct(string $name = 'MOCKSESSID', \_PhpScoper69b0f14b2eca\Symfony\Component\HttpFoundation\Session\Storage\MetadataBag $metaBag = null)
+    public function __construct(string $name = 'MOCKSESSID', \_PhpScoper2f9b0ac741dd\Symfony\Component\HttpFoundation\Session\Storage\MetadataBag $metaBag = null)
     {
         $this->name = $name;
         $this->setMetadataBag($metaBag);
@@ -148,7 +148,7 @@ class MockArraySessionStorage implements \_PhpScoper69b0f14b2eca\Symfony\Compone
     /**
      * {@inheritdoc}
      */
-    public function registerBag(\_PhpScoper69b0f14b2eca\Symfony\Component\HttpFoundation\Session\SessionBagInterface $bag)
+    public function registerBag(\_PhpScoper2f9b0ac741dd\Symfony\Component\HttpFoundation\Session\SessionBagInterface $bag)
     {
         $this->bags[$bag->getName()] = $bag;
     }
@@ -172,10 +172,10 @@ class MockArraySessionStorage implements \_PhpScoper69b0f14b2eca\Symfony\Compone
     {
         return $this->started;
     }
-    public function setMetadataBag(\_PhpScoper69b0f14b2eca\Symfony\Component\HttpFoundation\Session\Storage\MetadataBag $bag = null)
+    public function setMetadataBag(\_PhpScoper2f9b0ac741dd\Symfony\Component\HttpFoundation\Session\Storage\MetadataBag $bag = null)
     {
         if (null === $bag) {
-            $bag = new \_PhpScoper69b0f14b2eca\Symfony\Component\HttpFoundation\Session\Storage\MetadataBag();
+            $bag = new \_PhpScoper2f9b0ac741dd\Symfony\Component\HttpFoundation\Session\Storage\MetadataBag();
         }
         $this->metadataBag = $bag;
     }

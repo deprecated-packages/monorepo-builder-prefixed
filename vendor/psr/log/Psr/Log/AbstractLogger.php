@@ -1,6 +1,6 @@
 <?php
 
-namespace _PhpScoper69b0f14b2eca\Psr\Log;
+namespace _PhpScoper2f9b0ac741dd\Psr\Log;
 
 /**
  * This is a simple Logger implementation that other Loggers can inherit from.
@@ -9,7 +9,7 @@ namespace _PhpScoper69b0f14b2eca\Psr\Log;
  * reduce boilerplate code that a simple Logger that does the same thing with
  * messages regardless of the error level has to implement.
  */
-abstract class AbstractLogger implements \_PhpScoper69b0f14b2eca\Psr\Log\LoggerInterface
+abstract class AbstractLogger implements \_PhpScoper2f9b0ac741dd\Psr\Log\LoggerInterface
 {
     /**
      * System is unusable.
@@ -20,7 +20,7 @@ abstract class AbstractLogger implements \_PhpScoper69b0f14b2eca\Psr\Log\LoggerI
      */
     public function emergency($message, array $context = array())
     {
-        $this->log(\_PhpScoper69b0f14b2eca\Psr\Log\LogLevel::EMERGENCY, $message, $context);
+        $this->log(\_PhpScoper2f9b0ac741dd\Psr\Log\LogLevel::EMERGENCY, $message, $context);
     }
     /**
      * Action must be taken immediately.
@@ -34,7 +34,7 @@ abstract class AbstractLogger implements \_PhpScoper69b0f14b2eca\Psr\Log\LoggerI
      */
     public function alert($message, array $context = array())
     {
-        $this->log(\_PhpScoper69b0f14b2eca\Psr\Log\LogLevel::ALERT, $message, $context);
+        $this->log(\_PhpScoper2f9b0ac741dd\Psr\Log\LogLevel::ALERT, $message, $context);
     }
     /**
      * Critical conditions.
@@ -47,7 +47,7 @@ abstract class AbstractLogger implements \_PhpScoper69b0f14b2eca\Psr\Log\LoggerI
      */
     public function critical($message, array $context = array())
     {
-        $this->log(\_PhpScoper69b0f14b2eca\Psr\Log\LogLevel::CRITICAL, $message, $context);
+        $this->log(\_PhpScoper2f9b0ac741dd\Psr\Log\LogLevel::CRITICAL, $message, $context);
     }
     /**
      * Runtime errors that do not require immediate action but should typically
@@ -59,7 +59,7 @@ abstract class AbstractLogger implements \_PhpScoper69b0f14b2eca\Psr\Log\LoggerI
      */
     public function error($message, array $context = array())
     {
-        $this->log(\_PhpScoper69b0f14b2eca\Psr\Log\LogLevel::ERROR, $message, $context);
+        $this->log(\_PhpScoper2f9b0ac741dd\Psr\Log\LogLevel::ERROR, $message, $context);
     }
     /**
      * Exceptional occurrences that are not errors.
@@ -73,7 +73,7 @@ abstract class AbstractLogger implements \_PhpScoper69b0f14b2eca\Psr\Log\LoggerI
      */
     public function warning($message, array $context = array())
     {
-        $this->log(\_PhpScoper69b0f14b2eca\Psr\Log\LogLevel::WARNING, $message, $context);
+        $this->log(\_PhpScoper2f9b0ac741dd\Psr\Log\LogLevel::WARNING, $message, $context);
     }
     /**
      * Normal but significant events.
@@ -84,7 +84,7 @@ abstract class AbstractLogger implements \_PhpScoper69b0f14b2eca\Psr\Log\LoggerI
      */
     public function notice($message, array $context = array())
     {
-        $this->log(\_PhpScoper69b0f14b2eca\Psr\Log\LogLevel::NOTICE, $message, $context);
+        $this->log(\_PhpScoper2f9b0ac741dd\Psr\Log\LogLevel::NOTICE, $message, $context);
     }
     /**
      * Interesting events.
@@ -97,7 +97,7 @@ abstract class AbstractLogger implements \_PhpScoper69b0f14b2eca\Psr\Log\LoggerI
      */
     public function info($message, array $context = array())
     {
-        $this->log(\_PhpScoper69b0f14b2eca\Psr\Log\LogLevel::INFO, $message, $context);
+        $this->log(\_PhpScoper2f9b0ac741dd\Psr\Log\LogLevel::INFO, $message, $context);
     }
     /**
      * Detailed debug information.
@@ -108,6 +108,6 @@ abstract class AbstractLogger implements \_PhpScoper69b0f14b2eca\Psr\Log\LoggerI
      */
     public function debug($message, array $context = array())
     {
-        $this->log(\_PhpScoper69b0f14b2eca\Psr\Log\LogLevel::DEBUG, $message, $context);
+        $this->log(\_PhpScoper2f9b0ac741dd\Psr\Log\LogLevel::DEBUG, $message, $context);
     }
 }
