@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\Configuration;
 
-use _PhpScoper847a0f3260b6\Symfony\Component\Console\Input\InputInterface;
+use _PhpScoperd04ce6546762\Symfony\Component\Console\Input\InputInterface;
 use Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard;
 use Symplify\MonorepoBuilder\Release\ValueObject\Stage;
 use Symplify\MonorepoBuilder\ValueObject\Option;
@@ -17,7 +17,7 @@ final class StageResolver
     {
         $this->releaseGuard = $releaseGuard;
     }
-    public function resolveFromInput(\_PhpScoper847a0f3260b6\Symfony\Component\Console\Input\InputInterface $input) : string
+    public function resolveFromInput(\_PhpScoperd04ce6546762\Symfony\Component\Console\Input\InputInterface $input) : string
     {
         $stage = (string) $input->getOption(\Symplify\MonorepoBuilder\ValueObject\Option::STAGE);
         // empty
