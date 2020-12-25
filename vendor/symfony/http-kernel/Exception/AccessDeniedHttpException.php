@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper9b3b288e828e\Symfony\Component\HttpKernel\Exception;
+namespace _PhpScoperff72c38d4e2a\Symfony\Component\HttpKernel\Exception;
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Christophe Coevoet <stof@notk.org>
  */
-class AccessDeniedHttpException extends \_PhpScoper9b3b288e828e\Symfony\Component\HttpKernel\Exception\HttpException
+class AccessDeniedHttpException extends \_PhpScoperff72c38d4e2a\Symfony\Component\HttpKernel\Exception\HttpException
 {
     /**
      * @param string     $message  The internal exception message
