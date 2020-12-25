@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperd04ce6546762\Symfony\Component\DependencyInjection;
+namespace _PhpScoper9b3b288e828e\Symfony\Component\DependencyInjection;
 
 /**
  * Reference represents a service reference.
@@ -19,7 +19,7 @@ class Reference
 {
     private $id;
     private $invalidBehavior;
-    public function __construct(string $id, int $invalidBehavior = \_PhpScoperd04ce6546762\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE)
+    public function __construct(string $id, int $invalidBehavior = \_PhpScoper9b3b288e828e\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE)
     {
         $this->id = $id;
         $this->invalidBehavior = $invalidBehavior;
