@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper8b183f8218dc\Symfony\Component\Mime\DependencyInjection;
+namespace _PhpScoper36281e29f54f\Symfony\Component\Mime\DependencyInjection;
 
-use _PhpScoper8b183f8218dc\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use _PhpScoper8b183f8218dc\Symfony\Component\DependencyInjection\ContainerBuilder;
-use _PhpScoper8b183f8218dc\Symfony\Component\DependencyInjection\Reference;
+use _PhpScoper36281e29f54f\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use _PhpScoper36281e29f54f\Symfony\Component\DependencyInjection\ContainerBuilder;
+use _PhpScoper36281e29f54f\Symfony\Component\DependencyInjection\Reference;
 /**
  * Registers custom mime types guessers.
  *
@@ -20,7 +20,7 @@ use _PhpScoper8b183f8218dc\Symfony\Component\DependencyInjection\Reference;
  *
  * @experimental in 4.3
  */
-class AddMimeTypeGuesserPass implements \_PhpScoper8b183f8218dc\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class AddMimeTypeGuesserPass implements \_PhpScoper36281e29f54f\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     private $mimeTypesService;
     private $mimeTypeGuesserTag;
@@ -32,12 +32,12 @@ class AddMimeTypeGuesserPass implements \_PhpScoper8b183f8218dc\Symfony\Componen
     /**
      * {@inheritdoc}
      */
-    public function process(\_PhpScoper8b183f8218dc\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\_PhpScoper36281e29f54f\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         if ($container->has($this->mimeTypesService)) {
             $definition = $container->findDefinition($this->mimeTypesService);
             foreach ($container->findTaggedServiceIds($this->mimeTypeGuesserTag, \true) as $id => $attributes) {
-                $definition->addMethodCall('registerGuesser', [new \_PhpScoper8b183f8218dc\Symfony\Component\DependencyInjection\Reference($id)]);
+                $definition->addMethodCall('registerGuesser', [new \_PhpScoper36281e29f54f\Symfony\Component\DependencyInjection\Reference($id)]);
             }
         }
     }
