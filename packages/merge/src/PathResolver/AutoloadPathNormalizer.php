@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\PathResolver;
 
-use _PhpScoperf0aae7819675\Nette\Utils\Strings;
+use _PhpScoper43009128da38\Nette\Utils\Strings;
 use Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\SmartFileSystem\SmartFileInfo;
 /**
@@ -60,7 +60,7 @@ final class AutoloadPathNormalizer
     private function relativizeSinglePath(string $packageRelativeDirectory, string $path) : string
     {
         // prevent prefixing, as vendor is the same in both locations
-        if (\_PhpScoperf0aae7819675\Nette\Utils\Strings::startsWith($path, 'vendor/')) {
+        if (\_PhpScoper43009128da38\Nette\Utils\Strings::startsWith($path, 'vendor/')) {
             return $path;
         }
         return $packageRelativeDirectory . '/' . \ltrim($path, '/');
