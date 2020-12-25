@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperff72c38d4e2a\Symfony\Component\HttpKernel\Controller;
+namespace _PhpScoper95e170f0b4ac\Symfony\Component\HttpKernel\Controller;
 
-use _PhpScoperff72c38d4e2a\Symfony\Component\HttpFoundation\Request;
-use _PhpScoperff72c38d4e2a\Symfony\Component\Stopwatch\Stopwatch;
+use _PhpScoper95e170f0b4ac\Symfony\Component\HttpFoundation\Request;
+use _PhpScoper95e170f0b4ac\Symfony\Component\Stopwatch\Stopwatch;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class TraceableControllerResolver implements \_PhpScoperff72c38d4e2a\Symfony\Component\HttpKernel\Controller\ControllerResolverInterface
+class TraceableControllerResolver implements \_PhpScoper95e170f0b4ac\Symfony\Component\HttpKernel\Controller\ControllerResolverInterface
 {
     private $resolver;
     private $stopwatch;
-    public function __construct(\_PhpScoperff72c38d4e2a\Symfony\Component\HttpKernel\Controller\ControllerResolverInterface $resolver, \_PhpScoperff72c38d4e2a\Symfony\Component\Stopwatch\Stopwatch $stopwatch)
+    public function __construct(\_PhpScoper95e170f0b4ac\Symfony\Component\HttpKernel\Controller\ControllerResolverInterface $resolver, \_PhpScoper95e170f0b4ac\Symfony\Component\Stopwatch\Stopwatch $stopwatch)
     {
         $this->resolver = $resolver;
         $this->stopwatch = $stopwatch;
@@ -27,7 +27,7 @@ class TraceableControllerResolver implements \_PhpScoperff72c38d4e2a\Symfony\Com
     /**
      * {@inheritdoc}
      */
-    public function getController(\_PhpScoperff72c38d4e2a\Symfony\Component\HttpFoundation\Request $request)
+    public function getController(\_PhpScoper95e170f0b4ac\Symfony\Component\HttpFoundation\Request $request)
     {
         $e = $this->stopwatch->start('controller.get_callable');
         $ret = $this->resolver->getController($request);
