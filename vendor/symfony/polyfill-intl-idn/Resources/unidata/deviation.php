@@ -1,5 +1,5 @@
 <?php
 
-namespace _PhpScoper540e5a7ff813;
+namespace _PhpScoperf0aae7819675;
 
 return array(223 => 'ss', 962 => 'σ', 8204 => '', 8205 => '');

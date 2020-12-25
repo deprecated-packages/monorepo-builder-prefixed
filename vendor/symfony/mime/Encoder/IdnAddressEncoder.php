@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoper540e5a7ff813\Symfony\Component\Mime\Encoder;
+namespace _PhpScoperf0aae7819675\Symfony\Component\Mime\Encoder;
 
-use _PhpScoper540e5a7ff813\Symfony\Component\Mime\Exception\AddressEncoderException;
+use _PhpScoperf0aae7819675\Symfony\Component\Mime\Exception\AddressEncoderException;
 /**
  * An IDN email address encoder.
  *
@@ -26,7 +26,7 @@ use _PhpScoper540e5a7ff813\Symfony\Component\Mime\Exception\AddressEncoderExcept
  *
  * @experimental in 4.3
  */
-final class IdnAddressEncoder implements \_PhpScoper540e5a7ff813\Symfony\Component\Mime\Encoder\AddressEncoderInterface
+final class IdnAddressEncoder implements \_PhpScoperf0aae7819675\Symfony\Component\Mime\Encoder\AddressEncoderInterface
 {
     /**
      * Encodes the domain part of an address using IDN.
@@ -40,7 +40,7 @@ final class IdnAddressEncoder implements \_PhpScoper540e5a7ff813\Symfony\Compone
             $local = \substr($address, 0, $i);
             $domain = \substr($address, $i + 1);
             if (\preg_match('/[^\\x00-\\x7F]/', $local)) {
-                throw new \_PhpScoper540e5a7ff813\Symfony\Component\Mime\Exception\AddressEncoderException(\sprintf('Non-ASCII characters not supported in local-part os "%s".', $address));
+                throw new \_PhpScoperf0aae7819675\Symfony\Component\Mime\Exception\AddressEncoderException(\sprintf('Non-ASCII characters not supported in local-part os "%s".', $address));
             }
             if (\preg_match('/[^\\x00-\\x7F]/', $domain)) {
                 $address = \sprintf('%s@%s', $local, \idn_to_ascii($domain, 0, \INTL_IDNA_VARIANT_UTS46));
