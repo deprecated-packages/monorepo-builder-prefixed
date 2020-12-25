@@ -9,10 +9,10 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace _PhpScoperef96225926e2\PharIo\Version;
+namespace _PhpScoper8b183f8218dc\PharIo\Version;
 
 interface VersionConstraint
 {
-    public function complies(\_PhpScoperef96225926e2\PharIo\Version\Version $version) : bool;
+    public function complies(\_PhpScoper8b183f8218dc\PharIo\Version\Version $version) : bool;
     public function asString() : string;
 }
